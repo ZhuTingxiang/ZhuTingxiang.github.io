@@ -85,30 +85,42 @@
 
 
 <meta name="description" content="equals, == 和compareTo
+
 == 操作符并不涉及对象内容的比较。
 equals 比较的是reference，也就是引用内容
-compareTo():在基本数据中，compareTo()是比较两个Character 对象；在 Boolean中，是用boolean的实例于其它实例进行比较；在String 中，则是按照字典顺序进行比较，返回的值是一个int 型。
+compareTo():
+在基本数据中，compareTo()是比较两个Character 对象；
+在 Boolean中，是用boolean的实例于其它实例进行比较；
+在String 中，则是按照字典顺序进行比较，返回的值是一个int 型。
 
-&amp;nbsp;Stri">
+&amp;lt;pr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java中的比较">
 <meta property="og:url" content="http://yoursite.com/2016/11/13/java-e4-b8-ad-e7-9a-84-e6-af-94-e8-be-83/index.html">
 <meta property="og:site_name" content="Star">
 <meta property="og:description" content="equals, == 和compareTo
+
 == 操作符并不涉及对象内容的比较。
 equals 比较的是reference，也就是引用内容
-compareTo():在基本数据中，compareTo()是比较两个Character 对象；在 Boolean中，是用boolean的实例于其它实例进行比较；在String 中，则是按照字典顺序进行比较，返回的值是一个int 型。
+compareTo():
+在基本数据中，compareTo()是比较两个Character 对象；
+在 Boolean中，是用boolean的实例于其它实例进行比较；
+在String 中，则是按照字典顺序进行比较，返回的值是一个int 型。
 
-&amp;nbsp;Stri">
+&amp;lt;pr">
 <meta property="og:updated_time" content="2016-12-20T03:00:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中的比较">
 <meta name="twitter:description" content="equals, == 和compareTo
+
 == 操作符并不涉及对象内容的比较。
 equals 比较的是reference，也就是引用内容
-compareTo():在基本数据中，compareTo()是比较两个Character 对象；在 Boolean中，是用boolean的实例于其它实例进行比较；在String 中，则是按照字典顺序进行比较，返回的值是一个int 型。
+compareTo():
+在基本数据中，compareTo()是比较两个Character 对象；
+在 Boolean中，是用boolean的实例于其它实例进行比较；
+在String 中，则是按照字典顺序进行比较，返回的值是一个int 型。
 
-&amp;nbsp;Stri">
+&amp;lt;pr">
 
 
 
@@ -186,7 +198,7 @@ compareTo():在基本数据中，compareTo()是比较两个Character 对象；�
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">不要温和地走进那个良夜。</p>
+  <p class="site-subtitle"></p>
 </div>
 
 <div class="site-nav-toggle">
@@ -255,9 +267,32 @@ compareTo():在基本数据中，compareTo()是比较两个Character 对象；�
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
   
 </nav>
 
@@ -380,32 +415,43 @@ compareTo():在基本数据中，compareTo()是比较两个Character 对象；�
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><h3 id="equals-和compareTo"><a href="#equals-和compareTo" class="headerlink" title="equals, == 和compareTo"></a>equals, == 和compareTo</h3><ul>
+        <script src="/assets/js/DPlayer.min.js"> </script><h3>equals, == 和compareTo</h3>
+<ul>
 <li>== 操作符并不涉及对象内容的比较。</li>
 <li>equals 比较的是reference，也就是引用内容</li>
-<li>compareTo():<br>在基本数据中，compareTo()是比较两个Character 对象；<br>在 Boolean中，是用boolean的实例于其它实例进行比较；<br>在String 中，则是按照字典顺序进行比较，返回的值是一个int 型。</li>
+<li>compareTo():
+在基本数据中，compareTo()是比较两个Character 对象；
+在 Boolean中，是用boolean的实例于其它实例进行比较；
+在String 中，则是按照字典顺序进行比较，返回的值是一个int 型。</li>
 </ul>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span>&nbsp;</span><span class="meta paragraph text"><span>String&nbsp;a&nbsp;=&nbsp;&quot;abc&quot;;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;String&nbsp;b&nbsp;=&nbsp;&quot;abc&quot;;</span></span></span></div></pre>
-
+<p>&lt;pre class=&quot;editor-colors lang-text&quot;&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span&gt; &lt;/span&gt;&lt;span class=&quot;meta paragraph text&quot;&gt;&lt;span&gt;String a = &quot;abc&quot;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span class=&quot;meta paragraph text&quot;&gt;&lt;span&gt; String b = &quot;abc&quot;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;</p>
 <pre><code>a == b: **true**
-</code></pre><p>a.equals(b): <strong>true</strong></p>
-<p>a.compareTo(b): <strong> 0</strong></p>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span>&nbsp;</span><span class="meta paragraph text"><span>String&nbsp;a&nbsp;=&nbsp;new&nbsp;String(&quot;abc&quot;);</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;String&nbsp;b&nbsp;=&nbsp;new&nbsp;String(&quot;abc&quot;);</span></span></span></div></pre>
-
-<pre><code>a == b: **false**
-</code></pre><p> 这是因为，对于对象的比较是对对象引用的比较。a和b的内存地址不同，对象引用不同</p>
-<p> a.equals(b): <strong>true</strong></p>
-<p> a.compareTo(b): <strong> 0</strong></p>
+</code></pre>
+<p>a.equals(b): <strong>true</strong></p>
+<p>a.compareTo(b): ** 0**</p>
+<p>&lt;pre class=&quot;editor-colors lang-text&quot;&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span&gt; &lt;/span&gt;&lt;span class=&quot;meta paragraph text&quot;&gt;&lt;span&gt;String a = new String(&quot;abc&quot;);&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span class=&quot;meta paragraph text&quot;&gt;&lt;span&gt; String b = new String(&quot;abc&quot;);&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;</p>
+<pre><code> a == b: **false**
+</code></pre>
+<p>这是因为，对于对象的比较是对对象引用的比较。a和b的内存地址不同，对象引用不同</p>
+<p>a.equals(b): <strong>true</strong></p>
+<p>a.compareTo(b): ** 0**</p>
 <ul>
-<li>在继承了Comparabale接口的类中，compareTo（）的应该与euqals（）一致，比如 x.equals(y) == true, 则<br>x.compareTo(y) == 0</li>
+<li>在继承了Comparabale接口的类中，compareTo（）的应该与euqals（）一致，比如 x.equals(y) == true, 则
+x.compareTo(y) == 0</li>
 </ul>
-<h3 id="关于equals和hashcode"><a href="#关于equals和hashcode" class="headerlink" title="关于equals和hashcode"></a>关于equals和hashcode</h3><p>实际上，equals虽然说是表面比较是否一致，但是实际的原理是于hashcode（）方法有关的。<br>比如上例中的String的比较，是因为String重写了hashcode（）和equals（）<br>方法。</p>
+<h3>关于equals和hashcode</h3>
+<p>实际上，equals虽然说是表面比较是否一致，但是实际的原理是于hashcode（）方法有关的。
+比如上例中的String的比较，是因为String重写了hashcode（）和equals（）
+方法。</p>
 <ul>
-<li><p>如果x.equals(y)返回“true”，那么x和y的hashCode()必须相等。</p>
+<li>
+<p>如果x.equals(y)返回“true”，那么x和y的hashCode()必须相等。</p>
 </li>
-<li><p>如果x.equals(y)返回“false”，那么x和y的hashCode()有可能相等，也有可能不等。</p>
+<li>
+<p>如果x.equals(y)返回“false”，那么x和y的hashCode()有可能相等，也有可能不等。</p>
 </li>
-<li><p>任何情况下，x.equals(null)，永远返回是“false”；x.equals(和x不同类型的对象)永远返回是“false”。</p>
+<li>
+<p>任何情况下，x.equals(null)，永远返回是“false”；x.equals(和x不同类型的对象)永远返回是“false”。</p>
 </li>
 </ul>
 
@@ -440,8 +486,8 @@ compareTo():在基本数据中，compareTo()是比较两个Character 对象；�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/20/some-review/" rel="next" title="some review">
-                <i class="fa fa-chevron-left"></i> some review
+              <a href="/2016/10/19/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e5-9b-9b-ef-bc-89-ef-bc-9a-e6-a6-82-e5-bf-b5-e5-ad-a6-e4-b9-a0/" rel="next" title="Machine Learning 复习（四）：概念学习">
+                <i class="fa fa-chevron-left"></i> Machine Learning 复习（四）：概念学习
               </a>
             
           </div>
@@ -519,12 +565,12 @@ compareTo():在基本数据中，compareTo()是比较两个Character 对象；�
                src="/images/winnie-pooh-full-hd-wallpaper-image-tablet.jpg"
                alt="Star" />
           <p class="site-author-name" itemprop="name">Star</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+          <p class="site-description motion-element" itemprop="description">不要温和地走进那个良夜。@CMU</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -532,7 +578,7 @@ compareTo():在基本数据中，compareTo()是比较两个Character 对象；�
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -541,7 +587,7 @@ compareTo():在基本数据中，compareTo()是比较两个Character 对象；�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -566,7 +612,7 @@ compareTo():在基本数据中，compareTo()是比较两个Character 对象；�
               <span class="links-of-author-item">
                 <a href="https://www.douban.com/people/45283318/" target="_blank" title="Douban">
                   
-                    <i class="fa fa-fw fa-douban"></i>
+                    <i class="fa fa-fw fa-globe"></i>
                   
                   Douban
                 </a>
@@ -610,7 +656,7 @@ compareTo():在基本数据中，compareTo()是比较两个Character 对象；�
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
-              
+              小伙伴
             </div>
             <ul class="links-of-blogroll-list">
               
@@ -649,7 +695,7 @@ compareTo():在基本数据中，compareTo()是比较两个Character 对象；�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#equals-和compareTo"><span class="nav-number">1.</span> <span class="nav-text">equals, == 和compareTo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于equals和hashcode"><span class="nav-number">2.</span> <span class="nav-text">关于equals和hashcode</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">equals, == 和compareTo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">关于equals和hashcode</span></a></li></ol></div>
             
 
           </div>
@@ -788,7 +834,141 @@ compareTo():在基本数据中，compareTo()是比较两个Character 对象；�
     
     
     <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -806,17 +986,7 @@ compareTo():在基本数据中，compareTo()是比较两个Character 对象；�
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-  
 
-
-
-
-
-
-
-
-  
-  
 
   
 

@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+    
+    <entry>
+      <title><![CDATA[天冷该吃火锅]]></title>
+      <url>http://yoursite.com/2016/11/22/e5-a4-a9-e5-86-b7-e8-af-a5-e5-90-83-e7-81-ab-e9-94-85/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><embed src="http://www.xiami.com/widget/12753884_1773763930/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></p>
+<p>晚上，翻到一篇写北京卤煮的文章。15年夏天在北京，一个姑娘带我去了一个南城的胡同里吃卤煮。买单的不是我，领餐的也不是我。</p>
+<p>在吃完之前我都没太搞清楚到底卤煮里面的那些具体是什么。我在当时常聊的微信群里说我在吃卤煮的时候，我哥来了一句，Star，你居然敢吃卤煮啊？当然敢。</p>
+<p>我有什么是不敢的。科科。</p>
+<p>但是，被科普完卤煮的构成以后，正站在五道口农科院的那片稻田前的我，差点连同刚刚吃的吴裕泰抹茶冰淇淋一起吐出来。我感受到了作为一个南方人的极限。
+现在想想，透过现象抛开心理因素，我承认那是好吃的。别忘了，要配北冰洋。</p>
+<p>在外面，最脆弱的时候就是想吃而不可得。之前想吃肠粉的时候，乐文带我去了匹村唯一一家的早茶店，可惜不好吃。以前在澳洲，广东人到处都有，在小天使和囧囧两个潮汕人的带动下，我深深爱上了早茶。虾饺皇要有汁儿才好吃，蜜汁排骨要熟透，凤爪要粉烂且入味。吃得下呢，可以来一个榴莲酥，叉烧包。主食当然是干炒牛河或者鲜虾云吞面啦。可是这里连一家像样的早茶店都没有，和小天使一起感到忧伤。</p>
+<p>最近天冷，雪忽然下起来，风就在我屋子的外面呼呼地刮，有朋友来家里吃火锅，窗外雪花斜着飘，屋里却热气腾腾的。梦瑶埋头寻找她的年糕。乐乐直呼太幸福了。爽爽吃得忘了她刚刚怎么也修不好的bug。这个时刻，满足变得很真实。满足的，是一盒牛肉，一盘海带结，一块豆腐皮，一袋鱼丸就能解决的欲望。</p>
+<p>其实，在某种意义上，对食物的欲望反映着一个人的精神状态。特别羡慕还能对食物怀抱100%期待的人。那一定是热爱生活的人。像我，只有想做菜的时候，才会觉得自己是对生活抱有憧憬的。</p>
+<p>状态非常差的时候，和草草讨论过，当经历着无法自愈的痛苦，食物这种无门槛、不需要高难度竞争就唾手可得的东西，是最低程度的治疗方式。但随着对痛苦的认知加深，对于自我调节的要求会越来越高，越来越变得难以满足。所以，“吃一顿大餐就好了”这种解压方式对我们并不适用。high点太高到，需要去蹦极，坐过山车，听live，喝酒才能好一些。因为在心里，知道我们的问题是食物所无法解决的，换言之，也许未来是会好的，会有短暂的快乐的，但我们，我们自身不会好了。就像Monica和Rachel说的，“That's food, not love.”。不过还好，最严重的时候，崩溃得不成人形，什么也干不了，也不至于没有对食物一点欲望都没有。</p>
+<p>大三暑假，九四和我核对抑郁症症状，快到觉得我可以开始吃药的时候，“完全不想吃东西”这一条就打回了原形。看来没有抑郁症，还能笑着活下去。可能，食物是最后的底线了吧。</p>
+<p>又想起当时带我去吃卤煮的姑娘，我其实已经忘了她的名字，只记得她的微信头像是《这个杀手不太冷》里娜塔莉波特曼拿枪的样子。我当时就在想啊，大多数人，20多岁的时候就死了，之后的日子不过是机械地重复之前的日子。但她还没有，她对胡同有热情，对美食有热情，对陌生人也有热情。真好。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java中的比较]]></title>
+      <url>http://yoursite.com/2016/11/13/java-e4-b8-ad-e7-9a-84-e6-af-94-e8-be-83/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3>equals, == 和compareTo</h3>
+<ul>
+<li>== 操作符并不涉及对象内容的比较。</li>
+<li>equals 比较的是reference，也就是引用内容</li>
+<li>compareTo():
+在基本数据中，compareTo()是比较两个Character 对象；
+在 Boolean中，是用boolean的实例于其它实例进行比较；
+在String 中，则是按照字典顺序进行比较，返回的值是一个int 型。</li>
+</ul>
+<p>&lt;pre class=&quot;editor-colors lang-text&quot;&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span&gt; &lt;/span&gt;&lt;span class=&quot;meta paragraph text&quot;&gt;&lt;span&gt;String a = &quot;abc&quot;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span class=&quot;meta paragraph text&quot;&gt;&lt;span&gt; String b = &quot;abc&quot;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;</p>
+<pre><code>a == b: **true**
+</code></pre>
+<p>a.equals(b): <strong>true</strong></p>
+<p>a.compareTo(b): ** 0**</p>
+<p>&lt;pre class=&quot;editor-colors lang-text&quot;&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span&gt; &lt;/span&gt;&lt;span class=&quot;meta paragraph text&quot;&gt;&lt;span&gt;String a = new String(&quot;abc&quot;);&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span class=&quot;meta paragraph text&quot;&gt;&lt;span&gt; String b = new String(&quot;abc&quot;);&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;</p>
+<pre><code> a == b: **false**
+</code></pre>
+<p>这是因为，对于对象的比较是对对象引用的比较。a和b的内存地址不同，对象引用不同</p>
+<p>a.equals(b): <strong>true</strong></p>
+<p>a.compareTo(b): ** 0**</p>
+<ul>
+<li>在继承了Comparabale接口的类中，compareTo（）的应该与euqals（）一致，比如 x.equals(y) == true, 则
+x.compareTo(y) == 0</li>
+</ul>
+<h3>关于equals和hashcode</h3>
+<p>实际上，equals虽然说是表面比较是否一致，但是实际的原理是于hashcode（）方法有关的。
+比如上例中的String的比较，是因为String重写了hashcode（）和equals（）
+方法。</p>
+<ul>
+<li>
+<p>如果x.equals(y)返回“true”，那么x和y的hashCode()必须相等。</p>
+</li>
+<li>
+<p>如果x.equals(y)返回“false”，那么x和y的hashCode()有可能相等，也有可能不等。</p>
+</li>
+<li>
+<p>任何情况下，x.equals(null)，永远返回是“false”；x.equals(和x不同类型的对象)永远返回是“false”。</p>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Machine Learning 复习（四）：概念学习]]></title>
+      <url>http://yoursite.com/2016/10/19/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e5-9b-9b-ef-bc-89-ef-bc-9a-e6-a6-82-e5-bf-b5-e5-ad-a6-e4-b9-a0/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3>概念学习（Concept Learning）</h3>
+<p>概念学习是指从某个布尔函数的输入输出训练中推断出该布尔函数。</p>
+<h5>例子</h5>
+<p>为了更好地理解概念学习，我们从机器学习经典教材《Machine learning》（Tom Mitchell著）中的经典例子来解释：
+<img src="http://i.imgur.com/0SnpShX.png" alt=""></p>
+<p>我们可以看到，属性EnjoySport表示最终是否运动，而这个任务的目标是根据sky，humidity等的属性来预测出EnjoySport的值。</p>
+<ul>
+<li>
+<p>属性的取值可以为：</p>
+<pre><code>*   ？：表示可以接受任意值
+</code></pre>
+<ul>
+<li>明确指定属性值（如warm）</li>
+<li>不允许任何值：<img src="http://i.imgur.com/Sy3EXiV.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>所以对于EnjoySport这个任务：</p>
+<ul>
+<li>
+<p>已知：</p>
+<ul>
+<li>
+<p>实例集 X：可能的日子，每个日子都有如下属性描述：</p>
+<pre><code>    *   Sky
+</code></pre>
+<ul>
+<li>Temp</li>
+<li>Humid</li>
+<li>Wind</li>
+<li>Water</li>
+<li>Forecast</li>
+</ul>
+</li>
+<li>
+<p>假设集： H。每个假设集都有6个属性的任意取值。</p>
+</li>
+<li>
+<p>目标概念c：EnjoySport： <img src="http://i.imgur.com/uGkb5OB.png" alt=""></p>
+</li>
+<li>
+<p>训练实例 D： +/-的关于目标概念的例子：
+<img src="http://i.imgur.com/nOw2ffI.png" alt=""></p>
+</li>
+<li>
+<p>归纳学习假设： 如果一个假设能够在训练集样本中很好地逼近目标函数，就能在未见实例中很好地逼近目标函数。
+<img src="http://i.imgur.com/vDaItGC.png" alt=""></p>
+</li>
+<li>
+<p>Find-S 算法：</p>
+</li>
+<li>
+<p>初始化H到最特别的那个假设</p>
+</li>
+<li>
+<p>对于每一个训练实例X中的约束ai：</p>
+<pre><code>    *   如果ai已经符合假设，什么也不做。
+</code></pre>
+<ul>
+<li>
+<p>否则，用一个更加general的约束来代替H中的ai</p>
+</li>
+<li>
+<p>输出最终的假设 H
+<img src="http://i.imgur.com/hMNrVw1.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Find-S 算法仍然存在一些没有解决的问题：</p>
+<pre><code>*   难以判断是否对概念进行了学习
+</code></pre>
+<ul>
+<li>
+<p>是否能处理不一致的训练数据：在实际中，训练数据常常出现错误。这种不一致可能会严重破坏Find-S算法，因为Find-S算法忽略了所有的反例。我们期待的算法至少要能检测出训练数据的不一致性，并能容忍这样的错误。</p>
+</li>
+<li>
+<p>为什么要用特殊假设？如果有多个，此算法只能找到最特殊的那个。为什么我们不用最一般的假设呢，或者两者之间的假设。</p>
+</li>
+<li>
+<p>如果有多个极大特殊假设？在其他一些假设空间（后面会讨论到）中，可能有多个极大特殊假设。</p>
+</li>
+<li>
+<p>变形空间（Version Spaces):
+所有和数据集以及假设表示对应的假设的集合。我们可以看到，在Find-S中，最终输出的假设可能只是H中与训练样例一致的多个假设之一。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>列表后消除算法（List-Then-Eliminate）：</p>
+<pre><code>*   先把变形空间设置为所有假设的列表
+</code></pre>
+<ul>
+<li>
+<p>对于每一个样例，我们排除假设中和样例不符合的情况。</p>
+</li>
+<li>
+<p>输出变形空间中的所有假设。</p>
+</li>
+<li>
+<p>一般边界（General boundary）： 表示在H中与D相一致的极大一般成员的集合。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>特殊边界（Specific Boundary）：表示在H中与D相一致的极大特殊成员的集合。</p>
+</li>
+<li>
+<p>所有的变形空间都在这两个边界之间：
+<img src="http://i.imgur.com/n0uBYdt.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>回到enjoy sport的例子</h3>
+<p><img src="http://i.imgur.com/0SnpShX.png" alt="">
+我们来梳理一下：</p>
+<ul>
+<li>输入空间： X={sky(cloudy/sunny/rainy),Temp=(warm/cold),Humid=(Normal/high),Wind=(Strong/weak),water=(warm/cool),forecast=(same/change)}
+所以一共是 = 3_2_2_2_2*2 =96</li>
+<li>概念空间（Concept Space）：
+对于每一个输入，都有正例反例两种可能的概念。
+所以概念空间为2^96</li>
+<li>假设空间：把每种情况包含all这个选项，相乘=4_3_3_3_3*3+1=973.这里加的1表示的是全否的情况。</li>
+</ul>
+<h3>归纳偏置(Inductive Bias)</h3>
+<p>机器学习试图去建造一个可以学习的算法，用来预测某个目标的结果。要达到此目的，要给于学习算法一些训练样本，样本说明输入与输出之间的预期关系。然后假设学习器在预测中逼近正确的结果，其中包括在训练中未出现的样本。既然未知状况可以是任意的结果，若没有其它额外的假设，这任务就无法解决。这种关于目标函数的必要假设就称为归纳偏置（Mitchell, 1980; desJardins and Gordon, 1995）。</p>
+<p>参考：
+《机器学习》（Tom Mitchell）</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Machine Learning 复习（零）：机器学习基本介绍]]></title>
+      <url>http://yoursite.com/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-880-ef-bc-89-ef-bc-9a-e6-9c-ba-e5-99-a8-e5-ad-a6-e4-b9-a0-e5-9f-ba-e6-9c-ac-e4-bb-8b-e7-bb-8d/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>机器学习是基于数据的人工智能（1980s-现在），机器学习能够通过学习例子来完成任务。</p>
+<h3>机器学习框架</h3>
+<ul>
+<li>
+<p>通常是成对出现（Input-Correct_Output）</p>
+</li>
+<li>
+<p>机器学习的常见情况：</p>
+<pre><code>*   **分类(Classification)**： 医疗诊断： 从一个输出指向一些分类；*   **回归（Regression）**：预测明天的天气：从一个输出到一个数字
+</code></pre>
+<ul>
+<li><strong>逻辑回归（Logistic Regression）</strong>: 存活几率：从一个输出到一个可能性</li>
+</ul>
+</li>
+</ul>
+<h3>如何解决一个机器学习的问题</h3>
+<ul>
+<li>定义你的任务，考虑你的目标，比如是要决定是否允许贷款</li>
+<li>考虑实际情况，比如你有多少数据，要花多少时间和努力</li>
+<li>考虑输出的形式，是数字还是分类，是可能性还是一个计划</li>
+<li>选择衡量表现的标准，比如损失函数或错误率</li>
+<li>选择输入的形式</li>
+<li>选择一系列的解决方法（假设空间）</li>
+<li>选择或者设计一种学习算法</li>
+</ul>
+<p><img src="http://i.imgur.com/13KMImC.png" alt=""></p>
+<h3>机器学习和统计的关系</h3>
+<p>从20世纪90年代中，人们开始慢慢了解统计和机器学习的关系。</p>
+<ul>
+<li>
+<p>统计：</p>
+<pre><code>*   数学的分支
+</code></pre>
+<ul>
+<li>更多考虑是否正确</li>
+<li>不太考虑计算的复杂性</li>
+</ul>
+</li>
+<li>
+<p>机器学习：</p>
+<pre><code>*   信息技术或者人工智能的分支
+</code></pre>
+<ul>
+<li>更看重是否能在实际中运用</li>
+<li>不太考虑统计原理</li>
+<li>如今，两者已经有效结合了，机器学习也常常称为“统计机器学习”。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Machine Learning 复习（二）：信息论]]></title>
+      <url>http://yoursite.com/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-ef-bc-9a-e4-bf-a1-e6-81-af-e8-ae-ba/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3>Informaiton</h3>
+<ul>
+<li>信息 ！= 知识</li>
+<li>信息用来减少不确定性</li>
+<li>当我们得知E事件发生，意味着我们得到了</li>
+</ul>
+<p><img src="http://i.imgur.com/d6puw09.png" alt=""></p>
+<p>bits的信息。</p>
+<pre><code>*   其中log的底数并不重要，我们假设为2.
+*   这也可以认为这个表示了事件E的“惊喜”数量。
+*   例如抛一枚硬币得到的信息是：![](http://i.imgur.com/xCAfm06.png)
+*   抛一枚骰子得到的信息是：
+</code></pre>
+<p><img src="http://i.imgur.com/3qhzEa5.png" alt=""></p>
+<ul>
+<li>信息熵（Entropy）用来度量随机变量的不确定性<img src="http://i.imgur.com/vhNudZf.png" alt=""></li>
+</ul>
+<p><img src="http://i.imgur.com/hMmPF6t.png" alt=""></p>
+<p>&lt;pre class=&quot;editor-colors lang-text&quot;&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span class=&quot;meta bullet-point star text&quot;&gt;&lt;span&gt; &lt;/span&gt;&lt;span class=&quot;punctuation definition item text&quot;&gt;&lt;span&gt;<em>&lt;/span&gt;&lt;/span&gt;&lt;span&gt; 代表的是观察S事件来源所能得到的平均信息量。&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span class=&quot;meta bullet-point star text&quot;&gt;&lt;span&gt; &lt;/span&gt;&lt;span class=&quot;punctuation definition item text&quot;&gt;&lt;span&gt;</em>&lt;/span&gt;&lt;/span&gt;&lt;span&gt; 代表的是观察一个特征所得到的平均“惊喜”量。&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span class=&quot;meta bullet-point star text&quot;&gt;&lt;span&gt; &lt;/span&gt;&lt;span class=&quot;punctuation definition item text&quot;&gt;&lt;span&gt;<em>&lt;/span&gt;&lt;/span&gt;&lt;span&gt; 在观察一个特征之前的不确定性。&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span class=&quot;meta bullet-point star text&quot;&gt;&lt;span&gt; &lt;/span&gt;&lt;span class=&quot;punctuation definition item text&quot;&gt;&lt;span&gt;</em>&lt;/span&gt;&lt;/span&gt;&lt;span&gt; 根据Shannon定律，当你用code来传递信息时，最低的limit是code的efficiency不能低于Entropy。&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;</p>
+<ul>
+<li>
+<p>信息熵的特性：</p>
+<ul>
+<li>不为负。</li>
+<li>概率越大，自信息量越小</li>
+<li>设K是系统内的信息总数，则
+<img src="http://i.imgur.com/Dq8RQVR.png" alt="">当p=1/k,即事件概率相等时，系统S的熵最大。</li>
+</ul>
+</li>
+<li>
+<p>联合熵：</p>
+<ul>
+<li>
+<p>通过举例来说明：
+<img src="http://i.imgur.com/cJLL1eO.png" alt=""></p>
+<pre><code>*   如图，H（T）= H（0.3，0.5，0.2）=1.48548
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>H(M)=H(0.6,0.4)=0.970951
+H(T)+H(M)=2.456431
+*   而联合熵则表示为：
+<img src="http://i.imgur.com/fXwGoZd.png" alt=""></p>
+<pre><code>    可以看出：
+</code></pre>
+<p><img src="http://i.imgur.com/bRTkMLK.png" alt="">
+当X，Y在统计学上互相独立时，等号成立。</p>
+<ul>
+<li>
+<p>条件熵（Conditional Entropy）;
+P(T=t|M=m):
+<img src="http://i.imgur.com/FGzAOEu.png" alt="">
+<img src="http://i.imgur.com/yIkhyGa.png" alt=""></p>
+<ul>
+<li>
+<p>平均条件熵：
+<img src="http://i.imgur.com/CJsv6Xz.png" alt=""></p>
+<pre><code>*   那么M（cold/mild/hot）能告诉我们多少关于T的信息呢？
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://i.imgur.com/7Hgqpdo.png" alt=""></p>
+<pre><code>    同理，我们也可以观察T能告诉我们多少和M有关的信息：
+</code></pre>
+<p><img src="http://i.imgur.com/xbxyZyg.png" alt=""></p>
+<ul>
+<li>
+<p>平均互信息：
+<img src="http://i.imgur.com/XqcI5yk.png" alt=""></p>
+<ul>
+<li>
+<p>性质：</p>
+<pre><code>    *   对称性：也就是说对于X和Y，平均互信息都是I（X；Y）
+</code></pre>
+<ul>
+<li>不为负： 但是H(X) − H(X/y) 可能为负</li>
+<li>如果X，Y是独立的，就是0</li>
+<li>可相加的</li>
+<li><img src="http://i.imgur.com/2L2g7mM.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>对于三个信息源：
+<img src="http://i.imgur.com/DMMhYMM.png" alt=""></p>
+</li>
+<li>
+<p>马尔科夫链（Markov Source）:
+马尔可夫链描述了一种状态序列，其每个状态值取决于前面有限个状态。马尔可夫链是具有马尔可夫性质的随机变量的一个数列。这些变量的范围，即它们所有可能取值的集合，被称为“状态空间”，而  的值则是在时间n的状态。如果<img src="http://i.imgur.com/kHK3e83.png" alt="">对于过去状态的条件概率分布仅是  的一个函数，则 <img src="http://i.imgur.com/xBCVgwp.png" alt=""></p>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Machine Learning 复习 (一)：概率统计和线性回归]]></title>
+      <url>http://yoursite.com/2016/10/17/machine-learning-e5-a4-8d-e4-b9-a0-e4-b8-80-ef-bc-9a-e6-a6-82-e7-8e-87-e7-bb-9f-e8-ae-a1-e5-92-8c-e7-ba-bf-e6-80-a7-e5-9b-9e-e5-bd-92/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Machine Learning 总结</p>
+<h3>Probability and Statistics</h3>
+<ul>
+<li>
+<p>常规变量（Regular variables）应该是数字或者是其他。相反，随机变量（Random Variables）是一系列值得分部。 比如，扔一枚硬币是随机变量X的如下分布，‘Head’可能性为0.5，‘Tail’可能性为0.5.</p>
+</li>
+<li>
+<p>一般我们用大写字母表示随机变量，用小写字母表示随机变量取的值。
+<img src="http://i.imgur.com/pDKvACY.png" alt=""></p>
+</li>
+<li>
+<p>链式法则：
+<img src="http://i.imgur.com/4mhM7ZX.png" alt=""></p>
+</li>
+<li>
+<p>独立事件：
+<img src="http://i.imgur.com/OW5IlLd.png" alt=""></p>
+</li>
+<li>
+<p>数学期望E：
+<img src="http://i.imgur.com/cnOMht3.png" alt=""></p>
+<ul>
+<li>
+<p>性质：</p>
+<pre><code>*   线性表达：
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://i.imgur.com/umYck9X.png" alt="">
+*   在不假定任何X和Y的关系条件下：
+<img src="http://i.imgur.com/oIUCHhI.png" alt=""></p>
+<ul>
+<li>方差：</li>
+</ul>
+<p>Var[X] = E[(X − E[X])2]
+<img src="http://i.imgur.com/nMY4vIP.png" alt=""></p>
+<ul>
+<li>
+<p>标准差：
+<img src="http://i.imgur.com/eDUZuou.png" alt=""></p>
+</li>
+<li>
+<p>X,Y的协方差：
+<img src="http://i.imgur.com/H8fkuCv.png" alt=""></p>
+</li>
+<li>
+<p>方差，标准差，协方差的一些性质：
+<img src="http://i.imgur.com/K1fjJc8.png" alt=""></p>
+</li>
+<li>
+<p>总方差定律（The law of total variance）:
+<img src="http://i.imgur.com/kEzg3MB.png" alt=""></p>
+</li>
+<li>
+<p>线性相关（通常被简称为 相关）：</p>
+<ul>
+<li>
+<p>属于[-1，1]
+<img src="http://i.imgur.com/5DyzoXH.png" alt=""></p>
+</li>
+<li>
+<p>相关性在变量的移动和范围变化中常常是保持不变的
+<img src="http://i.imgur.com/CNoMJ92.png" alt=""></p>
+<ul>
+<li>如果X，Y互相独立，那么线性相关性为0，但是反之不可以。即X，Y可能线性不相关，但是依旧不是独立的。
+所以结论只能是：
+独立 -&gt; 线性不相关，反之不可。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Correlation vs. Mutual Information</h3>
+<ul>
+<li>
+<p>Mutual Information 的定义（可参见另一篇博客【现在没有哈哈】：Machine Learning信息论复习）：</p>
+</li>
+<li>
+<p>线性相关性需要x，y的值都是数字，所以两者之间存在距离概念---度量空间（metric space）。</p>
+<ul>
+<li>
+<p>度量空间，可以用来衡量线性相关的程度和紧密度（tightness）。</p>
+<ul>
+<li>对于binary的随机变量，认为变量拥有两个数值，0和1。范围也是[-1，1]。大多数情况下，我们更加在意相关的强度，而非反向性（polarity）。所以我们会观察<img src="http://i.imgur.com/snCouQg.png" alt=""> 的情况，其范围为[0,1]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>相反，Mutual Information 不需要度量空间。
+<img src="http://i.imgur.com/Nzz5md8.png" alt=""></p>
+</li>
+<li>
+<p>Mutual Information I（X;Y）很大但是相关性为0的例子:</p>
+<ul>
+<li>
+<p>一个完美的多边形，顶点的线性相关性永远为0，但是当定点个数趋向无穷，I（X；Y）也会趋向无穷。</p>
+<pre><code>    *   最小的例子：等边三角形
+</code></pre>
+<ul>
+<li>来思考一个分布均匀的正方形，当你旋转它的时候，相关性不变，但是I会随着旋转而变化。当旋转到和轴平行时，I减小了。
+<img src="http://i.imgur.com/0VfYmLq.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Mutual Information 为0但是相关性不为0的例子：</p>
+<ul>
+<li>没有。因为I（X；Y）=0 意味着X，Y是独立的，所以相关性一定为0。</li>
+</ul>
+</li>
+</ul>
+<h3>Linear Learning in One Dimension(Simple Linear Regression)</h3>
+<ul>
+<li>我们在这里考虑的是一种Mapping X-&gt;Y.X作为输入会给出，我们更倾向于了解P（y|x）而不是P（x，y）。简单来说，我们想知道在给定x的情况下y的期望值。即，E[Y|X=x]，更简单来说，我们假设X和E[Y]符合一种线性关系：
+<img src="http://i.imgur.com/FtpiBMl.png" alt="">
+或者说是：
+<img src="http://i.imgur.com/79iWQIz.png" alt=""></li>
+<li>β是斜率，α是截距，ε是零均值分布。（好了好了这个中学就学过了。）</li>
+<li>对于给定的斜率和截距，我们可以得到一条线，然后计算一下误差。
+<img src="http://i.imgur.com/cHM6aMP.png" alt="">
+实际上，这种误差并不代表错误，只是预测值和真实值之间的差距.</li>
+<li>一种找到这些参数的方法是最小化残差平方， 这里假设误差是Guassion（也就是正态分布）的。
+<img src="http://i.imgur.com/ElJtZHe.png" alt="">
+有一种相近解法：
+<img src="http://i.imgur.com/MlB77DE.png" alt=""></li>
+</ul>
+<h3>Linear Learning in Multiple Dimensions</h3>
+<ul>
+<li>如果X不止一个比如：
+<img src="http://i.imgur.com/vHnaG1o.png" alt=""></li>
+<li>我们同样可以假设线性关系：
+<img src="http://i.imgur.com/ppDgVx1.png" alt=""></li>
+<li>为了简化符号，我们可以假设β0=α，同时x0=1。就得到了如下模型：
+<img src="http://i.imgur.com/LOlkLBu.png" alt=""></li>
+<li>我们可以把数据集用矩阵表示
+<img src="http://i.imgur.com/gx7nN0Q.png" alt=""></li>
+<li>留存可以计算为：
+<img src="http://i.imgur.com/07n1cTT.png" alt=""></li>
+<li>和上面的一样，我们同样需要计算出最小化残差平方：
+<img src="http://i.imgur.com/8r1EA7v.png" alt="">
+或者一种近似解法：
+<img src="http://i.imgur.com/ojQx65w.png" alt=""></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[[LeetCode 172 Easy]Factorial Trailing Zeroes]]></title>
+      <url>http://yoursite.com/2016/10/15/leetcode-172-easyfactorial-trailing-zeroes/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>Question:</p>
+</blockquote>
+<blockquote>
+<p>Given an integer n, return the number of trailing zeroes in n!.</p>
+</blockquote>
+<p>题意是求n的阶乘后面0的个数。</p>
+<p>** Basic Solution **</p>
+<p>直接硬求n!的结果,再计算末尾0的个数，如果n过大，结果会溢出。</p>
+<p>** Better Solution **</p>
+<p><code>Complexity</code> : O(lgn)</p>
+<p>后缀为0的都是2和5相乘得到的，只需要计算2和5的个数。</p>
+<p>但是例如：</p>
+<p>n = 5! = 1 * 2 * 2 * 2 * 3 * 5 有3个2，1个5
+n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
+<p>可以看出，2会远远比5多，我们只需要计算有5的个数就可以了。但是要注意：</p>
+<p>n = 25! 不止2个5，而是3个5，因为25 = 5 * 5</p>
+<p>所以  result = n/5 + n/25 + n/125....</p>
+<p>Python Solution:</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">   def trailingZeroes(self, n):</div><div class="line">       num, x = 0, 5</div><div class="line">       while n &amp;gt;= x:</div><div class="line">              num += n/x</div><div class="line">              x *= 5</div><div class="line">      return num</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[听李宗盛]]></title>
+      <url>http://yoursite.com/2016/09/23/e5-90-ac-e6-9d-8e-e5-ae-97-e7-9b-9b/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><embed src="http://www.xiami.com/widget/12753884_1772001102/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></p>
+<p>夜里从灯火通明的学校回到家，虾米随机放了一首歌。 居然是李宗盛版的《阴天》。</p>
+<p>我一下想到了我哥，一个长期只听李宗盛和民谣的男人。大多数的时候，我会忘记他只比我大一岁，他讲起道理，总是让我不得不服。</p>
+<p>印象里，一起奋斗的日子里，他总是窝在沙发里，Mac就公放李宗盛。我一个本来没听过李宗盛的人，最后连《山丘》的歌词都倒背如流了。</p>
+<p>每句话，都像过完了一生。</p>
+<p>之后，有睡不着的时候，会把这首歌拿出来听。</p>
+<p>金玟岐翻唱过，太粉饰，或者说太年轻，很不喜。</p>
+<p>虽然我是绝对不相信所谓“太年轻了，不能如何如何如何”这样的说辞的，那更像是一种故作老成倚老卖老的姿态。</p>
+<p>但是这首歌，但是李宗盛，就像是沉淀了很久的好酒。你很怕一打开，无法抵御扑面而来的岁月感，年轻是真的会醉的。</p>
+<p>听李宗盛和梁静茹的合唱，声线都是被拉长了的，背后的东西太多。说也说不完的感觉。梁静茹翻唱过李宗盛的《问》，《梦醒时分》，《明明白白我的心》，有她自己的味道，真实。</p>
+<p>有段时间单循听李宗盛的《漂洋过海来看你》的时候，常坐在地毯上，常觉得柔软而被眷顾，觉得心安。</p>
+<p>其实，听歌这种事情，不带感情地听，不认真。带感情地听，又太累。</p>
+<p>只能适量。摇滚，流行，古典，都要适量，才能冷静地保持自己的平衡。</p>
+<p>听李宗盛，更要适量。不然一不小心，听多了或许就看淡人生了。</p>
+<p>要真看淡人生，很难保持对生活有热情的那种英雄主义了。</p>
+<p>所以，如今，在这个需要被激励的年龄里，我想，等到有一天觉得累了，觉得走不下去了，需要更随意的态度的时候，我再来听听李宗盛吧。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[python remove误区]]></title>
+      <url>http://yoursite.com/2016/09/19/python-remove-e8-af-af-e5-8c-ba/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>在list里面边查找边remove，会出错。 因为这个原因Debug了一个早上真是哭瞎。</p>
+<p>原来是：</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for h in total_h:</div><div class="line">    if attr_value_list not in h:</div><div class="line">       total_h.remove(h)</div></pre></td></tr></table></figure></p>
+<p>但结果始终错误，跑不出分。</p>
+<p>调用remove后，index改变了。</p>
+<p>所以改成了如下，先把要remove的存在新的list里面，再遍历list去掉。</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">for h in total_h:</div><div class="line">    new_h = []</div><div class="line">    if attr_value_list not in h:</div><div class="line">       for x in h:</div><div class="line">           new_h.append(x)</div><div class="line">       remove_list.append(new_h)</div><div class="line">for r in remove_list:</div><div class="line">    total_h.remove(r)</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[明天一切好说]]></title>
+      <url>http://yoursite.com/2016/08/27/e6-98-8e-e5-a4-a9-e4-b8-80-e5-88-87-e5-a5-bd-e8-af-b4/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p> </p>
+<p>      落地灯温和地亮着，收拾好卧室，摆好衣架，厨房餐具摆好，才终于有时间坐在自己拼的沙发上和室友讲几句话。</p>
+<p>      来了一周多一些，几乎都在疲于应付一个安身立命的地方。想来，被海关关过小黑屋，被房屋manager吼过，被不靠谱的管理人员放鸽子，被计划中的室友坑得措手不及。</p>
+<p>      刚到匹兹堡，第三次跑到自己四月份就租下来的公寓却还是拿不到钥匙的时候，一个人，在公交站台，差点就哭出来。</p>
+<p>       后来也没有哭，心里觉得不值得，自己提前定了合约，打过电话，没有任何过错，为什么是我要哭。有问题就解决问题好了，不给我我就一直打电话，一直来，耗下去。这么想着，眼泪还是打了个转。眼前是教堂，对面是银行，来往的车辆里还有特斯拉。真不敢相信，这里是美国啊。</p>
+<p>       终于拿到了钥匙，激动得去中餐馆吃了一碗牛肉面，和一起的姑娘说起晚上想去接yuki，她说你自己都没照顾好，还管别人。哇地一下，心里感觉被刺到了。</p>
+<p>        记得大四的时候，舍友都不在，宿舍黑了，我才发现四年我从来没去充过一次电。后来去澳洲，室友是个事无巨细都会照顾周全的强迫症姑娘，我几乎也没有操过什么心。“生活从来都是不容易的，如果你觉得容易，只是有人替你承担了而已。”</p>
+<p>        以前觉得自己从来也都是独当一面的。</p>
+<p>        所以，尝试客气地给房屋管理连发邮件，有事儿没事儿去楼下办公室看manager在不在，去银行解决账户被冻结的问题，从li姐姐家里拖床回家，找人开小货车运送家具。</p>
+<p>        既然要结果，就要好好处理问题。</p>
+<p>        今天，manager迅速帮我换了坏掉的门锁，我刚说冰箱坏了下午就给我换了新的，还开始和我开玩笑，我虽然听不懂他说的是什么笑话，但能感觉他的态度好了很多。交了学费，也找到了新室友，终于有了一个成型的窝。</p>
+<p>        和梦瑶说，俩人住也挺好，要不是房租太贵，真想就这么待着，有个采光好的大客厅我就是基本不在家也会觉得开心的。</p>
+<p>         她说，你想啊。</p>
+<p>         翻白眼。</p>
+<p>         这姑娘来了以后，也没少走路，可是有她一起，我反倒比之前好过了很多。好像，一切都是可以解决的。</p>
+<p>         这一周来，奔波来去之外的期待竟是坐下好好做题，好好读书，没人打扰。原来安静也可以这么奢侈。</p>
+<p>          想来，之后的日子，负担重，压力大，恐怕在所难免。可是啊，既然选择来到了这里，也许就不计较这些了。</p>
+<pre><code>&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 明天一切好说。晚安。
+</code></pre>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[2016-08-02]]></title>
+      <url>http://yoursite.com/2016/08/02/2016-08-02/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p> </p>
+<pre><code>今天坐在窗台的位置，看着蓝天白云发了会儿呆。
+
+还有三天就要离开上海了。在每一个写过文字的地方都会说，上海啊，我真喜欢这座城。
+
+也许去过很多地方，也许将要去很多地方，也许看过很多风景，也许将要看很多风景，但我不会忘记在我还年轻的时候，上海所给予我的一切。
+
+这里是让我心安的地方。对一个人来说，这样的地方不会很多的。
+
+想起在澳洲的时候总会看星空，第一次住进大房子的时候，坐在阳台上看了好久，也不说话，也不想有人在旁边。就想这么看着，后来太冷了进了屋，坐在地毯上，脑子里还是星空。
+
+寒假的时候被拉去Road Trip，住进一个旁边什么也没有的小木屋，躺在床上就能看到天空。可是我一上床就睡着了，醒来的时候凌晨四点，错过了三点二十的双子座流星雨。
+
+可那一刻，一点也不觉得可惜。
+
+那个时候，心里也是想着这四个字，来日方长。星空一直在啊。不用怕。
+
+高中的时候，顾草草第一次在本子上写给我这句话，来日方长。细瘦的字体特别好看。但就是这种字体，她和我冷战、闹矛盾，一个学期没有讲话的时候，也是用这种字体给我写了小纸条来和好。
+
+那时候真是年轻，现在谁还有精力纠缠这么久。
+
+可是来日方长，到后来其实就是我和我最好的朋友一年才见一面，一面才几个小时，一杯咖啡或者一顿饭。在机场这样匆忙的地方。
+
+所以听上去来日方长真是麻木自己的说辞。
+
+就像那天楠楠和我讨论的那样，这个世界上，很多人把痛苦当磨炼，把平凡当幸福，在某种意义上给自己找到借口，找到心安理得继续活下去的借口。我想，其实是无法分辨痛苦和真正的愉悦，习惯了顺应了痛苦，反而忘记了如何规避痛苦。但规避痛苦，很难，大多数时候，人的惯性会用经验代替感知，无论是自己的还是别人的。
+
+可我还是认为，自己的感受非常重要，非常重要。哪怕找不到路。哪怕回不到原点。也要忠于自我。
+
+晚安。
+
+&amp;nbsp;
+
+&amp;nbsp;</code></pre>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[温度]]></title>
+      <url>http://yoursite.com/2016/07/30/e6-b8-a9-e5-ba-a6/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p> </p>
+<p>在出门需要勇气的日子里，看了两部港片。</p>
+<p>很久没看港片了，一直很喜欢，虽然对王家卫无感，但很多港片自带弹幕效果，语速快，节奏快，情节紧凑，随便挑一部不至于像大陆很多言之无物的片子一样让人有浪费时间的感叹。</p>
+<p>聊聊《六楼后座》，林嘉欣卢巧音在里面实在太美太甜，背心牛仔裤的21世纪初的流行打扮干净利落。六个人最爱玩的“Truth or Dare”，其实也就是真心话大冒险吧。你选择诚实，或者大胆。年轻的状态非常明显，想哭的时候不忍着，想闹的时候就闹，不爽也不憋着，挣扎就是挣扎。</p>
+<p>最后一段话，说青春就是方糖。我是不喜“青春“”这个词语的，被俗人用烂了。</p>
+<p>但那段话里面有几句话，很有意思：</p>
+<blockquote>
+<p>这种甜蜜是要亲身用舌尖的热量</p>
+<p>才能融化，才能品尝</p>
+<p>你总不能隔岸观火</p>
+<p>人生总会有这么的一个阶段</p>
+<p>一个做什么也快乐的阶段</p>
+<p>一个说什么也真诚的阶段</p>
+<p>他们可笑也可爱</p>
+<p>笑他们</p>
+<p>皆因我们曾经荒唐过</p>
+<p>爱他们</p>
+<p>因为我们也曾经甜蜜过</p>
+</blockquote>
+<p> </p>
+<p>不能隔岸观火。总要自己去融化。我会想起Lewen之前和我说，她说，总觉得这么久了，自己像是自己生命的旁观者。</p>
+<p>有的时候我仿佛又这样的体会，没有足够投入地活，靠着惯性而不是动力。</p>
+<p>这三个月，在上海，快乐的时候很纯粹，也发现这一年过去，让我真的不在意别人的看法了。但这样的活法，反而让我觉得自己和身边的人都更加自在。</p>
+<p>交了很多朋友，每一个都值得。只是，有些话没说，不知道会不会遗憾。</p>
+<p> </p>
+<pre><code>&amp;nbsp;
+</code></pre>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[使用Emacs: 从无法入门到放弃]]></title>
+      <url>http://yoursite.com/2016/07/27/e4-bd-bf-e7-94-a8emacs-e4-bb-8e-e6-97-a0-e6-b3-95-e5-85-a5-e9-97-a8-e5-88-b0-e6-94-be-e5-bc-83/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p> </p>
+<p>被安利使用Emacs来进行文件编辑和管理，打开baidu首页显示的文章是<code>《如何一年成为Emacs大神》</code></p>
+<p>一年。</p>
+<p>一年。</p>
+<p>一年。</p>
+<p>（生无可恋）</p>
+<p>果然是&quot;神的编辑器&quot;。</p>
+<p>不过鉴于一切都要从入门到放弃，我决定尝试一下。</p>
+<p>基本操作：</p>
+<p>1.打开文件夹： <code>C+x d</code></p>
+<p>2.文件目录上一级/下一级： <code>C+x &amp;gt;</code> <code>C+x &amp;lt;</code></p>
+<p>3.新建文件（若存在则打开）： <code>C+x C+f</code></p>
+<p>4.剪切内容： <code>C+space</code> 开始Mark <code>M+w</code> 复制</p>
+<p>5.保存文件： <code>C+x C+s</code></p>
+<p>这几步是最基本的了，之后慢慢熟练，慢慢更新。</p>
+<pre><code>&amp;nbsp;
+</code></pre>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[How to use Markdown as a starter]]></title>
+      <url>http://yoursite.com/2016/07/26/how-to-use-markdown-as-a-starter/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+margin: 0;
+padding: 0;
+}
+body {
+font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, Arial, sans-serif;
+font-size: 13px;
+line-height: 18px;
+color: #737373;
+background-color: white;
+margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;
+}</p>
+<p>a {
+color: #0069d6;
+}
+a:hover {
+color: #0050a3;
+text-decoration: none;
+}
+a img {
+border: none;
+}
+p {
+margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+color: #404040;
+line-height: 36px;
+}
+h1 {
+margin-bottom: 18px;
+font-size: 30px;
+}
+h2 {
+font-size: 24px;
+}
+h3 {
+font-size: 18px;
+}
+h4 {
+font-size: 16px;
+}
+h5 {
+font-size: 14px;
+}
+h6 {
+font-size: 13px;
+}
+hr {
+margin: 0 0 19px;
+border: 0;
+border-bottom: 1px solid #ccc;
+}
+blockquote {
+padding: 13px 13px 21px 15px;
+margin-bottom: 18px;
+font-family:georgia,serif;
+font-style: italic;
+}
+blockquote:before {
+content:&quot;\201C&quot;;
+font-size:40px;
+margin-left:-10px;
+font-family:georgia,serif;
+color:#eee;
+}
+blockquote p {
+font-size: 14px;
+font-weight: 300;
+line-height: 18px;
+margin-bottom: 0;
+font-style: italic;
+}
+code, pre {
+font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+background-color: #fee9cc;
+color: rgba(0, 0, 0, 0.75);
+padding: 1px 3px;
+font-size: 12px;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+pre {
+display: block;
+padding: 14px;
+margin: 0 0 18px;
+line-height: 16px;
+font-size: 11px;
+border: 1px solid #d9d9d9;
+white-space: pre-wrap;
+word-wrap: break-word;
+}
+pre code {
+background-color: #fff;
+color:#737373;
+font-size: 11px;
+padding: 0;
+}
+sup {
+font-size: 0.83em;
+vertical-align: super;
+line-height: 0;
+}</p>
+<ul>
+<li>
+<p>{
+-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+body {
+width: 854px;
+margin:10px auto;
+}
+}
+@media print {
+body,code,pre code,h1,h2,h3,h4,h5,h6 {
+	color: black;
+}
+table, pre {
+	page-break-inside: avoid;
+}
+}&lt;/style&gt;
+&lt;title&gt;
+&lt;/title&gt;</p>
+<p> </p>
+<p>Recently, I am desired to write wordpress for do some summarization. But the format and writing style keep confusing me.</p>
+</li>
+</ul>
+<h1></h1>
+<pre><code>Let&amp;#39;s try Markdown this time!
+
+There are two ways to apply Markdown in wordpress:
+</code></pre>
+<h4></h4>
+<pre><code>1\. Install plugins:
+
+The recommended plugin is [Markdown for WordPress and bbPress](https://wordpress.org/plugins/markdown-for-wordpress-and-bbpress/) But it doesn&amp;#39;t work on my wordpress. Sad.
+</code></pre>
+<h4></h4>
+<pre><code>2\. Using Markdown Tools&amp;nbsp;
+
+You can write the article in advace using softwares before paste it to the blog.
+
+I prefer this way since using Wordpress to write is a huge disaster.
+</code></pre>
+<h6></h6>
+<pre><code>Step 1: Know about the grammar of Markdown :
+
+[CMD Markdown](https://www.zybuluo.com/mdeditor) is really a good tutorial. Or any other tutorials, whatever.
+</code></pre>
+<h6></h6>
+<pre><code>Step 2: Download a good Markdown Tool :
+
+It&amp;#39;s very convenience for us to write and review at the same time.&amp;nbsp;
+
+So, you can download [Mou](http://25.io/mou/) if&amp;nbsp;you use Mac.
+</code></pre>
+<h6></h6>
+<pre><code>Step 3: Keep practising to be perfect :
+
+As you can see, this article is written in Markdown.
+
+**_Cheers!_**
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+</code></pre>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[2016-07-21]]></title>
+      <url>http://yoursite.com/2016/07/21/2016-07-21/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><pre><code>一、
+
+我活得越来越坦然的一个信号就是，我能勇敢地和别人安利自己的公众号了。
+
+关于这个公众号，里面的文章带着情绪的成分很多。而我的习惯是，在现实生活中面对面讲话好好相处，这样才是真实的，而不是虚无地毫无基础地通过表情和文字来传达彼此的心理。网络更应该是，让亲密关系更方便，不该是让陌生的人变成熟人，这是不可能。即使有可能，也是脆弱的，不堪一击的。
+
+同时，在很长一段时间里，我也很不愿让别人完全看透我的内心，这让我恐惧和不知所措。但是，现在，成熟地看我依旧不想让别人完全看透，但是我觉得我也不必要隐藏自己本来的一面。我确实想法很多，小心思很多，我相信这不会让人因此而放弃爱我或者疏远我，远离我。
+
+文字还是要写的，而且要写好，要好好写，要认真踏实地，言之有物地写。甚至写出不一样的感觉来。
+
+二、
+
+昨天见了小刘海，一个高高的姑娘，做花艺，话唠，拉拉，可爱。我不是贴标签哦，当我无法完整地写出一个人的时候，我更倾向于记录一些特征。大学的时候，我就像海绵吸水一样，迫不及待地见识各种各样的人，让各种世界观冲击我，迫不及待拓展自己对世界认知的边界。
+
+后来，我慢慢锻炼到能够自己熟练选择想要交的朋友，想要靠近的人，想要谈话的对象。某种意义上来说，时间成本在一方面的减少意味着投入到另一个领域，大概曾经的我确实空虚吧。
+
+小刘海给我了一只花，我养在了水杯里，可惜今天回来的时候已经有点枯萎了。可以做成干花。
+
+三、
+
+为了避免这个博客变成流水账博客。我就停笔，不写了。
+
+今天的BGM是王菲《矜持》。Nighty
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+</code></pre>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[开篇：打碎浅薄和矫情]]></title>
+      <url>http://yoursite.com/2016/07/21/e5-bc-80-e7-af-87-ef-bc-9a-e6-89-93-e7-a2-8e-e6-b5-85-e8-96-84-e5-92-8c-e7-9f-ab-e6-83-85/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>所谓开篇，是这个博客的开篇。</p>
+<p>我写字的历史很长，换了很多平台。先行总结，字数不算惊人，但也不算少了。</p>
+<p>大致如下：</p>
+<hr>
+<p>2006- 2013年： <a href="http://user.qzone.qq.com/576070839/main" target="_blank" rel="external">QQ空间</a>，107篇日志，其中100篇左右是原创，平均每篇字数达到1000字。</p>
+<p>2013- 至今：简书，58篇文章（含公开和不公开），共计43898字。</p>
+<p>公众号：看不见的城市（微信搜索公众号：alohomoracity）也在不断更新原创长文+短文中。</p>
+<hr>
+<p>可惜，认真看来，这些地方记录的更多是细小的生活，个人情感倾向很重，不得不说，在记录的过程中，我对事物会变得更情绪化，在不断强化自己的感受的同时，有梳理平静的好处，但也确实在某种程度上会造成我情感导向的性格。</p>
+<p>这一点，从简书后段的记录中尤其明显。在Adelaide的时候，世界很小，又刚从一个情深义重的Team中脱离出来，总没法把自负、矫情客观看待，加上Projects多，与身边的人相处关系简单又复杂，易怒易崩溃，也易喜易满足。</p>
+<p>但由衷地，感谢经历过的日子，每次情绪的来临或离开，都让我对这个世界多了解一分。</p>
+<p>冷静与冷漠本就不是我的作风，不过是波澜不惊了而已。</p>
+<p>可慢慢地，在与数据、代码打交道的时光里，在和程序员越走越近，越聊越多的时光里，在无法从IT这个一颗赛特的行业里脱离出来的时光里，想要把自己塑造成一个逻辑能力卓越，思维敏捷，判断力一流的姑娘。不，我是说人。</p>
+<p>从一开始，我的思维里带着性别的观念，给了自己退路和借口，后来发现这才是最大的问题。男生和女生在生理上构造的不同，确实会导致先天优势和思维方式的差异，但其实严格说来，在没到拼天赋的程度，这点差异并不能作为我任何失败或者不思进取的借口。一点点也不应该。</p>
+<p>另一方面，一个如我般骄傲的人，自诩就是要兼顾逻辑和感情的。一样也不可以放，一样也不可以输。</p>
+<p>感谢Leon给我弄了这个Wordpress，买了域名，之后有机会想自己尝试一下Hexo。之前我一直没有珍惜，没有用起来。</p>
+<p>那么，在这个夜深人静的晚上，在我害怕人生停滞不前的晚上，我还保留着盲目的信心，期待着我能在这里更好地记录，看看是不是真的能“打破浅薄和矫情”，如我想的那样，成为想要成为的人。</p>
+]]></content>
+    </entry>
+    
+  
+  
+</search>

@@ -86,18 +86,24 @@
 
 <meta name="description" content="Machine Learning 总结
 Probability and Statistics
+
+
 常规变量（Regular variables）应该是数字或者是其他。相反，随机变量（Random Variables）是一系列值得分部。 比如，扔一枚硬币是随机变量X的如下分布，‘Head’可能性为0.5，‘Tail’可能性为0.5.
 
-一般我们用大写字母表示随机变量，用小写字母表示随机变量取的值。">
+
+一般我们用大写字母表示随机变量，用小写字母表示随机变量取的值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Machine Learning 复习 (一)：概率统计和线性回归">
 <meta property="og:url" content="http://yoursite.com/2016/10/17/machine-learning-e5-a4-8d-e4-b9-a0-e4-b8-80-ef-bc-9a-e6-a6-82-e7-8e-87-e7-bb-9f-e8-ae-a1-e5-92-8c-e7-ba-bf-e6-80-a7-e5-9b-9e-e5-bd-92/index.html">
 <meta property="og:site_name" content="Star">
 <meta property="og:description" content="Machine Learning 总结
 Probability and Statistics
+
+
 常规变量（Regular variables）应该是数字或者是其他。相反，随机变量（Random Variables）是一系列值得分部。 比如，扔一枚硬币是随机变量X的如下分布，‘Head’可能性为0.5，‘Tail’可能性为0.5.
 
-一般我们用大写字母表示随机变量，用小写字母表示随机变量取的值。">
+
+一般我们用大写字母表示随机变量，用小写字母表示随机变量取的值">
 <meta property="og:image" content="http://i.imgur.com/pDKvACY.png">
 <meta property="og:image" content="http://i.imgur.com/4mhM7ZX.png">
 <meta property="og:image" content="http://i.imgur.com/OW5IlLd.png">
@@ -131,9 +137,12 @@ Probability and Statistics
 <meta name="twitter:title" content="Machine Learning 复习 (一)：概率统计和线性回归">
 <meta name="twitter:description" content="Machine Learning 总结
 Probability and Statistics
+
+
 常规变量（Regular variables）应该是数字或者是其他。相反，随机变量（Random Variables）是一系列值得分部。 比如，扔一枚硬币是随机变量X的如下分布，‘Head’可能性为0.5，‘Tail’可能性为0.5.
 
-一般我们用大写字母表示随机变量，用小写字母表示随机变量取的值。">
+
+一般我们用大写字母表示随机变量，用小写字母表示随机变量取的值">
 <meta name="twitter:image" content="http://i.imgur.com/pDKvACY.png">
 
 
@@ -212,7 +221,7 @@ Probability and Statistics
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">不要温和地走进那个良夜。</p>
+  <p class="site-subtitle"></p>
 </div>
 
 <div class="site-nav-toggle">
@@ -281,9 +290,32 @@ Probability and Statistics
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
   
 </nav>
 
@@ -418,92 +450,151 @@ Probability and Statistics
 
       
         <script src="/assets/js/DPlayer.min.js"> </script><p>Machine Learning 总结</p>
-<h3 id="Probability-and-Statistics"><a href="#Probability-and-Statistics" class="headerlink" title="Probability and Statistics"></a>Probability and Statistics</h3><ul>
-<li><p>常规变量（Regular variables）应该是数字或者是其他。相反，随机变量（Random Variables）是一系列值得分部。 比如，扔一枚硬币是随机变量X的如下分布，‘Head’可能性为0.5，‘Tail’可能性为0.5.</p>
-</li>
-<li><p>一般我们用大写字母表示随机变量，用小写字母表示随机变量取的值。<br><img src="http://i.imgur.com/pDKvACY.png" alt=""></p>
-</li>
-<li><p>链式法则：<br><img src="http://i.imgur.com/4mhM7ZX.png" alt=""></p>
-</li>
-<li>独立事件：<br><img src="http://i.imgur.com/OW5IlLd.png" alt=""></li>
-<li><p>数学期望E：<br><img src="http://i.imgur.com/cnOMht3.png" alt=""></p>
+<h3>Probability and Statistics</h3>
 <ul>
-<li><p>性质：</p>
+<li>
+<p>常规变量（Regular variables）应该是数字或者是其他。相反，随机变量（Random Variables）是一系列值得分部。 比如，扔一枚硬币是随机变量X的如下分布，‘Head’可能性为0.5，‘Tail’可能性为0.5.</p>
+</li>
+<li>
+<p>一般我们用大写字母表示随机变量，用小写字母表示随机变量取的值。
+<img src="http://i.imgur.com/pDKvACY.png" alt=""></p>
+</li>
+<li>
+<p>链式法则：
+<img src="http://i.imgur.com/4mhM7ZX.png" alt=""></p>
+</li>
+<li>
+<p>独立事件：
+<img src="http://i.imgur.com/OW5IlLd.png" alt=""></p>
+</li>
+<li>
+<p>数学期望E：
+<img src="http://i.imgur.com/cnOMht3.png" alt=""></p>
+<ul>
+<li>
+<p>性质：</p>
 <pre><code>*   线性表达：
-</code></pre><p><img src="http://i.imgur.com/umYck9X.png" alt=""></p>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://i.imgur.com/umYck9X.png" alt="">
+*   在不假定任何X和Y的关系条件下：
+<img src="http://i.imgur.com/oIUCHhI.png" alt=""></p>
 <ul>
-<li>在不假定任何X和Y的关系条件下：<br><img src="http://i.imgur.com/oIUCHhI.png" alt=""></li>
+<li>方差：</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>方差：</p>
-</li>
-</ul>
-<p>Var[X] = E[(X − E[X])2]<br><img src="http://i.imgur.com/nMY4vIP.png" alt=""></p>
+<p>Var[X] = E[(X − E[X])2]
+<img src="http://i.imgur.com/nMY4vIP.png" alt=""></p>
 <ul>
-<li><p>标准差：<br><img src="http://i.imgur.com/eDUZuou.png" alt=""></p>
+<li>
+<p>标准差：
+<img src="http://i.imgur.com/eDUZuou.png" alt=""></p>
 </li>
-<li><p>X,Y的协方差：<br><img src="http://i.imgur.com/H8fkuCv.png" alt=""></p>
+<li>
+<p>X,Y的协方差：
+<img src="http://i.imgur.com/H8fkuCv.png" alt=""></p>
 </li>
-<li><p>方差，标准差，协方差的一些性质：<br><img src="http://i.imgur.com/K1fjJc8.png" alt=""></p>
+<li>
+<p>方差，标准差，协方差的一些性质：
+<img src="http://i.imgur.com/K1fjJc8.png" alt=""></p>
 </li>
-<li><p>总方差定律（The law of total variance）:<br><img src="http://i.imgur.com/kEzg3MB.png" alt=""></p>
+<li>
+<p>总方差定律（The law of total variance）:
+<img src="http://i.imgur.com/kEzg3MB.png" alt=""></p>
 </li>
-<li><p>线性相关（通常被简称为 相关）：</p>
+<li>
+<p>线性相关（通常被简称为 相关）：</p>
 <ul>
-<li>属于[-1，1]<br><img src="http://i.imgur.com/5DyzoXH.png" alt=""></li>
-<li><p>相关性在变量的移动和范围变化中常常是保持不变的<br><img src="http://i.imgur.com/CNoMJ92.png" alt=""></p>
+<li>
+<p>属于[-1，1]
+<img src="http://i.imgur.com/5DyzoXH.png" alt=""></p>
+</li>
+<li>
+<p>相关性在变量的移动和范围变化中常常是保持不变的
+<img src="http://i.imgur.com/CNoMJ92.png" alt=""></p>
 <ul>
-<li>如果X，Y互相独立，那么线性相关性为0，但是反之不可以。即X，Y可能线性不相关，但是依旧不是独立的。<br>所以结论只能是：<br>独立 -&gt; 线性不相关，反之不可。</li>
+<li>如果X，Y互相独立，那么线性相关性为0，但是反之不可以。即X，Y可能线性不相关，但是依旧不是独立的。
+所以结论只能是：
+独立 -&gt; 线性不相关，反之不可。</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="Correlation-vs-Mutual-Information"><a href="#Correlation-vs-Mutual-Information" class="headerlink" title="Correlation vs. Mutual Information"></a>Correlation vs. Mutual Information</h3><ul>
-<li><p>Mutual Information 的定义（可参见另一篇博客【现在没有哈哈】：Machine Learning信息论复习）：</p>
-</li>
-<li><p>线性相关性需要x，y的值都是数字，所以两者之间存在距离概念—度量空间（metric space）。</p>
+<h3>Correlation vs. Mutual Information</h3>
 <ul>
-<li><p>度量空间，可以用来衡量线性相关的程度和紧密度（tightness）。</p>
+<li>
+<p>Mutual Information 的定义（可参见另一篇博客【现在没有哈哈】：Machine Learning信息论复习）：</p>
+</li>
+<li>
+<p>线性相关性需要x，y的值都是数字，所以两者之间存在距离概念---度量空间（metric space）。</p>
+<ul>
+<li>
+<p>度量空间，可以用来衡量线性相关的程度和紧密度（tightness）。</p>
 <ul>
 <li>对于binary的随机变量，认为变量拥有两个数值，0和1。范围也是[-1，1]。大多数情况下，我们更加在意相关的强度，而非反向性（polarity）。所以我们会观察<img src="http://i.imgur.com/snCouQg.png" alt=""> 的情况，其范围为[0,1]</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>相反，Mutual Information 不需要度量空间。<br><img src="http://i.imgur.com/Nzz5md8.png" alt=""></p>
+<li>
+<p>相反，Mutual Information 不需要度量空间。
+<img src="http://i.imgur.com/Nzz5md8.png" alt=""></p>
 </li>
-<li><p>Mutual Information I（X;Y）很大但是相关性为0的例子:</p>
+<li>
+<p>Mutual Information I（X;Y）很大但是相关性为0的例子:</p>
 <ul>
-<li><p>一个完美的多边形，顶点的线性相关性永远为0，但是当定点个数趋向无穷，I（X；Y）也会趋向无穷。</p>
-<pre><code>*   最小的例子：等边三角形
-</code></pre><ul>
-<li>来思考一个分布均匀的正方形，当你旋转它的时候，相关性不变，但是I会随着旋转而变化。当旋转到和轴平行时，I减小了。<br><img src="http://i.imgur.com/0VfYmLq.png" alt=""></li>
+<li>
+<p>一个完美的多边形，顶点的线性相关性永远为0，但是当定点个数趋向无穷，I（X；Y）也会趋向无穷。</p>
+<pre><code>    *   最小的例子：等边三角形
+</code></pre>
+<ul>
+<li>来思考一个分布均匀的正方形，当你旋转它的时候，相关性不变，但是I会随着旋转而变化。当旋转到和轴平行时，I减小了。
+<img src="http://i.imgur.com/0VfYmLq.png" alt=""></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>Mutual Information 为0但是相关性不为0的例子：</p>
+<li>
+<p>Mutual Information 为0但是相关性不为0的例子：</p>
 <ul>
 <li>没有。因为I（X；Y）=0 意味着X，Y是独立的，所以相关性一定为0。</li>
 </ul>
 </li>
 </ul>
-<h3 id="Linear-Learning-in-One-Dimension-Simple-Linear-Regression"><a href="#Linear-Learning-in-One-Dimension-Simple-Linear-Regression" class="headerlink" title="Linear Learning in One Dimension(Simple Linear Regression)"></a>Linear Learning in One Dimension(Simple Linear Regression)</h3><ul>
-<li>我们在这里考虑的是一种Mapping X-&gt;Y.X作为输入会给出，我们更倾向于了解P（y|x）而不是P（x，y）。简单来说，我们想知道在给定x的情况下y的期望值。即，E[Y|X=x]，更简单来说，我们假设X和E[Y]符合一种线性关系：<br><img src="http://i.imgur.com/FtpiBMl.png" alt=""><br>或者说是：<br><img src="http://i.imgur.com/79iWQIz.png" alt=""></li>
+<h3>Linear Learning in One Dimension(Simple Linear Regression)</h3>
+<ul>
+<li>我们在这里考虑的是一种Mapping X-&gt;Y.X作为输入会给出，我们更倾向于了解P（y|x）而不是P（x，y）。简单来说，我们想知道在给定x的情况下y的期望值。即，E[Y|X=x]，更简单来说，我们假设X和E[Y]符合一种线性关系：
+<img src="http://i.imgur.com/FtpiBMl.png" alt="">
+或者说是：
+<img src="http://i.imgur.com/79iWQIz.png" alt=""></li>
 <li>β是斜率，α是截距，ε是零均值分布。（好了好了这个中学就学过了。）</li>
-<li>对于给定的斜率和截距，我们可以得到一条线，然后计算一下误差。<br><img src="http://i.imgur.com/cHM6aMP.png" alt=""><br>实际上，这种误差并不代表错误，只是预测值和真实值之间的差距.</li>
-<li>一种找到这些参数的方法是最小化残差平方， 这里假设误差是Guassion（也就是正态分布）的。<br><img src="http://i.imgur.com/ElJtZHe.png" alt=""><br>有一种相近解法：<br><img src="http://i.imgur.com/MlB77DE.png" alt=""></li>
+<li>对于给定的斜率和截距，我们可以得到一条线，然后计算一下误差。
+<img src="http://i.imgur.com/cHM6aMP.png" alt="">
+实际上，这种误差并不代表错误，只是预测值和真实值之间的差距.</li>
+<li>一种找到这些参数的方法是最小化残差平方， 这里假设误差是Guassion（也就是正态分布）的。
+<img src="http://i.imgur.com/ElJtZHe.png" alt="">
+有一种相近解法：
+<img src="http://i.imgur.com/MlB77DE.png" alt=""></li>
 </ul>
-<h3 id="Linear-Learning-in-Multiple-Dimensions"><a href="#Linear-Learning-in-Multiple-Dimensions" class="headerlink" title="Linear Learning in Multiple Dimensions"></a>Linear Learning in Multiple Dimensions</h3><ul>
-<li>如果X不止一个比如：<br><img src="http://i.imgur.com/vHnaG1o.png" alt=""></li>
-<li>我们同样可以假设线性关系：<br><img src="http://i.imgur.com/ppDgVx1.png" alt=""></li>
-<li>为了简化符号，我们可以假设β0=α，同时x0=1。就得到了如下模型：<br><img src="http://i.imgur.com/LOlkLBu.png" alt=""></li>
-<li>我们可以把数据集用矩阵表示<br><img src="http://i.imgur.com/gx7nN0Q.png" alt=""></li>
-<li>留存可以计算为：<br><img src="http://i.imgur.com/07n1cTT.png" alt=""></li>
-<li>和上面的一样，我们同样需要计算出最小化残差平方：<br><img src="http://i.imgur.com/8r1EA7v.png" alt=""><br>或者一种近似解法：<br><img src="http://i.imgur.com/ojQx65w.png" alt=""></li>
+<h3>Linear Learning in Multiple Dimensions</h3>
+<ul>
+<li>如果X不止一个比如：
+<img src="http://i.imgur.com/vHnaG1o.png" alt=""></li>
+<li>我们同样可以假设线性关系：
+<img src="http://i.imgur.com/ppDgVx1.png" alt=""></li>
+<li>为了简化符号，我们可以假设β0=α，同时x0=1。就得到了如下模型：
+<img src="http://i.imgur.com/LOlkLBu.png" alt=""></li>
+<li>我们可以把数据集用矩阵表示
+<img src="http://i.imgur.com/gx7nN0Q.png" alt=""></li>
+<li>留存可以计算为：
+<img src="http://i.imgur.com/07n1cTT.png" alt=""></li>
+<li>和上面的一样，我们同样需要计算出最小化残差平方：
+<img src="http://i.imgur.com/8r1EA7v.png" alt="">
+或者一种近似解法：
+<img src="http://i.imgur.com/ojQx65w.png" alt=""></li>
 </ul>
 
       
@@ -543,8 +634,8 @@ Probability and Statistics
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/15/leetcode-405-convert-a-number-to-hexadecimal/" rel="next" title="[LeetCode 405] Convert a Number to Hexadecimal">
-                <i class="fa fa-chevron-left"></i> [LeetCode 405] Convert a Number to Hexadecimal
+              <a href="/2016/10/15/leetcode-172-easyfactorial-trailing-zeroes/" rel="next" title="[LeetCode 172 Easy]Factorial Trailing Zeroes">
+                <i class="fa fa-chevron-left"></i> [LeetCode 172 Easy]Factorial Trailing Zeroes
               </a>
             
           </div>
@@ -622,12 +713,12 @@ Probability and Statistics
                src="/images/winnie-pooh-full-hd-wallpaper-image-tablet.jpg"
                alt="Star" />
           <p class="site-author-name" itemprop="name">Star</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+          <p class="site-description motion-element" itemprop="description">不要温和地走进那个良夜。@CMU</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -635,7 +726,7 @@ Probability and Statistics
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -644,7 +735,7 @@ Probability and Statistics
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -669,7 +760,7 @@ Probability and Statistics
               <span class="links-of-author-item">
                 <a href="https://www.douban.com/people/45283318/" target="_blank" title="Douban">
                   
-                    <i class="fa fa-fw fa-douban"></i>
+                    <i class="fa fa-fw fa-globe"></i>
                   
                   Douban
                 </a>
@@ -713,7 +804,7 @@ Probability and Statistics
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
-              
+              小伙伴
             </div>
             <ul class="links-of-blogroll-list">
               
@@ -752,7 +843,7 @@ Probability and Statistics
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Probability-and-Statistics"><span class="nav-number">1.</span> <span class="nav-text">Probability and Statistics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Correlation-vs-Mutual-Information"><span class="nav-number">2.</span> <span class="nav-text">Correlation vs. Mutual Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Learning-in-One-Dimension-Simple-Linear-Regression"><span class="nav-number">3.</span> <span class="nav-text">Linear Learning in One Dimension(Simple Linear Regression)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Learning-in-Multiple-Dimensions"><span class="nav-number">4.</span> <span class="nav-text">Linear Learning in Multiple Dimensions</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Probability and Statistics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Correlation vs. Mutual Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Linear Learning in One Dimension(Simple Linear Regression)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Linear Learning in Multiple Dimensions</span></a></li></ol></div>
             
 
           </div>
@@ -891,7 +982,141 @@ Probability and Statistics
     
     
     <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -909,17 +1134,7 @@ Probability and Statistics
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-  
 
-
-
-
-
-
-
-
-  
-  
 
   
 

@@ -85,51 +85,45 @@
 
 
 <meta name="description" content="Question:
+
+
 Given an integer n, return the number of trailing zeroes in n!.
-`&amp;lt;/pre&amp;gt;
 
-  题意是求n的阶乘后面0的个数。
-
-  **Basic Solution **
-
-  直接硬求n!的结果,再计算末尾0的个数，如果n过大，结果会溢出。
-
-  **Better Solution **
-
-  `Co">
+题意是求n的阶乘后面0的个数。
+** Basic Solution **
+直接硬求n!的结果,再计算末尾0的个数，如果n过大，结果会溢出。
+** Better Solution **
+Complexity : O(lgn)
+后缀为0的都是2和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[LeetCode 172 Easy]Factorial Trailing Zeroes">
 <meta property="og:url" content="http://yoursite.com/2016/10/15/leetcode-172-easyfactorial-trailing-zeroes/index.html">
 <meta property="og:site_name" content="Star">
 <meta property="og:description" content="Question:
+
+
 Given an integer n, return the number of trailing zeroes in n!.
-`&amp;lt;/pre&amp;gt;
 
-  题意是求n的阶乘后面0的个数。
-
-  **Basic Solution **
-
-  直接硬求n!的结果,再计算末尾0的个数，如果n过大，结果会溢出。
-
-  **Better Solution **
-
-  `Co">
-<meta property="og:updated_time" content="2016-12-20T03:00:14.000Z">
+题意是求n的阶乘后面0的个数。
+** Basic Solution **
+直接硬求n!的结果,再计算末尾0的个数，如果n过大，结果会溢出。
+** Better Solution **
+Complexity : O(lgn)
+后缀为0的都是2和">
+<meta property="og:updated_time" content="2016-12-20T17:03:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode 172 Easy]Factorial Trailing Zeroes">
 <meta name="twitter:description" content="Question:
+
+
 Given an integer n, return the number of trailing zeroes in n!.
-`&amp;lt;/pre&amp;gt;
 
-  题意是求n的阶乘后面0的个数。
-
-  **Basic Solution **
-
-  直接硬求n!的结果,再计算末尾0的个数，如果n过大，结果会溢出。
-
-  **Better Solution **
-
-  `Co">
+题意是求n的阶乘后面0的个数。
+** Basic Solution **
+直接硬求n!的结果,再计算末尾0的个数，如果n过大，结果会溢出。
+** Better Solution **
+Complexity : O(lgn)
+后缀为0的都是2和">
 
 
 
@@ -207,7 +201,7 @@ Given an integer n, return the number of trailing zeroes in n!.
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">不要温和地走进那个良夜。</p>
+  <p class="site-subtitle"></p>
 </div>
 
 <div class="site-nav-toggle">
@@ -276,9 +270,32 @@ Given an integer n, return the number of trailing zeroes in n!.
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
   
 </nav>
 
@@ -401,50 +418,27 @@ Given an integer n, return the number of trailing zeroes in n!.
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><p>   Question:</p>
-<pre><code>Given an integer n, return the number of trailing zeroes in n!.
-`&lt;/pre&gt;
+        <script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>Question:</p>
+</blockquote>
+<blockquote>
+<p>Given an integer n, return the number of trailing zeroes in n!.</p>
+</blockquote>
+<p>题意是求n的阶乘后面0的个数。</p>
+<p>** Basic Solution **</p>
+<p>直接硬求n!的结果,再计算末尾0的个数，如果n过大，结果会溢出。</p>
+<p>** Better Solution **</p>
+<p><code>Complexity</code> : O(lgn)</p>
+<p>后缀为0的都是2和5相乘得到的，只需要计算2和5的个数。</p>
+<p>但是例如：</p>
+<p>n = 5! = 1 * 2 * 2 * 2 * 3 * 5 有3个2，1个5
+n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
+<p>可以看出，2会远远比5多，我们只需要计算有5的个数就可以了。但是要注意：</p>
+<p>n = 25! 不止2个5，而是3个5，因为25 = 5 * 5</p>
+<p>所以  result = n/5 + n/25 + n/125....</p>
+<p>Python Solution:</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">   def trailingZeroes(self, n):</div><div class="line">       num, x = 0, 5</div><div class="line">       while n &amp;gt;= x:</div><div class="line">              num += n/x</div><div class="line">              x *= 5</div><div class="line">      return num</div></pre></td></tr></table></figure></p>
 
-  题意是求n的阶乘后面0的个数。
-
-  **Basic Solution **
-
-  直接硬求n!的结果,再计算末尾0的个数，如果n过大，结果会溢出。
-
-  **Better Solution **
-
-  `Complexity` : O(lgn)
-
-  后缀为0的都是2和5相乘得到的，只需要计算2和5的个数。
-
-  但是例如：
-
-&lt;pre&gt;`  n = 5! = 1 * 2 * 2 * 2 * 3 * 5 有3个2，1个5
-  n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5
-`&lt;/pre&gt;
-
-  可以看出，2会远远比5多，我们只需要计算有5的个数就可以了。但是要注意：
-
-&lt;pre&gt;`  n = 25! 不止2个5，而是3个5，因为25 = 5 * 5
-`&lt;/pre&gt;
-
-   所以
-
-&lt;pre&gt;`  result = n/5 + n/25 + n/125....
-`&lt;/pre&gt;
-
-   Python Solution:
-
-&lt;pre&gt;` 
-
-  class Solution(object):
-       def trailingZeroes(self, n):
-           num, x = 0, 5
-           while n &amp;gt;= x:
-              num += n/x
-              x *= 5
-           return num
-</code></pre>
       
     </div>
 
@@ -492,8 +486,8 @@ Given an integer n, return the number of trailing zeroes in n!.
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/10/15/leetcode-405-convert-a-number-to-hexadecimal/" rel="prev" title="[LeetCode 405] Convert a Number to Hexadecimal">
-                [LeetCode 405] Convert a Number to Hexadecimal <i class="fa fa-chevron-right"></i>
+              <a href="/2016/10/17/machine-learning-e5-a4-8d-e4-b9-a0-e4-b8-80-ef-bc-9a-e6-a6-82-e7-8e-87-e7-bb-9f-e8-ae-a1-e5-92-8c-e7-ba-bf-e6-80-a7-e5-9b-9e-e5-bd-92/" rel="prev" title="Machine Learning 复习 (一)：概率统计和线性回归">
+                Machine Learning 复习 (一)：概率统计和线性回归 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -552,12 +546,12 @@ Given an integer n, return the number of trailing zeroes in n!.
                src="/images/winnie-pooh-full-hd-wallpaper-image-tablet.jpg"
                alt="Star" />
           <p class="site-author-name" itemprop="name">Star</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+          <p class="site-description motion-element" itemprop="description">不要温和地走进那个良夜。@CMU</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -565,7 +559,7 @@ Given an integer n, return the number of trailing zeroes in n!.
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -574,7 +568,7 @@ Given an integer n, return the number of trailing zeroes in n!.
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -599,7 +593,7 @@ Given an integer n, return the number of trailing zeroes in n!.
               <span class="links-of-author-item">
                 <a href="https://www.douban.com/people/45283318/" target="_blank" title="Douban">
                   
-                    <i class="fa fa-fw fa-douban"></i>
+                    <i class="fa fa-fw fa-globe"></i>
                   
                   Douban
                 </a>
@@ -643,7 +637,7 @@ Given an integer n, return the number of trailing zeroes in n!.
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
-              
+              小伙伴
             </div>
             <ul class="links-of-blogroll-list">
               
@@ -805,7 +799,141 @@ Given an integer n, return the number of trailing zeroes in n!.
     
     
     <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -823,17 +951,7 @@ Given an integer n, return the number of trailing zeroes in n!.
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-  
 
-
-
-
-
-
-
-
-  
-  
 
   
 
