@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-20T16:40:31.000Z</updated>
+  <updated>2016-12-29T23:35:16.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 401. Binary Watch</title>
+    <link href="http://yoursite.com/2016/12/29/LeetCode-401/"/>
+    <id>http://yoursite.com/2016/12/29/LeetCode-401/</id>
+    <published>2016-12-29T23:05:44.000Z</published>
+    <updated>2016-12-29T23:35:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>** <a href="https://leetcode.com/problems/binary-watch/" target="_blank" rel="external">Question:</a>
+**</p>
+<p>A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).</p>
+<p>Each LED represents a zero or one, with the least significant bit on the right.
+For example, the above binary watch reads &quot;3:25&quot;.</p>
+<p>Given a non-negative integer n which represents the number of LEDs that are currently on, return all possible times the watch could represent.</p>
+<p>Example:</p>
+<pre><code>Input: n = 1
+Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:00&quot;, &quot;8:00&quot;, &quot;0:01&quot;, &quot;0:02&quot;, &quot;0:04&quot;, &quot;0:08&quot;, &quot;0:16&quot;, &quot;0:32&quot;]
+</code></pre>
+<p>Note:</p>
+<ul>
+<li>The order of output does not matter.</li>
+<li>The hour must not contain a leading zero, for example &quot;01:00&quot; is not valid, it should be &quot;1:00&quot;.</li>
+<li>The minute must be consist of two digits and may contain a leading zero, for example &quot;10:2&quot; is not valid, it should be &quot;10:02&quot;.</li>
+</ul>
+<p>** Explanation **</p>
+<p>利用位运算将状态拆分为小时和分钟。
+枚举小时h和分钟m，然后判断二进制1的个数是否等于num</p>
+<p>** Code **
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def readBinaryWatch(self, num):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type num: int</div><div class="line">        :rtype: List[str]</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        result = []</div><div class="line">        for h in range(12):</div><div class="line">            for m in range(60):</div><div class="line">                if (bin(h) + bin(m)).count(&apos;1&apos;) == num:</div><div class="line">                    result.append(&apos;%d:%02d&apos; % (h, m))</div><div class="line">        return result</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;** &lt;a href=&quot;https://leetcode.com/problems/binary-watch/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Bit Manipulation" scheme="http://yoursite.com/tags/Bit-Manipulation/"/>
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>天冷该吃火锅</title>
@@ -709,9 +758,9 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
-    
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+      <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
     
   </entry>
   
