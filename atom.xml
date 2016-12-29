@@ -713,11 +713,11 @@ P(T=t|M=m):
   </entry>
   
   <entry>
-    <title>[LeetCode 172 Easy]Factorial Trailing Zeroes</title>
+    <title>LeetCode 172.Factorial Trailing Zeroes</title>
     <link href="http://yoursite.com/2016/10/15/leetcode-172-easyfactorial-trailing-zeroes/"/>
     <id>http://yoursite.com/2016/10/15/leetcode-172-easyfactorial-trailing-zeroes/</id>
     <published>2016-10-15T06:19:35.000Z</published>
-    <updated>2016-12-20T17:03:03.000Z</updated>
+    <updated>2016-12-29T23:39:06.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Question:</p>
