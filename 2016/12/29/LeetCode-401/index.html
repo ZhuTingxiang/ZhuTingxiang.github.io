@@ -86,25 +86,22 @@
 
 
 
-<meta name="description" content="** Question:
-**
+<meta name="description" content="Question:
 A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).
-Each LED represents a zero or one, with the least sig">
+Each LED represents a zero or one, with the least significa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 401. Binary Watch">
 <meta property="og:url" content="http://yoursite.com/2016/12/29/LeetCode-401/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="** Question:
-**
+<meta property="og:description" content="Question:
 A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).
-Each LED represents a zero or one, with the least sig">
-<meta property="og:updated_time" content="2016-12-29T23:35:16.000Z">
+Each LED represents a zero or one, with the least significa">
+<meta property="og:updated_time" content="2016-12-29T23:43:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 401. Binary Watch">
-<meta name="twitter:description" content="** Question:
-**
+<meta name="twitter:description" content="Question:
 A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).
-Each LED represents a zero or one, with the least sig">
+Each LED represents a zero or one, with the least significa">
 
 
 
@@ -399,8 +396,7 @@ Each LED represents a zero or one, with the least sig">
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><p>** <a href="https://leetcode.com/problems/binary-watch/" target="_blank" rel="external">Question:</a>
-**</p>
+        <script src="/assets/js/DPlayer.min.js"> </script><p><a href="https://leetcode.com/problems/binary-watch/" target="_blank" rel="external"><strong>Question:</strong></a></p>
 <p>A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).</p>
 <p>Each LED represents a zero or one, with the least significant bit on the right.
 For example, the above binary watch reads &quot;3:25&quot;.</p>
@@ -415,11 +411,11 @@ Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:00&quot;, &quot;8:00&quot;,
 <li>The hour must not contain a leading zero, for example &quot;01:00&quot; is not valid, it should be &quot;1:00&quot;.</li>
 <li>The minute must be consist of two digits and may contain a leading zero, for example &quot;10:2&quot; is not valid, it should be &quot;10:02&quot;.</li>
 </ul>
-<p>** Explanation **</p>
+<p><strong>Explanation</strong></p>
 <p>利用位运算将状态拆分为小时和分钟。
 枚举小时h和分钟m，然后判断二进制1的个数是否等于num</p>
-<p>** Code **
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def readBinaryWatch(self, num):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type num: int</div><div class="line">        :rtype: List[str]</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        result = []</div><div class="line">        for h in range(12):</div><div class="line">            for m in range(60):</div><div class="line">                if (bin(h) + bin(m)).count(&apos;1&apos;) == num:</div><div class="line">                    result.append(&apos;%d:%02d&apos; % (h, m))</div><div class="line">        return result</div></pre></td></tr></table></figure></p>
+<p><strong>Code</strong></p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def readBinaryWatch(self, num):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type num: int</div><div class="line">        :rtype: List[str]</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        result = []</div><div class="line">        for h in range(12):</div><div class="line">            for m in range(60):</div><div class="line">                if (bin(h) + bin(m)).count(&apos;1&apos;) == num:</div><div class="line">                    result.append(&apos;%d:%02d&apos; % (h, m))</div><div class="line">        return result</div></pre></td></tr></table></figure></p>
 
       
     </div>
