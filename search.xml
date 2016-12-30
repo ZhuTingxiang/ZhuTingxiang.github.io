@@ -6,8 +6,8 @@
     <entry>
       <title><![CDATA[leetcode 202. Happy Number]]></title>
       <url>http://yoursite.com/2016/12/30/leetcode-400/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question:</strong>
-Write an algorithm to determine if a number is &quot;happy&quot;.</p>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question:</strong></p>
+<p>Write an algorithm to determine if a number is &quot;happy&quot;.</p>
 <p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
 <p>Example: 19 is a happy number</p>
 <p>12 + 92 = 82
@@ -20,8 +20,6 @@ Write an algorithm to determine if a number is &quot;happy&quot;.</p>
 可是为什么不是happy number的数不可能不重复地进行下去呢？不是happy number的数一定会循环重复么？</p>
 <p>我们可以假设，不是happy number的数会无限下去，但是所有的结果只可能在（2，N]中，这里N是一个有限实数。如果无限产生结果，那总有一个时间点会出现重复，也就是loop。</p>
 <p>所以一旦出现了loop，我们就停止，去检测结果是不是1。</p>
-<p>Done.</p>
-<p>Please leave your comment if any question or suggestion.</p>
 <p><strong>Code:</strong></p>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def isHappy(self, n):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type n: int</div><div class="line">        :rtype: bool</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        numbers = set()</div><div class="line">        while n not in numbers:</div><div class="line">            numbers.add(n)</div><div class="line">            n = sum(int(i)**2 for i in str(n))</div><div class="line">        return n== 1</div></pre></td></tr></table></figure></p>
 ]]></content>
