@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-30T18:29:10.000Z</updated>
+  <updated>2016-12-30T18:30:41.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://yoursite.com/2016/12/30/LeetCode-437-Path-Sum-III/"/>
     <id>http://yoursite.com/2016/12/30/LeetCode-437-Path-Sum-III/</id>
     <published>2016-12-30T18:18:10.000Z</published>
-    <updated>2016-12-30T18:29:10.000Z</updated>
+    <updated>2016-12-30T18:30:41.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Quesition</strong>
-You are given a binary tree in which each node contains an integer value.</p>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Quesition</strong></p>
+<p>You are given a binary tree in which each node contains an integer value.</p>
 <p>Find the number of paths that sum to a given value.</p>
 <p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
 <p>The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</p>
@@ -44,20 +44,23 @@ Return 3. The paths that sum to 8 are:
 2.  5 -&gt; 2 -&gt; 1
 3. -3 -&gt; 11
 </code></pre>
-<p><strong>Explanation:</strong>
-这道题给了二叉树和一个sum，找出所有子路径和为sum的路径。相关题目：
-Leetcode 64. Minimum Path Sum
-Leetcode 112. Path Sum
-Leetcode 113. Path Sum II
-之后再对这类题目进行总结。</p>
+<p><strong>Explanation:</strong></p>
+<p>这道题给了二叉树和一个sum，找出所有子路径和为sum的路径。
+相关题目：</p>
+<ul>
+<li>Leetcode 64. Minimum Path Sum</li>
+<li>Leetcode 112. Path Sum</li>
+<li>Leetcode 113. Path Sum II</li>
+</ul>
+<p>之后再对这类题目进行总结。</p>
 <p><strong>Code</strong>:
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def pathSum(self, root, sum):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type root: TreeNode</div><div class="line">        :type sum: int</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line"></div><div class="line">        if not root:</div><div class="line">            return 0</div><div class="line">        return self.pathHelper(root, sum) + self.pathSum(root.left, sum) + self.pathSum(root.right, sum)</div><div class="line"></div><div class="line">    def pathHelper(self, root, sum):</div><div class="line">        result = 0</div><div class="line">        if not root:</div><div class="line">            return 0</div><div class="line">        if (sum == root.val):</div><div class="line">            result += 1</div><div class="line">        result += self.pathHelper(root.left, sum - root.val)</div><div class="line">        result += self.pathHelper(root.right, sum - root.val)</div><div class="line">        return result</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&lt;strong&gt;Quesition&lt;/strong&gt;
-You are given a binary tree in which each node contains an i
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&lt;strong&gt;Quesition&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You are given a binary tree in which each node contai
     
     </summary>
     
