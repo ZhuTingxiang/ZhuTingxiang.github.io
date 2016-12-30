@@ -30,6 +30,7 @@ Return 3. The paths that sum to 8 are:
 </code></pre>
 <p><strong>Explanation:</strong></p>
 <p>这道题给了二叉树和一个sum，找出所有子路径和为sum的路径。
+直接用递归方法做，把每个点都当做父节点遍历，找到存在的路径，相加即可。
 相关题目：</p>
 <ul>
 <li>Leetcode 64. Minimum Path Sum</li>
