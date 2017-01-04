@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-04T20:30:11.000Z</updated>
+  <updated>2017-01-04T20:33:55.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Leetcode综合 Intersection of Arrays/Linked Lists</title>
+    <title>Leetcode [Combination]Intersection of Arrays/Linked Lists</title>
     <link href="http://yoursite.com/2017/01/03/Leetcode-Intersection-of-Two-Arrays/"/>
     <id>http://yoursite.com/2017/01/03/Leetcode-Intersection-of-Two-Arrays/</id>
     <published>2017-01-04T03:50:49.000Z</published>
-    <updated>2017-01-04T20:30:11.000Z</updated>
+    <updated>2017-01-04T20:33:55.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>这篇是综合几道关于<code>Intersection of Arrays/Linked List</code> 的Leetcode题，分析一下问题及其变体，并给出几种解法。</p>
 <h4>LeetCode 349. Intersection of Two Arrays</h4>
@@ -114,9 +114,9 @@ Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</p>
 <p>Importent Follow Up:</p>
 <p><code>What if the given array is already sorted? How would you optimize your algorithm?</code></p>
 <p>If it is sorted, we just need to use two pointers.</p>
-<p><code>What if nums1's size is small compared to nums2's size? Which algorithm is better?</code>
-The hashmap solution is better.
-<code>What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?</code></p>
+<p><code>What if nums1's size is small compared to nums2's size? Which algorithm is better?</code></p>
+<p>The hashmap solution is better.</p>
+<p><code>What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?</code> (cite from top solution in Leetocode)</p>
 <p>If only nums2 cannot fit in memory, put all elements of nums1 into a HashMap, read chunks of array that fit into the memory, and record the intersections.</p>
 <p>If both nums1 and nums2 are so huge that neither fit into the memory, sort them individually (external sort), then read 2 elements from each array at a time in memory, record intersections.</p>
 </li>
