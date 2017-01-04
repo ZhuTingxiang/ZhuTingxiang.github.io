@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[Leetcode [Combination]Intersection of Arrays/Linked Lists]]></title>
+      <title><![CDATA[Leetcode-[Combination]-Intersection of Arrays/Linked Lists]]></title>
       <url>http://yoursite.com/2017/01/03/Leetcode-Intersection-of-Two-Arrays/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>这篇是综合几道关于<code>Intersection of Arrays/Linked List</code> 的Leetcode题，分析一下问题及其变体，并给出几种解法。</p>
 <h4>LeetCode 349. Intersection of Two Arrays</h4>
