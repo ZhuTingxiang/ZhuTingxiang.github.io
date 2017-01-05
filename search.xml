@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[Leetcode 189.Rotate Array]]></title>
       <url>http://yoursite.com/2017/01/05/Leetcode-189-Rotate-Array/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3>Question:</h3>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4>Question:</h4>
 <p>Rotate an array of n elements to the right by k steps.</p>
 <p>For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].</p>
 <p><strong>Note:</strong>
