@@ -86,28 +86,28 @@
 
 
 
-<meta name="description" content="###Question:###
+<meta name="description" content="Question:
 Rotate an array of n elements to the right by k steps.
 For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
 Note:
-Try to come up as many solutio">
+Try to come up as many solutions as">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 189.Rotate Array">
 <meta property="og:url" content="http://yoursite.com/2017/01/05/Leetcode-189-Rotate-Array/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="###Question:###
+<meta property="og:description" content="Question:
 Rotate an array of n elements to the right by k steps.
 For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
 Note:
-Try to come up as many solutio">
-<meta property="og:updated_time" content="2017-01-05T21:03:47.000Z">
+Try to come up as many solutions as">
+<meta property="og:updated_time" content="2017-01-05T21:04:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 189.Rotate Array">
-<meta name="twitter:description" content="###Question:###
+<meta name="twitter:description" content="Question:
 Rotate an array of n elements to the right by k steps.
 For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
 Note:
-Try to come up as many solutio">
+Try to come up as many solutions as">
 
 
 
@@ -402,7 +402,7 @@ Try to come up as many solutio">
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><p>###Question:###</p>
+        <script src="/assets/js/DPlayer.min.js"> </script><h3>Question:</h3>
 <p>Rotate an array of n elements to the right by k steps.</p>
 <p>For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].</p>
 <p><strong>Note:</strong>
@@ -412,23 +412,23 @@ Could you do it in-place with O(1) extra space?</p>
 <p><strong>Related problem:</strong>
 Reverse Words in a String II</p>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">There are three solutions for this problem:</div></pre></td></tr></table></figure></p>
-<p>####Solution 1:####</p>
+<h4>Solution 1:</h4>
 <p>We can use temporary array to store k elements.
 Time complexity: O(N)
 Space complexity: O(k), use extra space</p>
 <p><strong>Code:</strong>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public void rotate(int[] nums, int k) &#123;</div><div class="line">    int n= nums.length;</div><div class="line">    k = k%n;</div><div class="line">    // store the k elements at the end of the array</div><div class="line">    int[] temp = new int[k];</div><div class="line">    System.arraycopy(nums, n-k, temp, 0, k);</div><div class="line">    // rotate the left elements to the end of the array</div><div class="line">    for(int i = n-k-1; i&gt;= 0;i--) &#123;</div><div class="line">        nums[i+k] = nums[i];</div><div class="line">    &#125;</div><div class="line">    // put temp elements to the top of the arrray</div><div class="line">    for(int i = 0; i&lt; k; i++) &#123;</div><div class="line">        nums[i] = temp[i];</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>The solution beat 98% in java submissions.</p>
-<p>####Solution2:####
-Reversal, for example:
+<h4>Solution2:</h4>
+<p>Reversal, for example:
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">first: [5,6,7] -&gt; [7,6,5]</div><div class="line">then: [1,2,3,4] -&gt; [4,3,2,1]</div><div class="line">the whole array: [1,2,3,4,5,6,7] -&gt; [4,3,2,1,7,6,5]</div><div class="line">reverse the whole array: [4,3,2,1,7,6,5] -&gt; [5,6,7,1,2,3,4]</div></pre></td></tr></table></figure></p>
 <p>Time complexity:O(N)
 Space complexity:O(1)</p>
 <p><strong>Code:</strong>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public void rotate(int[] nums, int k) &#123;</div><div class="line">    int n = nums.length;</div><div class="line">    k = k % n;</div><div class="line">    reverse(nums, n-k, n-1);</div><div class="line">    reverse(nums, 0, n-k-1);</div><div class="line">    reverse(nums, 0, n-1);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public void reverse(int[] nums, int start, int end) &#123;</div><div class="line">    while(start &lt; end) &#123;</div><div class="line">        int temp = nums[start];</div><div class="line">        nums[start] = nums[end];</div><div class="line">        nums[end] = temp;</div><div class="line">        start ++;</div><div class="line">        end --;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>The solution beats 13.19% of java submissions.</p>
-<p>####Solution3:####
-Time complexity: O(N)
+<h4>Solution3:</h4>
+<p>Time complexity: O(N)
 Space complexity: O(1)
 To rotate k steps once for an element. Set all elements to gcd groups.</p>
 <p>E.g.
@@ -545,8 +545,17 @@ http://www.programcreek.com</p>
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/winnie-pooh-full-hd-wallpaper-image-tablet.jpg"
@@ -679,6 +688,22 @@ http://www.programcreek.com</p>
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Question:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Solution 1:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">Solution2:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">Solution3:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
