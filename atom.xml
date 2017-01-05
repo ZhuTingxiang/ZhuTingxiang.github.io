@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-05T21:06:08.000Z</updated>
+  <updated>2017-01-05T21:06:58.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/01/05/Leetcode-189-Rotate-Array/"/>
     <id>http://yoursite.com/2017/01/05/Leetcode-189-Rotate-Array/</id>
     <published>2017-01-05T19:37:56.000Z</published>
-    <updated>2017-01-05T21:06:08.000Z</updated>
+    <updated>2017-01-05T21:06:58.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4>Question:</h4>
 <p>Rotate an array of n elements to the right by k steps.</p>
@@ -33,9 +33,9 @@ Could you do it in-place with O(1) extra space?</p>
 Reverse Words in a String II</p>
 <p><code>There are three solutions for this problem:</code></p>
 <h4>Solution 1:</h4>
-<p>We can use temporary array to store k elements.
-Time complexity: O(N)
-Space complexity: O(k), use extra space</p>
+<p>We can use temporary array to store k elements.</p>
+<p>Time complexity: O(N)</p>
+<p>Space complexity: O(k), use extra space</p>
 <p><strong>Code:</strong>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public void rotate(int[] nums, int k) &#123;</div><div class="line">    int n= nums.length;</div><div class="line">    k = k%n;</div><div class="line">    // store the k elements at the end of the array</div><div class="line">    int[] temp = new int[k];</div><div class="line">    System.arraycopy(nums, n-k, temp, 0, k);</div><div class="line">    // rotate the left elements to the end of the array</div><div class="line">    for(int i = n-k-1; i&gt;= 0;i--) &#123;</div><div class="line">        nums[i+k] = nums[i];</div><div class="line">    &#125;</div><div class="line">    // put temp elements to the top of the arrray</div><div class="line">    for(int i = 0; i&lt; k; i++) &#123;</div><div class="line">        nums[i] = temp[i];</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>The solution beat 98% in java submissions.</p>
@@ -52,15 +52,15 @@ Space complexity:O(1)</p>
 Space complexity: O(1)
 To rotate k steps once for an element. Set all elements to gcd groups.</p>
 <p>E.g.
-nums = [1 2 3 4 5 6], k=2
-We use gcd (greatest common divisor) between n and k.
-gcd = 2
-// count is the number we need swap each path
-count = nums.length / gcd - 1 = 2
-1st iteration: starts from nums[i=0], keep rotate nums[i+k] until meet the start position
-nums = [_5 2 _1 4 _3 6]
-2nd iteration: starts from nums[i=1]
-nums = [5 _6 1 _2 3 _4]</p>
+nums = [1 2 3 4 5 6], k=2</p>
+<p>We use gcd (greatest common divisor) between n and k.</p>
+<p>gcd = 2</p>
+<p>// count is the number we need swap each path</p>
+<p>count = nums.length / gcd - 1 = 2</p>
+<p>1st iteration: starts from nums[i=0], keep rotate nums[i+k] until meet the start position
+<code>nums = [\_5 2 \_1 4 \_3 6]</code></p>
+<p>2nd iteration: starts from nums[i=1]
+`nums = [5 _6 1 _2 3 _4]``</p>
 <p><strong>Code:</strong></p>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public void rotate(int[] nums, int k) &#123;</div><div class="line">    int n = nums.length;</div><div class="line"></div><div class="line">    if (n &lt;= 1) &#123;</div><div class="line">        return ;</div><div class="line">    &#125;</div><div class="line">     k = k % n;</div><div class="line">    int g = gcd(k, n);</div><div class="line"></div><div class="line">    int position, count;</div><div class="line">    for(int i= 0; i&lt; g; i++) &#123;</div><div class="line">        position = i;</div><div class="line">        // count is the number we need swap each path</div><div class="line">        count = n/g - 1;</div><div class="line">        System.out.println(g);</div><div class="line">        System.out.println(count);</div><div class="line">        for (int j= 0; j&lt; count; j++) &#123;</div><div class="line">            position = (position + k) % nums.length;</div><div class="line">            int temp = nums[i];</div><div class="line">            nums[i] = nums[position];</div><div class="line">            nums[position] = temp;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int gcd(int a, int b) &#123;</div><div class="line">    if (a == 0 || b == 0 )</div><div class="line">        return a + b;</div><div class="line">    else</div><div class="line">        return gcd(b, a % b);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>References:
