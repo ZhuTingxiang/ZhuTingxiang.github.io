@@ -100,7 +100,7 @@ Rotate an array of n elements to the right by k steps.
 For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
 Note:
 Try to come up as many solutions as">
-<meta property="og:updated_time" content="2017-01-05T21:06:58.000Z">
+<meta property="og:updated_time" content="2017-01-05T21:07:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 189.Rotate Array">
 <meta name="twitter:description" content="Question:
@@ -422,15 +422,15 @@ Reverse Words in a String II</p>
 <h4>Solution2:</h4>
 <p>Reversal, for example:
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">first: [5,6,7] -&gt; [7,6,5]</div><div class="line">then: [1,2,3,4] -&gt; [4,3,2,1]</div><div class="line">the whole array: [1,2,3,4,5,6,7] -&gt; [4,3,2,1,7,6,5]</div><div class="line">reverse the whole array: [4,3,2,1,7,6,5] -&gt; [5,6,7,1,2,3,4]</div></pre></td></tr></table></figure></p>
-<p>Time complexity:O(N)
-Space complexity:O(1)</p>
+<p>Time complexity:O(N)</p>
+<p>Space complexity:O(1)</p>
 <p><strong>Code:</strong>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public void rotate(int[] nums, int k) &#123;</div><div class="line">    int n = nums.length;</div><div class="line">    k = k % n;</div><div class="line">    reverse(nums, n-k, n-1);</div><div class="line">    reverse(nums, 0, n-k-1);</div><div class="line">    reverse(nums, 0, n-1);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public void reverse(int[] nums, int start, int end) &#123;</div><div class="line">    while(start &lt; end) &#123;</div><div class="line">        int temp = nums[start];</div><div class="line">        nums[start] = nums[end];</div><div class="line">        nums[end] = temp;</div><div class="line">        start ++;</div><div class="line">        end --;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>The solution beats 13.19% of java submissions.</p>
 <h4>Solution3:</h4>
-<p>Time complexity: O(N)
-Space complexity: O(1)
-To rotate k steps once for an element. Set all elements to gcd groups.</p>
+<p>Time complexity: O(N)</p>
+<p>Space complexity: O(1)</p>
+<p>To rotate k steps once for an element. Set all elements to gcd groups.</p>
 <p>E.g.
 nums = [1 2 3 4 5 6], k=2</p>
 <p>We use gcd (greatest common divisor) between n and k.</p>
