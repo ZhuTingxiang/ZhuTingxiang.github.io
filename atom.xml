@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-04T20:34:55.000Z</updated>
+  <updated>2017-01-05T21:03:47.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,82 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode 189.Rotate Array</title>
+    <link href="http://yoursite.com/2017/01/05/Leetcode-189-Rotate-Array/"/>
+    <id>http://yoursite.com/2017/01/05/Leetcode-189-Rotate-Array/</id>
+    <published>2017-01-05T19:37:56.000Z</published>
+    <updated>2017-01-05T21:03:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>###Question:###</p>
+<p>Rotate an array of n elements to the right by k steps.</p>
+<p>For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].</p>
+<p><strong>Note:</strong>
+Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.</p>
+<p><strong>Hint:</strong>
+Could you do it in-place with O(1) extra space?</p>
+<p><strong>Related problem:</strong>
+Reverse Words in a String II</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">There are three solutions for this problem:</div></pre></td></tr></table></figure></p>
+<p>####Solution 1:####</p>
+<p>We can use temporary array to store k elements.
+Time complexity: O(N)
+Space complexity: O(k), use extra space</p>
+<p><strong>Code:</strong>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public void rotate(int[] nums, int k) &#123;</div><div class="line">    int n= nums.length;</div><div class="line">    k = k%n;</div><div class="line">    // store the k elements at the end of the array</div><div class="line">    int[] temp = new int[k];</div><div class="line">    System.arraycopy(nums, n-k, temp, 0, k);</div><div class="line">    // rotate the left elements to the end of the array</div><div class="line">    for(int i = n-k-1; i&gt;= 0;i--) &#123;</div><div class="line">        nums[i+k] = nums[i];</div><div class="line">    &#125;</div><div class="line">    // put temp elements to the top of the arrray</div><div class="line">    for(int i = 0; i&lt; k; i++) &#123;</div><div class="line">        nums[i] = temp[i];</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>The solution beat 98% in java submissions.</p>
+<p>####Solution2:####
+Reversal, for example:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">first: [5,6,7] -&gt; [7,6,5]</div><div class="line">then: [1,2,3,4] -&gt; [4,3,2,1]</div><div class="line">the whole array: [1,2,3,4,5,6,7] -&gt; [4,3,2,1,7,6,5]</div><div class="line">reverse the whole array: [4,3,2,1,7,6,5] -&gt; [5,6,7,1,2,3,4]</div></pre></td></tr></table></figure></p>
+<p>Time complexity:O(N)
+Space complexity:O(1)</p>
+<p><strong>Code:</strong>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public void rotate(int[] nums, int k) &#123;</div><div class="line">    int n = nums.length;</div><div class="line">    k = k % n;</div><div class="line">    reverse(nums, n-k, n-1);</div><div class="line">    reverse(nums, 0, n-k-1);</div><div class="line">    reverse(nums, 0, n-1);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public void reverse(int[] nums, int start, int end) &#123;</div><div class="line">    while(start &lt; end) &#123;</div><div class="line">        int temp = nums[start];</div><div class="line">        nums[start] = nums[end];</div><div class="line">        nums[end] = temp;</div><div class="line">        start ++;</div><div class="line">        end --;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>The solution beats 13.19% of java submissions.</p>
+<p>####Solution3:####
+Time complexity: O(N)
+Space complexity: O(1)
+To rotate k steps once for an element. Set all elements to gcd groups.</p>
+<p>E.g.
+nums = [1 2 3 4 5 6], k=2
+We use gcd (greatest common divisor) between n and k.
+gcd = 2
+// count is the number we need swap each path
+count = nums.length / gcd - 1 = 2
+1st iteration: starts from nums[i=0], keep rotate nums[i+k] until meet the start position
+nums = [_5 2 _1 4 _3 6]
+2nd iteration: starts from nums[i=1]
+nums = [5 _6 1 _2 3 _4]</p>
+<p><strong>Code:</strong></p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public void rotate(int[] nums, int k) &#123;</div><div class="line">    int n = nums.length;</div><div class="line"></div><div class="line">    if (n &lt;= 1) &#123;</div><div class="line">        return ;</div><div class="line">    &#125;</div><div class="line">     k = k % n;</div><div class="line">    int g = gcd(k, n);</div><div class="line"></div><div class="line">    int position, count;</div><div class="line">    for(int i= 0; i&lt; g; i++) &#123;</div><div class="line">        position = i;</div><div class="line">        // count is the number we need swap each path</div><div class="line">        count = n/g - 1;</div><div class="line">        System.out.println(g);</div><div class="line">        System.out.println(count);</div><div class="line">        for (int j= 0; j&lt; count; j++) &#123;</div><div class="line">            position = (position + k) % nums.length;</div><div class="line">            int temp = nums[i];</div><div class="line">            nums[i] = nums[position];</div><div class="line">            nums[position] = temp;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int gcd(int a, int b) &#123;</div><div class="line">    if (a == 0 || b == 0 )</div><div class="line">        return a + b;</div><div class="line">    else</div><div class="line">        return gcd(b, a % b);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>References:
+http://yucoding.blogspot.com/2015/03/leetcode-question-rotate-array.html
+http://www.programcreek.com/2015/03/rotate-array-in-java/
+P.s. recommend the website:
+http://www.programcreek.com</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;###Question:###&lt;/p&gt;
+&lt;p&gt;Rotate an array of n elements to the right by k steps.&lt;/p&gt;
+&lt;p&gt;Fo
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode-[Combination]-Intersection of Arrays/Linked Lists</title>
@@ -1583,60 +1659,6 @@ As you can see, this article is written in Markdown.
     
     
       <category term="markdown" scheme="http://yoursite.com/tags/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2016-07-21</title>
-    <link href="http://yoursite.com/2016/07/21/2016-07-21/"/>
-    <id>http://yoursite.com/2016/07/21/2016-07-21/</id>
-    <published>2016-07-22T03:37:53.000Z</published>
-    <updated>2016-12-20T05:37:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><pre><code>一、
-
-我活得越来越坦然的一个信号就是，我能勇敢地和别人安利自己的公众号了。
-
-关于这个公众号，里面的文章带着情绪的成分很多。而我的习惯是，在现实生活中面对面讲话好好相处，这样才是真实的，而不是虚无地毫无基础地通过表情和文字来传达彼此的心理。网络更应该是，让亲密关系更方便，不该是让陌生的人变成熟人，这是不可能。即使有可能，也是脆弱的，不堪一击的。
-
-同时，在很长一段时间里，我也很不愿让别人完全看透我的内心，这让我恐惧和不知所措。但是，现在，成熟地看我依旧不想让别人完全看透，但是我觉得我也不必要隐藏自己本来的一面。我确实想法很多，小心思很多，我相信这不会让人因此而放弃爱我或者疏远我，远离我。
-
-文字还是要写的，而且要写好，要好好写，要认真踏实地，言之有物地写。甚至写出不一样的感觉来。
-
-二、
-
-昨天见了小刘海，一个高高的姑娘，做花艺，话唠，拉拉，可爱。我不是贴标签哦，当我无法完整地写出一个人的时候，我更倾向于记录一些特征。大学的时候，我就像海绵吸水一样，迫不及待地见识各种各样的人，让各种世界观冲击我，迫不及待拓展自己对世界认知的边界。
-
-后来，我慢慢锻炼到能够自己熟练选择想要交的朋友，想要靠近的人，想要谈话的对象。某种意义上来说，时间成本在一方面的减少意味着投入到另一个领域，大概曾经的我确实空虚吧。
-
-小刘海给我了一只花，我养在了水杯里，可惜今天回来的时候已经有点枯萎了。可以做成干花。
-
-三、
-
-为了避免这个博客变成流水账博客。我就停笔，不写了。
-
-今天的BGM是王菲《矜持》。Nighty
-
-&amp;nbsp;
-
-&amp;nbsp;
-
-&amp;nbsp;
-</code></pre>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;pre&gt;&lt;code&gt;一、
-
-我活得越来越坦然的一个信号就是，我能勇敢地和别人安利自己的公众号了。
-
-关于这个公众号，里面的文章带着情绪的成分很多。而我的习惯是，在现实生活中面对面
-    
-    </summary>
-    
-      <category term="真实的生命" scheme="http://yoursite.com/categories/%E7%9C%9F%E5%AE%9E%E7%9A%84%E7%94%9F%E5%91%BD/"/>
-    
     
   </entry>
   
