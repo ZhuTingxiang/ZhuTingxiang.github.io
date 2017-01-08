@@ -108,7 +108,7 @@ Simple sorting
 1231. 每次只比较两个值。2. 如果左边的值大，就交换两个值。3. 移动大的值到右边。
 ####举例：
 123456789101112131415原数组: [4,7, 2, 5, 3]  Round 1:    -&amp;">
-<meta property="og:updated_time" content="2017-01-08T19:48:21.000Z">
+<meta property="og:updated_time" content="2017-01-08T19:49:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序问题【Java】">
 <meta name="twitter:description" content="总结几种排序方法。
@@ -441,7 +441,7 @@ Simple sorting
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">for (int out = 0; out&lt;data.length; out++) &#123;</div><div class="line">  min = out;</div><div class="line">  for (int in = out+1; in &lt; data.length; in ++) &#123;</div><div class="line">    if (data[in] &lt; min) &#123;</div><div class="line">      min = in;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  if (out != min) &#123;</div><div class="line">    swap(data, out, min);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>###3.Insertion Sort:
 最直观的排序法。
-####Time complexity:</p>
+####Time complexity: O(N^2)</p>
 <p>####步骤：
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">想象数组中有一个分割线。</div><div class="line">1. 左手边的是排好序的。</div><div class="line">2. 线的右边的第一个元素需要被插入到左边的相应位置中。</div></pre></td></tr></table></figure></p>
 <p>####举例：

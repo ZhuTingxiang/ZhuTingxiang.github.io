@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-08T19:48:21.000Z</updated>
+  <updated>2017-01-08T19:49:12.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/01/08/Java%E4%B8%AD%E7%9A%84Sort/"/>
     <id>http://yoursite.com/2017/01/08/Java中的Sort/</id>
     <published>2017-01-08T17:56:31.000Z</published>
-    <updated>2017-01-08T19:48:21.000Z</updated>
+    <updated>2017-01-08T19:49:12.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>总结几种排序方法。</p>
 <p><strong>Simple sorting</strong></p>
@@ -49,7 +49,7 @@
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">for (int out = 0; out&lt;data.length; out++) &#123;</div><div class="line">  min = out;</div><div class="line">  for (int in = out+1; in &lt; data.length; in ++) &#123;</div><div class="line">    if (data[in] &lt; min) &#123;</div><div class="line">      min = in;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  if (out != min) &#123;</div><div class="line">    swap(data, out, min);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>###3.Insertion Sort:
 最直观的排序法。
-####Time complexity:</p>
+####Time complexity: O(N^2)</p>
 <p>####步骤：
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">想象数组中有一个分割线。</div><div class="line">1. 左手边的是排好序的。</div><div class="line">2. 线的右边的第一个元素需要被插入到左边的相应位置中。</div></pre></td></tr></table></figure></p>
 <p>####举例：
