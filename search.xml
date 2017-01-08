@@ -12,16 +12,18 @@
 <p>慢，但是简单。</p>
 <ol>
 <li>
-<p>Time complexity:    O(N^2) ####</p>
+<p>Time complexity:    O(N^2)</p>
 </li>
 <li>
 <p>步骤:</p>
 </li>
 </ol>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 每次只比较两个值。</div><div class="line">2. 如果左边的值大，就交换两个值。</div><div class="line">3. 移动大的值到右边。</div></pre></td></tr></table></figure></p>
-<h4>3. 举例:</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">原数组: [4,7, 2, 5, 3]</div><div class="line">  Round 1:</div><div class="line">    -&gt; [4,7,2,5,3]</div><div class="line">    -&gt; [4,2,7,5,3]</div><div class="line">    -&gt; [4,2,5,7,3]</div><div class="line">    -&gt; [4,2,5,3,7]</div><div class="line">  Round 2:</div><div class="line">    -&gt; [2,4,5,3,7]</div><div class="line">    -&gt; [2,4,5,3,7]</div><div class="line">    -&gt; [2,4,3,5,7]</div><div class="line">  Round 3:</div><div class="line">    -&gt; [2,4,3,5,7]</div><div class="line">    -&gt; [2,3,4,5,7]</div><div class="line">  Round 4:</div><div class="line">    -&gt; [2,3,4,5,7]</div></pre></td></tr></table></figure></p>
-<h4>4. Code:</h4>
+<ol start="3">
+<li>举例:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">原数组: [4,7, 2, 5, 3]</div><div class="line">  Round 1:</div><div class="line">    -&gt; [4,7,2,5,3]</div><div class="line">    -&gt; [4,2,7,5,3]</div><div class="line">    -&gt; [4,2,5,7,3]</div><div class="line">    -&gt; [4,2,5,3,7]</div><div class="line">  Round 2:</div><div class="line">    -&gt; [2,4,5,3,7]</div><div class="line">    -&gt; [2,4,5,3,7]</div><div class="line">    -&gt; [2,4,3,5,7]</div><div class="line">  Round 3:</div><div class="line">    -&gt; [2,4,3,5,7]</div><div class="line">    -&gt; [2,3,4,5,7]</div><div class="line">  Round 4:</div><div class="line">    -&gt; [2,3,4,5,7]</div></pre></td></tr></table></figure></li>
+</ol>
+<h3>Code:</h3>
 <p>int[ ] data = {4, 7, 2, 5, 3}</p>
 <p>Swap Method
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// a helper method that swaps two values in an int array</div><div class="line">private static void swap(int[] data, int one, int two) &#123;</div><div class="line">    int temp = data[one];</div><div class="line">    data[one] = data[two];</div><div class="line">    data[two] = temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -29,11 +31,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public static void bubbleSort(int[] data) &#123;</div><div class="line">       // move backward from the last index</div><div class="line">       for (int out = data.length - 1; out &gt;= 1; out--) &#123;</div><div class="line">           // move forward from the beginning</div><div class="line">           // bubble up the largest value to the right</div><div class="line">           for (int in = 0; in &lt; out; in++) &#123;</div><div class="line">               if (data[in] &gt; data[in + 1]) &#123;</div><div class="line">                   swap(data, in, in + 1);</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
 <h2>Selection Sort</h2>
 <p>比冒泡排序快但是依旧不够快。</p>
-<h4>1. Time complexity:    O(N^2)</h4>
+<h3>Time complexity:    O(N^2)</h3>
 <p>比冒泡排序少了很多swap的过程，所以稍微快一些。</p>
-<h4>2. 步骤:</h4>
+<h3>步骤:</h3>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1. 选出最小的值。</div><div class="line">2. 移动到最左边。</div></pre></td></tr></table></figure></p>
-<h4>3. 举例:####</h4>
+<h3>举例:</h3>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">原数组: [4,7, 2, 5, 3]</div><div class="line">Round1:</div><div class="line">  最小的是2：</div><div class="line">  [2,7,4,5,3]</div><div class="line">Round2:</div><div class="line">  最小的是3</div><div class="line">  [2,3,4,5,7]</div><div class="line">Round3:</div><div class="line">  最小的是4</div><div class="line">  [2,3,4,5,7]</div><div class="line">Round4:</div><div class="line">  最小的是5：</div><div class="line">  [2,3,4,5,7]</div></pre></td></tr></table></figure></p>
 <h4>4. Code:</h4>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">for (int out = 0; out&lt;data.length; out++) &#123;</div><div class="line">  min = out;</div><div class="line">  for (int in = out+1; in &lt; data.length; in ++) &#123;</div><div class="line">    if (data[in] &lt; min) &#123;</div><div class="line">      min = in;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  if (out != min) &#123;</div><div class="line">    swap(data, out, min);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
