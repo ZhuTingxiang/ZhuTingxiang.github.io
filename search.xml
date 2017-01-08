@@ -10,8 +10,14 @@
 <p><strong>Simple sorting</strong></p>
 <h2>Bubble Sort</h2>
 <p>慢，但是简单。</p>
-<h4>1. Time complexity:    O(N^2)</h4>
-<h4>2. 步骤:</h4>
+<ol>
+<li>
+<p>Time complexity:    O(N^2) ####</p>
+</li>
+<li>
+<p>步骤:</p>
+</li>
+</ol>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 每次只比较两个值。</div><div class="line">2. 如果左边的值大，就交换两个值。</div><div class="line">3. 移动大的值到右边。</div></pre></td></tr></table></figure></p>
 <h4>3. 举例:</h4>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">原数组: [4,7, 2, 5, 3]</div><div class="line">  Round 1:</div><div class="line">    -&gt; [4,7,2,5,3]</div><div class="line">    -&gt; [4,2,7,5,3]</div><div class="line">    -&gt; [4,2,5,7,3]</div><div class="line">    -&gt; [4,2,5,3,7]</div><div class="line">  Round 2:</div><div class="line">    -&gt; [2,4,5,3,7]</div><div class="line">    -&gt; [2,4,5,3,7]</div><div class="line">    -&gt; [2,4,3,5,7]</div><div class="line">  Round 3:</div><div class="line">    -&gt; [2,4,3,5,7]</div><div class="line">    -&gt; [2,3,4,5,7]</div><div class="line">  Round 4:</div><div class="line">    -&gt; [2,3,4,5,7]</div></pre></td></tr></table></figure></p>
