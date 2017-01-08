@@ -6,7 +6,8 @@
     <entry>
       <title><![CDATA[Java中的排序问题]]></title>
       <url>http://yoursite.com/2017/01/08/Java%E4%B8%AD%E7%9A%84Sort/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>总结几种排序方法。</p>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>总结几种排序方法。
+冒泡排序，选择排序，插入排序，Merge Sort（continue..）...</p>
 <p><strong>Simple sorting</strong></p>
 <h2>Bubble Sort</h2>
 <p>慢，但是简单。</p>
