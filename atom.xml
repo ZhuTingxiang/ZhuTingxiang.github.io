@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-08T19:49:55.000Z</updated>
+  <updated>2017-01-08T19:50:57.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>排序问题【Java】</title>
+    <title>Java中的排序问题</title>
     <link href="http://yoursite.com/2017/01/08/Java%E4%B8%AD%E7%9A%84Sort/"/>
     <id>http://yoursite.com/2017/01/08/Java中的Sort/</id>
     <published>2017-01-08T17:56:31.000Z</published>
-    <updated>2017-01-08T19:49:55.000Z</updated>
+    <updated>2017-01-08T19:50:57.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>总结几种排序方法。</p>
 <p><strong>Simple sorting</strong></p>
@@ -69,8 +69,6 @@
     
       <category term="Data Structure" scheme="http://yoursite.com/categories/Data-Structure/"/>
     
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
