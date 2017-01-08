@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-08T19:52:55.000Z</updated>
+  <updated>2017-01-08T19:54:24.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,16 +20,16 @@
     <link href="http://yoursite.com/2017/01/08/Java%E4%B8%AD%E7%9A%84Sort/"/>
     <id>http://yoursite.com/2017/01/08/Java中的Sort/</id>
     <published>2017-01-08T17:56:31.000Z</published>
-    <updated>2017-01-08T19:52:55.000Z</updated>
+    <updated>2017-01-08T19:54:24.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>总结几种排序方法。</p>
 <p><strong>Simple sorting</strong></p>
-<h3>1.Bubble Sort</h3>
+<h3>Bubble Sort</h3>
 <p>慢，但是简单。</p>
-<h4>Time complexity:    O(N^2)</h4>
-<h4>步骤:</h4>
+<h4>1.Time complexity:    O(N^2)</h4>
+<h4>2.步骤:</h4>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 每次只比较两个值。</div><div class="line">2. 如果左边的值大，就交换两个值。</div><div class="line">3. 移动大的值到右边。</div></pre></td></tr></table></figure></p>
-<h4>举例：####</h4>
+<h4>3.举例:</h4>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">原数组: [4,7, 2, 5, 3]</div><div class="line">  Round 1:</div><div class="line">    -&gt; [4,7,2,5,3]</div><div class="line">    -&gt; [4,2,7,5,3]</div><div class="line">    -&gt; [4,2,5,7,3]</div><div class="line">    -&gt; [4,2,5,3,7]</div><div class="line">  Round 2:</div><div class="line">    -&gt; [2,4,5,3,7]</div><div class="line">    -&gt; [2,4,5,3,7]</div><div class="line">    -&gt; [2,4,3,5,7]</div><div class="line">  Round 3:</div><div class="line">    -&gt; [2,4,3,5,7]</div><div class="line">    -&gt; [2,3,4,5,7]</div><div class="line">  Round 4:</div><div class="line">    -&gt; [2,3,4,5,7]</div></pre></td></tr></table></figure></p>
 <h4>Code:</h4>
 <p>int[ ] data = {4, 7, 2, 5, 3}</p>
@@ -62,8 +62,8 @@
     
       &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;总结几种排序方法。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Simple sorting&lt;/strong&gt;&lt;/p&gt;
-&lt;h3&gt;1.Bubble Sort&lt;/h3&gt;
-&lt;p&gt;慢，但是简单。&lt;
+&lt;h3&gt;Bubble Sort&lt;/h3&gt;
+&lt;p&gt;慢，但是简单。&lt;/p
     
     </summary>
     
