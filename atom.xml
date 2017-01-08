@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-05T21:15:18.000Z</updated>
+  <updated>2017-01-08T19:48:21.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>排序问题【Java】</title>
+    <link href="http://yoursite.com/2017/01/08/Java%E4%B8%AD%E7%9A%84Sort/"/>
+    <id>http://yoursite.com/2017/01/08/Java中的Sort/</id>
+    <published>2017-01-08T17:56:31.000Z</published>
+    <updated>2017-01-08T19:48:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>总结几种排序方法。</p>
+<p><strong>Simple sorting</strong></p>
+<p>###1.Bubble Sort</p>
+<p>慢，但是简单。
+####Time complexity:    O(N^2)</p>
+<p>####步骤:</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 每次只比较两个值。</div><div class="line">2. 如果左边的值大，就交换两个值。</div><div class="line">3. 移动大的值到右边。</div></pre></td></tr></table></figure></p>
+<p>####举例：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">原数组: [4,7, 2, 5, 3]</div><div class="line">  Round 1:</div><div class="line">    -&gt; [4,7,2,5,3]</div><div class="line">    -&gt; [4,2,7,5,3]</div><div class="line">    -&gt; [4,2,5,7,3]</div><div class="line">    -&gt; [4,2,5,3,7]</div><div class="line">  Round 2:</div><div class="line">    -&gt; [2,4,5,3,7]</div><div class="line">    -&gt; [2,4,5,3,7]</div><div class="line">    -&gt; [2,4,3,5,7]</div><div class="line">  Round 3:</div><div class="line">    -&gt; [2,4,3,5,7]</div><div class="line">    -&gt; [2,3,4,5,7]</div><div class="line">  Round 4:</div><div class="line">    -&gt; [2,3,4,5,7]</div></pre></td></tr></table></figure></p>
+<p>####Code:</p>
+<p>int[ ] data = {4, 7, 2, 5, 3}</p>
+<p>Swap Method
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// a helper method that swaps two values in an int array</div><div class="line">private static void swap(int[] data, int one, int two) &#123;</div><div class="line">    int temp = data[one];</div><div class="line">    data[one] = data[two];</div><div class="line">    data[two] = temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Bubble Sort:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public static void bubbleSort(int[] data) &#123;</div><div class="line">       // move backward from the last index</div><div class="line">       for (int out = data.length - 1; out &gt;= 1; out--) &#123;</div><div class="line">           // move forward from the beginning</div><div class="line">           // bubble up the largest value to the right</div><div class="line">           for (int in = 0; in &lt; out; in++) &#123;</div><div class="line">               if (data[in] &gt; data[in + 1]) &#123;</div><div class="line">                   swap(data, in, in + 1);</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>###2. Selection Sort
+比冒泡排序快但是依旧不够快。
+####Time complexity:    O(N^2)
+比冒泡排序少了很多swap的过程，所以稍微快一些。</p>
+<p>####步骤:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1. 选出最小的值。</div><div class="line">2. 移动到最左边。</div></pre></td></tr></table></figure></p>
+<p>####举例：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">原数组: [4,7, 2, 5, 3]</div><div class="line">Round1:</div><div class="line">  最小的是2：</div><div class="line">  [2,7,4,5,3]</div><div class="line">Round2:</div><div class="line">  最小的是3</div><div class="line">  [2,3,4,5,7]</div><div class="line">Round3:</div><div class="line">  最小的是4</div><div class="line">  [2,3,4,5,7]</div><div class="line">Round4:</div><div class="line">  最小的是5：</div><div class="line">  [2,3,4,5,7]</div></pre></td></tr></table></figure></p>
+<p>####Code:</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">for (int out = 0; out&lt;data.length; out++) &#123;</div><div class="line">  min = out;</div><div class="line">  for (int in = out+1; in &lt; data.length; in ++) &#123;</div><div class="line">    if (data[in] &lt; min) &#123;</div><div class="line">      min = in;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  if (out != min) &#123;</div><div class="line">    swap(data, out, min);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>###3.Insertion Sort:
+最直观的排序法。
+####Time complexity:</p>
+<p>####步骤：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">想象数组中有一个分割线。</div><div class="line">1. 左手边的是排好序的。</div><div class="line">2. 线的右边的第一个元素需要被插入到左边的相应位置中。</div></pre></td></tr></table></figure></p>
+<p>####举例：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">原数组: [4,7, 2, 5, 3]</div><div class="line">-&gt; [4,|7,2,5,3]</div><div class="line">-&gt; [4,7,|2,5,3]</div><div class="line">-&gt; [2,4,7,|5,3]</div><div class="line">-&gt; [2,4,5,7,|3]</div><div class="line">-&gt; [2,3,4,5,7]</div></pre></td></tr></table></figure></p>
+<p>####Code:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public static void insertionSort(int[] data) &#123;</div><div class="line">   // start from the 1st index till the last index</div><div class="line">  for (int out = 1; out&lt;data.length; out++) &#123;</div><div class="line">    int in = out;</div><div class="line">    int temp = data[out];</div><div class="line">    /*</div><div class="line">    * loop to check the sorted section going backward</div><div class="line">    * but not necessarily all the way to the 0th</div><div class="line">    * On average, look halfway through the sorted section</div><div class="line">    */</div><div class="line">    while (in&gt;0 &amp;&amp; data[in-1]&gt;=temp) &#123;</div><div class="line">      data[in] = data[in-1];</div><div class="line">      in --;</div><div class="line">    &#125;</div><div class="line">    if (out != in) &#123;</div><div class="line">      data[in] = temp;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;总结几种排序方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Simple sorting&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;###1.Bubble Sort&lt;/p&gt;
+&lt;p&gt;慢，但是简单。
+    
+    </summary>
+    
+      <category term="Data Structure" scheme="http://yoursite.com/categories/Data-Structure/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 189.Rotate Array</title>
@@ -83,13 +146,13 @@ http://www.programcreek.com</p>
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
   </entry>
   
@@ -247,9 +310,9 @@ Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
       <category term="Data Structure" scheme="http://yoursite.com/tags/Data-Structure/"/>
     
@@ -313,9 +376,9 @@ k = 2; B[0] = A[len-2];
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
@@ -358,9 +421,9 @@ k = 2; B[0] = A[len-2];
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
@@ -423,9 +486,9 @@ Return 3. The paths that sum to 8 are:
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
@@ -471,9 +534,9 @@ Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:00&quot;, &quot;8:00&quot;,
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Bit Manipulation" scheme="http://yoursite.com/tags/Bit-Manipulation/"/>
     
@@ -1171,9 +1234,9 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
@@ -1441,226 +1504,6 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     
       <category term="emacs" scheme="http://yoursite.com/tags/emacs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to use Markdown as a starter</title>
-    <link href="http://yoursite.com/2016/07/26/how-to-use-markdown-as-a-starter/"/>
-    <id>http://yoursite.com/2016/07/26/how-to-use-markdown-as-a-starter/</id>
-    <published>2016-07-27T00:16:27.000Z</published>
-    <updated>2016-12-20T16:41:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote {
-margin: 0;
-padding: 0;
-}
-body {
-font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, Arial, sans-serif;
-font-size: 13px;
-line-height: 18px;
-color: #737373;
-background-color: white;
-margin: 10px 13px 10px 13px;
-}
-table {
-	margin: 10px 0 15px 0;
-	border-collapse: collapse;
-}
-td,th {
-	border: 1px solid #ddd;
-	padding: 3px 10px;
-}
-th {
-	padding: 5px 10px;
-}</p>
-<p>a {
-color: #0069d6;
-}
-a:hover {
-color: #0050a3;
-text-decoration: none;
-}
-a img {
-border: none;
-}
-p {
-margin-bottom: 9px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-color: #404040;
-line-height: 36px;
-}
-h1 {
-margin-bottom: 18px;
-font-size: 30px;
-}
-h2 {
-font-size: 24px;
-}
-h3 {
-font-size: 18px;
-}
-h4 {
-font-size: 16px;
-}
-h5 {
-font-size: 14px;
-}
-h6 {
-font-size: 13px;
-}
-hr {
-margin: 0 0 19px;
-border: 0;
-border-bottom: 1px solid #ccc;
-}
-blockquote {
-padding: 13px 13px 21px 15px;
-margin-bottom: 18px;
-font-family:georgia,serif;
-font-style: italic;
-}
-blockquote:before {
-content:&quot;\201C&quot;;
-font-size:40px;
-margin-left:-10px;
-font-family:georgia,serif;
-color:#eee;
-}
-blockquote p {
-font-size: 14px;
-font-weight: 300;
-line-height: 18px;
-margin-bottom: 0;
-font-style: italic;
-}
-code, pre {
-font-family: Monaco, Andale Mono, Courier New, monospace;
-}
-code {
-background-color: #fee9cc;
-color: rgba(0, 0, 0, 0.75);
-padding: 1px 3px;
-font-size: 12px;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
-}
-pre {
-display: block;
-padding: 14px;
-margin: 0 0 18px;
-line-height: 16px;
-font-size: 11px;
-border: 1px solid #d9d9d9;
-white-space: pre-wrap;
-word-wrap: break-word;
-}
-pre code {
-background-color: #fff;
-color:#737373;
-font-size: 11px;
-padding: 0;
-}
-sup {
-font-size: 0.83em;
-vertical-align: super;
-line-height: 0;
-}</p>
-<ul>
-<li>
-<p>{
--webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-body {
-width: 854px;
-margin:10px auto;
-}
-}
-@media print {
-body,code,pre code,h1,h2,h3,h4,h5,h6 {
-	color: black;
-}
-table, pre {
-	page-break-inside: avoid;
-}
-}&lt;/style&gt;
-&lt;title&gt;
-&lt;/title&gt;</p>
-<p> </p>
-<p>Recently, I am desired to write wordpress for do some summarization. But the format and writing style keep confusing me.</p>
-</li>
-</ul>
-<h1></h1>
-<pre><code>Let&amp;#39;s try Markdown this time!
-
-There are two ways to apply Markdown in wordpress:
-</code></pre>
-<h4></h4>
-<pre><code>1\. Install plugins:
-
-The recommended plugin is [Markdown for WordPress and bbPress](https://wordpress.org/plugins/markdown-for-wordpress-and-bbpress/) But it doesn&amp;#39;t work on my wordpress. Sad.
-</code></pre>
-<h4></h4>
-<pre><code>2\. Using Markdown Tools&amp;nbsp;
-
-You can write the article in advace using softwares before paste it to the blog.
-
-I prefer this way since using Wordpress to write is a huge disaster.
-</code></pre>
-<h6></h6>
-<pre><code>Step 1: Know about the grammar of Markdown :
-
-[CMD Markdown](https://www.zybuluo.com/mdeditor) is really a good tutorial. Or any other tutorials, whatever.
-</code></pre>
-<h6></h6>
-<pre><code>Step 2: Download a good Markdown Tool :
-
-It&amp;#39;s very convenience for us to write and review at the same time.&amp;nbsp;
-
-So, you can download [Mou](http://25.io/mou/) if&amp;nbsp;you use Mac.
-</code></pre>
-<h6></h6>
-<pre><code>Step 3: Keep practising to be perfect :
-
-As you can see, this article is written in Markdown.
-
-**_Cheers!_**
-
-&amp;nbsp;
-
-&amp;nbsp;
-
-&amp;nbsp;
-</code></pre>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;
-    
-    </summary>
-    
-      <category term="技术冷板凳" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E5%86%B7%E6%9D%BF%E5%87%B3/"/>
-    
-    
-      <category term="markdown" scheme="http://yoursite.com/tags/markdown/"/>
     
   </entry>
   
