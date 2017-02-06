@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-06T17:31:43.000Z</updated>
+  <updated>2017-02-06T17:42:18.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,29 +20,28 @@
     <link href="http://yoursite.com/2017/02/06/Distributed-System/"/>
     <id>http://yoursite.com/2017/02/06/Distributed-System/</id>
     <published>2017-02-06T17:28:32.000Z</published>
-    <updated>2017-02-06T17:31:43.000Z</updated>
+    <updated>2017-02-06T17:42:18.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
-&#x7B2C;19&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;&#x3002;</p>
+&#x7B2C;19&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;</p>
 <ul>
 <li><strong>Design issues in distributed mobile applications:</strong>
 <ul>
-<li><strong>Association:</strong>
-&#x2022; Devices
-&#x2013; Appear	and	disappear	from	the	space.
-&#x2013; Do	so	unpredictably
-&#x2013; May	be	totally	new	to	the	space.
-&#x2013; Or	may	be	returning	to	the	space.
-&#x2022; They	need	to	be:
-&#x2013; Perhaps	added	to	the	network
-&#x2013; Brought	into	Association	with	resources	and	applications
-&#x2022; Examples	of	Association
-&#x2013; Come	on	campus	and	be	able	to	be	associated	with	the	printers
-that	are	close	to	you.
-&#x2013; Be	alerted	if	someone	you	know	is	walking	near	you.
+<li><strong>Association:</strong><br>
+&#x2022; Devices<br>
+&#x2013; Appear	and	disappear	from	the	space.<br>
+&#x2013; Do	so	unpredictably<br>
+&#x2013; May	be	totally	new	to	the	space.<br>
+&#x2013; Or	may	be	returning	to	the	space.<br>
+&#x2022; They	need	to	be:<br>
+&#x2013; Perhaps	added	to	the	network<br>
+&#x2013; Brought	into	Association	with	resources	and	applications<br>
+&#x2022; Examples	of	Association<br>
+&#x2013; Come	on	campus	and	be	able	to	be	associated	with	the	printers that	are	close	to	you.<br>
+&#x2013; Be	alerted	if	someone	you	know	is	walking	near	you.<br>
 &#x2013; Be	provided	with	selling	prices	in	your	local	area	for	your	goods
 (not	prices	in	far-away	areas).</li>
-<li><strong>Application-level Association:</strong>
+<li><strong>Application-level Association:</strong><br>
 often by discorvery, broadcasts</li>
 </ul>
 </li>
@@ -81,34 +80,32 @@ multiple	cellular	tower	locations</li>
 <li>Use	of	JavaScript	to	fit	the	devices	capabilities</li>
 <li>Media	quality	to	fit	the	screen	and	device	capabilities</li>
 <li>Language	to	fit	the	user</li>
-<li>Information	to	fit	the	physical	context.
+<li>Information	to	fit	the	physical	context.<br>
 &#x2022; Give	only	movie	times	in	the	future,	and	in	nearby	theaters</li>
 </ul>
 </li>
 <li>
-<p><strong>Device awareness / browser detection:</strong>
+<p><strong>Device awareness / browser detection:</strong><br>
 Reply	differently	depending	on	what	device	makes	request.
 3 HTTP	headers	provide	clues	of	what	the	device	is:</p>
 </li>
 </ul>
 <ol>
 <li>
-<p>User-Agent
-&#x2022; Identifies	the	mobile	browser	and	almost always	the	device
-manufacturer	and	model.
+<p>User-Agent<br>
+&#x2022; Identifies	the	mobile	browser	and	almost always	the	device manufacturer	and	model.<br>
 &#x2022; BlackBerry8330/4.3.0	Profile/MIDP-2.0	Configuration/CLDC-1.1
-VendorID/105
+VendorID/105<br>
 &#x2022; Collection	of	mobile	agent	strings:
 &#x2013; http://www.zytrax.com/tech/web/mobile_ids.html</p>
 </li>
 <li>
-<p>X-Wap-Profile
-&#x2022; Link	to	an	XML	profile	of	the	phone&#x2019;s	capabilities
-&#x2022; E.g.
-http://www.blackberry.net/go/mobile/profiles/uaprof/8310/4.2.2.rdf</p>
+<p>X-Wap-Profile<br>
+&#x2022; Link	to	an	XML	profile	of	the	phone&#x2019;s	capabilities<br>
+&#x2022;E.g.http://www.blackberry.net/go/mobile/profiles/uaprof/8310/4.2.2.rdf</p>
 </li>
 <li>
-<p>Accept
+<p>Accept<br>
 &#x2022; Supported	MIME(&#x591A;&#x7528;&#x9014;&#x7684;&#x7F51;&#x9645;&#x90AE;&#x4EF6;&#x6269;&#x5145;&#x534F;&#x8BAE;)types
 &#x2022; E.g.	text/html,	application/xhtml+xml,	etc.</p>
 <p>These 3 headers can provide enough info , but:
@@ -118,7 +115,7 @@ http://www.blackberry.net/go/mobile/profiles/uaprof/8310/4.2.2.rdf</p>
 </li>
 </ol>
 <ul>
-<li>** Feature detection(more flexible and reliable solution):**
+<li>** Feature detection(more flexible and reliable solution):**<br>
 bottom line: using feature detection, not browser detection
 <ul>
 <li>Two strategies for feature detection:
@@ -242,127 +239,6 @@ source	native	wrapper</li>
 </li>
 </ul>
 </li>
-</ul>
-<hr>
-<h2 id="chapter-6-9-indirect-communication-and-naming">Chapter 6, 9 Indirect Communication and Naming## <a href="#chapter-6-9-indirect-communication-and-naming" class="header-anchor">#</a></h2>
-<ul>
-<li>
-<p><strong>Indirect Messaging:</strong>
-Indirect communication is defined as communication between entities in a distributed system through an intermediary with no direct coupling between the sender and the receiver(s).</p>
-<ul>
-<li>Decoupled in space:
-<ul>
-<li>Sender does not need to know the identify of the receiver(s) and visa-versa</li>
-<li>Good for handling legacy systems
-&#x2013; Decoupled in time:</li>
-<li>A component need not even be running</li>
-<li>The messaging system can store messages until they are successfully delivered</li>
-<li>Reliable delivery is insured</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Two messaging modes:</strong></p>
-<ul>
-<li>Point-to-point:
-<ul>
-<li>Inventory to Factory</li>
-<li>Inventory to Sales</li>
-<li>Factory to Accounting</li>
-</ul>
-</li>
-<li>publish / subscribe :
-<ul>
-<li>parts to parts inventory and parts order</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>** some example scenarios:**</p>
-<ul>
-<li>asynchronous communication: like chat ant twitter type app,  report info to on or more interested systems</li>
-<li>event-driven problem</li>
-<li>decoupled/ multiple consumers</li>
-<li>multiply interested parties</li>
-</ul>
-</li>
-<li>
-<p><strong>indirect messaging protocols:</strong></p>
-<ul>
-<li>two open standars: XMPP &amp; amqp</li>
-</ul>
-</li>
-<li>
-<p><strong>Java&apos;s JMS API:</strong></p>
-<ul>
-<li>An API for performing indirect messaging.</li>
-<li>It is an abstraction API like JNDI and JDBC.</li>
-<li>Interacts with some Message Oriented Middleware
-(MOM)</li>
-<li>JMS is a client-facing interface, meant to abstract
-way the particulars of any MOM.</li>
-<li>In theory, you should have portability of systems
-written with JMS such that they can work with any
-MOM.</li>
-<li>API is javax.jms</li>
-</ul>
-</li>
-<li>
-<p><strong>JMS Queues and topics</strong></p>
-</li>
-<li>
-<p><strong>JMS message types&#xFF1A;</strong></p>
-<ul>
-<li>Stream
-<ul>
-<li>Sequential stream of Java primitive data types.</li>
-</ul>
-</li>
-<li>Map
-<ul>
-<li>Set of name-value pairs</li>
-</ul>
-</li>
-<li>Names are String objects</li>
-<li>Values are Java primitives (including String)</li>
-<li>Text
-<ul>
-<li>Message is a String object</li>
-</ul>
-</li>
-<li>Plain-text message</li>
-<li>XML messages</li>
-<li>Object
-<ul>
-<li>Serialized Java object</li>
-</ul>
-</li>
-<li>Simple if in Java-only environment</li>
-<li>Bytes
-<ul>
-<li>Stream of un-interpreted bytes.</li>
-<li>To encode a message body to match an existing message format</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Message driven beans&#xFF1A;</strong>
-components that are executedasynchronously by messages coming
-available in a Queue or Topic.</p>
-</li>
-</ul>
-<p>Line Question on class:</p>
-<ul>
-<li>abstract indirect messaging API: JMS</li>
-<li>point-to-point messaging: Queue</li>
-<li>mom used in lab: Glassfish</li>
-<li>public subscribe message: Topics</li>
-<li>Indirect Messaging Destination: Queue and Topics</li>
-<li>Administratively managed resources (External to your program):
-Connectionfactory, Queue, Topics</li>
 </ul>
 ]]></content>
     
