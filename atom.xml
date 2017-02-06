@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-06T17:49:51.000Z</updated>
+  <updated>2017-02-06T17:54:51.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,15 +16,14 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ds69</title>
+    <title>Distributed System-Indirect Communication and Naming</title>
     <link href="http://yoursite.com/2017/02/06/ds69/"/>
     <id>http://yoursite.com/2017/02/06/ds69/</id>
     <published>2017-02-06T17:49:33.000Z</published>
-    <updated>2017-02-06T17:49:51.000Z</updated>
+    <updated>2017-02-06T17:54:51.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;<br>
 &#x7B2C;6&#x3001;9&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;</p>
-<h2 id="chapter-6-9-indirect-communication-and-naming">Chapter 6, 9 Indirect Communication and Naming## <a href="#chapter-6-9-indirect-communication-and-naming" class="header-anchor">#</a></h2>
 <ul>
 <li>
 <p><strong>Indirect Messaging:</strong>
@@ -148,8 +147,8 @@ Connectionfactory, Queue, Topics</li>
     
     <summary type="html">
     
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;
-&amp;#x7B2C;6&amp;#x3001;9&amp;#x7AE0;&amp;#x603B;&amp;#x
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;&lt;br&gt;
+&amp;#x7B2C;6&amp;#x3001;9&amp;#x7AE0;&amp;#x603B
     
     </summary>
     
