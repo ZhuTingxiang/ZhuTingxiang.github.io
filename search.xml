@@ -4,6 +4,385 @@
   
     
     <entry>
+      <title><![CDATA[Distributed System-Mobile and ubiquitous computing]]></title>
+      <url>http://yoursite.com/2017/02/06/Distributed-System/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
+&#x7B2C;19&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;&#x3002;</p>
+<ul>
+<li><strong>Design issues in distributed mobile applications:</strong>
+<ul>
+<li><strong>Association:</strong>
+&#x2022; Devices
+&#x2013; Appear	and	disappear	from	the	space.
+&#x2013; Do	so	unpredictably
+&#x2013; May	be	totally	new	to	the	space.
+&#x2013; Or	may	be	returning	to	the	space.
+&#x2022; They	need	to	be:
+&#x2013; Perhaps	added	to	the	network
+&#x2013; Brought	into	Association	with	resources	and	applications
+&#x2022; Examples	of	Association
+&#x2013; Come	on	campus	and	be	able	to	be	associated	with	the	printers
+that	are	close	to	you.
+&#x2013; Be	alerted	if	someone	you	know	is	walking	near	you.
+&#x2013; Be	provided	with	selling	prices	in	your	local	area	for	your	goods
+(not	prices	in	far-away	areas).</li>
+<li><strong>Application-level Association:</strong>
+often by discorvery, broadcasts</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p><strong>How a new device become part of the local network?</strong></p>
+<ul>
+<li>ARP</li>
+<li>DHCP</li>
+</ul>
+</li>
+<li>
+<p><strong>Sensing and Context Awareness:</strong></p>
+<ul>
+<li>sensing: camera, time, acceleration, location, speed, temperature</li>
+<li>context awareness: in terms of sensed data, or associated data</li>
+</ul>
+</li>
+<li>
+<p><strong>Location Sensing:</strong></p>
+<ul>
+<li>GPS</li>
+<li>Database of	collected	Wifi access points
+&#x2013; stores the	access	point&apos;s	MAC	address	and	the	GPS
+location	at	which	it	was	observed</li>
+<li>Cellular	&#x2013; compute	using	signal	strength	to
+multiple	cellular	tower	locations</li>
+<li>RFID	tags	&#x2013; tags	are	associated	with	a	location</li>
+</ul>
+</li>
+<li>
+<p>** Adaptation:**</p>
+<ul>
+<li>Presentation	to	fit	the	screen</li>
+<li>Use	of	JavaScript	to	fit	the	devices	capabilities</li>
+<li>Media	quality	to	fit	the	screen	and	device	capabilities</li>
+<li>Language	to	fit	the	user</li>
+<li>Information	to	fit	the	physical	context.
+&#x2022; Give	only	movie	times	in	the	future,	and	in	nearby	theaters</li>
+</ul>
+</li>
+<li>
+<p><strong>Device awareness / browser detection:</strong>
+Reply	differently	depending	on	what	device	makes	request.
+3 HTTP	headers	provide	clues	of	what	the	device	is:</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>User-Agent
+&#x2022; Identifies	the	mobile	browser	and	almost always	the	device
+manufacturer	and	model.
+&#x2022; BlackBerry8330/4.3.0	Profile/MIDP-2.0	Configuration/CLDC-1.1
+VendorID/105
+&#x2022; Collection	of	mobile	agent	strings:
+&#x2013; http://www.zytrax.com/tech/web/mobile_ids.html</p>
+</li>
+<li>
+<p>X-Wap-Profile
+&#x2022; Link	to	an	XML	profile	of	the	phone&#x2019;s	capabilities
+&#x2022; E.g.
+http://www.blackberry.net/go/mobile/profiles/uaprof/8310/4.2.2.rdf</p>
+</li>
+<li>
+<p>Accept
+&#x2022; Supported	MIME(&#x591A;&#x7528;&#x9014;&#x7684;&#x7F51;&#x9645;&#x90AE;&#x4EF6;&#x6269;&#x5145;&#x534F;&#x8BAE;)types
+&#x2022; E.g.	text/html,	application/xhtml+xml,	etc.</p>
+<p>These 3 headers can provide enough info , but:
+- header can be missing
+- have inaccurate values
+- have invalid urls</p>
+</li>
+</ol>
+<ul>
+<li>** Feature detection(more flexible and reliable solution):**
+bottom line: using feature detection, not browser detection
+<ul>
+<li>Two strategies for feature detection:
+<ul>
+<li>Graceful	degradation
+<ul>
+<li>Design	for	modern	browsers</li>
+<li>Where	features	are	not	available,	provide	a	simpler
+alternative
+<ul>
+<li>If	not	possible,	alert	the	user</li>
+</ul>
+</li>
+<li>Don&apos;t	allow	it	to	invisibly	fail</li>
+</ul>
+</li>
+<li>Progressive	enhancement</li>
+</ul>
+<ul>
+<li>Design	with	a	baseline	of	usable	functionality</li>
+<li>Enrich	the	user	experience	step-by-step	by	testing	for
+features	before	using	them.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Responsive web design:</strong>
+<ul>
+<li>A	strategy	of	web	design	for	multiple	screen	sizes</li>
+<li>Uses:
+<ul>
+<li>Fluid	grids	expressing	sizes	in	terms	of	percents,	not
+pixels</li>
+<li>Modify	size	of	media	using	relative	units
+<ul>
+<li>Keep	them	within	their	bounding	elements</li>
+<li>Images</li>
+<li>Media</li>
+<li>Font	size</li>
+</ul>
+</li>
+<li>Crossing	size	thresholds	switch	to	completely	different
+designs
+<ul>
+<li>Accomplished	using	media	queries</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p><strong>Mobile first:</strong></p>
+</li>
+<li>
+<p>A	philosophy	of	web	design</p>
+</li>
+<li>
+<p>Design	for	mobile	first,	and	desktop	second</p>
+</li>
+<li>
+<p>Counter	to	what	has	been	done	historically,	of	mobile	2nd</p>
+</li>
+<li>
+<p>Benefits	of	Mobile	First:
+- Focus	on	the	platform	on	which	you	will	reach	the	most	users
+- Forces	designers	to	focus	on	the	most	important	content	and
+functionality
+- Allows	for	using	technologies	on	mobile:
+* touch	events
+* geolocation &#x5730;&#x7406;&#x5B9A;&#x4F4D;
+* accelerometer &#x52A0;&#x901F;&#x8BA1;</p>
+</li>
+<li>
+<p><strong>Mobile deployment strategies:</strong></p>
+<ul>
+<li>Native
+<ul>
+<li>E.g.	Android,	iOS</li>
+<li>Requires	redeveloping	for	each	architecture</li>
+</ul>
+<ul>
+<li>2	code	bases</li>
+</ul>
+</li>
+<li>Native	with	Development	Framework
+<ul>
+<li>Use	a	framework	that	compiles	to	multiple	native
+applications</li>
+<li>E.g.	Corona	(http://www.coronalabs.com)</li>
+</ul>
+</li>
+<li>Mobile	Web
+<ul>
+<li>Develop	in	HTML	/	CSS	/JavaScript</li>
+<li>Accessed	in	a	browser</li>
+<li>Can	install	local	icon	to	launch	to	site
+<ul>
+<li>Use	local	storage	to	store	information	when	off	line</li>
+<li>Use	manifest	to	cache	application	to	use	when	off	line</li>
+<li>Sync	when	Internet	is	again	available.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Hybrid
+<ul>
+<li>Develop	in	HTML	/	CSS	/	JavaScript</li>
+<li>Wrap	in	a	browser	wrapper	to	create	native	apps</li>
+<li>Wrapper	provides	access	to	phone	hardware	not
+accessible	from	the	browser</li>
+<li>Apache	Cordova	(https://cordova.apache.org)	is	an	open
+source	native	wrapper</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="chapter-6-9-indirect-communication-and-naming">Chapter 6, 9 Indirect Communication and Naming## <a href="#chapter-6-9-indirect-communication-and-naming" class="header-anchor">#</a></h2>
+<ul>
+<li>
+<p><strong>Indirect Messaging:</strong>
+Indirect communication is defined as communication between entities in a distributed system through an intermediary with no direct coupling between the sender and the receiver(s).</p>
+<ul>
+<li>Decoupled in space:
+<ul>
+<li>Sender does not need to know the identify of the receiver(s) and visa-versa</li>
+<li>Good for handling legacy systems
+&#x2013; Decoupled in time:</li>
+<li>A component need not even be running</li>
+<li>The messaging system can store messages until they are successfully delivered</li>
+<li>Reliable delivery is insured</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Two messaging modes:</strong></p>
+<ul>
+<li>Point-to-point:
+<ul>
+<li>Inventory to Factory</li>
+<li>Inventory to Sales</li>
+<li>Factory to Accounting</li>
+</ul>
+</li>
+<li>publish / subscribe :
+<ul>
+<li>parts to parts inventory and parts order</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>** some example scenarios:**</p>
+<ul>
+<li>asynchronous communication: like chat ant twitter type app,  report info to on or more interested systems</li>
+<li>event-driven problem</li>
+<li>decoupled/ multiple consumers</li>
+<li>multiply interested parties</li>
+</ul>
+</li>
+<li>
+<p><strong>indirect messaging protocols:</strong></p>
+<ul>
+<li>two open standars: XMPP &amp; amqp</li>
+</ul>
+</li>
+<li>
+<p><strong>Java&apos;s JMS API:</strong></p>
+<ul>
+<li>An API for performing indirect messaging.</li>
+<li>It is an abstraction API like JNDI and JDBC.</li>
+<li>Interacts with some Message Oriented Middleware
+(MOM)</li>
+<li>JMS is a client-facing interface, meant to abstract
+way the particulars of any MOM.</li>
+<li>In theory, you should have portability of systems
+written with JMS such that they can work with any
+MOM.</li>
+<li>API is javax.jms</li>
+</ul>
+</li>
+<li>
+<p><strong>JMS Queues and topics</strong></p>
+</li>
+<li>
+<p><strong>JMS message types&#xFF1A;</strong></p>
+<ul>
+<li>Stream
+<ul>
+<li>Sequential stream of Java primitive data types.</li>
+</ul>
+</li>
+<li>Map
+<ul>
+<li>Set of name-value pairs</li>
+</ul>
+</li>
+<li>Names are String objects</li>
+<li>Values are Java primitives (including String)</li>
+<li>Text
+<ul>
+<li>Message is a String object</li>
+</ul>
+</li>
+<li>Plain-text message</li>
+<li>XML messages</li>
+<li>Object
+<ul>
+<li>Serialized Java object</li>
+</ul>
+</li>
+<li>Simple if in Java-only environment</li>
+<li>Bytes
+<ul>
+<li>Stream of un-interpreted bytes.</li>
+<li>To encode a message body to match an existing message format</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Message driven beans&#xFF1A;</strong>
+components that are executedasynchronously by messages coming
+available in a Queue or Topic.</p>
+</li>
+</ul>
+<p>Line Question on class:</p>
+<ul>
+<li>abstract indirect messaging API: JMS</li>
+<li>point-to-point messaging: Queue</li>
+<li>mom used in lab: Glassfish</li>
+<li>public subscribe message: Topics</li>
+<li>Indirect Messaging Destination: Queue and Topics</li>
+<li>Administratively managed resources (External to your program):
+Connectionfactory, Queue, Topics</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Distributed System-ACID]]></title>
+      <url>http://yoursite.com/2017/02/06/17/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
+ACID&#x6982;&#x5FF5;&#x603B;&#x7ED3;</p>
+<ul>
+<li><strong>ACID Transactions&#xFF1A;</strong>
+<ul>
+<li><strong>Atomic:</strong>  All or nothing. No intermediate states are visible. No possibility that
+only part of the transaction ran. If a transaction fails or aborts prior to
+committing, the TP system will undo the effects of any updates (will
+recover). We either commit or abort the entire process. Checkpointing and
+Logging and recoverable objects can be used to ensure a transaction is
+atomic with respect to failures.</li>
+<li><strong>Consistent:</strong>  system invariants preserved, e.g., if there were n dollars in a
+bank before a transfer transaction then there will be n dollars in the bank
+after the transfer. This is largely in the hands of the application programmer.</li>
+<li><strong>Isolated:</strong>  Two transactions do not interfere with each other. They appear as
+serial executions. This is the case even though transactions may run
+concurrently. Locking is often used to prevent one transaction from
+interfering with another.</li>
+<li><strong>Durable:</strong> The commit causes a permanent change to stable storage. This
+property may be obtained with log-based recovery algorithms. If there has
+been a commit but updates have not yet been a commit but updates have not yet been completed due to a crash,
+the logs will hold the necessary information on recovery.</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[哪儿]]></title>
       <url>http://yoursite.com/2017/01/24/%E5%93%AA%E5%84%BF/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><embed src="http://www.xiami.com/widget/12753884_1769553081/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></p>
@@ -988,40 +1367,21 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 &#x6709;4&#x4E2A;2&#xFF0C;1&#x4E2A;5<
     <entry>
       <title><![CDATA[2016-08-02]]></title>
       <url>http://yoursite.com/2016/08/02/2016-08-02/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#xA0;</p>
-<pre><code>&#x4ECA;&#x5929;&#x5750;&#x5728;&#x7A97;&#x53F0;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x770B;&#x7740;&#x84DD;&#x5929;&#x767D;&#x4E91;&#x53D1;&#x4E86;&#x4F1A;&#x513F;&#x5446;&#x3002;
-
-&#x8FD8;&#x6709;&#x4E09;&#x5929;&#x5C31;&#x8981;&#x79BB;&#x5F00;&#x4E0A;&#x6D77;&#x4E86;&#x3002;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;&#x5199;&#x8FC7;&#x6587;&#x5B57;&#x7684;&#x5730;&#x65B9;&#x90FD;&#x4F1A;&#x8BF4;&#xFF0C;&#x4E0A;&#x6D77;&#x554A;&#xFF0C;&#x6211;&#x771F;&#x559C;&#x6B22;&#x8FD9;&#x5EA7;&#x57CE;&#x3002;
-
-&#x4E5F;&#x8BB8;&#x53BB;&#x8FC7;&#x5F88;&#x591A;&#x5730;&#x65B9;&#xFF0C;&#x4E5F;&#x8BB8;&#x5C06;&#x8981;&#x53BB;&#x5F88;&#x591A;&#x5730;&#x65B9;&#xFF0C;&#x4E5F;&#x8BB8;&#x770B;&#x8FC7;&#x5F88;&#x591A;&#x98CE;&#x666F;&#xFF0C;&#x4E5F;&#x8BB8;&#x5C06;&#x8981;&#x770B;&#x5F88;&#x591A;&#x98CE;&#x666F;&#xFF0C;&#x4F46;&#x6211;&#x4E0D;&#x4F1A;&#x5FD8;&#x8BB0;&#x5728;&#x6211;&#x8FD8;&#x5E74;&#x8F7B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0A;&#x6D77;&#x6240;&#x7ED9;&#x4E88;&#x6211;&#x7684;&#x4E00;&#x5207;&#x3002;
-
-&#x8FD9;&#x91CC;&#x662F;&#x8BA9;&#x6211;&#x5FC3;&#x5B89;&#x7684;&#x5730;&#x65B9;&#x3002;&#x5BF9;&#x4E00;&#x4E2A;&#x4EBA;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x5730;&#x65B9;&#x4E0D;&#x4F1A;&#x5F88;&#x591A;&#x7684;&#x3002;
-
-&#x60F3;&#x8D77;&#x5728;&#x6FB3;&#x6D32;&#x7684;&#x65F6;&#x5019;&#x603B;&#x4F1A;&#x770B;&#x661F;&#x7A7A;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x4F4F;&#x8FDB;&#x5927;&#x623F;&#x5B50;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5750;&#x5728;&#x9633;&#x53F0;&#x4E0A;&#x770B;&#x4E86;&#x597D;&#x4E45;&#xFF0C;&#x4E5F;&#x4E0D;&#x8BF4;&#x8BDD;&#xFF0C;&#x4E5F;&#x4E0D;&#x60F3;&#x6709;&#x4EBA;&#x5728;&#x65C1;&#x8FB9;&#x3002;&#x5C31;&#x60F3;&#x8FD9;&#x4E48;&#x770B;&#x7740;&#xFF0C;&#x540E;&#x6765;&#x592A;&#x51B7;&#x4E86;&#x8FDB;&#x4E86;&#x5C4B;&#xFF0C;&#x5750;&#x5728;&#x5730;&#x6BEF;&#x4E0A;&#xFF0C;&#x8111;&#x5B50;&#x91CC;&#x8FD8;&#x662F;&#x661F;&#x7A7A;&#x3002;
-
-&#x5BD2;&#x5047;&#x7684;&#x65F6;&#x5019;&#x88AB;&#x62C9;&#x53BB;Road Trip&#xFF0C;&#x4F4F;&#x8FDB;&#x4E00;&#x4E2A;&#x65C1;&#x8FB9;&#x4EC0;&#x4E48;&#x4E5F;&#x6CA1;&#x6709;&#x7684;&#x5C0F;&#x6728;&#x5C4B;&#xFF0C;&#x8EBA;&#x5728;&#x5E8A;&#x4E0A;&#x5C31;&#x80FD;&#x770B;&#x5230;&#x5929;&#x7A7A;&#x3002;&#x53EF;&#x662F;&#x6211;&#x4E00;&#x4E0A;&#x5E8A;&#x5C31;&#x7761;&#x7740;&#x4E86;&#xFF0C;&#x9192;&#x6765;&#x7684;&#x65F6;&#x5019;&#x51CC;&#x6668;&#x56DB;&#x70B9;&#xFF0C;&#x9519;&#x8FC7;&#x4E86;&#x4E09;&#x70B9;&#x4E8C;&#x5341;&#x7684;&#x53CC;&#x5B50;&#x5EA7;&#x6D41;&#x661F;&#x96E8;&#x3002;
-
-&#x53EF;&#x90A3;&#x4E00;&#x523B;&#xFF0C;&#x4E00;&#x70B9;&#x4E5F;&#x4E0D;&#x89C9;&#x5F97;&#x53EF;&#x60DC;&#x3002;
-
-&#x90A3;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x5FC3;&#x91CC;&#x4E5F;&#x662F;&#x60F3;&#x7740;&#x8FD9;&#x56DB;&#x4E2A;&#x5B57;&#xFF0C;&#x6765;&#x65E5;&#x65B9;&#x957F;&#x3002;&#x661F;&#x7A7A;&#x4E00;&#x76F4;&#x5728;&#x554A;&#x3002;&#x4E0D;&#x7528;&#x6015;&#x3002;
-
-&#x9AD8;&#x4E2D;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x987E;&#x8349;&#x8349;&#x7B2C;&#x4E00;&#x6B21;&#x5728;&#x672C;&#x5B50;&#x4E0A;&#x5199;&#x7ED9;&#x6211;&#x8FD9;&#x53E5;&#x8BDD;&#xFF0C;&#x6765;&#x65E5;&#x65B9;&#x957F;&#x3002;&#x7EC6;&#x7626;&#x7684;&#x5B57;&#x4F53;&#x7279;&#x522B;&#x597D;&#x770B;&#x3002;&#x4F46;&#x5C31;&#x662F;&#x8FD9;&#x79CD;&#x5B57;&#x4F53;&#xFF0C;&#x5979;&#x548C;&#x6211;&#x51B7;&#x6218;&#x3001;&#x95F9;&#x77DB;&#x76FE;&#xFF0C;&#x4E00;&#x4E2A;&#x5B66;&#x671F;&#x6CA1;&#x6709;&#x8BB2;&#x8BDD;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E5F;&#x662F;&#x7528;&#x8FD9;&#x79CD;&#x5B57;&#x4F53;&#x7ED9;&#x6211;&#x5199;&#x4E86;&#x5C0F;&#x7EB8;&#x6761;&#x6765;&#x548C;&#x597D;&#x3002;
-
-&#x90A3;&#x65F6;&#x5019;&#x771F;&#x662F;&#x5E74;&#x8F7B;&#xFF0C;&#x73B0;&#x5728;&#x8C01;&#x8FD8;&#x6709;&#x7CBE;&#x529B;&#x7EA0;&#x7F20;&#x8FD9;&#x4E48;&#x4E45;&#x3002;
-
-&#x53EF;&#x662F;&#x6765;&#x65E5;&#x65B9;&#x957F;&#xFF0C;&#x5230;&#x540E;&#x6765;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x6211;&#x548C;&#x6211;&#x6700;&#x597D;&#x7684;&#x670B;&#x53CB;&#x4E00;&#x5E74;&#x624D;&#x89C1;&#x4E00;&#x9762;&#xFF0C;&#x4E00;&#x9762;&#x624D;&#x51E0;&#x4E2A;&#x5C0F;&#x65F6;&#xFF0C;&#x4E00;&#x676F;&#x5496;&#x5561;&#x6216;&#x8005;&#x4E00;&#x987F;&#x996D;&#x3002;&#x5728;&#x673A;&#x573A;&#x8FD9;&#x6837;&#x5306;&#x5FD9;&#x7684;&#x5730;&#x65B9;&#x3002;
-
-&#x6240;&#x4EE5;&#x542C;&#x4E0A;&#x53BB;&#x6765;&#x65E5;&#x65B9;&#x957F;&#x771F;&#x662F;&#x9EBB;&#x6728;&#x81EA;&#x5DF1;&#x7684;&#x8BF4;&#x8F9E;&#x3002;
-
-&#x5C31;&#x50CF;&#x90A3;&#x5929;&#x6960;&#x6960;&#x548C;&#x6211;&#x8BA8;&#x8BBA;&#x7684;&#x90A3;&#x6837;&#xFF0C;&#x8FD9;&#x4E2A;&#x4E16;&#x754C;&#x4E0A;&#xFF0C;&#x5F88;&#x591A;&#x4EBA;&#x628A;&#x75DB;&#x82E6;&#x5F53;&#x78E8;&#x70BC;&#xFF0C;&#x628A;&#x5E73;&#x51E1;&#x5F53;&#x5E78;&#x798F;&#xFF0C;&#x5728;&#x67D0;&#x79CD;&#x610F;&#x4E49;&#x4E0A;&#x7ED9;&#x81EA;&#x5DF1;&#x627E;&#x5230;&#x501F;&#x53E3;&#xFF0C;&#x627E;&#x5230;&#x5FC3;&#x5B89;&#x7406;&#x5F97;&#x7EE7;&#x7EED;&#x6D3B;&#x4E0B;&#x53BB;&#x7684;&#x501F;&#x53E3;&#x3002;&#x6211;&#x60F3;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x65E0;&#x6CD5;&#x5206;&#x8FA8;&#x75DB;&#x82E6;&#x548C;&#x771F;&#x6B63;&#x7684;&#x6109;&#x60A6;&#xFF0C;&#x4E60;&#x60EF;&#x4E86;&#x987A;&#x5E94;&#x4E86;&#x75DB;&#x82E6;&#xFF0C;&#x53CD;&#x800C;&#x5FD8;&#x8BB0;&#x4E86;&#x5982;&#x4F55;&#x89C4;&#x907F;&#x75DB;&#x82E6;&#x3002;&#x4F46;&#x89C4;&#x907F;&#x75DB;&#x82E6;&#xFF0C;&#x5F88;&#x96BE;&#xFF0C;&#x5927;&#x591A;&#x6570;&#x65F6;&#x5019;&#xFF0C;&#x4EBA;&#x7684;&#x60EF;&#x6027;&#x4F1A;&#x7528;&#x7ECF;&#x9A8C;&#x4EE3;&#x66FF;&#x611F;&#x77E5;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;&#x81EA;&#x5DF1;&#x7684;&#x8FD8;&#x662F;&#x522B;&#x4EBA;&#x7684;&#x3002;
-
-&#x53EF;&#x6211;&#x8FD8;&#x662F;&#x8BA4;&#x4E3A;&#xFF0C;&#x81EA;&#x5DF1;&#x7684;&#x611F;&#x53D7;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF0C;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x3002;&#x54EA;&#x6015;&#x627E;&#x4E0D;&#x5230;&#x8DEF;&#x3002;&#x54EA;&#x6015;&#x56DE;&#x4E0D;&#x5230;&#x539F;&#x70B9;&#x3002;&#x4E5F;&#x8981;&#x5FE0;&#x4E8E;&#x81EA;&#x6211;&#x3002;
-
-&#x665A;&#x5B89;&#x3002;
-
-&amp;nbsp;
-
-&amp;nbsp;</code></pre>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#x4ECA;&#x5929;&#x5750;&#x5728;&#x7A97;&#x53F0;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x770B;&#x7740;&#x84DD;&#x5929;&#x767D;&#x4E91;&#x53D1;&#x4E86;&#x4F1A;&#x513F;&#x5446;&#x3002;</p>
+<p>&#x8FD8;&#x6709;&#x4E09;&#x5929;&#x5C31;&#x8981;&#x79BB;&#x5F00;&#x4E0A;&#x6D77;&#x4E86;&#x3002;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;&#x5199;&#x8FC7;&#x6587;&#x5B57;&#x7684;&#x5730;&#x65B9;&#x90FD;&#x4F1A;&#x8BF4;&#xFF0C;&#x4E0A;&#x6D77;&#x554A;&#xFF0C;&#x6211;&#x771F;&#x559C;&#x6B22;&#x8FD9;&#x5EA7;&#x57CE;&#x3002;</p>
+<p>&#x4E5F;&#x8BB8;&#x53BB;&#x8FC7;&#x5F88;&#x591A;&#x5730;&#x65B9;&#xFF0C;&#x4E5F;&#x8BB8;&#x5C06;&#x8981;&#x53BB;&#x5F88;&#x591A;&#x5730;&#x65B9;&#xFF0C;&#x4E5F;&#x8BB8;&#x770B;&#x8FC7;&#x5F88;&#x591A;&#x98CE;&#x666F;&#xFF0C;&#x4E5F;&#x8BB8;&#x5C06;&#x8981;&#x770B;&#x5F88;&#x591A;&#x98CE;&#x666F;&#xFF0C;&#x4F46;&#x6211;&#x4E0D;&#x4F1A;&#x5FD8;&#x8BB0;&#x5728;&#x6211;&#x8FD8;&#x5E74;&#x8F7B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0A;&#x6D77;&#x6240;&#x7ED9;&#x4E88;&#x6211;&#x7684;&#x4E00;&#x5207;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x662F;&#x8BA9;&#x6211;&#x5FC3;&#x5B89;&#x7684;&#x5730;&#x65B9;&#x3002;&#x5BF9;&#x4E00;&#x4E2A;&#x4EBA;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x5730;&#x65B9;&#x4E0D;&#x4F1A;&#x5F88;&#x591A;&#x7684;&#x3002;</p>
+<p>&#x60F3;&#x8D77;&#x5728;&#x6FB3;&#x6D32;&#x7684;&#x65F6;&#x5019;&#x603B;&#x4F1A;&#x770B;&#x661F;&#x7A7A;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x4F4F;&#x8FDB;&#x5927;&#x623F;&#x5B50;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5750;&#x5728;&#x9633;&#x53F0;&#x4E0A;&#x770B;&#x4E86;&#x597D;&#x4E45;&#xFF0C;&#x4E5F;&#x4E0D;&#x8BF4;&#x8BDD;&#xFF0C;&#x4E5F;&#x4E0D;&#x60F3;&#x6709;&#x4EBA;&#x5728;&#x65C1;&#x8FB9;&#x3002;&#x5C31;&#x60F3;&#x8FD9;&#x4E48;&#x770B;&#x7740;&#xFF0C;&#x540E;&#x6765;&#x592A;&#x51B7;&#x4E86;&#x8FDB;&#x4E86;&#x5C4B;&#xFF0C;&#x5750;&#x5728;&#x5730;&#x6BEF;&#x4E0A;&#xFF0C;&#x8111;&#x5B50;&#x91CC;&#x8FD8;&#x662F;&#x661F;&#x7A7A;&#x3002;</p>
+<p>&#x5BD2;&#x5047;&#x7684;&#x65F6;&#x5019;&#x88AB;&#x62C9;&#x53BB;Road Trip&#xFF0C;&#x4F4F;&#x8FDB;&#x4E00;&#x4E2A;&#x65C1;&#x8FB9;&#x4EC0;&#x4E48;&#x4E5F;&#x6CA1;&#x6709;&#x7684;&#x5C0F;&#x6728;&#x5C4B;&#xFF0C;&#x8EBA;&#x5728;&#x5E8A;&#x4E0A;&#x5C31;&#x80FD;&#x770B;&#x5230;&#x5929;&#x7A7A;&#x3002;&#x53EF;&#x662F;&#x6211;&#x4E00;&#x4E0A;&#x5E8A;&#x5C31;&#x7761;&#x7740;&#x4E86;&#xFF0C;&#x9192;&#x6765;&#x7684;&#x65F6;&#x5019;&#x51CC;&#x6668;&#x56DB;&#x70B9;&#xFF0C;&#x9519;&#x8FC7;&#x4E86;&#x4E09;&#x70B9;&#x4E8C;&#x5341;&#x7684;&#x53CC;&#x5B50;&#x5EA7;&#x6D41;&#x661F;&#x96E8;&#x3002;</p>
+<p>&#x53EF;&#x90A3;&#x4E00;&#x523B;&#xFF0C;&#x4E00;&#x70B9;&#x4E5F;&#x4E0D;&#x89C9;&#x5F97;&#x53EF;&#x60DC;&#x3002;</p>
+<p>&#x90A3;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x5FC3;&#x91CC;&#x4E5F;&#x662F;&#x60F3;&#x7740;&#x8FD9;&#x56DB;&#x4E2A;&#x5B57;&#xFF0C;&#x6765;&#x65E5;&#x65B9;&#x957F;&#x3002;&#x661F;&#x7A7A;&#x4E00;&#x76F4;&#x5728;&#x554A;&#x3002;&#x4E0D;&#x7528;&#x6015;&#x3002;</p>
+<p>&#x9AD8;&#x4E2D;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x987E;&#x8349;&#x8349;&#x7B2C;&#x4E00;&#x6B21;&#x5728;&#x672C;&#x5B50;&#x4E0A;&#x5199;&#x7ED9;&#x6211;&#x8FD9;&#x53E5;&#x8BDD;&#xFF0C;&#x6765;&#x65E5;&#x65B9;&#x957F;&#x3002;&#x7EC6;&#x7626;&#x7684;&#x5B57;&#x4F53;&#x7279;&#x522B;&#x597D;&#x770B;&#x3002;&#x4F46;&#x5C31;&#x662F;&#x8FD9;&#x79CD;&#x5B57;&#x4F53;&#xFF0C;&#x5979;&#x548C;&#x6211;&#x51B7;&#x6218;&#x3001;&#x95F9;&#x77DB;&#x76FE;&#xFF0C;&#x4E00;&#x4E2A;&#x5B66;&#x671F;&#x6CA1;&#x6709;&#x8BB2;&#x8BDD;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E5F;&#x662F;&#x7528;&#x8FD9;&#x79CD;&#x5B57;&#x4F53;&#x7ED9;&#x6211;&#x5199;&#x4E86;&#x5C0F;&#x7EB8;&#x6761;&#x6765;&#x548C;&#x597D;&#x3002;</p>
+<p>&#x90A3;&#x65F6;&#x5019;&#x771F;&#x662F;&#x5E74;&#x8F7B;&#xFF0C;&#x73B0;&#x5728;&#x8C01;&#x8FD8;&#x6709;&#x7CBE;&#x529B;&#x7EA0;&#x7F20;&#x8FD9;&#x4E48;&#x4E45;&#x3002;</p>
+<p>&#x53EF;&#x662F;&#x6765;&#x65E5;&#x65B9;&#x957F;&#xFF0C;&#x5230;&#x540E;&#x6765;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x6211;&#x548C;&#x6211;&#x6700;&#x597D;&#x7684;&#x670B;&#x53CB;&#x4E00;&#x5E74;&#x624D;&#x89C1;&#x4E00;&#x9762;&#xFF0C;&#x4E00;&#x9762;&#x624D;&#x51E0;&#x4E2A;&#x5C0F;&#x65F6;&#xFF0C;&#x4E00;&#x676F;&#x5496;&#x5561;&#x6216;&#x8005;&#x4E00;&#x987F;&#x996D;&#x3002;&#x5728;&#x673A;&#x573A;&#x8FD9;&#x6837;&#x5306;&#x5FD9;&#x7684;&#x5730;&#x65B9;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x542C;&#x4E0A;&#x53BB;&#x6765;&#x65E5;&#x65B9;&#x957F;&#x771F;&#x662F;&#x9EBB;&#x6728;&#x81EA;&#x5DF1;&#x7684;&#x8BF4;&#x8F9E;&#x3002;</p>
+<p>&#x5C31;&#x50CF;&#x90A3;&#x5929;&#x6960;&#x6960;&#x548C;&#x6211;&#x8BA8;&#x8BBA;&#x7684;&#x90A3;&#x6837;&#xFF0C;&#x8FD9;&#x4E2A;&#x4E16;&#x754C;&#x4E0A;&#xFF0C;&#x5F88;&#x591A;&#x4EBA;&#x628A;&#x75DB;&#x82E6;&#x5F53;&#x78E8;&#x70BC;&#xFF0C;&#x628A;&#x5E73;&#x51E1;&#x5F53;&#x5E78;&#x798F;&#xFF0C;&#x5728;&#x67D0;&#x79CD;&#x610F;&#x4E49;&#x4E0A;&#x7ED9;&#x81EA;&#x5DF1;&#x627E;&#x5230;&#x501F;&#x53E3;&#xFF0C;&#x627E;&#x5230;&#x5FC3;&#x5B89;&#x7406;&#x5F97;&#x7EE7;&#x7EED;&#x6D3B;&#x4E0B;&#x53BB;&#x7684;&#x501F;&#x53E3;&#x3002;&#x6211;&#x60F3;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x65E0;&#x6CD5;&#x5206;&#x8FA8;&#x75DB;&#x82E6;&#x548C;&#x771F;&#x6B63;&#x7684;&#x6109;&#x60A6;&#xFF0C;&#x4E60;&#x60EF;&#x4E86;&#x987A;&#x5E94;&#x4E86;&#x75DB;&#x82E6;&#xFF0C;&#x53CD;&#x800C;&#x5FD8;&#x8BB0;&#x4E86;&#x5982;&#x4F55;&#x89C4;&#x907F;&#x75DB;&#x82E6;&#x3002;&#x4F46;&#x89C4;&#x907F;&#x75DB;&#x82E6;&#xFF0C;&#x5F88;&#x96BE;&#xFF0C;&#x5927;&#x591A;&#x6570;&#x65F6;&#x5019;&#xFF0C;&#x4EBA;&#x7684;&#x60EF;&#x6027;&#x4F1A;&#x7528;&#x7ECF;&#x9A8C;&#x4EE3;&#x66FF;&#x611F;&#x77E5;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;&#x81EA;&#x5DF1;&#x7684;&#x8FD8;&#x662F;&#x522B;&#x4EBA;&#x7684;&#x3002;</p>
+<p>&#x53EF;&#x6211;&#x8FD8;&#x662F;&#x8BA4;&#x4E3A;&#xFF0C;&#x81EA;&#x5DF1;&#x7684;&#x611F;&#x53D7;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF0C;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x3002;&#x54EA;&#x6015;&#x627E;&#x4E0D;&#x5230;&#x8DEF;&#x3002;&#x54EA;&#x6015;&#x56DE;&#x4E0D;&#x5230;&#x539F;&#x70B9;&#x3002;&#x4E5F;&#x8981;&#x5FE0;&#x4E8E;&#x81EA;&#x6211;&#x3002;</p>
+<p>&#x665A;&#x5B89;&#x3002;</p>
 ]]></content>
     </entry>
     
@@ -1310,12 +1670,6 @@ As you can see, this article is written in Markdown.
 &#x4E3A;&#x4E86;&#x907F;&#x514D;&#x8FD9;&#x4E2A;&#x535A;&#x5BA2;&#x53D8;&#x6210;&#x6D41;&#x6C34;&#x8D26;&#x535A;&#x5BA2;&#x3002;&#x6211;&#x5C31;&#x505C;&#x7B14;&#xFF0C;&#x4E0D;&#x5199;&#x4E86;&#x3002;
 
 &#x4ECA;&#x5929;&#x7684;BGM&#x662F;&#x738B;&#x83F2;&#x300A;&#x77DC;&#x6301;&#x300B;&#x3002;Nighty
-
-&amp;nbsp;
-
-&amp;nbsp;
-
-&amp;nbsp;
 </code></pre>
 ]]></content>
     </entry>
