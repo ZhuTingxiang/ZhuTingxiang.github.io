@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-06T17:42:18.000Z</updated>
+  <updated>2017-02-06T17:48:51.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,28 +20,28 @@
     <link href="http://yoursite.com/2017/02/06/Distributed-System/"/>
     <id>http://yoursite.com/2017/02/06/Distributed-System/</id>
     <published>2017-02-06T17:28:32.000Z</published>
-    <updated>2017-02-06T17:42:18.000Z</updated>
+    <updated>2017-02-06T17:48:51.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;<br>
 &#x7B2C;19&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;</p>
 <ul>
 <li><strong>Design issues in distributed mobile applications:</strong>
 <ul>
-<li><strong>Association:</strong><br>
-&#x2022; Devices<br>
-&#x2013; Appear	and	disappear	from	the	space.<br>
-&#x2013; Do	so	unpredictably<br>
-&#x2013; May	be	totally	new	to	the	space.<br>
-&#x2013; Or	may	be	returning	to	the	space.<br>
-&#x2022; They	need	to	be:<br>
-&#x2013; Perhaps	added	to	the	network<br>
-&#x2013; Brought	into	Association	with	resources	and	applications<br>
-&#x2022; Examples	of	Association<br>
-&#x2013; Come	on	campus	and	be	able	to	be	associated	with	the	printers that	are	close	to	you.<br>
-&#x2013; Be	alerted	if	someone	you	know	is	walking	near	you.<br>
+<li><strong>Association:</strong>
+&#x2022; Devices
+&#x2013; Appear	and	disappear	from	the	space.
+&#x2013; Do	so	unpredictably
+&#x2013; May	be	totally	new	to	the	space.
+&#x2013; Or	may	be	returning	to	the	space.
+&#x2022; They	need	to	be:
+&#x2013; Perhaps	added	to	the	network
+&#x2013; Brought	into	Association	with	resources	and	applications
+&#x2022; Examples	of	Association
+&#x2013; Come	on	campus	and	be	able	to	be	associated	with	the	printers that	are	close	to	you.
+&#x2013; Be	alerted	if	someone	you	know	is	walking	near	you.
 &#x2013; Be	provided	with	selling	prices	in	your	local	area	for	your	goods
 (not	prices	in	far-away	areas).</li>
-<li><strong>Application-level Association:</strong><br>
+<li><strong>Application-level Association:</strong>
 often by discorvery, broadcasts</li>
 </ul>
 </li>
@@ -80,32 +80,32 @@ multiple	cellular	tower	locations</li>
 <li>Use	of	JavaScript	to	fit	the	devices	capabilities</li>
 <li>Media	quality	to	fit	the	screen	and	device	capabilities</li>
 <li>Language	to	fit	the	user</li>
-<li>Information	to	fit	the	physical	context.<br>
+<li>Information	to	fit	the	physical	context.
 &#x2022; Give	only	movie	times	in	the	future,	and	in	nearby	theaters</li>
 </ul>
 </li>
 <li>
-<p><strong>Device awareness / browser detection:</strong><br>
+<p><strong>Device awareness / browser detection:</strong>
 Reply	differently	depending	on	what	device	makes	request.
 3 HTTP	headers	provide	clues	of	what	the	device	is:</p>
 </li>
 </ul>
 <ol>
 <li>
-<p>User-Agent<br>
-&#x2022; Identifies	the	mobile	browser	and	almost always	the	device manufacturer	and	model.<br>
+<p>User-Agent
+&#x2022; Identifies	the	mobile	browser	and	almost always	the	device manufacturer	and	model.
 &#x2022; BlackBerry8330/4.3.0	Profile/MIDP-2.0	Configuration/CLDC-1.1
-VendorID/105<br>
+VendorID/105
 &#x2022; Collection	of	mobile	agent	strings:
 &#x2013; http://www.zytrax.com/tech/web/mobile_ids.html</p>
 </li>
 <li>
-<p>X-Wap-Profile<br>
-&#x2022; Link	to	an	XML	profile	of	the	phone&#x2019;s	capabilities<br>
+<p>X-Wap-Profile
+&#x2022; Link	to	an	XML	profile	of	the	phone&#x2019;s	capabilities
 &#x2022;E.g.http://www.blackberry.net/go/mobile/profiles/uaprof/8310/4.2.2.rdf</p>
 </li>
 <li>
-<p>Accept<br>
+<p>Accept
 &#x2022; Supported	MIME(&#x591A;&#x7528;&#x9014;&#x7684;&#x7F51;&#x9645;&#x90AE;&#x4EF6;&#x6269;&#x5145;&#x534F;&#x8BAE;)types
 &#x2022; E.g.	text/html,	application/xhtml+xml,	etc.</p>
 <p>These 3 headers can provide enough info , but:
@@ -115,7 +115,7 @@ VendorID/105<br>
 </li>
 </ol>
 <ul>
-<li>** Feature detection(more flexible and reliable solution):**<br>
+<li>** Feature detection(more flexible and reliable solution):**
 bottom line: using feature detection, not browser detection
 <ul>
 <li>Two strategies for feature detection:
@@ -244,8 +244,8 @@ source	native	wrapper</li>
     
     <summary type="html">
     
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;
-&amp;#x7B2C;19&amp;#x7AE0;&amp;#x603B;&amp;#x7ED3;&amp;#x
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;&lt;br&gt;
+&amp;#x7B2C;19&amp;#x7AE0;&amp;#x603B;&amp;#x7ED3
     
     </summary>
     
@@ -261,7 +261,7 @@ source	native	wrapper</li>
     <link href="http://yoursite.com/2017/02/06/17/"/>
     <id>http://yoursite.com/2017/02/06/17/</id>
     <published>2017-02-06T17:20:32.000Z</published>
-    <updated>2017-02-06T17:34:52.000Z</updated>
+    <updated>2017-02-06T17:48:58.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
 ACID&#x6982;&#x5FF5;&#x603B;&#x7ED3;</p>
