@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-06T17:54:51.000Z</updated>
+  <updated>2017-02-06T17:56:06.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://yoursite.com/2017/02/06/ds69/"/>
     <id>http://yoursite.com/2017/02/06/ds69/</id>
     <published>2017-02-06T17:49:33.000Z</published>
-    <updated>2017-02-06T17:54:51.000Z</updated>
+    <updated>2017-02-06T17:56:06.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;<br>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
 &#x7B2C;6&#x3001;9&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;</p>
 <ul>
 <li>
@@ -59,7 +59,7 @@ Indirect communication is defined as communication between entities in a distrib
 </ul>
 </li>
 <li>
-<p>** some example scenarios:**</p>
+<p><strong>some example scenarios:</strong></p>
 <ul>
 <li>asynchronous communication: like chat ant twitter type app,  report info to on or more interested systems</li>
 <li>event-driven problem</li>
@@ -147,8 +147,8 @@ Connectionfactory, Queue, Topics</li>
     
     <summary type="html">
     
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;&lt;br&gt;
-&amp;#x7B2C;6&amp;#x3001;9&amp;#x7AE0;&amp;#x603B
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;
+&amp;#x7B2C;6&amp;#x3001;9&amp;#x7AE0;&amp;#x603B;&amp;#x
     
     </summary>
     
@@ -164,9 +164,9 @@ Connectionfactory, Queue, Topics</li>
     <link href="http://yoursite.com/2017/02/06/Distributed-System/"/>
     <id>http://yoursite.com/2017/02/06/Distributed-System/</id>
     <published>2017-02-06T17:28:32.000Z</published>
-    <updated>2017-02-06T17:48:51.000Z</updated>
+    <updated>2017-02-06T17:56:38.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;<br>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
 &#x7B2C;19&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;</p>
 <ul>
 <li><strong>Design issues in distributed mobile applications:</strong>
@@ -218,7 +218,7 @@ multiple	cellular	tower	locations</li>
 </ul>
 </li>
 <li>
-<p>** Adaptation:**</p>
+<p><strong>Adaptation:</strong></p>
 <ul>
 <li>Presentation	to	fit	the	screen</li>
 <li>Use	of	JavaScript	to	fit	the	devices	capabilities</li>
@@ -259,7 +259,7 @@ VendorID/105
 </li>
 </ol>
 <ul>
-<li>** Feature detection(more flexible and reliable solution):**
+<li><strong>Feature detection(more flexible and reliable solution):</strong>
 bottom line: using feature detection, not browser detection
 <ul>
 <li>Two strategies for feature detection:
@@ -388,8 +388,8 @@ source	native	wrapper</li>
     
     <summary type="html">
     
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;&lt;br&gt;
-&amp;#x7B2C;19&amp;#x7AE0;&amp;#x603B;&amp;#x7ED3
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;
+&amp;#x7B2C;19&amp;#x7AE0;&amp;#x603B;&amp;#x7ED3;&amp;#x
     
     </summary>
     

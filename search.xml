@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[Distributed System-Indirect Communication and Naming]]></title>
       <url>http://yoursite.com/2017/02/06/ds69/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;<br>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
 &#x7B2C;6&#x3001;9&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;</p>
 <ul>
 <li>
@@ -43,7 +43,7 @@ Indirect communication is defined as communication between entities in a distrib
 </ul>
 </li>
 <li>
-<p>** some example scenarios:**</p>
+<p><strong>some example scenarios:</strong></p>
 <ul>
 <li>asynchronous communication: like chat ant twitter type app,  report info to on or more interested systems</li>
 <li>event-driven problem</li>
@@ -133,7 +133,7 @@ Connectionfactory, Queue, Topics</li>
     <entry>
       <title><![CDATA[Distributed System-Mobile and ubiquitous computing]]></title>
       <url>http://yoursite.com/2017/02/06/Distributed-System/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;<br>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
 &#x7B2C;19&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;</p>
 <ul>
 <li><strong>Design issues in distributed mobile applications:</strong>
@@ -185,7 +185,7 @@ multiple	cellular	tower	locations</li>
 </ul>
 </li>
 <li>
-<p>** Adaptation:**</p>
+<p><strong>Adaptation:</strong></p>
 <ul>
 <li>Presentation	to	fit	the	screen</li>
 <li>Use	of	JavaScript	to	fit	the	devices	capabilities</li>
@@ -226,7 +226,7 @@ VendorID/105
 </li>
 </ol>
 <ul>
-<li>** Feature detection(more flexible and reliable solution):**
+<li><strong>Feature detection(more flexible and reliable solution):</strong>
 bottom line: using feature detection, not browser detection
 <ul>
 <li>Two strategies for feature detection:
