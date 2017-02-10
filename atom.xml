@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-10T00:22:02.000Z</updated>
+  <updated>2017-02-10T00:47:57.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/02/09/Leetcode-281/"/>
     <id>http://yoursite.com/2017/02/09/Leetcode-281/</id>
     <published>2017-02-09T22:36:56.000Z</published>
-    <updated>2017-02-10T00:22:02.000Z</updated>
+    <updated>2017-02-10T00:47:57.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question:</strong></p>
 <p>Given two 1d vectors, implement an iterator to return their elements alternately.</p>
@@ -57,9 +57,9 @@ It should return [1,4,8,2,5,9,3,6,7].</p>
       <category term="Data Structure" scheme="http://yoursite.com/categories/Data-Structure/"/>
     
     
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Leetcode" scheme="http://yoursite.com/tags/Leetcode/"/>
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
     
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
