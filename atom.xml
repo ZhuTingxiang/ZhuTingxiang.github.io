@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-10T00:47:57.000Z</updated>
+  <updated>2017-02-10T00:48:51.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Leetcode 281.Zigzag Iterator</title>
+    <title>Leetcode 281. Zigzag Iterator</title>
     <link href="http://yoursite.com/2017/02/09/Leetcode-281/"/>
     <id>http://yoursite.com/2017/02/09/Leetcode-281/</id>
     <published>2017-02-09T22:36:56.000Z</published>
-    <updated>2017-02-10T00:47:57.000Z</updated>
+    <updated>2017-02-10T00:48:51.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question:</strong></p>
 <p>Given two 1d vectors, implement an iterator to return their elements alternately.</p>
@@ -54,7 +54,7 @@ It should return [1,4,8,2,5,9,3,6,7].</p>
     
     </summary>
     
-      <category term="Data Structure" scheme="http://yoursite.com/categories/Data-Structure/"/>
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
