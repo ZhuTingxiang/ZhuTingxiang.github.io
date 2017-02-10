@@ -86,15 +86,28 @@
 
 
 
-<meta name="description" content="不要温和地走进那个良夜。@CMU">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Star">
-<meta property="og:url" content="http://yoursite.com/tags/Hash-Table/index.html">
+<meta name="description" content="Question:
+Given two 1d vectors, implement an iterator to return their elements alternately.
+For example, given two 1d vectors:
+12v1 = [1, 2]v2 = [3, 4, 5, 6]
+By calling next repeatedly until hasNext">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 281">
+<meta property="og:url" content="http://yoursite.com/2017/02/09/Leetcode-281/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="不要温和地走进那个良夜。@CMU">
+<meta property="og:description" content="Question:
+Given two 1d vectors, implement an iterator to return their elements alternately.
+For example, given two 1d vectors:
+12v1 = [1, 2]v2 = [3, 4, 5, 6]
+By calling next repeatedly until hasNext">
+<meta property="og:updated_time" content="2017-02-10T00:19:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Star">
-<meta name="twitter:description" content="不要温和地走进那个良夜。@CMU">
+<meta name="twitter:title" content="Leetcode 281">
+<meta name="twitter:description" content="Question:
+Given two 1d vectors, implement an iterator to return their elements alternately.
+For example, given two 1d vectors:
+12v1 = [1, 2]v2 = [3, 4, 5, 6]
+By calling next repeatedly until hasNext">
 
 
 
@@ -122,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Hash-Table/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/09/Leetcode-281/"/>
 
 
 
 
 
-  <title> Tag: Hash Table | Star </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Leetcode 281 | Star </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -158,7 +171,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,46 +294,170 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Hash Table
-        <small>Tag</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/09/Leetcode-281/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Star">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/winnie-pooh-full-hd-wallpaper-image-tablet.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Star">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Star" src="">
+    </span>
+  </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Leetcode 281
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T17:36:56-05:00">
+                2017-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/02/09/Leetcode-281/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/09/Leetcode-281/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question:</strong></p>
+<p>Given two 1d vectors, implement an iterator to return their elements alternately.</p>
+<p>For example, given two 1d vectors:</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">v1 = [1, 2]</div><div class="line">v2 = [3, 4, 5, 6]</div></pre></td></tr></table></figure></p>
+<p>By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1, 3, 2, 4, 5, 6].</p>
+<p><strong>Follow up:</strong>
+What if you are given k 1d vectors? How well can your code be extended to such cases?</p>
+<p>Clarification for the follow up question - Update (2015-09-18):
+The &quot;Zigzag&quot; order is not clearly defined and is ambiguous for k &gt; 2 cases. If &quot;Zigzag&quot; does not look right to you, replace &quot;Zigzag&quot; with &quot;Cyclic&quot;. For example, given the following input:</p>
+<p>[1,2,3]
+[4,5,6,7]
+[8,9]
+It should return [1,4,8,2,5,9,3,6,7].</p>
+<p><strong>Explanation:</strong>
+&#x5982;&#x679C;&#x53EA;&#x6709;&#x4E24;&#x4E2A;vector&#xFF0C;&#x633A;&#x5BB9;&#x6613;&#x7684;&#x3002;&#x5C31;&#x7528;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x6B21;&#x90FD;&#x5224;&#x65AD;&#x4E0B;&#x5C31;&#x884C;&#x3002;</p>
+<p><strong>Code</strong></p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">public class ZigzagIterator {</div><div class="line">    List&lt;Integer&gt; V1 = new ArrayList&lt;&gt;();</div><div class="line">    List&lt;Integer&gt; V2 = new ArrayList&lt;&gt;();</div><div class="line">    int index1 = 0;</div><div class="line">    int index2 = 0;</div><div class="line"></div><div class="line">    public ZigzagIterator(List&lt;Integer&gt; v1, List&lt;Integer&gt; v2) {</div><div class="line">        V1 = v1;</div><div class="line">        V2 = v2;</div><div class="line">    }</div><div class="line"></div><div class="line">    public int next() {</div><div class="line">        if (index1 &lt;= index2) {</div><div class="line">            if (index1 &lt; V1.size()) {</div><div class="line">                return V1.get(index1++);</div><div class="line">            } else {</div><div class="line">                return V2.get(index2++);</div><div class="line">            }</div><div class="line">        } else {</div><div class="line">            if (index2 &lt; V2.size()) {</div><div class="line">                return V2.get(index2++);</div><div class="line">            } else {</div><div class="line">                return V1.get(index1++);</div><div class="line">            }</div><div class="line">        }</div><div class="line"></div><div class="line">    }</div><div class="line"></div><div class="line">    public boolean hasNext() {</div><div class="line">        if (index1 &lt; V1.size() || index2 &lt; V2.size()) return true;</div><div class="line">        return false;</div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p><strong>FollowUp:</strong>
+&#x5982;&#x679C;&#x662F;K&#x4E2A;vector&#xFF0C;&#x6BCF;&#x6B21;&#x5224;&#x65AD;&#x6307;&#x9488;&#x5C31;&#x975E;&#x5E38;&#x4E0D;&#x5408;&#x7406;&#x4E86;&#x3002;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x79CD;&#x5DE7;&#x5999;&#x7684;&#x529E;&#x6CD5;&#xFF0C;&#x7528;Queue&#xFF0C;&#x6216;&#x8005;list&#xFF0C;&#x9053;&#x7406;&#x76F8;&#x901A;&#x3002;
+&#x57FA;&#x672C;&#x601D;&#x8DEF;&#xFF1A;&#x628A;&#x6BCF;&#x4E2A;list&#x53D8;&#x6210;iterator&#xFF0C;&#x7136;&#x540E;&#x653E;&#x8FDB;Queue&#x4E2D;&#xFF0C;&#x6BCF;&#x6B21;poll&#x4E00;&#x4E2A;&#x51FA;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x5F97;&#x5230;iterator&#x5230;&#x7684;&#x503C;&#xFF0C;&#x5982;&#x679C;iterator&#x91CC;&#x9762;&#x8FD8;&#x6709;&#x503C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;vector&#x8FD8;&#x6CA1;&#x6709;&#x7A7A;&#x7684;&#x8BDD;&#xFF0C;&#x518D;&#x6392;&#x5230;&#x961F;&#x4F0D;&#x7684;&#x6700;&#x540E;&#x3002;&#x4E0D;&#x65AD;&#x5FAA;&#x73AF;&#x3002;
+&#x5DE7;&#x5999;&#x3002;</p>
+<p><strong>Code&#xFF1A;</strong></p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class ZigzagIterator {</div><div class="line">    LinkedList&lt;Iterator&gt; list;</div><div class="line">    public ZigzagIterator(List&lt;Integer&gt; v1, List&lt;Integer&gt; v2) {</div><div class="line">        list = new LinkedList&lt;Iterator&gt;();</div><div class="line">        if(!v1.isEmpty()) list.add(v1.iterator());</div><div class="line">        if(!v2.isEmpty()) list.add(v2.iterator());</div><div class="line">    }</div><div class="line"></div><div class="line">    public int next() {</div><div class="line">        Iterator poll = list.remove();</div><div class="line">        int result = (Integer)poll.next();</div><div class="line">        if(poll.hasNext()) list.add(poll);</div><div class="line">        return result;</div><div class="line">    }</div><div class="line"></div><div class="line">    public boolean hasNext() {</div><div class="line">        return !list.isEmpty();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/12/30/leetcode-202/" itemprop="url">
-              
-                <span itemprop="name">Leetcode 202. Happy Number</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-30T15:34:49-05:00"
-              content="2016-12-30" >
-          12-30
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/06/ds69/" rel="next" title="Distributed System-Indirect Communication and Naming">
+                <i class="fa fa-chevron-left"></i> Distributed System-Indirect Communication and Naming
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -328,6 +465,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/09/Leetcode-281/"
+           data-title="Leetcode 281" data-url="http://yoursite.com/2017/02/09/Leetcode-281/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -579,6 +724,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
