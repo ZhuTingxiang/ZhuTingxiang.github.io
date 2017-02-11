@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[346. Moving Average from Data Stream]]></title>
+      <title><![CDATA[Leetcode 346. Moving Average from Data Stream]]></title>
       <url>http://yoursite.com/2017/02/10/346-Moving-Average-from-Data-Stream/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question <a href="#question" class="header-anchor">#</a></h3>
 <p>Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.</p>
