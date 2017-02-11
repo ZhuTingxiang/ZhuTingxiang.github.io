@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-10T00:48:51.000Z</updated>
+  <updated>2017-02-11T01:18:27.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode 300. Longest Increasing Subsequence</title>
+    <link href="http://yoursite.com/2017/02/10/Leetcode-300-Longest-Increasing-Subsequence/"/>
+    <id>http://yoursite.com/2017/02/10/Leetcode-300-Longest-Increasing-Subsequence/</id>
+    <published>2017-02-11T00:49:47.000Z</published>
+    <updated>2017-02-11T01:18:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question <a href="#question" class="header-anchor">#</a></h3>
+<p>Given an unsorted array of integers, find the length of longest increasing subsequence.</p>
+<p>For example,
+Given [10, 9, 2, 5, 3, 7, 101, 18],
+The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4. Note that there may be more than one LIS combination, it is only necessary for you to return the length.</p>
+<p>Your algorithm should run in O(n2) complexity.</p>
+<p><strong>Follow up:</strong>
+Could you improve it to O(n log n) time complexity?</p>
+<h3 id="solution-1-dynamic-programming-o-n-2">Solution 1: Dynamic Programming O(n^2) <a href="#solution-1-dynamic-programming-o-n-2" class="header-anchor">#</a></h3>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x7B2C;&#x4E00;&#x5C42;&#x5FAA;&#x73AF;&#xFF1A; array&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x6570;
+&#x7B2C;&#x4E8C;&#x5C42;&#x5FAA;&#x73AF;&#xFF1A; &#x4E4B;&#x524D;&#x7684;&#x6BCF;&#x4E2A;&#x6570;&#x4E2D;&#xFF0C;&#x9009;&#x62E9;&#x6BD4;&#x8FD9;&#x4E2A;&#x6570;&#x5C0F;&#x5E76;&#x4E14;&#x6709;&#x6700;&#x957F;&#x94FE;&#x7684;&#x90A3;&#x4E2A;&#x6570;</p>
+<h4 id="code">Code <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public int lengthOfLIS(int[] nums) {</div><div class="line">    if (nums == null || nums.length == 0) return 0;</div><div class="line">    int[] best = new int[nums.length];</div><div class="line">    int max = 1;</div><div class="line">    for ( int i=0; i&lt;nums.length; i++) {</div><div class="line">        best[i] = 1;</div><div class="line">        for ( int j=0; j&lt;i; j++) {</div><div class="line">            if (nums[j] &lt; nums[i]) {</div><div class="line">                best[i] = Math.max(best[i], best[j] + 1);</div><div class="line">            }</div><div class="line">        }</div><div class="line">        max = Math.max(best[i], max);</div><div class="line">    }</div><div class="line">    return max;</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="solution-2-binary-search-o-nlogn">Solution 2: Binary Search O(nlogn) <a href="#solution-2-binary-search-o-nlogn" class="header-anchor">#</a></h3>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x628A;&#x4E4B;&#x524D;&#x627E;&#x5230;&#x7684;&#x6700;&#x957F;&#x7684;&#x94FE;&#x5B58;&#x8D77;&#x6765;&#x3002;&#x9047;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#xFF0C;&#x5982;&#x679C;&#x6BD4;list&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6570;&#x5927;&#xFF0C;&#x5C31;&#x653E;&#x5728;list&#x7684;&#x6700;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;&#xFF0C;&#x5C31;&#x9009;&#x62E9;&#x6BD4;&#x5B83;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#x5927;&#x6700;&#x5C11;&#x7684;&#x90A3;&#x4E2A;&#x6570;&#x6362;&#x6389;&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public int lengthOfLIS(int[] nums) {</div><div class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    for (int n: nums) {</div><div class="line">        if (list.size() == 0 || n &gt; list.get(list.size()-1)) {</div><div class="line">            list.add(n);</div><div class="line">        } else {</div><div class="line">            int start = 0;</div><div class="line">            int end = list.size();</div><div class="line">            while (start &lt; end) {</div><div class="line">                int mid = (start+end)/2;</div><div class="line">                if (list.get(mid) &lt; n) {</div><div class="line">                    start = mid +1 ;</div><div class="line">                } else {</div><div class="line">                    end = mid;</div><div class="line">                }</div><div class="line">            }</div><div class="line">            list.set(end,n);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return list.size();</div><div class="line">}</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Given a
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="MicroSoft" scheme="http://yoursite.com/tags/MicroSoft/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+    
+      <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 281. Zigzag Iterator</title>
@@ -59,9 +109,9 @@ It should return [1,4,8,2,5,9,3,6,7].</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
     
       <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
     
@@ -1009,9 +1059,9 @@ Return 3. The paths that sum to 8 are:
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="tree" scheme="http://yoursite.com/tags/tree/"/>
-    
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+      <category term="tree" scheme="http://yoursite.com/tags/tree/"/>
     
   </entry>
   
@@ -1057,9 +1107,9 @@ Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:00&quot;, &quot;8:00&quot;,
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
-    
       <category term="Bit Manipulation" scheme="http://yoursite.com/tags/Bit-Manipulation/"/>
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
   </entry>
   
@@ -1744,44 +1794,6 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 &#x6709;4&#x4E2A;2&#xFF0C;1&#x4E2A;5<
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
       <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>听李宗盛</title>
-    <link href="http://yoursite.com/2016/09/23/e5-90-ac-e6-9d-8e-e5-ae-97-e7-9b-9b/"/>
-    <id>http://yoursite.com/2016/09/23/e5-90-ac-e6-9d-8e-e5-ae-97-e7-9b-9b/</id>
-    <published>2016-09-23T16:44:12.000Z</published>
-    <updated>2016-12-20T16:40:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><embed src="http://www.xiami.com/widget/12753884_1772001102/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></p>
-<p>&#x591C;&#x91CC;&#x4ECE;&#x706F;&#x706B;&#x901A;&#x660E;&#x7684;&#x5B66;&#x6821;&#x56DE;&#x5230;&#x5BB6;&#xFF0C;&#x867E;&#x7C73;&#x968F;&#x673A;&#x653E;&#x4E86;&#x4E00;&#x9996;&#x6B4C;&#x3002; &#x5C45;&#x7136;&#x662F;&#x674E;&#x5B97;&#x76DB;&#x7248;&#x7684;&#x300A;&#x9634;&#x5929;&#x300B;&#x3002;</p>
-<p>&#x6211;&#x4E00;&#x4E0B;&#x60F3;&#x5230;&#x4E86;&#x6211;&#x54E5;&#xFF0C;&#x4E00;&#x4E2A;&#x957F;&#x671F;&#x53EA;&#x542C;&#x674E;&#x5B97;&#x76DB;&#x548C;&#x6C11;&#x8C23;&#x7684;&#x7537;&#x4EBA;&#x3002;&#x5927;&#x591A;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4F1A;&#x5FD8;&#x8BB0;&#x4ED6;&#x53EA;&#x6BD4;&#x6211;&#x5927;&#x4E00;&#x5C81;&#xFF0C;&#x4ED6;&#x8BB2;&#x8D77;&#x9053;&#x7406;&#xFF0C;&#x603B;&#x662F;&#x8BA9;&#x6211;&#x4E0D;&#x5F97;&#x4E0D;&#x670D;&#x3002;</p>
-<p>&#x5370;&#x8C61;&#x91CC;&#xFF0C;&#x4E00;&#x8D77;&#x594B;&#x6597;&#x7684;&#x65E5;&#x5B50;&#x91CC;&#xFF0C;&#x4ED6;&#x603B;&#x662F;&#x7A9D;&#x5728;&#x6C99;&#x53D1;&#x91CC;&#xFF0C;Mac&#x5C31;&#x516C;&#x653E;&#x674E;&#x5B97;&#x76DB;&#x3002;&#x6211;&#x4E00;&#x4E2A;&#x672C;&#x6765;&#x6CA1;&#x542C;&#x8FC7;&#x674E;&#x5B97;&#x76DB;&#x7684;&#x4EBA;&#xFF0C;&#x6700;&#x540E;&#x8FDE;&#x300A;&#x5C71;&#x4E18;&#x300B;&#x7684;&#x6B4C;&#x8BCD;&#x90FD;&#x5012;&#x80CC;&#x5982;&#x6D41;&#x4E86;&#x3002;</p>
-<p>&#x6BCF;&#x53E5;&#x8BDD;&#xFF0C;&#x90FD;&#x50CF;&#x8FC7;&#x5B8C;&#x4E86;&#x4E00;&#x751F;&#x3002;</p>
-<p>&#x4E4B;&#x540E;&#xFF0C;&#x6709;&#x7761;&#x4E0D;&#x7740;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x628A;&#x8FD9;&#x9996;&#x6B4C;&#x62FF;&#x51FA;&#x6765;&#x542C;&#x3002;</p>
-<p>&#x91D1;&#x739F;&#x5C90;&#x7FFB;&#x5531;&#x8FC7;&#xFF0C;&#x592A;&#x7C89;&#x9970;&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x592A;&#x5E74;&#x8F7B;&#xFF0C;&#x5F88;&#x4E0D;&#x559C;&#x3002;</p>
-<p>&#x867D;&#x7136;&#x6211;&#x662F;&#x7EDD;&#x5BF9;&#x4E0D;&#x76F8;&#x4FE1;&#x6240;&#x8C13;&#x201C;&#x592A;&#x5E74;&#x8F7B;&#x4E86;&#xFF0C;&#x4E0D;&#x80FD;&#x5982;&#x4F55;&#x5982;&#x4F55;&#x5982;&#x4F55;&#x201D;&#x8FD9;&#x6837;&#x7684;&#x8BF4;&#x8F9E;&#x7684;&#xFF0C;&#x90A3;&#x66F4;&#x50CF;&#x662F;&#x4E00;&#x79CD;&#x6545;&#x4F5C;&#x8001;&#x6210;&#x501A;&#x8001;&#x5356;&#x8001;&#x7684;&#x59FF;&#x6001;&#x3002;</p>
-<p>&#x4F46;&#x662F;&#x8FD9;&#x9996;&#x6B4C;&#xFF0C;&#x4F46;&#x662F;&#x674E;&#x5B97;&#x76DB;&#xFF0C;&#x5C31;&#x50CF;&#x662F;&#x6C89;&#x6DC0;&#x4E86;&#x5F88;&#x4E45;&#x7684;&#x597D;&#x9152;&#x3002;&#x4F60;&#x5F88;&#x6015;&#x4E00;&#x6253;&#x5F00;&#xFF0C;&#x65E0;&#x6CD5;&#x62B5;&#x5FA1;&#x6251;&#x9762;&#x800C;&#x6765;&#x7684;&#x5C81;&#x6708;&#x611F;&#xFF0C;&#x5E74;&#x8F7B;&#x662F;&#x771F;&#x7684;&#x4F1A;&#x9189;&#x7684;&#x3002;</p>
-<p>&#x542C;&#x674E;&#x5B97;&#x76DB;&#x548C;&#x6881;&#x9759;&#x8339;&#x7684;&#x5408;&#x5531;&#xFF0C;&#x58F0;&#x7EBF;&#x90FD;&#x662F;&#x88AB;&#x62C9;&#x957F;&#x4E86;&#x7684;&#xFF0C;&#x80CC;&#x540E;&#x7684;&#x4E1C;&#x897F;&#x592A;&#x591A;&#x3002;&#x8BF4;&#x4E5F;&#x8BF4;&#x4E0D;&#x5B8C;&#x7684;&#x611F;&#x89C9;&#x3002;&#x6881;&#x9759;&#x8339;&#x7FFB;&#x5531;&#x8FC7;&#x674E;&#x5B97;&#x76DB;&#x7684;&#x300A;&#x95EE;&#x300B;&#xFF0C;&#x300A;&#x68A6;&#x9192;&#x65F6;&#x5206;&#x300B;&#xFF0C;&#x300A;&#x660E;&#x660E;&#x767D;&#x767D;&#x6211;&#x7684;&#x5FC3;&#x300B;&#xFF0C;&#x6709;&#x5979;&#x81EA;&#x5DF1;&#x7684;&#x5473;&#x9053;&#xFF0C;&#x771F;&#x5B9E;&#x3002;</p>
-<p>&#x6709;&#x6BB5;&#x65F6;&#x95F4;&#x5355;&#x5FAA;&#x542C;&#x674E;&#x5B97;&#x76DB;&#x7684;&#x300A;&#x6F02;&#x6D0B;&#x8FC7;&#x6D77;&#x6765;&#x770B;&#x4F60;&#x300B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5E38;&#x5750;&#x5728;&#x5730;&#x6BEF;&#x4E0A;&#xFF0C;&#x5E38;&#x89C9;&#x5F97;&#x67D4;&#x8F6F;&#x800C;&#x88AB;&#x7737;&#x987E;&#xFF0C;&#x89C9;&#x5F97;&#x5FC3;&#x5B89;&#x3002;</p>
-<p>&#x5176;&#x5B9E;&#xFF0C;&#x542C;&#x6B4C;&#x8FD9;&#x79CD;&#x4E8B;&#x60C5;&#xFF0C;&#x4E0D;&#x5E26;&#x611F;&#x60C5;&#x5730;&#x542C;&#xFF0C;&#x4E0D;&#x8BA4;&#x771F;&#x3002;&#x5E26;&#x611F;&#x60C5;&#x5730;&#x542C;&#xFF0C;&#x53C8;&#x592A;&#x7D2F;&#x3002;</p>
-<p>&#x53EA;&#x80FD;&#x9002;&#x91CF;&#x3002;&#x6447;&#x6EDA;&#xFF0C;&#x6D41;&#x884C;&#xFF0C;&#x53E4;&#x5178;&#xFF0C;&#x90FD;&#x8981;&#x9002;&#x91CF;&#xFF0C;&#x624D;&#x80FD;&#x51B7;&#x9759;&#x5730;&#x4FDD;&#x6301;&#x81EA;&#x5DF1;&#x7684;&#x5E73;&#x8861;&#x3002;</p>
-<p>&#x542C;&#x674E;&#x5B97;&#x76DB;&#xFF0C;&#x66F4;&#x8981;&#x9002;&#x91CF;&#x3002;&#x4E0D;&#x7136;&#x4E00;&#x4E0D;&#x5C0F;&#x5FC3;&#xFF0C;&#x542C;&#x591A;&#x4E86;&#x6216;&#x8BB8;&#x5C31;&#x770B;&#x6DE1;&#x4EBA;&#x751F;&#x4E86;&#x3002;</p>
-<p>&#x8981;&#x771F;&#x770B;&#x6DE1;&#x4EBA;&#x751F;&#xFF0C;&#x5F88;&#x96BE;&#x4FDD;&#x6301;&#x5BF9;&#x751F;&#x6D3B;&#x6709;&#x70ED;&#x60C5;&#x7684;&#x90A3;&#x79CD;&#x82F1;&#x96C4;&#x4E3B;&#x4E49;&#x4E86;&#x3002;</p>
-<p>&#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x4ECA;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x9700;&#x8981;&#x88AB;&#x6FC0;&#x52B1;&#x7684;&#x5E74;&#x9F84;&#x91CC;&#xFF0C;&#x6211;&#x60F3;&#xFF0C;&#x7B49;&#x5230;&#x6709;&#x4E00;&#x5929;&#x89C9;&#x5F97;&#x7D2F;&#x4E86;&#xFF0C;&#x89C9;&#x5F97;&#x8D70;&#x4E0D;&#x4E0B;&#x53BB;&#x4E86;&#xFF0C;&#x9700;&#x8981;&#x66F4;&#x968F;&#x610F;&#x7684;&#x6001;&#x5EA6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x518D;&#x6765;&#x542C;&#x542C;&#x674E;&#x5B97;&#x76DB;&#x5427;&#x3002;</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&lt;embed src=&quot;http://www.xiami.com/widget/12753884_1772001102/singlePlayer.swf&quot; type=&quot;app
-    
-    </summary>
-    
-      <category term="书影音" scheme="http://yoursite.com/categories/%E4%B9%A6%E5%BD%B1%E9%9F%B3/"/>
-    
-    
-      <category term="李宗盛" scheme="http://yoursite.com/tags/%E6%9D%8E%E5%AE%97%E7%9B%9B/"/>
     
   </entry>
   
