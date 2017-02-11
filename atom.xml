@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-11T01:18:27.000Z</updated>
+  <updated>2017-02-11T02:19:51.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>346. Moving Average from Data Stream</title>
+    <link href="http://yoursite.com/2017/02/10/346-Moving-Average-from-Data-Stream/"/>
+    <id>http://yoursite.com/2017/02/10/346-Moving-Average-from-Data-Stream/</id>
+    <published>2017-02-11T02:17:27.000Z</published>
+    <updated>2017-02-11T02:19:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question <a href="#question" class="header-anchor">#</a></h3>
+<p>Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.</p>
+<p>For example,
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">MovingAverage m = new MovingAverage(3);</div><div class="line">m.next(1) = 1</div><div class="line">m.next(10) = (1 + 10) / 2</div><div class="line">m.next(3) = (1 + 10 + 3) / 3</div><div class="line">m.next(5) = (10 + 3 + 5) / 3</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h3>
+<p>&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;&#x9898;&#x76EE;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;queue&#x6216;&#x8005;arraylist&#x6216;&#x8005;array&#x4FDD;&#x5B58;next&#x7684;&#x503C;&#x3002;&#x7528;&#x4E00;&#x4E2A;sum&#x5B58;&#x7740;&#x603B;&#x548C;&#xFF0C;&#x6BCF;&#x6B21;&#x90FD;&#x8BA1;&#x7B97;&#x4E00;&#x4E0B;&#x5E73;&#x5747;&#x503C;&#x3002;</p>
+<h3 id="code">Code: <a href="#code" class="header-anchor">#</a></h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class MovingAverage {</div><div class="line"></div><div class="line">    /** Initialize your data structure here. */</div><div class="line">    Queue&lt;Integer&gt; q = new LinkedList&lt;&gt;();</div><div class="line">    int size;</div><div class="line">    int count = 0;</div><div class="line">    int total = 0;</div><div class="line">    public MovingAverage(int size) {</div><div class="line">        this.size = size;</div><div class="line"></div><div class="line">    }</div><div class="line"></div><div class="line">    public double next(int val) {</div><div class="line">        if (count &lt; size) {</div><div class="line">            count ++;</div><div class="line">            q.offer(val);</div><div class="line">            total += val;</div><div class="line">            return total*1.0 / count;</div><div class="line">        } else {</div><div class="line">            int remove = q.poll();</div><div class="line">            q.offer(val);</div><div class="line">            total -= remove;</div><div class="line">            total += val;</div><div class="line">            return total*1.0/ size;</div><div class="line">        }</div><div class="line"></div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Given a
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
+    
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Leetcode 300. Longest Increasing Subsequence</title>
     <link href="http://yoursite.com/2017/02/10/Leetcode-300-Longest-Increasing-Subsequence/"/>
     <id>http://yoursite.com/2017/02/10/Leetcode-300-Longest-Increasing-Subsequence/</id>
     <published>2017-02-11T00:49:47.000Z</published>
-    <updated>2017-02-11T01:18:27.000Z</updated>
+    <updated>2017-02-11T01:20:00.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question <a href="#question" class="header-anchor">#</a></h3>
 <p>Given an unsorted array of integers, find the length of longest increasing subsequence.</p>
@@ -32,7 +71,7 @@ The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4.
 Could you improve it to O(n log n) time complexity?</p>
 <h3 id="solution-1-dynamic-programming-o-n-2">Solution 1: Dynamic Programming O(n^2) <a href="#solution-1-dynamic-programming-o-n-2" class="header-anchor">#</a></h3>
 <h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
-<p>&#x7B2C;&#x4E00;&#x5C42;&#x5FAA;&#x73AF;&#xFF1A; array&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x6570;
+<p>&#x7B2C;&#x4E00;&#x5C42;&#x5FAA;&#x73AF;&#xFF1A; array&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x6570;<br>
 &#x7B2C;&#x4E8C;&#x5C42;&#x5FAA;&#x73AF;&#xFF1A; &#x4E4B;&#x524D;&#x7684;&#x6BCF;&#x4E2A;&#x6570;&#x4E2D;&#xFF0C;&#x9009;&#x62E9;&#x6BD4;&#x8FD9;&#x4E2A;&#x6570;&#x5C0F;&#x5E76;&#x4E14;&#x6709;&#x6700;&#x957F;&#x94FE;&#x7684;&#x90A3;&#x4E2A;&#x6570;</p>
 <h4 id="code">Code <a href="#code" class="header-anchor">#</a></h4>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public int lengthOfLIS(int[] nums) {</div><div class="line">    if (nums == null || nums.length == 0) return 0;</div><div class="line">    int[] best = new int[nums.length];</div><div class="line">    int max = 1;</div><div class="line">    for ( int i=0; i&lt;nums.length; i++) {</div><div class="line">        best[i] = 1;</div><div class="line">        for ( int j=0; j&lt;i; j++) {</div><div class="line">            if (nums[j] &lt; nums[i]) {</div><div class="line">                best[i] = Math.max(best[i], best[j] + 1);</div><div class="line">            }</div><div class="line">        }</div><div class="line">        max = Math.max(best[i], max);</div><div class="line">    }</div><div class="line">    return max;</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure></p>
@@ -107,13 +146,13 @@ It should return [1,4,8,2,5,9,3,6,7].</p>
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
       <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
     
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
       <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
   </entry>
   
@@ -715,11 +754,11 @@ http://www.programcreek.com</p>
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
       <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
@@ -877,9 +916,9 @@ Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</p>
       <category term="Data Structure" scheme="http://yoursite.com/categories/LeetCode/Data-Structure/"/>
     
     
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
       <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
@@ -945,9 +984,9 @@ k = 2; B[0] = A[len-2];
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
@@ -990,9 +1029,9 @@ k = 2; B[0] = A[len-2];
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
@@ -1055,9 +1094,9 @@ Return 3. The paths that sum to 8 are:
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
@@ -1103,9 +1142,9 @@ Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:00&quot;, &quot;8:00&quot;,
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Bit Manipulation" scheme="http://yoursite.com/tags/Bit-Manipulation/"/>
     
@@ -1742,58 +1781,6 @@ P(T=t|M=m):
       <category term="MachineLearning" scheme="http://yoursite.com/tags/MachineLearning/"/>
     
       <category term="Statics" scheme="http://yoursite.com/tags/Statics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 172.Factorial Trailing Zeroes</title>
-    <link href="http://yoursite.com/2016/10/15/leetcode-172-easyfactorial-trailing-zeroes/"/>
-    <id>http://yoursite.com/2016/10/15/leetcode-172-easyfactorial-trailing-zeroes/</id>
-    <published>2016-10-15T06:19:35.000Z</published>
-    <updated>2016-12-29T23:42:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><blockquote>
-<p>Question:</p>
-</blockquote>
-<blockquote>
-<p>Given an integer n, return the number of trailing zeroes in n!.</p>
-</blockquote>
-<p>&#x9898;&#x610F;&#x662F;&#x6C42;n&#x7684;&#x9636;&#x4E58;&#x540E;&#x9762;0&#x7684;&#x4E2A;&#x6570;&#x3002;</p>
-<h3 id="basic-solution">Basic Solution <a href="#basic-solution" class="header-anchor">#</a></h3>
-<p>&#x76F4;&#x63A5;&#x786C;&#x6C42;n!&#x7684;&#x7ED3;&#x679C;,&#x518D;&#x8BA1;&#x7B97;&#x672B;&#x5C3E;0&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x5982;&#x679C;n&#x8FC7;&#x5927;&#xFF0C;&#x7ED3;&#x679C;&#x4F1A;&#x6EA2;&#x51FA;&#x3002;</p>
-<p>** Better Solution **</p>
-<p><code>Complexity</code> : O(lgn)</p>
-<p>&#x540E;&#x7F00;&#x4E3A;0&#x7684;&#x90FD;&#x662F;2&#x548C;5&#x76F8;&#x4E58;&#x5F97;&#x5230;&#x7684;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x8BA1;&#x7B97;2&#x548C;5&#x7684;&#x4E2A;&#x6570;&#x3002;</p>
-<p>&#x4F46;&#x662F;&#x4F8B;&#x5982;&#xFF1A;</p>
-<p>n = 5! = 1 * 2 * 2 * 2 * 3 * 5 &#x6709;3&#x4E2A;2&#xFF0C;1&#x4E2A;5
-n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 &#x6709;4&#x4E2A;2&#xFF0C;1&#x4E2A;5</p>
-<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;2&#x4F1A;&#x8FDC;&#x8FDC;&#x6BD4;5&#x591A;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x8BA1;&#x7B97;&#x6709;5&#x7684;&#x4E2A;&#x6570;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#x4F46;&#x662F;&#x8981;&#x6CE8;&#x610F;&#xFF1A;</p>
-<p>n = 25! &#x4E0D;&#x6B62;2&#x4E2A;5&#xFF0C;&#x800C;&#x662F;3&#x4E2A;5&#xFF0C;&#x56E0;&#x4E3A;25 = 5 * 5</p>
-<p>&#x6240;&#x4EE5;  result = n/5 + n/25 + n/125....</p>
-<p>Python Solution:</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">   def trailingZeroes(self, n):</div><div class="line">       num, x = 0, 5</div><div class="line">       while n &amp;gt;= x:</div><div class="line">              num += n/x</div><div class="line">              x *= 5</div><div class="line">      return num</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;blockquote&gt;
-&lt;p&gt;Question:&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Given an integer n, return the
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
-    
-      <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
     
   </entry>
   

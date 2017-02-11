@@ -100,7 +100,7 @@ Given an unsorted array of integers, find the length of longest increasing subse
 For example,
 Given [10, 9, 2, 5, 3, 7, 101, 18],
 The longest increasing subsequence is [2, 3, 7, 101">
-<meta property="og:updated_time" content="2017-02-11T01:18:27.000Z">
+<meta property="og:updated_time" content="2017-02-11T01:20:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 300. Longest Increasing Subsequence">
 <meta name="twitter:description" content="Question #
@@ -412,7 +412,7 @@ The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4.
 Could you improve it to O(n log n) time complexity?</p>
 <h3 id="solution-1-dynamic-programming-o-n-2">Solution 1: Dynamic Programming O(n^2) <a href="#solution-1-dynamic-programming-o-n-2" class="header-anchor">#</a></h3>
 <h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
-<p>&#x7B2C;&#x4E00;&#x5C42;&#x5FAA;&#x73AF;&#xFF1A; array&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x6570;
+<p>&#x7B2C;&#x4E00;&#x5C42;&#x5FAA;&#x73AF;&#xFF1A; array&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x6570;<br>
 &#x7B2C;&#x4E8C;&#x5C42;&#x5FAA;&#x73AF;&#xFF1A; &#x4E4B;&#x524D;&#x7684;&#x6BCF;&#x4E2A;&#x6570;&#x4E2D;&#xFF0C;&#x9009;&#x62E9;&#x6BD4;&#x8FD9;&#x4E2A;&#x6570;&#x5C0F;&#x5E76;&#x4E14;&#x6709;&#x6700;&#x957F;&#x94FE;&#x7684;&#x90A3;&#x4E2A;&#x6570;</p>
 <h4 id="code">Code <a href="#code" class="header-anchor">#</a></h4>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public int lengthOfLIS(int[] nums) {</div><div class="line">    if (nums == null || nums.length == 0) return 0;</div><div class="line">    int[] best = new int[nums.length];</div><div class="line">    int max = 1;</div><div class="line">    for ( int i=0; i&lt;nums.length; i++) {</div><div class="line">        best[i] = 1;</div><div class="line">        for ( int j=0; j&lt;i; j++) {</div><div class="line">            if (nums[j] &lt; nums[i]) {</div><div class="line">                best[i] = Math.max(best[i], best[j] + 1);</div><div class="line">            }</div><div class="line">        }</div><div class="line">        max = Math.max(best[i], max);</div><div class="line">    }</div><div class="line">    return max;</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure></p>
@@ -470,6 +470,10 @@ Could you improve it to O(n log n) time complexity?</p>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/10/346-Moving-Average-from-Data-Stream/" rel="prev" title="346. Moving Average from Data Stream">
+                346. Moving Average from Data Stream <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -541,7 +545,7 @@ Could you improve it to O(n log n) time complexity?</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -558,7 +562,7 @@ Could you improve it to O(n log n) time complexity?</p>
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
