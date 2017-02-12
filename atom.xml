@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-12T20:41:57.000Z</updated>
+  <updated>2017-02-12T20:45:27.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,27 +20,25 @@
     <link href="http://yoursite.com/2017/02/11/Java-Interview-Questions/"/>
     <id>http://yoursite.com/2017/02/11/Java-Interview-Questions/</id>
     <published>2017-02-11T14:51:39.000Z</published>
-    <updated>2017-02-12T20:41:57.000Z</updated>
+    <updated>2017-02-12T20:45:27.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Always update...</p>
-<ol>
-<li></li>
-</ol>
+<h4 id="1-jvm-is-plantform-dependent">1. JVM is plantform dependent? <a href="#1-jvm-is-plantform-dependent" class="header-anchor">#</a></h4>
 <blockquote>
 <h5 id="is-the-jvm-java-virtual-machine-platform-dependent-or-platform-independent-what-is-the-advantage-of-using-the-jvm-and-having-java-be-a-translated-language">Is the JVM (Java Virtual Machine) platform dependent or platform independent? What is the advantage of using the JVM, and having Java be a translated language? <a href="#is-the-jvm-java-virtual-machine-platform-dependent-or-platform-independent-what-is-the-advantage-of-using-the-jvm-and-having-java-be-a-translated-language" class="header-anchor">#</a></h5>
 </blockquote>
-<p><strong>JVM translates bytecode into machine language</strong></p>
-<p>Every Java program is first compiled into an intermediate language called Java bytecode. The JVM is used primarily for 2 things: the first is to translate the bytecode into the machine language for a particular computer, and the second thing is to actually execute the corresponding machine-language instructions as well. The JVM and bytecode combined give Java its status as a &quot;portable&quot; language &#x2013; this is because Java bytecode can be transferred from one machine to another.</p>
+<hr>
+<p><strong>JVM translates bytecode into machine language</strong>
+Every Java program is first compiled into an intermediate language called Java bytecode. The JVM is used primarily for 2 things: the first is to translate the bytecode into the machine language for a particular computer, and the second thing is to actually execute the corresponding machine-language instructions as well. The JVM and bytecode combined give Java its status as a &quot;portable&quot; language &#x2013; this is because Java bytecode can be transferred from one machine to another.</p>
 <p><strong>Machine language is OS dependent</strong>
 Since the JVM must translate the bytecode into machine language, and since the machine language depends on the operating system being used, it is clear that the JVM is platform (operating system) dependent &#x2013; in other words, the JVM is not platform independent.</p>
-<p><strong>The JVM is not platform independent</strong></p>
-<p>The key here is that the JVM depends on the operating system &#x2013; so if you are running Mac OS X you will have a different JVM than if you are running Windows or some other operating system.</p>
-<ol start="2">
-<li></li>
-</ol>
+<p><strong>The JVM is not platform independent</strong>
+The key here is that the JVM depends on the operating system &#x2013; so if you are running Mac OS X you will have a different JVM than if you are running Windows or some other operating system.</p>
+<h4 id="2-overloading-overriding">2. Overloading &amp; Overriding <a href="#2-overloading-overriding" class="header-anchor">#</a></h4>
 <blockquote>
 <h5 id="in-java-what-s-the-difference-between-method-overloading-and-method-overriding">In Java, what&#x2019;s the difference between method overloading and method overriding? <a href="#in-java-what-s-the-difference-between-method-overloading-and-method-overriding" class="header-anchor">#</a></h5>
 </blockquote>
+<hr>
 <p><strong>Overloading:</strong>
 Method overloading in Java occurs when two or more methods in the same class have the exact same name but different parameters (remember that method parameters accept values passed into the method). However, method overloading is a compile-time phenomenon.</p>
 <p><strong>Overriding:</strong>
@@ -54,11 +52,7 @@ http://www.programmerinterview.com/</p>
     <summary type="html">
     
       &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;Always update...&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;h5 id=&quot;is-the-jvm-java-virtual-
+&lt;h4 id=&quot;1-jvm-is-plantform-dependent&quot;&gt;1. JVM is plantform dependen
     
     </summary>
     
