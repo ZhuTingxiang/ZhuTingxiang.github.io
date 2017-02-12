@@ -7,7 +7,7 @@
       <title><![CDATA[Java Interview Questions]]></title>
       <url>http://yoursite.com/2017/02/11/Java-Interview-Questions/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Always update...</p>
-<h4 id="1-jvm-is-plantform-dependent">1. JVM is plantform dependent? <a href="#1-jvm-is-plantform-dependent" class="header-anchor">#</a></h4>
+<h3 id="jvm-is-plantform-dependent">JVM is plantform dependent? <a href="#jvm-is-plantform-dependent" class="header-anchor">#</a></h3>
 <blockquote>
 <h5 id="is-the-jvm-java-virtual-machine-platform-dependent-or-platform-independent-what-is-the-advantage-of-using-the-jvm-and-having-java-be-a-translated-language">Is the JVM (Java Virtual Machine) platform dependent or platform independent? What is the advantage of using the JVM, and having Java be a translated language? <a href="#is-the-jvm-java-virtual-machine-platform-dependent-or-platform-independent-what-is-the-advantage-of-using-the-jvm-and-having-java-be-a-translated-language" class="header-anchor">#</a></h5>
 </blockquote>
@@ -18,7 +18,7 @@ Every Java program is first compiled into an intermediate language called Java b
 Since the JVM must translate the bytecode into machine language, and since the machine language depends on the operating system being used, it is clear that the JVM is platform (operating system) dependent &#x2013; in other words, the JVM is not platform independent.</p>
 <p><strong>The JVM is not platform independent</strong>
 The key here is that the JVM depends on the operating system &#x2013; so if you are running Mac OS X you will have a different JVM than if you are running Windows or some other operating system.</p>
-<h4 id="2-overloading-overriding">2. Overloading &amp; Overriding <a href="#2-overloading-overriding" class="header-anchor">#</a></h4>
+<h3 id="overloading-overriding">Overloading &amp; Overriding <a href="#overloading-overriding" class="header-anchor">#</a></h3>
 <blockquote>
 <h5 id="in-java-what-s-the-difference-between-method-overloading-and-method-overriding">In Java, what&#x2019;s the difference between method overloading and method overriding? <a href="#in-java-what-s-the-difference-between-method-overloading-and-method-overriding" class="header-anchor">#</a></h5>
 </blockquote>
@@ -29,7 +29,7 @@ Method overloading in Java occurs when two or more methods in the same class hav
 Overriding means that a method inherited from a parent class will be changed. But, when overriding a method everything remains exactly the same except the method definition &#x2013; basically what the method does is changed slightly to fit in with the needs of the child class. But, the method name, the number and types of parameters, and the return type will all remain the same.
 Method overriding is a run-time phenomenon that is the driving force behind polymorphism.</p>
 <hr>
-<p><strong>References:</strong><br>
+<p><strong>References:</strong>
 http://www.programmerinterview.com/</p>
 ]]></content>
     </entry>
