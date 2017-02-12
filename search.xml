@@ -6,18 +6,32 @@
     <entry>
       <title><![CDATA[Java Interview Questions]]></title>
       <url>http://yoursite.com/2017/02/11/Java-Interview-Questions/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#x4E0D;&#x5B9A;&#x671F;&#x6301;&#x7EED;&#x66F4;&#x65B0;...</p>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Always update...</p>
 <ol>
 <li></li>
 </ol>
-<p><figure class="highlight plain"><figcaption><span>Is the JVM (Java Virtual Machine) platform dependent or platform independent? What is the advantage of using the JVM, and having Java be a translated language?</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">A:</div><div class="line">**JVM translates bytecode into machine language**</div><div class="line"></div><div class="line">Every Java program is first compiled into an intermediate language called Java bytecode. The JVM is used primarily for 2 things: the first is to translate the bytecode into the machine language for a particular computer, and the second thing is to actually execute the corresponding machine-language instructions as well. The JVM and bytecode combined give Java its status as a &quot;portable&quot; language &#x2013; this is because Java bytecode can be transferred from one machine to another.</div><div class="line"></div><div class="line">**Machine language is OS dependent**</div><div class="line">Since the JVM must translate the bytecode into machine language, and since the machine language depends on the operating system being used, it is clear that the JVM is platform (operating system) dependent &#x2013; in other words, the JVM is not platform independent.</div><div class="line"></div><div class="line">**The JVM is not platform independent**</div><div class="line"></div><div class="line">The key here is that the JVM depends on the operating system &#x2013; so if you are running Mac OS X you will have a different JVM than if you are running Windows or some other operating system.</div><div class="line"></div><div class="line"></div><div class="line">2.</div><div class="line">```Q: In Java, what&#x2019;s the difference between method overloading and method overriding?</div></pre></td></tr></table></figure></p>
-<p>A:
-<strong>Overloading:</strong>
+<blockquote>
+<h5 id="is-the-jvm-java-virtual-machine-platform-dependent-or-platform-independent-what-is-the-advantage-of-using-the-jvm-and-having-java-be-a-translated-language">Is the JVM (Java Virtual Machine) platform dependent or platform independent? What is the advantage of using the JVM, and having Java be a translated language? <a href="#is-the-jvm-java-virtual-machine-platform-dependent-or-platform-independent-what-is-the-advantage-of-using-the-jvm-and-having-java-be-a-translated-language" class="header-anchor">#</a></h5>
+</blockquote>
+<p><strong>JVM translates bytecode into machine language</strong></p>
+<p>Every Java program is first compiled into an intermediate language called Java bytecode. The JVM is used primarily for 2 things: the first is to translate the bytecode into the machine language for a particular computer, and the second thing is to actually execute the corresponding machine-language instructions as well. The JVM and bytecode combined give Java its status as a &quot;portable&quot; language &#x2013; this is because Java bytecode can be transferred from one machine to another.</p>
+<p><strong>Machine language is OS dependent</strong>
+Since the JVM must translate the bytecode into machine language, and since the machine language depends on the operating system being used, it is clear that the JVM is platform (operating system) dependent &#x2013; in other words, the JVM is not platform independent.</p>
+<p><strong>The JVM is not platform independent</strong></p>
+<p>The key here is that the JVM depends on the operating system &#x2013; so if you are running Mac OS X you will have a different JVM than if you are running Windows or some other operating system.</p>
+<ol start="2">
+<li></li>
+</ol>
+<blockquote>
+<h5 id="in-java-what-s-the-difference-between-method-overloading-and-method-overriding">In Java, what&#x2019;s the difference between method overloading and method overriding? <a href="#in-java-what-s-the-difference-between-method-overloading-and-method-overriding" class="header-anchor">#</a></h5>
+</blockquote>
+<p><strong>Overloading:</strong>
 Method overloading in Java occurs when two or more methods in the same class have the exact same name but different parameters (remember that method parameters accept values passed into the method). However, method overloading is a compile-time phenomenon.</p>
 <p><strong>Overriding:</strong>
 Overriding means that a method inherited from a parent class will be changed. But, when overriding a method everything remains exactly the same except the method definition &#x2013; basically what the method does is changed slightly to fit in with the needs of the child class. But, the method name, the number and types of parameters, and the return type will all remain the same.
 Method overriding is a run-time phenomenon that is the driving force behind polymorphism.</p>
-<p>References&#xFF1A;
+<hr>
+<p>**References&#xFF1A; **
 http://www.programmerinterview.com/</p>
 ]]></content>
     </entry>
