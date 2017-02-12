@@ -29,7 +29,7 @@ Method overloading in Java occurs when two or more methods in the same class hav
 Overriding means that a method inherited from a parent class will be changed. But, when overriding a method everything remains exactly the same except the method definition &#x2013; basically what the method does is changed slightly to fit in with the needs of the child class. But, the method name, the number and types of parameters, and the return type will all remain the same.
 Method overriding is a run-time phenomenon that is the driving force behind polymorphism.</p>
 <hr>
-<p>**References&#xFF1A; **
+<p><strong>References:</strong><br>
 http://www.programmerinterview.com/</p>
 ]]></content>
     </entry>
