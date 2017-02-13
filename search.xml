@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title><![CDATA[Leetcode 475. Heaters]]></title>
+      <url>http://yoursite.com/2017/02/12/Leetcode-475-Heaters/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Winter is coming! Your first job during the contest is to design a standard heater with fixed warm radius to warm all the houses.</p>
+<p>Now, you are given positions of houses and heaters on a horizontal line, find out minimum radius of heaters so that all houses could be covered by those heaters.</p>
+<p>So, your input will be the positions of houses and heaters seperately, and your expected output will be the minimum radius standard of heaters.</p>
+<p>Note:</p>
+<ol>
+<li>Numbers of houses and heaters you are given are non-negative and will not exceed 25000.</li>
+<li>Positions of houses and heaters you are given are non-negative and will not exceed 10^9.</li>
+<li>As long as a house is in the heaters&apos; warm radius range, it can be warmed.</li>
+<li>All the heaters follow your radius standard and the warm radius will the same.</li>
+</ol>
+<p>Example 1:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,3],[2]</div><div class="line">Output: 1</div><div class="line">Explanation: The only heater was placed in the position 2, and if we use the radius 1 standard, then all the houses can be warmed.</div></pre></td></tr></table></figure></p>
+<p>Example 2:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,3,4],[1,4]</div><div class="line">Output: 1</div><div class="line">Explanation: The two heater was placed in the position 1 and 4. We need to use radius 1 standard, then all the houses can be warmed.</div></pre></td></tr></table></figure></p>
+<h4 id="solution-1-binary-search-slow">Solution 1: Binary Search (slow) <a href="#solution-1-binary-search-slow" class="header-anchor">#</a></h4>
+<h5 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h5>
+<p>heaters&#x6392;&#x5E8F;&#xFF0C;&#x5BF9;&#x6BCF;&#x4E2A;house&#x7528;binary Search&#x627E;&#x5230;&#x6700;&#x9760;&#x8FD1;&#x7684;&#x90A3;&#x4E2A;&#x503C;&#x3002;</p>
+<h5 id="code">Code: <a href="#code" class="header-anchor">#</a></h5>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public int findRadius(int[] houses, int[] heaters) {</div><div class="line">    Arrays.sort(heaters);</div><div class="line">    int radius = 0;</div><div class="line">    for ( int h : houses) {</div><div class="line">        radius = Math.max(radius, binarySearch(h, heaters));</div><div class="line">    }</div><div class="line">    return radius;</div><div class="line"></div><div class="line">}</div><div class="line"></div><div class="line">public int binarySearch(int val, int[] heaters) {</div><div class="line">    int start = 0;</div><div class="line">    int end = heaters.length - 1;</div><div class="line">    int diff =Integer.MAX_VALUE;</div><div class="line">    while (start &lt; end) {</div><div class="line">        int mid = (start + (end-start)/2);</div><div class="line">        if (val &lt; heaters[mid]) {</div><div class="line">            end = mid;</div><div class="line">        } else {</div><div class="line">            start = mid+1;</div><div class="line">        }</div><div class="line">    }</div><div class="line">    if (start &gt; 0) {</div><div class="line">        diff = Math.min(Math.abs(val - heaters[start]), Math.abs(val - heaters[start-1]));</div><div class="line">    }</div><div class="line">    if (start &lt; heaters.length - 1) {</div><div class="line">        diff = Math.min(diff, Math.abs(val - heaters[start+1]));</div><div class="line">    }</div><div class="line">    diff = Math.min(diff, Math.abs(val - heaters[start]));</div><div class="line">    return diff;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h4 id="solution-2-two-pointers-quicker">Solution 2: Two pointers(quicker) <a href="#solution-2-two-pointers-quicker" class="header-anchor">#</a></h4>
+<h5 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h5>
+<p>heaters, houses&#x6392;&#x5E8F;&#xFF0C;&#x7528;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#x5206;&#x522B;&#x904D;&#x5386;&#x4E00;&#x904D;&#xFF0C;&#x4E3B;&#x4F53;&#x90E8;&#x5206;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x662F;O&#xFF08;m+n&#xFF09;</p>
+<h5 id="code">Code: <a href="#code" class="header-anchor">#</a></h5>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public int findRadius(int[] houses, int[] heaters) {</div><div class="line">    // O(mlogm)</div><div class="line">    Arrays.sort(houses);</div><div class="line">    // O(nlogn)</div><div class="line">    Arrays.sort(heaters);</div><div class="line">    int i = 0, res = 0;</div><div class="line">    // O(m+n)</div><div class="line">    for (int house : houses) {</div><div class="line">        while (i &lt; heaters.length - 1 &amp;&amp; heaters[i] + heaters[i + 1] &lt;= house * 2) {</div><div class="line">            i++;</div><div class="line">        }</div><div class="line">        res = Math.max(res, Math.abs(heaters[i] - house));</div><div class="line">    }</div><div class="line">    return res;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Leetcode 356. Line Reflection]]></title>
       <url>http://yoursite.com/2017/02/12/Leetcode-356-Line-Reflection/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
