@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[Leetcode 459. Repeated Substring Pattern]]></title>
       <url>http://yoursite.com/2017/02/12/Leetcode-459-Repeated-Substring-Pattern/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#x4E00;&#x9053;&#x5F88;&#x7B80;&#x5355;&#x7684;&#x9898;&#x3002;&#x4F46;&#x662F;&#x4E00;&#x76F4;&#x5728;&#x8C03;corner case,&#x597D;&#x4E0D;&#x5BB9;&#x6613;&#x5199;&#x5B8C;&#x4E86;&#x518D;&#x611F;&#x53D7;&#x4E0B;&#x901F;&#x5EA6;&#x548C;&#x522B;&#x4EBA;&#x5199;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5DEE;&#x8DDD;&#x592A;&#x5927;&#x4E86;&#x3002;&#x5FC3;&#x75BC;&#x4E09;&#x79D2;&#x949F;&#x3002;</p>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#x4E00;&#x9053;&#x5F88;&#x7B80;&#x5355;&#x7684;&#x9898;&#x3002;&#x4F46;&#x662F;&#x4E00;&#x76F4;&#x5728;&#x8C03;corner case&#xFF0C;&#x597D;&#x4E0D;&#x5BB9;&#x6613;&#x5199;&#x5B8C;&#x4E86;&#x518D;&#x611F;&#x53D7;&#x4E0B;&#x901F;&#x5EA6;&#x548C;&#x522B;&#x4EBA;&#x5199;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5DEE;&#x8DDD;&#x592A;&#x5927;&#x4E86;&#x3002;&#x5FC3;&#x75BC;&#x4E09;&#x79D2;&#x949F;&#x3002;</p>
 <h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
 <p>Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.</p>
 <p>Example 1:
