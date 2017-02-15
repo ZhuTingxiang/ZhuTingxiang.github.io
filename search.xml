@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[Leetcode 359. Logger Rate Limiter]]></title>
       <url>http://yoursite.com/2017/02/15/Leetcode-359-Logger-Rate-Limiter/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question: <a href="#question" class="header-anchor">#</a></h3>
 <p>Design a logger system that receive stream of messages along with its timestamps, each message should be printed if and only if it is not printed in the last 10 seconds.</p>
 <p>Given a message and a timestamp (in seconds granularity), return true if the message should be printed in the given timestamp, otherwise returns false.</p>
 <p>It is possible that several messages arrive roughly at the same time.</p>
