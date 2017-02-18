@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-18T02:39:56.000Z</updated>
+  <updated>2017-02-18T19:06:57.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/"/>
     <id>http://yoursite.com/2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/</id>
     <published>2017-02-17T03:13:10.000Z</published>
-    <updated>2017-02-18T02:39:56.000Z</updated>
+    <updated>2017-02-18T19:06:57.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#x7ECF;&#x5178;&#x7684;2sum&#xFF0C;3sum&#xFF0C;4sum&#x6781;&#x5176;&#x53D8;&#x4F53;&#x9898;&#x76EE;&#x603B;&#x7ED3;&#xFF0C;&#x9700;&#x8981;&#x719F;&#x8BB0;&#x3002;</p>
 <h3 id="leetcode-1-two-sum">Leetcode 1. Two Sum <a href="#leetcode-1-two-sum" class="header-anchor">#</a></h3>
@@ -68,7 +68,9 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
 <p>Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">For example, given array S = {-1 2 1 -4}, and target = 1.</div><div class="line"></div><div class="line">The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).</div></pre></td></tr></table></figure></p>
 <h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x540C;&#x6837;&#x7684;&#x7528;3sum&#x7684;&#x65B9;&#x6CD5;&#x505A;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x8981;&#x591A;&#x4E00;&#x4E2A;&#x503C;&#x6765;&#x5B58;&#x50A8;&#x6700;&#x5C0F;&#x7684;diff&#x548C;&#x6700;&#x9760;&#x8FD1;&#x7684;sum&#x3002;</p>
 <h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Solution {</div><div class="line">    public int threeSumClosest(int[] nums, int target) {</div><div class="line">        int closest = target;</div><div class="line">        int minDiff = Integer.MAX_VALUE;</div><div class="line">        Arrays.sort(nums);</div><div class="line">        for (int i=0; i&lt;nums.length-2; i++) {</div><div class="line">            int left = i+1; int right = nums.length-1;</div><div class="line">            int twoSum = target - nums[i];</div><div class="line">            System.out.println(closest);</div><div class="line">            while (left &lt; right) {</div><div class="line">                int sum = nums[left] + nums[right];</div><div class="line">                // if equal target, just return. Else find out the closest sum.</div><div class="line">                if (twoSum == sum) {</div><div class="line">                    return target;</div><div class="line">                } else{</div><div class="line">                    if (Math.abs(twoSum - sum) &lt; minDiff) {</div><div class="line">                        minDiff = Math.abs(twoSum - sum);</div><div class="line">                        closest = sum+nums[i];</div><div class="line">                    }</div><div class="line">                    if (twoSum &lt; sum) right--;</div><div class="line">                    else left++;</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">        return closest;</div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
 <h3 id="leetcode-259-3sum-smaller">Leetcode 259. 3Sum Smaller <a href="#leetcode-259-3sum-smaller" class="header-anchor">#</a></h3>
 <h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
 <p>Given an array of n integers nums and a target, find the number of index triplets i, j, k with 0 &lt;= i &lt; j &lt; k &lt; n that satisfy the condition nums[i] + nums[j] + nums[k] &lt; target.</p>
