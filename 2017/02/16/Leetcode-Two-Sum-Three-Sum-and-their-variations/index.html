@@ -1,0 +1,1029 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode,Array,Two pointers," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Star" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x7ECF;&amp;#x5178;&amp;#x7684;2sum&amp;#xFF0C;3sum&amp;#xFF0C;4sum&amp;#x6781;&amp;#x5176;&amp;#x53D8;&amp;#x4F53;&amp;#x9898;&amp;#x76EE;&amp;#x603B;&amp;#x7ED3;&amp;#xFF0C;&amp;#x9700;&amp;#x8981;&amp;#x719F;&amp;#x8BB0;&amp;#x3002;
+Leetcode 1. Two Sum #
+Question: #">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 2Sum/3sum/4sum及其各种变体">
+<meta property="og:url" content="http://yoursite.com/2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/index.html">
+<meta property="og:site_name" content="Star">
+<meta property="og:description" content="&amp;#x7ECF;&amp;#x5178;&amp;#x7684;2sum&amp;#xFF0C;3sum&amp;#xFF0C;4sum&amp;#x6781;&amp;#x5176;&amp;#x53D8;&amp;#x4F53;&amp;#x9898;&amp;#x76EE;&amp;#x603B;&amp;#x7ED3;&amp;#xFF0C;&amp;#x9700;&amp;#x8981;&amp;#x719F;&amp;#x8BB0;&amp;#x3002;
+Leetcode 1. Two Sum #
+Question: #">
+<meta property="og:updated_time" content="2017-02-18T02:39:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode 2Sum/3sum/4sum及其各种变体">
+<meta name="twitter:description" content="&amp;#x7ECF;&amp;#x5178;&amp;#x7684;2sum&amp;#xFF0C;3sum&amp;#xFF0C;4sum&amp;#x6781;&amp;#x5176;&amp;#x53D8;&amp;#x4F53;&amp;#x9898;&amp;#x76EE;&amp;#x603B;&amp;#x7ED3;&amp;#xFF0C;&amp;#x9700;&amp;#x8981;&amp;#x719F;&amp;#x8BB0;&amp;#x3002;
+Leetcode 1. Two Sum #
+Question: #">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/"/>
+
+
+
+
+
+  <title> Leetcode 2Sum/3sum/4sum及其各种变体 | Star </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-89263636-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Star</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Star">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/winnie-pooh-full-hd-wallpaper-image-tablet.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Star">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Star" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Leetcode 2Sum/3sum/4sum及其各种变体
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T22:13:10-05:00">
+                2017-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/DPlayer.min.js"> </script><p>&#x7ECF;&#x5178;&#x7684;2sum&#xFF0C;3sum&#xFF0C;4sum&#x6781;&#x5176;&#x53D8;&#x4F53;&#x9898;&#x76EE;&#x603B;&#x7ED3;&#xFF0C;&#x9700;&#x8981;&#x719F;&#x8BB0;&#x3002;</p>
+<h3 id="leetcode-1-two-sum">Leetcode 1. Two Sum <a href="#leetcode-1-two-sum" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>Example:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line"></div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x7528;HashMap&#x5B58;&#x5DEE;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x4E4B;&#x540E;&#x627E;&#x5230;&#x4E86;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x4E24;&#x4E2A;index&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public int[] twoSum(int[] nums, int target) {</div><div class="line">    int[] result = new int[2];</div><div class="line">    HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">    for (int i=0; i&lt;nums.length; i++) {</div><div class="line">        int minus = target - nums[i];</div><div class="line">        if (map.containsKey(nums[i])) {</div><div class="line">            result[1] = i;</div><div class="line">            result[0] = map.get(nums[i]);</div><div class="line">            break;</div><div class="line">        } else {</div><div class="line">            map.put(minus, i);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return result;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="leetcode-167-two-sum-ii-input-array-is-sorted">Leetcode 167. Two Sum II - Input array is sorted <a href="#leetcode-167-two-sum-ii-input-array-is-sorted" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
+<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
+<p>You may assume that each input would have exactly one solution and you may not use the same element twice.</p>
+<p>Input: numbers={2, 7, 11, 15}, target=9
+Output: index1=1, index2=2</p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>Array&#x662F;sorted&#xFF0C;&#x6240;&#x4EE5;&#x7528;&#x4E24;&#x6307;&#x9488;&#xFF0C;&#x627E;&#x5230;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x7684;&#x4E24;&#x4E2A;index&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public int[] twoSum(int[] num, int target) {</div><div class="line">    int[] result = new int[2];</div><div class="line">    int left = 0;</div><div class="line">    int right = num.length - 1;</div><div class="line">    while (left &lt; right) {</div><div class="line">        int sum = num[left]+num[right];</div><div class="line">        if (sum == target) {</div><div class="line">            result[0] = left + 1;</div><div class="line">            result[1] = right + 1;</div><div class="line">            break;</div><div class="line">        }</div><div class="line">        else if (sum &lt; target) {</div><div class="line">            left++;</div><div class="line">        } else {</div><div class="line">            right--;</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return result;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="leetcode-170-two-sum-iii-data-structure-design">Leetcode 170. Two Sum III - Data structure design <a href="#leetcode-170-two-sum-iii-data-structure-design" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Design and implement a TwoSum class. It should support the following operations: add and find.</p>
+<p>add - Add the number to an internal data structure.
+find - Find if there exists any pair of numbers which sum is equal to the value.
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">For example,</div><div class="line">add(1); add(3); add(5);</div><div class="line">find(4) -&gt; true</div><div class="line">find(7) -&gt; false</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x4E00;&#x9053;&#x5178;&#x578B;&#x7684;Trade off&#xFF0C; &#x5982;&#x679C;&#x8981;add&#x4E3A;O(n), &#x5219;find&#x4E3A; o(1),&#x53CD;&#x4E4B;&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public class TwoSum {</div><div class="line"></div><div class="line">    /** Initialize your data structure here. */</div><div class="line">    HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">    public TwoSum() {</div><div class="line">    }</div><div class="line"></div><div class="line">    /** Add the number to an internal data structure.. */</div><div class="line">    public void add(int number) {</div><div class="line">        if (map.containsKey(number)) {</div><div class="line">            map.put(number, map.get(number)+1);</div><div class="line">        } else {</div><div class="line">            map.put(number, 1);</div><div class="line">        }</div><div class="line"></div><div class="line"></div><div class="line">    }</div><div class="line"></div><div class="line">    /** Find if there exists any pair of numbers which sum is equal to the value. */</div><div class="line">    public boolean find(int value) {</div><div class="line">        for (int n:map.keySet()) {</div><div class="line">            int minus = value -n;</div><div class="line">            if (map.containsKey(minus)) {</div><div class="line">                if (minus == n &amp;&amp; map.get(n) &gt; 1) return true;</div><div class="line">                if (minus != n) return true;</div><div class="line">            }</div><div class="line">        }</div><div class="line">        return false;</div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="leetcode-15-3sum">Leetcode 15. 3Sum <a href="#leetcode-15-3sum" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p>
+<p>Note: The solution set must not contain duplicate triplets.</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">For example, given array S = [-1, 0, 1, 2, -1, -4],</div><div class="line"></div><div class="line">A solution set is:</div><div class="line">[</div><div class="line">  [-1, 0, 1],</div><div class="line">  [-1, -1, 2]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x5148;&#x6392;&#x5E8F;&#xFF0C;&#x904D;&#x5386;&#x5176;&#x4E2D;&#x6BCF;&#x4E2A;&#x503C;&#xFF0C;&#x627E;&#x5230;target&#x51CF;&#x53BB;&#x540E;&#x7684;&#x503C;&#xFF0C;&#x6309;&#x7167;two sum in sorted&#x6765;&#x505A;&#x5C31;&#x884C;&#x4E86;&#x3002;&#x8981;&#x6CE8;&#x610F;skip&#x76F8;&#x540C;&#x503C;&#xFF0C;&#x4E0D;&#x80FD;&#x91CD;&#x590D;&#x653E;&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Solution {</div><div class="line">public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) {</div><div class="line">    List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();</div><div class="line">    Arrays.sort(nums);</div><div class="line">    for (int i=0; i&lt;nums.length-2; i++) {</div><div class="line">        if (i&gt;0 &amp;&amp; nums[i] == nums[i-1]) continue;</div><div class="line">        int twoSum = 0 - nums[i];</div><div class="line">        int left = i+1;</div><div class="line">        int right = nums.length-1;</div><div class="line">        while (left &lt; right) {</div><div class="line">            if (nums[left] + nums[right] == twoSum) {</div><div class="line">                result.add(Arrays.asList(nums[i], nums[left], nums[right]));</div><div class="line">                // skip the same ones</div><div class="line">                while (left &lt; right &amp;&amp; nums[left] == nums[left+1]) left ++;</div><div class="line">                while (left &lt; right &amp;&amp; nums[right] == nums[right-1]) right --;</div><div class="line">                left++; right--;</div><div class="line">            }</div><div class="line">            else if (nums[left] + nums[right] &lt; twoSum) {</div><div class="line">                left ++;</div><div class="line">            } else {</div><div class="line">                right --;</div><div class="line">            }</div><div class="line">        }</div><div class="line"></div><div class="line">    }</div><div class="line">    return result;</div><div class="line">}</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="leetcode-16-3sum-closest">Leetcode 16. 3Sum Closest <a href="#leetcode-16-3sum-closest" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">For example, given array S = {-1 2 1 -4}, and target = 1.</div><div class="line"></div><div class="line">The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<h3 id="leetcode-259-3sum-smaller">Leetcode 259. 3Sum Smaller <a href="#leetcode-259-3sum-smaller" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given an array of n integers nums and a target, find the number of index triplets i, j, k with 0 &lt;= i &lt; j &lt; k &lt; n that satisfy the condition nums[i] + nums[j] + nums[k] &lt; target.</p>
+<p>For example, given nums = [-2, 0, 1, 3], and target = 2.</p>
+<p>Return 2. Because there are two triplets which sums are less than 2:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[-2, 0, 1]</div><div class="line">[-2, 0, 3]</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x5148;&#x6392;&#x5E8F;&#xFF0C;&#x904D;&#x5386;&#x5176;&#x4E2D;&#x6BCF;&#x4E2A;&#x503C;&#xFF0C;&#x627E;&#x5230;target&#x51CF;&#x53BB;&#x540E;&#x7684;&#x503C;&#xFF0C;&#x6309;&#x7167;two sum in sorted&#x6765;&#x505A;&#x5C31;&#x884C;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x56E0;&#x4E3A;&#x53EA;&#x8981;&#x7B97;&#x6BD4;&#x5B83;&#x5C0F;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x6CE8;&#x610F;&#x6307;&#x9488;&#x5982;&#x4F55;&#x79FB;&#x52A8;&#xFF0C;&#x5E76;&#x4E14;&#x5982;&#x4F55;count&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public int threeSumSmaller(int[] nums, int target) {</div><div class="line">    int count = 0;</div><div class="line">    Arrays.sort(nums);</div><div class="line">    if (nums.length &lt; 3) return 0;</div><div class="line">    for (int i=0; i&lt;nums.length; i++) {</div><div class="line">        int twoSum = target - nums[i];</div><div class="line">        int left = i+1; int right = nums.length - 1;</div><div class="line">        while (left &lt; right) {</div><div class="line">            if (nums[left] + nums[right] &gt;= twoSum) {</div><div class="line">                right --;</div><div class="line">            } else {</div><div class="line">                count += right - left;</div><div class="line">                left ++;</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return count;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="leetcode-18-4sum">Leetcode 18. 4Sum <a href="#leetcode-18-4sum" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.</p>
+<p>Note: The solution set must not contain duplicate quadruplets.</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">For example, given array S = [1, 0, -1, 0, -2, 2], and target = 0.</div><div class="line"></div><div class="line">A solution set is:</div><div class="line">[</div><div class="line">  [-1,  0, 0, 1],</div><div class="line">  [-2, -1, 1, 2],</div><div class="line">  [-2,  0, 0, 2]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x5728;3Sum&#x4E0A;&#x9762;&#x5957;&#x4E00;&#x5C42;&#x5C31;&#x884C;&#x4E86;&#x3002;&#x5410;&#x69FD;&#x65E0;&#x529B;&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] nums, int target) {</div><div class="line">    List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    if (nums.length &lt; 4) return list;</div><div class="line">    Arrays.sort(nums);</div><div class="line">    for (int i=0; i&lt;nums.length - 3; i++) {</div><div class="line">        if (i &gt; 0 &amp;&amp; nums[i] == nums[i-1]) continue;</div><div class="line">        for (int j=i+1; j&lt;nums.length-2; j++) {</div><div class="line">            if (j &gt; i+1 &amp;&amp; nums[j] == nums[j-1]) continue;</div><div class="line">            int left = j+1; int right = nums.length-1;</div><div class="line">            while (left &lt;right) {</div><div class="line">                if (nums[left] + nums[right] == target - nums[i] - nums[j]) {</div><div class="line">                    list.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));</div><div class="line">                    while (left &lt; right &amp;&amp; nums[left] == nums[left+1]) left ++;</div><div class="line">                    while (left &lt; right &amp;&amp; nums[right] == nums[right-1]) right --;</div><div class="line">                    left ++; right --;</div><div class="line">                } else if (nums[left] + nums[right]&lt; target - nums[i] - nums[j]) {</div><div class="line">                    left++;</div><div class="line">                } else {</div><div class="line">                    right--;</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return list;</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="leetcode-454-4sum-ii">Leetcode 454. 4Sum II <a href="#leetcode-454-4sum-ii" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given four lists A, B, C, D of integer values, compute how many tuples (i, j, k, l) there are such that A[i] + B[j] + C[k] + D[l] is zero.</p>
+<p>To make problem a bit easier, all A, B, C, D have same length of N where 0 &#x2264; N &#x2264; 500. All integers are in the range of -228 to 228 - 1 and the result is guaranteed to be at most 231 - 1.
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Example:</div><div class="line"></div><div class="line">Input:</div><div class="line">A = [ 1, 2]</div><div class="line">B = [-2,-1]</div><div class="line">C = [-1, 2]</div><div class="line">D = [ 0, 2]</div><div class="line"></div><div class="line">Output:</div><div class="line">2</div><div class="line"></div><div class="line">Explanation:</div><div class="line">The two tuples are:</div><div class="line">1. (0, 0, 0, 1) -&gt; A[0] + B[0] + C[0] + D[1] = 1 + (-2) + (-1) + 2 = 0</div><div class="line">2. (1, 1, 0, 0) -&gt; A[1] + B[1] + C[0] + D[0] = 2 + (-1) + (-1) + 0 = 0</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation&#xFF1A; <a href="#explanation" class="header-anchor">#</a></h4>
+<p>O(N^2)+Hashmap. Boring&#xFF0C;&#x4E0B;&#x4E00;&#x9898;&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {</div><div class="line">    HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">    int count = 0;</div><div class="line">    for (int i=0; i&lt;A.length; i++) {</div><div class="line">        for (int j=0; j&lt;B.length; j++) {</div><div class="line">            int sumAB = A[i] + B[j];</div><div class="line">            if (!map.containsKey(0-sumAB)) map.put(0-sumAB, 1);</div><div class="line">            else map.put(0-sumAB, map.get(0-sumAB)+1);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    for (int ii = 0; ii&lt;C.length; ii++) {</div><div class="line">        for (int jj=0; jj&lt;D.length; jj++) {</div><div class="line">            int sumCD = C[ii] + D[jj];</div><div class="line">            if (map.containsKey(sumCD)) count+= map.get(sumCD);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return count;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Array/" rel="tag"># Array</a>
+          
+            <a href="/tags/Two-pointers/" rel="tag"># Two pointers</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/15/Leetcode-359-Logger-Rate-Limiter/" rel="next" title="Leetcode 359. Logger Rate Limiter">
+                <i class="fa fa-chevron-left"></i> Leetcode 359. Logger Rate Limiter
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/17/【记】远方/" rel="prev" title="「记」远方一无所有">
+                「记」远方一无所有 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/"
+           data-title="Leetcode 2Sum/3sum/4sum及其各种变体" data-url="http://yoursite.com/2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/winnie-pooh-full-hd-wallpaper-image-tablet.jpg"
+               alt="Star" />
+          <p class="site-author-name" itemprop="name">Star</p>
+          <p class="site-description motion-element" itemprop="description">不要温和地走进那个良夜。@CMU</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ZhuTingxiang" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/45283318/" target="_blank" title="Douban">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Douban
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/starshashou?is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/starstarpinkrrr/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-instagram"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/tingxiangzhu" target="_blank" title="Linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedin
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              小伙伴
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://farer.org/" title="Eric" target="_blank">Eric</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.ihypo.net/" title="Hypo" target="_blank">Hypo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.shuang0420.com/" title="徐阿衡" target="_blank">徐阿衡</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://codefalling.com/" title="codefalling" target="_blank">codefalling</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-1-two-sum"><span class="nav-number">1.</span> <span class="nav-text">Leetcode 1. Two Sum #</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">1.1.</span> <span class="nav-text">Question: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">1.2.</span> <span class="nav-text">Explanation: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">1.3.</span> <span class="nav-text">Code: #</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-167-two-sum-ii-input-array-is-sorted"><span class="nav-number">2.</span> <span class="nav-text">Leetcode 167. Two Sum II - Input array is sorted #</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">2.1.</span> <span class="nav-text">Question: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">2.2.</span> <span class="nav-text">Explanation: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">2.3.</span> <span class="nav-text">Code: #</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-170-two-sum-iii-data-structure-design"><span class="nav-number">3.</span> <span class="nav-text">Leetcode 170. Two Sum III - Data structure design #</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">3.1.</span> <span class="nav-text">Question: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">3.2.</span> <span class="nav-text">Explanation: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">3.3.</span> <span class="nav-text">Code: #</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-15-3sum"><span class="nav-number">4.</span> <span class="nav-text">Leetcode 15. 3Sum #</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">4.1.</span> <span class="nav-text">Question: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">4.2.</span> <span class="nav-text">Explanation: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">4.3.</span> <span class="nav-text">Code: #</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-16-3sum-closest"><span class="nav-number">5.</span> <span class="nav-text">Leetcode 16. 3Sum Closest #</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">5.1.</span> <span class="nav-text">Question: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">5.2.</span> <span class="nav-text">Explanation: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">5.3.</span> <span class="nav-text">Code: #</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-259-3sum-smaller"><span class="nav-number">6.</span> <span class="nav-text">Leetcode 259. 3Sum Smaller #</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">6.1.</span> <span class="nav-text">Question: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">6.2.</span> <span class="nav-text">Explanation: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">6.3.</span> <span class="nav-text">Code: #</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-18-4sum"><span class="nav-number">7.</span> <span class="nav-text">Leetcode 18. 4Sum #</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">7.1.</span> <span class="nav-text">Question: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">7.2.</span> <span class="nav-text">Explanation: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">7.3.</span> <span class="nav-text">Code: #</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-454-4sum-ii"><span class="nav-number">8.</span> <span class="nav-text">Leetcode 454. 4Sum II #</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">8.1.</span> <span class="nav-text">Question: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">8.2.</span> <span class="nav-text">Explanation： #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">8.3.</span> <span class="nav-text">Code: #</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Star</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"starllap"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

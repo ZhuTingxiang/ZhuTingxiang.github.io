@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-15T17:03:19.000Z</updated>
+  <updated>2017-02-18T00:07:25.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,125 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「记」远方一无所有</title>
+    <link href="http://yoursite.com/2017/02/17/%E3%80%90%E8%AE%B0%E3%80%91%E8%BF%9C%E6%96%B9/"/>
+    <id>http://yoursite.com/2017/02/17/【记】远方/</id>
+    <published>2017-02-18T00:06:35.000Z</published>
+    <updated>2017-02-18T00:07:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode 2Sum/3sum/4sum及其各种变体</title>
+    <link href="http://yoursite.com/2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/"/>
+    <id>http://yoursite.com/2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/</id>
+    <published>2017-02-17T03:13:10.000Z</published>
+    <updated>2017-02-18T02:39:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#x7ECF;&#x5178;&#x7684;2sum&#xFF0C;3sum&#xFF0C;4sum&#x6781;&#x5176;&#x53D8;&#x4F53;&#x9898;&#x76EE;&#x603B;&#x7ED3;&#xFF0C;&#x9700;&#x8981;&#x719F;&#x8BB0;&#x3002;</p>
+<h3 id="leetcode-1-two-sum">Leetcode 1. Two Sum <a href="#leetcode-1-two-sum" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>Example:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line"></div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x7528;HashMap&#x5B58;&#x5DEE;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x4E4B;&#x540E;&#x627E;&#x5230;&#x4E86;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x4E24;&#x4E2A;index&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public int[] twoSum(int[] nums, int target) {</div><div class="line">    int[] result = new int[2];</div><div class="line">    HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">    for (int i=0; i&lt;nums.length; i++) {</div><div class="line">        int minus = target - nums[i];</div><div class="line">        if (map.containsKey(nums[i])) {</div><div class="line">            result[1] = i;</div><div class="line">            result[0] = map.get(nums[i]);</div><div class="line">            break;</div><div class="line">        } else {</div><div class="line">            map.put(minus, i);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return result;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="leetcode-167-two-sum-ii-input-array-is-sorted">Leetcode 167. Two Sum II - Input array is sorted <a href="#leetcode-167-two-sum-ii-input-array-is-sorted" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
+<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
+<p>You may assume that each input would have exactly one solution and you may not use the same element twice.</p>
+<p>Input: numbers={2, 7, 11, 15}, target=9
+Output: index1=1, index2=2</p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>Array&#x662F;sorted&#xFF0C;&#x6240;&#x4EE5;&#x7528;&#x4E24;&#x6307;&#x9488;&#xFF0C;&#x627E;&#x5230;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x7684;&#x4E24;&#x4E2A;index&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public int[] twoSum(int[] num, int target) {</div><div class="line">    int[] result = new int[2];</div><div class="line">    int left = 0;</div><div class="line">    int right = num.length - 1;</div><div class="line">    while (left &lt; right) {</div><div class="line">        int sum = num[left]+num[right];</div><div class="line">        if (sum == target) {</div><div class="line">            result[0] = left + 1;</div><div class="line">            result[1] = right + 1;</div><div class="line">            break;</div><div class="line">        }</div><div class="line">        else if (sum &lt; target) {</div><div class="line">            left++;</div><div class="line">        } else {</div><div class="line">            right--;</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return result;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="leetcode-170-two-sum-iii-data-structure-design">Leetcode 170. Two Sum III - Data structure design <a href="#leetcode-170-two-sum-iii-data-structure-design" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Design and implement a TwoSum class. It should support the following operations: add and find.</p>
+<p>add - Add the number to an internal data structure.
+find - Find if there exists any pair of numbers which sum is equal to the value.
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">For example,</div><div class="line">add(1); add(3); add(5);</div><div class="line">find(4) -&gt; true</div><div class="line">find(7) -&gt; false</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x4E00;&#x9053;&#x5178;&#x578B;&#x7684;Trade off&#xFF0C; &#x5982;&#x679C;&#x8981;add&#x4E3A;O(n), &#x5219;find&#x4E3A; o(1),&#x53CD;&#x4E4B;&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public class TwoSum {</div><div class="line"></div><div class="line">    /** Initialize your data structure here. */</div><div class="line">    HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">    public TwoSum() {</div><div class="line">    }</div><div class="line"></div><div class="line">    /** Add the number to an internal data structure.. */</div><div class="line">    public void add(int number) {</div><div class="line">        if (map.containsKey(number)) {</div><div class="line">            map.put(number, map.get(number)+1);</div><div class="line">        } else {</div><div class="line">            map.put(number, 1);</div><div class="line">        }</div><div class="line"></div><div class="line"></div><div class="line">    }</div><div class="line"></div><div class="line">    /** Find if there exists any pair of numbers which sum is equal to the value. */</div><div class="line">    public boolean find(int value) {</div><div class="line">        for (int n:map.keySet()) {</div><div class="line">            int minus = value -n;</div><div class="line">            if (map.containsKey(minus)) {</div><div class="line">                if (minus == n &amp;&amp; map.get(n) &gt; 1) return true;</div><div class="line">                if (minus != n) return true;</div><div class="line">            }</div><div class="line">        }</div><div class="line">        return false;</div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="leetcode-15-3sum">Leetcode 15. 3Sum <a href="#leetcode-15-3sum" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p>
+<p>Note: The solution set must not contain duplicate triplets.</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">For example, given array S = [-1, 0, 1, 2, -1, -4],</div><div class="line"></div><div class="line">A solution set is:</div><div class="line">[</div><div class="line">  [-1, 0, 1],</div><div class="line">  [-1, -1, 2]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x5148;&#x6392;&#x5E8F;&#xFF0C;&#x904D;&#x5386;&#x5176;&#x4E2D;&#x6BCF;&#x4E2A;&#x503C;&#xFF0C;&#x627E;&#x5230;target&#x51CF;&#x53BB;&#x540E;&#x7684;&#x503C;&#xFF0C;&#x6309;&#x7167;two sum in sorted&#x6765;&#x505A;&#x5C31;&#x884C;&#x4E86;&#x3002;&#x8981;&#x6CE8;&#x610F;skip&#x76F8;&#x540C;&#x503C;&#xFF0C;&#x4E0D;&#x80FD;&#x91CD;&#x590D;&#x653E;&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Solution {</div><div class="line">public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) {</div><div class="line">    List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();</div><div class="line">    Arrays.sort(nums);</div><div class="line">    for (int i=0; i&lt;nums.length-2; i++) {</div><div class="line">        if (i&gt;0 &amp;&amp; nums[i] == nums[i-1]) continue;</div><div class="line">        int twoSum = 0 - nums[i];</div><div class="line">        int left = i+1;</div><div class="line">        int right = nums.length-1;</div><div class="line">        while (left &lt; right) {</div><div class="line">            if (nums[left] + nums[right] == twoSum) {</div><div class="line">                result.add(Arrays.asList(nums[i], nums[left], nums[right]));</div><div class="line">                // skip the same ones</div><div class="line">                while (left &lt; right &amp;&amp; nums[left] == nums[left+1]) left ++;</div><div class="line">                while (left &lt; right &amp;&amp; nums[right] == nums[right-1]) right --;</div><div class="line">                left++; right--;</div><div class="line">            }</div><div class="line">            else if (nums[left] + nums[right] &lt; twoSum) {</div><div class="line">                left ++;</div><div class="line">            } else {</div><div class="line">                right --;</div><div class="line">            }</div><div class="line">        }</div><div class="line"></div><div class="line">    }</div><div class="line">    return result;</div><div class="line">}</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="leetcode-16-3sum-closest">Leetcode 16. 3Sum Closest <a href="#leetcode-16-3sum-closest" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">For example, given array S = {-1 2 1 -4}, and target = 1.</div><div class="line"></div><div class="line">The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<h3 id="leetcode-259-3sum-smaller">Leetcode 259. 3Sum Smaller <a href="#leetcode-259-3sum-smaller" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given an array of n integers nums and a target, find the number of index triplets i, j, k with 0 &lt;= i &lt; j &lt; k &lt; n that satisfy the condition nums[i] + nums[j] + nums[k] &lt; target.</p>
+<p>For example, given nums = [-2, 0, 1, 3], and target = 2.</p>
+<p>Return 2. Because there are two triplets which sums are less than 2:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[-2, 0, 1]</div><div class="line">[-2, 0, 3]</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x5148;&#x6392;&#x5E8F;&#xFF0C;&#x904D;&#x5386;&#x5176;&#x4E2D;&#x6BCF;&#x4E2A;&#x503C;&#xFF0C;&#x627E;&#x5230;target&#x51CF;&#x53BB;&#x540E;&#x7684;&#x503C;&#xFF0C;&#x6309;&#x7167;two sum in sorted&#x6765;&#x505A;&#x5C31;&#x884C;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x56E0;&#x4E3A;&#x53EA;&#x8981;&#x7B97;&#x6BD4;&#x5B83;&#x5C0F;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x6CE8;&#x610F;&#x6307;&#x9488;&#x5982;&#x4F55;&#x79FB;&#x52A8;&#xFF0C;&#x5E76;&#x4E14;&#x5982;&#x4F55;count&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public int threeSumSmaller(int[] nums, int target) {</div><div class="line">    int count = 0;</div><div class="line">    Arrays.sort(nums);</div><div class="line">    if (nums.length &lt; 3) return 0;</div><div class="line">    for (int i=0; i&lt;nums.length; i++) {</div><div class="line">        int twoSum = target - nums[i];</div><div class="line">        int left = i+1; int right = nums.length - 1;</div><div class="line">        while (left &lt; right) {</div><div class="line">            if (nums[left] + nums[right] &gt;= twoSum) {</div><div class="line">                right --;</div><div class="line">            } else {</div><div class="line">                count += right - left;</div><div class="line">                left ++;</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return count;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="leetcode-18-4sum">Leetcode 18. 4Sum <a href="#leetcode-18-4sum" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.</p>
+<p>Note: The solution set must not contain duplicate quadruplets.</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">For example, given array S = [1, 0, -1, 0, -2, 2], and target = 0.</div><div class="line"></div><div class="line">A solution set is:</div><div class="line">[</div><div class="line">  [-1,  0, 0, 1],</div><div class="line">  [-2, -1, 1, 2],</div><div class="line">  [-2,  0, 0, 2]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x5728;3Sum&#x4E0A;&#x9762;&#x5957;&#x4E00;&#x5C42;&#x5C31;&#x884C;&#x4E86;&#x3002;&#x5410;&#x69FD;&#x65E0;&#x529B;&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] nums, int target) {</div><div class="line">    List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    if (nums.length &lt; 4) return list;</div><div class="line">    Arrays.sort(nums);</div><div class="line">    for (int i=0; i&lt;nums.length - 3; i++) {</div><div class="line">        if (i &gt; 0 &amp;&amp; nums[i] == nums[i-1]) continue;</div><div class="line">        for (int j=i+1; j&lt;nums.length-2; j++) {</div><div class="line">            if (j &gt; i+1 &amp;&amp; nums[j] == nums[j-1]) continue;</div><div class="line">            int left = j+1; int right = nums.length-1;</div><div class="line">            while (left &lt;right) {</div><div class="line">                if (nums[left] + nums[right] == target - nums[i] - nums[j]) {</div><div class="line">                    list.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));</div><div class="line">                    while (left &lt; right &amp;&amp; nums[left] == nums[left+1]) left ++;</div><div class="line">                    while (left &lt; right &amp;&amp; nums[right] == nums[right-1]) right --;</div><div class="line">                    left ++; right --;</div><div class="line">                } else if (nums[left] + nums[right]&lt; target - nums[i] - nums[j]) {</div><div class="line">                    left++;</div><div class="line">                } else {</div><div class="line">                    right--;</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return list;</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="leetcode-454-4sum-ii">Leetcode 454. 4Sum II <a href="#leetcode-454-4sum-ii" class="header-anchor">#</a></h3>
+<h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given four lists A, B, C, D of integer values, compute how many tuples (i, j, k, l) there are such that A[i] + B[j] + C[k] + D[l] is zero.</p>
+<p>To make problem a bit easier, all A, B, C, D have same length of N where 0 &#x2264; N &#x2264; 500. All integers are in the range of -228 to 228 - 1 and the result is guaranteed to be at most 231 - 1.
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Example:</div><div class="line"></div><div class="line">Input:</div><div class="line">A = [ 1, 2]</div><div class="line">B = [-2,-1]</div><div class="line">C = [-1, 2]</div><div class="line">D = [ 0, 2]</div><div class="line"></div><div class="line">Output:</div><div class="line">2</div><div class="line"></div><div class="line">Explanation:</div><div class="line">The two tuples are:</div><div class="line">1. (0, 0, 0, 1) -&gt; A[0] + B[0] + C[0] + D[1] = 1 + (-2) + (-1) + 2 = 0</div><div class="line">2. (1, 1, 0, 0) -&gt; A[1] + B[1] + C[0] + D[0] = 2 + (-1) + (-1) + 0 = 0</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation&#xFF1A; <a href="#explanation" class="header-anchor">#</a></h4>
+<p>O(N^2)+Hashmap. Boring&#xFF0C;&#x4E0B;&#x4E00;&#x9898;&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {</div><div class="line">    HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">    int count = 0;</div><div class="line">    for (int i=0; i&lt;A.length; i++) {</div><div class="line">        for (int j=0; j&lt;B.length; j++) {</div><div class="line">            int sumAB = A[i] + B[j];</div><div class="line">            if (!map.containsKey(0-sumAB)) map.put(0-sumAB, 1);</div><div class="line">            else map.put(0-sumAB, map.get(0-sumAB)+1);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    for (int ii = 0; ii&lt;C.length; ii++) {</div><div class="line">        for (int jj=0; jj&lt;D.length; jj++) {</div><div class="line">            int sumCD = C[ii] + D[jj];</div><div class="line">            if (map.containsKey(sumCD)) count+= map.get(sumCD);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return count;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&amp;#x7ECF;&amp;#x5178;&amp;#x7684;2sum&amp;#xFF0C;3sum&amp;#xFF0C;4sum&amp;#x6781;&amp;#x5176;&amp;#x53D8;&amp;#x4F53;&amp;#x
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="Two pointers" scheme="http://yoursite.com/tags/Two-pointers/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 359. Logger Rate Limiter</title>
@@ -89,9 +208,9 @@
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="String" scheme="http://yoursite.com/tags/String/"/>
-    
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="String" scheme="http://yoursite.com/tags/String/"/>
     
   </entry>
   
@@ -241,9 +360,9 @@ Solution 3:<br>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="String" scheme="http://yoursite.com/tags/String/"/>
-    
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="String" scheme="http://yoursite.com/tags/String/"/>
     
   </entry>
   
@@ -252,7 +371,7 @@ Solution 3:<br>
     <link href="http://yoursite.com/2017/02/11/Java-Interview-Questions/"/>
     <id>http://yoursite.com/2017/02/11/Java-Interview-Questions/</id>
     <published>2017-02-11T14:51:39.000Z</published>
-    <updated>2017-02-15T05:49:16.000Z</updated>
+    <updated>2017-02-16T04:48:13.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Always update...</p>
 <h3 id="jvm-is-plantform-dependent">JVM is plantform dependent? <a href="#jvm-is-plantform-dependent" class="header-anchor">#</a></h3>
@@ -296,6 +415,10 @@ Method overriding is a run-time phenomenon that is the driving force behind poly
 </blockquote>
 <p>Shortly: An object is an instance of a class.
 Objects have a lifespan but classes do not.</p>
+<h3 id="an-object-and-a-class">An object and a class <a href="#an-object-and-a-class" class="header-anchor">#</a></h3>
+<blockquote>
+<p>In Java, what&#x2019;s the difference between an object and a class?</p>
+</blockquote>
 <hr>
 <p><strong>References:</strong>
 http://www.programmerinterview.com/</p>
@@ -311,9 +434,9 @@ http://www.programmerinterview.com/</p>
       <category term="Interview" scheme="http://yoursite.com/categories/Interview/"/>
     
     
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
       <category term="Interview" scheme="http://yoursite.com/tags/Interview/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
   </entry>
   
@@ -365,11 +488,11 @@ http://www.programmerinterview.com/</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
+    
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
-    
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
   </entry>
   
@@ -404,11 +527,11 @@ http://www.programmerinterview.com/</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
-    
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
+    
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
   </entry>
   
@@ -508,9 +631,9 @@ It should return [1,4,8,2,5,9,3,6,7].</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
       <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
   </entry>
   
@@ -1349,116 +1472,6 @@ k = 2; B[0] = A[len-2];
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
       <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 202. Happy Number</title>
-    <link href="http://yoursite.com/2016/12/30/leetcode-202/"/>
-    <id>http://yoursite.com/2016/12/30/leetcode-202/</id>
-    <published>2016-12-30T20:34:49.000Z</published>
-    <updated>2016-12-31T20:13:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question:</strong></p>
-<p>Write an algorithm to determine if a number is &quot;happy&quot;.</p>
-<p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
-<p>Example: 19 is a happy number</p>
-<p>12 + 92 = 82
-82 + 22 = 68
-62 + 82 = 100
-12 + 02 + 02 = 1</p>
-<p><strong>Explanation:</strong></p>
-<p>&#x53C8;&#x662F;&#x4E00;&#x9053;&#x6570;&#x5B66;&#x9898;&#x3002;&#x5982;&#x679C;&#x5C31;&#x6309;&#x7167;&#x9898;&#x610F;&#x5199;&#x7B97;&#x6CD5;&#x7684;&#x8BDD;&#x975E;&#x5E38;&#x9EBB;&#x70E6;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x4ECE;&#x6570;&#x5B66;&#x7684;&#x89D2;&#x5EA6;&#x5148;&#x7B80;&#x5316;&#x9898;&#x76EE;&#x3002;
-&#x6839;&#x636E;Top Solution&#x7684;&#x63D0;&#x793A;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x6536;&#x655B;&#x5230;1&#xFF0C;&#x610F;&#x5473;&#x7740;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x4E86;&#x4E24;&#x6B21;&#x540C;&#x6837;&#x7684;&#x503C;&#xFF0C;&#x5219;&#x8868;&#x793A;&#x4E4B;&#x540E;&#x8FD8;&#x4F1A;&#x51FA;&#x73B0;&#xFF0C;&#x4F1A;&#x4E00;&#x76F4;&#x5FAA;&#x73AF;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x503C;&#x4E0D;&#x662F;1&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x8FD9;&#x4E2A;&#x6570;&#x5C31;&#x4E0D;&#x662F;happy number&#x3002;
-&#x53EF;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x662F;happy number&#x7684;&#x6570;&#x4E0D;&#x53EF;&#x80FD;&#x4E0D;&#x91CD;&#x590D;&#x5730;&#x8FDB;&#x884C;&#x4E0B;&#x53BB;&#x5462;&#xFF1F;&#x4E0D;&#x662F;happy number&#x7684;&#x6570;&#x4E00;&#x5B9A;&#x4F1A;&#x5FAA;&#x73AF;&#x91CD;&#x590D;&#x4E48;&#xFF1F;</p>
-<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5047;&#x8BBE;&#xFF0C;&#x4E0D;&#x662F;happy number&#x7684;&#x6570;&#x4F1A;&#x65E0;&#x9650;&#x4E0B;&#x53BB;&#xFF0C;&#x4F46;&#x662F;&#x6240;&#x6709;&#x7684;&#x7ED3;&#x679C;&#x53EA;&#x53EF;&#x80FD;&#x5728;&#xFF08;2&#xFF0C;N]&#x4E2D;&#xFF0C;&#x8FD9;&#x91CC;N&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x9650;&#x5B9E;&#x6570;&#x3002;&#x5982;&#x679C;&#x65E0;&#x9650;&#x4EA7;&#x751F;&#x7ED3;&#x679C;&#xFF0C;&#x90A3;&#x603B;&#x6709;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;&#x4F1A;&#x51FA;&#x73B0;&#x91CD;&#x590D;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;loop&#x3002;</p>
-<p>&#x6240;&#x4EE5;&#x4E00;&#x65E6;&#x51FA;&#x73B0;&#x4E86;loop&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x505C;&#x6B62;&#xFF0C;&#x53BB;&#x68C0;&#x6D4B;&#x7ED3;&#x679C;&#x662F;&#x4E0D;&#x662F;1&#x3002;</p>
-<p><strong>Code:</strong></p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def isHappy(self, n):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type n: int</div><div class="line">        :rtype: bool</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        numbers = set()</div><div class="line">        while n not in numbers:</div><div class="line">            numbers.add(n)</div><div class="line">            n = sum(int(i)**2 for i in str(n))</div><div class="line">        return n== 1</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&lt;strong&gt;Question:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Write an algorithm to determine if a number is &amp;quot;
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
-    
-      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
-    
-      <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 437. Path Sum III</title>
-    <link href="http://yoursite.com/2016/12/30/LeetCode-437-Path-Sum-III/"/>
-    <id>http://yoursite.com/2016/12/30/LeetCode-437-Path-Sum-III/</id>
-    <published>2016-12-30T18:18:10.000Z</published>
-    <updated>2016-12-30T18:32:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Quesition</strong></p>
-<p>You are given a binary tree in which each node contains an integer value.</p>
-<p>Find the number of paths that sum to a given value.</p>
-<p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
-<p>The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</p>
-<p>Example:</p>
-<pre><code>root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8
-
-      10
-     /  \
-    5   -3
-   / \    \
-  3   2   11
- / \   \
-3  -2   1
-
-Return 3. The paths that sum to 8 are:
-
-1.  5 -&gt; 3
-2.  5 -&gt; 2 -&gt; 1
-3. -3 -&gt; 11
-</code></pre>
-<p><strong>Explanation:</strong></p>
-<p>&#x8FD9;&#x9053;&#x9898;&#x7ED9;&#x4E86;&#x4E8C;&#x53C9;&#x6811;&#x548C;&#x4E00;&#x4E2A;sum&#xFF0C;&#x627E;&#x51FA;&#x6240;&#x6709;&#x5B50;&#x8DEF;&#x5F84;&#x548C;&#x4E3A;sum&#x7684;&#x8DEF;&#x5F84;&#x3002;
-&#x76F4;&#x63A5;&#x7528;&#x9012;&#x5F52;&#x65B9;&#x6CD5;&#x505A;&#xFF0C;&#x628A;&#x6BCF;&#x4E2A;&#x70B9;&#x90FD;&#x5F53;&#x505A;&#x7236;&#x8282;&#x70B9;&#x904D;&#x5386;&#xFF0C;&#x627E;&#x5230;&#x5B58;&#x5728;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x76F8;&#x52A0;&#x5373;&#x53EF;&#x3002;
-&#x76F8;&#x5173;&#x9898;&#x76EE;&#xFF1A;</p>
-<ul>
-<li>Leetcode 64. Minimum Path Sum</li>
-<li>Leetcode 112. Path Sum</li>
-<li>Leetcode 113. Path Sum II</li>
-</ul>
-<p>&#x4E4B;&#x540E;&#x518D;&#x5BF9;&#x8FD9;&#x7C7B;&#x9898;&#x76EE;&#x8FDB;&#x884C;&#x603B;&#x7ED3;&#x3002;</p>
-<p><strong>Code</strong>:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def pathSum(self, root, sum):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type root: TreeNode</div><div class="line">        :type sum: int</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line"></div><div class="line">        if not root:</div><div class="line">            return 0</div><div class="line">        return self.pathHelper(root, sum) + self.pathSum(root.left, sum) + self.pathSum(root.right, sum)</div><div class="line"></div><div class="line">    def pathHelper(self, root, sum):</div><div class="line">        result = 0</div><div class="line">        if not root:</div><div class="line">            return 0</div><div class="line">        if (sum == root.val):</div><div class="line">            result += 1</div><div class="line">        result += self.pathHelper(root.left, sum - root.val)</div><div class="line">        result += self.pathHelper(root.right, sum - root.val)</div><div class="line">        return result</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&lt;strong&gt;Quesition&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;You are given a binary tree in which each node contai
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
-    
-      <category term="tree" scheme="http://yoursite.com/tags/tree/"/>
     
   </entry>
   
