@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-19T21:03:37.000Z</updated>
+  <updated>2017-02-19T21:04:52.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,15 @@
     <link href="http://yoursite.com/2017/02/19/Leetcode-380-Insert-Delete-GetRandom-O-1/"/>
     <id>http://yoursite.com/2017/02/19/Leetcode-380-Insert-Delete-GetRandom-O-1/</id>
     <published>2017-02-19T20:57:07.000Z</published>
-    <updated>2017-02-19T21:03:37.000Z</updated>
+    <updated>2017-02-19T21:04:52.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question: <a href="#question" class="header-anchor">#</a></h3>
+<p>Design a data structure that supports all following operations in average O(1) time.</p>
+<p>insert(val): Inserts an item val to the set if not already present.
+remove(val): Removes an item val from the set if present.
+getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.
+Example:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">// Init an empty set.</div><div class="line">RandomizedSet randomSet = new RandomizedSet();</div><div class="line"></div><div class="line">// Inserts 1 to the set. Returns true as 1 was inserted successfully.</div><div class="line">randomSet.insert(1);</div><div class="line"></div><div class="line">// Returns false as 2 does not exist in the set.</div><div class="line">randomSet.remove(2);</div><div class="line"></div><div class="line">// Inserts 2 to the set, returns true. Set now contains [1,2].</div><div class="line">randomSet.insert(2);</div><div class="line"></div><div class="line">// getRandom should return either 1 or 2 randomly.</div><div class="line">randomSet.getRandom();</div><div class="line"></div><div class="line">// Removes 1 from the set, returns true. Set now contains [2].</div><div class="line">randomSet.remove(1);</div><div class="line"></div><div class="line">// 2 was already in the set, so return false.</div><div class="line">randomSet.insert(2);</div><div class="line"></div><div class="line">// Since 2 is the only number in the set, getRandom always return 2.</div><div class="line">randomSet.getRandom();</div></pre></td></tr></table></figure></p>
 <h3 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h3>
 <p>&#x5F88;&#x795E;&#x5947;&#x7684;&#x4E00;&#x9053;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x9700;&#x8981;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x5E73;&#x5747;&#x4E3A;O(1),&#x6700;&#x521D;&#x6211;&#x53EA;&#x7528;&#x4E86;&#x4E00;&#x4E2A;Arraylist&#x5B58;&#x4E5F;AC&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x65F6;&#x95F4;&#x5F88;&#x4E45;&#xFF0C;&#x56E0;&#x4E3A;remove&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x662F;O(1).&#x6362;&#x4E86;Hashmap&#x5B58;index&#xFF0C;&#x5FEB;&#x4E00;&#x4E9B;&#x3002;&#x4F46;&#x662F;&#x8981;&#x6CE8;&#x610F;&#xFF0C;remove&#x90A3;&#x8FB9;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;count--&#xFF0C;&#x9700;&#x8981;&#x548C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x503C;&#x8C03;&#x6362;&#xFF0C;&#x8FD9;&#x6837;&#x4FDD;&#x8BC1;&#x5176;&#x4ED6;&#x7684;index&#x4E0D;&#x53D8;&#xFF0C;&#x53EA;&#x51CF;&#x5C11;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x3002;A little tricky
 &#x603B;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x8FD8;&#x662F;&#x86EE;&#x6709;&#x8DA3;&#x7684;&#xFF0C;&#x597D;&#x597D;&#x60F3;&#x60F3;&#x3002;</p>
@@ -33,7 +39,7 @@
     <summary type="html">
     
       &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question: &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;e
+&lt;p&gt;Design
     
     </summary>
     
