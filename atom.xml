@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-18T19:06:57.000Z</updated>
+  <updated>2017-02-19T01:45:13.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 298. Binary Tree Longest Consecutive Sequence</title>
+    <link href="http://yoursite.com/2017/02/18/LeetCode-298-Binary-Tree-Longest-Consecutive-Sequence/"/>
+    <id>http://yoursite.com/2017/02/18/LeetCode-298-Binary-Tree-Longest-Consecutive-Sequence/</id>
+    <published>2017-02-19T01:42:10.000Z</published>
+    <updated>2017-02-19T01:45:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>Given a binary tree, find the length of the longest consecutive sequence path.</p>
+<p>The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The longest consecutive path need to be from parent to child (cannot be the reverse).
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">For example,</div><div class="line">   1</div><div class="line">    \</div><div class="line">     3</div><div class="line">    / \</div><div class="line">   2   4</div><div class="line">        \</div><div class="line">         5</div><div class="line">Longest consecutive sequence path is 3-4-5, so return 3.</div><div class="line">   2</div><div class="line">    \</div><div class="line">     3</div><div class="line">    /</div><div class="line">   2</div><div class="line">  /</div><div class="line"> 1</div><div class="line">Longest consecutive sequence path is 2-3,not3-2-1, so return 2.</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x9012;&#x5F52;&#x3002;&#x60F3;&#x6E05;&#x695A;base case&#x548C;&#x9012;&#x5F52;&#x7684;&#x6A21;&#x5F0F;&#x5373;&#x53EF;&#x3002;&#x5DE6;&#x53F3;&#x503C;&#xFF0C;&#x4EE5;&#x53CA;&#x5F53;&#x524D;&#x503C;&#xFF0C;&#x4E0D;&#x8981;&#x6DF7;&#x6DC6;&#x3002;</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class Solution {</div><div class="line">    public int longestConsecutive(TreeNode root) {</div><div class="line">        return (root==null)?0:Math.max(Helper(root.left,1,root.val), Helper(root.right, 1, root.val));</div><div class="line">    }</div><div class="line"></div><div class="line"></div><div class="line">    public int Helper(TreeNode root, int count, int val) {</div><div class="line">        if (root == null) return count;</div><div class="line">        count = (root.val - val == 1) ? count+1:1;</div><div class="line">        int leftCount = Helper(root.left, count, root.val);</div><div class="line">        int rightCount = Helper(root.right, count, root.val);</div><div class="line">        return Math.max(count, Math.max(leftCount, rightCount));</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question&quot;&gt;Question: &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Given 
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Tree" scheme="http://yoursite.com/tags/Tree/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 2Sum/3sum/4sum及其各种变体</title>
@@ -192,9 +229,9 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
   </entry>
   
@@ -344,9 +381,9 @@ Solution 3:<br>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
   </entry>
   
@@ -472,11 +509,11 @@ http://www.programmerinterview.com/</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
-    
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
   </entry>
   
@@ -511,11 +548,11 @@ http://www.programmerinterview.com/</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
+    
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
-    
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
   </entry>
   
@@ -615,9 +652,9 @@ It should return [1,4,8,2,5,9,3,6,7].</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
-    
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
     
   </entry>
   
@@ -1221,9 +1258,9 @@ http://www.programcreek.com</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
@@ -1454,53 +1491,6 @@ k = 2; B[0] = A[len-2];
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
-    
-      <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 202. Happy Number</title>
-    <link href="http://yoursite.com/2016/12/30/leetcode-202/"/>
-    <id>http://yoursite.com/2016/12/30/leetcode-202/</id>
-    <published>2016-12-30T20:34:49.000Z</published>
-    <updated>2016-12-31T20:13:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question:</strong></p>
-<p>Write an algorithm to determine if a number is &quot;happy&quot;.</p>
-<p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
-<p>Example: 19 is a happy number</p>
-<p>12 + 92 = 82
-82 + 22 = 68
-62 + 82 = 100
-12 + 02 + 02 = 1</p>
-<p><strong>Explanation:</strong></p>
-<p>&#x53C8;&#x662F;&#x4E00;&#x9053;&#x6570;&#x5B66;&#x9898;&#x3002;&#x5982;&#x679C;&#x5C31;&#x6309;&#x7167;&#x9898;&#x610F;&#x5199;&#x7B97;&#x6CD5;&#x7684;&#x8BDD;&#x975E;&#x5E38;&#x9EBB;&#x70E6;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x4ECE;&#x6570;&#x5B66;&#x7684;&#x89D2;&#x5EA6;&#x5148;&#x7B80;&#x5316;&#x9898;&#x76EE;&#x3002;
-&#x6839;&#x636E;Top Solution&#x7684;&#x63D0;&#x793A;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x6536;&#x655B;&#x5230;1&#xFF0C;&#x610F;&#x5473;&#x7740;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x4E86;&#x4E24;&#x6B21;&#x540C;&#x6837;&#x7684;&#x503C;&#xFF0C;&#x5219;&#x8868;&#x793A;&#x4E4B;&#x540E;&#x8FD8;&#x4F1A;&#x51FA;&#x73B0;&#xFF0C;&#x4F1A;&#x4E00;&#x76F4;&#x5FAA;&#x73AF;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x503C;&#x4E0D;&#x662F;1&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x8FD9;&#x4E2A;&#x6570;&#x5C31;&#x4E0D;&#x662F;happy number&#x3002;
-&#x53EF;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x662F;happy number&#x7684;&#x6570;&#x4E0D;&#x53EF;&#x80FD;&#x4E0D;&#x91CD;&#x590D;&#x5730;&#x8FDB;&#x884C;&#x4E0B;&#x53BB;&#x5462;&#xFF1F;&#x4E0D;&#x662F;happy number&#x7684;&#x6570;&#x4E00;&#x5B9A;&#x4F1A;&#x5FAA;&#x73AF;&#x91CD;&#x590D;&#x4E48;&#xFF1F;</p>
-<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5047;&#x8BBE;&#xFF0C;&#x4E0D;&#x662F;happy number&#x7684;&#x6570;&#x4F1A;&#x65E0;&#x9650;&#x4E0B;&#x53BB;&#xFF0C;&#x4F46;&#x662F;&#x6240;&#x6709;&#x7684;&#x7ED3;&#x679C;&#x53EA;&#x53EF;&#x80FD;&#x5728;&#xFF08;2&#xFF0C;N]&#x4E2D;&#xFF0C;&#x8FD9;&#x91CC;N&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x9650;&#x5B9E;&#x6570;&#x3002;&#x5982;&#x679C;&#x65E0;&#x9650;&#x4EA7;&#x751F;&#x7ED3;&#x679C;&#xFF0C;&#x90A3;&#x603B;&#x6709;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;&#x4F1A;&#x51FA;&#x73B0;&#x91CD;&#x590D;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;loop&#x3002;</p>
-<p>&#x6240;&#x4EE5;&#x4E00;&#x65E6;&#x51FA;&#x73B0;&#x4E86;loop&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x505C;&#x6B62;&#xFF0C;&#x53BB;&#x68C0;&#x6D4B;&#x7ED3;&#x679C;&#x662F;&#x4E0D;&#x662F;1&#x3002;</p>
-<p><strong>Code:</strong></p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def isHappy(self, n):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type n: int</div><div class="line">        :rtype: bool</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        numbers = set()</div><div class="line">        while n not in numbers:</div><div class="line">            numbers.add(n)</div><div class="line">            n = sum(int(i)**2 for i in str(n))</div><div class="line">        return n== 1</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&lt;strong&gt;Question:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Write an algorithm to determine if a number is &amp;quot;
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
-    
-      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
     
       <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
     
