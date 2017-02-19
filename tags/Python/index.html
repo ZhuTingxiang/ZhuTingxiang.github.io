@@ -89,7 +89,7 @@
 <meta name="description" content="不要温和地走进那个良夜。@CMU">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Star">
-<meta property="og:url" content="http://yoursite.com/tags/Python/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/python/index.html">
 <meta property="og:site_name" content="Star">
 <meta property="og:description" content="不要温和地走进那个良夜。@CMU">
 <meta name="twitter:card" content="summary">
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Python/"/>
+  <link rel="canonical" href="http://yoursite.com/tags/python/"/>
 
 
 
 
 
-  <title> Tag: Python | Star </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Tag: python | Star </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -284,7 +284,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        Python
+        python
         <small>Tag</small>
       </h2>
     </div>
@@ -297,37 +297,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/12/30/leetcode-396/" itemprop="url">
+            <a class="post-title-link" href="/2016/09/19/python-remove-e8-af-af-e5-8c-ba/" itemprop="url">
               
-                <span itemprop="name">Leetcode 396.Rotate Function</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-30T23:47:41-05:00"
-              content="2016-12-30" >
-          12-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/30/leetcode-202/" itemprop="url">
-              
-                <span itemprop="name">Leetcode 202. Happy Number</span>
+                <span itemprop="name">python remove误区</span>
               
             </a>
         
@@ -335,93 +307,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-30T15:34:49-05:00"
-              content="2016-12-30" >
-          12-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/30/LeetCode-437-Path-Sum-III/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 437. Path Sum III</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-30T13:18:10-05:00"
-              content="2016-12-30" >
-          12-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/29/LeetCode-401/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 401. Binary Watch</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-29T18:05:44-05:00"
-              content="2016-12-29" >
-          12-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/15/leetcode-172-easyfactorial-trailing-zeroes/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 172.Factorial Trailing Zeroes</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-15T02:19:35-04:00"
-              content="2016-10-15" >
-          10-15
+              datetime="2016-09-19T03:58:35-04:00"
+              content="2016-09-19" >
+          09-19
         </time>
       </div>
 
@@ -471,7 +359,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -804,6 +692,90 @@
                   matchcounts += 1;
                   str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
                   var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
+>]+>/g,"");
                   if (first_occur >= 0) {
                     // cut out 100 characters
                     var start = first_occur - 20;
