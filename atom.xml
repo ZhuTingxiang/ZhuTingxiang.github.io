@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-19T19:11:25.000Z</updated>
+  <updated>2017-02-19T21:03:37.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode 380. Insert Delete GetRandom O(1)</title>
+    <link href="http://yoursite.com/2017/02/19/Leetcode-380-Insert-Delete-GetRandom-O-1/"/>
+    <id>http://yoursite.com/2017/02/19/Leetcode-380-Insert-Delete-GetRandom-O-1/</id>
+    <published>2017-02-19T20:57:07.000Z</published>
+    <updated>2017-02-19T21:03:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question: <a href="#question" class="header-anchor">#</a></h3>
+<h3 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h3>
+<p>&#x5F88;&#x795E;&#x5947;&#x7684;&#x4E00;&#x9053;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x9700;&#x8981;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x5E73;&#x5747;&#x4E3A;O(1),&#x6700;&#x521D;&#x6211;&#x53EA;&#x7528;&#x4E86;&#x4E00;&#x4E2A;Arraylist&#x5B58;&#x4E5F;AC&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x65F6;&#x95F4;&#x5F88;&#x4E45;&#xFF0C;&#x56E0;&#x4E3A;remove&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x662F;O(1).&#x6362;&#x4E86;Hashmap&#x5B58;index&#xFF0C;&#x5FEB;&#x4E00;&#x4E9B;&#x3002;&#x4F46;&#x662F;&#x8981;&#x6CE8;&#x610F;&#xFF0C;remove&#x90A3;&#x8FB9;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;count--&#xFF0C;&#x9700;&#x8981;&#x548C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x503C;&#x8C03;&#x6362;&#xFF0C;&#x8FD9;&#x6837;&#x4FDD;&#x8BC1;&#x5176;&#x4ED6;&#x7684;index&#x4E0D;&#x53D8;&#xFF0C;&#x53EA;&#x51CF;&#x5C11;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x3002;A little tricky
+&#x603B;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x8FD8;&#x662F;&#x86EE;&#x6709;&#x8DA3;&#x7684;&#xFF0C;&#x597D;&#x597D;&#x60F3;&#x60F3;&#x3002;</p>
+<h3 id="code">Code: <a href="#code" class="header-anchor">#</a></h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">public class RandomizedSet {</div><div class="line"></div><div class="line">    /** Initialize your data structure here. */</div><div class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">    int count;</div><div class="line">    public RandomizedSet() {</div><div class="line">        count = 0;</div><div class="line">    }</div><div class="line"></div><div class="line">    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */</div><div class="line">    public boolean insert(int val) {</div><div class="line">        if(map.containsKey(val)) {</div><div class="line">            return false;</div><div class="line">        }</div><div class="line">        map.put(val,count);</div><div class="line">        list.add(val);</div><div class="line">        count=map.size();</div><div class="line">        // System.out.println(list);</div><div class="line">        return true;</div><div class="line"></div><div class="line">    }</div><div class="line"></div><div class="line">    /** Removes a value from the set. Returns true if the set contained the specified element. */</div><div class="line">    public boolean remove(int val) {</div><div class="line">        if (map.containsKey(val)) {</div><div class="line">            int index = map.get(val);</div><div class="line">            // change the index with the last one if it is not the last one;</div><div class="line">            if (index &lt; list.size()-1) {</div><div class="line">                int lastone = list.get(list.size()-1);</div><div class="line">                list.set(index, lastone);</div><div class="line">                map.put(lastone,index);</div><div class="line">            }</div><div class="line">            map.remove(val);</div><div class="line">            list.remove(list.size()-1);</div><div class="line">            return true;</div><div class="line">        }</div><div class="line"></div><div class="line">        return false;</div><div class="line"></div><div class="line">    }</div><div class="line"></div><div class="line">    /** Get a random element from the set. */</div><div class="line">    public int getRandom() {</div><div class="line">        int r =(int)(Math.random()*list.size());</div><div class="line">        // System.out.println(r);</div><div class="line">        return list.get(r);</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line">/**</div><div class="line"> * Your RandomizedSet object will be instantiated and called as such:</div><div class="line"> * RandomizedSet obj = new RandomizedSet();</div><div class="line"> * boolean param_1 = obj.insert(val);</div><div class="line"> * boolean param_2 = obj.remove(val);</div><div class="line"> * int param_3 = obj.getRandom();</div><div class="line"> */</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question: &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;e
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 331. Verify Preorder Serialization of a Binary Tree</title>
@@ -327,9 +366,9 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="String" scheme="http://yoursite.com/tags/String/"/>
-    
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="String" scheme="http://yoursite.com/tags/String/"/>
     
   </entry>
   
@@ -479,9 +518,9 @@ Solution 3:<br>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="String" scheme="http://yoursite.com/tags/String/"/>
-    
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="String" scheme="http://yoursite.com/tags/String/"/>
     
   </entry>
   
@@ -607,11 +646,11 @@ http://www.programmerinterview.com/</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
+    
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
-    
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
   </entry>
   
@@ -646,11 +685,11 @@ http://www.programmerinterview.com/</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
-    
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
+    
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
   </entry>
   
@@ -750,9 +789,9 @@ It should return [1,4,8,2,5,9,3,6,7].</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
       <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
   </entry>
   
@@ -1284,83 +1323,6 @@ ACID&amp;#x6982;&amp;#x5FF5;&amp;#x603B;&amp;#x7ED3;&lt;
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
       <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 189.Rotate Array</title>
-    <link href="http://yoursite.com/2017/01/05/Leetcode-189-Rotate-Array/"/>
-    <id>http://yoursite.com/2017/01/05/Leetcode-189-Rotate-Array/</id>
-    <published>2017-01-05T19:37:56.000Z</published>
-    <updated>2017-01-05T21:15:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
-<p>Rotate an array of n elements to the right by k steps.</p>
-<p>For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].</p>
-<p><strong>Note:</strong>
-Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.</p>
-<p><strong>Hint:</strong>
-Could you do it in-place with O(1) extra space?</p>
-<p><strong>Related problem:</strong>
-Reverse Words in a String II</p>
-<p><code>There are three solutions for this problem:</code></p>
-<h4 id="solution-1">Solution 1: <a href="#solution-1" class="header-anchor">#</a></h4>
-<p>We can use temporary array to store k elements.</p>
-<p>Time complexity: O(N)<br>
-Space complexity: O(k), use extra space</p>
-<p><strong>Code:</strong>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public void rotate(int[] nums, int k) {</div><div class="line">    int n= nums.length;</div><div class="line">    k = k%n;</div><div class="line">    // store the k elements at the end of the array</div><div class="line">    int[] temp = new int[k];</div><div class="line">    System.arraycopy(nums, n-k, temp, 0, k);</div><div class="line">    // rotate the left elements to the end of the array</div><div class="line">    for(int i = n-k-1; i&gt;= 0;i--) {</div><div class="line">        nums[i+k] = nums[i];</div><div class="line">    }</div><div class="line">    // put temp elements to the top of the arrray</div><div class="line">    for(int i = 0; i&lt; k; i++) {</div><div class="line">        nums[i] = temp[i];</div><div class="line">    }</div><div class="line"></div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure></p>
-<p>The solution beat 98% in java submissions.</p>
-<h4 id="solution2">Solution2: <a href="#solution2" class="header-anchor">#</a></h4>
-<p>Reversal, for example:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">first: [5,6,7] -&gt; [7,6,5]</div><div class="line">then: [1,2,3,4] -&gt; [4,3,2,1]</div><div class="line">the whole array: [1,2,3,4,5,6,7] -&gt; [4,3,2,1,7,6,5]</div><div class="line">reverse the whole array: [4,3,2,1,7,6,5] -&gt; [5,6,7,1,2,3,4]</div></pre></td></tr></table></figure></p>
-<p>Time complexity:O(N)<br>
-Space complexity:O(1)</p>
-<p><strong>Code:</strong>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public void rotate(int[] nums, int k) {</div><div class="line">    int n = nums.length;</div><div class="line">    k = k % n;</div><div class="line">    reverse(nums, n-k, n-1);</div><div class="line">    reverse(nums, 0, n-k-1);</div><div class="line">    reverse(nums, 0, n-1);</div><div class="line">}</div><div class="line"></div><div class="line">public void reverse(int[] nums, int start, int end) {</div><div class="line">    while(start &lt; end) {</div><div class="line">        int temp = nums[start];</div><div class="line">        nums[start] = nums[end];</div><div class="line">        nums[end] = temp;</div><div class="line">        start ++;</div><div class="line">        end --;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<p>The solution beats 13.19% of java submissions.</p>
-<h4 id="solution3">Solution3: <a href="#solution3" class="header-anchor">#</a></h4>
-<p>Time complexity: O(N)<br>
-Space complexity: O(1)</p>
-<p>To rotate k steps once for an element. Set all elements to gcd groups.</p>
-<p>E.g.
-nums = [1 2 3 4 5 6], k=2</p>
-<p>We use gcd (greatest common divisor) between n and k.<br>
-gcd = 2</p>
-<p>// count is the number we need swap each path<br>
-count = nums.length / gcd - 1 = 2</p>
-<p>1st iteration: starts from nums[i=0], keep rotate nums[i+k] until meet the start position</p>
-<pre><code>   nums = [\_5 2 \_1 4 \_3 6]
-</code></pre>
-<p>2nd iteration: starts from nums[i=1]</p>
-<pre><code>   nums = [5 \_6 1 \_2 3 \_4]
-</code></pre>
-<p><strong>Code:</strong></p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public void rotate(int[] nums, int k) {</div><div class="line">    int n = nums.length;</div><div class="line"></div><div class="line">    if (n &lt;= 1) {</div><div class="line">        return ;</div><div class="line">    }</div><div class="line">     k = k % n;</div><div class="line">    int g = gcd(k, n);</div><div class="line"></div><div class="line">    int position, count;</div><div class="line">    for(int i= 0; i&lt; g; i++) {</div><div class="line">        position = i;</div><div class="line">        // count is the number we need swap each path</div><div class="line">        count = n/g - 1;</div><div class="line">        System.out.println(g);</div><div class="line">        System.out.println(count);</div><div class="line">        for (int j= 0; j&lt; count; j++) {</div><div class="line">            position = (position + k) % nums.length;</div><div class="line">            int temp = nums[i];</div><div class="line">            nums[i] = nums[position];</div><div class="line">            nums[position] = temp;</div><div class="line">        }</div><div class="line"></div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line">int gcd(int a, int b) {</div><div class="line">    if (a == 0 || b == 0 )</div><div class="line">        return a + b;</div><div class="line">    else</div><div class="line">        return gcd(b, a % b);</div><div class="line">}</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<p>References:
-http://yucoding.blogspot.com/2015/03/leetcode-question-rotate-array.html<br>
-http://www.programcreek.com/2015/03/rotate-array-in-java/<br>
-P.s. recommend the website:
-http://www.programcreek.com</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question&quot;&gt;Question: &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;Rotate
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
   </entry>
   
