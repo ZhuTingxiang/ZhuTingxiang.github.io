@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-19T18:36:36.000Z</updated>
+  <updated>2017-02-19T19:11:25.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode 331. Verify Preorder Serialization of a Binary Tree</title>
+    <link href="http://yoursite.com/2017/02/19/Leetcode-331-Verify-Preorder-Serialization-of-a-Binary-Tree/"/>
+    <id>http://yoursite.com/2017/02/19/Leetcode-331-Verify-Preorder-Serialization-of-a-Binary-Tree/</id>
+    <published>2017-02-19T19:04:07.000Z</published>
+    <updated>2017-02-19T19:11:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question: <a href="#question" class="header-anchor">#</a></h3>
+<p>One way to serialize a binary tree is to use pre-order traversal. When we encounter a non-null node, we record the node&apos;s value. If it is a null node, we record using a sentinel value such as #.
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">     _9_</div><div class="line">    /   \</div><div class="line">   3     2</div><div class="line">  / \   / \</div><div class="line"> 4   1  #  6</div><div class="line">/ \ / \   / \</div><div class="line"># # # #   # #</div></pre></td></tr></table></figure></p>
+<p>For example, the above binary tree can be serialized to the string &quot;9,3,4,#,#,1,#,#,2,#,6,#,#&quot;, where # represents a null node.</p>
+<p>Given a string of comma separated values, verify whether it is a correct preorder traversal serialization of a binary tree. Find an algorithm without reconstructing the tree.</p>
+<p>Each comma separated value in the string must be either an integer or a character &apos;#&apos; representing null pointer.</p>
+<p>You may assume that the input format is always valid, for example it could never contain two consecutive commas such as &quot;1,,3&quot;.</p>
+<p>Example 1:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;9,3,4,#,#,1,#,#,2,#,6,#,#&quot;</div></pre></td></tr></table></figure></p>
+<p>Return true</p>
+<p>Example 2:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;1,#&quot;</div></pre></td></tr></table></figure></p>
+<p>Return false</p>
+<p>Example 3:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;9,#,#,1&quot;</div></pre></td></tr></table></figure></p>
+<p>Return false</p>
+<h3 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h3>
+<p>&#x8BE5;&#x600E;&#x4E48;&#x8BF4;&#x5462;&#xFF0C;&#x5C31;&#x662F;&#x60F3;&#x7834;&#x8111;&#x888B;&#x624D;&#x60F3;&#x5230;stack&#x505A;&#xFF0C;&#x518D;&#x7136;&#x540E;&#x8C03;&#x4E86;&#x534A;&#x5929;bug&#x3002;&#x5982;&#x679C;&#x9047;&#x5230;#&#xFF0C;&#x53BB;&#x68C0;&#x67E5;&#x662F;&#x4E0D;&#x662F;stack&#x91CC;&#x9762;&#x6709;&#x4E00;&#x4E2A;#&#x548C;&#x4E00;&#x4E2A;&#x963F;&#x62C9;&#x4F2F;&#x6570;&#x5B57;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x7684;&#x8BDD;&#xFF0C;&#x5168;&#x90E8;&#x66FF;&#x6362;&#x6210;&#x4E00;&#x4E2A;&#x201C;#&#x201D;&#xFF0C;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x5B50;&#x8282;&#x70B9;&#x7ED3;&#x675F;&#x3002;&#x6700;&#x540E;&#x5224;&#x65AD;&#x662F;&#x4E0D;&#x662F;stack&#x91CC;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x201C;#&#x201D;&#x8868;&#x793A;&#x7684;&#x6839;&#x8282;&#x70B9;&#x3002;</p>
+<h3 id="code">Code: <a href="#code" class="header-anchor">#</a></h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class Solution {</div><div class="line">    public boolean isValidSerialization(String preorder) {</div><div class="line">        Stack&lt;String&gt; stack = new Stack&lt;&gt;();</div><div class="line">        String[] nodes = preorder.split(&quot;,&quot;);</div><div class="line">        for(String s: nodes) {</div><div class="line">            while (!stack.isEmpty() &amp;&amp; stack.peek().equals(&quot;#&quot;)) {</div><div class="line">                if (s.equals(&quot;#&quot;)) {</div><div class="line">                    stack.pop();</div><div class="line">                    if (!stack.empty() &amp;&amp; !stack.peek().equals(&quot;#&quot;)) {</div><div class="line">                        stack.pop();</div><div class="line">                    }else {</div><div class="line">                        stack.push(&quot;#&quot;);</div><div class="line">                        break;</div><div class="line">                    }</div><div class="line">                } else {</div><div class="line">                    break;</div><div class="line">                }</div><div class="line">            }</div><div class="line">            stack.push(s);</div><div class="line">        }</div><div class="line">        return stack.size() == 1 &amp;&amp; stack.peek().equals(&quot;#&quot;);</div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question: &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;One wa
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Tree" scheme="http://yoursite.com/tags/Tree/"/>
+    
+      <category term="Stack" scheme="http://yoursite.com/tags/Stack/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 289. Game of Life</title>
@@ -276,9 +327,9 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
   </entry>
   
@@ -428,9 +479,9 @@ Solution 3:<br>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
   </entry>
   
@@ -556,11 +607,11 @@ http://www.programmerinterview.com/</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
-    
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
   </entry>
   
@@ -595,11 +646,11 @@ http://www.programmerinterview.com/</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
+    
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
-    
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
   </entry>
   
@@ -699,9 +750,9 @@ It should return [1,4,8,2,5,9,3,6,7].</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
-    
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
     
   </entry>
   
@@ -1310,168 +1361,6 @@ http://www.programcreek.com</p>
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
       <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode-[Combination]-Intersection of Arrays/Linked Lists</title>
-    <link href="http://yoursite.com/2017/01/03/Leetcode-Intersection-of-Two-Arrays/"/>
-    <id>http://yoursite.com/2017/01/03/Leetcode-Intersection-of-Two-Arrays/</id>
-    <published>2017-01-04T03:50:49.000Z</published>
-    <updated>2017-01-04T20:34:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#x8FD9;&#x7BC7;&#x662F;&#x7EFC;&#x5408;&#x51E0;&#x9053;&#x5173;&#x4E8E;<code>Intersection of Arrays/Linked List</code> &#x7684;Leetcode&#x9898;&#xFF0C;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x95EE;&#x9898;&#x53CA;&#x5176;&#x53D8;&#x4F53;&#xFF0C;&#x5E76;&#x7ED9;&#x51FA;&#x51E0;&#x79CD;&#x89E3;&#x6CD5;&#x3002;</p>
-<h4 id="leetcode-349-intersection-of-two-arrays">LeetCode 349. Intersection of Two Arrays <a href="#leetcode-349-intersection-of-two-arrays" class="header-anchor">#</a></h4>
-<h5 id="question">Question: <a href="#question" class="header-anchor">#</a></h5>
-<p>Given two arrays, write a function to compute their intersection.</p>
-<p>Example:
-Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</p>
-<p>Note:</p>
-<ul>
-<li>Each element in the result must be unique.</li>
-<li>The result can be in any order.</li>
-</ul>
-<h5 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h5>
-<p>&#x9898;&#x610F;&#x662F;&#x627E;&#x5230;&#x4E24;&#x4E2A;Array&#x4E4B;&#x95F4;&#x4EA4;&#x53C9;&#x7684;&#x503C;&#xFF0C;&#x65E0;&#x91CD;&#x590D;&#x3002;</p>
-<ul>
-<li>Solution 1:
-<ul>
-<li>Time Complexity: O( N^2 )</li>
-<li>Iterate two arrays, add intersection elements to a HashSet. Using set here to avoid repetition.</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Solution 2: (<em>My Choice</em>)
-<ul>
-<li>Time Complexity: O(N)</li>
-<li>Using two hashsets. The first hashset is to store all unduplicated elements in array1. Then add intersection between hashset1 and array2 to hashset2. It use more space but less time than solution 1.</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Solution 3:
-<ul>
-<li>Time Complexity: O(NlogN)</li>
-<li>Using two pointers. Sort two arrays first.</li>
-</ul>
-</li>
-</ul>
-<h5 id="code">Code: <a href="#code" class="header-anchor">#</a></h5>
-<ul>
-<li>
-<p>Solution1
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public int[] intersection(int[] nums1, int[] nums2) {</div><div class="line">    Set&lt;Integer&gt; set = new HashSet&lt;&gt;();</div><div class="line">    for (int i = 0; i &lt; nums1.length; i++) {</div><div class="line">        for (int j = 0; j&lt;nums2.length; j++) {</div><div class="line">            if (nums1[i] == nums2[j]) {</div><div class="line">                set.add(nums1[i]);</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">    int[] ints = new int[set.size()];</div><div class="line">    int i = 0;</div><div class="line">    for (Integer num : set){</div><div class="line">        ints[i++] = num;</div><div class="line">    }</div><div class="line">    return ints;</div><div class="line">}</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>Solution2:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public int[] intersection(int[] nums1, int[] nums2) {</div><div class="line">    Set&lt;Integer&gt; set = new HashSet&lt;&gt;();</div><div class="line">    Set&lt;Integer&gt; intersection = new HashSet&lt;&gt;();</div><div class="line"></div><div class="line">    for (int i = 0; i &lt; nums1.length; i++) {</div><div class="line">        set.add(nums1[i]);</div><div class="line">    }</div><div class="line">    for (int j = 0; j &lt; nums2.length; j++) {</div><div class="line">        if (set.contains(nums2[j])) {</div><div class="line">            intersection.add(nums2[j]);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    int[] ints = new int[intersection.size()];</div><div class="line">    int i = 0;</div><div class="line">    for (Integer num : intersection){</div><div class="line">        ints[i++] = num;</div><div class="line">    }</div><div class="line">    return ints;</div><div class="line">}</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>Solution3:
-(Cite top solutions in Leetcode)
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class Solution {</div><div class="line">    public int[] intersection(int[] nums1, int[] nums2) {</div><div class="line">        Set&lt;Integer&gt; set = new HashSet&lt;&gt;();</div><div class="line">        Arrays.sort(nums1);</div><div class="line">        Arrays.sort(nums2);</div><div class="line">        int i = 0;</div><div class="line">        int j = 0;</div><div class="line">        while (i &lt; nums1.length &amp;&amp; j &lt; nums2.length) {</div><div class="line">            if (nums1[i] &lt; nums2[j]) {</div><div class="line">                i++;</div><div class="line">            } else if (nums1[i] &gt; nums2[j]) {</div><div class="line">                j++;</div><div class="line">            } else {</div><div class="line">                set.add(nums1[i]);</div><div class="line">                i++;</div><div class="line">                j++;</div><div class="line">            }</div><div class="line">        }</div><div class="line">        int[] result = new int[set.size()];</div><div class="line">        int k = 0;</div><div class="line">        for (Integer num : set) {</div><div class="line">            result[k++] = num;</div><div class="line">        }</div><div class="line">        return result;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
-</li>
-</ul>
-<h4 id="leetcode-350-intersection-of-two-arrays-ii">LeetCode 350. Intersection of Two Arrays II <a href="#leetcode-350-intersection-of-two-arrays-ii" class="header-anchor">#</a></h4>
-<h5 id="question">Question: <a href="#question" class="header-anchor">#</a></h5>
-<p>Given two arrays, write a function to compute their intersection.</p>
-<p>Example:</p>
-<p>Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2, 2].</p>
-<p>Note:</p>
-<ul>
-<li>Each element in the result should appear as many times as it shows in both arrays.</li>
-<li>The result can be in any order.</li>
-</ul>
-<p>Follow up:</p>
-<ul>
-<li>What if the given array is already sorted? How would you optimize your algorithm?</li>
-<li>What if nums1&apos;s size is small compared to nums2&apos;s size? Which algorithm is better?</li>
-<li>What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?</li>
-</ul>
-<h5 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h5>
-<p>Here we need to solve the 3 follow up questions emphatically.</p>
-<ul>
-<li>
-<p>Solution1: Sort &amp; Pointers</p>
-<ul>
-<li>Time Complexity: O(nlogn)</li>
-<li>Space Complexity: O(m + n)</li>
-<li>Sort two arrays first. Then use two pointers as the question 349.</li>
-</ul>
-</li>
-<li>
-<p>Solution2: HashMap</p>
-<ul>
-<li>Time Complexity: O(N)</li>
-<li>Space Complexity: O(N)</li>
-<li>Use one hashmap to store array1 elements and counters. Find intersection by iterate elements in array2.</li>
-</ul>
-</li>
-<li>
-<p>Importent Follow Up:</p>
-<p><code>What if the given array is already sorted? How would you optimize your algorithm?</code></p>
-<p>If it is sorted, we just need to use two pointers.</p>
-<p><code>What if nums1&apos;s size is small compared to nums2&apos;s size? Which algorithm is better?</code></p>
-<p>The hashmap solution is better.</p>
-<p><code>What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?</code> (cite from top solution in Leetocode)</p>
-<p>If only nums2 cannot fit in memory, put all elements of nums1 into a HashMap, read chunks of array that fit into the memory, and record the intersections.</p>
-<p>If both nums1 and nums2 are so huge that neither fit into the memory, sort them individually (external sort), then read 2 elements from each array at a time in memory, record intersections.</p>
-</li>
-</ul>
-<h5 id="code">Code: <a href="#code" class="header-anchor">#</a></h5>
-<ul>
-<li>
-<p>Solution1:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public int[] intersect(int[] nums1, int[] nums2) {</div><div class="line">    Arrays.sort(nums1);</div><div class="line">    Arrays.sort(nums2);</div><div class="line">    int i = 0;</div><div class="line">    int j = 0;</div><div class="line">    // &#x5728;&#x8FD9;&#x91CC;&#x9009;&#x62E9;&#x4E86;&#x4E0E;349&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x89E3;&#x6CD5;&#x662F;&#xFF0C;&#x5148;&#x5B9A;&#x4E49;&#x597D;array&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x622A;&#x53D6;&#x8FD4;&#x56DE;&#x3002;&#x800C;&#x4E0D;&#x662F;&#x5148;&#x7528;ArrayList. &#x901F;&#x5EA6;&#x66F4;&#x5FEB;&#x4E86;&#x3002;</div><div class="line">    int[] result = new int[nums1.length &lt; nums2.length ? nums1.length : nums2.length];</div><div class="line"></div><div class="line">    int count = 0;</div><div class="line">    while (i &lt; nums1.length &amp;&amp; j&lt; nums2.length) {</div><div class="line">        if (nums1[i] &lt; nums2[j]) {</div><div class="line">            i++;</div><div class="line">        } else if (nums1[i] == nums2[j]) {</div><div class="line">            result[count++] = nums1[i];</div><div class="line">            i++;</div><div class="line">            j++;</div><div class="line">        } else {</div><div class="line">            j++;</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return Arrays.copyOf(result, count);</div><div class="line">}</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>Solution2:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public int[] intersect(int[] nums1, int[] nums2) {</div><div class="line">    HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">    int[] result = new int[nums1.length &lt; nums2.length ? nums1.length : nums2.length];</div><div class="line">    int count = 0;</div><div class="line">    for (Integer n : nums1) {</div><div class="line">        if(map.containsKey(n)) {</div><div class="line">            map.put(n, map.get(n)+1);</div><div class="line">        } else {</div><div class="line">            map.put(n, 1);</div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">    for (Integer m : nums2) {</div><div class="line">        if(map.containsKey(m) &amp;&amp; map.get(m) &gt; 0) {</div><div class="line">            result[count++] = m;</div><div class="line">            map.put(m, map.get(m)-1);</div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">    return Arrays.copyOf(result, count);</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure></p>
-</li>
-</ul>
-<h4 id="leetcode-160-intersection-of-two-linked-lists">LeetCode 160. Intersection of Two Linked Lists <a href="#leetcode-160-intersection-of-two-linked-lists" class="header-anchor">#</a></h4>
-<h5 id="question">Question: <a href="#question" class="header-anchor">#</a></h5>
-<p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
-<p>For example, the following two linked lists:</p>
-<pre><code>  A:          a1 &#x2192; a2
-                   &#x2198;
-                     c1 &#x2192; c2 &#x2192; c3
-                   &#x2197;
-  B:     b1 &#x2192; b2 &#x2192; b3
-</code></pre>
-<p>begin to intersect at node c1.</p>
-<p>Notes:</p>
-<ul>
-<li>If the two linked lists have no intersection at all, return null.</li>
-<li>The linked lists must retain their original structure after the function returns.</li>
-<li>You may assume there are no cycles anywhere in the entire linked structure.</li>
-<li>Your code should preferably run in O(n) time and use only O(1) memory.</li>
-</ul>
-<h5 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h5>
-<p>In order to use only O(1) memory and O(n) time, we can start from the same node (the head of shorter array) and get the intersection.</p>
-<h5 id="code">Code: <a href="#code" class="header-anchor">#</a></h5>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public ListNode getIntersectionNode(ListNode headA, ListNode headB) {</div><div class="line">    if(headA == null || headB == null) {</div><div class="line">        return null;</div><div class="line">    }</div><div class="line">    int lengthA = length(headA);</div><div class="line">    int lengthB = length(headB);</div><div class="line">    while (lengthA &gt; lengthB) {</div><div class="line">        headA = headA.next;</div><div class="line">        lengthA --;</div><div class="line">    }</div><div class="line">    while(lengthB &gt; lengthA) {</div><div class="line">        headB = headB.next;</div><div class="line">        lengthB --;</div><div class="line">    }</div><div class="line">    ListNode intersection = null;</div><div class="line">    while(headA != headB ) {</div><div class="line">        headA = headA.next;</div><div class="line">        headB = headB.next;</div><div class="line">    }</div><div class="line">    intersection = headA;</div><div class="line">    return intersection;</div><div class="line"></div><div class="line">}</div><div class="line"></div><div class="line">public int length(ListNode head) {</div><div class="line">    int result= 0;</div><div class="line">    while(head != null) {</div><div class="line">        result ++;</div><div class="line">        head = head.next;</div><div class="line">    }</div><div class="line">    return result;</div><div class="line">}</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&amp;#x8FD9;&amp;#x7BC7;&amp;#x662F;&amp;#x7EFC;&amp;#x5408;&amp;#x51E0;&amp;#x9053;&amp;#x5173;&amp;#x4E8E;&lt;code&gt;Intersect
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-      <category term="Data Structure" scheme="http://yoursite.com/categories/LeetCode/Data-Structure/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
-      <category term="Data Structure" scheme="http://yoursite.com/tags/Data-Structure/"/>
     
   </entry>
   
