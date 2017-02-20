@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-19T21:04:52.000Z</updated>
+  <updated>2017-02-20T20:07:14.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode 294. Flip GameII</title>
+    <link href="http://yoursite.com/2017/02/20/Leetcode-294-Flip-GameII/"/>
+    <id>http://yoursite.com/2017/02/20/Leetcode-294-Flip-GameII/</id>
+    <published>2017-02-20T18:26:34.000Z</published>
+    <updated>2017-02-20T20:07:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &quot;++&quot; into &quot;--&quot;. The game ends when a person can no longer make a move and therefore the other person will be the winner.</p>
+<p>Write a function to determine if the starting player can guarantee a win.</p>
+<p>For example, given s = &quot;++++&quot;, return true. The starting player can guarantee a win by flipping the middle &quot;++&quot; to become &quot;+--+&quot;.</p>
+<p>Follow up:
+Derive your algorithm&apos;s runtime complexity.</p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x672C;&#x6765;&#x60F3;&#x627E;&#x89C4;&#x5F8B;&#xFF0C;&#x540E;&#x6765;&#x60F3;&#x60F3;&#x592A;&#x5929;&#x771F;&#x4E86;&#x3002;&#x7528;backtracking&#x89E3;&#xFF0C;&#x7F57;&#x5217;&#x6240;&#x6709;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x4E0B;&#x4E00;&#x5C40;&#x5BF9;&#x624B;&#x4F1A;&#x8F93;&#xFF0C;&#x5C31;&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x3002;&#x73B0;&#x5728;&#x6211;&#x7684;&#x7B97;&#x6CD5;&#x662F;o(N!!)
+discuss&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x725B;&#x903C;&#x7684;game theory&#x535A;&#x5F08;&#x8BBA;&#x7B97;&#x6CD5;&#xFF0C;&#x770B;&#x4E0D;&#x61C2;&#x3002;&#x6709;&#x673A;&#x4F1A;&#x53EF;&#x4EE5;&#x7814;&#x7A76;&#x4E00;&#x4E0B;&#xFF0C;&#x4F1A;&#x5C06;time complexity&#x964D;&#x4F4E;&#x5230;O(N^2)</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution {</div><div class="line">    public boolean canWin(String s) {</div><div class="line">        if (s == null || s.length() &lt;2) return false;</div><div class="line">        char[] charString = s.toCharArray();</div><div class="line">        for (int i=0; i&lt;s.length()-1; i++) {</div><div class="line"></div><div class="line">            if (charString[i] == &apos;+&apos; &amp;&amp; charString[i+1] == &apos;+&apos;) {</div><div class="line">                charString[i] = &apos;-&apos;;</div><div class="line">                charString[i+1] = &apos;-&apos;;</div><div class="line">                if (!canWin(String.valueOf(charString))) {</div><div class="line">                    return true;</div><div class="line">                }</div><div class="line">                charString[i] = &apos;+&apos;; charString[i+1] = &apos;+&apos;;</div><div class="line"></div><div class="line">            }</div><div class="line"></div><div class="line">        }</div><div class="line">        return false;</div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question&quot;&gt;Question: &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;You ar
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Backtracking" scheme="http://yoursite.com/tags/Backtracking/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 380. Insert Delete GetRandom O(1)</title>
@@ -50,9 +90,9 @@ Example:
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
-    
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
       <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
@@ -372,9 +412,9 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
   </entry>
   
@@ -524,9 +564,9 @@ Solution 3:<br>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
   </entry>
   
@@ -652,11 +692,11 @@ http://www.programmerinterview.com/</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
-    
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
   </entry>
   
@@ -691,11 +731,11 @@ http://www.programmerinterview.com/</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
+    
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
-    
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
   </entry>
   
@@ -795,9 +835,9 @@ It should return [1,4,8,2,5,9,3,6,7].</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
-    
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
     
   </entry>
   
@@ -1269,66 +1309,6 @@ ACID&amp;#x6982;&amp;#x5FF5;&amp;#x603B;&amp;#x7ED3;&lt;
     
     
       <category term="真实的生命" scheme="http://yoursite.com/tags/%E7%9C%9F%E5%AE%9E%E7%9A%84%E7%94%9F%E5%91%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java中的排序问题</title>
-    <link href="http://yoursite.com/2017/01/08/Java%E4%B8%AD%E7%9A%84Sort/"/>
-    <id>http://yoursite.com/2017/01/08/Java中的Sort/</id>
-    <published>2017-01-08T17:56:31.000Z</published>
-    <updated>2017-01-08T20:19:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#x603B;&#x7ED3;&#x51E0;&#x79CD;&#x6392;&#x5E8F;&#x65B9;&#x6CD5;&#x3002;
-&#x5192;&#x6CE1;&#x6392;&#x5E8F;&#xFF0C;&#x9009;&#x62E9;&#x6392;&#x5E8F;&#xFF0C;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#xFF0C;Merge Sort&#xFF08;continue..&#xFF09;...</p>
-<p><strong>Simple sorting</strong></p>
-<h2 id="bubble-sort">Bubble Sort <a href="#bubble-sort" class="header-anchor">#</a></h2>
-<p>&#x6162;&#xFF0C;&#x4F46;&#x662F;&#x7B80;&#x5355;&#x3002;
-<strong>Time complexity:    O(N^2)</strong></p>
-<p><strong>&#x6B65;&#x9AA4;:</strong></p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. &#x6BCF;&#x6B21;&#x53EA;&#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x503C;&#x3002;</div><div class="line">2. &#x5982;&#x679C;&#x5DE6;&#x8FB9;&#x7684;&#x503C;&#x5927;&#xFF0C;&#x5C31;&#x4EA4;&#x6362;&#x4E24;&#x4E2A;&#x503C;&#x3002;</div><div class="line">3. &#x79FB;&#x52A8;&#x5927;&#x7684;&#x503C;&#x5230;&#x53F3;&#x8FB9;&#x3002;</div></pre></td></tr></table></figure></p>
-<p><strong>&#x4E3E;&#x4F8B;:</strong></p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#x539F;&#x6570;&#x7EC4;: [4,7, 2, 5, 3]</div><div class="line">Round 1:</div><div class="line">  -&gt; [4,7,2,5,3]</div><div class="line">  -&gt; [4,2,7,5,3]</div><div class="line">  -&gt; [4,2,5,7,3]</div><div class="line">  -&gt; [4,2,5,3,7]</div><div class="line">Round 2:</div><div class="line">  -&gt; [2,4,5,3,7]</div><div class="line">  -&gt; [2,4,5,3,7]</div><div class="line">  -&gt; [2,4,3,5,7]</div><div class="line">Round 3:</div><div class="line">  -&gt; [2,4,3,5,7]</div><div class="line">  -&gt; [2,3,4,5,7]</div><div class="line">Round 4:</div><div class="line">  -&gt; [2,3,4,5,7]</div></pre></td></tr></table></figure></p>
-<p><strong>Code:</strong></p>
-<p>int[ ] data = {4, 7, 2, 5, 3}</p>
-<p>Swap Method
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// a helper method that swaps two values in an int array</div><div class="line">private static void swap(int[] data, int one, int two) {</div><div class="line">    int temp = data[one];</div><div class="line">    data[one] = data[two];</div><div class="line">    data[two] = temp;</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<p>Bubble Sort:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public static void bubbleSort(int[] data) {</div><div class="line">       // move backward from the last index</div><div class="line">       for (int out = data.length - 1; out &gt;= 1; out--) {</div><div class="line">           // move forward from the beginning</div><div class="line">           // bubble up the largest value to the right</div><div class="line">           for (int in = 0; in &lt; out; in++) {</div><div class="line">               if (data[in] &gt; data[in + 1]) {</div><div class="line">                   swap(data, in, in + 1);</div><div class="line">               }</div><div class="line">           }</div><div class="line">       }</div><div class="line">   }</div></pre></td></tr></table></figure></p>
-<h2 id="selection-sort">Selection Sort <a href="#selection-sort" class="header-anchor">#</a></h2>
-<p>&#x6BD4;&#x5192;&#x6CE1;&#x6392;&#x5E8F;&#x5FEB;&#x4F46;&#x662F;&#x4F9D;&#x65E7;&#x4E0D;&#x591F;&#x5FEB;&#x3002;
-<strong>Time complexity:    O(N^2)</strong>
-&#x6BD4;&#x5192;&#x6CE1;&#x6392;&#x5E8F;&#x5C11;&#x4E86;&#x5F88;&#x591A;swap&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6240;&#x4EE5;&#x7A0D;&#x5FAE;&#x5FEB;&#x4E00;&#x4E9B;&#x3002;</p>
-<p><strong>&#x6B65;&#x9AA4;:</strong>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1. &#x9009;&#x51FA;&#x6700;&#x5C0F;&#x7684;&#x503C;&#x3002;</div><div class="line">2. &#x79FB;&#x52A8;&#x5230;&#x6700;&#x5DE6;&#x8FB9;&#x3002;</div></pre></td></tr></table></figure></p>
-<p><strong>&#x4E3E;&#x4F8B;:</strong></p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#x539F;&#x6570;&#x7EC4;: [4,7, 2, 5, 3]</div><div class="line">Round1:</div><div class="line">  &#x6700;&#x5C0F;&#x7684;&#x662F;2&#xFF1A;</div><div class="line">  [2,7,4,5,3]</div><div class="line">Round2:</div><div class="line">  &#x6700;&#x5C0F;&#x7684;&#x662F;3</div><div class="line">  [2,3,4,5,7]</div><div class="line">Round3:</div><div class="line">  &#x6700;&#x5C0F;&#x7684;&#x662F;4</div><div class="line">  [2,3,4,5,7]</div><div class="line">Round4:</div><div class="line">  &#x6700;&#x5C0F;&#x7684;&#x662F;5&#xFF1A;</div><div class="line">  [2,3,4,5,7]</div></pre></td></tr></table></figure></p>
-<p><strong>Code:</strong></p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">for (int out = 0; out&lt;data.length; out++) {</div><div class="line">  min = out;</div><div class="line">  for (int in = out+1; in &lt; data.length; in ++) {</div><div class="line">    if (data[in] &lt; min) {</div><div class="line">      min = in;</div><div class="line">    }</div><div class="line">  }</div><div class="line">  if (out != min) {</div><div class="line">    swap(data, out, min);</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<h2 id="insertion-sort">Insertion Sort: <a href="#insertion-sort" class="header-anchor">#</a></h2>
-<p>&#x6700;&#x76F4;&#x89C2;&#x7684;&#x6392;&#x5E8F;&#x6CD5;&#x3002;
-<strong>Time complexity: O(N^2)</strong></p>
-<p><strong>&#x6B65;&#x9AA4;:</strong>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#x60F3;&#x8C61;&#x6570;&#x7EC4;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x5206;&#x5272;&#x7EBF;&#x3002;</div><div class="line">1. &#x5DE6;&#x624B;&#x8FB9;&#x7684;&#x662F;&#x6392;&#x597D;&#x5E8F;&#x7684;&#x3002;</div><div class="line">2. &#x7EBF;&#x7684;&#x53F3;&#x8FB9;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x9700;&#x8981;&#x88AB;&#x63D2;&#x5165;&#x5230;&#x5DE6;&#x8FB9;&#x7684;&#x76F8;&#x5E94;&#x4F4D;&#x7F6E;&#x4E2D;&#x3002;</div></pre></td></tr></table></figure></p>
-<p><strong>&#x4E3E;&#x4F8B;:</strong>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#x539F;&#x6570;&#x7EC4;: [4,7, 2, 5, 3]</div><div class="line">-&gt; [4,|7,2,5,3]</div><div class="line">-&gt; [4,7,|2,5,3]</div><div class="line">-&gt; [2,4,7,|5,3]</div><div class="line">-&gt; [2,4,5,7,|3]</div><div class="line">-&gt; [2,3,4,5,7]</div></pre></td></tr></table></figure></p>
-<p><strong>Code:</strong>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public static void insertionSort(int[] data) {</div><div class="line">   // start from the 1st index till the last index</div><div class="line">  for (int out = 1; out&lt;data.length; out++) {</div><div class="line">    int in = out;</div><div class="line">    int temp = data[out];</div><div class="line">    /*</div><div class="line">    * loop to check the sorted section going backward</div><div class="line">    * but not necessarily all the way to the 0th</div><div class="line">    * On average, look halfway through the sorted section</div><div class="line">    */</div><div class="line">    while (in&gt;0 &amp;&amp; data[in-1]&gt;=temp) {</div><div class="line">      data[in] = data[in-1];</div><div class="line">      in --;</div><div class="line">    }</div><div class="line">    if (out != in) {</div><div class="line">      data[in] = temp;</div><div class="line">    }</div><div class="line">  }</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&amp;#x603B;&amp;#x7ED3;&amp;#x51E0;&amp;#x79CD;&amp;#x6392;&amp;#x5E8F;&amp;#x65B9;&amp;#x6CD5;&amp;#x3002;
-&amp;#x5192;&amp;#x6CE
-    
-    </summary>
-    
-      <category term="Data Structure" scheme="http://yoursite.com/categories/Data-Structure/"/>
-    
-    
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
     
   </entry>
   

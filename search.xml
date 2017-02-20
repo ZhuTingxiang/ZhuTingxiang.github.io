@@ -4,6 +4,23 @@
   
     
     <entry>
+      <title><![CDATA[Leetcode 294. Flip GameII]]></title>
+      <url>http://yoursite.com/2017/02/20/Leetcode-294-Flip-GameII/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+<p>You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &quot;++&quot; into &quot;--&quot;. The game ends when a person can no longer make a move and therefore the other person will be the winner.</p>
+<p>Write a function to determine if the starting player can guarantee a win.</p>
+<p>For example, given s = &quot;++++&quot;, return true. The starting player can guarantee a win by flipping the middle &quot;++&quot; to become &quot;+--+&quot;.</p>
+<p>Follow up:
+Derive your algorithm&apos;s runtime complexity.</p>
+<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
+<p>&#x672C;&#x6765;&#x60F3;&#x627E;&#x89C4;&#x5F8B;&#xFF0C;&#x540E;&#x6765;&#x60F3;&#x60F3;&#x592A;&#x5929;&#x771F;&#x4E86;&#x3002;&#x7528;backtracking&#x89E3;&#xFF0C;&#x7F57;&#x5217;&#x6240;&#x6709;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x4E0B;&#x4E00;&#x5C40;&#x5BF9;&#x624B;&#x4F1A;&#x8F93;&#xFF0C;&#x5C31;&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x3002;&#x73B0;&#x5728;&#x6211;&#x7684;&#x7B97;&#x6CD5;&#x662F;o(N!!)
+discuss&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x725B;&#x903C;&#x7684;game theory&#x535A;&#x5F08;&#x8BBA;&#x7B97;&#x6CD5;&#xFF0C;&#x770B;&#x4E0D;&#x61C2;&#x3002;&#x6709;&#x673A;&#x4F1A;&#x53EF;&#x4EE5;&#x7814;&#x7A76;&#x4E00;&#x4E0B;&#xFF0C;&#x4F1A;&#x5C06;time complexity&#x964D;&#x4F4E;&#x5230;O(N^2)</p>
+<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution {</div><div class="line">    public boolean canWin(String s) {</div><div class="line">        if (s == null || s.length() &lt;2) return false;</div><div class="line">        char[] charString = s.toCharArray();</div><div class="line">        for (int i=0; i&lt;s.length()-1; i++) {</div><div class="line"></div><div class="line">            if (charString[i] == &apos;+&apos; &amp;&amp; charString[i+1] == &apos;+&apos;) {</div><div class="line">                charString[i] = &apos;-&apos;;</div><div class="line">                charString[i+1] = &apos;-&apos;;</div><div class="line">                if (!canWin(String.valueOf(charString))) {</div><div class="line">                    return true;</div><div class="line">                }</div><div class="line">                charString[i] = &apos;+&apos;; charString[i+1] = &apos;+&apos;;</div><div class="line"></div><div class="line">            }</div><div class="line"></div><div class="line">        }</div><div class="line">        return false;</div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Leetcode 380. Insert Delete GetRandom O(1)]]></title>
       <url>http://yoursite.com/2017/02/19/Leetcode-380-Insert-Delete-GetRandom-O-1/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question: <a href="#question" class="header-anchor">#</a></h3>
