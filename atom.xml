@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-20T20:07:14.000Z</updated>
+  <updated>2017-02-21T01:25:54.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,106 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode 252. Meeting Rooms I</title>
+    <link href="http://yoursite.com/2017/02/20/Leetcode-252-Meeting-Rooms-I/"/>
+    <id>http://yoursite.com/2017/02/20/Leetcode-252-Meeting-Rooms-I/</id>
+    <published>2017-02-21T01:24:16.000Z</published>
+    <updated>2017-02-21T01:25:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question: <a href="#question" class="header-anchor">#</a></h3>
+<p>Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si &lt; ei), determine if a person could attend all meetings.</p>
+<p>For example,
+Given [[0, 30],[5, 10],[15, 20]],
+return false.</p>
+<h3 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h3>
+<p>&#x5148;&#x6309;&#x7167;start time&#x6392;&#x5E8F;&#xFF0C;&#x53EA;&#x8981;&#x6BCF;&#x4E00;&#x4E2A;end time&#x90FD;&#x6BD4;&#x4E0B;&#x4E00;&#x4E2A;start time&#x5C0F;&#xFF0C;&#x5373;&#x53EF;&#x884C;&#x3002;</p>
+<h3 id="code">Code: <a href="#code" class="header-anchor">#</a></h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for an interval.</div><div class="line"> * public class Interval {</div><div class="line"> *     int start;</div><div class="line"> *     int end;</div><div class="line"> *     Interval() { start = 0; end = 0; }</div><div class="line"> *     Interval(int s, int e) { start = s; end = e; }</div><div class="line"> * }</div><div class="line"> */</div><div class="line">public class Solution {</div><div class="line">    public boolean canAttendMeetings(Interval[] intervals) {</div><div class="line">       Arrays.sort(intervals, new Comparator&lt;Interval&gt;(){</div><div class="line">            public int compare(Interval i1, Interval i2) {</div><div class="line">                return i1.start - i2.start;</div><div class="line">            }</div><div class="line">        });</div><div class="line">        for(int i=0; i&lt;intervals.length-1; i++) {</div><div class="line">            if (intervals[i].end &gt; intervals[i+1].start) {</div><div class="line">                return false;</div><div class="line">            }</div><div class="line">        }</div><div class="line">        return true;</div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question: &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Given 
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
+    
+      <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode 253. Meeting Rooms II</title>
+    <link href="http://yoursite.com/2017/02/20/Leetcode-253-Meeting-Rooms/"/>
+    <id>http://yoursite.com/2017/02/20/Leetcode-253-Meeting-Rooms/</id>
+    <published>2017-02-21T01:21:53.000Z</published>
+    <updated>2017-02-21T01:26:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#x672C;&#x9898;&#x7684;&#x7B80;&#x5355;&#x7248;&#x672C;&#x662F;<a href="">Meeting Rooms I</a></p>
+<h3 id="question">Question: <a href="#question" class="header-anchor">#</a></h3>
+<h3 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h3>
+<h3 id="code">Code: <a href="#code" class="header-anchor">#</a></h3>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&amp;#x672C;&amp;#x9898;&amp;#x7684;&amp;#x7B80;&amp;#x5355;&amp;#x7248;&amp;#x672C;&amp;#x662F;&lt;a href=&quot;&quot;&gt;Meeting Room
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Essay笔记】VMware分布资源管理</title>
+    <link href="http://yoursite.com/2017/02/20/%E3%80%90Essay%E7%AC%94%E8%AE%B0%E3%80%91VMware%E5%88%86%E5%B8%83%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    <id>http://yoursite.com/2017/02/20/【Essay笔记】VMware分布资源管理/</id>
+    <published>2017-02-20T20:09:30.000Z</published>
+    <updated>2017-02-20T20:10:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://yoursite.com/categories/CMU/"/>
+    
+    
+      <category term="Distributed System" scheme="http://yoursite.com/tags/Distributed-System/"/>
+    
+      <category term="Essay" scheme="http://yoursite.com/tags/Essay/"/>
+    
+      <category term="Advanced Cloud Computing" scheme="http://yoursite.com/tags/Advanced-Cloud-Computing/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 294. Flip GameII</title>
@@ -638,9 +738,9 @@ http://www.programmerinterview.com/</p>
       <category term="Interview" scheme="http://yoursite.com/categories/Interview/"/>
     
     
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
       <category term="Interview" scheme="http://yoursite.com/tags/Interview/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
   </entry>
   
@@ -982,333 +1082,6 @@ Connectionfactory, Queue, Topics</li>
       <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
     
       <category term="Distributed System" scheme="http://yoursite.com/tags/Distributed-System/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Distributed System-Mobile and ubiquitous computing</title>
-    <link href="http://yoursite.com/2017/02/06/Distributed-System/"/>
-    <id>http://yoursite.com/2017/02/06/Distributed-System/</id>
-    <published>2017-02-06T17:28:32.000Z</published>
-    <updated>2017-02-06T17:56:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
-&#x7B2C;19&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;</p>
-<ul>
-<li><strong>Design issues in distributed mobile applications:</strong>
-<ul>
-<li><strong>Association:</strong>
-&#x2022; Devices
-&#x2013; Appear	and	disappear	from	the	space.
-&#x2013; Do	so	unpredictably
-&#x2013; May	be	totally	new	to	the	space.
-&#x2013; Or	may	be	returning	to	the	space.
-&#x2022; They	need	to	be:
-&#x2013; Perhaps	added	to	the	network
-&#x2013; Brought	into	Association	with	resources	and	applications
-&#x2022; Examples	of	Association
-&#x2013; Come	on	campus	and	be	able	to	be	associated	with	the	printers that	are	close	to	you.
-&#x2013; Be	alerted	if	someone	you	know	is	walking	near	you.
-&#x2013; Be	provided	with	selling	prices	in	your	local	area	for	your	goods
-(not	prices	in	far-away	areas).</li>
-<li><strong>Application-level Association:</strong>
-often by discorvery, broadcasts</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<p><strong>How a new device become part of the local network?</strong></p>
-<ul>
-<li>ARP</li>
-<li>DHCP</li>
-</ul>
-</li>
-<li>
-<p><strong>Sensing and Context Awareness:</strong></p>
-<ul>
-<li>sensing: camera, time, acceleration, location, speed, temperature</li>
-<li>context awareness: in terms of sensed data, or associated data</li>
-</ul>
-</li>
-<li>
-<p><strong>Location Sensing:</strong></p>
-<ul>
-<li>GPS</li>
-<li>Database of	collected	Wifi access points
-&#x2013; stores the	access	point&apos;s	MAC	address	and	the	GPS
-location	at	which	it	was	observed</li>
-<li>Cellular	&#x2013; compute	using	signal	strength	to
-multiple	cellular	tower	locations</li>
-<li>RFID	tags	&#x2013; tags	are	associated	with	a	location</li>
-</ul>
-</li>
-<li>
-<p><strong>Adaptation:</strong></p>
-<ul>
-<li>Presentation	to	fit	the	screen</li>
-<li>Use	of	JavaScript	to	fit	the	devices	capabilities</li>
-<li>Media	quality	to	fit	the	screen	and	device	capabilities</li>
-<li>Language	to	fit	the	user</li>
-<li>Information	to	fit	the	physical	context.
-&#x2022; Give	only	movie	times	in	the	future,	and	in	nearby	theaters</li>
-</ul>
-</li>
-<li>
-<p><strong>Device awareness / browser detection:</strong>
-Reply	differently	depending	on	what	device	makes	request.
-3 HTTP	headers	provide	clues	of	what	the	device	is:</p>
-</li>
-</ul>
-<ol>
-<li>
-<p>User-Agent
-&#x2022; Identifies	the	mobile	browser	and	almost always	the	device manufacturer	and	model.
-&#x2022; BlackBerry8330/4.3.0	Profile/MIDP-2.0	Configuration/CLDC-1.1
-VendorID/105
-&#x2022; Collection	of	mobile	agent	strings:
-&#x2013; http://www.zytrax.com/tech/web/mobile_ids.html</p>
-</li>
-<li>
-<p>X-Wap-Profile
-&#x2022; Link	to	an	XML	profile	of	the	phone&#x2019;s	capabilities
-&#x2022;E.g.http://www.blackberry.net/go/mobile/profiles/uaprof/8310/4.2.2.rdf</p>
-</li>
-<li>
-<p>Accept
-&#x2022; Supported	MIME(&#x591A;&#x7528;&#x9014;&#x7684;&#x7F51;&#x9645;&#x90AE;&#x4EF6;&#x6269;&#x5145;&#x534F;&#x8BAE;)types
-&#x2022; E.g.	text/html,	application/xhtml+xml,	etc.</p>
-<p>These 3 headers can provide enough info , but:
-- header can be missing
-- have inaccurate values
-- have invalid urls</p>
-</li>
-</ol>
-<ul>
-<li><strong>Feature detection(more flexible and reliable solution):</strong>
-bottom line: using feature detection, not browser detection
-<ul>
-<li>Two strategies for feature detection:
-<ul>
-<li>Graceful	degradation
-<ul>
-<li>Design	for	modern	browsers</li>
-<li>Where	features	are	not	available,	provide	a	simpler
-alternative
-<ul>
-<li>If	not	possible,	alert	the	user</li>
-</ul>
-</li>
-<li>Don&apos;t	allow	it	to	invisibly	fail</li>
-</ul>
-</li>
-<li>Progressive	enhancement</li>
-</ul>
-<ul>
-<li>Design	with	a	baseline	of	usable	functionality</li>
-<li>Enrich	the	user	experience	step-by-step	by	testing	for
-features	before	using	them.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><strong>Responsive web design:</strong>
-<ul>
-<li>A	strategy	of	web	design	for	multiple	screen	sizes</li>
-<li>Uses:
-<ul>
-<li>Fluid	grids	expressing	sizes	in	terms	of	percents,	not
-pixels</li>
-<li>Modify	size	of	media	using	relative	units
-<ul>
-<li>Keep	them	within	their	bounding	elements</li>
-<li>Images</li>
-<li>Media</li>
-<li>Font	size</li>
-</ul>
-</li>
-<li>Crossing	size	thresholds	switch	to	completely	different
-designs
-<ul>
-<li>Accomplished	using	media	queries</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<p><strong>Mobile first:</strong></p>
-</li>
-<li>
-<p>A	philosophy	of	web	design</p>
-</li>
-<li>
-<p>Design	for	mobile	first,	and	desktop	second</p>
-</li>
-<li>
-<p>Counter	to	what	has	been	done	historically,	of	mobile	2nd</p>
-</li>
-<li>
-<p>Benefits	of	Mobile	First:
-- Focus	on	the	platform	on	which	you	will	reach	the	most	users
-- Forces	designers	to	focus	on	the	most	important	content	and
-functionality
-- Allows	for	using	technologies	on	mobile:
-* touch	events
-* geolocation &#x5730;&#x7406;&#x5B9A;&#x4F4D;
-* accelerometer &#x52A0;&#x901F;&#x8BA1;</p>
-</li>
-<li>
-<p><strong>Mobile deployment strategies:</strong></p>
-<ul>
-<li>Native
-<ul>
-<li>E.g.	Android,	iOS</li>
-<li>Requires	redeveloping	for	each	architecture</li>
-</ul>
-<ul>
-<li>2	code	bases</li>
-</ul>
-</li>
-<li>Native	with	Development	Framework
-<ul>
-<li>Use	a	framework	that	compiles	to	multiple	native
-applications</li>
-<li>E.g.	Corona	(http://www.coronalabs.com)</li>
-</ul>
-</li>
-<li>Mobile	Web
-<ul>
-<li>Develop	in	HTML	/	CSS	/JavaScript</li>
-<li>Accessed	in	a	browser</li>
-<li>Can	install	local	icon	to	launch	to	site
-<ul>
-<li>Use	local	storage	to	store	information	when	off	line</li>
-<li>Use	manifest	to	cache	application	to	use	when	off	line</li>
-<li>Sync	when	Internet	is	again	available.</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Hybrid
-<ul>
-<li>Develop	in	HTML	/	CSS	/	JavaScript</li>
-<li>Wrap	in	a	browser	wrapper	to	create	native	apps</li>
-<li>Wrapper	provides	access	to	phone	hardware	not
-accessible	from	the	browser</li>
-<li>Apache	Cordova	(https://cordova.apache.org)	is	an	open
-source	native	wrapper</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;
-&amp;#x7B2C;19&amp;#x7AE0;&amp;#x603B;&amp;#x7ED3;&amp;#x
-    
-    </summary>
-    
-    
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
-    
-      <category term="Distributed System" scheme="http://yoursite.com/tags/Distributed-System/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Distributed System-ACID</title>
-    <link href="http://yoursite.com/2017/02/06/17/"/>
-    <id>http://yoursite.com/2017/02/06/17/</id>
-    <published>2017-02-06T17:20:32.000Z</published>
-    <updated>2017-02-06T17:48:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
-ACID&#x6982;&#x5FF5;&#x603B;&#x7ED3;</p>
-<ul>
-<li><strong>ACID Transactions&#xFF1A;</strong>
-<ul>
-<li><strong>Atomic:</strong>  All or nothing. No intermediate states are visible. No possibility that
-only part of the transaction ran. If a transaction fails or aborts prior to
-committing, the TP system will undo the effects of any updates (will
-recover). We either commit or abort the entire process. Checkpointing and
-Logging and recoverable objects can be used to ensure a transaction is
-atomic with respect to failures.</li>
-<li><strong>Consistent:</strong>  system invariants preserved, e.g., if there were n dollars in a
-bank before a transfer transaction then there will be n dollars in the bank
-after the transfer. This is largely in the hands of the application programmer.</li>
-<li><strong>Isolated:</strong>  Two transactions do not interfere with each other. They appear as
-serial executions. This is the case even though transactions may run
-concurrently. Locking is often used to prevent one transaction from
-interfering with another.</li>
-<li><strong>Durable:</strong> The commit causes a permanent change to stable storage. This
-property may be obtained with log-based recovery algorithms. If there has
-been a commit but updates have not yet been a commit but updates have not yet been completed due to a crash,
-the logs will hold the necessary information on recovery.</li>
-</ul>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;
-ACID&amp;#x6982;&amp;#x5FF5;&amp;#x603B;&amp;#x7ED3;&lt;
-    
-    </summary>
-    
-    
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
-    
-      <category term="Distributed System" scheme="http://yoursite.com/tags/Distributed-System/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>哪儿</title>
-    <link href="http://yoursite.com/2017/01/24/%E5%93%AA%E5%84%BF/"/>
-    <id>http://yoursite.com/2017/01/24/哪儿/</id>
-    <published>2017-01-24T06:02:55.000Z</published>
-    <updated>2017-01-24T06:06:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><embed src="http://www.xiami.com/widget/12753884_1769553081/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></p>
-<p>&#x4ECA;&#x5929;&#x4E0A;Advanced Cloud Computing,&#x4E09;&#x4E2A;&#x6559;&#x6388;&#x5C31;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x4E89;&#x8BBA;&#x8D77;&#x6765;&#x3002;</p>
-<p>&#x90A3;&#x771F;&#x7684;&#x662F;&#x5F88;&#x89E6;&#x52A8;&#x6211;&#x7684;&#x4E00;&#x523B;&#xFF0C;&#x52A0;&#x8D77;&#x6765;&#x90FD;&#x5FEB;150&#x5C81;&#x7684;&#x4E09;&#x4E2A;&#x9876;&#x5C16;&#x5B66;&#x672F;&#x5927;&#x725B;&#xFF0C;&#x5728;&#x6295;&#x5F71;&#x4EEA;&#x524D;&#x9762;&#xFF0C;&#x5BF9;&#x5F85;&#x77E5;&#x8BC6;&#x8FD8;&#x662F;&#x548C;&#x5B69;&#x5B50;&#x4E00;&#x6837;&#x4E13;&#x6CE8;&#x548C;&#x70ED;&#x60C5;&#xFF0C;&#x53EF;&#x7231;&#x6781;&#x4E86;&#x3002;</p>
-<p>&#x5FFD;&#x7136;&#x60F3;&#x5230;&#xFF0C;Greg&#x7684;&#x4E3B;&#x9875;&#x4E0A;&#x5199;&#x7740;&#xFF0C;&#x201C;&#x6211;&#x624D;&#x4E0D;&#x662F;&#x4E2A;&#x4E0D;&#x5EA6;&#x5047;&#x7684;&#x6559;&#x6388;&#xFF0C;&#x6211;2012&#x5E74;&#x53BB;&#x51B2;&#x6D6A;&#x4E86;&#x5462;&#xFF01;&#x201D;&#x3002;</p>
-<p>&#x5176;&#x5B9E;&#xFF0C;&#x6BCF;&#x6B21;&#x9009;&#x8BFE;&#x90FD;&#x5F88;&#x5934;&#x75BC;&#xFF0C;&#x65F6;&#x95F4;&#x592A;&#x5C11;&#xFF0C;&#x60F3;&#x5B66;&#x7684;&#x8BFE;&#x592A;&#x591A;&#xFF0C;&#x53EA;&#x6068;&#x81EA;&#x5DF1;&#x4E0D;&#x80FD;&#x591A;&#x8BFB;&#x51E0;&#x5E74;&#x3002;&#x6211;&#x4E5F;&#x77E5;&#x9053;&#x4E0A;&#x5B66;&#x671F;&#x5F88;&#x4E0D;&#x5F00;&#x5FC3;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53D1;&#x8FC7;&#x8A93;&#x8FD9;&#x5B66;&#x671F;&#x4E0D;&#x8981;&#x9009;&#x5F88;&#x96BE;&#x7684;&#x8BFE;&#x4E86;&#x3002;&#x53EF;&#x662F;&#x6211;&#x7684;&#x7814;&#x7A76;&#x751F;&#x53EA;&#x6709;&#x4E00;&#x6B21;&#xFF0C;&#x5728;CMU&#x5FF5;&#x4E66;&#x7684;&#x673A;&#x4F1A;&#x4E5F;&#x53EA;&#x6709;&#x4E00;&#x6B21;&#xFF08;&#x5F53;&#x7136;&#x6211;&#x4E0D;&#x4ECB;&#x610F;&#x4EE5;&#x540E;&#x518D;&#x6765;&#x54C8;&#x54C8;&#x54C8;&#xFF09;&#xFF0C;&#x65E0;&#x6CD5;&#x4E0D;&#x8BF4;&#x670D;&#x81EA;&#x5DF1;&#x518D;&#x4E89;&#x53D6;&#x4E00;&#x4E0B;&#x3002;</p>
-<p>&#x53EA;&#x662F;&#xFF0C;&#x6700;&#x8FD1;&#x6709;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x5728;&#x6E10;&#x6E10;&#x653E;&#x5927;&#x3002;</p>
-<p>&#x6211;&#x5230;&#x5E95;&#x8981;&#x53BB;&#x54EA;&#x91CC;&#x3002;</p>
-<p>&#x5176;&#x5B9E;&#xFF0C;&#x5F88;&#x591A;&#x4EBA;&#x4E5F;&#x4E0D;&#x77E5;&#x9053;&#x5230;&#x5E95;&#x8981;&#x53BB;&#x54EA;&#x91CC;&#x3002;&#x4F46;&#x5176;&#x5B9E;&#x6BCF;&#x4E2A;&#x4EBA;&#xFF0C;&#x90FD;&#x80FD;&#x770B;&#x5230;&#x90A3;&#x4E48;&#x4E00;&#x4E9B;&#x4E9B;&#x5FAE;&#x5F31;&#x7684;&#x5149;&#xFF0C;&#x597D;&#x50CF;&#x662F;&#x90A3;&#x4E2A;&#x5730;&#x65B9;&#x3002;&#x53EA;&#x662F;&#x6709;&#x4E9B;&#x4EBA;&#x4F1A;&#x9009;&#x62E9;&#x52AA;&#x529B;&#x8DD1;&#x7740;&#x53BB;&#xFF0C;&#x6709;&#x4E9B;&#x4EBA;&#x6000;&#x7591;&#x81EA;&#x5DF1;&#x662F;&#x5426;&#x771F;&#x7684;&#x770B;&#x89C1;&#x4E86;&#x5149;&#xFF0C;&#x6709;&#x4E9B;&#x4EBA;&#xFF0C;&#x88C5;&#x4F5C;&#x770B;&#x4E0D;&#x89C1;&#x3002;</p>
-<p>&#x4E4B;&#x524D;&#x548C;&#x8431;&#x54E5;&#x804A;&#x5929;&#xFF0C;&#x8431;&#x54E5;&#x5012;&#x662F;&#x5F88;&#x723D;&#x5FEB;&#xFF0C;&#x8BF4;&#x4E0D;&#x7BA1;&#x53BB;&#x54EA;&#x513F;&#x4E0D;&#x60F3;&#x5446;&#x5317;&#x4EAC;&#x5438;&#x973E;&#x4E86;&#xFF0C;&#x9664;&#x975E;&#x8FD9;&#x6B21;&#x8003;&#x4E0A;&#x4E86;&#x5317;&#x5F71;&#x3002;&#x4E24;&#x5E74;&#x4E86;&#x554A;&#xFF0C;&#x5317;&#x5F71;&#x7684;&#x68A6;&#x8FD8;&#x5728;&#x3002;</p>
-<p>&#x4F60;&#x770B;&#x4F60;&#x770B;&#xFF0C;&#x575A;&#x5B9A;&#x7684;&#x4EBA;&#x90FD;&#x5F88;&#x5766;&#x7136;&#x3002;</p>
-<p>&#x5C31;&#x50CF;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x62FF;&#x4E86;&#x6EE1;&#x5206;&#x7684;Mengyao&#xFF0C;&#x603B;&#x548C;&#x6211;&#x8BF4;&#x6BD5;&#x4E1A;&#x627E;&#x4E0D;&#x5230;&#x5DE5;&#x4F5C;&#xFF0C;&#x6253;&#x7B97;&#x53BB;&#x661F;&#x5DF4;&#x514B;&#x95E8;&#x53E3;&#x8E72;&#x7740;&#x6446;&#x4E2A;&#x7897;&#x3002;</p>
-<p>&#x6240;&#x4EE5;&#x6709;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x81EA;&#x5DF1;&#x8981;&#x53BB;&#x54EA;&#x513F;&#x5176;&#x5B9E;&#x4E5F;&#x4E0D;&#x53EF;&#x6015;&#x3002;</p>
-<p>&#x6BD5;&#x7ADF;&#x672A;&#x6765;&#x672A;&#x77E5;&#x4E0D;&#x53EF;&#x6015;&#xFF0C;&#x5DF2;&#x77E5;&#x624D;&#x6700;&#x53EF;&#x6015;&#x3002;</p>
-<p>&#x6211;&#x7B97;&#x662F;&#x60F3;&#x660E;&#x767D;&#x4E86;&#xFF0C;&#x5173;&#x4E8E;&#x4EBA;&#x751F;&#xFF0C;&#x6211;&#x4E00;&#x76F4;&#x601D;&#x8003;&#x5F97;&#x592A;&#x7D2F;&#x4E86;&#x3002;&#x8FD9;&#x660E;&#x660E;&#x662F;&#x4E00;&#x9053;&#x65E0;&#x89E3;&#x9898;&#xFF0C;&#x5C31;&#x7B97;&#x6211;&#x5728;&#x67D0;&#x4E2A;&#x65F6;&#x523B;&#x5FC3;&#x6EE1;&#x610F;&#x8DB3;&#x60F3;&#x660E;&#x767D;&#x4E86;&#xFF0C;&#x4E5F;&#x4E00;&#x5B9A;&#x662F;&#x5E7B;&#x89C9;&#x3002;</p>
-<p>&#x6CA1;&#x6709;&#x7B54;&#x6848;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x4E0D;&#x8981;&#x601D;&#x8003;&#x4E86;&#x3002;</p>
-<p>&#x8FD8;&#x4E0D;&#x5982;&#x75DB;&#x75DB;&#x5FEB;&#x5FEB;&#x6D3B;&#x4E00;&#x6B21;&#x5C31;&#x597D;&#x3002;</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&lt;embed src=&quot;http://www.xiami.com/widget/12753884_1769553081/singlePlayer.swf&quot; type=&quot;app
-    
-    </summary>
-    
-      <category term="真实的生命" scheme="http://yoursite.com/categories/%E7%9C%9F%E5%AE%9E%E7%9A%84%E7%94%9F%E5%91%BD/"/>
-    
-    
-      <category term="真实的生命" scheme="http://yoursite.com/tags/%E7%9C%9F%E5%AE%9E%E7%9A%84%E7%94%9F%E5%91%BD/"/>
     
   </entry>
   
