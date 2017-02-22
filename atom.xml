@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-22T21:17:35.000Z</updated>
+  <updated>2017-02-22T21:17:31.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,24 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>在我到达之前</title>
-    <link href="http://yoursite.com/2017/02/22/%E5%9C%A8%E6%88%91%E5%88%B0%E8%BE%BE%E4%B9%8B%E5%89%8D-1/"/>
-    <id>http://yoursite.com/2017/02/22/在我到达之前-1/</id>
-    <published>2017-02-22T21:17:35.000Z</published>
-    <updated>2017-02-22T21:17:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>到达之前</title>
@@ -973,6 +955,150 @@ It should return [1,4,8,2,5,9,3,6,7].</p>
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Distributed System-Indirect Communication and Naming</title>
+    <link href="http://yoursite.com/2017/02/06/ds69/"/>
+    <id>http://yoursite.com/2017/02/06/ds69/</id>
+    <published>2017-02-06T17:49:33.000Z</published>
+    <updated>2017-02-06T17:56:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
+&#x7B2C;6&#x3001;9&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;</p>
+<ul>
+<li>
+<p><strong>Indirect Messaging:</strong>
+Indirect communication is defined as communication between entities in a distributed system through an intermediary with no direct coupling between the sender and the receiver(s).</p>
+<ul>
+<li>Decoupled in space:
+<ul>
+<li>Sender does not need to know the identify of the receiver(s) and visa-versa</li>
+<li>Good for handling legacy systems
+&#x2013; Decoupled in time:</li>
+<li>A component need not even be running</li>
+<li>The messaging system can store messages until they are successfully delivered</li>
+<li>Reliable delivery is insured</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Two messaging modes:</strong></p>
+<ul>
+<li>Point-to-point:
+<ul>
+<li>Inventory to Factory</li>
+<li>Inventory to Sales</li>
+<li>Factory to Accounting</li>
+</ul>
+</li>
+<li>publish / subscribe :
+<ul>
+<li>parts to parts inventory and parts order</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>some example scenarios:</strong></p>
+<ul>
+<li>asynchronous communication: like chat ant twitter type app,  report info to on or more interested systems</li>
+<li>event-driven problem</li>
+<li>decoupled/ multiple consumers</li>
+<li>multiply interested parties</li>
+</ul>
+</li>
+<li>
+<p><strong>indirect messaging protocols:</strong></p>
+<ul>
+<li>two open standars: XMPP &amp; amqp</li>
+</ul>
+</li>
+<li>
+<p><strong>Java&apos;s JMS API:</strong></p>
+<ul>
+<li>An API for performing indirect messaging.</li>
+<li>It is an abstraction API like JNDI and JDBC.</li>
+<li>Interacts with some Message Oriented Middleware
+(MOM)</li>
+<li>JMS is a client-facing interface, meant to abstract
+way the particulars of any MOM.</li>
+<li>In theory, you should have portability of systems
+written with JMS such that they can work with any
+MOM.</li>
+<li>API is javax.jms</li>
+</ul>
+</li>
+<li>
+<p><strong>JMS Queues and topics</strong></p>
+</li>
+<li>
+<p><strong>JMS message types&#xFF1A;</strong></p>
+<ul>
+<li>Stream
+<ul>
+<li>Sequential stream of Java primitive data types.</li>
+</ul>
+</li>
+<li>Map
+<ul>
+<li>Set of name-value pairs</li>
+</ul>
+</li>
+<li>Names are String objects</li>
+<li>Values are Java primitives (including String)</li>
+<li>Text
+<ul>
+<li>Message is a String object</li>
+</ul>
+</li>
+<li>Plain-text message</li>
+<li>XML messages</li>
+<li>Object
+<ul>
+<li>Serialized Java object</li>
+</ul>
+</li>
+<li>Simple if in Java-only environment</li>
+<li>Bytes
+<ul>
+<li>Stream of un-interpreted bytes.</li>
+<li>To encode a message body to match an existing message format</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Message driven beans&#xFF1A;</strong>
+components that are executedasynchronously by messages coming
+available in a Queue or Topic.</p>
+</li>
+</ul>
+<p>Line Question on class:</p>
+<ul>
+<li>abstract indirect messaging API: JMS</li>
+<li>point-to-point messaging: Queue</li>
+<li>mom used in lab: Glassfish</li>
+<li>public subscribe message: Topics</li>
+<li>Indirect Messaging Destination: Queue and Topics</li>
+<li>Administratively managed resources (External to your program):
+Connectionfactory, Queue, Topics</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;
+&amp;#x7B2C;6&amp;#x3001;9&amp;#x7AE0;&amp;#x603B;&amp;#x
+    
+    </summary>
+    
+    
+      <category term="Distributed System" scheme="http://yoursite.com/tags/Distributed-System/"/>
+    
+      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
     
   </entry>
   
