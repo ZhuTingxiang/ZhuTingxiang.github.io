@@ -160,7 +160,7 @@ MongoDB&#x4F7F;&#x7528;BSON&#x7C7B;&#x578B;&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF
 </ul>
 <p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;&#xFF1A;
 <code>http://backend-public-dns:8080/MiniSite/task5?id=&lt;user_id&gt;</code></p>
-<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;(JSON)&#xFF1A;
+<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;&#xFF1A;<br>
 <code>returnRes({&quot;recommendation&quot;:[{name:&lt;name1&gt;, profile:&lt;profile1&gt;},{name:&lt;name2&gt;, profile:&lt;profile2&gt;},...,{name:&lt;name10&gt;, profile:&lt;profile10&gt;]})</code></p>
 <p>Done!</p>
 <p><strong>Reference&#xFF1A;</strong>
