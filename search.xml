@@ -4,6 +4,169 @@
   
     
     <entry>
+      <title><![CDATA[云计算Project：基于多个后端的社交网络时间线的实现]]></title>
+      <url>http://yoursite.com/2017/02/23/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%9A%E4%B8%AA%E5%90%8E%E7%AB%AF%E7%9A%84%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E6%97%B6%E9%97%B4%E7%BA%BF%E7%9A%84%E5%AE%9E%E7%8E%B0/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#x672C;&#x6587;&#x662F;&#x5173;&#x4E8E;CMU15619Cloud Computing&#x9879;&#x76EE;:<code>Social Networking Timeline with Heterogeneous Backends</code>&#x7684;&#x4ECB;&#x7ECD;&#x4EE5;&#x53CA;&#x603B;&#x7ED3;&#x53CD;&#x601D;&#x3002;</p>
+<p>&#x9879;&#x76EE;&#x4E3B;&#x8981;&#x76EE;&#x6807;&#xFF1A;</p>
+<ul>
+<li>&#x63A2;&#x7D22;AWS&#x7684;DBaas&#x670D;&#x52A1;&#x7684;&#x7533;&#x8BF7;&#x3001;&#x914D;&#x7F6E;&#x548C;&#x7BA1;&#x7406;</li>
+<li>&#x6BD4;&#x8F83;MySQL, HBase&#x548C;MongoDB&#x5728;&#x4F7F;&#x7528;Java API&#x8F7D;&#x5165;&#x6570;&#x636E;&#x65F6;&#x7684;&#x5F02;&#x540C;&#x3002;</li>
+<li>&#x5229;&#x7528;&#x591A;&#x4E2A;&#x540E;&#x7AEF;&#x4E3A;&#x540C;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x7684;web&#x5E94;&#x7528;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#x3002;</li>
+<li>&#x6BD4;&#x8F83;&#x4E0D;&#x540C;&#x6570;&#x636E;&#x5E93;&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x7279;&#x70B9;&#x3002;</li>
+</ul>
+<h2 id="bei-jing-jie-shao">&#x80CC;&#x666F;&#x4ECB;&#x7ECD; <a href="#bei-jing-jie-shao" class="header-anchor">#</a></h2>
+<h4 id="dbaas-database-as-a-services">DBaas(Database-as-a-Services)&#xFF1A; <a href="#dbaas-database-as-a-services" class="header-anchor">#</a></h4>
+<p>&#x5728;AWS&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x5176;&#x4E2D;&#x7684;RDS&#x7684;MySQL&#x670D;&#x52A1;&#x3002;</p>
+<h4 id="mongodb">MongoDB&#xFF1A; <a href="#mongodb" class="header-anchor">#</a></h4>
+<p>MongoDB&#x662F;NoSQL&#x6570;&#x636E;&#x5E93;&#x7684;&#x5178;&#x578B;&#xFF0C;&#x57FA;&#x4E8E;&#x6587;&#x6863;&#x5B58;&#x50A8;&#xFF08;Document-oriented&#xFF09;&#xFF0C;&#x4E0D;&#x652F;&#x6301;&#x4E8B;&#x52A1;&#x548C;&#x8868;&#x8FDE;&#x63A5;&#xFF0C;&#x6240;&#x4EE5;&#x67E5;&#x8BE2;&#x7684;&#x7F16;&#x5199;&#x3001;&#x7406;&#x89E3;&#x548C;&#x4F18;&#x5316;&#x6BD4;&#x8F83;&#x5BB9;&#x6613;&#x3002;&#x4E4B;&#x540E;&#x4F1A;&#x5199;&#x4E00;&#x7BC7;&#x5173;&#x4E8E;NoSQL&#x7684;&#x603B;&#x7ED3;&#xFF08;&#x4E00;&#x4E2A;&#x5751;&#xFF09;&#x3002;
+&#x548C;HBase&#x7684;key-value&#x5B58;&#x50A8;&#x6A21;&#x5F0F;&#x4E0D;&#x540C;&#xFF0C;MongoDB&#x57FA;&#x4E8E;&#x6587;&#x6863;&#x5B58;&#x50A8;&#x6A21;&#x5F0F;&#x7684;&#x4F18;&#x52BF;&#x5728;&#x4E8E;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x590D;&#x6742;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x4E14;&#x4E5F;&#x652F;&#x6301;Index&#x3002;
+MongoDB&#x4F7F;&#x7528;BSON&#x7C7B;&#x578B;&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF0C;&#x636E;&#x8BF4;&#x5C31;&#x662F;&#x628A;&#x6587;&#x672C;&#x76F4;&#x63A5;&#x8F6C;&#x6210;&#x4E8C;&#x8FDB;&#x5236;&#x8868;&#x793A;&#xFF0C;BSON&#x7528;&#x4E8E;&#x4EE5;&#x4E0B;&#x4E09;&#x79CD;&#x76EE;&#x7684;&#xFF1A;</p>
+<ul>
+<li>&#x8282;&#x7701;&#x7A7A;&#x95F4;&#xFF1A;BSON&#x5373;&#x4F7F;&#x5728;&#x6700;&#x574F;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E5F;&#x6BD4;&#x666E;&#x901A;&#x7684;JSON&#x5360;&#x7528;&#x7A7A;&#x95F4;&#x5C11;&#x3002;</li>
+<li>&#x79FB;&#x52A8;&#x6027;</li>
+<li>Performance&#xFF1A;BSON&#x5BF9;&#x5185;&#x5BB9;&#x7684;&#x7F16;&#x7801;&#x548C;&#x89E3;&#x7801;&#x7684;&#x901F;&#x5EA6;&#x5FEB;&#x4E8E;&#x5F88;&#x591A;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x3002;</li>
+</ul>
+<h5 id="shu-ju-jie-gou-tu">&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF1A; &#x56FE; <a href="#shu-ju-jie-gou-tu" class="header-anchor">#</a></h5>
+<h6 id="1-lin-jie-ju-zhen-adjacent-matrix-kong-jian-fu-za-du-wei-o-n-2">1.&#x90BB;&#x63A5;&#x77E9;&#x9635;Adjacent Matrix&#xFF1A;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;O&#xFF08;n^2) <a href="#1-lin-jie-ju-zhen-adjacent-matrix-kong-jian-fu-za-du-wei-o-n-2" class="header-anchor">#</a></h6>
+<p>&#x6BD4;&#x5982;&#x8FD9;&#x4E2A;&#xFF1A;
+<img src="http://i.imgur.com/Qyrp0rL.png" alt="">
+<img src="http://i.imgur.com/x2yyDEI.png" alt=""></p>
+<h6 id="2-lin-jie-biao-adjacent-list-kong-jian-jiao-shao">2.&#x90BB;&#x63A5;&#x8868;Adjacent List &#x7A7A;&#x95F4;&#x8F83;&#x5C11;&#xFF1A; <a href="#2-lin-jie-biao-adjacent-list-kong-jian-jiao-shao" class="header-anchor">#</a></h6>
+<p><img src="http://i.imgur.com/ofeLFxn.png" alt=""></p>
+<h5 id="she-jiao-wang-luo-ying-yong-ji-chu">&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x5E94;&#x7528;&#x57FA;&#x7840;&#xFF1A; <a href="#she-jiao-wang-luo-ying-yong-ji-chu" class="header-anchor">#</a></h5>
+<p>&#x5982;&#x4ECA;&#x50CF;Facebook, Twitter&#x548C;Instagram&#x90FD;&#x9700;&#x8981;&#x590D;&#x6742;&#x548C;&#x6D89;&#x53CA;&#x826F;&#x597D;&#x7684;&#x540E;&#x7AEF;&#x6765;&#x5904;&#x7406;&#x591A;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x7528;&#x6237;&#x6570;&#x636E;&#xFF0C;&#x63D0;&#x4F9B;&#x6301;&#x7EED;&#x7684;&#x9AD8;&#x6027;&#x80FD;&#x4F4E;&#x5EF6;&#x8FDF;&#x7684;&#x670D;&#x52A1;&#x3002;&#x540C;&#x65F6;&#x8FD8;&#x8981;&#x901A;&#x8FC7;&#x5B9E;&#x65F6;&#x6570;&#x636E;&#x5206;&#x6790;&#x4E3A;&#x516C;&#x53F8;&#x548C;&#x5E7F;&#x544A;&#x5546;&#x63D0;&#x4F9B;&#x6709;&#x4EF7;&#x503C;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<ul>
+<li>&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF08;Video&#xFF0C;Text&#xFF0C;Link&#xFF0C;etc.)&#x9700;&#x8981;&#x5B58;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#xFF09;</li>
+<li>&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5C55;&#x793A;&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x9875;&#x9762;&#x7684;HTTP&#x8BF7;&#x6C42;&#x4F1A;&#x89E6;&#x53D1;&#x540E;&#x7AEF;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x8BF7;&#x6C42;&#x548C;&#x6570;&#x636E;&#x5E93;&#x52A8;&#x4F5C;&#x3002;&#x53EF;&#x4EE5;&#x53C2;&#x89C1;&#x4E0B;&#x56FE;&#xFF1A;
+<img src="http://i.imgur.com/r3gf00x.png" alt=""></li>
+</ul>
+<p>&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x901A;&#x5E38;&#x5305;&#x62EC;&#x4EE5;&#x4E0B;&#x4E09;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF1A;
+<ul>
+<li>&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x7CFB;&#x7EDF;</li>
+<li>&#x7528;&#x6237;&#x4FE1;&#x606F;/&#x7B80;&#x4ECB;</li>
+<li>&#x6D3B;&#x52A8;&#x65E5;&#x5FD7;</li>
+<li>&#x793E;&#x4EA4;&#x5173;&#x7CFB;&#x56FE;&#xFF08;&#x5728;&#x4E0B;&#x9762;&#x4F1A;&#x8FDB;&#x6B65;&#x4ECB;&#x7ECD;&#xFF09;</li>
+</ul>
+</li>
+<li>&#x7528;&#x6237;&#x6D3B;&#x52A8;&#xFF1A;
+<ul>
+<li>&#x7528;&#x6237;&#x4EA7;&#x751F;&#x7684;&#x591A;&#x5A92;&#x4F53;&#x6570;&#x636E;</li>
+</ul>
+</li>
+<li>&#x5927;&#x6570;&#x636E;&#x5206;&#x6790;&#x7CFB;&#x7EDF;&#xFF1A;
+<ul>
+<li>&#x641C;&#x7D22;&#x7CFB;&#x7EDF;</li>
+<li>&#x63A8;&#x8350;&#x7CFB;&#x7EDF;</li>
+<li>&#x7528;&#x6237;&#x884C;&#x4E3A;&#x5206;&#x6790;&#xFF08;&#x57FA;&#x4E8E;&#x4E91;&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;OLAP&#xFF0C;&#x6709;&#x673A;&#x4F1A;&#x5355;&#x72EC;&#x66F4;&#x65B0;&#x8FD9;&#x4E2A;&#x90E8;&#x5206;&#xFF09;</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://i.imgur.com/Qwd8z0q.png" alt=""></p>
+<p>&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x7684;&#x524D;&#x7AEF;&#x5DF2;&#x7ECF;&#x505A;&#x597D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x628A;&#x56DB;&#x4E2D;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x96C6;&#x5B58;&#x5165;&#x4E09;&#x79CD;&#x6570;&#x636E;&#x5E93;&#xFF08;MySQL, HBase, MongoDB),&#x4F60;&#x5B8C;&#x6210;&#x7684;&#x540E;&#x7AEF;&#x8981;&#x80FD;&#x540C;&#x65F6;&#x54CD;&#x5E94;&#x56DB;&#x4E2D;&#x4E0D;&#x540C;&#x7684;request&#x3002;</p>
+<h2 id="xiang-mu-cao-zuo">&#x9879;&#x76EE;&#x64CD;&#x4F5C; <a href="#xiang-mu-cao-zuo" class="header-anchor">#</a></h2>
+<h3 id="tong-guo-rds-de-mysql-shi-xian-ji-ben-deng-lu">&#x901A;&#x8FC7;RDS&#x7684;MySQL&#x5B9E;&#x73B0;&#x57FA;&#x672C;&#x767B;&#x5F55;&#xFF1A; <a href="#tong-guo-rds-de-mysql-shi-xian-ji-ben-deng-lu" class="header-anchor">#</a></h3>
+<p>&#x5728;AWS RDS&#x4E2D;&#x914D;&#x7F6E;MySQL&#x5E76;&#x5BFC;&#x5165;users.csv, userinfo.csv&#x6570;&#x636E;&#x96C6;&#x3002;
+&#x8FDE;&#x63A5;AWS RDS&#x4E2D;MySQL&#x65F6;&#x6CE8;&#x610F;&#xFF1A;
+&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#x9700;&#x8981;&#x5BFC;&#x5165;&#x6570;&#x636E;&#x65F6;&#x8981;&#x52A0;&#x5165; --local-infile&#x5F97;&#x5230;&#x6388;&#x6743;&#x3002;
+<code>mysql -u username -p password -h hostname --port=portname --local-infile database</code></p>
+<p>&#x6570;&#x636E;&#x96C6;&#x683C;&#x5F0F;:</p>
+<ul>
+<li>users.csv [UserID, Password]</li>
+<li>userinfo.csv [UserID, Name, Profile Image URL]</li>
+</ul>
+<p>&#x5BFC;&#x5165;MySQL&#x8BED;&#x53E5;:
+<code>LOAD DATA LOCAL INFILE &apos;filename&apos; INTO TABLE tablename CHARACTER SET utf8mb4 FIELDS TERMINATED BY &apos;,&apos; LINES TERMINATED BY &apos;\n&apos;;</code></p>
+<p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;:
+<code>GET /task1?id=[UserID]&amp;pwd=[Password]</code></p>
+<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;:
+<code>returnRes({&quot;name&quot;:&quot;my_name&quot;, &quot;profile&quot;:&quot;profile_image_url&quot;})</code></p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x4E4B;&#x540E;&#x5728;Java&#x6587;&#x4EF6;&#x4E2D;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x518D;&#x521B;&#x5EFA;JSON&#x76F8;&#x5E94;&#x7684;&#x4EE3;&#x7801;&#x5373;&#x53EF;&#x3002;
+&#x6D4B;&#x8BD5;&#xFF1A;</p>
+<ol>
+<li>&#x542F;&#x52A8;&#x524D;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8BBF;&#x95EE;<code>http://&lt;your_front_end_dns&gt;:3000</code></li>
+<li>&#x8F93;&#x5165;&#x6B63;&#x786E;&#x6216;&#x9519;&#x8BEF;&#x7684;&#x8D26;&#x53F7;&#x5BC6;&#x7801;&#x767B;&#x5F55;&#x6D4B;&#x8BD5;</li>
+</ol>
+<p><img src="http://i.imgur.com/rv5LnYr.png" alt=""></p>
+<h3 id="li-yong-hbase-cun-chu-she-jiao-tu-pu">&#x5229;&#x7528;HBase&#x5B58;&#x50A8;&#x793E;&#x4EA4;&#x56FE;&#x8C31;&#xFF1A; <a href="#li-yong-hbase-cun-chu-she-jiao-tu-pu" class="header-anchor">#</a></h3>
+<p>&#x7528;HBase&#x6765;&#x4FDD;&#x5B58;&#x7528;&#x6237;&#x95F4;&#x7684;follow&#x5173;&#x7CFB;&#xFF0C;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x7528;&#x4E4B;&#x524D;&#x5728;&#x56FE;&#x4E2D;&#x4ECB;&#x7ECD;&#x7684;&#x90BB;&#x63A5;&#x77E9;&#x9635;&#x548C;&#x90BB;&#x63A5;&#x8868;&#x4E2D;&#x9009;&#x62E9;&#x4E00;&#x79CD;&#xFF0C;&#x6765;&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x3002;
+&#x539F;&#x59CB;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF1A;
+<code>&lt;followee, follower&gt;</code></p>
+<p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;&#xFF1A;
+<code>GET /task2?id=[UserID]</code></p>
+<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;:
+<code>{&quot;followers&quot;:[{&quot;name&quot;:&quot;follower_name_1&quot;, &quot;profile&quot;:&quot;profile_image_url_1&quot;}, {&quot;name&quot;:&quot;follower_name_2&quot;, &quot;profile&quot;:&quot;profile_image_url_2&quot;}, ...]}</code></p>
+<h5 id="si-lu">&#x601D;&#x8DEF;&#xFF1A; <a href="#si-lu" class="header-anchor">#</a></h5>
+<ul>
+<li>&#x5728;HBase&#x4E2D;&#x5B58;&#x6210;followee&#xFF1A; follower1&#xFF0C; follower2&#xFF0C; ...&#x7684;&#x683C;&#x5F0F;</li>
+<li>&#x8BBE;&#x8BA1;&#x597D;HBase&#x4E4B;&#x540E;&#x5BFC;&#x5165;&#x6570;&#x636E;</li>
+<li>&#x542F;&#x52A8;&#x524D;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#x540E;&#x8BBF;&#x95EE;http://&lt;your_front_end_dns&gt;:3000</li>
+<li>&#x8F93;&#x5165;userid&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;</li>
+</ul>
+<h3 id="yong-mongdb-da-jian-zhu-ye">&#x7528;MongDB&#x642D;&#x5EFA;&#x4E3B;&#x9875;&#xFF1A; <a href="#yong-mongdb-da-jian-zhu-ye" class="header-anchor">#</a></h3>
+<p>&#x5982;&#x4E4B;&#x524D;&#x4ECB;&#x7ECD;&#x7684;&#x90A3;&#x6837;&#xFF0C;&#x5BF9;&#x4E8E;&#x5404;&#x79CD;&#x5F62;&#x5F0F;&#x7684;&#x5E16;&#x5B50;&#xFF0C;&#x7528;MongoDB&#x5B58;&#x50A8;&#x4F1A;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x9009;&#x62E9;&#x3002;&#x8FD9;&#x91CC;&#x4F1A;&#x67E5;&#x8BE2;&#x4E00;&#x4E9B;&#x7279;&#x5B9A;&#x7684;field&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#x6765;&#x52A0;&#x901F;&#x67E5;&#x8BE2;&#x3002;</p>
+<p>&#x5E16;&#x5B50;&#x6570;&#x636E;&#x7684;&#x5F62;&#x5F0F;&#xFF1A;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">    &quot;pid&quot;:xxx,                                      // PostID</div><div class="line">    &quot;uid&quot;:xxx,                                      // UserID of poster</div><div class="line">    &quot;name&quot;:&quot;xxx&quot;,                                   // User name of poster</div><div class="line">    &quot;profile&quot;:&quot;xxx&quot;,                                // Poster profile image URL</div><div class="line">    &quot;timestamp&quot;:&quot;YYYY-MM-DD HH:MM:SS&quot;,              // When post is posted</div><div class="line">    &quot;image&quot;:&quot;xxx&quot;,                                  // Post image</div><div class="line">    &quot;content&quot;:&quot;xxx&quot;,                                // Post text content</div><div class="line">    &quot;comments&quot;:[                                    // comments json array</div><div class="line">        {</div><div class="line">            &quot;uid&quot;:xxx,                              // UserID of commenter</div><div class="line">            &quot;name&quot;:&quot;xxx&quot;,                           // User name of commenter</div><div class="line">            &quot;profile&quot;:&quot;xxx&quot;,                        // Commenter profile image URL</div><div class="line">            &quot;timestamp&quot;:&quot;YYYY-MM-DD HH:MM:SS&quot;,      // When comment is made</div><div class="line">            &quot;content&quot;:&quot;xxx&quot;                         // Comment text content</div><div class="line">        },</div><div class="line">        {</div><div class="line">            &quot;uid&quot;:xxx,</div><div class="line">            .......</div><div class="line">        },</div><div class="line">        ......</div><div class="line">    ]</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x5173;&#x4E8E;MongoDB&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/" target="_blank" rel="external">&#x8FD9;&#x91CC;</a></p>
+<p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;&#xFF1A;
+<code>GET /task3?id=[UserID]</code></p>
+<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;&#xFF1A;
+<code>{&quot;posts&quot;:[{post1_json}, {post2_json}, ...]}</code></p>
+<p>&#x6D4B;&#x8BD5;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x542F;&#x52A8;&#x524D;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8F93;&#x5165;userid</li>
+</ul>
+<p><img src="http://i.imgur.com/8p2pep3.png" alt=""></p>
+<h3 id="zui-zhong-zheng-he">&#x6700;&#x7EC8;&#x6574;&#x5408; <a href="#zui-zhong-zheng-he" class="header-anchor">#</a></h3>
+<p>&#x4E4B;&#x524D;&#x4E09;&#x4E2A;&#x90E8;&#x5206;&#x5206;&#x522B;&#x5B9E;&#x73B0;&#x4E86;&#x4E09;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5B58;&#x50A8;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x5B9E;&#x73B0;&#x8F93;&#x5165;&#x4E00;&#x4E2A;userid&#x5C31;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF08;MySQL),&#x7528;&#x6237;&#x7C89;&#x4E1D;&#x5217;&#x8868;&#xFF08;HBase&#xFF09;&#x4EE5;&#x53CA;&#x7528;&#x6237;&#x5173;&#x6CE8;&#x7684;&#x4EBA;&#x6700;&#x65B0;&#x4E09;&#x5341;&#x6761;&#x5E16;&#x5B50;&#xFF08;MongoDB&#xFF09;&#x3002;</p>
+<p>&#x6392;&#x5E8F;&#x89C4;&#x5219;&#xFF1A;</p>
+<ul>
+<li>&#x5BF9;followers&#x8FDB;&#x884C;&#x6392;&#x5E8F;:
+<ul>
+<li>&#x59D3;&#x540D;&#x5347;&#x5E8F;&#x6392;&#x5217;</li>
+<li>Profile image URL&#x5347;&#x5E8F;&#x6392;&#x5217;</li>
+</ul>
+</li>
+<li>&#x5BF9;&#x6700;&#x65B0;30&#x7BC7;post&#x6392;&#x5E8F;&#xFF1A;
+<ul>
+<li>&#x6309;&#x7167;timestamp&#x5347;&#x5E8F;&#x6392;&#x5E8F;</li>
+<li>&#x6309;&#x7167;PostID&#x5347;&#x5E8F;&#x6392;&#x5E8F;</li>
+</ul>
+</li>
+</ul>
+<p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;&#xFF1A;
+<code>GET /task4?id=[UserID]</code></p>
+<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;:
+<code>{&quot;name&quot;:&quot;my_name&quot;, &quot;profile&quot;:&quot;my_profile_image_url&quot;, &quot;followers&quot;:[{&quot;name&quot;:&quot;follower_name_1&quot;, &quot;profile&quot;:&quot;profile_image_url_1&quot;}, {&quot;name&quot;:&quot;follower_name_2&quot;, &quot;profile&quot;:&quot;profile_image_url_2&quot;}, ...], &quot;posts&quot;:[{post1_json, post2_json, ...}]}</code></p>
+<p><img src="http://i.imgur.com/EpRB33c.png" alt=""></p>
+<h3 id="jian-dan-tui-jian-de-shi-xian">&#x7B80;&#x5355;&#x63A8;&#x8350;&#x7684;&#x5B9E;&#x73B0; <a href="#jian-dan-tui-jian-de-shi-xian" class="header-anchor">#</a></h3>
+<p>&#x63A8;&#x8350;&#x7CFB;&#x7EDF;&#x7684;&#x5185;&#x5BB9;&#x592A;&#x591A;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x770B;<a href="http://www.shuang0420.com/categories/Recommender-System/" target="_blank" rel="external">shaung&#x7684;&#x535A;&#x5BA2;</a>&#xFF08;&#x4E00;&#x4E2A;&#x5E7F;&#x544A;&#xFF09;
+&#x8FD9;&#x6B21;&#x6211;&#x4EEC;&#x7528;&#x534F;&#x540C;&#x8FC7;&#x6EE4;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x63A8;&#x8350;&#x7CFB;&#x7EDF;&#xFF0C;&#x5229;&#x7528;&#x201C;&#x670B;&#x53CB;&#x7684;&#x670B;&#x53CB;&#x201D;&#x6765;&#x63A8;&#x8350;&#x597D;&#x53CB;&#x3002;</p>
+<h4 id="graph-distance">Graph Distance&#xFF1A; <a href="#graph-distance" class="header-anchor">#</a></h4>
+<p>&#x6BD4;&#x5982;&#xFF1A;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A follows {B, C, D}</div><div class="line">Followee B follows {C, E, A}</div><div class="line">followee C follows {F, G}</div><div class="line">followee D follows {G, H}</div></pre></td></tr></table></figure></p>
+<p><img src="http://i.imgur.com/83cuJ8G.png" alt="">
+&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4E0E;A&#x7684;&#x8DDD;&#x79BB;&#x5173;&#x7CFB;&#x4E3A;&#xFF1A;
+<code>{A:1, C:1, E:1, F:1, G:2, H:1}</code>
+&#x5176;&#x4E2D;&#x53BB;&#x6389;A&#x672C;&#x8EAB;&#xFF0C;&#x53BB;&#x6389;A&#x5DF2;&#x7ECF;&#x5173;&#x6CE8;&#x7684;C&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x5C31;&#x662F;
+<code>{G: 2, E: 1, F: 1, H: 1}</code></p>
+<h4 id="si-lu">&#x601D;&#x8DEF;&#xFF1A; <a href="#si-lu" class="header-anchor">#</a></h4>
+<ul>
+<li>&#x627E;&#x5230;userid&#x7684;&#x5173;&#x6CE8;&#x7684;&#x4EBA;&#x7684;&#x96C6;&#x5408;</li>
+<li>&#x5C06;&#x5173;&#x6CE8;&#x7684;&#x4EBA;&#x7684;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x4EBA;&#x5173;&#x6CE8;&#x7684;&#x4EBA;&#x6DFB;&#x52A0;&#x5230;&#x4FE1;&#x96C6;&#x5408;&#x4E2D;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#x5219;&#x4E3A;1&#xFF0C;&#x4E4B;&#x540E;&#x7684;&#x4E3A;&#x539F;&#x6765;&#x7684;&#x52A0;1</li>
+<li>&#x7528;&#x4F18;&#x5148;&#x961F;&#x5217;&#x5B58;&#x50A8;&#xFF0C;&#x6CE8;&#x610F;&#x7B2C;&#x4E00;&#x4E2A;&#x5173;&#x6CE8;&#x7684;&#x4EBA;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x90FD;&#x4E0D;&#x5E94;&#x8BE5;&#x5728;&#x6B64;&#x961F;&#x5217;&#x4E2D;</li>
+<li>&#x8FD4;&#x56DE;&#x524D;&#x5341;&#x4E2A;&#x7684;name&#x548C;url&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;</li>
+</ul>
+<p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;&#xFF1A;
+<code>http://backend-public-dns:8080/MiniSite/task5?id=&lt;user_id&gt;</code></p>
+<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;(JSON)&#xFF1A;
+<code>returnRes({&quot;recommendation&quot;:[{name:&lt;name1&gt;, profile:&lt;profile1&gt;},{name:&lt;name2&gt;, profile:&lt;profile2&gt;},...,{name:&lt;name10&gt;, profile:&lt;profile10&gt;]})</code></p>
+<p>Done!</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[到达之前]]></title>
       <url>http://yoursite.com/2017/02/22/%E5%9C%A8%E6%88%91%E5%88%B0%E8%BE%BE%E4%B9%8B%E5%89%8D/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&lt;center&gt;<strong>2017-02-22</strong>&lt;/center&gt;
