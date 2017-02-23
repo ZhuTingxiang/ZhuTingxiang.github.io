@@ -160,10 +160,10 @@ MongoDB&#x4F7F;&#x7528;BSON&#x7C7B;&#x578B;&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF
 </ul>
 <p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;&#xFF1A;
 <code>http://backend-public-dns:8080/MiniSite/task5?id=&lt;user_id&gt;</code></p>
-<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;&#xFF1A;<br>
+<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;&#xFF1A;
 <code>returnRes({&quot;recommendation&quot;:[{name:&lt;name1&gt;, profile:&lt;profile1&gt;},{name:&lt;name2&gt;, profile:&lt;profile2&gt;},...,{name:&lt;name10&gt;, profile:&lt;profile10&gt;]})</code></p>
 <p>Done!</p>
-<p><strong>Reference&#xFF1A;</strong>
+<p><strong>Reference&#xFF1A;</strong><br>
 CMU15619&#x8BFE;&#x4EF6;&#xFF1A;<code>Social Networking Timeline with Heterogeneous Backends</code>
 &#x5C0F;&#x571F;&#x5200;&#x535A;&#x5BA2;&#xFF1A;<code>http://wdxtub.com/vault/cc-17.html</code></p>
 ]]></content>
