@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-25T03:11:38.000Z</updated>
+  <updated>2017-02-25T20:35:06.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode 325. Maximum Size Subarray Sum Equals k</title>
+    <link href="http://yoursite.com/2017/02/25/Leetcode-325-Maximum-Size-Subarray-Sum-Equals-k/"/>
+    <id>http://yoursite.com/2017/02/25/Leetcode-325-Maximum-Size-Subarray-Sum-Equals-k/</id>
+    <published>2017-02-25T20:27:57.000Z</published>
+    <updated>2017-02-25T20:35:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question: <a href="#question" class="header-anchor">#</a></h3>
+<p>Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn&apos;t one, return 0 instead.</p>
+<p>Note:
+The sum of the entire nums array is guaranteed to fit within the 32-bit signed integer range.</p>
+<p>Example 1:
+Given nums = [1, -1, 5, -2, 3], k = 3,
+return 4. (because the subarray [1, -1, 5, -2] sums to 3 and is the longest)</p>
+<p>Example 2:
+Given nums = [-2, -1, 2, 1], k = 1,
+return 2. (because the subarray [-1, 2] sums to 1 and is the longest)</p>
+<p>Follow Up:
+Can you do it in O(n) time?</p>
+<h3 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h3>
+<p>&#x601D;&#x8DEF;&#x5C31;&#x662F;&#xFF0C;&#x7B97;&#x4ECE;&#x7B2C;&#x4E00;&#x4E2A;&#x6570;&#x5230;&#x6BCF;&#x4E00;&#x4E2A;&#x6570;&#x7684;sum&#xFF0C;&#x5B58;&#x5728;map&#x91CC;&#xFF0C;&#x5982;&#x679C;&#x4E4B;&#x540E;&#x6709;key&#x548C;sum-k&#x76F8;&#x7B49;&#xFF0C;&#x5C31;&#x8868;&#x793A;&#x90A3;&#x6BB5;&#x6570;&#x5B57;&#x7684;&#x548C;&#x4E3A;k&#x3002;</p>
+<h3 id="code">Code: <a href="#code" class="header-anchor">#</a></h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class Solution {</div><div class="line">    public int maxSubArrayLen(int[] nums, int k) {</div><div class="line">        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">        int sum = 0;</div><div class="line">        int result = 0;</div><div class="line"></div><div class="line">        for (int i=0; i&lt;nums.length; i++) {</div><div class="line">            sum += nums[i];</div><div class="line">            if (sum == k) {</div><div class="line">                result = i+1;</div><div class="line"></div><div class="line">            } else if (map.containsKey(sum - k)) {</div><div class="line">                result =Math.max(max, i - map.get(sum));</div><div class="line">            }</div><div class="line">            if (!map.containsKey(sum)) {</div><div class="line">                map.put(sum, i);</div><div class="line">            }</div><div class="line"></div><div class="line">            System.out.println(map.toString());</div><div class="line">        }</div><div class="line">        return result;</div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question: &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Given 
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
+    
+      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 277. Find the Celebrity</title>
@@ -431,9 +476,9 @@ Example:
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
-    
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
       <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
@@ -753,9 +798,9 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
   </entry>
   
@@ -905,9 +950,9 @@ Solution 3:<br>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
   </entry>
   
@@ -1033,11 +1078,11 @@ http://www.programmerinterview.com/</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
-    
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
     
   </entry>
   
@@ -1072,61 +1117,11 @@ http://www.programmerinterview.com/</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
+    
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
-    
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 300. Longest Increasing Subsequence</title>
-    <link href="http://yoursite.com/2017/02/10/Leetcode-300-Longest-Increasing-Subsequence/"/>
-    <id>http://yoursite.com/2017/02/10/Leetcode-300-Longest-Increasing-Subsequence/</id>
-    <published>2017-02-11T00:49:47.000Z</published>
-    <updated>2017-02-11T01:20:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question <a href="#question" class="header-anchor">#</a></h3>
-<p>Given an unsorted array of integers, find the length of longest increasing subsequence.</p>
-<p>For example,
-Given [10, 9, 2, 5, 3, 7, 101, 18],
-The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4. Note that there may be more than one LIS combination, it is only necessary for you to return the length.</p>
-<p>Your algorithm should run in O(n2) complexity.</p>
-<p><strong>Follow up:</strong>
-Could you improve it to O(n log n) time complexity?</p>
-<h3 id="solution-1-dynamic-programming-o-n-2">Solution 1: Dynamic Programming O(n^2) <a href="#solution-1-dynamic-programming-o-n-2" class="header-anchor">#</a></h3>
-<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
-<p>&#x7B2C;&#x4E00;&#x5C42;&#x5FAA;&#x73AF;&#xFF1A; array&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x6570;<br>
-&#x7B2C;&#x4E8C;&#x5C42;&#x5FAA;&#x73AF;&#xFF1A; &#x4E4B;&#x524D;&#x7684;&#x6BCF;&#x4E2A;&#x6570;&#x4E2D;&#xFF0C;&#x9009;&#x62E9;&#x6BD4;&#x8FD9;&#x4E2A;&#x6570;&#x5C0F;&#x5E76;&#x4E14;&#x6709;&#x6700;&#x957F;&#x94FE;&#x7684;&#x90A3;&#x4E2A;&#x6570;</p>
-<h4 id="code">Code <a href="#code" class="header-anchor">#</a></h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public int lengthOfLIS(int[] nums) {</div><div class="line">    if (nums == null || nums.length == 0) return 0;</div><div class="line">    int[] best = new int[nums.length];</div><div class="line">    int max = 1;</div><div class="line">    for ( int i=0; i&lt;nums.length; i++) {</div><div class="line">        best[i] = 1;</div><div class="line">        for ( int j=0; j&lt;i; j++) {</div><div class="line">            if (nums[j] &lt; nums[i]) {</div><div class="line">                best[i] = Math.max(best[i], best[j] + 1);</div><div class="line">            }</div><div class="line">        }</div><div class="line">        max = Math.max(best[i], max);</div><div class="line">    }</div><div class="line">    return max;</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure></p>
-<h3 id="solution-2-binary-search-o-nlogn">Solution 2: Binary Search O(nlogn) <a href="#solution-2-binary-search-o-nlogn" class="header-anchor">#</a></h3>
-<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
-<p>&#x628A;&#x4E4B;&#x524D;&#x627E;&#x5230;&#x7684;&#x6700;&#x957F;&#x7684;&#x94FE;&#x5B58;&#x8D77;&#x6765;&#x3002;&#x9047;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#xFF0C;&#x5982;&#x679C;&#x6BD4;list&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6570;&#x5927;&#xFF0C;&#x5C31;&#x653E;&#x5728;list&#x7684;&#x6700;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;&#xFF0C;&#x5C31;&#x9009;&#x62E9;&#x6BD4;&#x5B83;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#x5927;&#x6700;&#x5C11;&#x7684;&#x90A3;&#x4E2A;&#x6570;&#x6362;&#x6389;&#x3002;</p>
-<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public int lengthOfLIS(int[] nums) {</div><div class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    for (int n: nums) {</div><div class="line">        if (list.size() == 0 || n &gt; list.get(list.size()-1)) {</div><div class="line">            list.add(n);</div><div class="line">        } else {</div><div class="line">            int start = 0;</div><div class="line">            int end = list.size();</div><div class="line">            while (start &lt; end) {</div><div class="line">                int mid = (start+end)/2;</div><div class="line">                if (list.get(mid) &lt; n) {</div><div class="line">                    start = mid +1 ;</div><div class="line">                } else {</div><div class="line">                    end = mid;</div><div class="line">                }</div><div class="line">            }</div><div class="line">            list.set(end,n);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return list.size();</div><div class="line">}</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Given a
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="MicroSoft" scheme="http://yoursite.com/tags/MicroSoft/"/>
-    
-      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
-    
-      <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
     
   </entry>
   
