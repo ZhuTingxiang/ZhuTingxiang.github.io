@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[数据结构：二叉树]]></title>
       <url>http://yoursite.com/2017/02/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h2 id="本文是总结tree这种结构的常用知识点暂时总结binary-tree">本文是总结Tree这种结构的常用知识点，暂时总结Binary Tree。</h2>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是总结Tree这种结构的常用知识点，暂时总结Binary Tree。</p>
 <h2 id="binary-tree二叉树">Binary Tree二叉树</h2>
 <h3 id="why-tree">Why Tree?</h3>
 <p>因为树结合了其他数据结构的优势：</p>
@@ -60,8 +60,7 @@ Uploading...</li>
 </li>
 </ol>
 <hr>
-<p>Reference:<br>
-@Terry Lee</p>
+<p>Reference: @Terry Lee</p>
 ]]></content>
     </entry>
     
