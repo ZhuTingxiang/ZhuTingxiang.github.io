@@ -410,7 +410,13 @@
 Given an array of integers A and let n to be its length.
 Assume Bk to be an array obtained by rotating the array A k positions clock-wise, we define a &quot;rotation function&quot; F on A as follow:
 F(k) = 0 * Bk[0] + 1 * Bk[1] + ... + (n-1) * Bk[n-1].
-Calculate the maximum value of F(0),
+Calculate the maximum value of F(0), F(1), ..., F(n-1).
+Note:
+n is guaranteed to be less than 105.
+Example:
+A = [4, 3, 2, 6]
+F(0) = (0 * 4) + (1 * 3) + (2 * 2) + (3 * 6) = 0 + 3 + 4 + 18 = 25
+F(1) = (0 * 6) + (1 * 4) + (2 * 3) + (3 * 2)
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -560,7 +566,12 @@ Calculate the maximum value of F(0),
           
            Question:
 Write an algorithm to determine if a number is &quot;happy&quot;.
-A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will st
+A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.
+Example: 19 is a happy number
+12 + 92 = 82
+82 + 22 = 68
+62 + 82 = 100
+
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -712,7 +723,17 @@ A happy number is a number defined by the following process: Starting with any p
 You are given a binary tree in which each node contains an integer value.
 Find the number of paths that sum to a given value.
 The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).
-The tree has no more than
+The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.
+Example:
+root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8
+
+      10
+     /  \
+    5   -3
+   / \    \
+  3   2   11
+ / \   \
+3  -2 
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -864,7 +885,10 @@ The tree has no more than
 A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).
 Each LED represents a zero or one, with the least significant bit on the right.
 For example, the above binary watch reads &quot;3:25&quot;.
-Given a non-negativ
+Given a non-negative integer n which represents the number of LEDs that are currently on, return all possible times the watch could represent.
+Example:
+Input: n = 1
+Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:0
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1013,7 +1037,8 @@ Given a non-negativ
         
           
            
-&#x665A;&#x4E0A;&#xFF0C;&#x7FFB;&#x5230;&#x4E00;&#x7BC7;&#x5199;&#x5317;&#x4EAC;&#x5364;&#x716E;&#x7684;&#x6587;&#x7AE0;&#x3002;15&#x5E74;&#x590F;&#x5929;&#x5728;&#x5317;&#x4EAC;&#xFF0C;&#x4E00;&#x4E2A;&#x59D1;&#x5A18;&#x5E26;&#x6211;&#x53BB;&#x4E86;&#x4E00;&#x4E2A;&#x5357;&#x57CE;&#x7684;&#x80E1;
+&#x665A;&#x4E0A;&#xFF0C;&#x7FFB;&#x5230;&#x4E00;&#x7BC7;&#x5199;&#x5317;&#x4EAC;&#x5364;&#x716E;&#x7684;&#x6587;&#x7AE0;&#x3002;15&#x5E74;&#x590F;&#x5929;&#x5728;&#x5317;&#x4EAC;&#xFF0C;&#x4E00;&#x4E2A;&#x59D1;&#x5A18;&#x5E26;&#x6211;&#x53BB;&#x4E86;&#x4E00;&#x4E2A;&#x5357;&#x57CE;&#x7684;&#x80E1;&#x540C;&#x91CC;&#x5403;&#x5364;&#x716E;&#x3002;&#x4E70;&#x5355;&#x7684;&#x4E0D;&#x662F;&#x6211;&#xFF0C;&#x9886;&#x9910;&#x7684;&#x4E5F;&#x4E0D;&#x662F;&#x6211;&#x3002;
+&#x5728;&#x5403;&#x5B8C;&#x4E4B
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1166,7 +1191,8 @@ Given a non-negativ
 == &#x64CD;&#x4F5C;&#x7B26;&#x5E76;&#x4E0D;&#x6D89;&#x53CA;&#x5BF9;&#x8C61;&#x5185;&#x5BB9;&#x7684;&#x6BD4;&#x8F83;&#x3002;
 equals &#x6BD4;&#x8F83;&#x7684;&#x662F;reference&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5F15;&#x7528;&#x5185;&#x5BB9;
 compareTo():
-&#x5728;&#x57FA;&
+&#x5728;&#x57FA;&#x672C;&#x6570;&#x636E;&#x4E2D;&#xFF0C;compareTo()&#x662F;&#x6BD4;&#x8F83;&#x4E24;&#x4E2A;Character &#x5BF9;&#x8C61;&#xFF1B;
+&#x5728; Boolean&#x4E2D;&#xFF0C;&#x662F;&#x7528;boolean&#x7684;&#x5B9E;&#x4
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1326,7 +1352,9 @@ compareTo():
         
           
            &#x6982;&#x5FF5;&#x5B66;&#x4E60;&#xFF08;Concept Learning&#xFF09; #
-&#x6982;&#x5FF5;&#x5B66;&#x4E60;&#x662F;&#x6307;&#x4ECE;&#x67D0;&#x4E2A;&#x5E03;&#x5C14;&#x51FD;&#x6570;&#x7684;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x8BAD;&#x7EC3;&#x4E2D;&#x63A8;&#x65AD;&#x51FA;&#x8BE5;&#x5E03;&#x5C14;&#x51FD;&#x6570;
+&#x6982;&#x5FF5;&#x5B66;&#x4E60;&#x662F;&#x6307;&#x4ECE;&#x67D0;&#x4E2A;&#x5E03;&#x5C14;&#x51FD;&#x6570;&#x7684;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x8BAD;&#x7EC3;&#x4E2D;&#x63A8;&#x65AD;&#x51FA;&#x8BE5;&#x5E03;&#x5C14;&#x51FD;&#x6570;&#x3002;
+&#x4F8B;&#x5B50; #
+&#x4E3A;&#x4E86;&#x66F4;&#x597D;&#x5730;&#x7406;&#x89E3;&#x6982;&#x5FF5;&#x5B66;&#x4E60;&#xFF0C;&#x6211;&#x4EEC;&#x4ECE;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7ECF;&#x5178;&#x6
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1485,7 +1513,14 @@ compareTo():
       
         
           
-           &#x673A;&#x5668;&#x5B66;&#x4E60;&#x662F;&#x57FA;&#x4E8E;&#x6570;&#x636E;&#x7684;&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#xFF08;1980s-&#x73B0;&#x5728;&#xFF09;&#xFF0C;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x80FD;&#x591F;&#x901A;&#x8FC7;&#x5B66;&#x4E60;&#x4F8B;&#x5B50;&#x6765;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#x30
+           &#x673A;&#x5668;&#x5B66;&#x4E60;&#x662F;&#x57FA;&#x4E8E;&#x6570;&#x636E;&#x7684;&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#xFF08;1980s-&#x73B0;&#x5728;&#xFF09;&#xFF0C;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x80FD;&#x591F;&#x901A;&#x8FC7;&#x5B66;&#x4E60;&#x4F8B;&#x5B50;&#x6765;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#x3002;
+&#x673A;&#x5668;&#x5B66;&#x4E60;&#x6846;&#x67B6; #
+
+
+&#x901A;&#x5E38;&#x662F;&#x6210;&#x5BF9;&#x51FA;&#x73B0;&#xFF08;Input-Correct_Output&#xFF09;
+
+
+&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7684;&#x5E38;
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1651,7 +1686,9 @@ compareTo():
 &#x5F53;&#x6211;&#x4EEC;&#x5F97;&#x77E5;E&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x4E86;
 
 
-bits&#x7684
+bits&#x7684;&#x4FE1;&#x606F;&#x3002;
+*   &#x5176;&#x4E2D;log&#x7684;&#x5E95;&#x6570;&#x5E76;&#x4E0D;&#x91CD;&#x8981;&#xFF0C;&#x6211;&#x4EEC;&#x5047;&#x8BBE;&#x4E3A;2.
+*   &#x8FD9;&#x4E5F;&#x53EF;&#x4EE5;&#x8BA4;
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1814,7 +1851,7 @@ bits&#x7684
 Probability and Statistics #
 
 
-&#x5E38;&#x89C4;&#x53D8;&#x91CF;&#xFF08;Regular variables&#xFF09;&#x5E94;&#x8BE5;&#x662F;&#x6570;&#x5B57;&#x6216;&#x8005;&#x662F;&#x5176;&#x4ED6;&#x3002;&#x76F8;&#x53CD;&#xFF0C;&#x968F;&#x673A;&#x53D8;&#x91CF;&#xFF08;Random Variables&
+&#x5E38;&#x89C4;&#x53D8;&#x91CF;&#xFF08;Regular variables&#xFF09;&#x5E94;&#x8BE5;&#x662F;&#x6570;&#x5B57;&#x6216;&#x8005;&#x662F;&#x5176;&#x4ED6;&#x3002;&#x76F8;&#x53CD;&#xFF0C;&#x968F;&#x673A;&#x53D8;&#x91CF;&#xFF08;Random Variables&#xFF09;&#x662F;&#x4E00;&#x7CFB;&#x5217;&#x503C;&#x5F97;&#x5206;&#x90E8;&#x3002; &#x6BD4;&#x5982;&#xFF0C;&#x6254;&#x4E00;&#x679A;&#x786C;&#x5E01;&#x662F;&#x968F;&#x673A;&#x53D8;&#x91CF;X&#x7684;&#x5982
           ...
           <!--noindex-->
           <div class="post-more-link text-center">

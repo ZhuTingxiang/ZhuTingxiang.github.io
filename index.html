@@ -417,7 +417,10 @@
       
         
           
-           &#x672C;&#x6587;&#x662F;Twitter Analytics on the Cloud&#x9879;&#x76EE;&#x7684;&#x4ECB;&#x7ECD;&#x53CA;&#x5206;&#x6790;&#x603B;&#x7ED3;&#x3002;&#x5C0F;&#x7EC4;&#x4F5C;&#x4E1A;&#x5F53;&#x65F6;&#x505A;&#x7684;&#x5306;&#x5FD9;&#xFF0C;&#x73B0;&#x5728;&#x518D;&#x601D;&#x8003;&#x4E0B;&#x53EF;&#x4EE5;&#x4F
+           &#x672C;&#x6587;&#x662F;Twitter Analytics on the Cloud&#x9879;&#x76EE;&#x7684;&#x4ECB;&#x7ECD;&#x53CA;&#x5206;&#x6790;&#x603B;&#x7ED3;&#x3002;&#x5C0F;&#x7EC4;&#x4F5C;&#x4E1A;&#x5F53;&#x65F6;&#x505A;&#x7684;&#x5306;&#x5FD9;&#xFF0C;&#x73B0;&#x5728;&#x518D;&#x601D;&#x8003;&#x4E0B;&#x53EF;&#x4EE5;&#x4F18;&#x5316;&#x7684;&#x5730;&#x65B9;&#x5F88;&#x591A;&#x3002;&#x611F;&#x8C22;&#x961F;&#x53CB;@shuangshuang &#x548C; @&#x70DF;&#x9171;&#x3002;
+&#x9879;&#x76EE;&#x4ECB;&#x7ECD; #
+&#x76EE;&#x6807;&#xFF1A;
+
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -570,7 +573,12 @@ Given an array nums and a target value k, find the maximum length of a subarray 
 Note:
 The sum of the entire nums array is guaranteed to fit within the 32-bit signed integer range.
 Example 1:
-Given nums = [1, -1, 5, -2, 3], k = 3
+Given nums = [1, -1, 5, -2, 3], k = 3,
+return 4. (because the subarray [1, -1, 5, -2] sums to 3 and is the longest)
+Example 2:
+Given nums = [-2, -1, 2, 1], k = 1,
+return 2. (because the subarray [-1, 2] sums to 1 and is the longest)
+Foll
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -720,7 +728,7 @@ Given nums = [1, -1, 5, -2, 3], k = 3
           
            Question: #
 Suppose you are at a party with n people (labeled from 0 to n - 1) and among them, there may exist one celebrity. The definition of a celebrity is that all the other n - 1 people know him/her but he/she does not know any of them.
-Now you want to find out who the celebrity is or verify t
+Now you want to find out who the celebrity is or verify that there is not one. The only thing you are allowed to do is to ask questions like: &quot;Hi, A. Do you know B?&quot; to get information of whether A knows B. You need to find out the celebrity (or v
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -882,7 +890,8 @@ Now you want to find out who the celebrity is or verify t
            &#x672C;&#x6587;&#x662F;&#x5173;&#x4E8E;CMU15619Cloud Computing&#x9879;&#x76EE;:Social Networking Timeline with Heterogeneous Backends&#x7684;&#x4ECB;&#x7ECD;&#x4EE5;&#x53CA;&#x603B;&#x7ED3;&#x53CD;&#x601D;&#x3002;
 &#x9879;&#x76EE;&#x4E3B;&#x8981;&#x76EE;&#x6807;&#xFF1A;
 
-&#x63A2;&#x7D22;AWS&#x7684
+&#x63A2;&#x7D22;AWS&#x7684;DBaas&#x670D;&#x52A1;&#x7684;&#x7533;&#x8BF7;&#x3001;&#x914D;&#x7F6E;&#x548C;&#x7BA1;&#x7406;
+&#x6BD4;&#x8F83;MySQL, HBase&#x548C;MongoDB&#x5728;&#x4F7F;&#x7528;Java API&#x8F7D;&#x5165;&#x6570;&#x636
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1164,7 +1173,9 @@ For example,
 Given [[0, 30],[5, 10],[15, 20]],
 return false.
 Explanation: #
-&#x5148;&#x6309;&#x7167;start time&#x6392;&#x5E8F;&
+&#x5148;&#x6309;&#x7167;start time&#x6392;&#x5E8F;&#xFF0C;&#x53EA;&#x8981;&#x6BCF;&#x4E00;&#x4E2A;end time&#x90FD;&#x6BD4;&#x4E0B;&#x4E00;&#x4E2A;start time&#x5C0F;&#xFF0C;&#x5373;&#x53EF;&#x884C;&#x3002;
+Code: #
+12345678910111213141516171819202122232
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1316,7 +1327,10 @@ Explanation: #
 Question: #
 Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si &lt; ei), find the minimum number of conference rooms required.
 For example,
-Given [[0, 30],[5, 10],[15, 2
+Given [[0, 30],[5, 10],[15, 20]],
+return 2.
+Explanation: #
+&#x5148;&#x5BF9;start sort&#xFF0C;&#x7528;heap&#x5B58;end&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x6309;&#x7167;end&#x4E5F;sort&#x4E00;&#x904D;&#xFF0C;&#x4E4B;&#x540E;&#x4E0E;&#
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1465,7 +1479,9 @@ Given [[0, 30],[5, 10],[15, 2
         
           
            Question: #
-You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &quot;++&quot; into &quot;--&quot;. The game ends when a person can no longer make a move and therefore the o
+You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &quot;++&quot; into &quot;--&quot;. The game ends when a person can no longer make a move and therefore the other person will be the winner.
+Write a function to determine if the starting player can guarantee a win.
+For example, given s = &quot;++++&quot;, return true. The starting player can guarantee a win 
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1617,7 +1633,9 @@ You are playing the following Flip Game with your friend: Given a string that co
 Design a data structure that supports all following operations in average O(1) time.
 insert(val): Inserts an item val to the set if not already present.
 remove(val): Removes an item val from the set if present.
-getRandom: Returns a random element from current set of elements. Each eleme
+getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.
+Example:
+1234567891011121314151617181920212223// Init an empty set.RandomizedSet randomSet = new RandomizedSet();// Inserts 1 to the set. Returns t
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1768,7 +1786,8 @@ getRandom: Returns a random element from current set of elements. Each eleme
            Question: #
 One way to serialize a binary tree is to use pre-order traversal. When we encounter a non-null node, we record the node&apos;s value. If it is a null node, we record using a sentinel value such as #.
 1234567     _9_    /   \   3     2  / \   / \ 4   1  #  6/ \ / \   / \# # # #   # #
-For
+For example, the above binary tree can be serialized to the string &quot;9,3,4,#,#,1,#,#,2,#,6,#,#&quot;, where # represents a null node.
+Given a string of comma separated values, verify whether it is a 
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
