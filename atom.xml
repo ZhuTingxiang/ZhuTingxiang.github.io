@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-28T22:11:00.000Z</updated>
+  <updated>2017-02-28T22:23:49.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/02/28/Leetcode-94-Binary-Tree-Inorder-Traversal/"/>
     <id>http://yoursite.com/2017/02/28/Leetcode-94-Binary-Tree-Inorder-Traversal/</id>
     <published>2017-02-28T22:05:02.000Z</published>
-    <updated>2017-02-28T22:11:00.000Z</updated>
+    <updated>2017-02-28T22:23:49.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, return the inorder traversal of its nodes' values.</p>
@@ -48,6 +48,16 @@ base case： root为null返回一个空list。
     
     </summary>
     
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
     
   </entry>
   
