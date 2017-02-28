@@ -116,12 +116,6 @@ hfile.block.cache.size&#xFF1A;RS&#x7684;block cache&#x7684;&#x5185;&#x5B58;&#x59
     </entry>
     
     <entry>
-      <title><![CDATA[binary tree inorder traversal]]></title>
-      <url>http://yoursite.com/2017/02/25/binary-tree-inorder-traversal/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Leetcode 325. Maximum Size Subarray Sum Equals k]]></title>
       <url>http://yoursite.com/2017/02/25/Leetcode-325-Maximum-Size-Subarray-Sum-Equals-k/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question: <a href="#question" class="header-anchor">#</a></h3>
