@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-28T04:12:50.000Z</updated>
+  <updated>2017-02-28T04:17:05.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/02/27/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9ATwitter%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     <id>http://yoursite.com/2017/02/27/云计算Project：Twitter大数据分析/</id>
     <published>2017-02-28T01:37:26.000Z</published>
-    <updated>2017-02-28T04:12:50.000Z</updated>
+    <updated>2017-02-28T04:17:05.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#x672C;&#x6587;&#x662F;Twitter Analytics on the Cloud&#x9879;&#x76EE;&#x7684;&#x4ECB;&#x7ECD;&#x53CA;&#x5206;&#x6790;&#x603B;&#x7ED3;&#x3002;&#x5C0F;&#x7EC4;&#x4F5C;&#x4E1A;&#x5F53;&#x65F6;&#x505A;&#x7684;&#x5306;&#x5FD9;&#xFF0C;&#x73B0;&#x5728;&#x518D;&#x601D;&#x8003;&#x4E0B;&#x53EF;&#x4EE5;&#x4F18;&#x5316;&#x7684;&#x5730;&#x65B9;&#x5F88;&#x591A;&#x3002;&#x611F;&#x8C22;&#x961F;&#x53CB;@shuangshuang &#x548C; @&#x70DF;&#x9171;&#x3002;</p>
 <h2 id="xiang-mu-jie-shao">&#x9879;&#x76EE;&#x4ECB;&#x7ECD; <a href="#xiang-mu-jie-shao" class="header-anchor">#</a></h2>
@@ -52,9 +52,9 @@
 <h2 id="xiang-mu-shi-zhan">&#x9879;&#x76EE;&#x5B9E;&#x6218; <a href="#xiang-mu-shi-zhan" class="header-anchor">#</a></h2>
 <h3 id="da-jian-qian-duan">&#x642D;&#x5EFA;&#x524D;&#x7AEF;&#xFF1A; <a href="#da-jian-qian-duan" class="header-anchor">#</a></h3>
 <p>&#x5728;&#x642D;&#x5EFA;&#x524D;&#x7AEF;&#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x614E;&#x91CD;&#x9009;&#x62E9;&#x6846;&#x67B6;&#x3002;&#x5BF9;&#x6BD4;&#x4E3B;&#x6D41;web&#x6846;&#x67B6;&#xFF0C;&#x53C2;&#x8003;<a href="https://www.techempower.com/benchmarks/" target="_blank" rel="external">Techempower</a>,&#x6211;&#x4EEC;&#x6700;&#x7EC8;&#x9009;&#x62E9;&#x7528;vertx&#x548C;undertow&#x8FDB;&#x884C;&#x5F00;&#x53D1;&#x3002;
-&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x4E00;&#x4E9B;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x914D;&#x7F6E;&#x6307;&#x5357;&#xFF1A;
-Vertx:
-<a href="http://vertx.io/docs/" target="_blank" rel="external">vertx Document</a>
+&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x4E00;&#x4E9B;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x914D;&#x7F6E;&#x6307;&#x5357;&#xFF1A;</p>
+<p>Vertx:</p>
+<p><a href="http://vertx.io/docs/" target="_blank" rel="external">vertx Document</a><br>
 <a href="http://vertx.io/blog/my-first-vert-x-3-application/index.html" target="_blank" rel="external">My first Vert.x 3 Application</a></p>
 <h4 id="qian-duan-you-hua">&#x524D;&#x7AEF;&#x4F18;&#x5316;&#xFF1A; <a href="#qian-duan-you-hua" class="header-anchor">#</a></h4>
 <ul>
@@ -66,7 +66,7 @@ Vertx:
 <h4 id="cao-zuo-guo-cheng">&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;&#xFF1A; <a href="#cao-zuo-guo-cheng" class="header-anchor">#</a></h4>
 <p>&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x8981;&#x5199;&#x4E00;&#x4E2A;Map&#x548C;&#x4E00;&#x4E2A;Reduce&#x6587;&#x4EF6;&#x6765;&#x5904;&#x7406;&#x6570;&#x636E;&#x3002;&#x539F;&#x59CB;&#x6570;&#x636E;&#x7684;&#x683C;&#x5F0F;&#x662F;JSON&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5904;&#x7406;&#x6210;&#x9700;&#x8981;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF1A;</p>
 <p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;
-userid+hashtag<br>
+userid+hashtag
 <code>GET /q2?userid=uid&amp;hashtag=hashtag</code></p>
 <p>&#x54CD;&#x5E94;&#x683C;&#x5F0F; (&#x5982;&#x679C;Tweet&#x5B58;&#x5728;)</p>
 <ul>
@@ -110,30 +110,24 @@ Replication&#x662F;&#x6307;&#x5C06;&#x5B8C;&#x6574;&#x7684;&#x6570;&#x636E;&#x5E
 <p>&#x9274;&#x4E8E;HBase&#x662F;key-value&#x5B58;&#x50A8;&#x6A21;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x8FD9;&#x91CC;&#x53EA;&#x8981;&#x8003;&#x8651;key&#x91CC;&#x600E;&#x4E48;&#x653E;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x6570;&#x636E;&#x5168;&#x90FD;&#x653E;&#x5230;column family&#x91CC;&#x9762;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;
 &#x6211;&#x4EEC;&#x91C7;&#x7528;tweet_id + user_id + hashtag&#x4F5C;&#x4E3A;rowkey&#x3002;</p>
 <h6 id="you-hua-fang-fa-zhai-zi-xiao-tu-dao-bo-ke">&#x4F18;&#x5316;&#x65B9;&#x6CD5;&#xFF08;&#x6458;&#x81EA;&#x5C0F;&#x571F;&#x5200;&#x535A;&#x5BA2;&#xFF09;&#xFF1A; <a href="#you-hua-fang-fa-zhai-zi-xiao-tu-dao-bo-ke" class="header-anchor">#</a></h6>
-<ul>
-<li>
-<p>&#x5206;&#x914D;&#x5408;&#x9002;&#x7684;&#x5185;&#x5B58;&#x7ED9; RegionServer &#x670D;&#x52A1;
+<p>1.&#x5206;&#x914D;&#x5408;&#x9002;&#x7684;&#x5185;&#x5B58;&#x7ED9; RegionServer &#x670D;&#x52A1;:
 &#x4F8B;&#x5982;&#x5728; HBase &#x7684; conf &#x76EE;&#x5F55;&#x4E0B;&#x7684; hbase-env.sh &#x7684;&#x6700;&#x540E;&#x6DFB;&#x52A0; export HBASE_REGIONSERVER_OPTS=&#x201D;-Xmx16000m $HBASE_REGIONSERVER_OPTS&#x201D;
 &#x5176;&#x4E2D; 16000m &#x4E3A;&#x5206;&#x914D;&#x7ED9; RegionServer &#x7684;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x3002;</p>
-</li>
-<li>
-<p>RegionServer &#x7684;&#x8BF7;&#x6C42;&#x5904;&#x7406; IO &#x7EBF;&#x7A0B;&#x6570;
+<p>2.RegionServer &#x7684;&#x8BF7;&#x6C42;&#x5904;&#x7406; IO &#x7EBF;&#x7A0B;&#x6570;:
 &#x8F83;&#x5C11;&#x7684; IO &#x7EBF;&#x7A0B;&#x9002;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x5355;&#x6B21;&#x8BF7;&#x6C42;&#x5185;&#x5B58;&#x6D88;&#x8017;&#x8F83;&#x9AD8;&#x7684; Big Put &#x573A;&#x666F; (&#x5927;&#x5BB9;&#x91CF;&#x5355;&#x6B21; Put &#x6216;&#x8BBE;&#x7F6E;&#x4E86;&#x8F83;&#x5927; cache &#x7684; Scan&#xFF0C;&#x5747;&#x5C5E;&#x4E8E; Big Put) &#x6216; ReigonServer &#x7684;&#x5185;&#x5B58;&#x6BD4;&#x8F83;&#x7D27;&#x5F20;&#x7684;&#x573A;&#x666F;&#x3002;
 &#x8F83;&#x591A;&#x7684; IO &#x7EBF;&#x7A0B;&#xFF0C;&#x9002;&#x7528;&#x4E8E;&#x5355;&#x6B21;&#x8BF7;&#x6C42;&#x5185;&#x5B58;&#x6D88;&#x8017;&#x4F4E;&#xFF0C;TPS &#x8981;&#x6C42; (&#x6BCF;&#x79D2;&#x4E8B;&#x52A1;&#x5904;&#x7406;&#x91CF; (TransactionPerSecond)) &#x975E;&#x5E38;&#x9AD8;&#x7684;&#x573A;&#x666F;&#x3002;&#x8BBE;&#x7F6E;&#x8BE5;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4EE5;&#x76D1;&#x63A7;&#x5185;&#x5B58;&#x4E3A;&#x4E3B;&#x8981;&#x53C2;&#x8003;&#x3002;
 &#x5728; hbase-site.xml &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x914D;&#x7F6E;&#x9879;&#x4E3A; hbase.regionserver.handler.count 200</p>
-</li>
-<li>
-<p>&#x8C03;&#x6574; Block Cache
+<p>3.&#x8C03;&#x6574; Block Cache:
 hfile.block.cache.size&#xFF1A;RS&#x7684;block cache&#x7684;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x9650;&#x5236;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;0.25&#xFF0C;&#x5728;&#x504F;&#x5411;&#x8BFB;&#x7684;&#x4E1A;&#x52A1;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x9002;&#x5F53;&#x8C03;&#x5927;&#x8BE5;&#x503C;&#xFF0C;&#x5177;&#x4F53;&#x914D;&#x7F6E;&#x65F6;&#x9700;&#x8BD5;hbase&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#x7684;&#x4E1A;&#x52A1;&#x7279;&#x5F81;&#xFF0C;&#x7ED3;&#x5408;memstore&#x7684;&#x5185;&#x5B58;&#x5360;&#x6BD4;&#x8FDB;&#x884C;&#x7EFC;&#x5408;&#x8003;&#x8651;&#x3002;</p>
-</li>
-</ul>
 <h2 id="zong-jie">&#x603B;&#x7ED3;&#xFF1A; <a href="#zong-jie" class="header-anchor">#</a></h2>
 <p>Team Project&#x8FC7;&#x53BB;&#x633A;&#x4E45;&#x4E86;&#xFF0C;&#x5F88;&#x591A;&#x7EC6;&#x8282;&#x8BB0;&#x4E0D;&#x5F97;&#x4E86;&#xFF0C;&#x6E05;&#x6D17;&#x6570;&#x636E;&#x7684;&#x90E8;&#x5206;&#x6709;&#x5F88;&#x591A;&#x7EC6;&#x8282;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x5E76;&#x4E0D;&#x50CF;&#x8FD9;&#x91CC;&#x5199;&#x7684;&#x4E00;&#x4E24;&#x53E5;&#x8BDD;&#x5C31;&#x8BB2;&#x6E05;&#x695A;&#x4E86;&#x3002;&#x8FD8;&#x6709;&#x6570;&#x636E;&#x5E93;&#x4F18;&#x5316;&#x662F;&#x4E00;&#x6761;&#x4E0D;&#x5F52;&#x8DEF;&#xFF0C;&#x76F2;&#x76EE;&#x4F18;&#x5316;&#x4F1A;&#x5BFC;&#x81F4;&#x53CD;&#x5411;&#x4F18;&#x5316;&#xFF0C;&#x5176;&#x5B9E;&#x6839;&#x636E;&#x540E;&#x6765;&#x8D62;&#x5BB6;&#x7684;&#x62A5;&#x544A;&#x6765;&#x770B;&#xFF0C;&#x4F18;&#x5316;&#x5E76;&#x8D77;&#x4E0D;&#x5230;&#x591A;&#x5C11;&#x4F5C;&#x7528;&#xFF0C;&#x597D;&#x7684;schema&#x8BBE;&#x8BA1;&#x624D;&#x662F;&#x63D0;&#x9AD8;performance&#x7684;&#x6700;&#x6839;&#x672C;&#x3002;
 &#x4E91;&#x8BA1;&#x7B97;&#x8FD9;&#x95E8;&#x8BFE;&#x7684;&#x7CBE;&#x534E;&#xFF0C;&#x90FD;&#x5728;&#x8FD9;&#x4E2A;Project&#xFF0C;&#x8986;&#x76D6;&#x4E86;&#x5927;&#x90E8;&#x5206;&#x8FD9;&#x95E8;&#x8BFE;&#x7684;&#x6240;&#x5B9E;&#x9A8C;&#x7684;&#x77E5;&#x8BC6;&#x3002;&#x4ECE;load balance&#x5230;sharding&#x548C;replication&#xFF0C;&#x518D;&#x5230;SQL&#x548C;NoSQL&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x518D;&#x5230;EMR&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x5C31;&#x5DEE;&#x5E76;&#x884C;&#x5E76;&#x53D1;&#x90A3;&#x90E8;&#x5206;&#x7684;&#x5185;&#x5BB9;&#x4E86;&#x3002;
 &#x5B66;&#x4E60;&#x662F;&#x4E0D;&#x96BE;&#x7684;&#xFF0C;&#x6709;&#x6307;&#x5BFC;&#x6765;&#x505A;project&#x4E5F;&#x4E0D;&#x96BE;&#xFF0C;&#x771F;&#x6B63;&#x5230;&#x4E86;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x6CA1;&#x6709;&#x4EBA;&#x77E5;&#x9053;&#x6B63;&#x786E;&#x7B54;&#x6848;&#xFF0C;&#x9760;&#x7684;&#x90FD;&#x662F;&#x601D;&#x8003;&#x548C;&#x7ECF;&#x9A8C;&#x4E86;&#x3002;</p>
-<p><strong>References&#xFF1A;</strong>
-[&#x5C0F;&#x571F;&#x5200;&#x4E91;&#x8BA1;&#x7B97;&#x8BED;&#x6599;&#x5206;&#x6790;&amp;&#x53CD;&#x601D;&#x8BFE;] &#xFF08;http://wdxtub.com/&#xFF09;
-&#x5C0F;Yuki&#x7684;Report</p>
+<p><strong>References&#xFF1A;</strong></p>
+<ol>
+<li><a href="http://wdxtub.com/" target="_blank" rel="external">&#x5C0F;&#x571F;&#x5200;&#x4E91;&#x8BA1;&#x7B97;&#x8BED;&#x6599;&#x5206;&#x6790;&amp;&#x53CD;&#x601D;&#x8BFE;</a></li>
+<li>&#x5C0F;Yuki&#x7684;Report</li>
+</ol>
 ]]></content>
     
     <summary type="html">
