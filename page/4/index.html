@@ -408,7 +408,9 @@
           
            Question:
 Given an array of integers A and let n to be its length.
-Assume Bk to be an array obtained by rotating the array A k positions clock-wise, 
+Assume Bk to be an array obtained by rotating the array A k positions clock-wise, we define a &quot;rotation function&quot; F on A as follow:
+F(k) = 0 * Bk[0] + 1 * Bk[1] + ... + (n-1) * Bk[n-1].
+Calculate the maximum value of F(0),
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -558,7 +560,7 @@ Assume Bk to be an array obtained by rotating the array A k positions clock-wise
           
            Question:
 Write an algorithm to determine if a number is &quot;happy&quot;.
-A happy number is a number defined by the following process: Starting wit
+A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will st
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -709,7 +711,8 @@ A happy number is a number defined by the following process: Starting wit
            Quesition
 You are given a binary tree in which each node contains an integer value.
 Find the number of paths that sum to a given value.
-The path does
+The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).
+The tree has no more than
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -859,7 +862,9 @@ The path does
           
            Question:
 A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).
-Each LED 
+Each LED represents a zero or one, with the least significant bit on the right.
+For example, the above binary watch reads &quot;3:25&quot;.
+Given a non-negativ
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1008,7 +1013,7 @@ Each LED
         
           
            
-&#x665A;&#x4E0A;&#xFF0C;&#x7FFB;&#x5230;&#x4E00;&#x7BC7;&#x5199;&#x5317;&#x4EAC;&#x5364;&#x716E;&#x7684;&#x6587;&#x7AE0;&#x3002;15&#x5E74;&#x590F;&#
+&#x665A;&#x4E0A;&#xFF0C;&#x7FFB;&#x5230;&#x4E00;&#x7BC7;&#x5199;&#x5317;&#x4EAC;&#x5364;&#x716E;&#x7684;&#x6587;&#x7AE0;&#x3002;15&#x5E74;&#x590F;&#x5929;&#x5728;&#x5317;&#x4EAC;&#xFF0C;&#x4E00;&#x4E2A;&#x59D1;&#x5A18;&#x5E26;&#x6211;&#x53BB;&#x4E86;&#x4E00;&#x4E2A;&#x5357;&#x57CE;&#x7684;&#x80E1;
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1158,7 +1163,10 @@ Each LED
           
            equals, == &#x548C;compareTo #
 
-== &#x64CD;&#x4F5C;&#x7B26;&#x5E76;&#x4E0D;&#x6D89;&#x53CA;&#x5BF9;&#x8C61;&#x5185;&#x5BB9;&#x7684;&#x6BD4;&#x8F83;&#
+== &#x64CD;&#x4F5C;&#x7B26;&#x5E76;&#x4E0D;&#x6D89;&#x53CA;&#x5BF9;&#x8C61;&#x5185;&#x5BB9;&#x7684;&#x6BD4;&#x8F83;&#x3002;
+equals &#x6BD4;&#x8F83;&#x7684;&#x662F;reference&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5F15;&#x7528;&#x5185;&#x5BB9;
+compareTo():
+&#x5728;&#x57FA;&
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1318,7 +1326,7 @@ Each LED
         
           
            &#x6982;&#x5FF5;&#x5B66;&#x4E60;&#xFF08;Concept Learning&#xFF09; #
-&#x6982;&#x5FF5;&#x5B66;&#x4E60;&#x662F;&#x6307;&#x4ECE;&#x67D0;&#x4E2A;&#x5E03;&#
+&#x6982;&#x5FF5;&#x5B66;&#x4E60;&#x662F;&#x6307;&#x4ECE;&#x67D0;&#x4E2A;&#x5E03;&#x5C14;&#x51FD;&#x6570;&#x7684;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x8BAD;&#x7EC3;&#x4E2D;&#x63A8;&#x65AD;&#x51FA;&#x8BE5;&#x5E03;&#x5C14;&#x51FD;&#x6570;
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1477,7 +1485,7 @@ Each LED
       
         
           
-           &#x673A;&#x5668;&#x5B66;&#x4E60;&#x662F;&#x57FA;&#x4E8E;&#x6570;&#x636E;&#x7684;&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#xFF08;1980s-&#x73B0;&#x5728;&#xFF09
+           &#x673A;&#x5668;&#x5B66;&#x4E60;&#x662F;&#x57FA;&#x4E8E;&#x6570;&#x636E;&#x7684;&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#xFF08;1980s-&#x73B0;&#x5728;&#xFF09;&#xFF0C;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x80FD;&#x591F;&#x901A;&#x8FC7;&#x5B66;&#x4E60;&#x4F8B;&#x5B50;&#x6765;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#x30
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1640,7 +1648,10 @@ Each LED
 
 &#x4FE1;&#x606F; &#xFF01;= &#x77E5;&#x8BC6;
 &#x4FE1;&#x606F;&#x7528;&#x6765;&#x51CF;&#x5C11;&#x4E0D;&#x786E;&#x5B9A;&#x6027;
-&#x5F53;&
+&#x5F53;&#x6211;&#x4EEC;&#x5F97;&#x77E5;E&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x4E86;
+
+
+bits&#x7684
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1803,7 +1814,7 @@ Each LED
 Probability and Statistics #
 
 
-&#x5E38;&#x89C4;&#x53D8;&#x91CF;&#xFF08;Regular variables&#xFF09;&#x5E94;&#x8BE5;&#x
+&#x5E38;&#x89C4;&#x53D8;&#x91CF;&#xFF08;Regular variables&#xFF09;&#x5E94;&#x8BE5;&#x662F;&#x6570;&#x5B57;&#x6216;&#x8005;&#x662F;&#x5176;&#x4ED6;&#x3002;&#x76F8;&#x53CD;&#xFF0C;&#x968F;&#x673A;&#x53D8;&#x91CF;&#xFF08;Random Variables&
           ...
           <!--noindex-->
           <div class="post-more-link text-center">

@@ -409,7 +409,9 @@
            Question #
 Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.
 For example,
-12345Moving
+12345MovingAverage m = new MovingAverage(3);m.next(1) = 1m.next(10) = (1 + 10) / 2m.next(3) = (1 + 10 + 3) / 3m.next(5) = (10 + 3 + 5) / 3
+Explanation: #
+&#x975E
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -561,7 +563,7 @@ For example,
 Given an unsorted array of integers, find the length of longest increasing subsequence.
 For example,
 Given [10, 9, 2, 5, 3, 7, 101, 18],
-T
+The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4. Note that there may be more than one LIS combination, it is only neces
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -712,7 +714,10 @@ T
            Question:
 Given two 1d vectors, implement an iterator to return their elements alternately.
 For example, given two 1d vectors:
-12v1 = [1, 2]v2 = [3, 
+12v1 = [1, 2]v2 = [3, 4, 5, 6]
+By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1, 3, 2, 4, 5, 6].
+Follow up:
+What
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -847,7 +852,7 @@ For example, given two 1d vectors:
 
 
 Indirect Messaging:
-Indirect communica
+Indirect communication is defined as communication between entities in a distributed system through an intermediary with no direct coupling between the sender and the r
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1009,7 +1014,13 @@ Indirect communica
            CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
 &#x7B2C;19&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;
 
-Design issues in distributed mobile application
+Design issues in distributed mobile applications:
+
+Association:
+&#x2022; Devices
+&#x2013; Appear	and	disappear	from	the	space.
+&#x2013; Do	so	unpredictably
+&#x2013; May	be	totally	new	to	the	space.
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1144,7 +1155,9 @@ ACID&#x6982;&#x5FF5;&#x603B;&#x7ED3;
 
 ACID Transactions&#xFF1A;
 
-Atomic:  All or nothing. No interm
+Atomic:  All or nothing. No intermediate states are visible. No possibility that
+only part of the transaction ran. If a transaction fails or aborts prior to
+committing, the TP system w
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1293,7 +1306,8 @@ Atomic:  All or nothing. No interm
         
           
            
-&#x4ECA;&#x5929;&#x4E0A;Advanced Cloud Computing,&#x4E09;&#x4E2A;&#x6559;&#x6388;&#x5C31;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x4E89;&#x8BBA;&#x8D77;&#x
+&#x4ECA;&#x5929;&#x4E0A;Advanced Cloud Computing,&#x4E09;&#x4E2A;&#x6559;&#x6388;&#x5C31;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x4E89;&#x8BBA;&#x8D77;&#x6765;&#x3002;
+&#x90A3;&#x771F;&#x7684;&#x662F;&#x5F88;&#x89E6;&#x52A8;&#x6211;&#x7684;&#x4E00;&#x523B;&#xFF0C;&#x52A0;&#x8D77;&#x6765;&#x90FD;&#x5FEB;
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1442,7 +1456,10 @@ Atomic:  All or nothing. No interm
         
           
            &#x603B;&#x7ED3;&#x51E0;&#x79CD;&#x6392;&#x5E8F;&#x65B9;&#x6CD5;&#x3002;
-&#x5192;&#x6CE1;&#x6392;&#x5E8F;&#xFF0C;&#x9009;&#x62E9;&#x6392;&#x5E8F;&#xF
+&#x5192;&#x6CE1;&#x6392;&#x5E8F;&#xFF0C;&#x9009;&#x62E9;&#x6392;&#x5E8F;&#xFF0C;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#xFF0C;Merge Sort&#xFF08;continue..&#xFF09;...
+Simple sorting
+Bubble Sort #
+&#x6162;&#xFF0C;&#x4F46;&#x662F;&#x7B
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1592,7 +1609,11 @@ Atomic:  All or nothing. No interm
           
            Question: #
 Rotate an array of n elements to the right by k steps.
-For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,
+For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
+Note:
+Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
+Hint:
+Could you do it in-place
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1740,7 +1761,8 @@ For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,
       
         
           
-           &#x8FD9;&#x7BC7;&#x662F;&#x7EFC;&#x5408;&#x51E0;&#x9053;&#x5173;&#x4E8E;Intersection of Arrays/Linked List &#x7684;Leetcode&#x9898;&#xFF0C;&#x5206;&#
+           &#x8FD9;&#x7BC7;&#x662F;&#x7EFC;&#x5408;&#x51E0;&#x9053;&#x5173;&#x4E8E;Intersection of Arrays/Linked List &#x7684;Leetcode&#x9898;&#xFF0C;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x95EE;&#x9898;&#x53CA;&#x5176;&#x53D8;&#x4F53;&#xFF0C;&#x5E76;&#x7ED9;&#x51FA;&#x51E0;&#x79CD;&#x89E3;&#x6CD5;&#x3002;
+LeetCod
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
