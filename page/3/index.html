@@ -303,6 +303,163 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/10/271-Encode-and-Decode-Strings/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Star">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/winnie-pooh-full-hd-wallpaper-image-tablet.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Star">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Star" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/10/271-Encode-and-Decode-Strings/" itemprop="url">
+                  Leetcode 271. Encode and Decode Strings
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-10T23:52:01-05:00">
+                2017-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/02/10/271-Encode-and-Decode-Strings/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/10/271-Encode-and-Decode-Strings/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+           Question:
+Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.
+Machine 1 (sender) has the function:
+encode(vector strs) &#123;123  // ... your code  return encoded_string;&#125;
+Machine 2 (receiver) has the function:
+decode(string s) &#123;123  //... your code  return strs;&#125;
+So Machine 1 does:
+1string encoded_string = encode(strs);
+and Machine 2 does:
+1vector&lt;string&gt; strs2 = 
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/10/271-Encode-and-Decode-Strings/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/10/346-Moving-Average-from-Data-Stream/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -406,12 +563,14 @@
       
         
           
-           Question #
+           Question
 Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.
 For example,
 12345MovingAverage m = new MovingAverage(3);m.next(1) = 1m.next(10) = (1 + 10) / 2m.next(3) = (1 + 10 + 3) / 3m.next(5) = (10 + 3 + 5) / 3
-Explanation: #
-&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;&#x9898;&#x76EE;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;queue&#x6216;&#x8005;arraylist&#x6216;&#x8005;array&#x4FDD;&#x5B58;next&#x7684;&#x503C;&#x3002;&#x7528;&#x4E00;&#x4E2A;
+Explanation:
+非常简单的题目，可以用queue或者arraylist或者array保存next的值。用一个sum存着总和，每次都计算一下平均值。
+Code:
+1234567891011121314151617181920212223242526272829public class MovingAverage &#123;    /** Initialize your data structure here. */    Queue&
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -559,7 +718,7 @@ Explanation: #
       
         
           
-           Question #
+           Question
 Given an unsorted array of integers, find the length of longest increasing subsequence.
 For example,
 Given [10, 9, 2, 5, 3, 7, 101, 18],
@@ -567,8 +726,9 @@ The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4.
 Your algorithm should run in O(n2) complexity.
 Follow up:
 Could you improve it to O(n log n) time complexity?
-Solution 1: Dynamic Programming O(n^2) #
-Explanation: #
+Solution 1: Dynamic Programming O(n^2)
+Explanation:
+第一层循环
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -854,8 +1014,8 @@ The &quot;Zigzag&quot; order is not clearly defined an
       
         
           
-           CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
-&#x7B2C;6&#x3001;9&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;
+           CMU-95702分布式系统
+第6、9章总结笔记
 
 
 Indirect Messaging:
@@ -865,8 +1025,10 @@ Decoupled in space:
 
 Sender does not need to know the identify of the receiver(s) and visa-versa
 Good for handling legacy systems
-&#x2013; Decoupled in time:
-A component need not even be 
+– Decoupled in time:
+A component need not even be running
+The messaging system can store messages until they are successfully delivered
+Relia
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1025,21 +1187,23 @@ A component need not even be
       
         
           
-           CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
-&#x7B2C;19&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;
+           CMU-95702分布式系统
+第19章总结笔记
 
 Design issues in distributed mobile applications:
 
 Association:
-&#x2022; Devices
-&#x2013; Appear	and	disappear	from	the	space.
-&#x2013; Do	so	unpredictably
-&#x2013; May	be	totally	new	to	the	space.
-&#x2013; Or	may	be	returning	to	the	space.
-&#x2022; They	need	to	be:
-&#x2013; Perhaps	added	to	the	network
-&#x2013; Brought	into	Association	with	resources	and	applications
-&#x2022; Examples	of	Assoc
+• Devices
+– Appear	and	disappear	from	the	space.
+– Do	so	unpredictably
+– May	be	totally	new	to	the	space.
+– Or	may	be	returning	to	the	space.
+• They	need	to	be:
+– Perhaps	added	to	the	network
+– Brought	into	Association	with	resources	and	applications
+• Examples	of	Association
+– Come	on	campus	and	be	able	to	be	associated	with	the	printers that	are	close	to	you.
+– Be	alerted	if	someone	you	know	is	walking	ne
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1169,17 +1333,18 @@ Association:
       
         
           
-           CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
-ACID&#x6982;&#x5FF5;&#x603B;&#x7ED3;
+           CMU-95702分布式系统
+ACID概念总结
 
-ACID Transactions&#xFF1A;
+ACID Transactions：
 
 Atomic:  All or nothing. No intermediate states are visible. No possibility that
 only part of the transaction ran. If a transaction fails or aborts prior to
 committing, the TP system will undo the effects of any updates (will
 recover). We either commit or abort the entire process. Checkpointing and
 Logging and recoverable objects can be used to ensure a transaction is
-atomic with r
+atomic with respect to failures.
+Consistent:  system invariants preserved, e.g., if
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1328,8 +1493,17 @@ atomic with r
         
           
            
-&#x4ECA;&#x5929;&#x4E0A;Advanced Cloud Computing,&#x4E09;&#x4E2A;&#x6559;&#x6388;&#x5C31;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x4E89;&#x8BBA;&#x8D77;&#x6765;&#x3002;
-&#x90A3;&#x771F;&#x7684;&#x662F;&#x5F88;&#x89E6;&#x52A8;&#x6211;&#x7684;&#x4E00;&#x523B;&#xFF0C;&#x52A0;&#x8D77;&#x6765;&#x90FD;&#x5FEB;150&#x5C81;&#x7684;&#x4E09;&#x4E2A;&#x9876;&#x5C16;&#x5B66;&#x672F;&#x5927;&#x725B;&#xFF0C;&#x5728;&#x6295;&#x5F71;&#x4EEA;&#x524D;&#x9762;&#xFF0C;&#x5BF9;&#x5F85;&#x77E5;&#x8BC6;&#x8FD8;&#x662F;&#x54
+今天上Advanced Cloud Computing,三个教授就一个问题争论起来。
+那真的是很触动我的一刻，加起来都快150岁的三个顶尖学术大牛，在投影仪前面，对待知识还是和孩子一样专注和热情，可爱极了。
+忽然想到，Greg的主页上写着，“我才不是个不度假的教授，我2012年去冲浪了呢！”。
+其实，每次选课都很头疼，时间太少，想学的课太多，只恨自己不能多读几年。我也知道上学期很不开心的时候，发过誓这学期不要选很难的课了。可是我的研究生只有一次，在CMU念书的机会也只有一次（当然我不介意以后再来哈哈哈），无法不说服自己再争取一下。
+只是，最近有一个问题在渐渐放大。
+我到底要去哪里。
+其实，很多人也不知道到底要去哪里。但其实每个人，都能看到那么一些些微弱的光，好像是那个地方。只是有些人会选择努力跑着去，有些人怀疑自己是否真的看见了光，有些人，装作看不见。
+之前和萱哥聊天，萱哥倒是很爽快，说不管去哪儿不想呆北京吸霾了，除非这次考上了北影。两年了啊，北影的梦还在。
+你看你看，坚定的人都很坦然。
+就像机器学习拿了满分的Mengyao，总和我说毕业找不到工作，打算去星巴克门口蹲着摆个碗。
+所
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1477,14 +1651,20 @@ atomic with r
       
         
           
-           &#x603B;&#x7ED3;&#x51E0;&#x79CD;&#x6392;&#x5E8F;&#x65B9;&#x6CD5;&#x3002;
-&#x5192;&#x6CE1;&#x6392;&#x5E8F;&#xFF0C;&#x9009;&#x62E9;&#x6392;&#x5E8F;&#xFF0C;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#xFF0C;Merge Sort&#xFF08;continue..&#xFF09;...
+           总结几种排序方法。
+冒泡排序，选择排序，插入排序，Merge Sort（continue..）...
 Simple sorting
-Bubble Sort #
-&#x6162;&#xFF0C;&#x4F46;&#x662F;&#x7B80;&#x5355;&#x3002;
+Bubble Sort
+慢，但是简单。
 Time complexity:    O(N^2)
-&#x6B65;&#x9AA4;:
-1231. &#x6BCF;&#x6B21;&#x53EA;&#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x503C;&#x3002;2. &#x5982;&#x679C;&#x5DE6;&#x8FB9;&#x7684;&#x503C;&#x592
+步骤:
+1231. 每次只比较两个值。2. 如果左边的值大，就交换两个值。3. 移动大的值到右边。
+举例:
+123456789101112131415原数组: [4,7, 2, 5, 3]Round 1:  -&gt; [4,7,2,5,3]  -&gt; [4,2,7,5,3]  -&gt; [4,2,5,7,3]  -&gt; [4,2,5,3,7]Round 2:  -&gt; [2,4,5,3,7]  -&gt; [2,4,5,3,7]  -&gt; [2,4,3,5,7]Round 3:  -&gt; [2,4,3,5,7]  -&gt; [2,3,4,5,7]Round 4:  -&gt; [2,3,4,5,7]
+Code:
+int[ ] data = {4, 7, 2, 5, 3}
+Swap Method
+123456// a helper met
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1632,7 +1812,7 @@ Time complexity:    O(N^2)
       
         
           
-           Question: #
+           Question:
 Rotate an array of n elements to the right by k steps.
 For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
 Note:
@@ -1642,10 +1822,10 @@ Could you do it in-place with O(1) extra space?
 Related problem:
 Reverse Words in a String II
 There are three solutions for this problem:
-Solution 1: #
+Solution 1:
 We can use temporary array to store k elements.
 Time complexity: O(N)
-Sp
+Space 
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1681,167 +1861,11 @@ Sp
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/03/Leetcode-Intersection-of-Two-Arrays/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Star">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/winnie-pooh-full-hd-wallpaper-image-tablet.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Star">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Star" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/03/Leetcode-Intersection-of-Two-Arrays/" itemprop="url">
-                  Leetcode-[Combination]-Intersection of Arrays/Linked Lists
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-03T22:50:49-05:00">
-                2017-01-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/01/03/Leetcode-Intersection-of-Two-Arrays/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/03/Leetcode-Intersection-of-Two-Arrays/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-           &#x8FD9;&#x7BC7;&#x662F;&#x7EFC;&#x5408;&#x51E0;&#x9053;&#x5173;&#x4E8E;Intersection of Arrays/Linked List &#x7684;Leetcode&#x9898;&#xFF0C;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x95EE;&#x9898;&#x53CA;&#x5176;&#x53D8;&#x4F53;&#xFF0C;&#x5E76;&#x7ED9;&#x51FA;&#x51E0;&#x79CD;&#x89E3;&#x6CD5;&#x3002;
-LeetCode 349. Intersection of Two Arrays #
-Question: #
-Given two arrays, write a function to compute their intersection.
-Example:
-Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].
-Note:
-
-Each element i
-          ...
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/03/Leetcode-Intersection-of-Two-Arrays/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1882,7 +1906,7 @@ Each element i
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

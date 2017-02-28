@@ -86,22 +86,22 @@
 
 
 
-<meta name="description" content="Question: #
+<meta name="description" content="Question:
 Given a binary tree, find the length of the longest consecutive sequence path.
-The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-ch">
+The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-chil">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 298. Binary Tree Longest Consecutive Sequence">
 <meta property="og:url" content="http://yoursite.com/2017/02/18/LeetCode-298-Binary-Tree-Longest-Consecutive-Sequence/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="Question: #
+<meta property="og:description" content="Question:
 Given a binary tree, find the length of the longest consecutive sequence path.
-The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-ch">
+The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-chil">
 <meta property="og:updated_time" content="2017-02-19T01:45:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 298. Binary Tree Longest Consecutive Sequence">
-<meta name="twitter:description" content="Question: #
+<meta name="twitter:description" content="Question:
 Given a binary tree, find the length of the longest consecutive sequence path.
-The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-ch">
+The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-chil">
 
 <script>
   (function(){
@@ -406,14 +406,14 @@ The path refers to any sequence of nodes from some starting node to any node in 
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+        <script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
 <p>Given a binary tree, find the length of the longest consecutive sequence path.</p>
 <p>The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The longest consecutive path need to be from parent to child (cannot be the reverse).
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">For example,</div><div class="line">   1</div><div class="line">    \</div><div class="line">     3</div><div class="line">    / \</div><div class="line">   2   4</div><div class="line">        \</div><div class="line">         5</div><div class="line">Longest consecutive sequence path is 3-4-5, so return 3.</div><div class="line">   2</div><div class="line">    \</div><div class="line">     3</div><div class="line">    /</div><div class="line">   2</div><div class="line">  /</div><div class="line"> 1</div><div class="line">Longest consecutive sequence path is 2-3,not3-2-1, so return 2.</div></pre></td></tr></table></figure></p>
-<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
-<p>&#x9012;&#x5F52;&#x3002;&#x60F3;&#x6E05;&#x695A;base case&#x548C;&#x9012;&#x5F52;&#x7684;&#x6A21;&#x5F0F;&#x5373;&#x53EF;&#x3002;&#x5DE6;&#x53F3;&#x503C;&#xFF0C;&#x4EE5;&#x53CA;&#x5F53;&#x524D;&#x503C;&#xFF0C;&#x4E0D;&#x8981;&#x6DF7;&#x6DC6;&#x3002;</p>
-<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class Solution {</div><div class="line">    public int longestConsecutive(TreeNode root) {</div><div class="line">        return (root==null)?0:Math.max(Helper(root.left,1,root.val), Helper(root.right, 1, root.val));</div><div class="line">    }</div><div class="line"></div><div class="line"></div><div class="line">    public int Helper(TreeNode root, int count, int val) {</div><div class="line">        if (root == null) return count;</div><div class="line">        count = (root.val - val == 1) ? count+1:1;</div><div class="line">        int leftCount = Helper(root.left, count, root.val);</div><div class="line">        int rightCount = Helper(root.right, count, root.val);</div><div class="line">        return Math.max(count, Math.max(leftCount, rightCount));</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation:</h4>
+<p>递归。想清楚base case和递归的模式即可。左右值，以及当前值，不要混淆。</p>
+<h4 id="code">Code:</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int longestConsecutive(TreeNode root) &#123;</div><div class="line">        return (root==null)?0:Math.max(Helper(root.left,1,root.val), Helper(root.right, 1, root.val));</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public int Helper(TreeNode root, int count, int val) &#123;</div><div class="line">        if (root == null) return count;</div><div class="line">        count = (root.val - val == 1) ? count+1:1;</div><div class="line">        int leftCount = Helper(root.left, count, root.val);</div><div class="line">        int rightCount = Helper(root.right, count, root.val);</div><div class="line">        return Math.max(count, Math.max(leftCount, rightCount));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -536,7 +536,7 @@ The path refers to any sequence of nodes from some starting node to any node in 
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -668,7 +668,7 @@ The path refers to any sequence of nodes from some starting node to any node in 
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">1.</span> <span class="nav-text">Question: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">2.</span> <span class="nav-text">Explanation: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">Code: #</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">1.</span> <span class="nav-text">Question:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">2.</span> <span class="nav-text">Explanation:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">Code:</span></a></li></ol></div>
             
 
           </div>

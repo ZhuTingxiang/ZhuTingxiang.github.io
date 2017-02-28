@@ -86,16 +86,31 @@
 
 
 
-<meta name="description" content="&amp;#x5728;list&amp;#x91CC;&amp;#x9762;&amp;#x8FB9;&amp;#x67E5;&amp;#x627E;&amp;#x8FB9;remove&amp;#xFF0C;&amp;#x4F1A;&amp;#x51FA;&amp;#x9519;&amp;#x3002; &amp;#x56E0;&amp;#x4E3A;&amp;#x8FD9;&amp;#x4E2A;&amp;#x539F;&amp;#x56E0;Debug&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x65E9;&amp;#x4E0A">
+<meta name="description" content="在list里面边查找边remove，会出错。 因为这个原因Debug了一个早上真是哭瞎。
+原来是：
+123for h in total_h:    if attr_value_list not in h:       total_h.remove(h)
+但结果始终错误，跑不出分。
+调用remove后，index改变了。
+所以改成了如下，先把要remove的存在新的list里面，再遍历list去掉">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python remove误区">
 <meta property="og:url" content="http://yoursite.com/2016/09/19/python-remove-e8-af-af-e5-8c-ba/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="&amp;#x5728;list&amp;#x91CC;&amp;#x9762;&amp;#x8FB9;&amp;#x67E5;&amp;#x627E;&amp;#x8FB9;remove&amp;#xFF0C;&amp;#x4F1A;&amp;#x51FA;&amp;#x9519;&amp;#x3002; &amp;#x56E0;&amp;#x4E3A;&amp;#x8FD9;&amp;#x4E2A;&amp;#x539F;&amp;#x56E0;Debug&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x65E9;&amp;#x4E0A">
+<meta property="og:description" content="在list里面边查找边remove，会出错。 因为这个原因Debug了一个早上真是哭瞎。
+原来是：
+123for h in total_h:    if attr_value_list not in h:       total_h.remove(h)
+但结果始终错误，跑不出分。
+调用remove后，index改变了。
+所以改成了如下，先把要remove的存在新的list里面，再遍历list去掉">
 <meta property="og:updated_time" content="2016-12-20T19:43:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python remove误区">
-<meta name="twitter:description" content="&amp;#x5728;list&amp;#x91CC;&amp;#x9762;&amp;#x8FB9;&amp;#x67E5;&amp;#x627E;&amp;#x8FB9;remove&amp;#xFF0C;&amp;#x4F1A;&amp;#x51FA;&amp;#x9519;&amp;#x3002; &amp;#x56E0;&amp;#x4E3A;&amp;#x8FD9;&amp;#x4E2A;&amp;#x539F;&amp;#x56E0;Debug&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x65E9;&amp;#x4E0A">
+<meta name="twitter:description" content="在list里面边查找边remove，会出错。 因为这个原因Debug了一个早上真是哭瞎。
+原来是：
+123for h in total_h:    if attr_value_list not in h:       total_h.remove(h)
+但结果始终错误，跑不出分。
+调用remove后，index改变了。
+所以改成了如下，先把要remove的存在新的list里面，再遍历list去掉">
 
 <script>
   (function(){
@@ -400,12 +415,12 @@
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><p>&#x5728;list&#x91CC;&#x9762;&#x8FB9;&#x67E5;&#x627E;&#x8FB9;remove&#xFF0C;&#x4F1A;&#x51FA;&#x9519;&#x3002; &#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x539F;&#x56E0;Debug&#x4E86;&#x4E00;&#x4E2A;&#x65E9;&#x4E0A;&#x771F;&#x662F;&#x54ED;&#x778E;&#x3002;</p>
-<p>&#x539F;&#x6765;&#x662F;&#xFF1A;</p>
+        <script src="/assets/js/DPlayer.min.js"> </script><p>在list里面边查找边remove，会出错。 因为这个原因Debug了一个早上真是哭瞎。</p>
+<p>原来是：</p>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for h in total_h:</div><div class="line">    if attr_value_list not in h:</div><div class="line">       total_h.remove(h)</div></pre></td></tr></table></figure></p>
-<p>&#x4F46;&#x7ED3;&#x679C;&#x59CB;&#x7EC8;&#x9519;&#x8BEF;&#xFF0C;&#x8DD1;&#x4E0D;&#x51FA;&#x5206;&#x3002;</p>
-<p>&#x8C03;&#x7528;remove&#x540E;&#xFF0C;index&#x6539;&#x53D8;&#x4E86;&#x3002;</p>
-<p>&#x6240;&#x4EE5;&#x6539;&#x6210;&#x4E86;&#x5982;&#x4E0B;&#xFF0C;&#x5148;&#x628A;&#x8981;remove&#x7684;&#x5B58;&#x5728;&#x65B0;&#x7684;list&#x91CC;&#x9762;&#xFF0C;&#x518D;&#x904D;&#x5386;list&#x53BB;&#x6389;&#x3002;</p>
+<p>但结果始终错误，跑不出分。</p>
+<p>调用remove后，index改变了。</p>
+<p>所以改成了如下，先把要remove的存在新的list里面，再遍历list去掉。</p>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">for h in total_h:</div><div class="line">    new_h = []</div><div class="line">    if attr_value_list not in h:</div><div class="line">       for x in h:</div><div class="line">           new_h.append(x)</div><div class="line">       remove_list.append(new_h)</div><div class="line">for r in remove_list:</div><div class="line">    total_h.remove(r)</div></pre></td></tr></table></figure></p>
 
       
@@ -514,7 +529,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

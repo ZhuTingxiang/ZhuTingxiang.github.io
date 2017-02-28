@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="Question: #
-You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &amp;quot;++&amp;">
+<meta name="description" content="Question:
+You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &amp;quot;++&amp;qu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 294. Flip GameII">
 <meta property="og:url" content="http://yoursite.com/2017/02/20/Leetcode-294-Flip-GameII/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="Question: #
-You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &amp;quot;++&amp;">
+<meta property="og:description" content="Question:
+You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &amp;quot;++&amp;qu">
 <meta property="og:updated_time" content="2017-02-20T20:07:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 294. Flip GameII">
-<meta name="twitter:description" content="Question: #
-You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &amp;quot;++&amp;">
+<meta name="twitter:description" content="Question:
+You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &amp;quot;++&amp;qu">
 
 <script>
   (function(){
@@ -403,17 +403,17 @@ You are playing the following Flip Game with your friend: Given a string that co
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+        <script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
 <p>You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &quot;++&quot; into &quot;--&quot;. The game ends when a person can no longer make a move and therefore the other person will be the winner.</p>
 <p>Write a function to determine if the starting player can guarantee a win.</p>
 <p>For example, given s = &quot;++++&quot;, return true. The starting player can guarantee a win by flipping the middle &quot;++&quot; to become &quot;+--+&quot;.</p>
 <p>Follow up:
-Derive your algorithm&apos;s runtime complexity.</p>
-<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
-<p>&#x672C;&#x6765;&#x60F3;&#x627E;&#x89C4;&#x5F8B;&#xFF0C;&#x540E;&#x6765;&#x60F3;&#x60F3;&#x592A;&#x5929;&#x771F;&#x4E86;&#x3002;&#x7528;backtracking&#x89E3;&#xFF0C;&#x7F57;&#x5217;&#x6240;&#x6709;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x4E0B;&#x4E00;&#x5C40;&#x5BF9;&#x624B;&#x4F1A;&#x8F93;&#xFF0C;&#x5C31;&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x3002;&#x73B0;&#x5728;&#x6211;&#x7684;&#x7B97;&#x6CD5;&#x662F;o(N!!)
-discuss&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x725B;&#x903C;&#x7684;game theory&#x535A;&#x5F08;&#x8BBA;&#x7B97;&#x6CD5;&#xFF0C;&#x770B;&#x4E0D;&#x61C2;&#x3002;&#x6709;&#x673A;&#x4F1A;&#x53EF;&#x4EE5;&#x7814;&#x7A76;&#x4E00;&#x4E0B;&#xFF0C;&#x4F1A;&#x5C06;time complexity&#x964D;&#x4F4E;&#x5230;O(N^2)</p>
-<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution {</div><div class="line">    public boolean canWin(String s) {</div><div class="line">        if (s == null || s.length() &lt;2) return false;</div><div class="line">        char[] charString = s.toCharArray();</div><div class="line">        for (int i=0; i&lt;s.length()-1; i++) {</div><div class="line"></div><div class="line">            if (charString[i] == &apos;+&apos; &amp;&amp; charString[i+1] == &apos;+&apos;) {</div><div class="line">                charString[i] = &apos;-&apos;;</div><div class="line">                charString[i+1] = &apos;-&apos;;</div><div class="line">                if (!canWin(String.valueOf(charString))) {</div><div class="line">                    return true;</div><div class="line">                }</div><div class="line">                charString[i] = &apos;+&apos;; charString[i+1] = &apos;+&apos;;</div><div class="line"></div><div class="line">            }</div><div class="line"></div><div class="line">        }</div><div class="line">        return false;</div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+Derive your algorithm's runtime complexity.</p>
+<h4 id="explanation">Explanation:</h4>
+<p>本来想找规律，后来想想太天真了。用backtracking解，罗列所有的情况，如果下一局对手会输，就表示可以。现在我的算法是o(N!!)
+discuss中有一个牛逼的game theory博弈论算法，看不懂。有机会可以研究一下，会将time complexity降低到O(N^2)</p>
+<h4 id="code">Code:</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean canWin(String s) &#123;</div><div class="line">        if (s == null || s.length() &lt;2) return false;</div><div class="line">        char[] charString = s.toCharArray();</div><div class="line">        for (int i=0; i&lt;s.length()-1; i++) &#123;</div><div class="line"></div><div class="line">            if (charString[i] == &apos;+&apos; &amp;&amp; charString[i+1] == &apos;+&apos;) &#123;</div><div class="line">                charString[i] = &apos;-&apos;;</div><div class="line">                charString[i+1] = &apos;-&apos;;</div><div class="line">                if (!canWin(String.valueOf(charString))) &#123;</div><div class="line">                    return true;</div><div class="line">                &#125;</div><div class="line">                charString[i] = &apos;+&apos;; charString[i+1] = &apos;+&apos;;</div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -536,7 +536,7 @@ discuss&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x725B;&#x903C;&#x7684;game theory&#x535
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -668,7 +668,7 @@ discuss&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x725B;&#x903C;&#x7684;game theory&#x535
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">1.</span> <span class="nav-text">Question: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">2.</span> <span class="nav-text">Explanation: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">Code: #</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">1.</span> <span class="nav-text">Question:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">2.</span> <span class="nav-text">Explanation:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">Code:</span></a></li></ol></div>
             
 
           </div>

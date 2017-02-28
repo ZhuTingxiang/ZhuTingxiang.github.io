@@ -422,8 +422,8 @@ Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:00&quot;, &quot;8:00&quot;,
 <li>The minute must be consist of two digits and may contain a leading zero, for example &quot;10:2&quot; is not valid, it should be &quot;10:02&quot;.</li>
 </ul>
 <p><strong>Explanation</strong></p>
-<p>&#x5229;&#x7528;&#x4F4D;&#x8FD0;&#x7B97;&#x5C06;&#x72B6;&#x6001;&#x62C6;&#x5206;&#x4E3A;&#x5C0F;&#x65F6;&#x548C;&#x5206;&#x949F;&#x3002;
-&#x679A;&#x4E3E;&#x5C0F;&#x65F6;h&#x548C;&#x5206;&#x949F;m&#xFF0C;&#x7136;&#x540E;&#x5224;&#x65AD;&#x4E8C;&#x8FDB;&#x5236;1&#x7684;&#x4E2A;&#x6570;&#x662F;&#x5426;&#x7B49;&#x4E8E;num</p>
+<p>利用位运算将状态拆分为小时和分钟。
+枚举小时h和分钟m，然后判断二进制1的个数是否等于num</p>
 <p><strong>Code</strong></p>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def readBinaryWatch(self, num):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type num: int</div><div class="line">        :rtype: List[str]</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        result = []</div><div class="line">        for h in range(12):</div><div class="line">            for m in range(60):</div><div class="line">                if (bin(h) + bin(m)).count(&apos;1&apos;) == num:</div><div class="line">                    result.append(&apos;%d:%02d&apos; % (h, m))</div><div class="line">        return result</div></pre></td></tr></table></figure></p>
 
@@ -539,7 +539,7 @@ Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:00&quot;, &quot;8:00&quot;,
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

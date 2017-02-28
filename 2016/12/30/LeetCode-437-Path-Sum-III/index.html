@@ -432,15 +432,15 @@ Return 3. The paths that sum to 8 are:
 3. -3 -&gt; 11
 </code></pre>
 <p><strong>Explanation:</strong></p>
-<p>&#x8FD9;&#x9053;&#x9898;&#x7ED9;&#x4E86;&#x4E8C;&#x53C9;&#x6811;&#x548C;&#x4E00;&#x4E2A;sum&#xFF0C;&#x627E;&#x51FA;&#x6240;&#x6709;&#x5B50;&#x8DEF;&#x5F84;&#x548C;&#x4E3A;sum&#x7684;&#x8DEF;&#x5F84;&#x3002;
-&#x76F4;&#x63A5;&#x7528;&#x9012;&#x5F52;&#x65B9;&#x6CD5;&#x505A;&#xFF0C;&#x628A;&#x6BCF;&#x4E2A;&#x70B9;&#x90FD;&#x5F53;&#x505A;&#x7236;&#x8282;&#x70B9;&#x904D;&#x5386;&#xFF0C;&#x627E;&#x5230;&#x5B58;&#x5728;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x76F8;&#x52A0;&#x5373;&#x53EF;&#x3002;
-&#x76F8;&#x5173;&#x9898;&#x76EE;&#xFF1A;</p>
+<p>这道题给了二叉树和一个sum，找出所有子路径和为sum的路径。
+直接用递归方法做，把每个点都当做父节点遍历，找到存在的路径，相加即可。
+相关题目：</p>
 <ul>
 <li>Leetcode 64. Minimum Path Sum</li>
 <li>Leetcode 112. Path Sum</li>
 <li>Leetcode 113. Path Sum II</li>
 </ul>
-<p>&#x4E4B;&#x540E;&#x518D;&#x5BF9;&#x8FD9;&#x7C7B;&#x9898;&#x76EE;&#x8FDB;&#x884C;&#x603B;&#x7ED3;&#x3002;</p>
+<p>之后再对这类题目进行总结。</p>
 <p><strong>Code</strong>:
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def pathSum(self, root, sum):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type root: TreeNode</div><div class="line">        :type sum: int</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line"></div><div class="line">        if not root:</div><div class="line">            return 0</div><div class="line">        return self.pathHelper(root, sum) + self.pathSum(root.left, sum) + self.pathSum(root.right, sum)</div><div class="line"></div><div class="line">    def pathHelper(self, root, sum):</div><div class="line">        result = 0</div><div class="line">        if not root:</div><div class="line">            return 0</div><div class="line">        if (sum == root.val):</div><div class="line">            result += 1</div><div class="line">        result += self.pathHelper(root.left, sum - root.val)</div><div class="line">        result += self.pathHelper(root.right, sum - root.val)</div><div class="line">        return result</div></pre></td></tr></table></figure></p>
 
@@ -556,7 +556,7 @@ Return 3. The paths that sum to 8 are:
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

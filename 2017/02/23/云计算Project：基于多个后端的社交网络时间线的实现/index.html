@@ -86,12 +86,24 @@
 
 
 
-<meta name="description" content="&amp;#x672C;&amp;#x6587;&amp;#x662F;&amp;#x5173;&amp;#x4E8E;CMU15619Cloud Computing&amp;#x9879;&amp;#x76EE;:Social Networking Timeline with Heterogeneous Backends&amp;#x7684;&amp;#x4ECB;&amp;#x7ECD;&amp;#x4EE5;&amp;#x53CA;&amp;#x603B;&amp;#x7ED3;&amp;#x53CD;&amp;">
+<meta name="description" content="本文是关于CMU15619Cloud Computing项目:Social Networking Timeline with Heterogeneous Backends的介绍以及总结反思。
+项目主要目标：
+
+探索AWS的DBaas服务的申请、配置和管理
+比较MySQL, HBase和MongoDB在使用Java API载入数据时的异同。
+利用多个后端为同一个复杂的web应用提供数据。
+比较不同">
 <meta property="og:type" content="article">
 <meta property="og:title" content="云计算Project：基于多个后端的社交网络时间线的实现">
 <meta property="og:url" content="http://yoursite.com/2017/02/23/云计算Project：基于多个后端的社交网络时间线的实现/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="&amp;#x672C;&amp;#x6587;&amp;#x662F;&amp;#x5173;&amp;#x4E8E;CMU15619Cloud Computing&amp;#x9879;&amp;#x76EE;:Social Networking Timeline with Heterogeneous Backends&amp;#x7684;&amp;#x4ECB;&amp;#x7ECD;&amp;#x4EE5;&amp;#x53CA;&amp;#x603B;&amp;#x7ED3;&amp;#x53CD;&amp;">
+<meta property="og:description" content="本文是关于CMU15619Cloud Computing项目:Social Networking Timeline with Heterogeneous Backends的介绍以及总结反思。
+项目主要目标：
+
+探索AWS的DBaas服务的申请、配置和管理
+比较MySQL, HBase和MongoDB在使用Java API载入数据时的异同。
+利用多个后端为同一个复杂的web应用提供数据。
+比较不同">
 <meta property="og:image" content="http://i.imgur.com/Qyrp0rL.png">
 <meta property="og:image" content="http://i.imgur.com/x2yyDEI.png">
 <meta property="og:image" content="http://i.imgur.com/ofeLFxn.png">
@@ -104,7 +116,13 @@
 <meta property="og:updated_time" content="2017-02-23T22:55:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云计算Project：基于多个后端的社交网络时间线的实现">
-<meta name="twitter:description" content="&amp;#x672C;&amp;#x6587;&amp;#x662F;&amp;#x5173;&amp;#x4E8E;CMU15619Cloud Computing&amp;#x9879;&amp;#x76EE;:Social Networking Timeline with Heterogeneous Backends&amp;#x7684;&amp;#x4ECB;&amp;#x7ECD;&amp;#x4EE5;&amp;#x53CA;&amp;#x603B;&amp;#x7ED3;&amp;#x53CD;&amp;">
+<meta name="twitter:description" content="本文是关于CMU15619Cloud Computing项目:Social Networking Timeline with Heterogeneous Backends的介绍以及总结反思。
+项目主要目标：
+
+探索AWS的DBaas服务的申请、配置和管理
+比较MySQL, HBase和MongoDB在使用Java API载入数据时的异同。
+利用多个后端为同一个复杂的web应用提供数据。
+比较不同">
 <meta name="twitter:image" content="http://i.imgur.com/Qyrp0rL.png">
 
 <script>
@@ -421,166 +439,166 @@
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><p>&#x672C;&#x6587;&#x662F;&#x5173;&#x4E8E;CMU15619Cloud Computing&#x9879;&#x76EE;:<code>Social Networking Timeline with Heterogeneous Backends</code>&#x7684;&#x4ECB;&#x7ECD;&#x4EE5;&#x53CA;&#x603B;&#x7ED3;&#x53CD;&#x601D;&#x3002;</p>
-<p>&#x9879;&#x76EE;&#x4E3B;&#x8981;&#x76EE;&#x6807;&#xFF1A;</p>
+        <script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于CMU15619Cloud Computing项目:<code>Social Networking Timeline with Heterogeneous Backends</code>的介绍以及总结反思。</p>
+<p>项目主要目标：</p>
 <ul>
-<li>&#x63A2;&#x7D22;AWS&#x7684;DBaas&#x670D;&#x52A1;&#x7684;&#x7533;&#x8BF7;&#x3001;&#x914D;&#x7F6E;&#x548C;&#x7BA1;&#x7406;</li>
-<li>&#x6BD4;&#x8F83;MySQL, HBase&#x548C;MongoDB&#x5728;&#x4F7F;&#x7528;Java API&#x8F7D;&#x5165;&#x6570;&#x636E;&#x65F6;&#x7684;&#x5F02;&#x540C;&#x3002;</li>
-<li>&#x5229;&#x7528;&#x591A;&#x4E2A;&#x540E;&#x7AEF;&#x4E3A;&#x540C;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x7684;web&#x5E94;&#x7528;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#x3002;</li>
-<li>&#x6BD4;&#x8F83;&#x4E0D;&#x540C;&#x6570;&#x636E;&#x5E93;&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x7279;&#x70B9;&#x3002;</li>
+<li>探索AWS的DBaas服务的申请、配置和管理</li>
+<li>比较MySQL, HBase和MongoDB在使用Java API载入数据时的异同。</li>
+<li>利用多个后端为同一个复杂的web应用提供数据。</li>
+<li>比较不同数据库在实际应用中的特点。</li>
 </ul>
-<h2 id="bei-jing-jie-shao">&#x80CC;&#x666F;&#x4ECB;&#x7ECD; <a href="#bei-jing-jie-shao" class="header-anchor">#</a></h2>
-<h3 id="dbaas-database-as-a-services">DBaas(Database-as-a-Services)&#xFF1A; <a href="#dbaas-database-as-a-services" class="header-anchor">#</a></h3>
-<p>&#x5728;AWS&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x5176;&#x4E2D;&#x7684;RDS&#x7684;MySQL&#x670D;&#x52A1;&#x3002;</p>
-<h3 id="mongodb">MongoDB&#xFF1A; <a href="#mongodb" class="header-anchor">#</a></h3>
-<p>MongoDB&#x662F;NoSQL&#x6570;&#x636E;&#x5E93;&#x7684;&#x5178;&#x578B;&#xFF0C;&#x57FA;&#x4E8E;&#x6587;&#x6863;&#x5B58;&#x50A8;&#xFF08;Document-oriented&#xFF09;&#xFF0C;&#x4E0D;&#x652F;&#x6301;&#x4E8B;&#x52A1;&#x548C;&#x8868;&#x8FDE;&#x63A5;&#xFF0C;&#x6240;&#x4EE5;&#x67E5;&#x8BE2;&#x7684;&#x7F16;&#x5199;&#x3001;&#x7406;&#x89E3;&#x548C;&#x4F18;&#x5316;&#x6BD4;&#x8F83;&#x5BB9;&#x6613;&#x3002;&#x4E4B;&#x540E;&#x4F1A;&#x5199;&#x4E00;&#x7BC7;&#x5173;&#x4E8E;NoSQL&#x7684;&#x603B;&#x7ED3;&#xFF08;&#x4E00;&#x4E2A;&#x5751;&#xFF09;&#x3002;
-&#x548C;HBase&#x7684;key-value&#x5B58;&#x50A8;&#x6A21;&#x5F0F;&#x4E0D;&#x540C;&#xFF0C;MongoDB&#x57FA;&#x4E8E;&#x6587;&#x6863;&#x5B58;&#x50A8;&#x6A21;&#x5F0F;&#x7684;&#x4F18;&#x52BF;&#x5728;&#x4E8E;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x590D;&#x6742;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x4E14;&#x4E5F;&#x652F;&#x6301;Index&#x3002;
-MongoDB&#x4F7F;&#x7528;BSON&#x7C7B;&#x578B;&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF0C;&#x636E;&#x8BF4;&#x5C31;&#x662F;&#x628A;&#x6587;&#x672C;&#x76F4;&#x63A5;&#x8F6C;&#x6210;&#x4E8C;&#x8FDB;&#x5236;&#x8868;&#x793A;&#xFF0C;BSON&#x7528;&#x4E8E;&#x4EE5;&#x4E0B;&#x4E09;&#x79CD;&#x76EE;&#x7684;&#xFF1A;</p>
+<h2 id="背景介绍">背景介绍</h2>
+<h3 id="dbaasdatabase-as-a-services">DBaas(Database-as-a-Services)：</h3>
+<p>在AWS中，我们可以用其中的RDS的MySQL服务。</p>
+<h3 id="mongodb">MongoDB：</h3>
+<p>MongoDB是NoSQL数据库的典型，基于文档存储（Document-oriented），不支持事务和表连接，所以查询的编写、理解和优化比较容易。之后会写一篇关于NoSQL的总结（一个坑）。
+和HBase的key-value存储模式不同，MongoDB基于文档存储模式的优势在于可以支持复杂的数据类型，并且也支持Index。
+MongoDB使用BSON类型存储数据，据说就是把文本直接转成二进制表示，BSON用于以下三种目的：</p>
 <ul>
-<li>&#x8282;&#x7701;&#x7A7A;&#x95F4;&#xFF1A;BSON&#x5373;&#x4F7F;&#x5728;&#x6700;&#x574F;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E5F;&#x6BD4;&#x666E;&#x901A;&#x7684;JSON&#x5360;&#x7528;&#x7A7A;&#x95F4;&#x5C11;&#x3002;</li>
-<li>&#x79FB;&#x52A8;&#x6027;</li>
-<li>Performance&#xFF1A;BSON&#x5BF9;&#x5185;&#x5BB9;&#x7684;&#x7F16;&#x7801;&#x548C;&#x89E3;&#x7801;&#x7684;&#x901F;&#x5EA6;&#x5FEB;&#x4E8E;&#x5F88;&#x591A;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x3002;</li>
+<li>节省空间：BSON即使在最坏的情况下，也比普通的JSON占用空间少。</li>
+<li>移动性</li>
+<li>Performance：BSON对内容的编码和解码的速度快于很多编程语言。</li>
 </ul>
-<h3 id="shu-ju-jie-gou-tu">&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF1A; &#x56FE; <a href="#shu-ju-jie-gou-tu" class="header-anchor">#</a></h3>
-<h4 id="1-lin-jie-ju-zhen-adjacent-matrix-kong-jian-fu-za-du-wei-o-n-2">1.&#x90BB;&#x63A5;&#x77E9;&#x9635;Adjacent Matrix&#xFF1A;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;O&#xFF08;n^2) <a href="#1-lin-jie-ju-zhen-adjacent-matrix-kong-jian-fu-za-du-wei-o-n-2" class="header-anchor">#</a></h4>
-<p>&#x6BD4;&#x5982;&#x8FD9;&#x4E2A;&#xFF1A;
+<h3 id="数据结构-图">数据结构： 图</h3>
+<h4 id="1邻接矩阵adjacent-matrix空间复杂度为on2">1.邻接矩阵Adjacent Matrix：空间复杂度为O（n^2)</h4>
+<p>比如这个：
 <img src="http://i.imgur.com/Qyrp0rL.png" alt="">
 <img src="http://i.imgur.com/x2yyDEI.png" alt=""></p>
-<h4 id="2-lin-jie-biao-adjacent-list-kong-jian-jiao-shao">2.&#x90BB;&#x63A5;&#x8868;Adjacent List &#x7A7A;&#x95F4;&#x8F83;&#x5C11;&#xFF1A; <a href="#2-lin-jie-biao-adjacent-list-kong-jian-jiao-shao" class="header-anchor">#</a></h4>
+<h4 id="2邻接表adjacent-list-空间较少">2.邻接表Adjacent List 空间较少：</h4>
 <p><img src="http://i.imgur.com/ofeLFxn.png" alt=""></p>
-<h3 id="she-jiao-wang-luo-ying-yong-ji-chu">&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x5E94;&#x7528;&#x57FA;&#x7840;&#xFF1A; <a href="#she-jiao-wang-luo-ying-yong-ji-chu" class="header-anchor">#</a></h3>
-<p>&#x5982;&#x4ECA;&#x50CF;Facebook, Twitter&#x548C;Instagram&#x90FD;&#x9700;&#x8981;&#x590D;&#x6742;&#x548C;&#x6D89;&#x53CA;&#x826F;&#x597D;&#x7684;&#x540E;&#x7AEF;&#x6765;&#x5904;&#x7406;&#x591A;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x7528;&#x6237;&#x6570;&#x636E;&#xFF0C;&#x63D0;&#x4F9B;&#x6301;&#x7EED;&#x7684;&#x9AD8;&#x6027;&#x80FD;&#x4F4E;&#x5EF6;&#x8FDF;&#x7684;&#x670D;&#x52A1;&#x3002;&#x540C;&#x65F6;&#x8FD8;&#x8981;&#x901A;&#x8FC7;&#x5B9E;&#x65F6;&#x6570;&#x636E;&#x5206;&#x6790;&#x4E3A;&#x516C;&#x53F8;&#x548C;&#x5E7F;&#x544A;&#x5546;&#x63D0;&#x4F9B;&#x6709;&#x4EF7;&#x503C;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<h3 id="社交网络应用基础">社交网络应用基础：</h3>
+<p>如今像Facebook, Twitter和Instagram都需要复杂和涉及良好的后端来处理多种类型的用户数据，提供持续的高性能低延迟的服务。同时还要通过实时数据分析为公司和广告商提供有价值的信息。</p>
 <ul>
-<li>&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF08;Video&#xFF0C;Text&#xFF0C;Link&#xFF0C;etc.)&#x9700;&#x8981;&#x5B58;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#xFF09;</li>
-<li>&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5C55;&#x793A;&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x9875;&#x9762;&#x7684;HTTP&#x8BF7;&#x6C42;&#x4F1A;&#x89E6;&#x53D1;&#x540E;&#x7AEF;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x8BF7;&#x6C42;&#x548C;&#x6570;&#x636E;&#x5E93;&#x52A8;&#x4F5C;&#x3002;&#x53EF;&#x4EE5;&#x53C2;&#x89C1;&#x4E0B;&#x56FE;&#xFF1A;
+<li>不同的数据类型（Video，Text，Link，etc.)需要存在不同的数据库中）</li>
+<li>一个简单的展示社交网络页面的HTTP请求会触发后端一系列的请求和数据库动作。可以参见下图：
 <img src="http://i.imgur.com/r3gf00x.png" alt=""></li>
 </ul>
-<p>&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x901A;&#x5E38;&#x5305;&#x62EC;&#x4EE5;&#x4E0B;&#x4E09;&#x79CD;&#xFF1A;</p>
+<p>社交网络中的数据通常包括以下三种：</p>
 <ul>
-<li>&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF1A;
+<li>用户信息：
 <ul>
-<li>&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x7CFB;&#x7EDF;</li>
-<li>&#x7528;&#x6237;&#x4FE1;&#x606F;/&#x7B80;&#x4ECB;</li>
-<li>&#x6D3B;&#x52A8;&#x65E5;&#x5FD7;</li>
-<li>&#x793E;&#x4EA4;&#x5173;&#x7CFB;&#x56FE;&#xFF08;&#x5728;&#x4E0B;&#x9762;&#x4F1A;&#x8FDB;&#x6B65;&#x4ECB;&#x7ECD;&#xFF09;</li>
+<li>身份验证系统</li>
+<li>用户信息/简介</li>
+<li>活动日志</li>
+<li>社交关系图（在下面会进步介绍）</li>
 </ul>
 </li>
-<li>&#x7528;&#x6237;&#x6D3B;&#x52A8;&#xFF1A;
+<li>用户活动：
 <ul>
-<li>&#x7528;&#x6237;&#x4EA7;&#x751F;&#x7684;&#x591A;&#x5A92;&#x4F53;&#x6570;&#x636E;</li>
+<li>用户产生的多媒体数据</li>
 </ul>
 </li>
-<li>&#x5927;&#x6570;&#x636E;&#x5206;&#x6790;&#x7CFB;&#x7EDF;&#xFF1A;
+<li>大数据分析系统：
 <ul>
-<li>&#x641C;&#x7D22;&#x7CFB;&#x7EDF;</li>
-<li>&#x63A8;&#x8350;&#x7CFB;&#x7EDF;</li>
-<li>&#x7528;&#x6237;&#x884C;&#x4E3A;&#x5206;&#x6790;&#xFF08;&#x57FA;&#x4E8E;&#x4E91;&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;OLAP&#xFF0C;&#x6709;&#x673A;&#x4F1A;&#x5355;&#x72EC;&#x66F4;&#x65B0;&#x8FD9;&#x4E2A;&#x90E8;&#x5206;&#xFF09;</li>
+<li>搜索系统</li>
+<li>推荐系统</li>
+<li>用户行为分析（基于云数据仓库的OLAP，有机会单独更新这个部分）</li>
 </ul>
 </li>
 </ul>
 <p><img src="http://i.imgur.com/Qwd8z0q.png" alt=""></p>
-<p>&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x7684;&#x524D;&#x7AEF;&#x5DF2;&#x7ECF;&#x505A;&#x597D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x628A;&#x56DB;&#x4E2D;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x96C6;&#x5B58;&#x5165;&#x4E09;&#x79CD;&#x6570;&#x636E;&#x5E93;&#xFF08;MySQL, HBase, MongoDB),&#x4F60;&#x5B8C;&#x6210;&#x7684;&#x540E;&#x7AEF;&#x8981;&#x80FD;&#x540C;&#x65F6;&#x54CD;&#x5E94;&#x56DB;&#x4E2D;&#x4E0D;&#x540C;&#x7684;request&#x3002;</p>
-<h2 id="xiang-mu-cao-zuo">&#x9879;&#x76EE;&#x64CD;&#x4F5C; <a href="#xiang-mu-cao-zuo" class="header-anchor">#</a></h2>
-<h3 id="tong-guo-rds-de-mysql-shi-xian-ji-ben-deng-lu">&#x901A;&#x8FC7;RDS&#x7684;MySQL&#x5B9E;&#x73B0;&#x57FA;&#x672C;&#x767B;&#x5F55;&#xFF1A; <a href="#tong-guo-rds-de-mysql-shi-xian-ji-ben-deng-lu" class="header-anchor">#</a></h3>
-<p>&#x5728;AWS RDS&#x4E2D;&#x914D;&#x7F6E;MySQL&#x5E76;&#x5BFC;&#x5165;users.csv, userinfo.csv&#x6570;&#x636E;&#x96C6;&#x3002;
-&#x8FDE;&#x63A5;AWS RDS&#x4E2D;MySQL&#x65F6;&#x6CE8;&#x610F;&#xFF1A;
-&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#x9700;&#x8981;&#x5BFC;&#x5165;&#x6570;&#x636E;&#x65F6;&#x8981;&#x52A0;&#x5165; --local-infile&#x5F97;&#x5230;&#x6388;&#x6743;&#x3002;
+<p>社交网络的前端已经做好，我们需要把四中不同的数据集存入三种数据库（MySQL, HBase, MongoDB),你完成的后端要能同时响应四中不同的request。</p>
+<h2 id="项目操作">项目操作</h2>
+<h3 id="通过rds的mysql实现基本登录">通过RDS的MySQL实现基本登录：</h3>
+<p>在AWS RDS中配置MySQL并导入users.csv, userinfo.csv数据集。
+连接AWS RDS中MySQL时注意：
+远程登录需要导入数据时要加入 --local-infile得到授权。
 <code>mysql -u username -p password -h hostname --port=portname --local-infile database</code></p>
-<p>&#x6570;&#x636E;&#x96C6;&#x683C;&#x5F0F;:</p>
+<p>数据集格式:</p>
 <ul>
 <li>users.csv [UserID, Password]</li>
 <li>userinfo.csv [UserID, Name, Profile Image URL]</li>
 </ul>
-<p>&#x5BFC;&#x5165;MySQL&#x8BED;&#x53E5;:
-<code>LOAD DATA LOCAL INFILE &apos;filename&apos; INTO TABLE tablename CHARACTER SET utf8mb4 FIELDS TERMINATED BY &apos;,&apos; LINES TERMINATED BY &apos;\n&apos;;</code></p>
-<p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;:
+<p>导入MySQL语句:
+<code>LOAD DATA LOCAL INFILE 'filename' INTO TABLE tablename CHARACTER SET utf8mb4 FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';</code></p>
+<p>请求格式:
 <code>GET /task1?id=[UserID]&amp;pwd=[Password]</code></p>
-<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;:
+<p>响应格式:
 <code>returnRes({&quot;name&quot;:&quot;my_name&quot;, &quot;profile&quot;:&quot;profile_image_url&quot;})</code></p>
-<p>&#x6240;&#x4EE5;&#xFF0C;&#x4E4B;&#x540E;&#x5728;Java&#x6587;&#x4EF6;&#x4E2D;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x518D;&#x521B;&#x5EFA;JSON&#x76F8;&#x5E94;&#x7684;&#x4EE3;&#x7801;&#x5373;&#x53EF;&#x3002;
-&#x6D4B;&#x8BD5;&#xFF1A;</p>
+<p>所以，之后在Java文件中连接数据库，再创建JSON相应的代码即可。
+测试：</p>
 <ol>
-<li>&#x542F;&#x52A8;&#x524D;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8BBF;&#x95EE;<code>http://&lt;your_front_end_dns&gt;:3000</code></li>
-<li>&#x8F93;&#x5165;&#x6B63;&#x786E;&#x6216;&#x9519;&#x8BEF;&#x7684;&#x8D26;&#x53F7;&#x5BC6;&#x7801;&#x767B;&#x5F55;&#x6D4B;&#x8BD5;</li>
+<li>启动前后端服务器，访问<code>http://&lt;your_front_end_dns&gt;:3000</code></li>
+<li>输入正确或错误的账号密码登录测试</li>
 </ol>
 <p><img src="http://i.imgur.com/rv5LnYr.png" alt=""></p>
-<h3 id="li-yong-hbase-cun-chu-she-jiao-tu-pu">&#x5229;&#x7528;HBase&#x5B58;&#x50A8;&#x793E;&#x4EA4;&#x56FE;&#x8C31;&#xFF1A; <a href="#li-yong-hbase-cun-chu-she-jiao-tu-pu" class="header-anchor">#</a></h3>
-<p>&#x7528;HBase&#x6765;&#x4FDD;&#x5B58;&#x7528;&#x6237;&#x95F4;&#x7684;follow&#x5173;&#x7CFB;&#xFF0C;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x7528;&#x4E4B;&#x524D;&#x5728;&#x56FE;&#x4E2D;&#x4ECB;&#x7ECD;&#x7684;&#x90BB;&#x63A5;&#x77E9;&#x9635;&#x548C;&#x90BB;&#x63A5;&#x8868;&#x4E2D;&#x9009;&#x62E9;&#x4E00;&#x79CD;&#xFF0C;&#x6765;&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x3002;
-&#x539F;&#x59CB;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF1A;
+<h3 id="利用hbase存储社交图谱">利用HBase存储社交图谱：</h3>
+<p>用HBase来保存用户间的follow关系，可以选择用之前在图中介绍的邻接矩阵和邻接表中选择一种，来保存数据。
+原始数据格式：
 <code>&lt;followee, follower&gt;</code></p>
-<p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;&#xFF1A;
+<p>请求格式：
 <code>GET /task2?id=[UserID]</code></p>
-<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;:
+<p>响应格式:
 <code>{&quot;followers&quot;:[{&quot;name&quot;:&quot;follower_name_1&quot;, &quot;profile&quot;:&quot;profile_image_url_1&quot;}, {&quot;name&quot;:&quot;follower_name_2&quot;, &quot;profile&quot;:&quot;profile_image_url_2&quot;}, ...]}</code></p>
-<h4 id="si-lu">&#x601D;&#x8DEF;&#xFF1A; <a href="#si-lu" class="header-anchor">#</a></h4>
+<h4 id="思路">思路：</h4>
 <ul>
-<li>&#x5728;HBase&#x4E2D;&#x5B58;&#x6210;followee&#xFF1A; follower1&#xFF0C; follower2&#xFF0C; ...&#x7684;&#x683C;&#x5F0F;</li>
-<li>&#x8BBE;&#x8BA1;&#x597D;HBase&#x4E4B;&#x540E;&#x5BFC;&#x5165;&#x6570;&#x636E;</li>
-<li>&#x542F;&#x52A8;&#x524D;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#x540E;&#x8BBF;&#x95EE;http://&lt;your_front_end_dns&gt;:3000</li>
-<li>&#x8F93;&#x5165;userid&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;</li>
+<li>在HBase中存成followee： follower1， follower2， ...的格式</li>
+<li>设计好HBase之后导入数据</li>
+<li>启动前后端服务器后访问http://&lt;your_front_end_dns&gt;:3000</li>
+<li>输入userid进行测试</li>
 </ul>
-<h3 id="yong-mongdb-da-jian-zhu-ye">&#x7528;MongDB&#x642D;&#x5EFA;&#x4E3B;&#x9875;&#xFF1A; <a href="#yong-mongdb-da-jian-zhu-ye" class="header-anchor">#</a></h3>
-<p>&#x5982;&#x4E4B;&#x524D;&#x4ECB;&#x7ECD;&#x7684;&#x90A3;&#x6837;&#xFF0C;&#x5BF9;&#x4E8E;&#x5404;&#x79CD;&#x5F62;&#x5F0F;&#x7684;&#x5E16;&#x5B50;&#xFF0C;&#x7528;MongoDB&#x5B58;&#x50A8;&#x4F1A;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x9009;&#x62E9;&#x3002;&#x8FD9;&#x91CC;&#x4F1A;&#x67E5;&#x8BE2;&#x4E00;&#x4E9B;&#x7279;&#x5B9A;&#x7684;field&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#x6765;&#x52A0;&#x901F;&#x67E5;&#x8BE2;&#x3002;</p>
-<p>&#x5E16;&#x5B50;&#x6570;&#x636E;&#x7684;&#x5F62;&#x5F0F;&#xFF1A;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">    &quot;pid&quot;:xxx,                                      // PostID</div><div class="line">    &quot;uid&quot;:xxx,                                      // UserID of poster</div><div class="line">    &quot;name&quot;:&quot;xxx&quot;,                                   // User name of poster</div><div class="line">    &quot;profile&quot;:&quot;xxx&quot;,                                // Poster profile image URL</div><div class="line">    &quot;timestamp&quot;:&quot;YYYY-MM-DD HH:MM:SS&quot;,              // When post is posted</div><div class="line">    &quot;image&quot;:&quot;xxx&quot;,                                  // Post image</div><div class="line">    &quot;content&quot;:&quot;xxx&quot;,                                // Post text content</div><div class="line">    &quot;comments&quot;:[                                    // comments json array</div><div class="line">        {</div><div class="line">            &quot;uid&quot;:xxx,                              // UserID of commenter</div><div class="line">            &quot;name&quot;:&quot;xxx&quot;,                           // User name of commenter</div><div class="line">            &quot;profile&quot;:&quot;xxx&quot;,                        // Commenter profile image URL</div><div class="line">            &quot;timestamp&quot;:&quot;YYYY-MM-DD HH:MM:SS&quot;,      // When comment is made</div><div class="line">            &quot;content&quot;:&quot;xxx&quot;                         // Comment text content</div><div class="line">        },</div><div class="line">        {</div><div class="line">            &quot;uid&quot;:xxx,</div><div class="line">            .......</div><div class="line">        },</div><div class="line">        ......</div><div class="line">    ]</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<p>&#x5173;&#x4E8E;MongoDB&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/" target="_blank" rel="external">&#x8FD9;&#x91CC;</a></p>
-<p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;&#xFF1A;
+<h3 id="用mongdb搭建主页">用MongDB搭建主页：</h3>
+<p>如之前介绍的那样，对于各种形式的帖子，用MongoDB存储会是一个很好的选择。这里会查询一些特定的field，所以可以建立索引来加速查询。</p>
+<p>帖子数据的形式：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;pid&quot;:xxx,                                      // PostID</div><div class="line">    &quot;uid&quot;:xxx,                                      // UserID of poster</div><div class="line">    &quot;name&quot;:&quot;xxx&quot;,                                   // User name of poster</div><div class="line">    &quot;profile&quot;:&quot;xxx&quot;,                                // Poster profile image URL</div><div class="line">    &quot;timestamp&quot;:&quot;YYYY-MM-DD HH:MM:SS&quot;,              // When post is posted</div><div class="line">    &quot;image&quot;:&quot;xxx&quot;,                                  // Post image</div><div class="line">    &quot;content&quot;:&quot;xxx&quot;,                                // Post text content</div><div class="line">    &quot;comments&quot;:[                                    // comments json array</div><div class="line">        &#123;</div><div class="line">            &quot;uid&quot;:xxx,                              // UserID of commenter</div><div class="line">            &quot;name&quot;:&quot;xxx&quot;,                           // User name of commenter</div><div class="line">            &quot;profile&quot;:&quot;xxx&quot;,                        // Commenter profile image URL</div><div class="line">            &quot;timestamp&quot;:&quot;YYYY-MM-DD HH:MM:SS&quot;,      // When comment is made</div><div class="line">            &quot;content&quot;:&quot;xxx&quot;                         // Comment text content</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            &quot;uid&quot;:xxx,</div><div class="line">            .......</div><div class="line">        &#125;,</div><div class="line">        ......</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>关于MongoDB建立索引，可以参考<a href="https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/" target="_blank" rel="external">这里</a></p>
+<p>请求格式：
 <code>GET /task3?id=[UserID]</code></p>
-<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;&#xFF1A;
+<p>响应格式：
 <code>{&quot;posts&quot;:[{post1_json}, {post2_json}, ...]}</code></p>
-<p>&#x6D4B;&#x8BD5;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<p>测试方法：</p>
 <ul>
-<li>&#x542F;&#x52A8;&#x524D;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8F93;&#x5165;userid</li>
+<li>启动前后端服务器，输入userid</li>
 </ul>
 <p><img src="http://i.imgur.com/8p2pep3.png" alt=""></p>
-<h3 id="zui-zhong-zheng-he">&#x6700;&#x7EC8;&#x6574;&#x5408; <a href="#zui-zhong-zheng-he" class="header-anchor">#</a></h3>
-<p>&#x4E4B;&#x524D;&#x4E09;&#x4E2A;&#x90E8;&#x5206;&#x5206;&#x522B;&#x5B9E;&#x73B0;&#x4E86;&#x4E09;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5B58;&#x50A8;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x5B9E;&#x73B0;&#x8F93;&#x5165;&#x4E00;&#x4E2A;userid&#x5C31;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF08;MySQL),&#x7528;&#x6237;&#x7C89;&#x4E1D;&#x5217;&#x8868;&#xFF08;HBase&#xFF09;&#x4EE5;&#x53CA;&#x7528;&#x6237;&#x5173;&#x6CE8;&#x7684;&#x4EBA;&#x6700;&#x65B0;&#x4E09;&#x5341;&#x6761;&#x5E16;&#x5B50;&#xFF08;MongoDB&#xFF09;&#x3002;</p>
-<p>&#x6392;&#x5E8F;&#x89C4;&#x5219;&#xFF1A;</p>
+<h3 id="最终整合">最终整合</h3>
+<p>之前三个部分分别实现了三个数据库的存储，现在我们希望实现输入一个userid就可以返回用户信息（MySQL),用户粉丝列表（HBase）以及用户关注的人最新三十条帖子（MongoDB）。</p>
+<p>排序规则：</p>
 <ul>
-<li>&#x5BF9;followers&#x8FDB;&#x884C;&#x6392;&#x5E8F;:
+<li>对followers进行排序:
 <ul>
-<li>&#x59D3;&#x540D;&#x5347;&#x5E8F;&#x6392;&#x5217;</li>
-<li>Profile image URL&#x5347;&#x5E8F;&#x6392;&#x5217;</li>
+<li>姓名升序排列</li>
+<li>Profile image URL升序排列</li>
 </ul>
 </li>
-<li>&#x5BF9;&#x6700;&#x65B0;30&#x7BC7;post&#x6392;&#x5E8F;&#xFF1A;
+<li>对最新30篇post排序：
 <ul>
-<li>&#x6309;&#x7167;timestamp&#x5347;&#x5E8F;&#x6392;&#x5E8F;</li>
-<li>&#x6309;&#x7167;PostID&#x5347;&#x5E8F;&#x6392;&#x5E8F;</li>
+<li>按照timestamp升序排序</li>
+<li>按照PostID升序排序</li>
 </ul>
 </li>
 </ul>
-<p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;&#xFF1A;
+<p>请求格式：
 <code>GET /task4?id=[UserID]</code></p>
-<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;:
+<p>响应格式:
 <code>{&quot;name&quot;:&quot;my_name&quot;, &quot;profile&quot;:&quot;my_profile_image_url&quot;, &quot;followers&quot;:[{&quot;name&quot;:&quot;follower_name_1&quot;, &quot;profile&quot;:&quot;profile_image_url_1&quot;}, {&quot;name&quot;:&quot;follower_name_2&quot;, &quot;profile&quot;:&quot;profile_image_url_2&quot;}, ...], &quot;posts&quot;:[{post1_json, post2_json, ...}]}</code></p>
 <p><img src="http://i.imgur.com/EpRB33c.png" alt=""></p>
-<h3 id="jian-dan-tui-jian-de-shi-xian">&#x7B80;&#x5355;&#x63A8;&#x8350;&#x7684;&#x5B9E;&#x73B0; <a href="#jian-dan-tui-jian-de-shi-xian" class="header-anchor">#</a></h3>
-<p>&#x63A8;&#x8350;&#x7CFB;&#x7EDF;&#x7684;&#x5185;&#x5BB9;&#x592A;&#x591A;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x770B;<a href="http://www.shuang0420.com/categories/Recommender-System/" target="_blank" rel="external">shaung&#x7684;&#x535A;&#x5BA2;</a>&#xFF08;&#x4E00;&#x4E2A;&#x5E7F;&#x544A;&#xFF09;
-&#x8FD9;&#x6B21;&#x6211;&#x4EEC;&#x7528;&#x534F;&#x540C;&#x8FC7;&#x6EE4;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x63A8;&#x8350;&#x7CFB;&#x7EDF;&#xFF0C;&#x5229;&#x7528;&#x201C;&#x670B;&#x53CB;&#x7684;&#x670B;&#x53CB;&#x201D;&#x6765;&#x63A8;&#x8350;&#x597D;&#x53CB;&#x3002;</p>
-<h4 id="graph-distance">Graph Distance&#xFF1A; <a href="#graph-distance" class="header-anchor">#</a></h4>
-<p>&#x6BD4;&#x5982;&#xFF1A;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A follows {B, C, D}</div><div class="line">Followee B follows {C, E, A}</div><div class="line">followee C follows {F, G}</div><div class="line">followee D follows {G, H}</div></pre></td></tr></table></figure></p>
+<h3 id="简单推荐的实现">简单推荐的实现</h3>
+<p>推荐系统的内容太多了，可以看看<a href="http://www.shuang0420.com/categories/Recommender-System/" target="_blank" rel="external">shaung的博客</a>（一个广告）
+这次我们用协同过滤算法实现一个简单的推荐系统，利用“朋友的朋友”来推荐好友。</p>
+<h4 id="graph-distance">Graph Distance：</h4>
+<p>比如：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A follows &#123;B, C, D&#125;</div><div class="line">Followee B follows &#123;C, E, A&#125;</div><div class="line">followee C follows &#123;F, G&#125;</div><div class="line">followee D follows &#123;G, H&#125;</div></pre></td></tr></table></figure></p>
 <p><img src="http://i.imgur.com/83cuJ8G.png" alt="">
-&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4E0E;A&#x7684;&#x8DDD;&#x79BB;&#x5173;&#x7CFB;&#x4E3A;&#xFF1A;
+我们可以得到与A的距离关系为：
 <code>{A:1, C:1, E:1, F:1, G:2, H:1}</code>
-&#x5176;&#x4E2D;&#x53BB;&#x6389;A&#x672C;&#x8EAB;&#xFF0C;&#x53BB;&#x6389;A&#x5DF2;&#x7ECF;&#x5173;&#x6CE8;&#x7684;C&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x5C31;&#x662F;
+其中去掉A本身，去掉A已经关注的C，剩下的就是
 <code>{G: 2, E: 1, F: 1, H: 1}</code></p>
-<h4 id="si-lu">&#x601D;&#x8DEF;&#xFF1A; <a href="#si-lu" class="header-anchor">#</a></h4>
+<h4 id="思路">思路：</h4>
 <ul>
-<li>&#x627E;&#x5230;userid&#x7684;&#x5173;&#x6CE8;&#x7684;&#x4EBA;&#x7684;&#x96C6;&#x5408;</li>
-<li>&#x5C06;&#x5173;&#x6CE8;&#x7684;&#x4EBA;&#x7684;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x4EBA;&#x5173;&#x6CE8;&#x7684;&#x4EBA;&#x6DFB;&#x52A0;&#x5230;&#x4FE1;&#x96C6;&#x5408;&#x4E2D;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#x5219;&#x4E3A;1&#xFF0C;&#x4E4B;&#x540E;&#x7684;&#x4E3A;&#x539F;&#x6765;&#x7684;&#x52A0;1</li>
-<li>&#x7528;&#x4F18;&#x5148;&#x961F;&#x5217;&#x5B58;&#x50A8;&#xFF0C;&#x6CE8;&#x610F;&#x7B2C;&#x4E00;&#x4E2A;&#x5173;&#x6CE8;&#x7684;&#x4EBA;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x90FD;&#x4E0D;&#x5E94;&#x8BE5;&#x5728;&#x6B64;&#x961F;&#x5217;&#x4E2D;</li>
-<li>&#x8FD4;&#x56DE;&#x524D;&#x5341;&#x4E2A;&#x7684;name&#x548C;url&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;</li>
+<li>找到userid的关注的人的集合</li>
+<li>将关注的人的集合中的每个人关注的人添加到信集合中，第一次出现则为1，之后的为原来的加1</li>
+<li>用优先队列存储，注意第一个关注的人集合中的元素都不应该在此队列中</li>
+<li>返回前十个的name和url，并返回</li>
 </ul>
-<p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;&#xFF1A;
+<p>请求格式：
 <code>http://backend-public-dns:8080/MiniSite/task5?id=&lt;user_id&gt;</code></p>
-<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F;&#xFF1A;
+<p>响应格式：
 <code>returnRes({&quot;recommendation&quot;:[{name:&lt;name1&gt;, profile:&lt;profile1&gt;},{name:&lt;name2&gt;, profile:&lt;profile2&gt;},...,{name:&lt;name10&gt;, profile:&lt;profile10&gt;]})</code></p>
 <p>Done!</p>
-<p><strong>Reference&#xFF1A;</strong><br>
-CMU15619&#x8BFE;&#x4EF6;&#xFF1A;<code>Social Networking Timeline with Heterogeneous Backends</code>
-&#x5C0F;&#x571F;&#x5200;&#x535A;&#x5BA2;&#xFF1A;<code>http://wdxtub.com/vault/cc-17.html</code></p>
+<p><strong>Reference：</strong><br>
+CMU15619课件：<code>Social Networking Timeline with Heterogeneous Backends</code>
+小土刀博客：<code>http://wdxtub.com/vault/cc-17.html</code></p>
 
       
     </div>
@@ -699,7 +717,7 @@ CMU15619&#x8BFE;&#x4EF6;&#xFF1A;<code>Social Networking Timeline with Heterogene
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -831,7 +849,7 @@ CMU15619&#x8BFE;&#x4EF6;&#xFF1A;<code>Social Networking Timeline with Heterogene
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bei-jing-jie-shao"><span class="nav-number">1.</span> <span class="nav-text">背景介绍 #</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dbaas-database-as-a-services"><span class="nav-number">1.1.</span> <span class="nav-text">DBaas(Database-as-a-Services)： #</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mongodb"><span class="nav-number">1.2.</span> <span class="nav-text">MongoDB： #</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shu-ju-jie-gou-tu"><span class="nav-number">1.3.</span> <span class="nav-text">数据结构： 图 #</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-lin-jie-ju-zhen-adjacent-matrix-kong-jian-fu-za-du-wei-o-n-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.邻接矩阵Adjacent Matrix：空间复杂度为O（n^2) #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-lin-jie-biao-adjacent-list-kong-jian-jiao-shao"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.邻接表Adjacent List 空间较少： #</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#she-jiao-wang-luo-ying-yong-ji-chu"><span class="nav-number">1.4.</span> <span class="nav-text">社交网络应用基础： #</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xiang-mu-cao-zuo"><span class="nav-number">2.</span> <span class="nav-text">项目操作 #</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tong-guo-rds-de-mysql-shi-xian-ji-ben-deng-lu"><span class="nav-number">2.1.</span> <span class="nav-text">通过RDS的MySQL实现基本登录： #</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#li-yong-hbase-cun-chu-she-jiao-tu-pu"><span class="nav-number">2.2.</span> <span class="nav-text">利用HBase存储社交图谱： #</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#si-lu"><span class="nav-number">2.2.1.</span> <span class="nav-text">思路： #</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yong-mongdb-da-jian-zhu-ye"><span class="nav-number">2.3.</span> <span class="nav-text">用MongDB搭建主页： #</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zui-zhong-zheng-he"><span class="nav-number">2.4.</span> <span class="nav-text">最终整合 #</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jian-dan-tui-jian-de-shi-xian"><span class="nav-number">2.5.</span> <span class="nav-text">简单推荐的实现 #</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#graph-distance"><span class="nav-number">2.5.1.</span> <span class="nav-text">Graph Distance： #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#si-lu"><span class="nav-number">2.5.2.</span> <span class="nav-text">思路： #</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dbaasdatabase-as-a-services"><span class="nav-number">1.1.</span> <span class="nav-text">DBaas(Database-as-a-Services)：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mongodb"><span class="nav-number">1.2.</span> <span class="nav-text">MongoDB：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构-图"><span class="nav-number">1.3.</span> <span class="nav-text">数据结构： 图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1邻接矩阵adjacent-matrix空间复杂度为on2"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.邻接矩阵Adjacent Matrix：空间复杂度为O（n^2)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2邻接表adjacent-list-空间较少"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.邻接表Adjacent List 空间较少：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#社交网络应用基础"><span class="nav-number">1.4.</span> <span class="nav-text">社交网络应用基础：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目操作"><span class="nav-number">2.</span> <span class="nav-text">项目操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过rds的mysql实现基本登录"><span class="nav-number">2.1.</span> <span class="nav-text">通过RDS的MySQL实现基本登录：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用hbase存储社交图谱"><span class="nav-number">2.2.</span> <span class="nav-text">利用HBase存储社交图谱：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.2.1.</span> <span class="nav-text">思路：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用mongdb搭建主页"><span class="nav-number">2.3.</span> <span class="nav-text">用MongDB搭建主页：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最终整合"><span class="nav-number">2.4.</span> <span class="nav-text">最终整合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单推荐的实现"><span class="nav-number">2.5.</span> <span class="nav-text">简单推荐的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#graph-distance"><span class="nav-number">2.5.1.</span> <span class="nav-text">Graph Distance：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.5.2.</span> <span class="nav-text">思路：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

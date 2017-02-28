@@ -86,37 +86,46 @@
 
 
 
-<meta name="description" content="CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;
-&amp;#x7B2C;19&amp;#x7AE0;&amp;#x603B;&amp;#x7ED3;&amp;#x7B14;&amp;#x8BB0;
+<meta name="description" content="CMU-95702分布式系统
+第19章总结笔记
 
 Design issues in distributed mobile applications:
 
 Association:
-&amp;#x2022; Devices
-&amp;#x2013; Appear">
+• Devices
+– Appear	and	disappear	from	the	space.
+– Do	so	unpredictably
+– May	be	totally	new	to	the	space.
+– Or">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Distributed System-Mobile and ubiquitous computing">
 <meta property="og:url" content="http://yoursite.com/2017/02/06/Distributed-System/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;
-&amp;#x7B2C;19&amp;#x7AE0;&amp;#x603B;&amp;#x7ED3;&amp;#x7B14;&amp;#x8BB0;
+<meta property="og:description" content="CMU-95702分布式系统
+第19章总结笔记
 
 Design issues in distributed mobile applications:
 
 Association:
-&amp;#x2022; Devices
-&amp;#x2013; Appear">
+• Devices
+– Appear	and	disappear	from	the	space.
+– Do	so	unpredictably
+– May	be	totally	new	to	the	space.
+– Or">
 <meta property="og:updated_time" content="2017-02-23T20:23:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Distributed System-Mobile and ubiquitous computing">
-<meta name="twitter:description" content="CMU-95702&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x7CFB;&amp;#x7EDF;
-&amp;#x7B2C;19&amp;#x7AE0;&amp;#x603B;&amp;#x7ED3;&amp;#x7B14;&amp;#x8BB0;
+<meta name="twitter:description" content="CMU-95702分布式系统
+第19章总结笔记
 
 Design issues in distributed mobile applications:
 
 Association:
-&amp;#x2022; Devices
-&amp;#x2013; Appear">
+• Devices
+– Appear	and	disappear	from	the	space.
+– Do	so	unpredictably
+– May	be	totally	new	to	the	space.
+– Or">
 
 <script>
   (function(){
@@ -432,24 +441,24 @@ Association:
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;
-&#x7B2C;19&#x7AE0;&#x603B;&#x7ED3;&#x7B14;&#x8BB0;</p>
+        <script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702分布式系统
+第19章总结笔记</p>
 <ul>
 <li><strong>Design issues in distributed mobile applications:</strong>
 <ul>
 <li><strong>Association:</strong>
-&#x2022; Devices
-&#x2013; Appear	and	disappear	from	the	space.
-&#x2013; Do	so	unpredictably
-&#x2013; May	be	totally	new	to	the	space.
-&#x2013; Or	may	be	returning	to	the	space.
-&#x2022; They	need	to	be:
-&#x2013; Perhaps	added	to	the	network
-&#x2013; Brought	into	Association	with	resources	and	applications
-&#x2022; Examples	of	Association
-&#x2013; Come	on	campus	and	be	able	to	be	associated	with	the	printers that	are	close	to	you.
-&#x2013; Be	alerted	if	someone	you	know	is	walking	near	you.
-&#x2013; Be	provided	with	selling	prices	in	your	local	area	for	your	goods
+• Devices
+– Appear	and	disappear	from	the	space.
+– Do	so	unpredictably
+– May	be	totally	new	to	the	space.
+– Or	may	be	returning	to	the	space.
+• They	need	to	be:
+– Perhaps	added	to	the	network
+– Brought	into	Association	with	resources	and	applications
+• Examples	of	Association
+– Come	on	campus	and	be	able	to	be	associated	with	the	printers that	are	close	to	you.
+– Be	alerted	if	someone	you	know	is	walking	near	you.
+– Be	provided	with	selling	prices	in	your	local	area	for	your	goods
 (not	prices	in	far-away	areas).</li>
 <li><strong>Application-level Association:</strong>
 often by discorvery, broadcasts</li>
@@ -476,11 +485,11 @@ often by discorvery, broadcasts</li>
 <ul>
 <li>GPS</li>
 <li>Database of	collected	Wifi access points
-&#x2013; stores the	access	point&apos;s	MAC	address	and	the	GPS
+– stores the	access	point's	MAC	address	and	the	GPS
 location	at	which	it	was	observed</li>
-<li>Cellular	&#x2013; compute	using	signal	strength	to
+<li>Cellular	– compute	using	signal	strength	to
 multiple	cellular	tower	locations</li>
-<li>RFID	tags	&#x2013; tags	are	associated	with	a	location</li>
+<li>RFID	tags	– tags	are	associated	with	a	location</li>
 </ul>
 </li>
 <li>
@@ -491,7 +500,7 @@ multiple	cellular	tower	locations</li>
 <li>Media	quality	to	fit	the	screen	and	device	capabilities</li>
 <li>Language	to	fit	the	user</li>
 <li>Information	to	fit	the	physical	context.
-&#x2022; Give	only	movie	times	in	the	future,	and	in	nearby	theaters</li>
+• Give	only	movie	times	in	the	future,	and	in	nearby	theaters</li>
 </ul>
 </li>
 <li>
@@ -503,21 +512,21 @@ Reply	differently	depending	on	what	device	makes	request.
 <ol>
 <li>
 <p>User-Agent
-&#x2022; Identifies	the	mobile	browser	and	almost always	the	device manufacturer	and	model.
-&#x2022; BlackBerry8330/4.3.0	Profile/MIDP-2.0	Configuration/CLDC-1.1
+• Identifies	the	mobile	browser	and	almost always	the	device manufacturer	and	model.
+• BlackBerry8330/4.3.0	Profile/MIDP-2.0	Configuration/CLDC-1.1
 VendorID/105
-&#x2022; Collection	of	mobile	agent	strings:
-&#x2013; http://www.zytrax.com/tech/web/mobile_ids.html</p>
+• Collection	of	mobile	agent	strings:
+– http://www.zytrax.com/tech/web/mobile_ids.html</p>
 </li>
 <li>
 <p>X-Wap-Profile
-&#x2022; Link	to	an	XML	profile	of	the	phone&#x2019;s	capabilities
-&#x2022;E.g.http://www.blackberry.net/go/mobile/profiles/uaprof/8310/4.2.2.rdf</p>
+• Link	to	an	XML	profile	of	the	phone’s	capabilities
+•E.g.http://www.blackberry.net/go/mobile/profiles/uaprof/8310/4.2.2.rdf</p>
 </li>
 <li>
 <p>Accept
-&#x2022; Supported	MIME(&#x591A;&#x7528;&#x9014;&#x7684;&#x7F51;&#x9645;&#x90AE;&#x4EF6;&#x6269;&#x5145;&#x534F;&#x8BAE;)types
-&#x2022; E.g.	text/html,	application/xhtml+xml,	etc.</p>
+• Supported	MIME(多用途的网际邮件扩充协议)types
+• E.g.	text/html,	application/xhtml+xml,	etc.</p>
 <p>These 3 headers can provide enough info , but:
 - header can be missing
 - have inaccurate values
@@ -539,7 +548,7 @@ alternative
 <li>If	not	possible,	alert	the	user</li>
 </ul>
 </li>
-<li>Don&apos;t	allow	it	to	invisibly	fail</li>
+<li>Don't	allow	it	to	invisibly	fail</li>
 </ul>
 </li>
 <li>Progressive	enhancement</li>
@@ -600,8 +609,8 @@ designs
 functionality
 - Allows	for	using	technologies	on	mobile:
 * touch	events
-* geolocation &#x5730;&#x7406;&#x5B9A;&#x4F4D;
-* accelerometer &#x52A0;&#x901F;&#x8BA1;</p>
+* geolocation 地理定位
+* accelerometer 加速计</p>
 </li>
 <li>
 <p><strong>Mobile deployment strategies:</strong></p>
@@ -759,7 +768,7 @@ source	native	wrapper</li>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

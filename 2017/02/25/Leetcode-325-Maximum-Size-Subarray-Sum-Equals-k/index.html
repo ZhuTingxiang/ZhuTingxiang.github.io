@@ -86,25 +86,25 @@
 
 
 
-<meta name="description" content="Question: #
-Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn&amp;apos;t one, return 0 instead.
+<meta name="description" content="Question:
+Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn&apos;t one, return 0 instead.
 Note:
-The sum of the entire nums array is guaran">
+The sum of the entire nums array is guaranteed to">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 325. Maximum Size Subarray Sum Equals k">
 <meta property="og:url" content="http://yoursite.com/2017/02/25/Leetcode-325-Maximum-Size-Subarray-Sum-Equals-k/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="Question: #
-Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn&amp;apos;t one, return 0 instead.
+<meta property="og:description" content="Question:
+Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn&apos;t one, return 0 instead.
 Note:
-The sum of the entire nums array is guaran">
+The sum of the entire nums array is guaranteed to">
 <meta property="og:updated_time" content="2017-02-25T20:35:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 325. Maximum Size Subarray Sum Equals k">
-<meta name="twitter:description" content="Question: #
-Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn&amp;apos;t one, return 0 instead.
+<meta name="twitter:description" content="Question:
+Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn&apos;t one, return 0 instead.
 Note:
-The sum of the entire nums array is guaran">
+The sum of the entire nums array is guaranteed to">
 
 <script>
   (function(){
@@ -409,8 +409,8 @@ The sum of the entire nums array is guaran">
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question: <a href="#question" class="header-anchor">#</a></h3>
-<p>Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn&apos;t one, return 0 instead.</p>
+        <script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
+<p>Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn't one, return 0 instead.</p>
 <p>Note:
 The sum of the entire nums array is guaranteed to fit within the 32-bit signed integer range.</p>
 <p>Example 1:
@@ -421,10 +421,10 @@ Given nums = [-2, -1, 2, 1], k = 1,
 return 2. (because the subarray [-1, 2] sums to 1 and is the longest)</p>
 <p>Follow Up:
 Can you do it in O(n) time?</p>
-<h3 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h3>
-<p>&#x601D;&#x8DEF;&#x5C31;&#x662F;&#xFF0C;&#x7B97;&#x4ECE;&#x7B2C;&#x4E00;&#x4E2A;&#x6570;&#x5230;&#x6BCF;&#x4E00;&#x4E2A;&#x6570;&#x7684;sum&#xFF0C;&#x5B58;&#x5728;map&#x91CC;&#xFF0C;&#x5982;&#x679C;&#x4E4B;&#x540E;&#x6709;key&#x548C;sum-k&#x76F8;&#x7B49;&#xFF0C;&#x5C31;&#x8868;&#x793A;&#x90A3;&#x6BB5;&#x6570;&#x5B57;&#x7684;&#x548C;&#x4E3A;k&#x3002;</p>
-<h3 id="code">Code: <a href="#code" class="header-anchor">#</a></h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class Solution {</div><div class="line">    public int maxSubArrayLen(int[] nums, int k) {</div><div class="line">        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">        int sum = 0;</div><div class="line">        int result = 0;</div><div class="line"></div><div class="line">        for (int i=0; i&lt;nums.length; i++) {</div><div class="line">            sum += nums[i];</div><div class="line">            if (sum == k) {</div><div class="line">                result = i+1;</div><div class="line"></div><div class="line">            } else if (map.containsKey(sum - k)) {</div><div class="line">                result =Math.max(max, i - map.get(sum));</div><div class="line">            }</div><div class="line">            if (!map.containsKey(sum)) {</div><div class="line">                map.put(sum, i);</div><div class="line">            }</div><div class="line"></div><div class="line">            System.out.println(map.toString());</div><div class="line">        }</div><div class="line">        return result;</div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation:</h3>
+<p>思路就是，算从第一个数到每一个数的sum，存在map里，如果之后有key和sum-k相等，就表示那段数字的和为k。</p>
+<h3 id="code">Code:</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int maxSubArrayLen(int[] nums, int k) &#123;</div><div class="line">        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">        int sum = 0;</div><div class="line">        int result = 0;</div><div class="line"></div><div class="line">        for (int i=0; i&lt;nums.length; i++) &#123;</div><div class="line">            sum += nums[i];</div><div class="line">            if (sum == k) &#123;</div><div class="line">                result = i+1;</div><div class="line"></div><div class="line">            &#125; else if (map.containsKey(sum - k)) &#123;</div><div class="line">                result =Math.max(max, i - map.get(sum));</div><div class="line">            &#125;</div><div class="line">            if (!map.containsKey(sum)) &#123;</div><div class="line">                map.put(sum, i);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            System.out.println(map.toString());</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -547,7 +547,7 @@ Can you do it in O(n) time?</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -679,7 +679,7 @@ Can you do it in O(n) time?</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#question"><span class="nav-number">1.</span> <span class="nav-text">Question: #</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#explanation"><span class="nav-number">2.</span> <span class="nav-text">Explanation: #</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">Code: #</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#question"><span class="nav-number">1.</span> <span class="nav-text">Question:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#explanation"><span class="nav-number">2.</span> <span class="nav-text">Explanation:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">Code:</span></a></li></ol></div>
             
 
           </div>

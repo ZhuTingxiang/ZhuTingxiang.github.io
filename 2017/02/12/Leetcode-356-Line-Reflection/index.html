@@ -86,31 +86,31 @@
 
 
 
-<meta name="description" content="Question: #
+<meta name="description" content="Question:
 Given n points on a 2D plane, find if there is such a line parallel to y-axis that reflect the given points.
 Example 1:
 Given points = [[1,1],[-1,1]], return true.
 Example 2:
-Given points">
+Given points =">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 356. Line Reflection">
 <meta property="og:url" content="http://yoursite.com/2017/02/12/Leetcode-356-Line-Reflection/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="Question: #
+<meta property="og:description" content="Question:
 Given n points on a 2D plane, find if there is such a line parallel to y-axis that reflect the given points.
 Example 1:
 Given points = [[1,1],[-1,1]], return true.
 Example 2:
-Given points">
+Given points =">
 <meta property="og:updated_time" content="2017-02-13T00:18:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 356. Line Reflection">
-<meta name="twitter:description" content="Question: #
+<meta name="twitter:description" content="Question:
 Given n points on a 2D plane, find if there is such a line parallel to y-axis that reflect the given points.
 Example 1:
 Given points = [[1,1],[-1,1]], return true.
 Example 2:
-Given points">
+Given points =">
 
 <script>
   (function(){
@@ -415,7 +415,7 @@ Given points">
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question: <a href="#question" class="header-anchor">#</a></h4>
+        <script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
 <p>Given n points on a 2D plane, find if there is such a line parallel to y-axis that reflect the given points.</p>
 <p><strong>Example 1:</strong>
 Given points = [[1,1],[-1,1]], return true.</p>
@@ -429,13 +429,13 @@ Could you do better than O(n2)?</p>
 If there is a line then it should be at y = (minX + maxX) / 2.
 For each point, make sure that it has a reflected point in the opposite side.</p>
 </blockquote>
-<h4 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h4>
-<p>&#x521A;&#x5F00;&#x59CB;&#x7684;&#x601D;&#x8DEF;&#x662F;&#xFF0C; &#x7528;&#x4E00;&#x4E2A;map&#x5B58;{y&#x503C;:[&#x6240;&#x6709;&#x76F8;&#x5E94;x&#x503C;]}&#x3002;
-&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;y&#x503C;&#xFF0C;&#x5C06;&#x5176;&#x5BF9;&#x5E94;&#x7684;x&#x503C;&#x7684;list&#x6392;&#x5E8F;&#x3002;&#x7528;two pointers&#x68C0;&#x67E5;&#x662F;&#x4E0D;&#x662F;&#x5BF9;&#x79F0;&#x3002;
-&#x8FD9;&#x6837;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x8D85;&#x8FC7;O(n^2)&#x4E86;&#xFF0C;sort&#x5C31;&#x5DF2;&#x7ECF;O(nlogn)&#x4E86;&#x3002;
-&#x4E8E;&#x662F;&#xFF0C;&#x6309;&#x7167;&#x4E86;hint&#x5199;&#xFF0C;&#x5148;&#x904D;&#x5386;&#x4E00;&#x904D;&#xFF0C;&#x5F97;&#x5230;x&#x6700;&#x5927;&#x503C;&#x548C;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x4ECE;&#x800C;&#x5F97;&#x5230;x&#x4E2D;&#x95F4;&#x503C;&#x3002;&#x518D;&#x904D;&#x5386;&#x4E00;&#x904D;&#xFF0C;&#x5B58;&#x4E0B;&#x6BCF;&#x4E2A;&#x70B9;&#x7684;&#x5BF9;&#x79F0;&#x70B9;&#x3002;&#x6700;&#x540E;&#x904D;&#x5386;&#x4E00;&#x904D;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x54EA;&#x4E2A;&#x5750;&#x6807;&#x4E0D;&#x5728;set&#x91CC;&#x9762;&#xFF0C;&#x8BF4;&#x660E;&#x6CA1;&#x6709;&#x5BF9;&#x79F0;&#x70B9;&#x3002;&#xFF08;&#x548C;two sum&#x4E00;&#x6837;&#x7684;&#x601D;&#x8DEF;&#xFF09;</p>
-<h4 id="code">Code: <a href="#code" class="header-anchor">#</a></h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public boolean isReflected(int[][] points) {</div><div class="line">    if(points == null || points.length == 0) return true;</div><div class="line">    int minX = Integer.MAX_VALUE;</div><div class="line">    int maxX = Integer.MIN_VALUE;</div><div class="line">    double midX = 0.0;</div><div class="line">    for( int i=0; i&lt;points.length; i++) {</div><div class="line">        int[] point = points[i];</div><div class="line">        int x = point[0]; int y = point[1];</div><div class="line">        minX = Math.min(minX, x);</div><div class="line">        maxX = Math.max(maxX, x);</div><div class="line">    }</div><div class="line">    midX = (minX + maxX) / 2.0;</div><div class="line">    HashSet&lt;Integer&gt; set = new HashSet&lt;&gt;();</div><div class="line">    for( int i=0; i&lt;points.length; i++) {</div><div class="line">        int[] point = points[i];</div><div class="line">        int x = point[0]; int y = point[1];</div><div class="line">        int[] reflect = new int[2];</div><div class="line">        reflect[0] = (int)(2*midX- x);</div><div class="line">        reflect[1] = y;</div><div class="line">        set.add(Arrays.hashCode(reflect));</div><div class="line">    }</div><div class="line">    for( int i=0; i&lt;points.length; i++) {</div><div class="line">        int[] point = points[i];</div><div class="line">        if (!set.contains(Arrays.hashCode(point))) return false;</div><div class="line">    }</div><div class="line">    return true;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation:</h4>
+<p>刚开始的思路是， 用一个map存{y值:[所有相应x值]}。
+对于每一个y值，将其对应的x值的list排序。用two pointers检查是不是对称。
+这样的复杂度超过O(n^2)了，sort就已经O(nlogn)了。
+于是，按照了hint写，先遍历一遍，得到x最大值和最小值，从而得到x中间值。再遍历一遍，存下每个点的对称点。最后遍历一遍，如果有哪个坐标不在set里面，说明没有对称点。（和two sum一样的思路）</p>
+<h4 id="code">Code:</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public boolean isReflected(int[][] points) &#123;</div><div class="line">    if(points == null || points.length == 0) return true;</div><div class="line">    int minX = Integer.MAX_VALUE;</div><div class="line">    int maxX = Integer.MIN_VALUE;</div><div class="line">    double midX = 0.0;</div><div class="line">    for( int i=0; i&lt;points.length; i++) &#123;</div><div class="line">        int[] point = points[i];</div><div class="line">        int x = point[0]; int y = point[1];</div><div class="line">        minX = Math.min(minX, x);</div><div class="line">        maxX = Math.max(maxX, x);</div><div class="line">    &#125;</div><div class="line">    midX = (minX + maxX) / 2.0;</div><div class="line">    HashSet&lt;Integer&gt; set = new HashSet&lt;&gt;();</div><div class="line">    for( int i=0; i&lt;points.length; i++) &#123;</div><div class="line">        int[] point = points[i];</div><div class="line">        int x = point[0]; int y = point[1];</div><div class="line">        int[] reflect = new int[2];</div><div class="line">        reflect[0] = (int)(2*midX- x);</div><div class="line">        reflect[1] = y;</div><div class="line">        set.add(Arrays.hashCode(reflect));</div><div class="line">    &#125;</div><div class="line">    for( int i=0; i&lt;points.length; i++) &#123;</div><div class="line">        int[] point = points[i];</div><div class="line">        if (!set.contains(Arrays.hashCode(point))) return false;</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -558,7 +558,7 @@ For each point, make sure that it has a reflected point in the opposite side.</p
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -690,7 +690,7 @@ For each point, make sure that it has a reflected point in the opposite side.</p
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">1.</span> <span class="nav-text">Question: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">2.</span> <span class="nav-text">Explanation: #</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">Code: #</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">1.</span> <span class="nav-text">Question:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">2.</span> <span class="nav-text">Explanation:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">Code:</span></a></li></ol></div>
             
 
           </div>
