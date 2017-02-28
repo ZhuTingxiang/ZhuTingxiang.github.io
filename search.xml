@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title><![CDATA[数据结构：树]]></title>
+      <url>http://yoursite.com/2017/02/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E6%A0%91/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是总结Tree这种结构的常用知识点，暂时总结Binary Tree。</p>
+<h3 id="why-tree">Why Tree?</h3>
+<p>因为树结合了其他数据结构的优势：</p>
+<ul>
+<li>顺序数组： 用Binary Search查找会很快。</li>
+<li>链表：插入和删除会非常快，不需要shift值。</li>
+</ul>
+<h3 id="基本概念">基本概念：</h3>
+<ul>
+<li>根： 树的顶部。</li>
+<li>父节点</li>
+<li>子节点</li>
+<li>叶节点：没有子节点的节点。</li>
+<li>Leve（高度）：代表有几代。</li>
+</ul>
+<h3 id="平衡树和非平衡树">平衡树和非平衡树</h3>
+<p>平衡树：
+左右子树及其的高度相差&lt;=1，并且左右子树也是平衡树。
+<img src="/Users/star/.atom/evnd/tmp/clipboard_20170228_144630.png" alt="Alt text" title="Optional title"></p>
+<h3 id="full-tree-和-complete-tree">Full Tree 和 Complete Tree：</h3>
+<ul>
+<li>Full Tree:每个节点都有0/2个子节点。</li>
+<li>Complete Tree:除了最右边的节点，其他节点都是满节点，并且都靠左。</li>
+</ul>
+<p><img src="/Users/star/.atom/evnd/tmp/clipboard_20170228_150254.png" alt="Alt text" title="Optional title"></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Leetcode 388. Longest Absolute File Path]]></title>
       <url>http://yoursite.com/2017/02/28/Leetcode-388-Longest-Absolute-File-Path/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
