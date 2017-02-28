@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-28T21:10:24.000Z</updated>
+  <updated>2017-02-28T22:11:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode 94.Binary Tree Inorder Traversal</title>
+    <link href="http://yoursite.com/2017/02/28/Leetcode-94-Binary-Tree-Inorder-Traversal/"/>
+    <id>http://yoursite.com/2017/02/28/Leetcode-94-Binary-Tree-Inorder-Traversal/</id>
+    <published>2017-02-28T22:05:02.000Z</published>
+    <updated>2017-02-28T22:11:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, return the inorder traversal of its nodes' values.</p>
+<p>For example:
+Given binary tree [1,null,2,3],
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line"> \</div><div class="line">  2</div><div class="line"> /</div><div class="line">3</div></pre></td></tr></table></figure></p>
+<p>return [1,3,2].</p>
+<h3 id="explaination">Explaination</h3>
+<p>方法1：递归。(参考：<a href="http://starllap.space/2017/02/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/" target="_blank" rel="external">数据结构：二叉树</a>)
+base case： root为null返回一个空list。
+之后按中序遍历来遍历左边，中间和右边的节点。</p>
+<p>方法2：循环。
+用stack存起来，先遍历左边，然后对每一个节点进行中序遍历。弹出Stack的同时，把值存在list里。</p>
+<h3 id="code">Code</h3>
+<h4 id="recursive">Recursive</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public List&lt;Integer&gt; inorderTraversal(TreeNode root) &#123;</div><div class="line">    // Recursive:</div><div class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    if (root == null) return list;</div><div class="line">    list = inorderTraversal(root.left);</div><div class="line">    list.add(root.val);</div><div class="line">    list.addAll(inorderTraversal(root.right));</div><div class="line">    return list;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="iterative">Iterative</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public List&lt;Integer&gt; inorderTraversal(TreeNode root) &#123;</div><div class="line">    // Iterative:</div><div class="line">    Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();</div><div class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    TreeNode curt = root;</div><div class="line">    while(curt != null || !stack.empty()) &#123;</div><div class="line">        while(curt != null) &#123;</div><div class="line">            stack.add(curt);</div><div class="line">            curt = curt.left;</div><div class="line">        &#125;</div><div class="line">        curt = stack.pop();</div><div class="line">        list.add(curt.val);</div><div class="line">        curt = curt.right;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return list;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary tree, return the inorder traversal of it
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>数据结构：二叉树</title>
@@ -1168,52 +1204,6 @@ For each point, make sure that it has a reflected point in the opposite side.</p
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 409. Longest Palindrome</title>
-    <link href="http://yoursite.com/2017/02/12/Leetcode-409-Longest-Palindrome/"/>
-    <id>http://yoursite.com/2017/02/12/Leetcode-409-Longest-Palindrome/</id>
-    <published>2017-02-12T21:42:32.000Z</published>
-    <updated>2017-02-13T00:09:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
-<p>Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters.</p>
-<p>This is case sensitive, for example &quot;Aa&quot; is not considered a palindrome here.</p>
-<p>Note:
-Assume the length of given string will not exceed 1,010.</p>
-<p>Example:</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">&quot;abccccdd&quot;</div><div class="line"></div><div class="line">Output:</div><div class="line">7</div><div class="line"></div><div class="line">Explanation:</div><div class="line">One longest palindrome that can be built is &quot;dccaccd&quot;, whose length is 7.</div></pre></td></tr></table></figure></p>
-<h4 id="explanation">Explanation:</h4>
-<p>超简单的题。
-Solution 1:
-可以用数组存储每个字母的次数，但是需要考虑大小写字母，分开根据ascii计算index。
-Solution 2:
-用Hashmap存储每个字符出现的次数，加和所有even次数，再加和odd/2*2，如果出现过odd，最后加上1，否则不加。
-Solution 3:<br>
-用HashSet，如果出现过，就加2，去掉。再出现，再加入。最后如果set是空的，说明没有odd，否则加上1。</p>
-<h4 id="code">Code:</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public int longestPalindrome(String s) &#123;</div><div class="line">    HashSet&lt;Character&gt; set = new HashSet&lt;&gt;();</div><div class="line">    int count = 0;</div><div class="line">    for (Character c: s.toCharArray()) &#123;</div><div class="line">        if (set.contains(c)) &#123;</div><div class="line">            count += 2;</div><div class="line">            set.remove(c);</div><div class="line">        &#125; else set.add(c);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    if (!set.isEmpty()) count++;</div><div class="line">    return count;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question&quot;&gt;Question:&lt;/h4&gt;
-&lt;p&gt;Given a string which consists of lowercase or uppercas
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="String" scheme="http://yoursite.com/tags/String/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
   </entry>
   
