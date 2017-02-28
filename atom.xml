@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-25T20:35:06.000Z</updated>
+  <updated>2017-02-28T04:12:50.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,167 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>云计算Project：Twitter大数据分析</title>
+    <link href="http://yoursite.com/2017/02/27/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9ATwitter%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    <id>http://yoursite.com/2017/02/27/云计算Project：Twitter大数据分析/</id>
+    <published>2017-02-28T01:37:26.000Z</published>
+    <updated>2017-02-28T04:12:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&#x672C;&#x6587;&#x662F;Twitter Analytics on the Cloud&#x9879;&#x76EE;&#x7684;&#x4ECB;&#x7ECD;&#x53CA;&#x5206;&#x6790;&#x603B;&#x7ED3;&#x3002;&#x5C0F;&#x7EC4;&#x4F5C;&#x4E1A;&#x5F53;&#x65F6;&#x505A;&#x7684;&#x5306;&#x5FD9;&#xFF0C;&#x73B0;&#x5728;&#x518D;&#x601D;&#x8003;&#x4E0B;&#x53EF;&#x4EE5;&#x4F18;&#x5316;&#x7684;&#x5730;&#x65B9;&#x5F88;&#x591A;&#x3002;&#x611F;&#x8C22;&#x961F;&#x53CB;@shuangshuang &#x548C; @&#x70DF;&#x9171;&#x3002;</p>
+<h2 id="xiang-mu-jie-shao">&#x9879;&#x76EE;&#x4ECB;&#x7ECD; <a href="#xiang-mu-jie-shao" class="header-anchor">#</a></h2>
+<p>&#x76EE;&#x6807;&#xFF1A;</p>
+<ul>
+<li>&#x5728;&#x4E91;&#x4E0A;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x9AD8;&#x6027;&#x80FD;&#x53C8;&#x53EF;&#x9760;&#x7684;web&#x670D;&#x52A1;&#x3002;</li>
+<li>&#x8BBE;&#x8BA1;&#xFF0C;&#x5F00;&#x53D1;&#x548C;&#x90E8;&#x7F72;&#x5E76;&#x4F18;&#x5316;&#x670D;&#x52A1;&#x5668;&#x4EE5;&#x80FD;&#x591F;&#x5904;&#x7406;&#x6BCF;&#x79D2;&#x4E0A;&#x4E07;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x9AD8;&#x8D1F;&#x8F7D;&#x3002;</li>
+<li>&#x5728;&#x4E00;&#x4E2A;1TB&#x7684;&#x6570;&#x636E;&#x96C6;&#x4E0A;&#x5B8C;&#x6210;ETL&#x5E76;&#x8F7D;&#x5165;&#x5230;Mysql&#x548C;HBase&#x4E2D;&#x3002;</li>
+<li>&#x8BBE;&#x8BA1;MySQL&#x548C;HBase&#x5E76;&#x4F18;&#x5316;&#x914D;&#x7F6E;&#xFF0C;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#x3002;</li>
+<li>&#x63A2;&#x7D22;&#x57FA;&#x4E8E;&#x4E91;&#x7684;web&#x670D;&#x52A1;&#x5B58;&#x5728;&#x74F6;&#x9888;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#x3002;</li>
+</ul>
+<h2 id="ji-ben-jie-gou">&#x57FA;&#x672C;&#x7ED3;&#x6784;&#xFF1A; <a href="#ji-ben-jie-gou" class="header-anchor">#</a></h2>
+<p>&#xFFFC;&#xFFFC;&#xFFFC;&#xFFFC;&#xFFFC;
+<img src="http://i.imgur.com/qMn31B4.png" alt=""></p>
+<h3 id="qian-duan">&#x524D;&#x7AEF;&#xFF1A; <a href="#qian-duan" class="header-anchor">#</a></h3>
+<ul>
+<li>&#x901A;&#x8FC7;HTTP GET&#x8BF7;&#x6C42;&#x8BBF;&#x95EE;web&#x670D;&#x52A1;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x8BF7;&#x6C42;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x540E;&#x9762;&#x6709;&#x4E0D;&#x540C;&#x53C2;&#x6570;&#x3002;</li>
+<li>&#x8FD4;&#x56DE;&#x76F8;&#x5E94;&#x7684;&#x54CD;&#x5E94;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x8981;&#x5728;&#x6301;&#x7EED;&#x82E5;&#x5E72;&#x4E2A;&#x5C0F;&#x65F6;&#x7684;&#x6D4B;&#x8BD5;&#x4E2D;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x3002;</li>
+<li>web&#x670D;&#x52A1;&#x4E0D;&#x80FD;&#x62D2;&#x7EDD;&#x8BF7;&#x6C42;&#xFF0C;&#x8981;&#x80FD;&#x627F;&#x53D7;&#x9AD8;&#x8D1F;&#x8F7D;&#x3002;</li>
+</ul>
+<h3 id="hou-duan">&#x540E;&#x7AEF;&#xFF1A; <a href="#hou-duan" class="header-anchor">#</a></h3>
+<ul>
+<li>&#x4FDD;&#x5B58;&#x7528;&#x6765;&#x67E5;&#x8BE2;&#x7684;&#x6570;&#x636E;&#x6587;&#x4EF6;</li>
+<li>&#x6BD4;&#x8F83;SQL(MySQL)&#x548C;NoSQL(HBase)</li>
+<li>&#x6BD4;&#x8F83;&#x4E0D;&#x540C;&#x6570;&#x636E;&#x96C6;&#x4E0D;&#x540C;&#x67E5;&#x8BE2;&#x7C7B;&#x578B;&#x7684;&#x8868;&#x73B0;&#xFF0C;&#x6765;&#x51B3;&#x5B9A;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x540E;&#x7AEF;&#x3002;</li>
+</ul>
+<h3 id="shu-ju-ji">&#x6570;&#x636E;&#x96C6;&#xFF1A; <a href="#shu-ju-ji" class="header-anchor">#</a></h3>
+<p>Twitter&#x6570;&#x636E;&#x96C6;&#xFF0C;&#x5927;&#x4E8E;1T&#xFF0C;JSON&#x683C;&#x5F0F;&#x5B58;&#x50A8;&#x3002;</p>
+<h2 id="xiang-mu-shi-zhan">&#x9879;&#x76EE;&#x5B9E;&#x6218; <a href="#xiang-mu-shi-zhan" class="header-anchor">#</a></h2>
+<h3 id="da-jian-qian-duan">&#x642D;&#x5EFA;&#x524D;&#x7AEF;&#xFF1A; <a href="#da-jian-qian-duan" class="header-anchor">#</a></h3>
+<p>&#x5728;&#x642D;&#x5EFA;&#x524D;&#x7AEF;&#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x614E;&#x91CD;&#x9009;&#x62E9;&#x6846;&#x67B6;&#x3002;&#x5BF9;&#x6BD4;&#x4E3B;&#x6D41;web&#x6846;&#x67B6;&#xFF0C;&#x53C2;&#x8003;<a href="https://www.techempower.com/benchmarks/" target="_blank" rel="external">Techempower</a>,&#x6211;&#x4EEC;&#x6700;&#x7EC8;&#x9009;&#x62E9;&#x7528;vertx&#x548C;undertow&#x8FDB;&#x884C;&#x5F00;&#x53D1;&#x3002;
+&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x4E00;&#x4E9B;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x914D;&#x7F6E;&#x6307;&#x5357;&#xFF1A;
+Vertx:
+<a href="http://vertx.io/docs/" target="_blank" rel="external">vertx Document</a>
+<a href="http://vertx.io/blog/my-first-vert-x-3-application/index.html" target="_blank" rel="external">My first Vert.x 3 Application</a></p>
+<h4 id="qian-duan-you-hua">&#x524D;&#x7AEF;&#x4F18;&#x5316;&#xFF1A; <a href="#qian-duan-you-hua" class="header-anchor">#</a></h4>
+<ul>
+<li>&#x8FD0;&#x7528;Cache&#xFF0C;&#x6BCF;&#x6B21;&#x5F97;&#x5230;&#x8BF7;&#x6C42;&#x5148;check&#x662F;&#x5426;&#x6709;&#x7F13;&#x5B58;&#x3002;&#x5F53;&#x7F13;&#x5B58;&#x6EE1;&#x4E86;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x628A;&#x6700;&#x4E0D;&#x5E38;&#x7528;&#x7684;&#x7F13;&#x5B58;&#x8E22;&#x51FA;&#x53BB;&#x3002;</li>
+</ul>
+<h3 id="etl">ETL: <a href="#etl" class="header-anchor">#</a></h3>
+<p>&#x6839;&#x636E;request&#x8BBE;&#x8BA1;&#x597D;&#x6570;&#x636E;&#x5E93;&#x7684;schema&#x4EE5;&#x540E;&#xFF0C;&#x8981;&#x597D;&#x597D;&#x8BBE;&#x8BA1;ETL&#x3002;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x7528;EMR&#x628A;twitter&#x6570;&#x636E;&#x96C6;&#x8F7D;&#x5165;&#x5230;&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x4E2D;&#xFF0C;&#x6BCF;&#x6B21;&#x9700;&#x8981;10-20&#x4E2A;&#x5C0F;&#x65F6;&#xFF0C;&#x800C;EMR&#x7279;&#x522B;&#x8D35;&#xFF0C;&#x6240;&#x4EE5;&#x6700;&#x597D;&#x4E0D;&#x8981;&#x91CD;&#x590D;&#x52B3;&#x52A8;&#x3002;&#x6700;&#x521D;&#xFF0C;&#x7528;&#x5C0F;&#x6570;&#x636E;&#x53CA;&#x6765;&#x6D4B;&#x8BD5;&#x3002;</p>
+<p>&#x8FD9;&#x4E00;&#x9636;&#x6BB5;&#x6211;&#x4EEC;&#x8981;&#x5904;&#x7406;&#x4E24;&#x7C7B;&#x8BF7;&#x6C42;&#xFF0C;&#x4ECE;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x4E2D;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x642D;&#x5EFA;&#x597D;&#x7684;web service &#x9700;&#x8981;&#x80FD;&#x591F;&#x8FDE;&#x63A5;&#x5230;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x540E;&#x7AEF;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;(MySQL &#x548C; HBase)&#xFF0C;&#x524D;&#x7AEF;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x7AEF;&#x53E3; 80 &#x63A5;&#x6536; HTTP GET &#x8BF7;&#x6C42;&#x3002;</p>
+<h4 id="cao-zuo-guo-cheng">&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;&#xFF1A; <a href="#cao-zuo-guo-cheng" class="header-anchor">#</a></h4>
+<p>&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x8981;&#x5199;&#x4E00;&#x4E2A;Map&#x548C;&#x4E00;&#x4E2A;Reduce&#x6587;&#x4EF6;&#x6765;&#x5904;&#x7406;&#x6570;&#x636E;&#x3002;&#x539F;&#x59CB;&#x6570;&#x636E;&#x7684;&#x683C;&#x5F0F;&#x662F;JSON&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5904;&#x7406;&#x6210;&#x9700;&#x8981;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF1A;</p>
+<p>&#x8BF7;&#x6C42;&#x683C;&#x5F0F;
+userid+hashtag<br>
+<code>GET /q2?userid=uid&amp;hashtag=hashtag</code></p>
+<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F; (&#x5982;&#x679C;Tweet&#x5B58;&#x5728;)</p>
+<ul>
+<li>tweet &#x7684; sentiment density</li>
+<li>tweet &#x7684;&#x53D1;&#x5E03;&#x65F6;&#x95F4;</li>
+<li>tweet id</li>
+<li>&#x5BA1;&#x67E5;&#x4FEE;&#x6539;&#x8FC7;&#x7684;&#x7684; tweet &#x5185;&#x5BB9;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x5F88;&#x591A;&#x53EF;&#x80FD;&#x51FA;&#x95EE;&#x9898;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6BD4;&#x5982; emoji &#x8868;&#x60C5;&#x3001;&#x53CD;&#x659C;&#x6760;&#x3001;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x7684;&#x5B57;&#x7B26;&#x7B49;&#x7B49;</li>
+</ul>
+<p><code>TEAMID,TEAM_AWS_ACCOUNT_ID\n Sentiment_density1:Tweet_time1:Tweet_id1:Cencored_text1\n Sentiment_density2:Tweet_time2:Tweet_id2:Cencored_text2\n Sentiment_density3:Tweet_time3:Tweet_id3:Cencored_text3\n</code></p>
+<p>&#x54CD;&#x5E94;&#x683C;&#x5F0F; (&#x5982;&#x679C;Tweet&#x4E0D;&#x5B58;&#x5728;)
+<code>TEAMID,TEAM_AWS_ACCOUNT_ID\n \n</code></p>
+<p>map&#x548C;reduce&#x7A0B;&#x5E8F;&#x5199;&#x5B8C;&#x540E;&#xFF0C;&#x5230;EMR&#x4E0A;&#x9762;&#x8DD1;&#xFF0C;&#x8981;&#x6CE8;&#x610F;&#xFF1A;</p>
+<ul>
+<li>&#x73B0;&#x7528;&#x5C0F;&#x6570;&#x636E;&#x96C6;&#x6D4B;&#x8BD5;&#x3002;</li>
+<li>&#x6CE8;&#x610F;&#x5404;&#x79CD;&#x5C0F;&#x7EC6;&#x8282;</li>
+<li>&#x5173;&#x4E8E;EMR&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x6B65;&#x9AA4;&#x4E4B;&#x540E;&#x6709;&#x7A7A;&#x603B;&#x7ED3;&#x4E0B;&#x4E4B;&#x524D;&#x4E91;&#x8BA1;&#x7B97;&#x7684;EMR project&#x3002;</li>
+</ul>
+<h3 id="query-wen-ben-qing-li-he-fen-xi">Query &#x6587;&#x672C;&#x6E05;&#x7406;&#x548C;&#x5206;&#x6790; <a href="#query-wen-ben-qing-li-he-fen-xi" class="header-anchor">#</a></h3>
+<p>&#x76EE;&#x6807;&#x541E;&#x5410;&#x91CF;&#xFF1A; 10000 rps
+&#x4E0D;&#x5141;&#x8BB8;&#x7528;&#x73B0;&#x7528;&#x7684;&#x7F13;&#x5B58;&#x8BBE;&#x5907;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5199;&#x7F13;&#x5B58;&#x3002;
+&#x4F1A;&#x67E5;&#x8BE2;&#x67D0;&#x4E2A;&#x7528;&#x6237;&#x7528;&#x6307;&#x5B9A;&#x7684; hashtag &#x53D1;&#x7684; tweet&#xFF0C;&#x4E3B;&#x8981;&#x8003;&#x5BDF;&#x5982;&#x4F55;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x9AD8;&#x6548;&#x7684;&#x540E;&#x7AEF;&#x6765;&#x5904;&#x7406;&#x5927;&#x91CF;&#x7684;&#x8BF7;&#x6C42;&#x3002;</p>
+<h3 id="hou-duan-shu-ju-ku">&#x540E;&#x7AEF;&#x6570;&#x636E;&#x5E93; <a href="#hou-duan-shu-ju-ku" class="header-anchor">#</a></h3>
+<p>ETL&#x7ED3;&#x675F;&#x4EE5;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5BFC;&#x5165;&#x6570;&#x636E;&#x5E93;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x7EA0;&#x7ED3;&#x4E8E;replication&#x548C;sharding&#x7684;&#x9009;&#x62E9;&#x3002;
+Replication&#x662F;&#x6307;&#x5C06;&#x5B8C;&#x6574;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5B58;&#x5728;&#x6BCF;&#x4E00;&#x53F0;&#x673A;&#x5668;&#x4E0A;&#xFF0C;&#x800C;Sharding&#x662F;&#x6307;&#x5206;&#x6210;&#x51E0;&#x4E2A;&#x90E8;&#x5206;&#x5206;&#x522B;&#x5B58;&#x5728;&#x6BCF;&#x4E00;&#x53F0;&#x673A;&#x5668;&#x4E0A;&#x3002;&#x6700;&#x7EC8;&#xFF0C;&#x9009;&#x62E9;&#x4E86;Sharding&#x6A21;&#x5F0F;&#x3002;</p>
+<h4 id="shu-ju-ku-she-ji">&#x6570;&#x636E;&#x5E93;&#x8BBE;&#x8BA1;&#xFF1A; <a href="#shu-ju-ku-she-ji" class="header-anchor">#</a></h4>
+<p>&#x6309;&#x7167;&#x6211;&#x4EEC;&#x521A;&#x521A;&#x8BF4;&#x8FC7;&#x7684;&#x8BF7;&#x6C42;&#x683C;&#x5F0F;&#x548C;&#x54CD;&#x5E94;&#x683C;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x5BF9;MySQL&#x548C;HBase&#x8FDB;&#x884C;&#x8BBE;&#x8BA1;&#xFF1A;</p>
+<h5 id="mysql">MySQL&#xFF1A; <a href="#mysql" class="header-anchor">#</a></h5>
+<h6 id="she-ji-mo-shi">&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF1A; <a href="#she-ji-mo-shi" class="header-anchor">#</a></h6>
+<p>&#xFF08;&#x8FD9;&#x91CC;&#x53C2;&#x7167;&#x4E86;Yuki&#x7EC4;&#x7684;&#x8D62;&#x5BB6;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7C97;&#x66B4;&#xFF09;
+&#x539F;&#x6765;&#x7684;schema&#x662F;&#x6BCF;&#x4E00;&#x5217;&#x90FD;&#x5F88;&#x6E05;&#x6670;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;row&#x76F8;&#x6BD4;&#x540E;&#x9762;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x591A;&#x4E86;&#x5F88;&#x591A;&#xFF0C;&#x5BFC;&#x81F4;&#x6570;&#x636E;&#x5E93;&#x7684;&#x8BFB;&#x53D6;&#x901F;&#x5EA6;&#x6162;&#x4E86;&#x5F88;&#x591A;&#x3002;
+&#x6240;&#x4EE5;&#x65B0;&#x7684;schema&#x5C31;&#x9009;&#x62E9;&#x53EA;&#x5B58;&#x53D6;id&#xFF0C;&#x8BFB;&#x53D6;&#x6240;&#x6709;&#x7684;tweets&#x4EE5;&#x540E;&#xFF0C;&#x8BA9;&#x524D;&#x7AEF;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x89E3;&#x6790;&#x3002;</p>
+<p><img src="http://i.imgur.com/Zmk6QUp.png" alt=""></p>
+<h6 id="you-hua-fang-fa">&#x4F18;&#x5316;&#x65B9;&#x6CD5;&#xFF1A; <a href="#you-hua-fang-fa" class="header-anchor">#</a></h6>
+<ul>
+<li>&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;Index</li>
+<li>mysql&#x6709;&#x4E24;&#x4E2A;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#xFF0C;MyISAM&#x548C;InnoDB&#xFF0C;MyISAM&#x9002;&#x7528;&#x4E8E;&#x5927;&#x91CF;&#x67E5;&#x5BFB;&#xFF0C;&#x5BF9;&#x5199;&#x5E76;&#x4E0D;&#x662F;&#x975E;&#x5E38;&#x53CB;&#x597D;&#xFF0C;updata&#x65F6;&#x4F1A;&#x6574;&#x8868;&#x9501;&#x4F4F;&#x3002;&#x800C;InnoDB&#x4F7F;&#x7528;&#x7684;&#x662F;&#x201C;&#x884C;&#x9501;&quot;&#x3002;
+&#x8BBE;&#x7F6E;Key_buffer_size&#x4EE5;&#x53CA;Query_cache_size&#x5230;&#x66F4;&#x9AD8;&#x7684;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x589E;&#x52A0;&#x7F13;&#x51B2;&#x5BB9;&#x91CF;&#x3002;</li>
+<li>&#x8BBE;&#x7F6E;&#x6240;&#x6709;column&#x4E3A;not null&#xFF0C;&#x8FD9;&#x6837;mysql&#x4E0D;&#x7528;&#x9884;&#x7559;&#x7A7A;&#x95F4;&#x68C0;&#x67E5;null&#x503C;&#x3002;&#x4F1A;&#x63D0;&#x9AD8;&#x8BFB;&#x53D6;&#x901F;&#x5EA6;&#x3002;</li>
+</ul>
+<h5 id="hbase">HBase: <a href="#hbase" class="header-anchor">#</a></h5>
+<p>&#x9274;&#x4E8E;HBase&#x662F;key-value&#x5B58;&#x50A8;&#x6A21;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x8FD9;&#x91CC;&#x53EA;&#x8981;&#x8003;&#x8651;key&#x91CC;&#x600E;&#x4E48;&#x653E;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x6570;&#x636E;&#x5168;&#x90FD;&#x653E;&#x5230;column family&#x91CC;&#x9762;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;
+&#x6211;&#x4EEC;&#x91C7;&#x7528;tweet_id + user_id + hashtag&#x4F5C;&#x4E3A;rowkey&#x3002;</p>
+<h6 id="you-hua-fang-fa-zhai-zi-xiao-tu-dao-bo-ke">&#x4F18;&#x5316;&#x65B9;&#x6CD5;&#xFF08;&#x6458;&#x81EA;&#x5C0F;&#x571F;&#x5200;&#x535A;&#x5BA2;&#xFF09;&#xFF1A; <a href="#you-hua-fang-fa-zhai-zi-xiao-tu-dao-bo-ke" class="header-anchor">#</a></h6>
+<ul>
+<li>
+<p>&#x5206;&#x914D;&#x5408;&#x9002;&#x7684;&#x5185;&#x5B58;&#x7ED9; RegionServer &#x670D;&#x52A1;
+&#x4F8B;&#x5982;&#x5728; HBase &#x7684; conf &#x76EE;&#x5F55;&#x4E0B;&#x7684; hbase-env.sh &#x7684;&#x6700;&#x540E;&#x6DFB;&#x52A0; export HBASE_REGIONSERVER_OPTS=&#x201D;-Xmx16000m $HBASE_REGIONSERVER_OPTS&#x201D;
+&#x5176;&#x4E2D; 16000m &#x4E3A;&#x5206;&#x914D;&#x7ED9; RegionServer &#x7684;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x3002;</p>
+</li>
+<li>
+<p>RegionServer &#x7684;&#x8BF7;&#x6C42;&#x5904;&#x7406; IO &#x7EBF;&#x7A0B;&#x6570;
+&#x8F83;&#x5C11;&#x7684; IO &#x7EBF;&#x7A0B;&#x9002;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x5355;&#x6B21;&#x8BF7;&#x6C42;&#x5185;&#x5B58;&#x6D88;&#x8017;&#x8F83;&#x9AD8;&#x7684; Big Put &#x573A;&#x666F; (&#x5927;&#x5BB9;&#x91CF;&#x5355;&#x6B21; Put &#x6216;&#x8BBE;&#x7F6E;&#x4E86;&#x8F83;&#x5927; cache &#x7684; Scan&#xFF0C;&#x5747;&#x5C5E;&#x4E8E; Big Put) &#x6216; ReigonServer &#x7684;&#x5185;&#x5B58;&#x6BD4;&#x8F83;&#x7D27;&#x5F20;&#x7684;&#x573A;&#x666F;&#x3002;
+&#x8F83;&#x591A;&#x7684; IO &#x7EBF;&#x7A0B;&#xFF0C;&#x9002;&#x7528;&#x4E8E;&#x5355;&#x6B21;&#x8BF7;&#x6C42;&#x5185;&#x5B58;&#x6D88;&#x8017;&#x4F4E;&#xFF0C;TPS &#x8981;&#x6C42; (&#x6BCF;&#x79D2;&#x4E8B;&#x52A1;&#x5904;&#x7406;&#x91CF; (TransactionPerSecond)) &#x975E;&#x5E38;&#x9AD8;&#x7684;&#x573A;&#x666F;&#x3002;&#x8BBE;&#x7F6E;&#x8BE5;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4EE5;&#x76D1;&#x63A7;&#x5185;&#x5B58;&#x4E3A;&#x4E3B;&#x8981;&#x53C2;&#x8003;&#x3002;
+&#x5728; hbase-site.xml &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x914D;&#x7F6E;&#x9879;&#x4E3A; hbase.regionserver.handler.count 200</p>
+</li>
+<li>
+<p>&#x8C03;&#x6574; Block Cache
+hfile.block.cache.size&#xFF1A;RS&#x7684;block cache&#x7684;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x9650;&#x5236;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;0.25&#xFF0C;&#x5728;&#x504F;&#x5411;&#x8BFB;&#x7684;&#x4E1A;&#x52A1;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x9002;&#x5F53;&#x8C03;&#x5927;&#x8BE5;&#x503C;&#xFF0C;&#x5177;&#x4F53;&#x914D;&#x7F6E;&#x65F6;&#x9700;&#x8BD5;hbase&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#x7684;&#x4E1A;&#x52A1;&#x7279;&#x5F81;&#xFF0C;&#x7ED3;&#x5408;memstore&#x7684;&#x5185;&#x5B58;&#x5360;&#x6BD4;&#x8FDB;&#x884C;&#x7EFC;&#x5408;&#x8003;&#x8651;&#x3002;</p>
+</li>
+</ul>
+<h2 id="zong-jie">&#x603B;&#x7ED3;&#xFF1A; <a href="#zong-jie" class="header-anchor">#</a></h2>
+<p>Team Project&#x8FC7;&#x53BB;&#x633A;&#x4E45;&#x4E86;&#xFF0C;&#x5F88;&#x591A;&#x7EC6;&#x8282;&#x8BB0;&#x4E0D;&#x5F97;&#x4E86;&#xFF0C;&#x6E05;&#x6D17;&#x6570;&#x636E;&#x7684;&#x90E8;&#x5206;&#x6709;&#x5F88;&#x591A;&#x7EC6;&#x8282;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x5E76;&#x4E0D;&#x50CF;&#x8FD9;&#x91CC;&#x5199;&#x7684;&#x4E00;&#x4E24;&#x53E5;&#x8BDD;&#x5C31;&#x8BB2;&#x6E05;&#x695A;&#x4E86;&#x3002;&#x8FD8;&#x6709;&#x6570;&#x636E;&#x5E93;&#x4F18;&#x5316;&#x662F;&#x4E00;&#x6761;&#x4E0D;&#x5F52;&#x8DEF;&#xFF0C;&#x76F2;&#x76EE;&#x4F18;&#x5316;&#x4F1A;&#x5BFC;&#x81F4;&#x53CD;&#x5411;&#x4F18;&#x5316;&#xFF0C;&#x5176;&#x5B9E;&#x6839;&#x636E;&#x540E;&#x6765;&#x8D62;&#x5BB6;&#x7684;&#x62A5;&#x544A;&#x6765;&#x770B;&#xFF0C;&#x4F18;&#x5316;&#x5E76;&#x8D77;&#x4E0D;&#x5230;&#x591A;&#x5C11;&#x4F5C;&#x7528;&#xFF0C;&#x597D;&#x7684;schema&#x8BBE;&#x8BA1;&#x624D;&#x662F;&#x63D0;&#x9AD8;performance&#x7684;&#x6700;&#x6839;&#x672C;&#x3002;
+&#x4E91;&#x8BA1;&#x7B97;&#x8FD9;&#x95E8;&#x8BFE;&#x7684;&#x7CBE;&#x534E;&#xFF0C;&#x90FD;&#x5728;&#x8FD9;&#x4E2A;Project&#xFF0C;&#x8986;&#x76D6;&#x4E86;&#x5927;&#x90E8;&#x5206;&#x8FD9;&#x95E8;&#x8BFE;&#x7684;&#x6240;&#x5B9E;&#x9A8C;&#x7684;&#x77E5;&#x8BC6;&#x3002;&#x4ECE;load balance&#x5230;sharding&#x548C;replication&#xFF0C;&#x518D;&#x5230;SQL&#x548C;NoSQL&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x518D;&#x5230;EMR&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x5C31;&#x5DEE;&#x5E76;&#x884C;&#x5E76;&#x53D1;&#x90A3;&#x90E8;&#x5206;&#x7684;&#x5185;&#x5BB9;&#x4E86;&#x3002;
+&#x5B66;&#x4E60;&#x662F;&#x4E0D;&#x96BE;&#x7684;&#xFF0C;&#x6709;&#x6307;&#x5BFC;&#x6765;&#x505A;project&#x4E5F;&#x4E0D;&#x96BE;&#xFF0C;&#x771F;&#x6B63;&#x5230;&#x4E86;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x6CA1;&#x6709;&#x4EBA;&#x77E5;&#x9053;&#x6B63;&#x786E;&#x7B54;&#x6848;&#xFF0C;&#x9760;&#x7684;&#x90FD;&#x662F;&#x601D;&#x8003;&#x548C;&#x7ECF;&#x9A8C;&#x4E86;&#x3002;</p>
+<p><strong>References&#xFF1A;</strong>
+[&#x5C0F;&#x571F;&#x5200;&#x4E91;&#x8BA1;&#x7B97;&#x8BED;&#x6599;&#x5206;&#x6790;&amp;&#x53CD;&#x601D;&#x8BFE;] &#xFF08;http://wdxtub.com/&#xFF09;
+&#x5C0F;Yuki&#x7684;Report</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&amp;#x672C;&amp;#x6587;&amp;#x662F;Twitter Analytics on the Cloud&amp;#x9879;&amp;#x76EE;&amp;#x7684;&amp;#x4ECB;&amp;
+    
+    </summary>
+    
+      <category term="CMU课程" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/"/>
+    
+      <category term="Cloud Computing" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/Cloud-Computing/"/>
+    
+    
+      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+    
+      <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>binary tree inorder traversal</title>
+    <link href="http://yoursite.com/2017/02/25/binary-tree-inorder-traversal/"/>
+    <id>http://yoursite.com/2017/02/25/binary-tree-inorder-traversal/</id>
+    <published>2017-02-26T04:40:15.000Z</published>
+    <updated>2017-02-26T04:40:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Leetcode 325. Maximum Size Subarray Sum Equals k</title>
     <link href="http://yoursite.com/2017/02/25/Leetcode-325-Maximum-Size-Subarray-Sum-Equals-k/"/>
     <id>http://yoursite.com/2017/02/25/Leetcode-325-Maximum-Size-Subarray-Sum-Equals-k/</id>
     <published>2017-02-25T20:27:57.000Z</published>
-    <updated>2017-02-25T20:35:06.000Z</updated>
+    <updated>2017-02-25T20:35:47.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question: <a href="#question" class="header-anchor">#</a></h3>
 <p>Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn&apos;t one, return 0 instead.</p>
@@ -1027,101 +1183,6 @@ http://www.programmerinterview.com/</p>
       <category term="Interview" scheme="http://yoursite.com/tags/Interview/"/>
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 271. Encode and Decode Strings</title>
-    <link href="http://yoursite.com/2017/02/10/271-Encode-and-Decode-Strings/"/>
-    <id>http://yoursite.com/2017/02/10/271-Encode-and-Decode-Strings/</id>
-    <published>2017-02-11T04:52:01.000Z</published>
-    <updated>2017-02-11T05:50:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question: <a href="#question" class="header-anchor">#</a></h3>
-<p>Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.</p>
-<p>Machine 1 (sender) has the function:</p>
-<p><figure class="highlight plain"><figcaption><span>encode(vector<string> strs) {</string></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  // ... your code</div><div class="line">  return encoded_string;</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<p>Machine 2 (receiver) has the function:
-<figure class="highlight plain"><figcaption><span>decode(string s) {</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  //... your code</div><div class="line">  return strs;</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<p>So Machine 1 does:</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string encoded_string = encode(strs);</div></pre></td></tr></table></figure></p>
-<p>and Machine 2 does:</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vector&lt;string&gt; strs2 = decode(encoded_string);</div></pre></td></tr></table></figure></p>
-<p>strs2 in Machine 2 should be the same as strs in Machine 1.</p>
-<p>Implement the encode and decode methods.</p>
-<p>Note:</p>
-<ul>
-<li>The string may contain any possible characters out of 256 valid ascii characters. Your algorithm should be generalized enough to work on any possible characters.</li>
-<li>Do not use class member/global/static variables to store states. Your encode and decode algorithms should be stateless.</li>
-<li>Do not rely on any library method such as eval or serialize methods. You should implement your own encode/decode algorithm.</li>
-</ul>
-<h3 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h3>
-<p>&#x4E4D;&#x4E00;&#x770B;&#xFF0C;&#x4E5F;&#x4E0D;&#x77E5;&#x9053;&#x8BF4;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#x3002;&#x5176;&#x5B9E;&#x9898;&#x610F;&#x662F;&#x7ED9;&#x4E00;&#x4E2A;list&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5148;&#x8981;&#x62FC;&#x6210;&#x4E00;&#x6574;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x662F;encode&#x3002;&#x7136;&#x540E;&#x628A;&#x8FD9;&#x6574;&#x4E2A;&#x5B57;&#x7B26;&#x62C6;&#x56DE;&#x4E00;&#x4E2A;list&#x7684;&#x5B57;&#x7B26;&#x3002;
-&#x6240;&#x4EE5;&#x8003;&#x70B9;&#x662F;&#x5982;&#x4F55;&#x5408;&#x7406;&#x5730;&#x5206;&#x9694;&#xFF0C;&#x7136;&#x540E;&#x8FD8;&#x80FD;&#x8BC6;&#x522B;&#x51FA;&#x6765;&#x3002;
-&#x8FD9;&#x54EA;&#x513F;&#x662F;&#x7B97;&#x6CD5;&#xFF0C;&#x5176;&#x5B9E;&#x8003;&#x7684;&#x662F;Serilization&#x8FD9;&#x4E2A;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;&#x3002;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#x4E32;&#x884C;&#x5316;(Serialization)&#x662F;&#x8BA1;&#x7B97;&#x673A;&#x79D1;&#x5B66;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#xFF0C;&#x5B83;&#x662F;&#x6307;&#x5C06;&#x5BF9;&#x8C61;&#x5B58;&#x50A8;&#x5230;&#x4ECB;&#x8D28;&#xFF08;&#x5982;&#x6587;&#x4EF6;&#x3001;&#x5185;&#x5B58;&#x7F13;&#x51B2;&#x533A;&#x7B49;&#xFF09;&#x4E2D;&#x6216;&#x662F;&#x4EE5;&#x4E8C;&#x8FDB;&#x5236;&#x65B9;&#x5F0F;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x4F20;&#x8F93;&#x3002;&#x4E4B;&#x540E;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x53CD;&#x4E32;&#x884C;&#x5316;&#x4ECE;&#x8FD9;&#x4E9B;&#x8FDE;&#x7EED;&#x7684;&#x5B57;&#x8282;&#xFF08;byte&#xFF09;&#x6570;&#x636E;&#x91CD;&#x65B0;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x4E0E;&#x539F;&#x59CB;&#x5BF9;&#x8C61;&#x72B6;&#x6001;&#x76F8;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x7279;&#x5B9A;&#x60C5;&#x51B5;&#x4E0B;&#x4E5F;&#x53EF;&#x4EE5;&#x8BF4;&#x662F;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x526F;&#x672C;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x60C5;&#x51B5;&#x90FD;&#x8FD9;&#x6837;&#x3002;</div></pre></td></tr></table></figure></p>
-<h3 id="code">Code: <a href="#code" class="header-anchor">#</a></h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class Codec {</div><div class="line"></div><div class="line">    // Encodes a list of strings to a single string.</div><div class="line">    public String encode(List&lt;String&gt; strs) {</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        for(String s : strs) {</div><div class="line">            sb.append(s.length()).append(&apos;/&apos;).append(s);</div><div class="line">        }</div><div class="line">        return sb.toString();</div><div class="line">    }</div><div class="line"></div><div class="line">    // Decodes a single string to a list of strings.</div><div class="line">    public List&lt;String&gt; decode(String s) {</div><div class="line">        List&lt;String&gt; ret = new ArrayList&lt;String&gt;();</div><div class="line">        int i = 0;</div><div class="line">        while(i &lt; s.length()) {</div><div class="line">            int slash = s.indexOf(&apos;/&apos;, i);</div><div class="line">            int size = Integer.valueOf(s.substring(i, slash));</div><div class="line">            ret.add(s.substring(slash + 1, slash + size + 1));</div><div class="line">            i = slash + size + 1;</div><div class="line">        }</div><div class="line">        return ret;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question: &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Design
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="String" scheme="http://yoursite.com/tags/String/"/>
-    
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 346. Moving Average from Data Stream</title>
-    <link href="http://yoursite.com/2017/02/10/346-Moving-Average-from-Data-Stream/"/>
-    <id>http://yoursite.com/2017/02/10/346-Moving-Average-from-Data-Stream/</id>
-    <published>2017-02-11T02:17:27.000Z</published>
-    <updated>2017-02-11T02:20:33.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question <a href="#question" class="header-anchor">#</a></h3>
-<p>Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.</p>
-<p>For example,
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">MovingAverage m = new MovingAverage(3);</div><div class="line">m.next(1) = 1</div><div class="line">m.next(10) = (1 + 10) / 2</div><div class="line">m.next(3) = (1 + 10 + 3) / 3</div><div class="line">m.next(5) = (10 + 3 + 5) / 3</div></pre></td></tr></table></figure></p>
-<h3 id="explanation">Explanation: <a href="#explanation" class="header-anchor">#</a></h3>
-<p>&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;&#x9898;&#x76EE;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;queue&#x6216;&#x8005;arraylist&#x6216;&#x8005;array&#x4FDD;&#x5B58;next&#x7684;&#x503C;&#x3002;&#x7528;&#x4E00;&#x4E2A;sum&#x5B58;&#x7740;&#x603B;&#x548C;&#xFF0C;&#x6BCF;&#x6B21;&#x90FD;&#x8BA1;&#x7B97;&#x4E00;&#x4E0B;&#x5E73;&#x5747;&#x503C;&#x3002;</p>
-<h3 id="code">Code: <a href="#code" class="header-anchor">#</a></h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class MovingAverage {</div><div class="line"></div><div class="line">    /** Initialize your data structure here. */</div><div class="line">    Queue&lt;Integer&gt; q = new LinkedList&lt;&gt;();</div><div class="line">    int size;</div><div class="line">    int count = 0;</div><div class="line">    int total = 0;</div><div class="line">    public MovingAverage(int size) {</div><div class="line">        this.size = size;</div><div class="line"></div><div class="line">    }</div><div class="line"></div><div class="line">    public double next(int val) {</div><div class="line">        if (count &lt; size) {</div><div class="line">            count ++;</div><div class="line">            q.offer(val);</div><div class="line">            total += val;</div><div class="line">            return total*1.0 / count;</div><div class="line">        } else {</div><div class="line">            int remove = q.poll();</div><div class="line">            q.offer(val);</div><div class="line">            total -= remove;</div><div class="line">            total += val;</div><div class="line">            return total*1.0/ size;</div><div class="line">        }</div><div class="line"></div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question &lt;a href=&quot;#question&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Given a
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="Queue" scheme="http://yoursite.com/tags/Queue/"/>
     
   </entry>
   
