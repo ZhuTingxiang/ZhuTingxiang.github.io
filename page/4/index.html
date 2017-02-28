@@ -410,16 +410,7 @@
 Rotate an array of n elements to the right by k steps.
 For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
 Note:
-Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
-Hint:
-Could you do it in-place with O(1) extra space?
-Related problem:
-Reverse Words in a String II
-There are three solutions for this problem:
-Solution 1:
-We can use temporary array to store k elements.
-Time complexity: O(N)
-Space 
+Try to come up as many solutions as 
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -571,20 +562,7 @@ Space
 LeetCode 349. Intersection of Two Arrays
 Question:
 Given two arrays, write a function to compute their intersection.
-Example:
-Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].
-Note:
-
-Each element in the result must be unique.
-The result can be in any order.
-
-Explanation:
-题意是找到两个Array之间交叉的值，无重复。
-
-Solution 1:
-
-Time Complexity: O( N^2 )
-Iterate two arrays, add intersection elements to a HashSet. Using set here to avoi
+Example
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -734,15 +712,7 @@ Iterate two arrays, add intersection elements to a HashSet. Using set here to av
           
            Question:
 Given an array of integers A and let n to be its length.
-Assume Bk to be an array obtained by rotating the array A k positions clock-wise, we define a &quot;rotation function&quot; F on A as follow:
-F(k) = 0 * Bk[0] + 1 * Bk[1] + ... + (n-1) * Bk[n-1].
-Calculate the maximum value of F(0), F(1), ..., F(n-1).
-Note:
-n is guaranteed to be less than 105.
-Example:
-A = [4, 3, 2, 6]
-F(0) = (0 * 4) + (1 * 3) + (2 * 2) + (3 * 6) = 0 + 3 + 4 + 18 = 25
-F(1) = (0 * 6) + (1 * 4) + (2 * 3) + (3 * 2)
+Assume Bk to be an array obtained by rotating the array A k positions clock-wise, we define a &quot;rotation function&quot; F on A a
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -892,12 +862,7 @@ F(1) = (0 * 6) + (1 * 4) + (2 * 3) + (3 * 2)
           
            Question:
 Write an algorithm to determine if a number is &quot;happy&quot;.
-A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.
-Example: 19 is a happy number
-12 + 92 = 82
-82 + 22 = 68
-62 + 82 = 100
-
+A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the 
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1048,18 +1013,7 @@ Example: 19 is a happy number
            Quesition
 You are given a binary tree in which each node contains an integer value.
 Find the number of paths that sum to a given value.
-The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).
-The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.
-Example:
-root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8
-
-      10
-     /  \
-    5   -3
-   / \    \
-  3   2   11
- / \   \
-3  -2 
+The path does not need to start or end at the root or a leaf, b
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1209,12 +1163,7 @@ root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8
           
            Question:
 A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).
-Each LED represents a zero or one, with the least significant bit on the right.
-For example, the above binary watch reads &quot;3:25&quot;.
-Given a non-negative integer n which represents the number of LEDs that are currently on, return all possible times the watch could represent.
-Example:
-Input: n = 1
-Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:0
+Each LED represents a zero or one, with the least significa
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1366,10 +1315,7 @@ Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:0
 晚上，翻到一篇写北京卤煮的文章。15年夏天在北京，一个姑娘带我去了一个南城的胡同里吃卤煮。买单的不是我，领餐的也不是我。
 在吃完之前我都没太搞清楚到底卤煮里面的那些具体是什么。我在当时常聊的微信群里说我在吃卤煮的时候，我哥来了一句，Star，你居然敢吃卤煮啊？当然敢。
 我有什么是不敢的。科科。
-但是，被科普完卤煮的构成以后，正站在五道口农科院的那片稻田前的我，差点连同刚刚吃的吴裕泰抹茶冰淇淋一起吐出来。我感受到了作为一个南方人的极限。
-现在想想，透过现象抛开心理因素，我承认那是好吃的。别忘了，要配北冰洋。
-在外面，最脆弱的时候就是想吃而不可得。之前想吃肠粉的时候，乐文带我去了匹村唯一一家的早茶店，可惜不好吃。以前在澳洲，广东人到处都有，在小天使和囧囧两个潮汕人的带动下，我深深爱上了早茶。虾饺皇要有汁儿才好吃，蜜汁排骨要熟透，凤爪要粉烂且入味。吃得下呢，可以来一个榴莲酥，叉烧包。主食当然是干炒牛河或者鲜虾云吞面啦。可是这里连一家像样的早茶店都没有，和小天使一起感到忧伤。
-最近天冷，雪忽然下起来，风就在我屋子的外面呼呼地刮，有朋友来家里吃火锅，窗外雪花斜着飘，屋里却热气腾腾的。梦瑶埋头
+但是，被科普完卤煮的构成以后，正站在五道口农科院的那片稻田前的我，差点连同刚刚吃的吴裕泰抹茶冰淇淋一
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1526,7 +1472,7 @@ compareTo():
 在 Boolean中，是用boolean的实例于其它实例进行比较；
 在String 中，则是按照字典顺序进行比较，返回的值是一个int 型。
 
-&lt;pre class=&quot;editor-colors lang-text&quot;&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;text plain&quot;&gt;&lt;span&gt; &lt;/span&gt;&lt;span class=&quot;meta paragraph text&quot;&gt;&lt;span&gt;String a = &quot;abc&quot;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div clas
+&lt;pr
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1693,51 +1639,6 @@ compareTo():
 我们可以看到，属性EnjoySport表示最终是否运动，而这个任务的目标是根据sky，humidity等的属性来预测出EnjoySport的值。
 
 
-属性的取值可以为：
-*   ？：表示可以接受任意值
-
-
-明确指定属性值（如warm）
-不允许任何值：
-
-
-
-所以对于EnjoySport这个任务：
-
-
-已知：
-
-
-实例集 X：可能的日子，每个日子都有如下属性描述：
-    *   Sky
-
-
-Temp
-Humid
-Wind
-Water
-Forecast
-
-
-
-假设集： H。每个假设集都有6个属性的任意取值。
-
-
-目标概念c：EnjoySport： 
-
-
-训练实例 D： +/-的关于目标概念的例子：
-
-
-
-归纳学习假设： 如果一个假设能够在训练集样本中很好地逼近目标函数，就能在未见实例中很好地逼近目标函数。
-
-
-
-Find-S 算法：
-
-
-初
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1907,39 +1808,7 @@ Find-S 算法：
 *   **分类(Classification)**： 医疗诊断： 从一个输出指向一些分类；*   **回归（Regression）**：预测明天的天气：从一个输出到一个数字
 
 
-逻辑回归（Logistic Regression）: 存活几率：从一个输出到一个可能性
-
-
-
-如何解决一个机器学习的问题
-
-定义你的任务，考虑你的目标，比如是要决定是否允许贷款
-考虑实际情况，比如你有多少数据，要花多少时间和努力
-考虑输出的形式，是数字还是分类，是可能性还是一个计划
-选择衡量表现的标准，比如损失函数或错误率
-选择输入的形式
-选择一系列的解决方法（假设空间）
-选择或者设计一种学习算法
-
-
-机器学习和统计的关系
-从20世纪90年代中，人们开始慢慢了解统计和机器学习的关系。
-
-
-统计：
-*   数学的分支
-
-
-更多考虑是否正确
-不太考虑计算的复杂性
-
-
-
-机器学习：
-*   信息技术或者人工智能的分支
-
-
-更
+逻辑回归（Logistic
           ...
           <!--noindex-->
           <div class="post-more-link text-center">

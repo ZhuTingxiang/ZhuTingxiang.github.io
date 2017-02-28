@@ -423,16 +423,8 @@ Leve（高度）：代表有几代。
 
 平衡树和非平衡树
 平衡树：
-左右子树及其的高度相差&lt;=1，并且左右子树也是平衡树。
-
-Full Tree 和 Complete Tree：
-
-Full Tree:每个节点都有0/2个子节点。
-Complete Tree:除了最右边的节点，其他节点都是满节点，并且都靠左。
-
-
-
-          
+左右子树及其的高度相差&l
+          ...
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/02/28/数据结构：树/#more" rel="contents">
@@ -582,10 +574,7 @@ Complete Tree:除了最右边的节点，其他节点都是满节点，并且都
            Question:
 Suppose we abstract our file system by a string in the following manner:
 The string &quot;dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext&quot; represents:
-1234dir    subdir1    subdir2        file.ext
-The directory dir contains an empty sub-directory subdir1 and a sub-directory subdir2 containing a file file.ext.
-The string &quot;dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext&quot; represents:
-1234567dir    subdir1        file1.ext        subsubdir1
+1234dir    subdir1    subdir2        file
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -751,29 +740,7 @@ The string &quot;dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\ts
 在云上建立一个高性能又可靠的web服务。
 设计，开发和部署并优化服务器以能够处理每秒上万次请求的高负载。
 在一个1TB的数据集上完成ETL并载入到Mysql和HBase中。
-设计MySQL和HBase并优化配置，提高性能。
-探索基于云的web服务存在瓶颈的方法，并提高性能。
-
-基本结构：
-￼￼￼￼￼
-
-前端：
-
-通过HTTP GET请求访问web服务，不同的请求有不同的地址，后面有不同参数。
-返回相应的响应时，必须要在持续若干个小时的测试中正常运行。
-web服务不能拒绝请求，要能承受高负载。
-
-后端：
-
-保存用来查询的数据文件
-比较SQL(MySQL)和NoSQL(HBase)
-比较不同数据集不同查询类型的表现，来决定如何实现后端。
-
-数据集：
-Twitter数据集，大于1T，JSON格式存储。
-项目实战
-搭建前端：
-在搭建前端之前，需要慎重选择框架。对比主流web框架，参考
+设计MySQ
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -924,15 +891,7 @@ Twitter数据集，大于1T，JSON格式存储。
            Question:
 Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn't one, return 0 instead.
 Note:
-The sum of the entire nums array is guaranteed to fit within the 32-bit signed integer range.
-Example 1:
-Given nums = [1, -1, 5, -2, 3], k = 3,
-return 4. (because the subarray [1, -1, 5, -2] sums to 3 and is the longest)
-Example 2:
-Given nums = [-2, -1, 2, 1], k = 1,
-return 2. (because the subarray [-1, 2] sums to 1 and is the longest)
-Follow Up:
-
+The sum of the entire nums array is guaranteed to
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1081,8 +1040,7 @@ Follow Up:
         
           
            Question:
-Suppose you are at a party with n people (labeled from 0 to n - 1) and among them, there may exist one celebrity. The definition of a celebrity is that all the other n - 1 people know him/her but he/she does not know any of them.
-Now you want to find out who the celebrity is or verify that there is not one. The only thing you are allowed to do is to ask questions like: &quot;Hi, A. Do you know B?&quot; to get information of whether A knows B. You need to find out the celebrity (or ver
+Suppose you are at a party with n people (labeled from 0 to n - 1) and among them, there may exist one celebrity. The definition of a celebrity is that all the other n - 1 people know him/h
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1247,15 +1205,7 @@ Now you want to find out who the celebrity is or verify that there is not one. T
 探索AWS的DBaas服务的申请、配置和管理
 比较MySQL, HBase和MongoDB在使用Java API载入数据时的异同。
 利用多个后端为同一个复杂的web应用提供数据。
-比较不同数据库在实际应用中的特点。
-
-背景介绍
-DBaas(Database-as-a-Services)：
-在AWS中，我们可以用其中的RDS的MySQL服务。
-MongoDB：
-MongoDB是NoSQL数据库的典型，基于文档存储（Document-oriented），不支持事务和表连接，所以查询的编写、理解和优化比较容易。之后会写一篇关于NoSQL的总结（一个坑）。
-和HBase的key-value存储模式不同，MongoDB基于文档存储模式的优势在于可以支持复杂的数据类型，并且也支持Index。
-MongoDB使用BSON类型存储数据，据说就是把文本直接转成二进制表示，BSON用于以下三种目的
+比较不同
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1534,12 +1484,7 @@ MongoDB使用BSON类型存储数据，据说就是把文本直接转成二进制
            Question:
 Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si &lt; ei), determine if a person could attend all meetings.
 For example,
-Given [[0, 30],[5, 10],[15, 20]],
-return false.
-Explanation:
-先按照start time排序，只要每一个end time都比下一个start time小，即可行。
-Code:
-12345678910111213141516171819202122232425/** * Definition for an interval. * public class Interval &#123; *     int start; *     int end; *     Interval() &#123; start = 0; end = 0; &#125; *     Int
+Given [[0, 30],[
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1690,14 +1635,7 @@ Code:
            本题的简单版本是Meeting Rooms I
 Question:
 Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si &lt; ei), find the minimum number of conference rooms required.
-For example,
-Given [[0, 30],[5, 10],[15, 20]],
-return 2.
-Explanation:
-先对start sort，用heap存end，相当于按照end也sort一遍，之后与最快结束的meeting对比，如果start time比最快结束的要小，则另开一间房间。
-先开始我用了两次循环，TLE了。用Heap是一个不错的选择，其实也可以用指针。直接贴一个标准答案。
-Code:
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/*
+
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1846,9 +1784,7 @@ Code:
         
           
            Question:
-You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &quot;++&quot; into &quot;--&quot;. The game ends when a person can no longer make a move and therefore the other person will be the winner.
-Write a function to determine if the starting player can guarantee a win.
-For example, given s = &quot;++++&quot;, return true. The starting player can guarantee a win by
+You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &quot;++&qu
           ...
           <!--noindex-->
           <div class="post-more-link text-center">

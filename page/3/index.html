@@ -409,11 +409,7 @@
            Always update...
 JVM is plantform dependent?
 
-Is the JVM (Java Virtual Machine) platform dependent or platform independent? What is the advantage of using the JVM, and having Java be a translated language?
-
-
-JVM translates bytecode into machine language
-Every Java program is first compiled into an intermediate language called Java bytecode. The JVM is used primarily for 2 things: the first is to translate the bytecode into the machine language for a particular computer, and the second thing is 
+Is the JVM (Java Virtual Machine) platform dependent or platform independent? What is the advantage of using the JVM, and having Java be a translated lan
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -563,14 +559,7 @@ Every Java program is first compiled into an intermediate language called Java b
           
            Question:
 Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.
-Machine 1 (sender) has the function:
-encode(vector strs) &#123;123  // ... your code  return encoded_string;&#125;
-Machine 2 (receiver) has the function:
-decode(string s) &#123;123  //... your code  return strs;&#125;
-So Machine 1 does:
-1string encoded_string = encode(strs);
-and Machine 2 does:
-1vector&lt;string&gt; strs2 = 
+Machine 1 (sender) has the
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -721,11 +710,7 @@ and Machine 2 does:
            Question
 Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.
 For example,
-12345MovingAverage m = new MovingAverage(3);m.next(1) = 1m.next(10) = (1 + 10) / 2m.next(3) = (1 + 10 + 3) / 3m.next(5) = (10 + 3 + 5) / 3
-Explanation:
-非常简单的题目，可以用queue或者arraylist或者array保存next的值。用一个sum存着总和，每次都计算一下平均值。
-Code:
-1234567891011121314151617181920212223242526272829public class MovingAverage &#123;    /** Initialize your data structure here. */    Queue&
+12345MovingAverage m = new MovingAverage(3);m.next(1) = 1m.next
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -877,13 +862,7 @@ Code:
 Given an unsorted array of integers, find the length of longest increasing subsequence.
 For example,
 Given [10, 9, 2, 5, 3, 7, 101, 18],
-The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4. Note that there may be more than one LIS combination, it is only necessary for you to return the length.
-Your algorithm should run in O(n2) complexity.
-Follow up:
-Could you improve it to O(n log n) time complexity?
-Solution 1: Dynamic Programming O(n^2)
-Explanation:
-第一层循环
+The longest increasing subsequence is [2, 3, 7, 101],
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1035,11 +1014,7 @@ Explanation:
 Given two 1d vectors, implement an iterator to return their elements alternately.
 For example, given two 1d vectors:
 12v1 = [1, 2]v2 = [3, 4, 5, 6]
-By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1, 3, 2, 4, 5, 6].
-Follow up:
-What if you are given k 1d vectors? How well can your code be extended to such cases?
-Clarification for the follow up question - Update (2015-09-18):
-The &quot;Zigzag&quot; order is not clearly defined an
+By calling next repeatedly until hasNext 
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1174,16 +1149,7 @@ The &quot;Zigzag&quot; order is not clearly defined an
 
 
 Indirect Messaging:
-Indirect communication is defined as communication between entities in a distributed system through an intermediary with no direct coupling between the sender and the receiver(s).
-
-Decoupled in space:
-
-Sender does not need to know the identify of the receiver(s) and visa-versa
-Good for handling legacy systems
-– Decoupled in time:
-A component need not even be running
-The messaging system can store messages until they are successfully delivered
-Relia
+Indirect communication is defined as communication between entities in a distributed system through an intermediary with no direct coupling between the 
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1352,13 +1318,7 @@ Association:
 – Appear	and	disappear	from	the	space.
 – Do	so	unpredictably
 – May	be	totally	new	to	the	space.
-– Or	may	be	returning	to	the	space.
-• They	need	to	be:
-– Perhaps	added	to	the	network
-– Brought	into	Association	with	resources	and	applications
-• Examples	of	Association
-– Come	on	campus	and	be	able	to	be	associated	with	the	printers that	are	close	to	you.
-– Be	alerted	if	someone	you	know	is	walking	ne
+– Or
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1494,12 +1454,7 @@ ACID概念总结
 ACID Transactions：
 
 Atomic:  All or nothing. No intermediate states are visible. No possibility that
-only part of the transaction ran. If a transaction fails or aborts prior to
-committing, the TP system will undo the effects of any updates (will
-recover). We either commit or abort the entire process. Checkpointing and
-Logging and recoverable objects can be used to ensure a transaction is
-atomic with respect to failures.
-Consistent:  system invariants preserved, e.g., if
+only part of the transaction ran. If a transaction fails or aborts prior 
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1651,14 +1606,7 @@ Consistent:  system invariants preserved, e.g., if
 今天上Advanced Cloud Computing,三个教授就一个问题争论起来。
 那真的是很触动我的一刻，加起来都快150岁的三个顶尖学术大牛，在投影仪前面，对待知识还是和孩子一样专注和热情，可爱极了。
 忽然想到，Greg的主页上写着，“我才不是个不度假的教授，我2012年去冲浪了呢！”。
-其实，每次选课都很头疼，时间太少，想学的课太多，只恨自己不能多读几年。我也知道上学期很不开心的时候，发过誓这学期不要选很难的课了。可是我的研究生只有一次，在CMU念书的机会也只有一次（当然我不介意以后再来哈哈哈），无法不说服自己再争取一下。
-只是，最近有一个问题在渐渐放大。
-我到底要去哪里。
-其实，很多人也不知道到底要去哪里。但其实每个人，都能看到那么一些些微弱的光，好像是那个地方。只是有些人会选择努力跑着去，有些人怀疑自己是否真的看见了光，有些人，装作看不见。
-之前和萱哥聊天，萱哥倒是很爽快，说不管去哪儿不想呆北京吸霾了，除非这次考上了北影。两年了啊，北影的梦还在。
-你看你看，坚定的人都很坦然。
-就像机器学习拿了满分的Mengyao，总和我说毕业找不到工作，打算去星巴克门口蹲着摆个碗。
-所
+其实，每次选课都很头疼，时间太少，想学的课太多，只恨自己不能多读几年。我也知道上学期很不开心的时候，
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -1815,11 +1763,7 @@ Time complexity:    O(N^2)
 步骤:
 1231. 每次只比较两个值。2. 如果左边的值大，就交换两个值。3. 移动大的值到右边。
 举例:
-123456789101112131415原数组: [4,7, 2, 5, 3]Round 1:  -&gt; [4,7,2,5,3]  -&gt; [4,2,7,5,3]  -&gt; [4,2,5,7,3]  -&gt; [4,2,5,3,7]Round 2:  -&gt; [2,4,5,3,7]  -&gt; [2,4,5,3,7]  -&gt; [2,4,3,5,7]Round 3:  -&gt; [2,4,3,5,7]  -&gt; [2,3,4,5,7]Round 4:  -&gt; [2,3,4,5,7]
-Code:
-int[ ] data = {4, 7, 2, 5, 3}
-Swap Method
-123456// a helper met
+123456789101112131415原数组: [4,7, 
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
