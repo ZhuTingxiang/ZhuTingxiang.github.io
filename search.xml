@@ -4,6 +4,59 @@
   
     
     <entry>
+      <title><![CDATA[云计算应用实例：Obama For America]]></title>
+      <url>http://yoursite.com/2017/03/06/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9AObama-For-America/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>Obama For America（OFA）是云计算一个经典实例，云计算被运用在筹集竞选资金、分析竞争对手、有效使用竞选资金等都为奥巴马的连任成功提供了极大的保障。</p>
+</blockquote>
+<h2 id="ofa是什么">OFA是什么？</h2>
+<p>OFA利用数据集成和预测分析使奥巴马赢得了选举，主要通过数据挖掘来确定及影响摇摆州的投票目标。OFA的数据来源包含：人口数据，投票历史数据，筹款数据，志愿者数据，社交网络数据以及投票数据，得到相关数据后，通过上门拜访，打电话，邮件，信件，网络广告，社交媒体，付费电视和网站等方式来影响投票人的决定。</p>
+<h2 id="ofa的一些数据">OFA的一些数据</h2>
+<p>根据DevOps的负责人透露，OFA的一些关键数据包括：</p>
+<ul>
+<li>4Gbps带宽</li>
+<li>每秒10,000条请求</li>
+<li>2,000个数据节点</li>
+<li>3个数据中心</li>
+<li>180TB数据量</li>
+<li>共约85亿条请求</li>
+<li>从设计到部署到应用共用了583天</li>
+<li>最多30分钟的宕机时间</li>
+<li>技术团队共40人</li>
+</ul>
+<h2 id="核心应用">核心应用</h2>
+<p>Obama For America团队一共构建了200个应用，包括：</p>
+<h3 id="narwhal">Narwhal</h3>
+<p>Narwhal是一个python写的REST API，可调用存放的所有数据。在OFA中，大多数数据存放在MySQL为主的关系型数据库中，但也使用了PostgresDB, MS SQL Server, MongoDB, Vertica, LevelDB, S3, DynamoDB, SimpleDB数据库。除数据存储之外，主要应用了AWS EMR(Elastic MapReduce service)和Vertica来处理大量的数据建模和分析的工作。</p>
+<h3 id="calltool">CallTool</h3>
+<p>CallTool可以用来让志愿者给投票人打电话。在选举的最后四天里，这个工具被1000多个志愿者给超过百万的投票人打了电话。工具可以将志愿者和投票人进行配对。团队在其中应用了AWS的auto-scalling功能在需求高峰能够快速增加云资源。</p>
+<h3 id="dashboard">DashBoard</h3>
+<p>一个用来登记志愿者信息，并允许志愿者查看相应进度和收集到的信息的Rails线上应用工具。</p>
+<h3 id="dreamcatcher">Dreamcatcher</h3>
+<p>Dreamcatcher可以通过处理社交网络上的政治舆情，精确确定目标投票人，并赢得投票人。</p>
+<h3 id="gotv">GOTV</h3>
+<p>GOTV即Get out the vote，这个应用用来动员支持者将支持转化为投票。</p>
+<h2 id="aws如何帮助了ofa">AWS如何帮助了OFA?</h2>
+<p>OFA所有的应用几乎都部署在AWS云端，他们应用了分布消息队列，NoSQL和SQL数据库，虚拟私有云服务，负载均衡，内容传输网络等服务。
+除了能够应对大规模数据处理需求之外，还能够在需求高峰通过自动增加云计算资源保证响应速度。另外，团队在数据备份上也充分利用了云计算的优势。</p>
+<p><img src="http://i.imgur.com/LZfspfL.png" alt=""></p>
+<p><img src="http://i.imgur.com/6DnWTB5.png" alt=""></p>
+<p><img src="http://i.imgur.com/TJaoYcR.png" alt=""></p>
+<p><img src="http://i.imgur.com/vE7R4Ui.png" alt=""></p>
+<hr>
+<p><strong>Reference:</strong></p>
+<blockquote>
+<ol>
+<li><a href="https://gigaom.com/2012/11/12/how-obamas-tech-team-helped-deliver-the-2012-election/" target="_blank" rel="external">How Obama’s tech team helped deliver the 2012 election</a></li>
+<li>Wikipedia:<a href="https://en.wikipedia.org/wiki/Organizing_for_America" target="_blank" rel="external">Organizing for America</a></li>
+<li>CMU 15719 slides</li>
+<li><a href="http://www.informationweek.com/cloud/6-ways-amazon-cloud-helped-obama-win/d/d-id/1107433" target="_blank" rel="external">6 Ways Amazon Cloud Helped Obama Win</a></li>
+</ol>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Leetcode 530. Minimum Absolute Difference in BST]]></title>
       <url>http://yoursite.com/2017/03/03/Leetcode-530-Minimum-Absolute-Difference-in-BST/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
