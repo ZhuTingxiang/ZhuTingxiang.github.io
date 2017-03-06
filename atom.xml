@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-06T21:03:51.000Z</updated>
+  <updated>2017-03-03T05:50:53.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,72 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>云计算应用实例：Obama For America</title>
-    <link href="http://yoursite.com/2017/03/06/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9AObama-For-America/"/>
-    <id>http://yoursite.com/2017/03/06/云计算应用实例：Obama-For-America/</id>
-    <published>2017-03-06T19:41:09.000Z</published>
-    <updated>2017-03-06T21:03:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><blockquote>
-<p>Obama For America（OFA）是云计算一个经典实例，云计算被运用在筹集竞选资金、分析竞争对手、有效使用竞选资金等都为奥巴马的连任成功提供了极大的保障。</p>
-</blockquote>
-<h2 id="ofa是什么">OFA是什么？</h2>
-<p>OFA利用数据集成和预测分析使奥巴马赢得了选举，主要通过数据挖掘来确定及影响摇摆州的投票目标。OFA的数据来源包含：人口数据，投票历史数据，筹款数据，志愿者数据，社交网络数据以及投票数据，得到相关数据后，通过上门拜访，打电话，邮件，信件，网络广告，社交媒体，付费电视和网站等方式来影响投票人的决定。</p>
-<h2 id="ofa的一些数据">OFA的一些数据</h2>
-<p>根据DevOps的负责人透露，OFA的一些关键数据包括：</p>
-<ul>
-<li>4Gbps带宽</li>
-<li>每秒10,000条请求</li>
-<li>2,000个数据节点</li>
-<li>3个数据中心</li>
-<li>180TB数据量</li>
-<li>共约85亿条请求</li>
-<li>从设计到部署到应用共用了583天</li>
-<li>最多30分钟的宕机时间</li>
-<li>技术团队共40人</li>
-</ul>
-<h2 id="核心应用">核心应用</h2>
-<p>Obama For America团队一共构建了200个应用，包括：</p>
-<h3 id="narwhal">Narwhal</h3>
-<p>Narwhal是一个python写的REST API，可调用存放的所有数据。在OFA中，大多数数据存放在MySQL为主的关系型数据库中，但也使用了PostgresDB, MS SQL Server, MongoDB, Vertica, LevelDB, S3, DynamoDB, SimpleDB数据库。除数据存储之外，主要应用了AWS EMR(Elastic MapReduce service)和Vertica来处理大量的数据建模和分析的工作。</p>
-<h3 id="calltool">CallTool</h3>
-<p>CallTool可以用来让志愿者给投票人打电话。在选举的最后四天里，这个工具被1000多个志愿者给超过百万的投票人打了电话。工具可以将志愿者和投票人进行配对。团队在其中应用了AWS的auto-scalling功能在需求高峰能够快速增加云资源。</p>
-<h3 id="dashboard">DashBoard</h3>
-<p>一个用来登记志愿者信息，并允许志愿者查看相应进度和收集到的信息的Rails线上应用工具。</p>
-<h3 id="dreamcatcher">Dreamcatcher</h3>
-<p>Dreamcatcher可以通过处理社交网络上的政治舆情，精确确定目标投票人，并赢得投票人。</p>
-<h3 id="gotv">GOTV</h3>
-<p>GOTV即Get out the vote，这个应用用来动员支持者将支持转化为投票。</p>
-<h2 id="aws如何帮助了ofa">AWS如何帮助了OFA?</h2>
-<p>OFA所有的应用几乎都部署在AWS云端，他们应用了分布消息队列，NoSQL和SQL数据库，虚拟私有云服务，负载均衡，内容传输网络等服务。
-除了能够应对大规模数据处理需求之外，还能够在需求高峰通过自动增加云计算资源保证响应速度。另外，团队在数据备份上也充分利用了云计算的优势。</p>
-<p><img src="http://i.imgur.com/LZfspfL.png" alt=""></p>
-<p><img src="http://i.imgur.com/6DnWTB5.png" alt=""></p>
-<p><img src="http://i.imgur.com/TJaoYcR.png" alt=""></p>
-<p><img src="http://i.imgur.com/vE7R4Ui.png" alt=""></p>
-<hr>
-<p><strong>Reference:</strong></p>
-<blockquote>
-<ol>
-<li><a href="https://gigaom.com/2012/11/12/how-obamas-tech-team-helped-deliver-the-2012-election/" target="_blank" rel="external">How Obama’s tech team helped deliver the 2012 election</a></li>
-<li>Wikipedia:<a href="https://en.wikipedia.org/wiki/Organizing_for_America" target="_blank" rel="external">Organizing for America</a></li>
-<li>CMU 15719 slides</li>
-<li><a href="http://www.informationweek.com/cloud/6-ways-amazon-cloud-helped-obama-win/d/d-id/1107433" target="_blank" rel="external">6 Ways Amazon Cloud Helped Obama Win</a></li>
-</ol>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;blockquote&gt;
-&lt;p&gt;Obama For America（OFA）是云计算一个经典实例，云计算被运用在筹集竞选资金、分析竞争对手、有效使用竞选资金等都为奥巴马的连任成功提
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>Leetcode 530. Minimum Absolute Difference in BST</title>
@@ -493,9 +427,9 @@ Can you do it in O(n) time?</p>
     
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
       <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
   </entry>
   
@@ -755,9 +689,9 @@ return false.</p>
     
       <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
       <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
   </entry>
   
@@ -877,9 +811,9 @@ Example:
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
       <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
@@ -1201,9 +1135,65 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
       <category term="String" scheme="http://yoursite.com/tags/String/"/>
     
+  </entry>
+  
+  <entry>
+    <title>Leetcode 475. Heaters</title>
+    <link href="http://yoursite.com/2017/02/12/Leetcode-475-Heaters/"/>
+    <id>http://yoursite.com/2017/02/12/Leetcode-475-Heaters/</id>
+    <published>2017-02-13T01:21:08.000Z</published>
+    <updated>2017-02-13T01:31:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
+<p>Winter is coming! Your first job during the contest is to design a standard heater with fixed warm radius to warm all the houses.</p>
+<p>Now, you are given positions of houses and heaters on a horizontal line, find out minimum radius of heaters so that all houses could be covered by those heaters.</p>
+<p>So, your input will be the positions of houses and heaters seperately, and your expected output will be the minimum radius standard of heaters.</p>
+<p>Note:</p>
+<ol>
+<li>Numbers of houses and heaters you are given are non-negative and will not exceed 25000.</li>
+<li>Positions of houses and heaters you are given are non-negative and will not exceed 10^9.</li>
+<li>As long as a house is in the heaters' warm radius range, it can be warmed.</li>
+<li>All the heaters follow your radius standard and the warm radius will the same.</li>
+</ol>
+<p>Example 1:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,3],[2]</div><div class="line">Output: 1</div><div class="line">Explanation: The only heater was placed in the position 2, and if we use the radius 1 standard, then all the houses can be warmed.</div></pre></td></tr></table></figure></p>
+<p>Example 2:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,3,4],[1,4]</div><div class="line">Output: 1</div><div class="line">Explanation: The two heater was placed in the position 1 and 4. We need to use radius 1 standard, then all the houses can be warmed.</div></pre></td></tr></table></figure></p>
+<h4 id="solution-1-binary-search-slow">Solution 1: Binary Search (slow)</h4>
+<h5 id="explanation">Explanation:</h5>
+<p>heaters排序，对每个house用binary Search找到最靠近的那个值。</p>
+<h5 id="code">Code:</h5>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public int findRadius(int[] houses, int[] heaters) &#123;</div><div class="line">    Arrays.sort(heaters);</div><div class="line">    int radius = 0;</div><div class="line">    for ( int h : houses) &#123;</div><div class="line">        radius = Math.max(radius, binarySearch(h, heaters));</div><div class="line">    &#125;</div><div class="line">    return radius;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">public int binarySearch(int val, int[] heaters) &#123;</div><div class="line">    int start = 0;</div><div class="line">    int end = heaters.length - 1;</div><div class="line">    int diff =Integer.MAX_VALUE;</div><div class="line">    while (start &lt; end) &#123;</div><div class="line">        int mid = (start + (end-start)/2);</div><div class="line">        if (val &lt; heaters[mid]) &#123;</div><div class="line">            end = mid;</div><div class="line">        &#125; else &#123;</div><div class="line">            start = mid+1;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if (start &gt; 0) &#123;</div><div class="line">        diff = Math.min(Math.abs(val - heaters[start]), Math.abs(val - heaters[start-1]));</div><div class="line">    &#125;</div><div class="line">    if (start &lt; heaters.length - 1) &#123;</div><div class="line">        diff = Math.min(diff, Math.abs(val - heaters[start+1]));</div><div class="line">    &#125;</div><div class="line">    diff = Math.min(diff, Math.abs(val - heaters[start]));</div><div class="line">    return diff;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="solution-2-two-pointersquicker">Solution 2: Two pointers(quicker)</h4>
+<h5 id="explanation">Explanation:</h5>
+<p>heaters, houses排序，用两个指针分别遍历一遍，主体部分的复杂度是O（m+n）</p>
+<h5 id="code">Code:</h5>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public int findRadius(int[] houses, int[] heaters) &#123;</div><div class="line">    // O(mlogm)</div><div class="line">    Arrays.sort(houses);</div><div class="line">    // O(nlogn)</div><div class="line">    Arrays.sort(heaters);</div><div class="line">    int i = 0, res = 0;</div><div class="line">    // O(m+n)</div><div class="line">    for (int house : houses) &#123;</div><div class="line">        while (i &lt; heaters.length - 1 &amp;&amp; heaters[i] + heaters[i + 1] &lt;= house * 2) &#123;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        res = Math.max(res, Math.abs(heaters[i] - house));</div><div class="line">    &#125;</div><div class="line">    return res;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question&quot;&gt;Question:&lt;/h4&gt;
+&lt;p&gt;Winter is coming! Your first job during the contest is
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
+    
+      <category term="Two pointers" scheme="http://yoursite.com/tags/Two-pointers/"/>
     
   </entry>
   
