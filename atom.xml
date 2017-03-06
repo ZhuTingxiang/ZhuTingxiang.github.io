@@ -163,7 +163,7 @@ base case： root为null返回一个空list。
     <link href="http://yoursite.com/2017/02/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     <id>http://yoursite.com/2017/02/28/数据结构：二叉树/</id>
     <published>2017-02-28T19:12:00.000Z</published>
-    <updated>2017-02-28T21:10:24.000Z</updated>
+    <updated>2017-03-06T21:07:05.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是总结Tree这种结构的常用知识点，暂时总结Binary Tree。</p>
 <h2 id="binary-tree二叉树">Binary Tree二叉树</h2>
@@ -184,13 +184,12 @@ base case： root为null返回一个空list。
 <h3 id="平衡树和非平衡树">平衡树和非平衡树</h3>
 <p>平衡树：
 左右子树及其的高度相差&lt;=1，并且左右子树也是平衡树。
-<img src="assets/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E6%A0%91-f4cbe342.jpg" alt=""><img src="assets/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E6%A0%91-f4cbe342.jpg" alt="">
-（此处为了插入图片浪费了半个小时，原来是S3挂了，还以为我的插件坏了..心累）</p>
+<img src="http://i.imgur.com/8XBVd4y.png" alt=""></p>
 <h3 id="full-tree-和-complete-tree">Full Tree 和 Complete Tree：</h3>
 <ul>
 <li>Full Tree:每个节点都有0/2个子节点。</li>
 <li>Complete Tree:除了最右边的节点，其他节点都是满节点，并且都靠左。
-Uploading...</li>
+<img src="http://i.imgur.com/Tp3azOo.png" alt=""></li>
 </ul>
 <h3 id="binary-tree代码实现">Binary Tree代码实现</h3>
 <h4 id="binary-tree-interface">Binary Tree Interface</h4>
