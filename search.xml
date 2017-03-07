@@ -4,6 +4,132 @@
   
     
     <entry>
+      <title><![CDATA[云计算应用实例：OFA/Start-ups/Data Analytics/Cloud Migration Exercise]]></title>
+      <url>http://yoursite.com/2017/03/06/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9AObama-For-America/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h1 id="云计算应用实例obama-for-america">云计算应用实例：Obama For America</h1>
+<blockquote>
+<p>Obama For America（OFA）是云计算一个经典实例，云计算被运用在筹集竞选资金、分析竞争对手、有效使用竞选资金等都为奥巴马的连任成功提供了极大的保障。</p>
+</blockquote>
+<h2 id="ofa是什么">OFA是什么？</h2>
+<p>OFA利用数据集成和预测分析使奥巴马赢得了选举，主要通过数据挖掘来确定及影响摇摆州的投票目标。OFA的数据来源包含：人口数据，投票历史数据，筹款数据，志愿者数据，社交网络数据以及投票数据，得到相关数据后，通过上门拜访，打电话，邮件，信件，网络广告，社交媒体，付费电视和网站等方式来影响投票人的决定。</p>
+<h2 id="ofa的一些数据">OFA的一些数据</h2>
+<p>根据DevOps的负责人透露，OFA的一些关键数据包括：</p>
+<ul>
+<li>4Gbps带宽</li>
+<li>每秒10,000条请求</li>
+<li>2,000个数据节点</li>
+<li>3个数据中心</li>
+<li>180TB数据量</li>
+<li>共约85亿条请求</li>
+<li>从设计到部署到应用共用了583天</li>
+<li>最多30分钟的宕机时间</li>
+<li>技术团队共40人</li>
+</ul>
+<h2 id="核心应用">核心应用</h2>
+<p>Obama For America团队一共构建了200个应用，包括：</p>
+<h3 id="narwhal">Narwhal</h3>
+<p>Narwhal是一个python写的REST API，可调用存放的所有数据。在OFA中，大多数数据存放在MySQL为主的关系型数据库中，但也使用了PostgresDB, MS SQL Server, MongoDB, Vertica, LevelDB, S3, DynamoDB, SimpleDB数据库。除数据存储之外，主要应用了AWS EMR(Elastic MapReduce service)和Vertica来处理大量的数据建模和分析的工作。</p>
+<h3 id="calltool">CallTool</h3>
+<p>CallTool可以用来让志愿者给投票人打电话。在选举的最后四天里，这个工具被1000多个志愿者给超过百万的投票人打了电话。工具可以将志愿者和投票人进行配对。团队在其中应用了AWS的auto-scalling功能在需求高峰能够快速增加云资源。</p>
+<h3 id="dashboard">DashBoard</h3>
+<p>一个用来登记志愿者信息，并允许志愿者查看相应进度和收集到的信息的Rails线上应用工具。</p>
+<h3 id="dreamcatcher">Dreamcatcher</h3>
+<p>Dreamcatcher可以通过处理社交网络上的政治舆情，精确确定目标投票人，并赢得投票人。</p>
+<h3 id="gotv">GOTV</h3>
+<p>GOTV即Get out the vote，这个应用用来动员支持者将支持转化为投票。</p>
+<h2 id="aws如何帮助了ofa">AWS如何帮助了OFA?</h2>
+<p>OFA所有的应用几乎都部署在AWS云端，他们应用了分布消息队列，NoSQL和SQL数据库，虚拟私有云服务，负载均衡，内容传输网络等服务。
+除了能够应对大规模数据处理需求之外，还能够在需求高峰通过自动增加云计算资源保证响应速度。另外，团队在数据备份上也充分利用了云计算的优势。</p>
+<p><img src="http://i.imgur.com/LZfspfL.png" alt=""></p>
+<p><img src="http://i.imgur.com/6DnWTB5.png" alt=""></p>
+<p><img src="http://i.imgur.com/TJaoYcR.png" alt=""></p>
+<p><img src="http://i.imgur.com/vE7R4Ui.png" alt=""></p>
+<hr>
+<p><strong>Reference:</strong></p>
+<blockquote>
+<ol>
+<li><a href="https://gigaom.com/2012/11/12/how-obamas-tech-team-helped-deliver-the-2012-election/" target="_blank" rel="external">How Obama’s tech team helped deliver the 2012 election</a></li>
+<li>Wikipedia:<a href="https://en.wikipedia.org/wiki/Organizing_for_America" target="_blank" rel="external">Organizing for America</a></li>
+<li>CMU 15719 slides</li>
+<li><a href="http://www.informationweek.com/cloud/6-ways-amazon-cloud-helped-obama-win/d/d-id/1107433" target="_blank" rel="external">6 Ways Amazon Cloud Helped Obama Win</a></li>
+</ol>
+</blockquote>
+<h1 id="云计算应用实例start-ups">云计算应用实例：Start-ups</h1>
+<h2 id="背景">背景</h2>
+<p>对于Start-up来说，计算要求往往各种各样，需求量不大，变化却很快。在有限的预算下，还存在着硬件采购周期长，部署周期长，负担不起系统管理，数据中心能量供应，利用率低，灾难响应速度低等问题。</p>
+<p>所以，云计算成为了Start-up的一种选择。举个栗子：</p>
+<h3 id="gosquared">GoSquared</h3>
+<p>GoSquared是一家提供线上实时数据网站分析的企业，被TechCrunch报道后，使用量忽然增加，没有足够的资源应对增长，最终把网站搬到了AWS上，可以迅速得到更多资源，快速拓展。</p>
+<p><strong>Reference</strong></p>
+<blockquote>
+<p><a href="https://aws.amazon.com/solutions/case-studies/gosquared/" target="_blank" rel="external">AWS case study: GoSquared</a></p>
+</blockquote>
+<h1 id="云计算应用实例data-analytics">云计算应用实例：Data Analytics</h1>
+<p>如今企业决策都讲究数据驱动，层出不穷的多媒体数据往往有不同的数据来源，从text到图片到音频和视频。数据处理还分为批处理和流处理。如今，传统的数据处理流程也慢慢转向了云端。</p>
+<h2 id="数据处理流程图">数据处理流程图</h2>
+<p><img src="http://i.imgur.com/7OTudIS.png" alt=""></p>
+<h2 id="lambda架构">Lambda架构</h2>
+<p>Lambda架构定义了一套明确的架构原则，同时利用批处理和流处理对大规模的数据进行处理。此框架的提出主要是为了解决这样的一个问题：如何实时地在任意大数据集上进行查询？</p>
+<p>Lambda架构包含三层layer：</p>
+<ul>
+<li><strong>批处理层：写一次，批量读取多次</strong><br>
+主要有Hadoop实现，负责数据存储和产生试图数据。当新数据到达时，会用MapReduce迭代地讲数据聚集到视图中。根据数据大小和集群的规模，迭代转换计算时间大约需要几小时。</li>
+<li><strong>服务层：随机读取，不支持随机写入，批量计算和批量写入</strong><br>
+这层由Cloudera Impala实现，对于上一层输出的一些列包含预计算视图的原始文件，服务层在Hive元数据层中创建一个表，元数据都指向HDFS中的文件，随后用户可以通过Impala查询到视图。这里服务层用Impala就是为了快速而且交互地查询到Hadoop存储和处理的数据。但是由于MapReduce在实时数据处理中的高延迟，我们还需要加速层。
+在这一层中，需要合并处理Batch views和Real-time views得到最终user需要的query结果。</li>
+<li><strong>加速层：随机读取，随机写入，增量计算</strong><br>
+本层利用Strom框架计算实时视图，使用增量模型，将实时视图作为临时量，只要数据被传送到批处理层中，服务层相应的实时视图就会被丢掉。由于应用了增量模型，往往会比较复杂。</li>
+</ul>
+<p>所以，整个流程为，当数据进来时，会并行地进入到批处理层与加速层，当两者查询都完成在服务层整合好后，才算完成一次完整的查询。</p>
+<p><img src="http://i.imgur.com/E2LbtPy.png" alt=""></p>
+<p>但是这样令人激动的模型，还存在着一些争议，比如</p>
+<ul>
+<li>代码维护需要在两个复杂的分布式系统中进行，需要对不同的框架进行不同的编程。</li>
+<li>在两个分布式系统中运行和维护程序任然很难，比如跨数据库系统中进行ORM（对象关系映射）就会比较难。</li>
+</ul>
+<p>关于Lambda框架的具体细节可参考这本书：<a href="https://www.manning.com/books/big-data" target="_blank" rel="external">《Big data: Principles and best practices of scalable realtime data systems》
+</a>
+其中除了介绍Lambda框架外，还重点放在了一些重要的地方：</p>
+<ul>
+<li>分布式思想</li>
+<li>避免增量架构</li>
+<li>创建再计算算法</li>
+<li>数据相关性</li>
+<li>关注数据不可变</li>
+</ul>
+<p>这张图很好诠释了Lambda是如何处理query的：
+<img src="http://i.imgur.com/qcUMzoL.png" alt=""></p>
+<p>随着发展，后来，Spark被认为是Lambda框架的合理实现。所以在这一部分，感觉写Lambda框架有点过时呢，但老师提到了就再理解一下。时代发展就是这样的，Lambda框架这种临时解决方案，会被更完美的方案取代。不过，不管怎样，人类的进步是令人欣喜的。关于Spark有空可以再写一篇具体一点的，amazing。</p>
+<p><strong>References：</strong></p>
+<blockquote>
+<ol>
+<li><a href="http://blog.csdn.net/john_f_lau/article/details/25502203" target="_blank" rel="external">大数据Lambda架构</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Lambda_architecture" target="_blank" rel="external">Wikipedia Lambda Architecture</a></li>
+<li><a href="https://dzone.com/articles/lambda-architecture-with-apache-spark" target="_blank" rel="external">Lambda Architecture with Apache Spark</a></li>
+</ol>
+</blockquote>
+<h1 id="云计算应用实例云迁移-究竟是否应该选择cloud">云计算应用实例：云迁移 （究竟是否应该选择Cloud？）</h1>
+<p>对研究室来说，是应该使用预置的硬件，还是迁移到云端？
+回答当然是，“It depends.”。</p>
+<p>比如需求是这样：</p>
+<p><img src="http://i.imgur.com/I3rZUZ1.png" alt=""></p>
+<p>如果我们选择预置的机器，按照五年来算：
+<img src="http://i.imgur.com/03678Pu.png" alt=""></p>
+<p>有以下两种云计算的方案：
+方案1：
+<img src="http://i.imgur.com/9umJ84S.png" alt="">
+方案2：
+<img src="http://i.imgur.com/0yWhXho.png" alt=""></p>
+<p>所以我们可以针对不同的需求、不同的云计算选择、不同的费用模型、不同的权限要求等来选择是否迁移到云端。</p>
+<p>另外，在对比时，我们还需要考虑：</p>
+<ul>
+<li>对于本地预置机器：供电、散热、安全性等</li>
+<li>对于云端：迁移到/迁出云端的成本等</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Leetcode 530. Minimum Absolute Difference in BST]]></title>
       <url>http://yoursite.com/2017/03/03/Leetcode-530-Minimum-Absolute-Difference-in-BST/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
