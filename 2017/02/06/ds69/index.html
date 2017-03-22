@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Distributed System,CMU," />
+  <meta name="keywords" content="CMU,Distributed System," />
 
 
 
@@ -133,7 +133,7 @@ Indirect communication is defined as communication between entities in a distrib
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '0',
+      userId: 'undefined',
       author: 'Author'
     },
     algolia: {
@@ -371,7 +371,7 @@ Indirect communication is defined as communication between entities in a distrib
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <a href="/2017/02/06/ds69/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/06/ds69/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/06/ds69/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -541,9 +541,9 @@ Connectionfactory, Queue, Topics</li>
       
         <div class="post-tags">
           
-            <a href="/tags/Distributed-System/" rel="tag"># Distributed System</a>
-          
             <a href="/tags/CMU/" rel="tag"># CMU</a>
+          
+            <a href="/tags/Distributed-System/" rel="tag"># Distributed System</a>
           
         </div>
       
@@ -590,8 +590,11 @@ Connectionfactory, Queue, Topics</li>
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/06/ds69/"
-           data-title="Distributed System-Indirect Communication and Naming" data-url="http://yoursite.com/2017/02/06/ds69/">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
@@ -627,7 +630,7 @@ Connectionfactory, Queue, Topics</li>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-count">56</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -861,32 +864,38 @@ Connectionfactory, Queue, Topics</li>
 
   
 
-  
-    
-  
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"starllap"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+    <script type="text/javascript">
+      var disqus_shortname = 'starllap';
+      var disqus_identifier = '2017/02/06/ds69/';
+
+      var disqus_title = "Distributed System-Indirect Communication and Naming";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
   
-
-
-
 
 
 

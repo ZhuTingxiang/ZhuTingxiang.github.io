@@ -182,7 +182,7 @@ bits的信息。
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '0',
+      userId: 'undefined',
       author: 'Author'
     },
     algolia: {
@@ -449,7 +449,7 @@ bits的信息。
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <a href="/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-ef-bc-9a-e4-bf-a1-e6-81-af-e8-ae-ba/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-ef-bc-9a-e4-bf-a1-e6-81-af-e8-ae-ba/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-ef-bc-9a-e4-bf-a1-e6-81-af-e8-ae-ba/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -645,8 +645,11 @@ P(T=t|M=m):
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-ef-bc-9a-e4-bf-a1-e6-81-af-e8-ae-ba/"
-           data-title="Machine Learning 复习（二）：信息论" data-url="http://yoursite.com/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-ef-bc-9a-e4-bf-a1-e6-81-af-e8-ae-ba/">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
@@ -691,7 +694,7 @@ P(T=t|M=m):
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-count">56</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -941,32 +944,38 @@ P(T=t|M=m):
 
   
 
-  
-    
-  
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"starllap"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+    <script type="text/javascript">
+      var disqus_shortname = 'starllap';
+      var disqus_identifier = '2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-ef-bc-9a-e4-bf-a1-e6-81-af-e8-ae-ba/';
+
+      var disqus_title = "Machine Learning 复习（二）：信息论";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
   
-
-
-
 
 
 
