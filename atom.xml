@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-13T23:09:41.000Z</updated>
+  <updated>2017-03-10T00:28:46.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,34 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>云计算Project: Kafka和Samza的流处理</title>
-    <link href="http://yoursite.com/2017/03/13/%E4%BA%91%E8%AE%A1%E7%AE%97Project-Kafka%E5%92%8CSamza%E7%9A%84%E6%B5%81%E5%A4%84%E7%90%86/"/>
-    <id>http://yoursite.com/2017/03/13/云计算Project-Kafka和Samza的流处理/</id>
-    <published>2017-03-13T21:50:30.000Z</published>
-    <updated>2017-03-13T23:09:41.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是对Cloud Computing：Stream Processing with Kafka and Samza的复习和总结。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;本文是对Cloud Computing：Stream Processing with Kafka and Samza的复习和总结。&lt;/p&gt;
-
-    
-    </summary>
-    
-      <category term="CMU课程" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/"/>
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/Cloud-Computing/"/>
-    
-    
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
-    
-  </entry>
   
   <entry>
     <title>Leetcode 111. Minimum Depth of Binary Tree</title>
@@ -1295,6 +1267,48 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode 459. Repeated Substring Pattern</title>
+    <link href="http://yoursite.com/2017/02/12/Leetcode-459-Repeated-Substring-Pattern/"/>
+    <id>http://yoursite.com/2017/02/12/Leetcode-459-Repeated-Substring-Pattern/</id>
+    <published>2017-02-13T02:52:36.000Z</published>
+    <updated>2017-02-13T03:13:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>一道很简单的题。但是一直在调corner case，好不容易写完了再感受下速度和别人写的代码，差距太大了。心疼三秒钟。</p>
+<h4 id="question">Question:</h4>
+<p>Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.</p>
+<p>Example 1:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: &quot;abab&quot;</div><div class="line"></div><div class="line">Output: True</div><div class="line"></div><div class="line">Explanation: It&apos;s the substring &quot;ab&quot; twice.</div></pre></td></tr></table></figure></p>
+<p>Example 2:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;aba&quot;</div><div class="line"></div><div class="line">Output: False</div></pre></td></tr></table></figure></p>
+<p>Example 3:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: &quot;abcabcabcabc&quot;</div><div class="line"></div><div class="line">Output: True</div><div class="line"></div><div class="line">Explanation: It&apos;s the substring &quot;abc&quot; four times. (And the substring &quot;abcabc&quot; twice.)</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation:</h4>
+<p>原理很简单，就是每次得到一个substring，往后检查相同长度的下一段string。要注意的是，遍历的index只要到length/2就行了，毕竟至少也要重复两遍的。</p>
+<h4 id="code">Code:</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean repeatedSubstringPattern(String str) &#123;</div><div class="line">        if(str == null || str.length() &lt;= 1) return false;</div><div class="line">        int len = str.length();</div><div class="line">        for ( int i=0; i&lt;=len/2; i++) &#123;</div><div class="line">            boolean flag = true;</div><div class="line">            if (len%(i+1) != 0 || len == i+1) continue;</div><div class="line">            String subString = str.substring(0,(i+1));</div><div class="line">            int start = i+1;</div><div class="line">            int end = start * 2;</div><div class="line">            while (end&lt;=len) &#123;</div><div class="line">                if (!subString.equals(str.substring(start,end)))&#123;</div><div class="line">                    flag = false; break;</div><div class="line">                &#125;</div><div class="line">                start = start + i+1;</div><div class="line">                end = end + i+1;</div><div class="line">            &#125;</div><div class="line">            // System.out.println(flag);</div><div class="line">            if (flag) return true;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;一道很简单的题。但是一直在调corner case，好不容易写完了再感受下速度和别人写的代码，差距太大了。心疼三秒钟。&lt;/p&gt;
+&lt;h4 id=&quot;question&quot;&gt;Quest
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="String" scheme="http://yoursite.com/tags/String/"/>
     
   </entry>
   
