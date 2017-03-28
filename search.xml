@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[云计算知识整理：使用Apache Kafka和Samza进行流处理]]></title>
-      <url>http://yoursite.com/2017/03/25/%E4%BA%91%E8%AE%A1%E7%AE%97Project-%E4%BD%BF%E7%94%A8Apache-Kafka%E5%92%8CSamza%E8%BF%9B%E8%A1%8C%E6%B5%81%E5%A4%84%E7%90%86/</url>
+      <url>http://yoursite.com/2017/03/25/%E4%BA%91%E8%AE%A1%E7%AE%97%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%9A%E4%BD%BF%E7%94%A8Apache-Kafka%E5%92%8CSamza%E8%BF%9B%E8%A1%8C%E6%B5%81%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。</p>
 <h3 id="流处理">流处理</h3>
 <p>如今实时数据处理的需求越来越高，实时数据的来源包括传感器数据（比如物联网设备），社交网络交互，实时商业数据等。这些情况下需要极其的延迟率。比如LinkedIn就需要用实时的广告点击数据来不断扩充广告架构。类似Hadoop和Spark这种数据获取和数据处理分离的方式无法达到低延迟的实时处理需求。所以在这里就介绍一写管理和处理大量实时数据的流处理框架。</p>
