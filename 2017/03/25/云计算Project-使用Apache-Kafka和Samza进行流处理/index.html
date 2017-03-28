@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="CMU,10601,MachineLearning," />
+  <meta name="keywords" content="Cloud Computing,CMU," />
 
 
 
@@ -86,51 +86,27 @@
 
 
 
-<meta name="description" content="机器学习是基于数据的人工智能（1980s-现在），机器学习能够通过学习例子来完成任务。
-机器学习框架
-
-
-通常是成对出现（Input-Correct_Output）
-
-
-机器学习的常见情况：
-*   **分类(Classification)**： 医疗诊断： 从一个输出指向一些分类；*   **回归（Regression）**：预测明天的天气：从一个输出到一个数字
-
-
-逻辑回归（Logistic">
+<meta name="description" content="本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。
+流处理
+如今实时数据处理的需求越来越高，实时数据的来源包括传感器数据（比如物联网设备），社交网络交互，实时商业数据等。这些情况下需要极其的延迟率。比如LinkedIn就需要用实时的广告点击数据来不断扩充广告架构。类似Hadoop和Spark这种数据获取和数据处理分离的方式无法达到低延迟的实">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Machine Learning 复习（零）：机器学习基本介绍">
-<meta property="og:url" content="http://yoursite.com/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-880-ef-bc-89-ef-bc-9a-e6-9c-ba-e5-99-a8-e5-ad-a6-e4-b9-a0-e5-9f-ba-e6-9c-ac-e4-bb-8b-e7-bb-8d/index.html">
+<meta property="og:title" content="云计算知识整理：使用Apache Kafka和Samza进行流处理">
+<meta property="og:url" content="http://yoursite.com/2017/03/25/云计算Project-使用Apache-Kafka和Samza进行流处理/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="机器学习是基于数据的人工智能（1980s-现在），机器学习能够通过学习例子来完成任务。
-机器学习框架
-
-
-通常是成对出现（Input-Correct_Output）
-
-
-机器学习的常见情况：
-*   **分类(Classification)**： 医疗诊断： 从一个输出指向一些分类；*   **回归（Regression）**：预测明天的天气：从一个输出到一个数字
-
-
-逻辑回归（Logistic">
-<meta property="og:image" content="http://i.imgur.com/13KMImC.png">
-<meta property="og:updated_time" content="2016-12-20T16:42:26.000Z">
+<meta property="og:description" content="本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。
+流处理
+如今实时数据处理的需求越来越高，实时数据的来源包括传感器数据（比如物联网设备），社交网络交互，实时商业数据等。这些情况下需要极其的延迟率。比如LinkedIn就需要用实时的广告点击数据来不断扩充广告架构。类似Hadoop和Spark这种数据获取和数据处理分离的方式无法达到低延迟的实">
+<meta property="og:image" content="http://i.imgur.com/sVrZDbo.png">
+<meta property="og:image" content="http://i.imgur.com/8497uxN.png">
+<meta property="og:image" content="http://i.imgur.com/TJSfPwq.png">
+<meta property="og:image" content="http://i.imgur.com/53TilKn.png">
+<meta property="og:updated_time" content="2017-03-28T15:29:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Machine Learning 复习（零）：机器学习基本介绍">
-<meta name="twitter:description" content="机器学习是基于数据的人工智能（1980s-现在），机器学习能够通过学习例子来完成任务。
-机器学习框架
-
-
-通常是成对出现（Input-Correct_Output）
-
-
-机器学习的常见情况：
-*   **分类(Classification)**： 医疗诊断： 从一个输出指向一些分类；*   **回归（Regression）**：预测明天的天气：从一个输出到一个数字
-
-
-逻辑回归（Logistic">
-<meta name="twitter:image" content="http://i.imgur.com/13KMImC.png">
+<meta name="twitter:title" content="云计算知识整理：使用Apache Kafka和Samza进行流处理">
+<meta name="twitter:description" content="本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。
+流处理
+如今实时数据处理的需求越来越高，实时数据的来源包括传感器数据（比如物联网设备），社交网络交互，实时商业数据等。这些情况下需要极其的延迟率。比如LinkedIn就需要用实时的广告点击数据来不断扩充广告架构。类似Hadoop和Spark这种数据获取和数据处理分离的方式无法达到低延迟的实">
+<meta name="twitter:image" content="http://i.imgur.com/sVrZDbo.png">
 
 <script>
   (function(){
@@ -168,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-880-ef-bc-89-ef-bc-9a-e6-9c-ba-e5-99-a8-e5-ad-a6-e4-b9-a0-e5-9f-ba-e6-9c-ac-e4-bb-8b-e7-bb-8d/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/25/云计算Project-使用Apache-Kafka和Samza进行流处理/"/>
 
 
 
 
 
-  <title> Machine Learning 复习（零）：机器学习基本介绍 | Star </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 云计算知识整理：使用Apache Kafka和Samza进行流处理 | Star </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -337,7 +313,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-880-ef-bc-89-ef-bc-9a-e6-9c-ba-e5-99-a8-e5-ad-a6-e4-b9-a0-e5-9f-ba-e6-9c-ac-e4-bb-8b-e7-bb-8d/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/云计算Project-使用Apache-Kafka和Samza进行流处理/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Star">
@@ -361,7 +337,7 @@
             
             
               
-                Machine Learning 复习（零）：机器学习基本介绍
+                云计算知识整理：使用Apache Kafka和Samza进行流处理
               
             
           </h1>
@@ -374,8 +350,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-18T07:34:16-04:00">
-                2016-10-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T15:48:14-04:00">
+                2017-03-25
               </time>
             
 
@@ -404,8 +380,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CMU课程/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
+                  <a href="/categories/CMU课程/Cloud-Computing/" itemprop="url" rel="index">
+                    <span itemprop="name">Cloud Computing</span>
                   </a>
                 </span>
 
@@ -419,8 +395,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-880-ef-bc-89-ef-bc-9a-e6-9c-ba-e5-99-a8-e5-ad-a6-e4-b9-a0-e5-9f-ba-e6-9c-ac-e4-bb-8b-e7-bb-8d/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-880-ef-bc-89-ef-bc-9a-e6-9c-ba-e5-99-a8-e5-ad-a6-e4-b9-a0-e5-9f-ba-e6-9c-ac-e4-bb-8b-e7-bb-8d/" itemprop="commentCount"></span>
+                <a href="/2017/03/25/云计算Project-使用Apache-Kafka和Samza进行流处理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/25/云计算Project-使用Apache-Kafka和Samza进行流处理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -446,55 +422,57 @@
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><p>机器学习是基于数据的人工智能（1980s-现在），机器学习能够通过学习例子来完成任务。</p>
-<h3 id="机器学习框架">机器学习框架</h3>
+        <script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。</p>
+<h3 id="流处理">流处理</h3>
+<p>如今实时数据处理的需求越来越高，实时数据的来源包括传感器数据（比如物联网设备），社交网络交互，实时商业数据等。这些情况下需要极其的延迟率。比如LinkedIn就需要用实时的广告点击数据来不断扩充广告架构。类似Hadoop和Spark这种数据获取和数据处理分离的方式无法达到低延迟的实时处理需求。所以在这里就介绍一写管理和处理大量实时数据的流处理框架。</p>
+<h3 id="apache-kafka">Apache Kafka</h3>
+<p>Kafka是分布式发布-订阅消息系统。由linkedin开发，后来成为Apache项目的一部分。发布者把消息放在不同的classes里，并不知道订阅者会如何使用这些数据。而订阅者可以订阅特定的消息并且只能收到相应的消息。Kafka使用commit log来保持数据，commit log是按顺序的，不可修改的，只能添加的数据结构。Kafka最大的优势是它提供完整的数据结构，所有的组织里的系统能够独立和可靠地获取数据。可以认为Kafka是流数据源。以下为一些主要Kafka术语：</p>
 <ul>
 <li>
-<p>通常是成对出现（Input-Correct_Output）</p>
+<p>Topic:
+表示一个用户定义的类型，消息会在这个类别下发布。主要用partitioned log来维护。</p>
 </li>
 <li>
-<p>机器学习的常见情况：</p>
-<pre><code>*   **分类(Classification)**： 医疗诊断： 从一个输出指向一些分类；*   **回归（Regression）**：预测明天的天气：从一个输出到一个数字
-</code></pre>
-<ul>
-<li><strong>逻辑回归（Logistic Regression）</strong>: 存活几率：从一个输出到一个可能性</li>
-</ul>
-</li>
-</ul>
-<h3 id="如何解决一个机器学习的问题">如何解决一个机器学习的问题</h3>
-<ul>
-<li>定义你的任务，考虑你的目标，比如是要决定是否允许贷款</li>
-<li>考虑实际情况，比如你有多少数据，要花多少时间和努力</li>
-<li>考虑输出的形式，是数字还是分类，是可能性还是一个计划</li>
-<li>选择衡量表现的标准，比如损失函数或错误率</li>
-<li>选择输入的形式</li>
-<li>选择一系列的解决方法（假设空间）</li>
-<li>选择或者设计一种学习算法</li>
-</ul>
-<p><img src="http://i.imgur.com/13KMImC.png" alt=""></p>
-<h3 id="机器学习和统计的关系">机器学习和统计的关系</h3>
-<p>从20世纪90年代中，人们开始慢慢了解统计和机器学习的关系。</p>
-<ul>
-<li>
-<p>统计：</p>
-<pre><code>*   数学的分支
-</code></pre>
-<ul>
-<li>更多考虑是否正确</li>
-<li>不太考虑计算的复杂性</li>
-</ul>
+<p>Producers:
+用来向Kafka集群中发布一个或多个topic信息的进程。</p>
 </li>
 <li>
-<p>机器学习：</p>
-<pre><code>*   信息技术或者人工智能的分支
-</code></pre>
-<ul>
-<li>更看重是否能在实际中运用</li>
-<li>不太考虑统计原理</li>
-<li>如今，两者已经有效结合了，机器学习也常常称为“统计机器学习”。</li>
-</ul>
+<p>Consumers：
+用来向Kafka集群中读取消息的进程。</p>
+</li>
+<li>
+<p>Partitions：
+topics被分为多个partitions。一个partition代表一个并行单位。总的来说，partition越多，吞吐量越多。每个partition中的每个信息都有特定的偏移量，这样数据消费者能借此定位。简单来说，我们认为Kafka会根据key来给数据排序并提供，类似于MapReduce中的Map和Shuffle的阶段。</p>
+</li>
+<li>
+<p>Brokers：
+Brokers用来负责数据持久化和复制。brokers会和producers交流来发布信息给Kafka集群，和consumers交谈来获取信息。</p>
 </li>
 </ul>
+<p><img src="http://i.imgur.com/sVrZDbo.png" alt=""></p>
+<p>值得注意的是，kafka不会运行处理数据，只是一种存储和分类流数据的一种方式。在这个Project里，你需要用Samza来处理Kafka提供的数据流。</p>
+<p>可以看下这个视频（通常搞不懂一个概念的时候我都是查youtube_(:зゝ∠)_ ）<a href="https://www.youtube.com/watch?v=Q5wOegcVa8E" target="_blank" rel="external">Understanding Kafka with Legos</a></p>
+<h3 id="apache-samza">Apache Samza</h3>
+<p>Samza是由Linkedin开发的分布式流处理框架，以下为三层流处理框架中的关键组件：</p>
+<ul>
+<li>Streaming：这一层是用partitioned stream的方式提供输入，这里也就是Kafka</li>
+<li>Execution:在不同的机器间调度协调任务，这里使用YARN</li>
+<li>Processing：负责具体的数据处理，这里使用Samza</li>
+</ul>
+<p>Samza相关的术语包括：</p>
+<ul>
+<li>Streams：等同于Kafka的topics</li>
+<li>Jobs：使用Samza API来从一个或多个流读取和处理数据。一个Job可能被分割成不同的task，每个task可能会使用输入流中的一个或多个partition</li>
+<li>Stateful Stream Processing：流处理可以分为有状态和无状态。</li>
+</ul>
+<p><img src="http://i.imgur.com/8497uxN.png" alt="">
+<img src="http://i.imgur.com/TJSfPwq.png" alt=""></p>
+<p>Samza结构：
+<img src="http://i.imgur.com/53TilKn.png" alt=""></p>
+<h3 id="samza-api">Samza API</h3>
+<p>Samza API简单抽象，以一个ExampleCode为例，看Twitter类似的实时信息如何展示：</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">￼public class FanOutTask implements StreamTask, InitableTask, WindowableTask &#123;</div><div class="line">   private KeyValueStore&lt;String, String&gt; socialGraph;</div><div class="line">   private KeyValueStore&lt;String, Map&lt;String, Object&gt;&gt; userTimeline;</div><div class="line">   private long numMessages = 0;</div><div class="line">   @Override</div><div class="line">   @SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">   public void init(Config config, TaskContext context) throws Exception &#123;</div><div class="line">     socialGraph = (KeyValueStore&lt;String, String&gt;) context.getStore(&quot;social-graph&quot;);</div><div class="line">     userTimeline = (KeyValueStore&lt;String, Map&lt;String, Object&gt;&gt;) context.getStore(&quot;user-timelin</div><div class="line"> e&quot;);</div><div class="line">&#125;</div><div class="line">   @Override</div><div class="line">   @SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">   public void process(IncomingMessageEnvelope envelope, MessageCollector collector, TaskCoordin</div><div class="line"> ator coordinator) &#123;</div><div class="line">     String incomingStream = envelope.getSystemStreamPartition().getStream();</div><div class="line">     if (incomingStream.equals(NewsfeedConfig.FOLLOWS_STREAM.getStream())) &#123;</div><div class="line">       processFollowsEvent((Map&lt;String, Object&gt;) envelope.getMessage());</div><div class="line">     &#125; else if (incomingStream.equals(NewsfeedConfig.MESSAGES_STREAM.getStream())) &#123;</div><div class="line">       processMessageEvent((Map&lt;String, Object&gt;) envelope.getMessage(), collector);</div><div class="line">     &#125; else &#123;</div><div class="line">       throw new I</div></pre></td></tr></table></figure></p>
+<p>所有的Samza Jobs都要完成 StreamTask接口，有的时候还需要完成InitableTask和WindowableTask接口。</p>
 
       
     </div>
@@ -518,11 +496,9 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Cloud-Computing/" rel="tag"># Cloud Computing</a>
+          
             <a href="/tags/CMU/" rel="tag"># CMU</a>
-          
-            <a href="/tags/10601/" rel="tag"># 10601</a>
-          
-            <a href="/tags/MachineLearning/" rel="tag"># MachineLearning</a>
           
         </div>
       
@@ -531,8 +507,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-ef-bc-9a-e4-bf-a1-e6-81-af-e8-ae-ba/" rel="next" title="Machine Learning 复习（二）：信息论">
-                <i class="fa fa-chevron-left"></i> Machine Learning 复习（二）：信息论
+              <a href="/2017/03/09/Leetcode-111-Minimum-Depth-of-Binary-Tree/" rel="next" title="Leetcode 111. Minimum Depth of Binary Tree">
+                <i class="fa fa-chevron-left"></i> Leetcode 111. Minimum Depth of Binary Tree
               </a>
             
           </div>
@@ -540,10 +516,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/19/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e5-9b-9b-ef-bc-89-ef-bc-9a-e6-a6-82-e5-bf-b5-e5-ad-a6-e4-b9-a0/" rel="prev" title="Machine Learning 复习（四）：概念学习">
-                Machine Learning 复习（四）：概念学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -750,7 +722,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习框架"><span class="nav-number">1.</span> <span class="nav-text">机器学习框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何解决一个机器学习的问题"><span class="nav-number">2.</span> <span class="nav-text">如何解决一个机器学习的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习和统计的关系"><span class="nav-number">3.</span> <span class="nav-text">机器学习和统计的关系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#流处理"><span class="nav-number">1.</span> <span class="nav-text">流处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apache-kafka"><span class="nav-number">2.</span> <span class="nav-text">Apache Kafka</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apache-samza"><span class="nav-number">3.</span> <span class="nav-text">Apache Samza</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#samza-api"><span class="nav-number">4.</span> <span class="nav-text">Samza API</span></a></li></ol></div>
             
 
           </div>
@@ -874,9 +846,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'starllap';
-      var disqus_identifier = '2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-880-ef-bc-89-ef-bc-9a-e6-9c-ba-e5-99-a8-e5-ad-a6-e4-b9-a0-e5-9f-ba-e6-9c-ac-e4-bb-8b-e7-bb-8d/';
+      var disqus_identifier = '2017/03/25/云计算Project-使用Apache-Kafka和Samza进行流处理/';
 
-      var disqus_title = "Machine Learning 复习（零）：机器学习基本介绍";
+      var disqus_title = "云计算知识整理：使用Apache Kafka和Samza进行流处理";
 
 
       function run_disqus_script(disqus_script) {

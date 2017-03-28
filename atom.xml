@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-10T00:28:46.000Z</updated>
+  <updated>2017-03-28T15:29:59.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,85 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>云计算知识整理：使用Apache Kafka和Samza进行流处理</title>
+    <link href="http://yoursite.com/2017/03/25/%E4%BA%91%E8%AE%A1%E7%AE%97Project-%E4%BD%BF%E7%94%A8Apache-Kafka%E5%92%8CSamza%E8%BF%9B%E8%A1%8C%E6%B5%81%E5%A4%84%E7%90%86/"/>
+    <id>http://yoursite.com/2017/03/25/云计算Project-使用Apache-Kafka和Samza进行流处理/</id>
+    <published>2017-03-25T19:48:14.000Z</published>
+    <updated>2017-03-28T15:29:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。</p>
+<h3 id="流处理">流处理</h3>
+<p>如今实时数据处理的需求越来越高，实时数据的来源包括传感器数据（比如物联网设备），社交网络交互，实时商业数据等。这些情况下需要极其的延迟率。比如LinkedIn就需要用实时的广告点击数据来不断扩充广告架构。类似Hadoop和Spark这种数据获取和数据处理分离的方式无法达到低延迟的实时处理需求。所以在这里就介绍一写管理和处理大量实时数据的流处理框架。</p>
+<h3 id="apache-kafka">Apache Kafka</h3>
+<p>Kafka是分布式发布-订阅消息系统。由linkedin开发，后来成为Apache项目的一部分。发布者把消息放在不同的classes里，并不知道订阅者会如何使用这些数据。而订阅者可以订阅特定的消息并且只能收到相应的消息。Kafka使用commit log来保持数据，commit log是按顺序的，不可修改的，只能添加的数据结构。Kafka最大的优势是它提供完整的数据结构，所有的组织里的系统能够独立和可靠地获取数据。可以认为Kafka是流数据源。以下为一些主要Kafka术语：</p>
+<ul>
+<li>
+<p>Topic:
+表示一个用户定义的类型，消息会在这个类别下发布。主要用partitioned log来维护。</p>
+</li>
+<li>
+<p>Producers:
+用来向Kafka集群中发布一个或多个topic信息的进程。</p>
+</li>
+<li>
+<p>Consumers：
+用来向Kafka集群中读取消息的进程。</p>
+</li>
+<li>
+<p>Partitions：
+topics被分为多个partitions。一个partition代表一个并行单位。总的来说，partition越多，吞吐量越多。每个partition中的每个信息都有特定的偏移量，这样数据消费者能借此定位。简单来说，我们认为Kafka会根据key来给数据排序并提供，类似于MapReduce中的Map和Shuffle的阶段。</p>
+</li>
+<li>
+<p>Brokers：
+Brokers用来负责数据持久化和复制。brokers会和producers交流来发布信息给Kafka集群，和consumers交谈来获取信息。</p>
+</li>
+</ul>
+<p><img src="http://i.imgur.com/sVrZDbo.png" alt=""></p>
+<p>值得注意的是，kafka不会运行处理数据，只是一种存储和分类流数据的一种方式。在这个Project里，你需要用Samza来处理Kafka提供的数据流。</p>
+<p>可以看下这个视频（通常搞不懂一个概念的时候我都是查youtube_(:зゝ∠)_ ）<a href="https://www.youtube.com/watch?v=Q5wOegcVa8E" target="_blank" rel="external">Understanding Kafka with Legos</a></p>
+<h3 id="apache-samza">Apache Samza</h3>
+<p>Samza是由Linkedin开发的分布式流处理框架，以下为三层流处理框架中的关键组件：</p>
+<ul>
+<li>Streaming：这一层是用partitioned stream的方式提供输入，这里也就是Kafka</li>
+<li>Execution:在不同的机器间调度协调任务，这里使用YARN</li>
+<li>Processing：负责具体的数据处理，这里使用Samza</li>
+</ul>
+<p>Samza相关的术语包括：</p>
+<ul>
+<li>Streams：等同于Kafka的topics</li>
+<li>Jobs：使用Samza API来从一个或多个流读取和处理数据。一个Job可能被分割成不同的task，每个task可能会使用输入流中的一个或多个partition</li>
+<li>Stateful Stream Processing：流处理可以分为有状态和无状态。</li>
+</ul>
+<p><img src="http://i.imgur.com/8497uxN.png" alt="">
+<img src="http://i.imgur.com/TJSfPwq.png" alt=""></p>
+<p>Samza结构：
+<img src="http://i.imgur.com/53TilKn.png" alt=""></p>
+<h3 id="samza-api">Samza API</h3>
+<p>Samza API简单抽象，以一个ExampleCode为例，看Twitter类似的实时信息如何展示：</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">￼public class FanOutTask implements StreamTask, InitableTask, WindowableTask &#123;</div><div class="line">   private KeyValueStore&lt;String, String&gt; socialGraph;</div><div class="line">   private KeyValueStore&lt;String, Map&lt;String, Object&gt;&gt; userTimeline;</div><div class="line">   private long numMessages = 0;</div><div class="line">   @Override</div><div class="line">   @SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">   public void init(Config config, TaskContext context) throws Exception &#123;</div><div class="line">     socialGraph = (KeyValueStore&lt;String, String&gt;) context.getStore(&quot;social-graph&quot;);</div><div class="line">     userTimeline = (KeyValueStore&lt;String, Map&lt;String, Object&gt;&gt;) context.getStore(&quot;user-timelin</div><div class="line"> e&quot;);</div><div class="line">&#125;</div><div class="line">   @Override</div><div class="line">   @SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">   public void process(IncomingMessageEnvelope envelope, MessageCollector collector, TaskCoordin</div><div class="line"> ator coordinator) &#123;</div><div class="line">     String incomingStream = envelope.getSystemStreamPartition().getStream();</div><div class="line">     if (incomingStream.equals(NewsfeedConfig.FOLLOWS_STREAM.getStream())) &#123;</div><div class="line">       processFollowsEvent((Map&lt;String, Object&gt;) envelope.getMessage());</div><div class="line">     &#125; else if (incomingStream.equals(NewsfeedConfig.MESSAGES_STREAM.getStream())) &#123;</div><div class="line">       processMessageEvent((Map&lt;String, Object&gt;) envelope.getMessage(), collector);</div><div class="line">     &#125; else &#123;</div><div class="line">       throw new I</div></pre></td></tr></table></figure></p>
+<p>所有的Samza Jobs都要完成 StreamTask接口，有的时候还需要完成InitableTask和WindowableTask接口。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。&lt;/p&gt;
+&lt;h3 id=&quot;流处理&quot;&gt;流处理&lt;/h3&gt;
+&lt;p&gt;如今实时
+    
+    </summary>
+    
+      <category term="CMU课程" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/"/>
+    
+      <category term="Cloud Computing" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/Cloud-Computing/"/>
+    
+    
+      <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
+    
+      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 111. Minimum Depth of Binary Tree</title>
@@ -67,7 +146,7 @@
     <link href="http://yoursite.com/2017/03/06/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9AObama-For-America/"/>
     <id>http://yoursite.com/2017/03/06/云计算应用实例：Obama-For-America/</id>
     <published>2017-03-06T19:41:09.000Z</published>
-    <updated>2017-03-20T20:54:42.000Z</updated>
+    <updated>2017-03-26T15:07:11.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文主要是总结一些云计算的应用实例，是否要用云计算这个问题是个很复杂的问题，大多数时候需要根据需求和预算才能得到确切的答案，云计算是趋势，但如何利用是个值得仔细考虑的问题。</p>
 <h1 id="云计算应用实例obama-for-america">云计算应用实例：Obama For America</h1>
@@ -190,19 +269,6 @@
 <li>对于本地预置机器：供电、散热、安全性等</li>
 <li>对于云端：迁移到/迁出云端的成本等</li>
 </ul>
-<h3 id="quiz-time">Quiz Time：</h3>
-<p>Kayvon Inc. (KayvonInc.com) is a local startup that has been asked by the city to monitor and
-record near misses and accidents between cars, bicyclists and pedestrians 24 hours per day,
-7 days per week, 365 days per year. Kayvon Inc. (KI) is planning to deploy video cameras
-and dedicated computing at each busy intersection in the city.
-KI plans to capture video at a sustained frame grab rate of 20 frames per second, 24 hours
-per day. They will provide privacy to drivers, cyclists and pedestrians by denaturing the video
-at the intersection, before it is stored. Since the bandwidth from the intersection to the cloud
-is limited, KI plans to process the streams of data at the intersection to identify near misses
-and accidents. They will then send the data for just the “interesting” cases to the cloud for
-storage and potential further analysis.
-i. We know that cloud computing offers various benefits and features to users. For
-each benefit listed below, indicate whether you b</p>
 ]]></content>
     
     <summary type="html">
@@ -216,9 +282,9 @@ each benefit listed below, indicate whether you b</p>
       <category term="Advanced Cloud Computing" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/Advanced-Cloud-Computing/"/>
     
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
-    
       <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
+    
+      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
     
   </entry>
   
@@ -551,9 +617,9 @@ hfile.block.cache.size：RS的block cache的内存大小限制，默认值0.25�
       <category term="Cloud Computing" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/Cloud-Computing/"/>
     
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
-    
       <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
+    
+      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
     
   </entry>
   
@@ -634,9 +700,9 @@ Can you do it in O(n) time?</p>
     
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
       <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
   </entry>
   
@@ -820,9 +886,9 @@ CMU15619课件：<code>Social Networking Timeline with Heterogeneous Backends</c
       <category term="Cloud Computing" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/Cloud-Computing/"/>
     
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
-    
       <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
+    
+      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
     
   </entry>
   
@@ -860,9 +926,9 @@ return false.</p>
     
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
       <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
   </entry>
   
@@ -1267,48 +1333,6 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 459. Repeated Substring Pattern</title>
-    <link href="http://yoursite.com/2017/02/12/Leetcode-459-Repeated-Substring-Pattern/"/>
-    <id>http://yoursite.com/2017/02/12/Leetcode-459-Repeated-Substring-Pattern/</id>
-    <published>2017-02-13T02:52:36.000Z</published>
-    <updated>2017-02-13T03:13:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>一道很简单的题。但是一直在调corner case，好不容易写完了再感受下速度和别人写的代码，差距太大了。心疼三秒钟。</p>
-<h4 id="question">Question:</h4>
-<p>Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.</p>
-<p>Example 1:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: &quot;abab&quot;</div><div class="line"></div><div class="line">Output: True</div><div class="line"></div><div class="line">Explanation: It&apos;s the substring &quot;ab&quot; twice.</div></pre></td></tr></table></figure></p>
-<p>Example 2:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;aba&quot;</div><div class="line"></div><div class="line">Output: False</div></pre></td></tr></table></figure></p>
-<p>Example 3:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: &quot;abcabcabcabc&quot;</div><div class="line"></div><div class="line">Output: True</div><div class="line"></div><div class="line">Explanation: It&apos;s the substring &quot;abc&quot; four times. (And the substring &quot;abcabc&quot; twice.)</div></pre></td></tr></table></figure></p>
-<h4 id="explanation">Explanation:</h4>
-<p>原理很简单，就是每次得到一个substring，往后检查相同长度的下一段string。要注意的是，遍历的index只要到length/2就行了，毕竟至少也要重复两遍的。</p>
-<h4 id="code">Code:</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean repeatedSubstringPattern(String str) &#123;</div><div class="line">        if(str == null || str.length() &lt;= 1) return false;</div><div class="line">        int len = str.length();</div><div class="line">        for ( int i=0; i&lt;=len/2; i++) &#123;</div><div class="line">            boolean flag = true;</div><div class="line">            if (len%(i+1) != 0 || len == i+1) continue;</div><div class="line">            String subString = str.substring(0,(i+1));</div><div class="line">            int start = i+1;</div><div class="line">            int end = start * 2;</div><div class="line">            while (end&lt;=len) &#123;</div><div class="line">                if (!subString.equals(str.substring(start,end)))&#123;</div><div class="line">                    flag = false; break;</div><div class="line">                &#125;</div><div class="line">                start = start + i+1;</div><div class="line">                end = end + i+1;</div><div class="line">            &#125;</div><div class="line">            // System.out.println(flag);</div><div class="line">            if (flag) return true;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;一道很简单的题。但是一直在调corner case，好不容易写完了再感受下速度和别人写的代码，差距太大了。心疼三秒钟。&lt;/p&gt;
-&lt;h4 id=&quot;question&quot;&gt;Quest
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="String" scheme="http://yoursite.com/tags/String/"/>
     
   </entry>
   
