@@ -87,7 +87,7 @@ https://zh.wikipedia.org/zh-hans/%E4%BA%8C%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4</
     <link href="http://yoursite.com/2017/03/25/%E4%BA%91%E8%AE%A1%E7%AE%97%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%9A%E4%BD%BF%E7%94%A8Apache-Kafka%E5%92%8CSamza%E8%BF%9B%E8%A1%8C%E6%B5%81%E5%A4%84%E7%90%86/"/>
     <id>http://yoursite.com/2017/03/25/云计算知识整理：使用Apache-Kafka和Samza进行流处理/</id>
     <published>2017-03-25T19:48:14.000Z</published>
-    <updated>2017-03-28T15:32:38.000Z</updated>
+    <updated>2017-03-30T01:47:01.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。</p>
 <h3 id="流处理">流处理</h3>
@@ -150,14 +150,12 @@ Brokers用来负责数据持久化和复制。brokers会和producers交流来发
     
     </summary>
     
-      <category term="CMU课程" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/"/>
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/Cloud-Computing/"/>
+      <category term="Cloud Computing" scheme="http://yoursite.com/categories/Cloud-Computing/"/>
     
     
       <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="Stream Processing" scheme="http://yoursite.com/tags/Stream-Processing/"/>
     
   </entry>
   
@@ -213,7 +211,7 @@ Brokers用来负责数据持久化和复制。brokers会和producers交流来发
     <link href="http://yoursite.com/2017/03/06/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9AObama-For-America/"/>
     <id>http://yoursite.com/2017/03/06/云计算应用实例：Obama-For-America/</id>
     <published>2017-03-06T19:41:09.000Z</published>
-    <updated>2017-03-26T15:07:11.000Z</updated>
+    <updated>2017-03-30T01:47:17.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文主要是总结一些云计算的应用实例，是否要用云计算这个问题是个很复杂的问题，大多数时候需要根据需求和预算才能得到确切的答案，云计算是趋势，但如何利用是个值得仔细考虑的问题。</p>
 <h1 id="云计算应用实例obama-for-america">云计算应用实例：Obama For America</h1>
@@ -344,14 +342,12 @@ Brokers用来负责数据持久化和复制。brokers会和producers交流来发
     
     </summary>
     
-      <category term="CMU课程" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/"/>
-    
-      <category term="Advanced Cloud Computing" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/Advanced-Cloud-Computing/"/>
+      <category term="Cloud Computing" scheme="http://yoursite.com/categories/Cloud-Computing/"/>
     
     
       <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="OFA" scheme="http://yoursite.com/tags/OFA/"/>
     
   </entry>
   
@@ -563,7 +559,7 @@ Time complexity required: O(n) where n is the size of the input string.</p>
     <link href="http://yoursite.com/2017/02/27/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9ATwitter%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     <id>http://yoursite.com/2017/02/27/云计算Project：Twitter大数据分析/</id>
     <published>2017-02-28T01:37:26.000Z</published>
-    <updated>2017-02-28T04:34:52.000Z</updated>
+    <updated>2017-03-30T01:48:05.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是Twitter Analytics on the Cloud项目的介绍及分析总结。小组作业当时做的匆忙，现在再思考下可以优化的地方很多。感谢队友@shuangshuang 和 @烟酱。</p>
 <h2 id="项目介绍">项目介绍</h2>
@@ -679,14 +675,18 @@ hfile.block.cache.size：RS的block cache的内存大小限制，默认值0.25�
     
     </summary>
     
-      <category term="CMU课程" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/"/>
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/Cloud-Computing/"/>
+      <category term="Cloud Computing" scheme="http://yoursite.com/categories/Cloud-Computing/"/>
     
     
       <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="Big Data" scheme="http://yoursite.com/tags/Big-Data/"/>
+    
+      <category term="Twitter" scheme="http://yoursite.com/tags/Twitter/"/>
+    
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="HBase" scheme="http://yoursite.com/tags/HBase/"/>
     
   </entry>
   
@@ -725,11 +725,11 @@ Can you do it in O(n) time?</p>
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
+      <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
+    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
     
       <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
     
@@ -763,13 +763,13 @@ Can you do it in O(n) time?</p>
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
+      <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
+    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
-      <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
     
   </entry>
   
@@ -778,7 +778,7 @@ Can you do it in O(n) time?</p>
     <link href="http://yoursite.com/2017/02/23/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%9A%E4%B8%AA%E5%90%8E%E7%AB%AF%E7%9A%84%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E6%97%B6%E9%97%B4%E7%BA%BF%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
     <id>http://yoursite.com/2017/02/23/云计算Project：基于多个后端的社交网络时间线的实现/</id>
     <published>2017-02-23T20:12:14.000Z</published>
-    <updated>2017-02-23T22:55:10.000Z</updated>
+    <updated>2017-03-30T01:47:44.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于CMU15619Cloud Computing项目:<code>Social Networking Timeline with Heterogeneous Backends</code>的介绍以及总结反思。</p>
 <p>项目主要目标：</p>
@@ -948,14 +948,18 @@ CMU15619课件：<code>Social Networking Timeline with Heterogeneous Backends</c
     
     </summary>
     
-      <category term="CMU课程" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/"/>
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/categories/CMU%E8%AF%BE%E7%A8%8B/Cloud-Computing/"/>
+      <category term="Cloud Computing" scheme="http://yoursite.com/categories/Cloud-Computing/"/>
     
     
       <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="HBase" scheme="http://yoursite.com/tags/HBase/"/>
+    
+      <category term="Social Network" scheme="http://yoursite.com/tags/Social-Network/"/>
+    
+      <category term="MongoDB" scheme="http://yoursite.com/tags/MongoDB/"/>
     
   </entry>
   
@@ -987,6 +991,8 @@ return false.</p>
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
+      <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
+    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
@@ -994,8 +1000,6 @@ return false.</p>
       <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
     
       <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
-      <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
     
   </entry>
   
