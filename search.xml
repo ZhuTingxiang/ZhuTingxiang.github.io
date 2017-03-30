@@ -54,13 +54,6 @@ https://zh.wikipedia.org/zh-hans/%E4%BA%8C%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4</
     </entry>
     
     <entry>
-      <title><![CDATA[Hadoop知识梳理：Zookeeper]]></title>
-      <url>http://yoursite.com/2017/03/28/Hadoop%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%EF%BC%9AZookeeper/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Zookeeper是个分布式</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[云计算知识整理：使用Apache Kafka和Samza进行流处理]]></title>
       <url>http://yoursite.com/2017/03/25/%E4%BA%91%E8%AE%A1%E7%AE%97%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%9A%E4%BD%BF%E7%94%A8Apache-Kafka%E5%92%8CSamza%E8%BF%9B%E8%A1%8C%E6%B5%81%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。</p>
