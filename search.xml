@@ -4,6 +4,82 @@
   
     
     <entry>
+      <title><![CDATA[LeetCode Weekly Contest 27: 556. Next Greater Element III]]></title>
+      <url>http://yoursite.com/2017/04/08/LeetCode-Weekly-Contest-27-556-Next-Greater-Element-III/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a positive 32-bit integer n, you need to find the smallest 32-bit integer which has exactly the same digits existing in the integer n and is greater in value than n. If no such positive 32-bit integer exists, you need to return -1.</p>
+<p>Example 1:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 12</div><div class="line">Output: 21</div></pre></td></tr></table></figure></p>
+<p>Example 2:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 21</div><div class="line">Output: -1</div></pre></td></tr></table></figure></p>
+<h3 id="explaination">Explaination</h3>
+<p>思路是：从最后开始，每两个数对比，如果前一个数比后一个数小，停下，这点就是要变的地方。然后，把这个位置用后面比它大的数中最小的那个数字替代，互换位置。之后再把这个位置后面的所有数倒置一下。同LeetCode No.31</p>
+<p>比如 <code>12487653</code><br>
+先替换 <code>12587643</code><br>
+再倒置后面的数字 <code>12534678</code></p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">public int nextGreaterElement(int num) &#123;</div><div class="line">        String n = Integer.toString(num);</div><div class="line">        char[] nums = n.toCharArray();</div><div class="line">        if (nums.length&lt;=1) return -1;</div><div class="line">        int result = -1;</div><div class="line">        for (int i=nums.length-2;i&gt;=0;i--) &#123;</div><div class="line">            if (nums[i] &gt;= nums[i+1]) continue;</div><div class="line">            swap(nums,i);</div><div class="line">            reverse(nums, i+1);</div><div class="line">            //avoid overflow</div><div class="line">            try &#123;</div><div class="line">                return Integer.parseInt(new String(nums));</div><div class="line">            &#125; catch(Exception e) &#123;</div><div class="line">                return -1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">       return result;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line">public void swap(char[] nums, int i) &#123;</div><div class="line">    for (int j =nums.length-1; j&gt;i; j--) &#123;</div><div class="line">        if (nums[j] &gt; nums[i])&#123;</div><div class="line">            char c = nums[j];</div><div class="line">            nums[j] = nums[i];</div><div class="line">            nums[i] = c;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">public void reverse(char[] nums,int i) &#123;</div><div class="line">    int first = i;</div><div class="line">    int last = nums.length-1;</div><div class="line">    while(first &lt; last) &#123;</div><div class="line">        char c = nums[first];</div><div class="line">        nums[first] = nums[last];</div><div class="line">        nums[last] = c;</div><div class="line">        first ++;</div><div class="line">        last --;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Leetcode: 205. Isomorphic Strings]]></title>
+      <url>http://yoursite.com/2017/04/07/Leetcode-205-Isomorphic-Strings/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question</h4>
+<p>Given two strings s and t, determine if they are isomorphic.</p>
+<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
+<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.</p>
+<p>For example,
+Given &quot;egg&quot;, &quot;add&quot;, return true.</p>
+<p>Given &quot;foo&quot;, &quot;bar&quot;, return false.</p>
+<p>Given &quot;paper&quot;, &quot;title&quot;, return true.</p>
+<h4 id="explaination">Explaination</h4>
+<p>方法一：用Hashmap存对应的字符，并用一个HashSet存用过的替代字符。
+方法二：用hashtable，两个数组，变化里面的frequency，如果不再一样，就不成立。</p>
+<h4 id="code">Code</h4>
+<h5 id="solution-1">Solution 1</h5>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public boolean isIsomorphic(String s, String t) &#123;</div><div class="line">    HashMap&lt;Character, Character&gt; map = new HashMap&lt;&gt;();</div><div class="line">    HashSet&lt;Character&gt; set = new HashSet&lt;&gt;();</div><div class="line">    if (s.length() != t.length()) return false;</div><div class="line">    for (int i=0; i&lt;s.length(); i++) &#123;</div><div class="line">        if (map.containsKey(s.charAt(i))) &#123;</div><div class="line">            if (map.get(s.charAt(i)) != t.charAt(i)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">        &#125; else &#123;</div><div class="line">            if (set.contains(t.charAt(i))) return false;</div><div class="line">            set.add(t.charAt(i));</div><div class="line">            map.put(s.charAt(i), t.charAt(i));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="solution-2">Solution 2</h5>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean isIsomorphic(String s, String t) &#123;</div><div class="line">        int[] m1 = new int[256];</div><div class="line">        int[] m2 = new int[256];</div><div class="line">        int n = s.length();</div><div class="line">        for (int i = 0; i &lt; n; ++i) &#123;</div><div class="line">            if (m1[s.charAt(i)] != m2[t.charAt(i)]) return false;</div><div class="line">            m1[s.charAt(i)] = i + 1;</div><div class="line">            m2[t.charAt(i)] = i + 1;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode Pascal's Triangle]]></title>
+      <url>http://yoursite.com/2017/04/06/LeetCode-Pascal-s-Triangle/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question-2-119-pascals-triangle-ii">Question 2: 119. Pascal's Triangle II</h4>
+<p>Given an index k, return the kth row of the Pascal's triangle.</p>
+<p>For example, given k = 3,
+Return [1,3,3,1].</p>
+<p>Note:
+Could you optimize your algorithm to use only O(k) extra space?</p>
+<h4 id="explain">Explain</h4>
+<p>先开始用了递归的方法，得到上一层以后再计算此层。但是不满足O(k)space。所以比较好的方法是在该层从左往右依次计算，最左和最右为1。</p>
+<h4 id="code">Code</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public List&lt;Integer&gt; getRow(int rowIndex) &#123;</div><div class="line">List&lt;Integer&gt; res = new ArrayList&lt;Integer&gt;();</div><div class="line">for(int i = 0;i&lt;rowIndex+1;i++) &#123;</div><div class="line">    res.add(1);</div><div class="line">    for(int j=i-1;j&gt;0;j--) &#123;</div><div class="line">      res.set(j, res.get(j-1)+res.get(j));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">return res;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 415. Add Strings]]></title>
+      <url>http://yoursite.com/2017/04/06/LeetCode-415-Add-Strings/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="quesiton">Quesiton</h4>
+<p>Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.</p>
+<p>Note:</p>
+<ul>
+<li>The length of both num1 and num2 is &lt; 5100.</li>
+<li>Both num1 and num2 contains only digits 0-9.</li>
+<li>Both num1 and num2 does not contain any leading zero.</li>
+<li>You must not use any built-in BigInteger library or convert the inputs to integer directly.</li>
+</ul>
+<h4 id="explain">Explain</h4>
+<p>得到两个用String表示的数的和。不能直接转成int再加，会有overflow的问题。所以一位一位地加，计算进位，用stringbuilder得到最后的结果。</p>
+<h4 id="code">Code</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public String addStrings(String num1, String num2) &#123;</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        int carry = 0;</div><div class="line">        int i=num1.length()-1; int j=num2.length()-1;</div><div class="line">        int a = 0; int b=0;</div><div class="line">        while (i &gt;=0 || j&gt;=0 || carry &gt;= 1) &#123;</div><div class="line">            if (i &gt;= 0) &#123;</div><div class="line">                a = num1.toCharArray()[i--] - &apos;0&apos;;</div><div class="line">            &#125; else &#123;</div><div class="line">                a = 0;</div><div class="line">            &#125;</div><div class="line">            if (j &gt;= 0) &#123;</div><div class="line">                b = num2.toCharArray()[j--] - &apos;0&apos;;</div><div class="line">            &#125; else &#123;</div><div class="line">                b = 0;</div><div class="line">            &#125;</div><div class="line">            int sum = a+b+carry;</div><div class="line">            carry = sum/10;</div><div class="line">            sb.insert(0,sum%10);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return sb.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[论文笔记：Facebook可扩展架构概览]]></title>
       <url>http://yoursite.com/2017/03/29/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9AFacebook%E5%8F%AF%E6%8B%93%E5%B1%95%E6%9E%B6%E6%9E%84%E6%A6%82%E8%A7%88/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是论文《Overview of Facebook Scalable Architecture》的阅读笔记，作者Hugo Barrigas, Daniel Barrigas, Melyssa Barata, Pedro Furtado, Jorge Bernardina。技术细节很少，只是一个粗略的大框架。其实根本也没有讲什么细节，所以以后有更多补充再往里写。感觉最大的亮点就是<strong>MySQL+Memcached</strong>。</p>
@@ -2642,8 +2718,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     <entry>
       <title><![CDATA[温度]]></title>
       <url>http://yoursite.com/2016/07/30/e6-b8-a9-e5-ba-a6/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p> </p>
-<p>在出门需要勇气的日子里，看了两部港片。</p>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>在出门需要勇气的日子里，看了两部港片。</p>
 <p>很久没看港片了，一直很喜欢，虽然对王家卫无感，但很多港片自带弹幕效果，语速快，节奏快，情节紧凑，随便挑一部不至于像大陆很多言之无物的片子一样让人有浪费时间的感叹。</p>
 <p>聊聊《六楼后座》，林嘉欣卢巧音在里面实在太美太甜，背心牛仔裤的21世纪初的流行打扮干净利落。六个人最爱玩的“Truth or Dare”，其实也就是真心话大冒险吧。你选择诚实，或者大胆。年轻的状态非常明显，想哭的时候不忍着，想闹的时候就闹，不爽也不憋着，挣扎就是挣扎。</p>
 <p>最后一段话，说青春就是方糖。我是不喜“青春“”这个词语的，被俗人用烂了。</p>
@@ -2666,9 +2741,6 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
 <p>有的时候我仿佛又这样的体会，没有足够投入地活，靠着惯性而不是动力。</p>
 <p>这三个月，在上海，快乐的时候很纯粹，也发现这一年过去，让我真的不在意别人的看法了。但这样的活法，反而让我觉得自己和身边的人都更加自在。</p>
 <p>交了很多朋友，每一个都值得。只是，有些话没说，不知道会不会遗憾。</p>
-<p> </p>
-<pre><code>&amp;nbsp;
-</code></pre>
 ]]></content>
     </entry>
     
@@ -2698,204 +2770,22 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     <entry>
       <title><![CDATA[How to use Markdown as a starter]]></title>
       <url>http://yoursite.com/2016/07/26/how-to-use-markdown-as-a-starter/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote {
-margin: 0;
-padding: 0;
-}
-body {
-font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, Arial, sans-serif;
-font-size: 13px;
-line-height: 18px;
-color: #737373;
-background-color: white;
-margin: 10px 13px 10px 13px;
-}
-table {
-	margin: 10px 0 15px 0;
-	border-collapse: collapse;
-}
-td,th {
-	border: 1px solid #ddd;
-	padding: 3px 10px;
-}
-th {
-	padding: 5px 10px;
-}</p>
-<p>a {
-color: #0069d6;
-}
-a:hover {
-color: #0050a3;
-text-decoration: none;
-}
-a img {
-border: none;
-}
-p {
-margin-bottom: 9px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-color: #404040;
-line-height: 36px;
-}
-h1 {
-margin-bottom: 18px;
-font-size: 30px;
-}
-h2 {
-font-size: 24px;
-}
-h3 {
-font-size: 18px;
-}
-h4 {
-font-size: 16px;
-}
-h5 {
-font-size: 14px;
-}
-h6 {
-font-size: 13px;
-}
-hr {
-margin: 0 0 19px;
-border: 0;
-border-bottom: 1px solid #ccc;
-}
-blockquote {
-padding: 13px 13px 21px 15px;
-margin-bottom: 18px;
-font-family:georgia,serif;
-font-style: italic;
-}
-blockquote:before {
-content:&quot;\201C&quot;;
-font-size:40px;
-margin-left:-10px;
-font-family:georgia,serif;
-color:#eee;
-}
-blockquote p {
-font-size: 14px;
-font-weight: 300;
-line-height: 18px;
-margin-bottom: 0;
-font-style: italic;
-}
-code, pre {
-font-family: Monaco, Andale Mono, Courier New, monospace;
-}
-code {
-background-color: #fee9cc;
-color: rgba(0, 0, 0, 0.75);
-padding: 1px 3px;
-font-size: 12px;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
-}
-pre {
-display: block;
-padding: 14px;
-margin: 0 0 18px;
-line-height: 16px;
-font-size: 11px;
-border: 1px solid #d9d9d9;
-white-space: pre-wrap;
-word-wrap: break-word;
-}
-pre code {
-background-color: #fff;
-color:#737373;
-font-size: 11px;
-padding: 0;
-}
-sup {
-font-size: 0.83em;
-vertical-align: super;
-line-height: 0;
-}</p>
-<ul>
-<li>
-<p>{
--webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-body {
-width: 854px;
-margin:10px auto;
-}
-}
-@media print {
-body,code,pre code,h1,h2,h3,h4,h5,h6 {
-	color: black;
-}
-table, pre {
-	page-break-inside: avoid;
-}
-}&lt;/style&gt;
-&lt;title&gt;
-&lt;/title&gt;</p>
-<p> </p>
-<p>Recently, I am desired to write wordpress for do some summarization. But the format and writing style keep confusing me.</p>
-</li>
-</ul>
-<h1 id=""></h1>
-<pre><code>Let&amp;#39;s try Markdown this time!
-
-There are two ways to apply Markdown in wordpress:
-</code></pre>
-<h4 id=""></h4>
-<pre><code>1\. Install plugins:
-
-The recommended plugin is [Markdown for WordPress and bbPress](https://wordpress.org/plugins/markdown-for-wordpress-and-bbpress/) But it doesn&amp;#39;t work on my wordpress. Sad.
-</code></pre>
-<h4 id=""></h4>
-<pre><code>2\. Using Markdown Tools&amp;nbsp;
-
-You can write the article in advace using softwares before paste it to the blog.
-
-I prefer this way since using Wordpress to write is a huge disaster.
-</code></pre>
-<h6 id=""></h6>
-<pre><code>Step 1: Know about the grammar of Markdown :
-
-[CMD Markdown](https://www.zybuluo.com/mdeditor) is really a good tutorial. Or any other tutorials, whatever.
-</code></pre>
-<h6 id=""></h6>
-<pre><code>Step 2: Download a good Markdown Tool :
-
-It&amp;#39;s very convenience for us to write and review at the same time.&amp;nbsp;
-
-So, you can download [Mou](http://25.io/mou/) if&amp;nbsp;you use Mac.
-</code></pre>
-<h6 id=""></h6>
-<pre><code>Step 3: Keep practising to be perfect :
-
-As you can see, this article is written in Markdown.
-
-**_Cheers!_**
-
-&amp;nbsp;
-
-&amp;nbsp;
-
-&amp;nbsp;
-</code></pre>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Recently, I am desired to write wordpress for do some summarization. But the format and writing style keep confusing me.</p>
+<h3 id="lets-try-markdown-this-time">Let's try Markdown this time!</h3>
+<p>There are two ways to apply Markdown in wordpress:</p>
+<h4 id="1-install-plugins">1. Install plugins:</h4>
+<p>The recommended plugin is <a href="https://wordpress.org/plugins/markdown-for-wordpress-and-bbpress/" target="_blank" rel="external">Markdown for WordPress and bbPress</a> But it doesn't work on my wordpress. Sad.</p>
+<h4 id="2-using-markdown-tools">2. Using Markdown Tools </h4>
+<p>You can write the article in advace using softwares before paste it to the blog.</p>
+<p>I prefer this way since using Wordpress to write is a huge disaster.</p>
+<h6 id="step-1-know-about-the-grammar-of-markdown">Step 1: Know about the grammar of Markdown :</h6>
+<p><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="external">CMD Markdown</a> is really a good tutorial. Or any other tutorials, whatever.</p>
+<h6 id="step-2-download-a-good-markdown-tool">Step 2: Download a good Markdown Tool :</h6>
+<p>It's very convenience for us to write and review at the same time. </p>
+<p>So, you can download <a href="http://25.io/mou/" target="_blank" rel="external">Mou</a> if you use Mac.</p>
+<h6 id="step-3-keep-practising-to-be-perfect">Step 3: Keep practising to be perfect :</h6>
+<p>As you can see, this article is written in Markdown.</p>
+<p><strong><em>Cheers!</em></strong></p>
 ]]></content>
     </entry>
     
@@ -2903,28 +2793,17 @@ As you can see, this article is written in Markdown.
       <title><![CDATA[2016-07-21]]></title>
       <url>http://yoursite.com/2016/07/21/2016-07-21/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>一、</p>
-<pre><code>我活得越来越坦然的一个信号就是，我能勇敢地和别人安利自己的公众号了。
-
-关于这个公众号，里面的文章带着情绪的成分很多。而我的习惯是，在现实生活中面对面讲话好好相处，这样才是真实的，而不是虚无地毫无基础地通过表情和文字来传达彼此的心理。网络更应该是，让亲密关系更方便，不该是让陌生的人变成熟人，这是不可能。即使有可能，也是脆弱的，不堪一击的。
-
-同时，在很长一段时间里，我也很不愿让别人完全看透我的内心，这让我恐惧和不知所措。但是，现在，成熟地看我依旧不想让别人完全看透，但是我觉得我也不必要隐藏自己本来的一面。我确实想法很多，小心思很多，我相信这不会让人因此而放弃爱我或者疏远我，远离我。
-
-文字还是要写的，而且要写好，要好好写，要认真踏实地，言之有物地写。甚至写出不一样的感觉来。
-
-二、
-
-昨天见了小刘海，一个高高的姑娘，做花艺，话唠，拉拉，可爱。我不是贴标签哦，当我无法完整地写出一个人的时候，我更倾向于记录一些特征。大学的时候，我就像海绵吸水一样，迫不及待地见识各种各样的人，让各种世界观冲击我，迫不及待拓展自己对世界认知的边界。
-
-后来，我慢慢锻炼到能够自己熟练选择想要交的朋友，想要靠近的人，想要谈话的对象。某种意义上来说，时间成本在一方面的减少意味着投入到另一个领域，大概曾经的我确实空虚吧。
-
-小刘海给我了一只花，我养在了水杯里，可惜今天回来的时候已经有点枯萎了。可以做成干花。
-
-三、
-
-为了避免这个博客变成流水账博客。我就停笔，不写了。
-
-今天的BGM是王菲《矜持》。Nighty
-</code></pre>
+<p>我活得越来越坦然的一个信号就是，我能勇敢地和别人安利自己的公众号了。</p>
+<p>关于这个公众号，里面的文章带着情绪的成分很多。而我的习惯是，在现实生活中面对面讲话好好相处，这样才是真实的，而不是虚无地毫无基础地通过表情和文字来传达彼此的心理。网络更应该是，让亲密关系更方便，不该是让陌生的人变成熟人，这是不可能。即使有可能，也是脆弱的，不堪一击的。</p>
+<p>同时，在很长一段时间里，我也很不愿让别人完全看透我的内心，这让我恐惧和不知所措。但是，现在，成熟地看我依旧不想让别人完全看透，但是我觉得我也不必要隐藏自己本来的一面。我确实想法很多，小心思很多，我相信这不会让人因此而放弃爱我或者疏远我，远离我。</p>
+<p>文字还是要写的，而且要写好，要好好写，要认真踏实地，言之有物地写。甚至写出不一样的感觉来。</p>
+<p>二、</p>
+<p>昨天见了小刘海，一个高高的姑娘，做花艺，话唠，拉拉，可爱。我不是贴标签哦，当我无法完整地写出一个人的时候，我更倾向于记录一些特征。大学的时候，我就像海绵吸水一样，迫不及待地见识各种各样的人，让各种世界观冲击我，迫不及待拓展自己对世界认知的边界。</p>
+<p>后来，我慢慢锻炼到能够自己熟练选择想要交的朋友，想要靠近的人，想要谈话的对象。某种意义上来说，时间成本在一方面的减少意味着投入到另一个领域，大概曾经的我确实空虚吧。</p>
+<p>小刘海给我了一只花，我养在了水杯里，可惜今天回来的时候已经有点枯萎了。可以做成干花。</p>
+<p>三、</p>
+<p>为了避免这个博客变成流水账博客。我就停笔，不写了。</p>
+<p>今天的BGM是王菲《矜持》。Nighty</p>
 ]]></content>
     </entry>
     

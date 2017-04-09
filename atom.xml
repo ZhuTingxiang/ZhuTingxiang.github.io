@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-30T18:15:38.000Z</updated>
+  <updated>2017-04-09T04:05:29.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,162 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode Weekly Contest 27: 556. Next Greater Element III</title>
+    <link href="http://yoursite.com/2017/04/08/LeetCode-Weekly-Contest-27-556-Next-Greater-Element-III/"/>
+    <id>http://yoursite.com/2017/04/08/LeetCode-Weekly-Contest-27-556-Next-Greater-Element-III/</id>
+    <published>2017-04-09T03:17:52.000Z</published>
+    <updated>2017-04-09T04:05:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a positive 32-bit integer n, you need to find the smallest 32-bit integer which has exactly the same digits existing in the integer n and is greater in value than n. If no such positive 32-bit integer exists, you need to return -1.</p>
+<p>Example 1:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 12</div><div class="line">Output: 21</div></pre></td></tr></table></figure></p>
+<p>Example 2:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 21</div><div class="line">Output: -1</div></pre></td></tr></table></figure></p>
+<h3 id="explaination">Explaination</h3>
+<p>思路是：从最后开始，每两个数对比，如果前一个数比后一个数小，停下，这点就是要变的地方。然后，把这个位置用后面比它大的数中最小的那个数字替代，互换位置。之后再把这个位置后面的所有数倒置一下。同LeetCode No.31</p>
+<p>比如 <code>12487653</code><br>
+先替换 <code>12587643</code><br>
+再倒置后面的数字 <code>12534678</code></p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">public int nextGreaterElement(int num) &#123;</div><div class="line">        String n = Integer.toString(num);</div><div class="line">        char[] nums = n.toCharArray();</div><div class="line">        if (nums.length&lt;=1) return -1;</div><div class="line">        int result = -1;</div><div class="line">        for (int i=nums.length-2;i&gt;=0;i--) &#123;</div><div class="line">            if (nums[i] &gt;= nums[i+1]) continue;</div><div class="line">            swap(nums,i);</div><div class="line">            reverse(nums, i+1);</div><div class="line">            //avoid overflow</div><div class="line">            try &#123;</div><div class="line">                return Integer.parseInt(new String(nums));</div><div class="line">            &#125; catch(Exception e) &#123;</div><div class="line">                return -1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">       return result;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line">public void swap(char[] nums, int i) &#123;</div><div class="line">    for (int j =nums.length-1; j&gt;i; j--) &#123;</div><div class="line">        if (nums[j] &gt; nums[i])&#123;</div><div class="line">            char c = nums[j];</div><div class="line">            nums[j] = nums[i];</div><div class="line">            nums[i] = c;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">public void reverse(char[] nums,int i) &#123;</div><div class="line">    int first = i;</div><div class="line">    int last = nums.length-1;</div><div class="line">    while(first &lt; last) &#123;</div><div class="line">        char c = nums[first];</div><div class="line">        nums[first] = nums[last];</div><div class="line">        nums[last] = c;</div><div class="line">        first ++;</div><div class="line">        last --;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a positive 32-bit integer n, you need to find the
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Weekly Contest" scheme="http://yoursite.com/tags/Weekly-Contest/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode: 205. Isomorphic Strings</title>
+    <link href="http://yoursite.com/2017/04/07/Leetcode-205-Isomorphic-Strings/"/>
+    <id>http://yoursite.com/2017/04/07/Leetcode-205-Isomorphic-Strings/</id>
+    <published>2017-04-07T20:49:13.000Z</published>
+    <updated>2017-04-07T20:54:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question</h4>
+<p>Given two strings s and t, determine if they are isomorphic.</p>
+<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
+<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.</p>
+<p>For example,
+Given &quot;egg&quot;, &quot;add&quot;, return true.</p>
+<p>Given &quot;foo&quot;, &quot;bar&quot;, return false.</p>
+<p>Given &quot;paper&quot;, &quot;title&quot;, return true.</p>
+<h4 id="explaination">Explaination</h4>
+<p>方法一：用Hashmap存对应的字符，并用一个HashSet存用过的替代字符。
+方法二：用hashtable，两个数组，变化里面的frequency，如果不再一样，就不成立。</p>
+<h4 id="code">Code</h4>
+<h5 id="solution-1">Solution 1</h5>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public boolean isIsomorphic(String s, String t) &#123;</div><div class="line">    HashMap&lt;Character, Character&gt; map = new HashMap&lt;&gt;();</div><div class="line">    HashSet&lt;Character&gt; set = new HashSet&lt;&gt;();</div><div class="line">    if (s.length() != t.length()) return false;</div><div class="line">    for (int i=0; i&lt;s.length(); i++) &#123;</div><div class="line">        if (map.containsKey(s.charAt(i))) &#123;</div><div class="line">            if (map.get(s.charAt(i)) != t.charAt(i)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">        &#125; else &#123;</div><div class="line">            if (set.contains(t.charAt(i))) return false;</div><div class="line">            set.add(t.charAt(i));</div><div class="line">            map.put(s.charAt(i), t.charAt(i));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="solution-2">Solution 2</h5>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean isIsomorphic(String s, String t) &#123;</div><div class="line">        int[] m1 = new int[256];</div><div class="line">        int[] m2 = new int[256];</div><div class="line">        int n = s.length();</div><div class="line">        for (int i = 0; i &lt; n; ++i) &#123;</div><div class="line">            if (m1[s.charAt(i)] != m2[t.charAt(i)]) return false;</div><div class="line">            m1[s.charAt(i)] = i + 1;</div><div class="line">            m2[t.charAt(i)] = i + 1;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question&quot;&gt;Question&lt;/h4&gt;
+&lt;p&gt;Given two strings s and t, determine if they are isomor
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="HashTable" scheme="http://yoursite.com/tags/HashTable/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode Pascal&#39;s Triangle</title>
+    <link href="http://yoursite.com/2017/04/06/LeetCode-Pascal-s-Triangle/"/>
+    <id>http://yoursite.com/2017/04/06/LeetCode-Pascal-s-Triangle/</id>
+    <published>2017-04-06T20:24:06.000Z</published>
+    <updated>2017-04-06T21:09:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question-2-119-pascals-triangle-ii">Question 2: 119. Pascal's Triangle II</h4>
+<p>Given an index k, return the kth row of the Pascal's triangle.</p>
+<p>For example, given k = 3,
+Return [1,3,3,1].</p>
+<p>Note:
+Could you optimize your algorithm to use only O(k) extra space?</p>
+<h4 id="explain">Explain</h4>
+<p>先开始用了递归的方法，得到上一层以后再计算此层。但是不满足O(k)space。所以比较好的方法是在该层从左往右依次计算，最左和最右为1。</p>
+<h4 id="code">Code</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public List&lt;Integer&gt; getRow(int rowIndex) &#123;</div><div class="line">List&lt;Integer&gt; res = new ArrayList&lt;Integer&gt;();</div><div class="line">for(int i = 0;i&lt;rowIndex+1;i++) &#123;</div><div class="line">    res.add(1);</div><div class="line">    for(int j=i-1;j&gt;0;j--) &#123;</div><div class="line">      res.set(j, res.get(j-1)+res.get(j));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">return res;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question-2-119-pascals-triangle-ii&quot;&gt;Question 2: 119. Pascal&#39;s Triangle II&lt;/h4&gt;
+&lt;p&gt;
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="Pascal&#39;s Triangle" scheme="http://yoursite.com/tags/Pascal-s-Triangle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 415. Add Strings</title>
+    <link href="http://yoursite.com/2017/04/06/LeetCode-415-Add-Strings/"/>
+    <id>http://yoursite.com/2017/04/06/LeetCode-415-Add-Strings/</id>
+    <published>2017-04-06T18:35:17.000Z</published>
+    <updated>2017-04-06T18:38:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="quesiton">Quesiton</h4>
+<p>Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.</p>
+<p>Note:</p>
+<ul>
+<li>The length of both num1 and num2 is &lt; 5100.</li>
+<li>Both num1 and num2 contains only digits 0-9.</li>
+<li>Both num1 and num2 does not contain any leading zero.</li>
+<li>You must not use any built-in BigInteger library or convert the inputs to integer directly.</li>
+</ul>
+<h4 id="explain">Explain</h4>
+<p>得到两个用String表示的数的和。不能直接转成int再加，会有overflow的问题。所以一位一位地加，计算进位，用stringbuilder得到最后的结果。</p>
+<h4 id="code">Code</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public String addStrings(String num1, String num2) &#123;</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        int carry = 0;</div><div class="line">        int i=num1.length()-1; int j=num2.length()-1;</div><div class="line">        int a = 0; int b=0;</div><div class="line">        while (i &gt;=0 || j&gt;=0 || carry &gt;= 1) &#123;</div><div class="line">            if (i &gt;= 0) &#123;</div><div class="line">                a = num1.toCharArray()[i--] - &apos;0&apos;;</div><div class="line">            &#125; else &#123;</div><div class="line">                a = 0;</div><div class="line">            &#125;</div><div class="line">            if (j &gt;= 0) &#123;</div><div class="line">                b = num2.toCharArray()[j--] - &apos;0&apos;;</div><div class="line">            &#125; else &#123;</div><div class="line">                b = 0;</div><div class="line">            &#125;</div><div class="line">            int sum = a+b+carry;</div><div class="line">            carry = sum/10;</div><div class="line">            sb.insert(0,sum%10);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return sb.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;quesiton&quot;&gt;Quesiton&lt;/h4&gt;
+&lt;p&gt;Given two non-negative integers num1 and num2 represent
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
+    
+  </entry>
   
   <entry>
     <title>论文笔记：Facebook可扩展架构概览</title>
@@ -113,7 +269,7 @@ http://www.gtaan.gatech.edu/meetings/handouts/MazerFacebook.pdf (Accessed 25 Feb
     <link href="http://yoursite.com/2017/03/29/%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7/"/>
     <id>http://yoursite.com/2017/03/29/分布式一致性/</id>
     <published>2017-03-29T23:19:56.000Z</published>
-    <updated>2017-03-30T01:54:38.000Z</updated>
+    <updated>2017-03-30T02:02:10.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文梳理分布式系统中的常见概念：二阶段提交协议和三阶段提交协议。</p>
 <h2 id="二阶段提交协议two-phase-commit-protocol">二阶段提交协议(Two-phase Commit Protocol)</h2>
@@ -1178,186 +1334,6 @@ discuss中有一个牛逼的game theory博弈论算法，看不懂。有机会�
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="Backtracking" scheme="http://yoursite.com/tags/Backtracking/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 380. Insert Delete GetRandom O(1)</title>
-    <link href="http://yoursite.com/2017/02/19/Leetcode-380-Insert-Delete-GetRandom-O-1/"/>
-    <id>http://yoursite.com/2017/02/19/Leetcode-380-Insert-Delete-GetRandom-O-1/</id>
-    <published>2017-02-19T20:57:07.000Z</published>
-    <updated>2017-02-19T21:04:52.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
-<p>Design a data structure that supports all following operations in average O(1) time.</p>
-<p>insert(val): Inserts an item val to the set if not already present.
-remove(val): Removes an item val from the set if present.
-getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.
-Example:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">// Init an empty set.</div><div class="line">RandomizedSet randomSet = new RandomizedSet();</div><div class="line"></div><div class="line">// Inserts 1 to the set. Returns true as 1 was inserted successfully.</div><div class="line">randomSet.insert(1);</div><div class="line"></div><div class="line">// Returns false as 2 does not exist in the set.</div><div class="line">randomSet.remove(2);</div><div class="line"></div><div class="line">// Inserts 2 to the set, returns true. Set now contains [1,2].</div><div class="line">randomSet.insert(2);</div><div class="line"></div><div class="line">// getRandom should return either 1 or 2 randomly.</div><div class="line">randomSet.getRandom();</div><div class="line"></div><div class="line">// Removes 1 from the set, returns true. Set now contains [2].</div><div class="line">randomSet.remove(1);</div><div class="line"></div><div class="line">// 2 was already in the set, so return false.</div><div class="line">randomSet.insert(2);</div><div class="line"></div><div class="line">// Since 2 is the only number in the set, getRandom always return 2.</div><div class="line">randomSet.getRandom();</div></pre></td></tr></table></figure></p>
-<h3 id="explanation">Explanation:</h3>
-<p>很神奇的一道题，因为需要每个操作的复杂度平均为O(1),最初我只用了一个Arraylist存也AC了，但是时间很久，因为remove的时候不是O(1).换了Hashmap存index，快一些。但是要注意，remove那边不能直接count--，需要和最后一个值调换，这样保证其他的index不变，只减少最后一个。A little tricky
-总而言之，算法设计还是蛮有趣的，好好想想。</p>
-<h3 id="code">Code:</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">public class RandomizedSet &#123;</div><div class="line"></div><div class="line">    /** Initialize your data structure here. */</div><div class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">    int count;</div><div class="line">    public RandomizedSet() &#123;</div><div class="line">        count = 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */</div><div class="line">    public boolean insert(int val) &#123;</div><div class="line">        if(map.containsKey(val)) &#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">        map.put(val,count);</div><div class="line">        list.add(val);</div><div class="line">        count=map.size();</div><div class="line">        // System.out.println(list);</div><div class="line">        return true;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** Removes a value from the set. Returns true if the set contained the specified element. */</div><div class="line">    public boolean remove(int val) &#123;</div><div class="line">        if (map.containsKey(val)) &#123;</div><div class="line">            int index = map.get(val);</div><div class="line">            // change the index with the last one if it is not the last one;</div><div class="line">            if (index &lt; list.size()-1) &#123;</div><div class="line">                int lastone = list.get(list.size()-1);</div><div class="line">                list.set(index, lastone);</div><div class="line">                map.put(lastone,index);</div><div class="line">            &#125;</div><div class="line">            map.remove(val);</div><div class="line">            list.remove(list.size()-1);</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return false;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** Get a random element from the set. */</div><div class="line">    public int getRandom() &#123;</div><div class="line">        int r =(int)(Math.random()*list.size());</div><div class="line">        // System.out.println(r);</div><div class="line">        return list.get(r);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Your RandomizedSet object will be instantiated and called as such:</div><div class="line"> * RandomizedSet obj = new RandomizedSet();</div><div class="line"> * boolean param_1 = obj.insert(val);</div><div class="line"> * boolean param_2 = obj.remove(val);</div><div class="line"> * int param_3 = obj.getRandom();</div><div class="line"> */</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question:&lt;/h3&gt;
-&lt;p&gt;Design a data structure that supports all following op
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
-    
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
-      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 331. Verify Preorder Serialization of a Binary Tree</title>
-    <link href="http://yoursite.com/2017/02/19/Leetcode-331-Verify-Preorder-Serialization-of-a-Binary-Tree/"/>
-    <id>http://yoursite.com/2017/02/19/Leetcode-331-Verify-Preorder-Serialization-of-a-Binary-Tree/</id>
-    <published>2017-02-19T19:04:07.000Z</published>
-    <updated>2017-02-19T19:11:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
-<p>One way to serialize a binary tree is to use pre-order traversal. When we encounter a non-null node, we record the node's value. If it is a null node, we record using a sentinel value such as #.
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">     _9_</div><div class="line">    /   \</div><div class="line">   3     2</div><div class="line">  / \   / \</div><div class="line"> 4   1  #  6</div><div class="line">/ \ / \   / \</div><div class="line"># # # #   # #</div></pre></td></tr></table></figure></p>
-<p>For example, the above binary tree can be serialized to the string &quot;9,3,4,#,#,1,#,#,2,#,6,#,#&quot;, where # represents a null node.</p>
-<p>Given a string of comma separated values, verify whether it is a correct preorder traversal serialization of a binary tree. Find an algorithm without reconstructing the tree.</p>
-<p>Each comma separated value in the string must be either an integer or a character '#' representing null pointer.</p>
-<p>You may assume that the input format is always valid, for example it could never contain two consecutive commas such as &quot;1,,3&quot;.</p>
-<p>Example 1:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;9,3,4,#,#,1,#,#,2,#,6,#,#&quot;</div></pre></td></tr></table></figure></p>
-<p>Return true</p>
-<p>Example 2:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;1,#&quot;</div></pre></td></tr></table></figure></p>
-<p>Return false</p>
-<p>Example 3:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;9,#,#,1&quot;</div></pre></td></tr></table></figure></p>
-<p>Return false</p>
-<h3 id="explanation">Explanation:</h3>
-<p>该怎么说呢，就是想破脑袋才想到stack做，再然后调了半天bug。如果遇到#，去检查是不是stack里面有一个#和一个阿拉伯数字，如果是的话，全部替换成一个“#”，表示一个子节点结束。最后判断是不是stack里只有一个“#”表示的根节点。</p>
-<h3 id="code">Code:</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean isValidSerialization(String preorder) &#123;</div><div class="line">        Stack&lt;String&gt; stack = new Stack&lt;&gt;();</div><div class="line">        String[] nodes = preorder.split(&quot;,&quot;);</div><div class="line">        for(String s: nodes) &#123;</div><div class="line">            while (!stack.isEmpty() &amp;&amp; stack.peek().equals(&quot;#&quot;)) &#123;</div><div class="line">                if (s.equals(&quot;#&quot;)) &#123;</div><div class="line">                    stack.pop();</div><div class="line">                    if (!stack.empty() &amp;&amp; !stack.peek().equals(&quot;#&quot;)) &#123;</div><div class="line">                        stack.pop();</div><div class="line">                    &#125;else &#123;</div><div class="line">                        stack.push(&quot;#&quot;);</div><div class="line">                        break;</div><div class="line">                    &#125;</div><div class="line">                &#125; else &#123;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            stack.push(s);</div><div class="line">        &#125;</div><div class="line">        return stack.size() == 1 &amp;&amp; stack.peek().equals(&quot;#&quot;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question:&lt;/h3&gt;
-&lt;p&gt;One way to serialize a binary tree is to use pre-order
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Tree" scheme="http://yoursite.com/tags/Tree/"/>
-    
-      <category term="Stack" scheme="http://yoursite.com/tags/Stack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 289. Game of Life</title>
-    <link href="http://yoursite.com/2017/02/19/Leetcode-289-Game-of-Life/"/>
-    <id>http://yoursite.com/2017/02/19/Leetcode-289-Game-of-Life/</id>
-    <published>2017-02-19T17:33:41.000Z</published>
-    <updated>2017-02-19T18:36:36.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
-<p>According to the Wikipedia's article: &quot;The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.&quot;</p>
-<p>Given a board with m by n cells, each cell has an initial state live (1) or dead (0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):</p>
-<p>Any live cell with fewer than two live neighbors dies, as if caused by under-population.
-Any live cell with two or three live neighbors lives on to the next generation.
-Any live cell with more than three live neighbors dies, as if by over-population..
-Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
-Write a function to compute the next state (after one update) of the board given its current state.</p>
-<p>Follow up:
-Could you solve it in-place? Remember that the board needs to be updated at the same time: You cannot update some cells first and then use their updated values to update other cells.
-In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches the border of the array. How would you address these problems?</p>
-<h4 id="explanation">Explanation:</h4>
-<p>依次遍历matrix，判断周围八个方向总和，如果之后是live，就设置为3，否则设置为2。最后再遍历一次，改成0或者1。
-感觉这道题的考点是in place，其他的比较简单，遍历没有讨巧的方法。</p>
-<h4 id="code">Code:</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public void gameOfLife(int[][] board) &#123;</div><div class="line">        if (board == null || board.length == 0) return;</div><div class="line">        int m = board.length; int n = board[0].length;</div><div class="line">        for (int i=0; i&lt;board.length; ++i) &#123;</div><div class="line">            for (int j = 0; j &lt; board[0].length; ++j) &#123;</div><div class="line">                int sum = sumHelper(board, i, j, m, n);</div><div class="line">                if(board[i][j]==0 &amp;&amp; sum==3) board[i][j]=3;</div><div class="line">                if(board[i][j]==1 &amp;&amp; (sum&lt;2 || sum&gt;3)) board[i][j]=2;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        for (int i=0; i&lt;board.length; i++) &#123;</div><div class="line">            for (int j = 0; j &lt; board[0].length; j++) &#123;</div><div class="line">                board[i][j]%=2;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int sumHelper(int[][] board, int i, int j, int m, int n) &#123;</div><div class="line">        int sum = 0;</div><div class="line">        for (int x = Math.max(i-1, 0); x&lt;=Math.min(i+1, m-1); ++x) &#123;</div><div class="line">            for (int y = Math.max(j-1,0); y&lt;=Math.min(j+1,n-1); ++y) &#123;</div><div class="line">                if (board[x][y] == 2 || board[x][y] == 1) &#123;</div><div class="line">                    sum += 1;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        sum -= board[i][j];</div><div class="line">        return sum;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question&quot;&gt;Question:&lt;/h4&gt;
-&lt;p&gt;According to the Wikipedia&#39;s article: &amp;quot;The Game o
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
-      <category term="Matrix" scheme="http://yoursite.com/tags/Matrix/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 298. Binary Tree Longest Consecutive Sequence</title>
-    <link href="http://yoursite.com/2017/02/18/LeetCode-298-Binary-Tree-Longest-Consecutive-Sequence/"/>
-    <id>http://yoursite.com/2017/02/18/LeetCode-298-Binary-Tree-Longest-Consecutive-Sequence/</id>
-    <published>2017-02-19T01:42:10.000Z</published>
-    <updated>2017-02-19T01:45:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
-<p>Given a binary tree, find the length of the longest consecutive sequence path.</p>
-<p>The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The longest consecutive path need to be from parent to child (cannot be the reverse).
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">For example,</div><div class="line">   1</div><div class="line">    \</div><div class="line">     3</div><div class="line">    / \</div><div class="line">   2   4</div><div class="line">        \</div><div class="line">         5</div><div class="line">Longest consecutive sequence path is 3-4-5, so return 3.</div><div class="line">   2</div><div class="line">    \</div><div class="line">     3</div><div class="line">    /</div><div class="line">   2</div><div class="line">  /</div><div class="line"> 1</div><div class="line">Longest consecutive sequence path is 2-3,not3-2-1, so return 2.</div></pre></td></tr></table></figure></p>
-<h4 id="explanation">Explanation:</h4>
-<p>递归。想清楚base case和递归的模式即可。左右值，以及当前值，不要混淆。</p>
-<h4 id="code">Code:</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int longestConsecutive(TreeNode root) &#123;</div><div class="line">        return (root==null)?0:Math.max(Helper(root.left,1,root.val), Helper(root.right, 1, root.val));</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public int Helper(TreeNode root, int count, int val) &#123;</div><div class="line">        if (root == null) return count;</div><div class="line">        count = (root.val - val == 1) ? count+1:1;</div><div class="line">        int leftCount = Helper(root.left, count, root.val);</div><div class="line">        int rightCount = Helper(root.right, count, root.val);</div><div class="line">        return Math.max(count, Math.max(leftCount, rightCount));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question&quot;&gt;Question:&lt;/h4&gt;
-&lt;p&gt;Given a binary tree, find the length of the longest co
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Tree" scheme="http://yoursite.com/tags/Tree/"/>
     
   </entry>
   
