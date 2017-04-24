@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-09T04:07:48.000Z</updated>
+  <updated>2017-04-24T19:51:33.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,136 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 438. Find All Anagrams in a String</title>
+    <link href="http://yoursite.com/2017/04/24/LeetCode-438-Find-All-Anagrams-in-a-String/"/>
+    <id>http://yoursite.com/2017/04/24/LeetCode-438-Find-All-Anagrams-in-a-String/</id>
+    <published>2017-04-24T18:19:26.000Z</published>
+    <updated>2017-04-24T19:51:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
+<p>Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.</p>
+<p>Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than 20,100.</p>
+<p>The order of output does not matter.</p>
+<p>Example 1:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">s: &quot;cbaebabacd&quot; p: &quot;abc&quot;</div><div class="line"></div><div class="line">Output:</div><div class="line">[0, 6]</div><div class="line"></div><div class="line">Explanation:</div><div class="line">The substring with start index = 0 is &quot;cba&quot;, which is an anagram of &quot;abc&quot;.</div><div class="line">The substring with start index = 6 is &quot;bac&quot;, which is an anagram of &quot;abc&quot;.</div></pre></td></tr></table></figure></p>
+<p>Example 2:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">s: &quot;abab&quot; p: &quot;ab&quot;</div><div class="line"></div><div class="line">Output:</div><div class="line">[0, 1, 2]</div><div class="line"></div><div class="line">Explanation:</div><div class="line">The substring with start index = 0 is &quot;ab&quot;, which is an anagram of &quot;ab&quot;.</div><div class="line">The substring with start index = 1 is &quot;ba&quot;, which is an anagram of &quot;ab&quot;.</div><div class="line">The substring with start index = 2 is &quot;ab&quot;, which is an anagram of &quot;ab&quot;.</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation</h4>
+<p>暴力解会超时。需要采用sliding window的方法。
+参照 https://discuss.leetcode.com/topic/64434/shortest-concise-java-o-n-sliding-window-solution
+另外还有一些总结的模板：
+https://discuss.leetcode.com/topic/30941/here-is-a-10-line-template-that-can-solve-most-substring-problems</p>
+<h4 id="code">Code</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public List&lt;Integer&gt; findAnagrams(String s, String p) &#123;</div><div class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    if(s == null || p == null || s.length() &lt; p.length()) return list;</div><div class="line">    int[] chars = new int[256];</div><div class="line">    for(Character c:p.toCharArray()) &#123;</div><div class="line">        chars[c] ++;</div><div class="line">    &#125;</div><div class="line">    int start = 0; int end = 0; int count = p.length();</div><div class="line">    while(end &lt; s.length()) &#123;</div><div class="line">        //move right everytime, if the character exists in p&apos;s hash, decrease the count</div><div class="line">        //current hash value &gt;= 1 means the character is existing in p</div><div class="line">        if (chars[s.charAt(end)] &gt;= 1) &#123;</div><div class="line">            count--;</div><div class="line">        &#125;</div><div class="line">        chars[s.charAt(end)]--;</div><div class="line">        end++;</div><div class="line"></div><div class="line">        //when the count is down to 0, means we found the right anagram</div><div class="line">        //then add window&apos;s left to result list</div><div class="line">        if (count == 0) &#123;</div><div class="line">            list.add(start);</div><div class="line">        &#125;</div><div class="line">        //if we find the window&apos;s size equals to p, then we have to move left (narrow the window) to find the new match window</div><div class="line">        //++ to reset the hash because we kicked out the left</div><div class="line">        //only increase the count if the character is in p</div><div class="line">        //the count &gt;= 0 indicate it was original in the hash, cuz it won&apos;t go below 0</div><div class="line">        if (end - start== p.length() ) &#123;</div><div class="line">            if (chars[s.charAt(start)] &gt;= 0) &#123;</div><div class="line">                count++;</div><div class="line">            &#125;</div><div class="line">            chars[s.charAt(start)]++;</div><div class="line">            start++;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return list;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question&quot;&gt;Question:&lt;/h4&gt;
+&lt;p&gt;Given a string s and a non-empty string p, find all th
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>论文笔记：《Stronger consistency and semantics for low-latency geo-replicated storage》</title>
+    <link href="http://yoursite.com/2017/04/11/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9A%E3%80%8AStronger-consistency-and-semantics-for-low-latency-geo-replicated-storage%E3%80%8B/"/>
+    <id>http://yoursite.com/2017/04/11/论文笔记：《Stronger-consistency-and-semantics-for-low-latency-geo-replicated-storage》/</id>
+    <published>2017-04-12T03:11:01.000Z</published>
+    <updated>2017-04-13T01:43:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是《Stronger consistency and semantics for low-latency geo-replicated
+storage》的阅读笔记。</p>
+<h3 id="背景">背景</h3>
+<h4 id="地理复制geo-replication">地理复制（Geo-replication）</h4>
+<p>如今大型的网络服务常常需要大规模数据存储，需要支持上百万的并行用户对数据进行操作。在这些系统中，数据中心往往会对数据进行完全备份，也就是在每一个数据中心中都存储全部的数据。比如Facebook会把所有用户信息存在每个数据中心中。像这样讲数据备份在不同地理位置的方式称为：地理复制（Geo-replication）。<br>
+地理复制有两个好处：容错和低延迟。一个地理位置的数据库挂掉了，其他的可以继续提供服务。用户可以选择离自己最近的那个服务。</p>
+<h4 id="数据分区">数据分区</h4>
+<p>在大规模数据库中，每一个数据中心的数据会非常大，常常需要分布在上万的机器中，常用的一个技术叫做分区（sharding），就是把不同部分的数据房子啊不同的服务器中。当有新的机器增加时，就需要重新进行分区。所以总而言之，在不同地理区域的数据是重复的，每个地区的数据则是分区存放的。</p>
+<p>为了达到更少的round trop time也就是RTT，也就会从用户发出请求到返回的网络延迟，最重要的就是要减少到达数据存储之间延迟。一种方式就是尽量从本地获取。如图所示：</p>
+<p><img src="http://i.imgur.com/oyQ8t2X.png" alt=""></p>
+<h4 id="local-replica-only">Local-replica-only</h4>
+<p>从最近的地方读写是最快的。读从最近的数据中心读取，就不会去远程获取。写的是后也是在这个数据中心中更新，在更新远程数据中心之前就返回结果。这种设计称为“local-replica-only”数据库设计，就是为了减少远程获取，来得到数据中心之间RTT最短时间。然而这种“Local-replica-only”的设计往往会达不到强一致性。</p>
+<h4 id="linearizability线性一致化">Linearizability线性一致化</h4>
+<p>Linearizability是一种强一致性模型。也就是说如果写完之后，在另一个数据中心读取时，就需要有刚刚写的更新。所以理论上来说，低延迟和强一致性往往是trade-off的关系。</p>
+<h4 id="alps系统">ALPS系统</h4>
+<p>通过CAP理论，我们已经知道，一个系统无法同时达到Consistency，Availability和Partition-tolerance。因此，现代的网络服务通常牺牲了强一致性来满足可用性和分区容忍性。这类系统可以命名为“ALPS系统”，满足可用性，低延迟，分区容忍和高可拓。</p>
+<p>鉴于ALPS系统必须牺牲强一致性，我们就来探索一下在ALSP束缚下最强的一致性可以达到什么程度。这里，我们提出casual consistency with convergent conflict handling,也就是casual+一致性。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;本文是《Stronger consistency and semantics for low-latency geo-replicated
+storage》的阅读笔记。&lt;/p
+    
+    </summary>
+    
+      <category term="Distributed System" scheme="http://yoursite.com/categories/Distributed-System/"/>
+    
+    
+      <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
+    
+      <category term="Distributed System" scheme="http://yoursite.com/tags/Distributed-System/"/>
+    
+      <category term="Geo-replication" scheme="http://yoursite.com/tags/Geo-replication/"/>
+    
+      <category term="Data Storage" scheme="http://yoursite.com/tags/Data-Storage/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 206. Reverse Linked List</title>
+    <link href="http://yoursite.com/2017/04/09/LeetCode-206-Reverse-Linked-List/"/>
+    <id>http://yoursite.com/2017/04/09/LeetCode-206-Reverse-Linked-List/</id>
+    <published>2017-04-09T22:02:42.000Z</published>
+    <updated>2017-04-09T22:22:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="quesstion">Quesstion</h3>
+<p>Reverse a singly linked list.</p>
+<p>click to show more hints.</p>
+<p>Hint:
+A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
+<h3 id="explaination">Explaination</h3>
+<h4 id="iterative-solution">Iterative Solution</h4>
+<p>定义一个previous node，一个current node，倒过来。并记下之前的后面一个节点，循环。</p>
+<h4 id="recursive-solution">Recursive Solution</h4>
+<h3 id="code">Code</h3>
+<h4 id="iterative-solution">Iterative Solution</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public ListNode reverseList(ListNode head) &#123;</div><div class="line">        ListNode pre = null;</div><div class="line">        ListNode curr = head;</div><div class="line">        while (curr != null) &#123;</div><div class="line">            ListNode nextTmp = curr.next;</div><div class="line">            curr.next = pre;</div><div class="line">            pre = curr;</div><div class="line">            curr = nextTmp;</div><div class="line">        &#125;</div><div class="line">        return pre;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="recursive-solution">Recursive Solution</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public ListNode reverseList(ListNode head) &#123;</div><div class="line">    //Recursive</div><div class="line">    if (head == null) return null;</div><div class="line">    if (head.next == null) return head;</div><div class="line">    ListNode newNext = reverseList(head.next);</div><div class="line">    ListNode tmp = newNext;</div><div class="line">    while (tmp.next!= null) &#123;</div><div class="line">        tmp = tmp.next;</div><div class="line">    &#125;</div><div class="line">    tmp.next = head;</div><div class="line">    head.next = null;</div><div class="line">    return newNext;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;quesstion&quot;&gt;Quesstion&lt;/h3&gt;
+&lt;p&gt;Reverse a singly linked list.&lt;/p&gt;
+&lt;p&gt;click to show mo
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode Weekly Contest 27: 556. Next Greater Element III</title>
@@ -937,13 +1067,13 @@ hfile.block.cache.size：RS的block cache的内存大小限制，默认值0.25�
     
       <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
     
-      <category term="Big Data" scheme="http://yoursite.com/tags/Big-Data/"/>
-    
-      <category term="Twitter" scheme="http://yoursite.com/tags/Twitter/"/>
-    
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
     
       <category term="HBase" scheme="http://yoursite.com/tags/HBase/"/>
+    
+      <category term="Big Data" scheme="http://yoursite.com/tags/Big-Data/"/>
+    
+      <category term="Twitter" scheme="http://yoursite.com/tags/Twitter/"/>
     
   </entry>
   
@@ -1210,134 +1340,13 @@ CMU15619课件：<code>Social Networking Timeline with Heterogeneous Backends</c
     
       <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
     
+      <category term="Social Network" scheme="http://yoursite.com/tags/Social-Network/"/>
+    
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
     
       <category term="HBase" scheme="http://yoursite.com/tags/HBase/"/>
     
-      <category term="Social Network" scheme="http://yoursite.com/tags/Social-Network/"/>
-    
       <category term="MongoDB" scheme="http://yoursite.com/tags/MongoDB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 252. Meeting Rooms I</title>
-    <link href="http://yoursite.com/2017/02/20/Leetcode-252-Meeting-Rooms-I/"/>
-    <id>http://yoursite.com/2017/02/20/Leetcode-252-Meeting-Rooms-I/</id>
-    <published>2017-02-21T01:24:16.000Z</published>
-    <updated>2017-02-22T21:08:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
-<p>Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si &lt; ei), determine if a person could attend all meetings.</p>
-<p>For example,
-Given [[0, 30],[5, 10],[15, 20]],
-return false.</p>
-<h3 id="explanation">Explanation:</h3>
-<p>先按照start time排序，只要每一个end time都比下一个start time小，即可行。</p>
-<h3 id="code">Code:</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for an interval.</div><div class="line"> * public class Interval &#123;</div><div class="line"> *     int start;</div><div class="line"> *     int end;</div><div class="line"> *     Interval() &#123; start = 0; end = 0; &#125;</div><div class="line"> *     Interval(int s, int e) &#123; start = s; end = e; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public boolean canAttendMeetings(Interval[] intervals) &#123;</div><div class="line">       Arrays.sort(intervals, new Comparator&lt;Interval&gt;()&#123;</div><div class="line">            public int compare(Interval i1, Interval i2) &#123;</div><div class="line">                return i1.start - i2.start;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        for(int i=0; i&lt;intervals.length-1; i++) &#123;</div><div class="line">            if (intervals[i].end &gt; intervals[i+1].start) &#123;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question:&lt;/h3&gt;
-&lt;p&gt;Given an array of meeting time intervals consisting of
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
-    
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 253. Meeting Rooms II</title>
-    <link href="http://yoursite.com/2017/02/20/Leetcode-253-Meeting-Rooms/"/>
-    <id>http://yoursite.com/2017/02/20/Leetcode-253-Meeting-Rooms/</id>
-    <published>2017-02-21T01:21:53.000Z</published>
-    <updated>2017-02-21T03:06:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本题的简单版本是<a href="http://starllap.space/2017/02/20/Leetcode-252-Meeting-Rooms-I/" target="_blank" rel="external">Meeting Rooms I</a></p>
-<h3 id="question">Question:</h3>
-<p>Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si &lt; ei), find the minimum number of conference rooms required.</p>
-<p>For example,
-Given [[0, 30],[5, 10],[15, 20]],
-return 2.</p>
-<h3 id="explanation">Explanation:</h3>
-<p>先对start sort，用heap存end，相当于按照end也sort一遍，之后与最快结束的meeting对比，如果start time比最快结束的要小，则另开一间房间。
-先开始我用了两次循环，TLE了。用Heap是一个不错的选择，其实也可以用指针。直接贴一个<a href="https://discuss.leetcode.com/topic/20958/ac-java-solution-using-min-heap" target="_blank" rel="external">标准答案</a>。</p>
-<h3 id="code">Code:</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for an interval.</div><div class="line"> * public class Interval &#123;</div><div class="line"> *     int start;</div><div class="line"> *     int end;</div><div class="line"> *     Interval() &#123; start = 0; end = 0; &#125;</div><div class="line"> *     Interval(int s, int e) &#123; start = s; end = e; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">public int minMeetingRooms(Interval[] intervals) &#123;</div><div class="line">    if (intervals == null || intervals.length == 0)</div><div class="line">        return 0;</div><div class="line"></div><div class="line">    // Sort the intervals by start time</div><div class="line">    Arrays.sort(intervals, new Comparator&lt;Interval&gt;() &#123;</div><div class="line">        public int compare(Interval a, Interval b) &#123; return a.start - b.start; &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    // Use a min heap to track the minimum end time of merged intervals</div><div class="line">    PriorityQueue&lt;Interval&gt; heap = new PriorityQueue&lt;Interval&gt;(intervals.length, new Comparator&lt;Interval&gt;() &#123;</div><div class="line">        public int compare(Interval a, Interval b) &#123; return a.end - b.end; &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    // start with the first meeting, put it to a meeting room</div><div class="line">    heap.offer(intervals[0]);</div><div class="line"></div><div class="line">    for (int i = 1; i &lt; intervals.length; i++) &#123;</div><div class="line">        // get the meeting room that finishes earliest</div><div class="line">        Interval interval = heap.poll();</div><div class="line"></div><div class="line">        if (intervals[i].start &gt;= interval.end) &#123;</div><div class="line">            // if the current meeting starts right after</div><div class="line">            // there&apos;s no need for a new room, merge the interval</div><div class="line">            interval.end = intervals[i].end;</div><div class="line">        &#125; else &#123;</div><div class="line">            // otherwise, this meeting needs a new room</div><div class="line">            heap.offer(intervals[i]);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // don&apos;t forget to put the meeting room back</div><div class="line">        heap.offer(interval);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return heap.size();</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;本题的简单版本是&lt;a href=&quot;http://starllap.space/2017/02/20/Leetcode-252-Meeting-Rooms-I/&quot; target
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
-    
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 294. Flip GameII</title>
-    <link href="http://yoursite.com/2017/02/20/Leetcode-294-Flip-GameII/"/>
-    <id>http://yoursite.com/2017/02/20/Leetcode-294-Flip-GameII/</id>
-    <published>2017-02-20T18:26:34.000Z</published>
-    <updated>2017-02-20T20:07:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
-<p>You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &quot;++&quot; into &quot;--&quot;. The game ends when a person can no longer make a move and therefore the other person will be the winner.</p>
-<p>Write a function to determine if the starting player can guarantee a win.</p>
-<p>For example, given s = &quot;++++&quot;, return true. The starting player can guarantee a win by flipping the middle &quot;++&quot; to become &quot;+--+&quot;.</p>
-<p>Follow up:
-Derive your algorithm's runtime complexity.</p>
-<h4 id="explanation">Explanation:</h4>
-<p>本来想找规律，后来想想太天真了。用backtracking解，罗列所有的情况，如果下一局对手会输，就表示可以。现在我的算法是o(N!!)
-discuss中有一个牛逼的game theory博弈论算法，看不懂。有机会可以研究一下，会将time complexity降低到O(N^2)</p>
-<h4 id="code">Code:</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean canWin(String s) &#123;</div><div class="line">        if (s == null || s.length() &lt;2) return false;</div><div class="line">        char[] charString = s.toCharArray();</div><div class="line">        for (int i=0; i&lt;s.length()-1; i++) &#123;</div><div class="line"></div><div class="line">            if (charString[i] == &apos;+&apos; &amp;&amp; charString[i+1] == &apos;+&apos;) &#123;</div><div class="line">                charString[i] = &apos;-&apos;;</div><div class="line">                charString[i+1] = &apos;-&apos;;</div><div class="line">                if (!canWin(String.valueOf(charString))) &#123;</div><div class="line">                    return true;</div><div class="line">                &#125;</div><div class="line">                charString[i] = &apos;+&apos;; charString[i+1] = &apos;+&apos;;</div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question&quot;&gt;Question:&lt;/h4&gt;
-&lt;p&gt;You are playing the following Flip Game with your frie
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Backtracking" scheme="http://yoursite.com/tags/Backtracking/"/>
     
   </entry>
   

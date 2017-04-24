@@ -4,6 +4,70 @@
   
     
     <entry>
+      <title><![CDATA[LeetCode 438. Find All Anagrams in a String]]></title>
+      <url>http://yoursite.com/2017/04/24/LeetCode-438-Find-All-Anagrams-in-a-String/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
+<p>Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.</p>
+<p>Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than 20,100.</p>
+<p>The order of output does not matter.</p>
+<p>Example 1:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">s: &quot;cbaebabacd&quot; p: &quot;abc&quot;</div><div class="line"></div><div class="line">Output:</div><div class="line">[0, 6]</div><div class="line"></div><div class="line">Explanation:</div><div class="line">The substring with start index = 0 is &quot;cba&quot;, which is an anagram of &quot;abc&quot;.</div><div class="line">The substring with start index = 6 is &quot;bac&quot;, which is an anagram of &quot;abc&quot;.</div></pre></td></tr></table></figure></p>
+<p>Example 2:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">s: &quot;abab&quot; p: &quot;ab&quot;</div><div class="line"></div><div class="line">Output:</div><div class="line">[0, 1, 2]</div><div class="line"></div><div class="line">Explanation:</div><div class="line">The substring with start index = 0 is &quot;ab&quot;, which is an anagram of &quot;ab&quot;.</div><div class="line">The substring with start index = 1 is &quot;ba&quot;, which is an anagram of &quot;ab&quot;.</div><div class="line">The substring with start index = 2 is &quot;ab&quot;, which is an anagram of &quot;ab&quot;.</div></pre></td></tr></table></figure></p>
+<h4 id="explanation">Explanation</h4>
+<p>暴力解会超时。需要采用sliding window的方法。
+参照 https://discuss.leetcode.com/topic/64434/shortest-concise-java-o-n-sliding-window-solution
+另外还有一些总结的模板：
+https://discuss.leetcode.com/topic/30941/here-is-a-10-line-template-that-can-solve-most-substring-problems</p>
+<h4 id="code">Code</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public List&lt;Integer&gt; findAnagrams(String s, String p) &#123;</div><div class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    if(s == null || p == null || s.length() &lt; p.length()) return list;</div><div class="line">    int[] chars = new int[256];</div><div class="line">    for(Character c:p.toCharArray()) &#123;</div><div class="line">        chars[c] ++;</div><div class="line">    &#125;</div><div class="line">    int start = 0; int end = 0; int count = p.length();</div><div class="line">    while(end &lt; s.length()) &#123;</div><div class="line">        //move right everytime, if the character exists in p&apos;s hash, decrease the count</div><div class="line">        //current hash value &gt;= 1 means the character is existing in p</div><div class="line">        if (chars[s.charAt(end)] &gt;= 1) &#123;</div><div class="line">            count--;</div><div class="line">        &#125;</div><div class="line">        chars[s.charAt(end)]--;</div><div class="line">        end++;</div><div class="line"></div><div class="line">        //when the count is down to 0, means we found the right anagram</div><div class="line">        //then add window&apos;s left to result list</div><div class="line">        if (count == 0) &#123;</div><div class="line">            list.add(start);</div><div class="line">        &#125;</div><div class="line">        //if we find the window&apos;s size equals to p, then we have to move left (narrow the window) to find the new match window</div><div class="line">        //++ to reset the hash because we kicked out the left</div><div class="line">        //only increase the count if the character is in p</div><div class="line">        //the count &gt;= 0 indicate it was original in the hash, cuz it won&apos;t go below 0</div><div class="line">        if (end - start== p.length() ) &#123;</div><div class="line">            if (chars[s.charAt(start)] &gt;= 0) &#123;</div><div class="line">                count++;</div><div class="line">            &#125;</div><div class="line">            chars[s.charAt(start)]++;</div><div class="line">            start++;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return list;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[论文笔记：《Stronger consistency and semantics for low-latency geo-replicated storage》]]></title>
+      <url>http://yoursite.com/2017/04/11/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9A%E3%80%8AStronger-consistency-and-semantics-for-low-latency-geo-replicated-storage%E3%80%8B/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是《Stronger consistency and semantics for low-latency geo-replicated
+storage》的阅读笔记。</p>
+<h3 id="背景">背景</h3>
+<h4 id="地理复制geo-replication">地理复制（Geo-replication）</h4>
+<p>如今大型的网络服务常常需要大规模数据存储，需要支持上百万的并行用户对数据进行操作。在这些系统中，数据中心往往会对数据进行完全备份，也就是在每一个数据中心中都存储全部的数据。比如Facebook会把所有用户信息存在每个数据中心中。像这样讲数据备份在不同地理位置的方式称为：地理复制（Geo-replication）。<br>
+地理复制有两个好处：容错和低延迟。一个地理位置的数据库挂掉了，其他的可以继续提供服务。用户可以选择离自己最近的那个服务。</p>
+<h4 id="数据分区">数据分区</h4>
+<p>在大规模数据库中，每一个数据中心的数据会非常大，常常需要分布在上万的机器中，常用的一个技术叫做分区（sharding），就是把不同部分的数据房子啊不同的服务器中。当有新的机器增加时，就需要重新进行分区。所以总而言之，在不同地理区域的数据是重复的，每个地区的数据则是分区存放的。</p>
+<p>为了达到更少的round trop time也就是RTT，也就会从用户发出请求到返回的网络延迟，最重要的就是要减少到达数据存储之间延迟。一种方式就是尽量从本地获取。如图所示：</p>
+<p><img src="http://i.imgur.com/oyQ8t2X.png" alt=""></p>
+<h4 id="local-replica-only">Local-replica-only</h4>
+<p>从最近的地方读写是最快的。读从最近的数据中心读取，就不会去远程获取。写的是后也是在这个数据中心中更新，在更新远程数据中心之前就返回结果。这种设计称为“local-replica-only”数据库设计，就是为了减少远程获取，来得到数据中心之间RTT最短时间。然而这种“Local-replica-only”的设计往往会达不到强一致性。</p>
+<h4 id="linearizability线性一致化">Linearizability线性一致化</h4>
+<p>Linearizability是一种强一致性模型。也就是说如果写完之后，在另一个数据中心读取时，就需要有刚刚写的更新。所以理论上来说，低延迟和强一致性往往是trade-off的关系。</p>
+<h4 id="alps系统">ALPS系统</h4>
+<p>通过CAP理论，我们已经知道，一个系统无法同时达到Consistency，Availability和Partition-tolerance。因此，现代的网络服务通常牺牲了强一致性来满足可用性和分区容忍性。这类系统可以命名为“ALPS系统”，满足可用性，低延迟，分区容忍和高可拓。</p>
+<p>鉴于ALPS系统必须牺牲强一致性，我们就来探索一下在ALSP束缚下最强的一致性可以达到什么程度。这里，我们提出casual consistency with convergent conflict handling,也就是casual+一致性。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 206. Reverse Linked List]]></title>
+      <url>http://yoursite.com/2017/04/09/LeetCode-206-Reverse-Linked-List/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="quesstion">Quesstion</h3>
+<p>Reverse a singly linked list.</p>
+<p>click to show more hints.</p>
+<p>Hint:
+A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
+<h3 id="explaination">Explaination</h3>
+<h4 id="iterative-solution">Iterative Solution</h4>
+<p>定义一个previous node，一个current node，倒过来。并记下之前的后面一个节点，循环。</p>
+<h4 id="recursive-solution">Recursive Solution</h4>
+<h3 id="code">Code</h3>
+<h4 id="iterative-solution">Iterative Solution</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public ListNode reverseList(ListNode head) &#123;</div><div class="line">        ListNode pre = null;</div><div class="line">        ListNode curr = head;</div><div class="line">        while (curr != null) &#123;</div><div class="line">            ListNode nextTmp = curr.next;</div><div class="line">            curr.next = pre;</div><div class="line">            pre = curr;</div><div class="line">            curr = nextTmp;</div><div class="line">        &#125;</div><div class="line">        return pre;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="recursive-solution">Recursive Solution</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public ListNode reverseList(ListNode head) &#123;</div><div class="line">    //Recursive</div><div class="line">    if (head == null) return null;</div><div class="line">    if (head.next == null) return head;</div><div class="line">    ListNode newNext = reverseList(head.next);</div><div class="line">    ListNode tmp = newNext;</div><div class="line">    while (tmp.next!= null) &#123;</div><div class="line">        tmp = tmp.next;</div><div class="line">    &#125;</div><div class="line">    tmp.next = head;</div><div class="line">    head.next = null;</div><div class="line">    return newNext;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[LeetCode Weekly Contest 27: 556. Next Greater Element III]]></title>
       <url>http://yoursite.com/2017/04/08/LeetCode-Weekly-Contest-27-556-Next-Greater-Element-III/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
