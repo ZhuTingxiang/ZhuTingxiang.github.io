@@ -29,6 +29,7 @@ https://discuss.leetcode.com/topic/30941/here-is-a-10-line-template-that-can-sol
       <url>http://yoursite.com/2017/04/11/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9A%E3%80%8AStronger-consistency-and-semantics-for-low-latency-geo-replicated-storage%E3%80%8B/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是《Stronger consistency and semantics for low-latency geo-replicated
 storage》的阅读笔记。</p>
+<p>(未完成更新...)</p>
 <h3 id="背景">背景</h3>
 <h4 id="地理复制geo-replication">地理复制（Geo-replication）</h4>
 <p>如今大型的网络服务常常需要大规模数据存储，需要支持上百万的并行用户对数据进行操作。在这些系统中，数据中心往往会对数据进行完全备份，也就是在每一个数据中心中都存储全部的数据。比如Facebook会把所有用户信息存在每个数据中心中。像这样讲数据备份在不同地理位置的方式称为：地理复制（Geo-replication）。<br>
