@@ -96,7 +96,7 @@ The path refers to any sequence of nodes from some starting node to any node in 
 <meta property="og:description" content="Question:
 Given a binary tree, find the length of the longest consecutive sequence path.
 The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-chil">
-<meta property="og:updated_time" content="2017-02-19T01:45:13.000Z">
+<meta property="og:updated_time" content="2017-05-30T22:16:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 298. Binary Tree Longest Consecutive Sequence">
 <meta name="twitter:description" content="Question:
@@ -413,7 +413,7 @@ The path refers to any sequence of nodes from some starting node to any node in 
 <h4 id="explanation">Explanation:</h4>
 <p>递归。想清楚base case和递归的模式即可。左右值，以及当前值，不要混淆。</p>
 <h4 id="code">Code:</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int longestConsecutive(TreeNode root) &#123;</div><div class="line">        return (root==null)?0:Math.max(Helper(root.left,1,root.val), Helper(root.right, 1, root.val));</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public int Helper(TreeNode root, int count, int val) &#123;</div><div class="line">        if (root == null) return count;</div><div class="line">        count = (root.val - val == 1) ? count+1:1;</div><div class="line">        int leftCount = Helper(root.left, count, root.val);</div><div class="line">        int rightCount = Helper(root.right, count, root.val);</div><div class="line">        return Math.max(count, Math.max(leftCount, rightCount));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">Solution 1:</div><div class="line">public class Solution &#123;</div><div class="line">    public int longestConsecutive(TreeNode root) &#123;</div><div class="line">        return (root==null)?0:Math.max(Helper(root.left,1,root.val), Helper(root.right, 1, root.val));</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public int Helper(TreeNode root, int count, int val) &#123;</div><div class="line">        if (root == null) return count;</div><div class="line">        count = (root.val - val == 1) ? count+1:1;</div><div class="line">        int leftCount = Helper(root.left, count, root.val);</div><div class="line">        int rightCount = Helper(root.right, count, root.val);</div><div class="line">        return Math.max(count, Math.max(leftCount, rightCount));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Solution 2:</div><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line">    int max;</div><div class="line">    public int longestConsecutive(TreeNode root) &#123;</div><div class="line">        max = 0;</div><div class="line">        helper(root);</div><div class="line">        return max;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int helper(TreeNode root)&#123;</div><div class="line">        int subMax = 1;</div><div class="line">        if (root == null) return 0;</div><div class="line">        int left = helper(root.left);</div><div class="line">        int right = helper(root.right);</div><div class="line">        if (root.left != null &amp;&amp; root.val + 1==root.left.val) subMax = Math.max(subMax, left+1);</div><div class="line">        if (root.right != null &amp;&amp; root.val + 1 == root.right.val) subMax = Math.max(subMax, right+1);</div><div class="line"></div><div class="line">        if (subMax &gt; max) &#123;</div><div class="line">            max = subMax;</div><div class="line">        &#125;</div><div class="line">        return subMax;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -539,7 +539,7 @@ The path refers to any sequence of nodes from some starting node to any node in 
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">80</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -547,7 +547,7 @@ The path refers to any sequence of nodes from some starting node to any node in 
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -556,7 +556,7 @@ The path refers to any sequence of nodes from some starting node to any node in 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">81</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

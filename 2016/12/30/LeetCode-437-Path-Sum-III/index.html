@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="LeetCode,Easy,Python,tree," />
+  <meta name="keywords" content="LeetCode,Easy,Binary Tree," />
 
 
 
@@ -86,25 +86,25 @@
 
 
 
-<meta name="description" content="Quesition
+<meta name="description" content="Question
 You are given a binary tree in which each node contains an integer value.
 Find the number of paths that sum to a given value.
-The path does not need to start or end at the root or a leaf, b">
+The path does not need to start or end at the root or a leaf, bu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 437. Path Sum III">
 <meta property="og:url" content="http://yoursite.com/2016/12/30/LeetCode-437-Path-Sum-III/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="Quesition
+<meta property="og:description" content="Question
 You are given a binary tree in which each node contains an integer value.
 Find the number of paths that sum to a given value.
-The path does not need to start or end at the root or a leaf, b">
-<meta property="og:updated_time" content="2016-12-30T18:32:22.000Z">
+The path does not need to start or end at the root or a leaf, bu">
+<meta property="og:updated_time" content="2017-05-31T20:55:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 437. Path Sum III">
-<meta name="twitter:description" content="Quesition
+<meta name="twitter:description" content="Question
 You are given a binary tree in which each node contains an integer value.
 Find the number of paths that sum to a given value.
-The path does not need to start or end at the root or a leaf, b">
+The path does not need to start or end at the root or a leaf, bu">
 
 <script>
   (function(){
@@ -409,7 +409,7 @@ The path does not need to start or end at the root or a leaf, b">
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><p><strong>Quesition</strong></p>
+        <script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question</strong></p>
 <p>You are given a binary tree in which each node contains an integer value.</p>
 <p>Find the number of paths that sum to a given value.</p>
 <p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
@@ -442,6 +442,9 @@ Return 3. The paths that sum to 8 are:
 </ul>
 <p>之后再对这类题目进行总结。</p>
 <p><strong>Code</strong>:
+Java
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line"></div><div class="line">    public void flatten(TreeNode root) &#123;</div><div class="line">        if (root == null) return;</div><div class="line">        TreeNode right = root.right;</div><div class="line">        TreeNode left = root.left;</div><div class="line">        flatten(right);</div><div class="line">        flatten(left);</div><div class="line">        root.left = null;</div><div class="line">        root.right = left;</div><div class="line">        TreeNode cur = root;</div><div class="line">        while(cur.right != null) cur = cur.right;</div><div class="line">        cur.right = right;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Python
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def pathSum(self, root, sum):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type root: TreeNode</div><div class="line">        :type sum: int</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line"></div><div class="line">        if not root:</div><div class="line">            return 0</div><div class="line">        return self.pathHelper(root, sum) + self.pathSum(root.left, sum) + self.pathSum(root.right, sum)</div><div class="line"></div><div class="line">    def pathHelper(self, root, sum):</div><div class="line">        result = 0</div><div class="line">        if not root:</div><div class="line">            return 0</div><div class="line">        if (sum == root.val):</div><div class="line">            result += 1</div><div class="line">        result += self.pathHelper(root.left, sum - root.val)</div><div class="line">        result += self.pathHelper(root.right, sum - root.val)</div><div class="line">        return result</div></pre></td></tr></table></figure></p>
 
       
@@ -470,9 +473,7 @@ Return 3. The paths that sum to 8 are:
           
             <a href="/tags/Easy/" rel="tag"># Easy</a>
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-            <a href="/tags/tree/" rel="tag"># tree</a>
+            <a href="/tags/Binary-Tree/" rel="tag"># Binary Tree</a>
           
         </div>
       
@@ -559,7 +560,7 @@ Return 3. The paths that sum to 8 are:
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">80</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -567,7 +568,7 @@ Return 3. The paths that sum to 8 are:
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -576,7 +577,7 @@ Return 3. The paths that sum to 8 are:
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">81</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

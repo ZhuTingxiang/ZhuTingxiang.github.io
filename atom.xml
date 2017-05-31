@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-29T02:26:58.000Z</updated>
+  <updated>2017-05-31T15:04:37.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,589 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 113.Path Sum II</title>
+    <link href="http://yoursite.com/2017/05/31/LeetCode-113-Path-Sum-II/"/>
+    <id>http://yoursite.com/2017/05/31/LeetCode-113-Path-Sum-II/</id>
+    <published>2017-05-31T15:03:05.000Z</published>
+    <updated>2017-05-31T15:04:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.</p>
+<p>For example:
+Given the below binary tree and sum = 22,
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">      5</div><div class="line">     / \</div><div class="line">    4   8</div><div class="line">   /   / \</div><div class="line">  11  13  4</div><div class="line"> /  \    / \</div><div class="line">7    2  5   1</div></pre></td></tr></table></figure></p>
+<p>return
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">   [5,4,11,2],</div><div class="line">   [5,8,4,5]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>递归的时候保留路径，满足就存入全局变量中。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    private List&lt;List&lt;Integer&gt;&gt; resultList = new ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line"></div><div class="line"></div><div class="line">    public void pathSumHelper(TreeNode root, int sum, ArrayList&lt;Integer&gt; path)&#123;</div><div class="line">        path.add(root.val);</div><div class="line">        if (root == null) return;</div><div class="line">        if (root.left == null &amp;&amp; root.right == null) &#123;</div><div class="line">            if (root.val== sum) &#123;</div><div class="line">                resultList.add(new ArrayList&lt;Integer&gt;(path));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (root.left != null) pathSumHelper(root.left, sum - root.val, path);</div><div class="line">        if (root.right != null) pathSumHelper(root.right, sum - root.val, path);</div><div class="line">        path.remove(path.size()-1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public List&lt;List&lt;Integer&gt;&gt; pathSum(TreeNode root, int sum) &#123;</div><div class="line">        if(root==null) return resultList;</div><div class="line">        ArrayList&lt;Integer&gt; path = new ArrayList&lt;&gt;();</div><div class="line">        pathSumHelper(root, sum, path);</div><div class="line">        return resultList;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary tree and a sum, find all root-to-leaf pa
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 112.Path Sum</title>
+    <link href="http://yoursite.com/2017/05/30/LeetCode-112-Path-Sum/"/>
+    <id>http://yoursite.com/2017/05/30/LeetCode-112-Path-Sum/</id>
+    <published>2017-05-30T22:33:37.000Z</published>
+    <updated>2017-05-31T15:04:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
+<p>For example:
+Given the below binary tree and sum = 22,
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">      5</div><div class="line">     / \</div><div class="line">    4   8</div><div class="line">   /   / \</div><div class="line">  11  13  4</div><div class="line"> /  \      \</div><div class="line">7    2      1</div></pre></td></tr></table></figure></p>
+<p>return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22.</p>
+<h3 id="explanation">Explanation</h3>
+<p>简单的递归分治法。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public boolean hasPathSum(TreeNode root, int sum) &#123;</div><div class="line">        if (root == null) return false;</div><div class="line">        if (root.right == null &amp;&amp; root.left == null)&#123;</div><div class="line">            if(root.val == sum) return true;</div><div class="line">        &#125;</div><div class="line">        return hasPathSum(root.left, sum-root.val) || hasPathSum(root.right, sum-root.val);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary tree and a sum, determine if the tree ha
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 236.Lowest Common Ancestor of a Binary  Tree</title>
+    <link href="http://yoursite.com/2017/05/30/LeetCode-236-Lowest-Common-Ancestor-of-a-Binary-Tree/"/>
+    <id>http://yoursite.com/2017/05/30/LeetCode-236-Lowest-Common-Ancestor-of-a-Binary-Tree/</id>
+    <published>2017-05-30T20:56:42.000Z</published>
+    <updated>2017-05-30T20:58:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.</p>
+<p>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).”
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">     _______3______</div><div class="line">    /              \</div><div class="line"> ___5__          ___1__</div><div class="line">/      \        /      \</div><div class="line">6      _2       0       8</div><div class="line">      /  \</div><div class="line">      7   4</div></pre></td></tr></table></figure></p>
+<p>For example, the lowest common ancestor (LCA) of nodes 5 and 1 is 3. Another example is LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.</p>
+<h3 id="explanation">Explanation</h3>
+<p>二叉树分治递归。找AB时，如果根节点是其中一个，返回根。如果左边找到一个，右边找到一个，返回根。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123;</div><div class="line">        if (root == null || root == p || root == q) return root;</div><div class="line">        TreeNode left = lowestCommonAncestor(root.left, p, q);</div><div class="line">        TreeNode right = lowestCommonAncestor(root.right, p, q);</div><div class="line">        if (left != null &amp;&amp; right != null) return root;</div><div class="line">        if (left != null) return left;</div><div class="line">        if (right != null) return right;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary tree, find the lowest common ancestor (L
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 235.Lowest Common Ancestor of a Binary Search Tree</title>
+    <link href="http://yoursite.com/2017/05/30/LeetCode-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/"/>
+    <id>http://yoursite.com/2017/05/30/LeetCode-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/</id>
+    <published>2017-05-30T20:50:41.000Z</published>
+    <updated>2017-05-30T20:56:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.</p>
+<p>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).”
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">     _______6______</div><div class="line">    /              \</div><div class="line"> ___2__          ___8__</div><div class="line">/      \        /      \</div><div class="line">0      _4       7       9</div><div class="line">      /  \</div><div class="line">      3   5</div></pre></td></tr></table></figure></p>
+<p>For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another example is LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition.</p>
+<h3 id="explanation">Explanation</h3>
+<p>既然是二叉搜索树，那就可以根据值来进行判断。分治递归。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"></div><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line">    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123;</div><div class="line">       if (root.val &gt; p.val &amp;&amp; root.val &gt; q.val) return lowestCommonAncestor(root.left, p,q);</div><div class="line">       if (root.val &lt; p.val &amp;&amp; root.val &lt; q.val) return lowestCommonAncestor(root.right, p,q);</div><div class="line">       return root;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary search tree (BST), find the lowest commo
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+      <category term="Binary Search Tree" scheme="http://yoursite.com/tags/Binary-Search-Tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 114. Flatten Binary Tree to Linked List</title>
+    <link href="http://yoursite.com/2017/05/30/LeetCode-114-Flatten-Binary-Tree-to-Linked-List/"/>
+    <id>http://yoursite.com/2017/05/30/LeetCode-114-Flatten-Binary-Tree-to-Linked-List/</id>
+    <published>2017-05-30T19:56:40.000Z</published>
+    <updated>2017-05-30T19:58:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, flatten it to a linked list in-place.</p>
+<p>For example,
+Given
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    1</div><div class="line">   / \</div><div class="line">  2   5</div><div class="line"> / \   \</div><div class="line">3   4   6</div></pre></td></tr></table></figure></p>
+<p>The flattened tree should look like:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line"> \</div><div class="line">  2</div><div class="line">   \</div><div class="line">    3</div><div class="line">     \</div><div class="line">      4</div><div class="line">       \</div><div class="line">        5</div><div class="line">         \</div><div class="line">          6</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>分治法，左右子树递归以后，把左右根节点依次排到右边，左边为空即可。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line"></div><div class="line">    public void flatten(TreeNode root) &#123;</div><div class="line">        if (root == null) return;</div><div class="line">        TreeNode right = root.right;</div><div class="line">        TreeNode left = root.left;</div><div class="line">        flatten(right);</div><div class="line">        flatten(left);</div><div class="line">        root.left = null;</div><div class="line">        root.right = left;</div><div class="line">        TreeNode cur = root;</div><div class="line">        while(cur.right != null) cur = cur.right;</div><div class="line">        cur.right = right;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary tree, flatten it to a linked list in-pla
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 110. Balanced Binary Tree</title>
+    <link href="http://yoursite.com/2017/05/30/LeetCode-110-Balanced-Binary-Tree/"/>
+    <id>http://yoursite.com/2017/05/30/LeetCode-110-Balanced-Binary-Tree/</id>
+    <published>2017-05-30T19:14:57.000Z</published>
+    <updated>2017-05-30T19:56:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, determine if it is height-balanced.</p>
+<p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
+<h3 id="explanation">Explanation</h3>
+<p>在这里还是用递归，判断条件为1. 左右子树均balance 2.左右子树高度只差不超过1. 所以在这道题中，为了能返回两个值，就创建了一个新的类：ResultType。如果用python写就不用了。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"></div><div class="line">class ResultType &#123;</div><div class="line">    public boolean isBalanced;</div><div class="line">    public int maxDepth;</div><div class="line">    public ResultType(boolean isBalanced, int maxDepth) &#123;</div><div class="line">        this.isBalanced = isBalanced;</div><div class="line">        this.maxDepth = maxDepth;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line">    public boolean isBalanced(TreeNode root) &#123;</div><div class="line">        if (root == null) return true;</div><div class="line">        return helper(root).isBalanced;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public ResultType helper(TreeNode root) &#123;</div><div class="line">        if (root == null ) return new ResultType(true, 0);</div><div class="line">        ResultType left = helper(root.left);</div><div class="line">        ResultType right = helper(root.right);</div><div class="line">        if (left.isBalanced &amp;&amp; right.isBalanced &amp;&amp; Math.abs(left.maxDepth-right.maxDepth)&lt;=1)  &#123;</div><div class="line">            return new ResultType(true, Math.max(left.maxDepth,right.maxDepth)+1);</div><div class="line">        &#125;</div><div class="line">        return new ResultType(false, -1);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary tree, determine if it is height-balanced
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LintCode 596. Minimum Subtree</title>
+    <link href="http://yoursite.com/2017/05/30/LintCode-596-Minimum-Subtree/"/>
+    <id>http://yoursite.com/2017/05/30/LintCode-596-Minimum-Subtree/</id>
+    <published>2017-05-30T17:40:53.000Z</published>
+    <updated>2017-05-30T18:19:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Description
+Given a binary tree, find the subtree with minimum sum. Return the root of the subtree.</p>
+<p>Notice
+LintCode will print the subtree which root is your return node.
+It's guaranteed that there is only one subtree with minimum sum and the given binary tree is not an empty tree.</p>
+<p>Example
+Given a binary tree:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">      1</div><div class="line">    /   \</div><div class="line"> -5      2</div><div class="line"> / \     /  \</div><div class="line">0   2   -4  -5</div></pre></td></tr></table></figure></p>
+<p>return the node 1.</p>
+<h3 id="explanation">Explanation</h3>
+<p>可以用遍历的方式来递归，也可以用分治法。分治法的话要注意自己构造一个类。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">// version 1 : traverse + divide conquer</div><div class="line">public class Solution &#123;</div><div class="line">    private TreeNode subtree = null;</div><div class="line">    private int subtreeSum = Integer.MAX_VALUE;</div><div class="line">    /**</div><div class="line">     * @param root the root of binary tree</div><div class="line">     * @return the root of the minimum subtree</div><div class="line">     */</div><div class="line">    public TreeNode findSubtree(TreeNode root) &#123;</div><div class="line">        helper(root);</div><div class="line">        return subtree;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private int helper(TreeNode root) &#123;</div><div class="line">        if (root == null) &#123;</div><div class="line">            return 0;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        int sum = helper(root.left) + helper(root.right) + root.val;</div><div class="line">        if (sum &lt; subtreeSum) &#123;</div><div class="line">            subtreeSum = sum;</div><div class="line">            subtree = root;</div><div class="line">        &#125;</div><div class="line">        return sum;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// version 2: Pure divide conquer</div><div class="line">class ResultType &#123;</div><div class="line">    public TreeNode minSubtree;</div><div class="line">    public int sum, minSum;</div><div class="line">    public ResultType(TreeNode minSubtree, int minSum, int sum) &#123;</div><div class="line">        this.minSubtree = minSubtree;</div><div class="line">        this.minSum = minSum;</div><div class="line">        this.sum = sum;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">public class Solution &#123;</div><div class="line">    /**</div><div class="line">     * @param root the root of binary tree</div><div class="line">     * @return the root of the minimum subtree</div><div class="line">     */</div><div class="line">    public TreeNode findSubtree(TreeNode root) &#123;</div><div class="line">        ResultType result = helper(root);</div><div class="line">        return result.minSubtree;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public ResultType helper(TreeNode node) &#123;</div><div class="line">        if (node == null) &#123;</div><div class="line">            return new ResultType(null, Integer.MAX_VALUE, 0);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ResultType leftResult = helper(node.left);</div><div class="line">        ResultType rightResult = helper(node.right);</div><div class="line"></div><div class="line">        ResultType result = new ResultType(</div><div class="line">            node,</div><div class="line">            leftResult.sum + rightResult.sum + node.val,</div><div class="line">            leftResult.sum + rightResult.sum + node.val</div><div class="line">        );</div><div class="line"></div><div class="line">        if (leftResult.minSum &lt; result.minSum) &#123;</div><div class="line">            result.minSum = leftResult.minSum;</div><div class="line">            result.minSubtree = leftResult.minSubtree;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (rightResult.minSum &lt; result.minSum) &#123;</div><div class="line">            result.minSum = rightResult.minSum;</div><div class="line">            result.minSubtree = rightResult.minSubtree;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Description
+Given a binary tree, find the subtree with 
+    
+    </summary>
+    
+      <category term="LintCode" scheme="http://yoursite.com/categories/LintCode/"/>
+    
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+      <category term="LintCode" scheme="http://yoursite.com/tags/LintCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode 257. Binary Tree Path</title>
+    <link href="http://yoursite.com/2017/05/30/Leetcode-257-Binary-Tree-Path/"/>
+    <id>http://yoursite.com/2017/05/30/Leetcode-257-Binary-Tree-Path/</id>
+    <published>2017-05-30T16:59:43.000Z</published>
+    <updated>2017-05-30T17:02:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, return all root-to-leaf paths.</p>
+<p>For example, given the following binary tree:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">   1</div><div class="line"> /   \</div><div class="line">2     3</div><div class="line"> \</div><div class="line">  5</div></pre></td></tr></table></figure></p>
+<p>All root-to-leaf paths are:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&quot;1-&gt;2-&gt;5&quot;, &quot;1-&gt;3&quot;]</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>分治法，只用考虑左右子树会出现的情况就好了。另外此处注意叶子节点，就不用加“-&gt;”了。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;String&gt; binaryTreePaths(TreeNode root) &#123;</div><div class="line">        List&lt;String&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if (root == null) return result;</div><div class="line">        if (root.left == null &amp;&amp; root.right == null) result.add(Integer.toString(root.val));</div><div class="line">        List&lt;String&gt; left = binaryTreePaths(root.left);</div><div class="line">        List&lt;String&gt; right = binaryTreePaths(root.right);</div><div class="line">        for(String s:left) &#123;</div><div class="line">            result.add(root.val+&quot;-&gt;&quot;+s);</div><div class="line">        &#125;</div><div class="line">        for(String s: right) &#123;</div><div class="line">            result.add(root.val + &quot;-&gt;&quot; + s);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary tree, return all root-to-leaf paths.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode 104. Binary Tree Postorder Traversal</title>
+    <link href="http://yoursite.com/2017/05/30/Leetcode-104-Maximum-Depth-of-Binary-Tree/"/>
+    <id>http://yoursite.com/2017/05/30/Leetcode-104-Maximum-Depth-of-Binary-Tree/</id>
+    <published>2017-05-30T16:51:04.000Z</published>
+    <updated>2017-05-30T16:58:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, find its maximum depth.</p>
+<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
+<h3 id="explanation">Explanation</h3>
+<p>分治法递归，非常简单。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int maxDepth(TreeNode root) &#123;</div><div class="line">        if (root == null) return 0;</div><div class="line">        int maxLeft = maxDepth(root.left);</div><div class="line">        int maxRight = maxDepth(root.right);</div><div class="line">        return Math.max(maxLeft, maxRight)+1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary tree, find its maximum depth.&lt;/p&gt;
+&lt;p&gt;The
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode 145. Binary Tree Postorder Traversal</title>
+    <link href="http://yoursite.com/2017/05/30/Leetcode-145-Binary-Tree-Postorder-Traversal/"/>
+    <id>http://yoursite.com/2017/05/30/Leetcode-145-Binary-Tree-Postorder-Traversal/</id>
+    <published>2017-05-30T16:30:44.000Z</published>
+    <updated>2017-05-30T16:33:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, return the postorder traversal of its nodes' values.</p>
+<p>For example:
+Given binary tree {1,#,2,3},
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line"> \</div><div class="line">  2</div><div class="line"> /</div><div class="line">3</div></pre></td></tr></table></figure></p>
+<p>return [3,2,1].</p>
+<h3 id="explanation">Explanation</h3>
+<p>比之前做的preorder和inorder要难些，这里用了一个巧妙的办法，每次加在前面addfirst。如果不这样的话，就需要记录是否visit过了。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    // Recursive Solution:</div><div class="line">    public List&lt;Integer&gt; postorderTraversal(TreeNode root) &#123;</div><div class="line">         List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">         if (root == null) return result;</div><div class="line">         List&lt;Integer&gt; left = postorderTraversal(root.left);</div><div class="line">         List&lt;Integer&gt; right = postorderTraversal(root.right);</div><div class="line"></div><div class="line"></div><div class="line">         result.addAll(left);</div><div class="line">         result.addAll(right);</div><div class="line">         result.add(root.val);</div><div class="line">         return result;</div><div class="line">    &#125;</div><div class="line">    // Iterative Solution:</div><div class="line">    public List&lt;Integer&gt; postorderTraversal(TreeNode root) &#123;</div><div class="line">        Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();</div><div class="line">        List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if (root == null) return result;</div><div class="line">        TreeNode tmp = root;</div><div class="line">        stack.push(root);</div><div class="line">        while (!stack.isEmpty()) &#123;</div><div class="line">            TreeNode cur = stack.pop();</div><div class="line">            result.addFirst(cur.val);</div><div class="line">            if (cur.left != null) &#123;</div><div class="line">                stack.push(cur.left);</div><div class="line">            &#125;</div><div class="line">            if (cur.right != null) &#123;</div><div class="line">                stack.push(cur.right);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary tree, return the postorder traversal of 
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+      <category term="Hard" scheme="http://yoursite.com/tags/Hard/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 144. Binary Tree Preorder Traversal</title>
+    <link href="http://yoursite.com/2017/05/30/Leetcode-144-Binary-Tree-Preorder-Traversal/"/>
+    <id>http://yoursite.com/2017/05/30/Leetcode-144-Binary-Tree-Preorder-Traversal/</id>
+    <published>2017-05-30T15:11:13.000Z</published>
+    <updated>2017-05-30T15:14:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, return the preorder traversal of its nodes' values.</p>
+<p>For example:
+Given binary tree {1,#,2,3},
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line"> \</div><div class="line">  2</div><div class="line"> /</div><div class="line">3</div></pre></td></tr></table></figure></p>
+<p>return [1,2,3].</p>
+<h3 id="explanation">Explanation</h3>
+<p>依旧是两种方法，递归和遍历。递归非常容易，分治即可。遍历需要用到Stack这个数据结构，想清楚顺序就好。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">     public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123;</div><div class="line">         List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">         if (root == null) return result;</div><div class="line">         List&lt;Integer&gt; left = preorderTraversal(root.left);</div><div class="line">         List&lt;Integer&gt; right = preorderTraversal(root.right);</div><div class="line"></div><div class="line">         result.add(root.val);</div><div class="line">         result.addAll(left);</div><div class="line">         result.addAll(right);</div><div class="line">         return result;</div><div class="line">     &#125;</div><div class="line">    // Iterative solution</div><div class="line">    // public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123;</div><div class="line">    //     Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();</div><div class="line">    //     List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">    //     if (root == null) return result;</div><div class="line">    //     TreeNode tmp = root;</div><div class="line">    //     stack.add(root);</div><div class="line">    //     while (!stack.isEmpty()) &#123;</div><div class="line">    //         tmp = stack.pop();</div><div class="line">    //         result.add(tmp.val);</div><div class="line">    //         if (tmp.right != null) stack.push(tmp.right);</div><div class="line">    //         if (tmp.left != null) stack.push(tmp.left);</div><div class="line">    //     &#125;</div><div class="line">    //     return result;</div><div class="line">    //     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary tree, return the preorder traversal of i
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 367. Valid Perfect Square</title>
+    <link href="http://yoursite.com/2017/05/28/LeetCode-367-Valid-Perfect-Square/"/>
+    <id>http://yoursite.com/2017/05/28/LeetCode-367-Valid-Perfect-Square/</id>
+    <published>2017-05-28T21:54:18.000Z</published>
+    <updated>2017-05-28T23:00:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a positive integer num, write a function which returns True if num is a perfect square else False.</p>
+<p>Note: Do not use any built-in library function such as sqrt.</p>
+<p>Example 1:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 16</div><div class="line">Returns: True</div></pre></td></tr></table></figure></p>
+<p>Example 2:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 14</div><div class="line">Returns: False</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>本题是查找平方根。Corner Case排除负数。用二分法找到值，注意overflow的问题，不能用乘法，用除法。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean isPerfectSquare(int num) &#123;</div><div class="line">        if(num &lt;= 0) return false;</div><div class="line">        if (num == 1) return true;</div><div class="line">        int start = 0;</div><div class="line">        int end = num;</div><div class="line">        while (start + 1 &lt; end) &#123;</div><div class="line">            int mid = start + (end - start) / 2;</div><div class="line">            if (num / mid == mid) &#123;</div><div class="line">                start = mid;</div><div class="line">            &#125; else if (num / mid &lt; mid) &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125; else &#123;</div><div class="line">                start = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if ( num*1.0 / start == start) return true;</div><div class="line">        if ( num*1.0 / end == end) return true;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a positive integer num, write a function which re
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
+    
+      <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Binary Search 二分查找</title>
+    <link href="http://yoursite.com/2017/05/28/Binary%20Search/"/>
+    <id>http://yoursite.com/2017/05/28/Binary Search/</id>
+    <published>2017-05-28T18:13:27.000Z</published>
+    <updated>2017-05-30T14:26:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h2 id="二分查找模板总结">二分查找模板总结</h2>
+<p>四点要素：</p>
+<ul>
+<li>start + 1 &lt; end</li>
+<li>start + (end - start) / 2</li>
+<li>A[mid] ==, &lt;, &gt;</li>
+<li>A[start] A[end] ? target</li>
+</ul>
+<p>二分法关键</p>
+<ul>
+<li>头尾指针，取中点，判断往哪儿走</li>
+<li>寻找满足某个条件第一个或是最后一个位置</li>
+<li>保留剩下来一定有解的那一半</li>
+</ul>
+<h3 id="question-1-classical-binary-search">Question 1: classical-binary-search</h3>
+<p>https://www.lintcode.com/en/problem/classical-binary-search/</p>
+<p>Find any position of a target number in a sorted array. Return -1 if target does not exist.</p>
+<p>Given [1, 2, 2, 4, 5, 5].</p>
+<p>For target = 2, return 1 or 2.</p>
+<p>For target = 5, return 4 or 5.</p>
+<p>For target = 6, return -1.</p>
+<h3 id="explanation">Explanation</h3>
+<p>基本的二分查找。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    /**</div><div class="line">     * @param A an integer array sorted in ascending order</div><div class="line">     * @param target an integer</div><div class="line">     * @return an integer</div><div class="line">     */</div><div class="line">    public int findPosition(int[] A, int target) &#123;</div><div class="line">        // Write your code here</div><div class="line">        if (A == null || A.length == 0)&#123;</div><div class="line">            return -1;</div><div class="line">        &#125;</div><div class="line">        int start = 0;</div><div class="line">        int end = A.length - 1;</div><div class="line">        while (start + 1 &lt; end) &#123;</div><div class="line">            int mid = start + (end - start) / 2;</div><div class="line">            if (target == A[mid]) &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125; else if (target &gt; A[mid]) &#123;</div><div class="line">                start = mid;</div><div class="line">            &#125; else &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (target == A[start]) &#123;</div><div class="line">            return start;</div><div class="line">        &#125;</div><div class="line">        if (target == A[end]) &#123;</div><div class="line">            return end;</div><div class="line">        &#125;</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="question-2-first-position-of-target">Question 2: First Position of target</h3>
+<p>For a given sorted array (ascending order) and a target number, find the first index of this number in O(log n) time complexity.</p>
+<p>If the target number does not exist in the array, return -1.</p>
+<p>If the array is [1, 2, 3, 3, 4, 5, 10], for given target 3, return 2.</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    /**</div><div class="line">     * @param nums: The integer array.</div><div class="line">     * @param target: Target to find.</div><div class="line">     * @return: The first position of target. Position starts from 0.</div><div class="line">     */</div><div class="line">    public int binarySearch(int[] nums, int target) &#123;</div><div class="line">        //write your code here</div><div class="line">        if (nums == null || nums.length == 0) return -1;</div><div class="line">        int start = 0;</div><div class="line">        int end = nums.length - 1;</div><div class="line">        while (start + 1 &lt; end) &#123;</div><div class="line">            int mid = start + (end - start) / 2;</div><div class="line">            if (target == nums[mid]) &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125; else if (target &gt; nums[mid]) &#123;</div><div class="line">                start = mid;</div><div class="line">            &#125; else &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (target == nums[start]) return start;</div><div class="line">        if (target == nums[end]) return end;</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="question-3-last-position-of-target">Question 3: last-position-of-target</h3>
+<p>给一个升序数组，找到target最后一次出现的位置，如果没出现过返回-1</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    /**</div><div class="line">     * @param A an integer array sorted in ascending order</div><div class="line">     * @param target an integer</div><div class="line">     * @return an integer</div><div class="line">     */</div><div class="line">    public int lastPosition(int[] A, int target) &#123;</div><div class="line">        // Write your code here</div><div class="line">        if (A == null || A.length == 0)&#123;</div><div class="line">            return -1;</div><div class="line">        &#125;</div><div class="line">        int start = 0;</div><div class="line">        int end = A.length - 1;</div><div class="line">        while (start + 1 &lt; end) &#123;</div><div class="line">            int mid = start + (end - start) / 2;</div><div class="line">            if (target == A[mid]) &#123;</div><div class="line">                //difference with the above questions</div><div class="line">                start = mid;</div><div class="line">            &#125; else if (target &gt; A[mid]) &#123;</div><div class="line">                start = mid;</div><div class="line">            &#125; else &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //check end element first</div><div class="line">        if (target == A[end]) &#123;</div><div class="line">            return end;</div><div class="line">        &#125;</div><div class="line">        if (target == A[start]) &#123;</div><div class="line">            return start;</div><div class="line">        &#125;</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="question-4-search-insert-position">Question 4: search-insert-position</h3>
+<p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You may assume NO duplicates in the array.</p>
+<p>[1,3,5,6], 5 → 2</p>
+<p>[1,3,5,6], 2 → 1</p>
+<p>[1,3,5,6], 7 → 4</p>
+<p>[1,3,5,6], 0 → 0</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    /**</div><div class="line">     * param A : an integer sorted array</div><div class="line">     * param target :  an integer to be inserted</div><div class="line">     * return : an integer</div><div class="line">     */</div><div class="line">    public int searchInsert(int[] A, int target) &#123;</div><div class="line">        // write your code here</div><div class="line">        if ( A == null || A.length == 0) return 0;</div><div class="line">        int start = 0;</div><div class="line">        int end = A.length - 1;</div><div class="line">        while (start + 1 &lt; end) &#123;</div><div class="line">            int mid = start + (end - start) / 2;</div><div class="line">            if (target == A[mid]) &#123;</div><div class="line">                return mid;</div><div class="line">            &#125; else if (target &gt; A[mid]) &#123;</div><div class="line">                start = mid;</div><div class="line">            &#125; else &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (target &lt;= A[start]) return start;</div><div class="line">        if (target &lt;= A[end]) return end;</div><div class="line">        return end + 1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="question-5-search-in-a-big-sorted-array">Question 5: Search in a big sorted array</h3>
+<p>Given a big sorted array with positive integers sorted by ascending order. The array is so big so that you can not get the length of the whole array directly, and you can only access the kth number by ArrayReader.get(k) (or ArrayReader-&gt;get(k) for C++). Find the first index of a target number. Your algorithm should be in O(log k), where k is the first index of the target number.
+Return -1, if the number doesn't exist in the array.</p>
+<h3 id="explanation">Explanation</h3>
+<p>本题和上面考察如何在一个array中找到一个数不同的是，这个array会非常大。所以要考虑的是如何“倍增”的问题。增到大于target就可以了，接下来找到最初出现的问题。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    /**</div><div class="line">     * @param nums: The integer array.</div><div class="line">     * @param target: Target to find.</div><div class="line">     * @return: The first position of target. Position starts from 0.</div><div class="line">     */</div><div class="line">    public int binarySearch(int[] nums, int target) &#123;</div><div class="line">        //write your code here</div><div class="line">        if (nums == null || nums.length == 0) return -1;</div><div class="line">        int end = 0;</div><div class="line">        while (end &lt; nums.length &amp;&amp; nums[end] &lt; target) &#123;</div><div class="line">          end = end * 2 + 1;</div><div class="line">        &#125;</div><div class="line">        if (end &gt;= nums.length) end = nums.length - 1;</div><div class="line">        int start = 0;</div><div class="line">        while (start + 1 &lt; end) &#123;</div><div class="line">            int mid = start + (end - start) / 2;</div><div class="line">            if (target == nums[mid]) &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125; else if (target &gt; nums[mid]) &#123;</div><div class="line">                start = mid;</div><div class="line">            &#125; else &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (target == nums[start]) return start;</div><div class="line">        if (target == nums[end]) return end;</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h2 id=&quot;二分查找模板总结&quot;&gt;二分查找模板总结&lt;/h2&gt;
+&lt;p&gt;四点要素：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;start + 1 &amp;lt; end&lt;/li&gt;
+&lt;li&gt;start + 
+    
+    </summary>
+    
+      <category term="Data Structure" scheme="http://yoursite.com/categories/Data-Structure/"/>
+    
+    
+      <category term="Data Structure" scheme="http://yoursite.com/tags/Data-Structure/"/>
+    
+      <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode Backtracking Problems</title>
+    <link href="http://yoursite.com/2017/05/25/LeetCode-Backtracking-Problems/"/>
+    <id>http://yoursite.com/2017/05/25/LeetCode-Backtracking-Problems/</id>
+    <published>2017-05-25T13:08:29.000Z</published>
+    <updated>2017-05-28T18:23:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h2 id="leetcode-78-subsets">LeetCode 78: Subsets</h2>
+<h3 id="question">Question</h3>
+<p>Given a set of distinct integers, nums, return all possible subsets.</p>
+<p>Note: The solution set must not contain duplicate subsets.</p>
+<p>For example,
+If nums = [1,2,3], a solution is:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [3],</div><div class="line">  [1],</div><div class="line">  [2],</div><div class="line">  [1,2,3],</div><div class="line">  [1,3],</div><div class="line">  [2,3],</div><div class="line">  [1,2],</div><div class="line">  []</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>回溯递归</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public List&lt;List&lt;Integer&gt;&gt; subsets(int[] nums) &#123;</div><div class="line">    List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    Arrays.sort(nums);</div><div class="line">    subsetsHelper(list, new ArrayList&lt;&gt;(),nums, 0);</div><div class="line">    return list;</div><div class="line">&#125;</div><div class="line">public void subsetsHelper(List&lt;List&lt;Integer&gt;&gt; list, List&lt;Integer&gt; tmpList, int[] nums, int start) &#123;</div><div class="line">    System.out.println(tmpList.toString());</div><div class="line">    list.add(new ArrayList&lt;&gt;(tmpList));</div><div class="line">    for (int i=start; i&lt;nums.length; i++) &#123;</div><div class="line">        System.out.println(i);</div><div class="line">        tmpList.add(nums[i]);</div><div class="line">        subsetsHelper(list, tmpList, nums, i+1);</div><div class="line">        tmpList.remove(tmpList.size()-1);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="leetcode-90-subsets-ii">LeetCode 90. Subsets II</h2>
+<h3 id="question">Question</h3>
+<p>Given a collection of integers that might contain duplicates, nums, return all possible subsets.</p>
+<p>Note: The solution set must not contain duplicate subsets.</p>
+<p>For example,
+If nums = [1,2,2], a solution is:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [2],</div><div class="line">  [1],</div><div class="line">  [1,2,2],</div><div class="line">  [2,2],</div><div class="line">  [1,2],</div><div class="line">  []</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>和上一题一致，只是对于重复的，skip掉。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public List&lt;List&lt;Integer&gt;&gt; subsetsWithDup(int[] nums) &#123;</div><div class="line">    List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    Arrays.sort(nums);</div><div class="line">    subsetsHelper(list, new ArrayList&lt;&gt;(),nums, 0);</div><div class="line">    return list;</div><div class="line">&#125;</div><div class="line">public void subsetsHelper(List&lt;List&lt;Integer&gt;&gt; list, List&lt;Integer&gt; tmpList, int[] nums, int start) &#123;</div><div class="line">    System.out.println(tmpList.toString());</div><div class="line">    list.add(new ArrayList&lt;&gt;(tmpList));</div><div class="line">    for (int i=start; i&lt;nums.length; i++) &#123;</div><div class="line">        if (i != start &amp;&amp; nums[i] == nums[i-1] ) continue;</div><div class="line">        tmpList.add(nums[i]);</div><div class="line">        subsetsHelper(list, tmpList, nums, i+1);</div><div class="line">        tmpList.remove(tmpList.size()-1);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="leecode-46-permutations">LeeCode 46. Permutations</h2>
+<h3 id="question">Question</h3>
+<p>Given a collection of distinct numbers, return all possible permutations.</p>
+<p>For example,
+[1,2,3] have the following permutations:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [1,2,3],</div><div class="line">  [1,3,2],</div><div class="line">  [2,1,3],</div><div class="line">  [2,3,1],</div><div class="line">  [3,1,2],</div><div class="line">  [3,2,1]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</div><div class="line">        subsetsHelper(list, new ArrayList&lt;&gt;(),nums);</div><div class="line">        return list;</div><div class="line">    &#125;</div><div class="line">    public void subsetsHelper(List&lt;List&lt;Integer&gt;&gt; list, List&lt;Integer&gt; tmpList, int[] nums) &#123;</div><div class="line">        if (tmpList.size() == nums.length) &#123;</div><div class="line">            list.add(new ArrayList&lt;&gt;(tmpList));</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            for (int i= 0; i&lt;nums.length; i++) &#123;</div><div class="line">                if (tmpList.contains(nums[i])) continue;</div><div class="line">                tmpList.add(nums[i]);</div><div class="line">                subsetsHelper(list, tmpList, nums);</div><div class="line">                tmpList.remove(tmpList.size()-1);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h2 id=&quot;leetcode-78-subsets&quot;&gt;LeetCode 78: Subsets&lt;/h2&gt;
+&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="Backtracking" scheme="http://yoursite.com/tags/Backtracking/"/>
+    
+  </entry>
   
   <entry>
     <title>Install Sudo in Debian</title>
@@ -132,9 +715,9 @@ storage》的阅读笔记。&lt;/p
       <category term="Distributed System" scheme="http://yoursite.com/categories/Distributed-System/"/>
     
     
-      <category term="Distributed System" scheme="http://yoursite.com/tags/Distributed-System/"/>
-    
       <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
+    
+      <category term="Distributed System" scheme="http://yoursite.com/tags/Distributed-System/"/>
     
       <category term="Geo-replication" scheme="http://yoursite.com/tags/Geo-replication/"/>
     
@@ -147,14 +730,14 @@ storage》的阅读笔记。&lt;/p
     <link href="http://yoursite.com/2017/04/09/LeetCode-206-Reverse-Linked-List/"/>
     <id>http://yoursite.com/2017/04/09/LeetCode-206-Reverse-Linked-List/</id>
     <published>2017-04-09T22:02:42.000Z</published>
-    <updated>2017-04-09T22:22:40.000Z</updated>
+    <updated>2017-05-28T18:25:44.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="quesstion">Quesstion</h3>
 <p>Reverse a singly linked list.</p>
 <p>click to show more hints.</p>
 <p>Hint:
 A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
-<h3 id="explaination">Explaination</h3>
+<h3 id="explanation">Explanation</h3>
 <h4 id="iterative-solution">Iterative Solution</h4>
 <p>定义一个previous node，一个current node，倒过来。并记下之前的后面一个节点，循环。</p>
 <h4 id="recursive-solution">Recursive Solution</h4>
@@ -189,7 +772,7 @@ A linked list can be reversed either iteratively or recursively. Could you imple
     <link href="http://yoursite.com/2017/04/08/LeetCode-Weekly-Contest-27-556-Next-Greater-Element-III/"/>
     <id>http://yoursite.com/2017/04/08/LeetCode-Weekly-Contest-27-556-Next-Greater-Element-III/</id>
     <published>2017-04-09T03:17:52.000Z</published>
-    <updated>2017-04-09T04:07:48.000Z</updated>
+    <updated>2017-05-28T18:23:38.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a positive 32-bit integer n, you need to find the smallest 32-bit integer which has exactly the same digits existing in the integer n and is greater in value than n. If no such positive 32-bit integer exists, you need to return -1.</p>
@@ -197,7 +780,7 @@ A linked list can be reversed either iteratively or recursively. Could you imple
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 12</div><div class="line">Output: 21</div></pre></td></tr></table></figure></p>
 <p>Example 2:
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 21</div><div class="line">Output: -1</div></pre></td></tr></table></figure></p>
-<h3 id="explaination">Explaination</h3>
+<h3 id="explanation">Explanation</h3>
 <p>思路是：从最后开始，每两个数对比，如果前一个数比后一个数小，停下，这点就是要变的地方。然后，把这个位置用后面比它大的数中最小的那个数字替代，互换位置。之后再把这个位置后面的所有数倒置一下。同LeetCode No.31</p>
 <p>比如 <code>12487653</code><br>
 先替换 <code>12587643</code><br>
@@ -264,938 +847,6 @@ Given &quot;egg&quot;, &quot;add&quot;, return true.</p>
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="HashTable" scheme="http://yoursite.com/tags/HashTable/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode Pascal&#39;s Triangle</title>
-    <link href="http://yoursite.com/2017/04/06/LeetCode-Pascal-s-Triangle/"/>
-    <id>http://yoursite.com/2017/04/06/LeetCode-Pascal-s-Triangle/</id>
-    <published>2017-04-06T20:24:06.000Z</published>
-    <updated>2017-04-06T21:09:56.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question-2-119-pascals-triangle-ii">Question 2: 119. Pascal's Triangle II</h4>
-<p>Given an index k, return the kth row of the Pascal's triangle.</p>
-<p>For example, given k = 3,
-Return [1,3,3,1].</p>
-<p>Note:
-Could you optimize your algorithm to use only O(k) extra space?</p>
-<h4 id="explain">Explain</h4>
-<p>先开始用了递归的方法，得到上一层以后再计算此层。但是不满足O(k)space。所以比较好的方法是在该层从左往右依次计算，最左和最右为1。</p>
-<h4 id="code">Code</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public List&lt;Integer&gt; getRow(int rowIndex) &#123;</div><div class="line">List&lt;Integer&gt; res = new ArrayList&lt;Integer&gt;();</div><div class="line">for(int i = 0;i&lt;rowIndex+1;i++) &#123;</div><div class="line">    res.add(1);</div><div class="line">    for(int j=i-1;j&gt;0;j--) &#123;</div><div class="line">      res.set(j, res.get(j-1)+res.get(j));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">return res;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question-2-119-pascals-triangle-ii&quot;&gt;Question 2: 119. Pascal&#39;s Triangle II&lt;/h4&gt;
-&lt;p&gt;
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
-      <category term="Pascal&#39;s Triangle" scheme="http://yoursite.com/tags/Pascal-s-Triangle/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 415. Add Strings</title>
-    <link href="http://yoursite.com/2017/04/06/LeetCode-415-Add-Strings/"/>
-    <id>http://yoursite.com/2017/04/06/LeetCode-415-Add-Strings/</id>
-    <published>2017-04-06T18:35:17.000Z</published>
-    <updated>2017-04-06T18:38:36.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="quesiton">Quesiton</h4>
-<p>Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.</p>
-<p>Note:</p>
-<ul>
-<li>The length of both num1 and num2 is &lt; 5100.</li>
-<li>Both num1 and num2 contains only digits 0-9.</li>
-<li>Both num1 and num2 does not contain any leading zero.</li>
-<li>You must not use any built-in BigInteger library or convert the inputs to integer directly.</li>
-</ul>
-<h4 id="explain">Explain</h4>
-<p>得到两个用String表示的数的和。不能直接转成int再加，会有overflow的问题。所以一位一位地加，计算进位，用stringbuilder得到最后的结果。</p>
-<h4 id="code">Code</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public String addStrings(String num1, String num2) &#123;</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        int carry = 0;</div><div class="line">        int i=num1.length()-1; int j=num2.length()-1;</div><div class="line">        int a = 0; int b=0;</div><div class="line">        while (i &gt;=0 || j&gt;=0 || carry &gt;= 1) &#123;</div><div class="line">            if (i &gt;= 0) &#123;</div><div class="line">                a = num1.toCharArray()[i--] - &apos;0&apos;;</div><div class="line">            &#125; else &#123;</div><div class="line">                a = 0;</div><div class="line">            &#125;</div><div class="line">            if (j &gt;= 0) &#123;</div><div class="line">                b = num2.toCharArray()[j--] - &apos;0&apos;;</div><div class="line">            &#125; else &#123;</div><div class="line">                b = 0;</div><div class="line">            &#125;</div><div class="line">            int sum = a+b+carry;</div><div class="line">            carry = sum/10;</div><div class="line">            sb.insert(0,sum%10);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return sb.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;quesiton&quot;&gt;Quesiton&lt;/h4&gt;
-&lt;p&gt;Given two non-negative integers num1 and num2 represent
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>论文笔记：Facebook可扩展架构概览</title>
-    <link href="http://yoursite.com/2017/03/29/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9AFacebook%E5%8F%AF%E6%8B%93%E5%B1%95%E6%9E%B6%E6%9E%84%E6%A6%82%E8%A7%88/"/>
-    <id>http://yoursite.com/2017/03/29/论文笔记：Facebook可拓展架构概览/</id>
-    <published>2017-03-30T01:43:57.000Z</published>
-    <updated>2017-03-30T18:15:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是论文《Overview of Facebook Scalable Architecture》的阅读笔记，作者Hugo Barrigas, Daniel Barrigas, Melyssa Barata, Pedro Furtado, Jorge Bernardina。技术细节很少，只是一个粗略的大框架。其实根本也没有讲什么细节，所以以后有更多补充再往里写。感觉最大的亮点就是<strong>MySQL+Memcached</strong>。</p>
-<hr>
-<p>这篇文章主要是介绍Facebook的网站架构，讲述在扩展方面遇到的困难和解决的方式，从而更好了解Facebook是如何运行的。
-对于大型分布式系统来说，可拓展性是网络、系统和进程中非常重要的指标。它标志着是否有成长的能力，是否能处理增长的工作量。
-规模只是拓展需要考虑的一个方面。可拓展性包含如下几个方面：<br>
-a. 是否能轻松增加存储能力<br>
-b. 能处理多少增加的traffic<br>
-c. 能多运行多少事务</p>
-<h3 id="facebook网站架构">Facebook网站架构</h3>
-<h4 id="facebook如何运作">Facebook如何运作</h4>
-<p>随着用户增加，Facebook做了一些改动，但依旧使用LAMP（Linux-Apache-Memcached-PHP）模式：
-a. 依旧使用PHP，但写了一个将PHP转成C++的编译器来提高服务器的性能。
-b. 依旧使用Linux但进行了一些优化。
-c. 最具有争议的事情是使用MySQL，它依旧是最主要的数据库。
-另外Facebook还有两个自己系统：</p>
-<ol>
-<li>Haystack：高拓展，用来存储大量的图片。</li>
-<li>Scribe：一个可拓展的登录系统。</li>
-</ol>
-<h4 id="facebook前端">Facebook前端</h4>
-<p>前端是把LAMP服务器运行在Memcache上。</p>
-<h5 id="linux-amp-apache">Linux &amp; Apache</h5>
-<p>Facebook使用Linux和Apache HTTP Server</p>
-<h5 id="php-amp-bigpipe">PHP &amp; BigPipe</h5>
-<p>BigPipe是Facebook开发的动态网页系统。主要就是把各个部分通过不同的步骤在浏览器和服务器中完成。
-比如：</p>
-<p>￼￼￼<img src="http://i.imgur.com/QpgOhQI.png" alt=""></p>
-<h5 id="hiphop">HipHop</h5>
-<p>将PHP编译成C++的编译器。一些关键点：</p>
-<ul>
-<li>是PHP编译器</li>
-<li>容易增加插件</li>
-<li>极大减少了CPU和内存的使用量</li>
-</ul>
-<p><img src="http://i.imgur.com/SH8jSfb.png" alt=""></p>
-<h4 id="facebook后端">Facebook后端</h4>
-<h5 id="mysql">MySQL</h5>
-<p>Facebook在MySQL的使用上运用了sharding和caching的技术。
-为了让MySQL可拓展，主要的解决方案就是sharding。也就是数据库被分为几个部分，而且90%的query都存在缓存里，并不需要去数据库里取。Facebook非常依赖Memcached，并且值得一提的是Facebook在多个数据中心中有好几千个MySQL的服务器。另外，Facebook一些复杂的Join操作都是在服务器层面跑的，而不是直接在表上跑。（怎么做到的...不清楚技术细节）</p>
-<h5 id="scribe">Scribe</h5>
-<p>Scribe是Facebook的登录系统。Scribe主要做的就是从多个服务器端读取整合数据，然后把信息传送给Hadoop：
-<img src="http://i.imgur.com/NkAvOBJ.png" alt=""></p>
-<h5 id="thrift">Thrift</h5>
-<p>Thrift协议提供不同语言之间的序列化，从而使Facebook支持不同语言共同开发应用。</p>
-<h4 id="memcached">Memcached</h4>
-<p>Memcache是键值对内存存储缓存系统。</p>
-<p><img src="http://i.imgur.com/KEljkA5.png" alt=""></p>
-<h4 id="hadoop-amp-hive">Hadoop &amp; Hive</h4>
-<p><img src="http://i.imgur.com/Zko5phE.png" alt=""></p>
-<h4 id="haystack">Haystack</h4>
-<p>Haystack是在主内存中加入了可拓展的缓存：</p>
-<p><img src="http://i.imgur.com/XT5VIhG.png" alt=""></p>
-<h3 id="主体架构">主体架构</h3>
-<p><img src="http://i.imgur.com/HWAy2UQ.png" alt=""></p>
-<hr>
-<p><em>REFERENCES：</em></p>
-<p>[1] Building Scalable Web Architecture and Distributed Systems http://www.drdobbs.com/web-development/building-scalable-web-architecture-and-d/240142422, (Accessed 26 January , 2014)</p>
-<p>[2] How Does Facebook Work? The Nuts and Bolts [Technology Explained] http://www.makeuseof.com/tag/facebook-work-nuts-bolts-technology-explained/ (Accessed 25 February 2014)</p>
-<p>[3] Lloys G. W. Lloyd and Connie U. S. 2008. Scalable Query Result Caching for Web Applications. PVLDB vol. 1 no. 1 pp. 550-561, 2008</p>
-<p>[4] Parris I., Abdesslem F. B., and Henderson T. 2012. Facebook or Fakebook? The effect of simulation on location privacy user studies. Ad Hoc Networks vol. 12 pp. 35-49</p>
-<p>[5] Performance and scalability techniques 101 http://www.webforefront.com/performance/scaling101.html , (Accessed 30 January 2014)</p>
-<p>[6] Scaling the Messages Application Back End
-https://www.facebook.com/note.php?note_id=10150148835363920 (Accessed 25 February 2014)</p>
-<p>[7] The effects of teacher self-disclosure via Facebook on
-teacher credibility
-http://www.gtaan.gatech.edu/meetings/handouts/MazerFacebook.pdf (Accessed 25 February 2014)</p>
-<p>￼</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;本文是论文《Overview of Facebook Scalable Architecture》的阅读笔记，作者Hugo Barrigas, Daniel Barrigas
-    
-    </summary>
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/categories/Cloud-Computing/"/>
-    
-    
-      <category term="Scalability" scheme="http://yoursite.com/tags/Scalability/"/>
-    
-      <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
-    
-      <category term="Architecture" scheme="http://yoursite.com/tags/Architecture/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分布式系统知识整理：二阶段提交协议、三阶段提交协议</title>
-    <link href="http://yoursite.com/2017/03/29/%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7/"/>
-    <id>http://yoursite.com/2017/03/29/分布式一致性/</id>
-    <published>2017-03-29T23:19:56.000Z</published>
-    <updated>2017-03-30T02:02:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文梳理分布式系统中的常见概念：二阶段提交协议和三阶段提交协议。</p>
-<h2 id="二阶段提交协议two-phase-commit-protocol">二阶段提交协议(Two-phase Commit Protocol)</h2>
-<p>TPC是基于分布式系统架构下所有节点进行事务提交时保持<strong>一致性</strong>而设计的一种算法。在分布式系统中，每个节点虽然可以知晓自己操作的成功或失败，但无法知道其他节点的情况。需要一个协调者来组织所有节点的操作结果并最终指示他们是否进行真正的提交。</p>
-<h3 id="第一阶段投票阶段">第一阶段：投票阶段</h3>
-<p>1）协调者给参与者发送信息，询问是否vote，等待响应。<br>
-2）参与者节点执行事务操作，写本地的redo和undo日志，但不提交。<br>
-3）参与者回复协调者，如果实务操作执行成功，返回“同意”。否则，返回“中止”。</p>
-<h3 id="第二阶段提交阶段">第二阶段：提交阶段</h3>
-<p>a.如果第一阶段所有参与者提交都为“同意”：<br>
-1）协调者给参与者发送“是否正式提交”的询问。<br>
-2）参与者正式完成操作，释放资源。<br>
-3）参与者返回“完成”信息。<br>
-4）协调者收到所有“完成”信息，完成事务。</p>
-<p>b.如果第一阶段有参与者提交“中止”：<br>
-1）协调者向所有参与者节点发出“回滚”的请求。<br>
-2）参与者利用undo信息执行回滚，释放在整个事务占用的资源。<br>
-3）参与者返回“回滚完成”信息。<br>
-4）协调者收到所有参与者的“回滚完成”后，取消事务。</p>
-<p>整个过程如图所示：</p>
-<p><img src="http://i.imgur.com/J1kzk7I.png" alt=""></p>
-<h3 id="存在的问题">存在的问题</h3>
-<ol>
-<li>节点在等待消息处于阻塞的状态，节点中的其他进程需要等待阻塞进程释放资源。</li>
-<li>如果参与者故障，协调者需要给每个参与者制定超时机制，超时后整个事务失败。TPC没有容错机制，一个节点故障整个事务都要回滚，代价很大。</li>
-<li>如果协调器发生故障，参与者无法完成事务，就会一直阻塞下去。</li>
-<li>如果协调者发出commit消息之后宕机，唯一接收到消息的参与者也同时宕机了，即使协调者通过选举产生了新协调者，这条事务的状态是无人知晓的。</li>
-</ol>
-<p>因此，后来产生了三阶段提交协议。</p>
-<h2 id="三阶段提交协议three-phase-commit-protocol">三阶段提交协议(Three-phase Commit Protocol)</h2>
-<p>非阻塞协议。</p>
-<p>两方面的改动：</p>
-<ol>
-<li>引入超时机制，协调者和参与者都引入超时机制。</li>
-<li>在TPC的第一阶段和第二阶段之间插入了一个准备阶段，保证在最后提交阶段之前各参与节点的状态是一致的。</li>
-</ol>
-<p><img src="http://i.imgur.com/YLxLPqR.png" alt=""></p>
-<hr>
-<p><em>References:</em></p>
-<ol>
-<li>3.1.4 Two-phase commit: http://itdoc.hitachi.co.jp/manuals/3000/30003D5030e/DESC0050.HTM</li>
-<li>Wikipedia:<br>
-https://zh.wikipedia.org/zh-hans/%E4%BA%8C%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4</li>
-<li>分布式协议之两阶段提交协议（2PC）和改进三阶段提交协议（3PC）:     http://www.mamicode.com/info-detail-890945.html</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;本文梳理分布式系统中的常见概念：二阶段提交协议和三阶段提交协议。&lt;/p&gt;
-&lt;h2 id=&quot;二阶段提交协议two-phase-commit-protocol&quot;&gt;二阶段提交协议(
-    
-    </summary>
-    
-      <category term="Distributed System" scheme="http://yoursite.com/categories/Distributed-System/"/>
-    
-    
-      <category term="Distributed System" scheme="http://yoursite.com/tags/Distributed-System/"/>
-    
-      <category term="2PC" scheme="http://yoursite.com/tags/2PC/"/>
-    
-      <category term="3PC" scheme="http://yoursite.com/tags/3PC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>云计算知识整理：使用Apache Kafka和Samza进行流处理</title>
-    <link href="http://yoursite.com/2017/03/25/%E4%BA%91%E8%AE%A1%E7%AE%97%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%9A%E4%BD%BF%E7%94%A8Apache-Kafka%E5%92%8CSamza%E8%BF%9B%E8%A1%8C%E6%B5%81%E5%A4%84%E7%90%86/"/>
-    <id>http://yoursite.com/2017/03/25/云计算知识整理：使用Apache-Kafka和Samza进行流处理/</id>
-    <published>2017-03-25T19:48:14.000Z</published>
-    <updated>2017-03-30T01:47:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。</p>
-<h3 id="流处理">流处理</h3>
-<p>如今实时数据处理的需求越来越高，实时数据的来源包括传感器数据（比如物联网设备），社交网络交互，实时商业数据等。这些情况下需要极其的延迟率。比如LinkedIn就需要用实时的广告点击数据来不断扩充广告架构。类似Hadoop和Spark这种数据获取和数据处理分离的方式无法达到低延迟的实时处理需求。所以在这里就介绍一写管理和处理大量实时数据的流处理框架。</p>
-<h3 id="apache-kafka">Apache Kafka</h3>
-<p>Kafka是分布式发布-订阅消息系统。由linkedin开发，后来成为Apache项目的一部分。发布者把消息放在不同的classes里，并不知道订阅者会如何使用这些数据。而订阅者可以订阅特定的消息并且只能收到相应的消息。Kafka使用commit log来保持数据，commit log是按顺序的，不可修改的，只能添加的数据结构。Kafka最大的优势是它提供完整的数据结构，所有的组织里的系统能够独立和可靠地获取数据。可以认为Kafka是流数据源。以下为一些主要Kafka术语：</p>
-<ul>
-<li>
-<p>Topic:
-表示一个用户定义的类型，消息会在这个类别下发布。主要用partitioned log来维护。</p>
-</li>
-<li>
-<p>Producers:
-用来向Kafka集群中发布一个或多个topic信息的进程。</p>
-</li>
-<li>
-<p>Consumers：
-用来向Kafka集群中读取消息的进程。</p>
-</li>
-<li>
-<p>Partitions：
-topics被分为多个partitions。一个partition代表一个并行单位。总的来说，partition越多，吞吐量越多。每个partition中的每个信息都有特定的偏移量，这样数据消费者能借此定位。简单来说，我们认为Kafka会根据key来给数据排序并提供，类似于MapReduce中的Map和Shuffle的阶段。</p>
-</li>
-<li>
-<p>Brokers：
-Brokers用来负责数据持久化和复制。brokers会和producers交流来发布信息给Kafka集群，和consumers交谈来获取信息。</p>
-</li>
-</ul>
-<p><img src="http://i.imgur.com/sVrZDbo.png" alt=""></p>
-<p>值得注意的是，kafka不会运行处理数据，只是一种存储和分类流数据的一种方式。在这个Project里，你需要用Samza来处理Kafka提供的数据流。</p>
-<p>可以看下这个视频（通常搞不懂一个概念的时候我都是查youtube_(:зゝ∠)_ ）<a href="https://www.youtube.com/watch?v=Q5wOegcVa8E" target="_blank" rel="external">Understanding Kafka with Legos</a></p>
-<h3 id="apache-samza">Apache Samza</h3>
-<p>Samza是由Linkedin开发的分布式流处理框架，以下为三层流处理框架中的关键组件：</p>
-<ul>
-<li>Streaming：这一层是用partitioned stream的方式提供输入，这里也就是Kafka</li>
-<li>Execution:在不同的机器间调度协调任务，这里使用YARN</li>
-<li>Processing：负责具体的数据处理，这里使用Samza</li>
-</ul>
-<p>Samza相关的术语包括：</p>
-<ul>
-<li>Streams：等同于Kafka的topics</li>
-<li>Jobs：使用Samza API来从一个或多个流读取和处理数据。一个Job可能被分割成不同的task，每个task可能会使用输入流中的一个或多个partition</li>
-<li>Stateful Stream Processing：流处理可以分为有状态和无状态。</li>
-</ul>
-<p><img src="http://i.imgur.com/8497uxN.png" alt="">
-<img src="http://i.imgur.com/TJSfPwq.png" alt=""></p>
-<p>Samza结构：
-<img src="http://i.imgur.com/53TilKn.png" alt=""></p>
-<h3 id="samza-api">Samza API</h3>
-<p>Samza API简单抽象，以一个ExampleCode为例，看Twitter类似的实时信息如何展示：</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">￼public class FanOutTask implements StreamTask, InitableTask, WindowableTask &#123;</div><div class="line">   private KeyValueStore&lt;String, String&gt; socialGraph;</div><div class="line">   private KeyValueStore&lt;String, Map&lt;String, Object&gt;&gt; userTimeline;</div><div class="line">   private long numMessages = 0;</div><div class="line">   @Override</div><div class="line">   @SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">   public void init(Config config, TaskContext context) throws Exception &#123;</div><div class="line">     socialGraph = (KeyValueStore&lt;String, String&gt;) context.getStore(&quot;social-graph&quot;);</div><div class="line">     userTimeline = (KeyValueStore&lt;String, Map&lt;String, Object&gt;&gt;) context.getStore(&quot;user-timelin</div><div class="line"> e&quot;);</div><div class="line">&#125;</div><div class="line">   @Override</div><div class="line">   @SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">   public void process(IncomingMessageEnvelope envelope, MessageCollector collector, TaskCoordin</div><div class="line"> ator coordinator) &#123;</div><div class="line">     String incomingStream = envelope.getSystemStreamPartition().getStream();</div><div class="line">     if (incomingStream.equals(NewsfeedConfig.FOLLOWS_STREAM.getStream())) &#123;</div><div class="line">       processFollowsEvent((Map&lt;String, Object&gt;) envelope.getMessage());</div><div class="line">     &#125; else if (incomingStream.equals(NewsfeedConfig.MESSAGES_STREAM.getStream())) &#123;</div><div class="line">       processMessageEvent((Map&lt;String, Object&gt;) envelope.getMessage(), collector);</div><div class="line">     &#125; else &#123;</div><div class="line">       throw new I</div></pre></td></tr></table></figure></p>
-<p>所有的Samza Jobs都要完成 StreamTask接口，有的时候还需要完成InitableTask和WindowableTask接口。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。&lt;/p&gt;
-&lt;h3 id=&quot;流处理&quot;&gt;流处理&lt;/h3&gt;
-&lt;p&gt;如今实时
-    
-    </summary>
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/categories/Cloud-Computing/"/>
-    
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
-    
-      <category term="Stream Processing" scheme="http://yoursite.com/tags/Stream-Processing/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 111. Minimum Depth of Binary Tree</title>
-    <link href="http://yoursite.com/2017/03/09/Leetcode-111-Minimum-Depth-of-Binary-Tree/"/>
-    <id>http://yoursite.com/2017/03/09/Leetcode-111-Minimum-Depth-of-Binary-Tree/</id>
-    <published>2017-03-09T23:02:18.000Z</published>
-    <updated>2017-03-10T00:28:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a binary tree, find its minimum depth.</p>
-<p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
-<h3 id="explanation">Explanation</h3>
-<p>本题的问题是求根节点到最近的叶节点的距离，叶节点不能是空的。所以考虑的时候，要考虑如果有一边是空的，就只能以另外一边的最短路径长度为准。</p>
-<p>比如这个：</p>
-<p><img src="http://i.imgur.com/fqxoG0c.png" alt=""></p>
-<p>返回值为2，而不是1。因为“1”不是叶节点，所以最短路径是从1到2。</p>
-<h3 id="code">Code</h3>
-<h4 id="dfs1">DFS1</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public int minDepth(TreeNode root) &#123;</div><div class="line">    if (root == null) return 0;</div><div class="line">    if (root.left == null &amp;&amp; root.right == null) return 1;</div><div class="line">    int minLeft = minDepth(root.left); int minRight = minDepth(root.right);</div><div class="line">    return 1 + (Math.min(minLeft, minRight) &gt; 0 ? Math.min(minLeft, minRight) : Math.max(minLeft, minRight));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="dfs2">DFS2</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public int minDepth(TreeNode root) &#123;</div><div class="line">    if (root == null) return 0;</div><div class="line">    if (root.left != null &amp;&amp; root.right != null) return  1+Math.min(minDepth(root.left), minDepth(root.right));</div><div class="line">    if (root.left == null) return 1+minDepth(root.right);</div><div class="line">    else return 1+minDepth(root.left);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="bfs">BFS</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public int minDepth(TreeNode root) &#123;</div><div class="line">    if (root == null) return 0;</div><div class="line">    Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();</div><div class="line">    queue.offer(root);</div><div class="line">    int i=0;</div><div class="line">    while (queue.peek()!=null) &#123;</div><div class="line">        int size = queue.size();</div><div class="line">        i ++;</div><div class="line">        for (int j=0; j&lt;size; j++) &#123;</div><div class="line">            TreeNode cur = queue.peek();</div><div class="line">            if (cur.left == null &amp;&amp; cur.right == null) return i;</div><div class="line">            if (cur.left != null) queue.offer(cur.left);</div><div class="line">            if (cur.right != null) queue.offer(cur.right);</div><div class="line">            queue.poll();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a binary tree, find its minimum depth.&lt;/p&gt;
-&lt;p&gt;The
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="Tree" scheme="http://yoursite.com/tags/Tree/"/>
-    
-      <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
-    
-      <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>云计算应用实例：OFA/Start-ups/Data Analytics/Cloud Migration Exercise</title>
-    <link href="http://yoursite.com/2017/03/06/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9AObama-For-America/"/>
-    <id>http://yoursite.com/2017/03/06/云计算应用实例：Obama-For-America/</id>
-    <published>2017-03-06T19:41:09.000Z</published>
-    <updated>2017-03-30T01:47:17.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文主要是总结一些云计算的应用实例，是否要用云计算这个问题是个很复杂的问题，大多数时候需要根据需求和预算才能得到确切的答案，云计算是趋势，但如何利用是个值得仔细考虑的问题。</p>
-<h1 id="云计算应用实例obama-for-america">云计算应用实例：Obama For America</h1>
-<blockquote>
-<p>Obama For America（OFA）是云计算一个经典实例，云计算被运用在筹集竞选资金、分析竞争对手、有效使用竞选资金等都为奥巴马的连任成功提供了极大的保障。</p>
-</blockquote>
-<h2 id="ofa是什么">OFA是什么？</h2>
-<p>OFA利用数据集成和预测分析使奥巴马赢得了选举，主要通过数据挖掘来确定及影响摇摆州的投票目标。OFA的数据来源包含：人口数据，投票历史数据，筹款数据，志愿者数据，社交网络数据以及投票数据，得到相关数据后，通过上门拜访，打电话，邮件，信件，网络广告，社交媒体，付费电视和网站等方式来影响投票人的决定。</p>
-<h2 id="ofa的一些数据">OFA的一些数据</h2>
-<p>根据DevOps的负责人透露，OFA的一些关键数据包括：</p>
-<ul>
-<li>4Gbps带宽</li>
-<li>每秒10,000条请求</li>
-<li>2,000个数据节点</li>
-<li>3个数据中心</li>
-<li>180TB数据量</li>
-<li>共约85亿条请求</li>
-<li>从设计到部署到应用共用了583天</li>
-<li>最多30分钟的宕机时间</li>
-<li>技术团队共40人</li>
-</ul>
-<h2 id="核心应用">核心应用</h2>
-<p>Obama For America团队一共构建了200个应用，包括：</p>
-<h3 id="narwhal">Narwhal</h3>
-<p>Narwhal是一个python写的REST API，可调用存放的所有数据。在OFA中，大多数数据存放在MySQL为主的关系型数据库中，但也使用了PostgresDB, MS SQL Server, MongoDB, Vertica, LevelDB, S3, DynamoDB, SimpleDB数据库。除数据存储之外，主要应用了AWS EMR(Elastic MapReduce service)和Vertica来处理大量的数据建模和分析的工作。</p>
-<h3 id="calltool">CallTool</h3>
-<p>CallTool可以用来让志愿者给投票人打电话。在选举的最后四天里，这个工具被1000多个志愿者给超过百万的投票人打了电话。工具可以将志愿者和投票人进行配对。团队在其中应用了AWS的auto-scalling功能在需求高峰能够快速增加云资源。</p>
-<h3 id="dashboard">DashBoard</h3>
-<p>一个用来登记志愿者信息，并允许志愿者查看相应进度和收集到的信息的Rails线上应用工具。</p>
-<h3 id="dreamcatcher">Dreamcatcher</h3>
-<p>Dreamcatcher可以通过处理社交网络上的政治舆情，精确确定目标投票人，并赢得投票人。</p>
-<h3 id="gotv">GOTV</h3>
-<p>GOTV即Get out the vote，这个应用用来动员支持者将支持转化为投票。</p>
-<h2 id="aws如何帮助了ofa">AWS如何帮助了OFA?</h2>
-<p>OFA所有的应用几乎都部署在AWS云端，他们应用了分布消息队列，NoSQL和SQL数据库，虚拟私有云服务，负载均衡，内容传输网络等服务。
-除了能够应对大规模数据处理需求之外，还能够在需求高峰通过自动增加云计算资源保证响应速度。另外，团队在数据备份上也充分利用了云计算的优势。</p>
-<p><img src="http://i.imgur.com/LZfspfL.png" alt=""></p>
-<p><img src="http://i.imgur.com/6DnWTB5.png" alt=""></p>
-<p><img src="http://i.imgur.com/TJaoYcR.png" alt=""></p>
-<p><img src="http://i.imgur.com/vE7R4Ui.png" alt=""></p>
-<hr>
-<p><strong>Reference:</strong></p>
-<blockquote>
-<ol>
-<li><a href="https://gigaom.com/2012/11/12/how-obamas-tech-team-helped-deliver-the-2012-election/" target="_blank" rel="external">How Obama’s tech team helped deliver the 2012 election</a></li>
-<li>Wikipedia:<a href="https://en.wikipedia.org/wiki/Organizing_for_America" target="_blank" rel="external">Organizing for America</a></li>
-<li>CMU 15719 slides</li>
-<li><a href="http://www.informationweek.com/cloud/6-ways-amazon-cloud-helped-obama-win/d/d-id/1107433" target="_blank" rel="external">6 Ways Amazon Cloud Helped Obama Win</a></li>
-</ol>
-</blockquote>
-<h1 id="云计算应用实例start-ups">云计算应用实例：Start-ups</h1>
-<h2 id="背景">背景</h2>
-<p>对于Start-up来说，计算要求往往各种各样，需求量不大，变化却很快。在有限的预算下，还存在着硬件采购周期长，部署周期长，负担不起系统管理，数据中心能量供应，利用率低，灾难响应速度低等问题。</p>
-<p>所以，云计算成为了Start-up的一种选择。举个栗子：</p>
-<h3 id="gosquared">GoSquared</h3>
-<p>GoSquared是一家提供线上实时数据网站分析的企业，被TechCrunch报道后，使用量忽然增加，没有足够的资源应对增长，最终把网站搬到了AWS上，可以迅速得到更多资源，快速拓展。</p>
-<p><strong>Reference</strong></p>
-<blockquote>
-<p><a href="https://aws.amazon.com/solutions/case-studies/gosquared/" target="_blank" rel="external">AWS case study: GoSquared</a></p>
-</blockquote>
-<h1 id="云计算应用实例data-analytics">云计算应用实例：Data Analytics</h1>
-<p>如今企业决策都讲究数据驱动，层出不穷的多媒体数据往往有不同的数据来源，从text到图片到音频和视频。数据处理还分为批处理和流处理。如今，传统的数据处理流程也慢慢转向了云端。</p>
-<h2 id="数据处理流程图">数据处理流程图</h2>
-<p><img src="http://i.imgur.com/7OTudIS.png" alt=""></p>
-<h2 id="lambda架构">Lambda架构</h2>
-<p>Lambda架构定义了一套明确的架构原则，同时利用批处理和流处理对大规模的数据进行处理。此框架的提出主要是为了解决这样的一个问题：如何实时地在任意大数据集上进行查询？</p>
-<p>Lambda架构包含三层layer：</p>
-<ul>
-<li><strong>批处理层：写一次，批量读取多次</strong><br>
-主要有Hadoop实现，负责数据存储和产生试图数据。当新数据到达时，会用MapReduce迭代地讲数据聚集到视图中。根据数据大小和集群的规模，迭代转换计算时间大约需要几小时。</li>
-<li><strong>服务层：随机读取，不支持随机写入，批量计算和批量写入</strong><br>
-这层由Cloudera Impala实现，对于上一层输出的一些列包含预计算视图的原始文件，服务层在Hive元数据层中创建一个表，元数据都指向HDFS中的文件，随后用户可以通过Impala查询到视图。这里服务层用Impala就是为了快速而且交互地查询到Hadoop存储和处理的数据。但是由于MapReduce在实时数据处理中的高延迟，我们还需要加速层。
-在这一层中，需要合并处理Batch views和Real-time views得到最终user需要的query结果。</li>
-<li><strong>加速层：随机读取，随机写入，增量计算</strong><br>
-本层利用Strom框架计算实时视图，使用增量模型，将实时视图作为临时量，只要数据被传送到批处理层中，服务层相应的实时视图就会被丢掉。由于应用了增量模型，往往会比较复杂。</li>
-</ul>
-<p>所以，整个流程为，当数据进来时，会并行地进入到批处理层与加速层，当两者查询都完成在服务层整合好后，才算完成一次完整的查询。</p>
-<p><img src="http://i.imgur.com/E2LbtPy.png" alt=""></p>
-<p>但是这样令人激动的模型，还存在着一些争议，比如</p>
-<ul>
-<li>代码维护需要在两个复杂的分布式系统中进行，需要对不同的框架进行不同的编程。</li>
-<li>在两个分布式系统中运行和维护程序任然很难，比如跨数据库系统中进行ORM（对象关系映射）就会比较难。</li>
-</ul>
-<p>关于Lambda框架的具体细节可参考这本书：<a href="https://www.manning.com/books/big-data" target="_blank" rel="external">《Big data: Principles and best practices of scalable realtime data systems》
-</a>
-其中除了介绍Lambda框架外，还重点放在了一些重要的地方：</p>
-<ul>
-<li>分布式思想</li>
-<li>避免增量架构</li>
-<li>创建再计算算法</li>
-<li>数据相关性</li>
-<li>关注数据不可变</li>
-</ul>
-<p>这张图很好诠释了Lambda是如何处理query的：
-<img src="http://i.imgur.com/qcUMzoL.png" alt=""></p>
-<p>随着发展，后来，Spark被认为是Lambda框架的合理实现。所以在这一部分，感觉写Lambda框架有点过时呢，但老师提到了就再理解一下。时代发展就是这样的，Lambda框架这种临时解决方案，会被更完美的方案取代。不过，不管怎样，人类的进步是令人欣喜的。关于Spark有空可以再写一篇具体一点的，amazing。</p>
-<p><strong>References：</strong></p>
-<blockquote>
-<ol>
-<li><a href="http://blog.csdn.net/john_f_lau/article/details/25502203" target="_blank" rel="external">大数据Lambda架构</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Lambda_architecture" target="_blank" rel="external">Wikipedia Lambda Architecture</a></li>
-<li><a href="https://dzone.com/articles/lambda-architecture-with-apache-spark" target="_blank" rel="external">Lambda Architecture with Apache Spark</a></li>
-</ol>
-</blockquote>
-<h1 id="云计算应用实例云迁移-究竟是否应该选择cloud">云计算应用实例：云迁移 （究竟是否应该选择Cloud？）</h1>
-<p>对研究室来说，是应该使用预置的硬件，还是迁移到云端？
-回答当然是，“It depends.”。</p>
-<p>比如需求是这样：</p>
-<p><img src="http://i.imgur.com/I3rZUZ1.png" alt=""></p>
-<p>如果我们选择预置的机器，按照五年来算：
-<img src="http://i.imgur.com/03678Pu.png" alt=""></p>
-<p>有以下两种云计算的方案：
-方案1：
-<img src="http://i.imgur.com/9umJ84S.png" alt="">
-方案2：
-<img src="http://i.imgur.com/0yWhXho.png" alt=""></p>
-<p>所以我们可以针对不同的需求、不同的云计算选择、不同的费用模型、不同的权限要求等来选择是否迁移到云端。</p>
-<p>另外，在对比时，我们还需要考虑：</p>
-<ul>
-<li>对于本地预置机器：供电、散热、安全性等</li>
-<li>对于云端：迁移到/迁出云端的成本等</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;本文主要是总结一些云计算的应用实例，是否要用云计算这个问题是个很复杂的问题，大多数时候需要根据需求和预算才能得到确切的答案，云计算是趋势，但如何利用是个值得仔细考虑的问题。&lt;
-    
-    </summary>
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/categories/Cloud-Computing/"/>
-    
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
-    
-      <category term="OFA" scheme="http://yoursite.com/tags/OFA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 530. Minimum Absolute Difference in BST</title>
-    <link href="http://yoursite.com/2017/03/03/Leetcode-530-Minimum-Absolute-Difference-in-BST/"/>
-    <id>http://yoursite.com/2017/03/03/Leetcode-530-Minimum-Absolute-Difference-in-BST/</id>
-    <published>2017-03-03T05:44:39.000Z</published>
-    <updated>2017-03-03T05:50:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.</p>
-<p>Example:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line"></div><div class="line">   1</div><div class="line">    \</div><div class="line">     3</div><div class="line">    /</div><div class="line">   2</div><div class="line"></div><div class="line">Output:</div><div class="line">1</div></pre></td></tr></table></figure></p>
-<p>Explanation:
-The minimum absolute difference is 1, which is the difference between 2 and 1 (or between 2 and 3).
-Note: There are at least two nodes in this BST</p>
-<h3 id="explanation">Explanation</h3>
-<p>按照之前<a href="http://starllap.space/2017/02/28/Leetcode-94-Binary-Tree-Inorder-Traversal/" target="_blank" rel="external">Leetcode 94.Binary Tree Inorder Traversal</a>的思路，可用递归来做。但是如果不是BST的话，我们也可以用Treeset来存值，同样用递归。
-两种方法如下，第一种Time complexity O(N), space complexity O(1)，第二种的话Time complexity O(NlgN), space complexity O(N).</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    // Recursive:</div><div class="line">    Time complexity O(N), space complexity O(1).</div><div class="line">    int min = Integer.MAX_VALUE;</div><div class="line">    TreeNode pre = null;</div><div class="line">    public int getMinimumDifference(TreeNode root) &#123;</div><div class="line">        if (root == null) return 0;</div><div class="line">        getMinimumDifference(root.left);</div><div class="line">        if (pre != null) &#123;</div><div class="line">            min = Math.min(min, root.val - pre.val);</div><div class="line">        &#125;</div><div class="line">        pre = root;</div><div class="line">        getMinimumDifference(root.right);</div><div class="line">        return min;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Another Recursive</div><div class="line">    // If the tree is not BST, we can just use TreeSet to store all the nodes</div><div class="line">    TreeSet&lt;Integer&gt; set = new TreeSet&lt;&gt;();</div><div class="line">    int min = Integer.MAX_VALUE;</div><div class="line">    public int getMinimumDifference(TreeNode root) &#123;</div><div class="line">        if (root == null) return 0;</div><div class="line">        if (!set.isEmpty()) &#123;</div><div class="line">            if (set.ceiling(root.val)!=null) &#123;</div><div class="line">                min = Math.min(min, Math.abs(root.val - set.ceiling(root.val)));</div><div class="line">            &#125;</div><div class="line">            if (set.floor(root.val)!=null) &#123;</div><div class="line">                min = Math.min(min, Math.abs(root.val - set.floor(root.val)));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        set.add(root.val);</div><div class="line">        getMinimumDifference(root.left);</div><div class="line">        getMinimumDifference(root.right);</div><div class="line">        return min;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a binary search tree with non-negative values, fi
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 94.Binary Tree Inorder Traversal</title>
-    <link href="http://yoursite.com/2017/02/28/Leetcode-94-Binary-Tree-Inorder-Traversal/"/>
-    <id>http://yoursite.com/2017/02/28/Leetcode-94-Binary-Tree-Inorder-Traversal/</id>
-    <published>2017-02-28T22:05:02.000Z</published>
-    <updated>2017-02-28T22:23:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a binary tree, return the inorder traversal of its nodes' values.</p>
-<p>For example:
-Given binary tree [1,null,2,3],
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line"> \</div><div class="line">  2</div><div class="line"> /</div><div class="line">3</div></pre></td></tr></table></figure></p>
-<p>return [1,3,2].</p>
-<h3 id="explaination">Explaination</h3>
-<p>方法1：递归。(参考：<a href="http://starllap.space/2017/02/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/" target="_blank" rel="external">数据结构：二叉树</a>)
-base case： root为null返回一个空list。
-之后按中序遍历来遍历左边，中间和右边的节点。</p>
-<p>方法2：循环。
-用stack存起来，先遍历左边，然后对每一个节点进行中序遍历。弹出Stack的同时，把值存在list里。</p>
-<h3 id="code">Code</h3>
-<h4 id="recursive">Recursive</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public List&lt;Integer&gt; inorderTraversal(TreeNode root) &#123;</div><div class="line">    // Recursive:</div><div class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    if (root == null) return list;</div><div class="line">    list = inorderTraversal(root.left);</div><div class="line">    list.add(root.val);</div><div class="line">    list.addAll(inorderTraversal(root.right));</div><div class="line">    return list;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="iterative">Iterative</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public List&lt;Integer&gt; inorderTraversal(TreeNode root) &#123;</div><div class="line">    // Iterative:</div><div class="line">    Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();</div><div class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    TreeNode curt = root;</div><div class="line">    while(curt != null || !stack.empty()) &#123;</div><div class="line">        while(curt != null) &#123;</div><div class="line">            stack.add(curt);</div><div class="line">            curt = curt.left;</div><div class="line">        &#125;</div><div class="line">        curt = stack.pop();</div><div class="line">        list.add(curt.val);</div><div class="line">        curt = curt.right;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return list;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a binary tree, return the inorder traversal of it
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构：二叉树</title>
-    <link href="http://yoursite.com/2017/02/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    <id>http://yoursite.com/2017/02/28/数据结构：二叉树/</id>
-    <published>2017-02-28T19:12:00.000Z</published>
-    <updated>2017-03-06T21:07:05.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是总结Tree这种结构的常用知识点，暂时总结Binary Tree。</p>
-<h2 id="binary-tree二叉树">Binary Tree二叉树</h2>
-<h3 id="why-tree">Why Tree?</h3>
-<p>因为树结合了其他数据结构的优势：</p>
-<ul>
-<li>顺序数组： 用Binary Search查找会很快。</li>
-<li>链表：插入和删除会非常快，不需要shift值。</li>
-</ul>
-<h3 id="基本概念">基本概念：</h3>
-<ul>
-<li>根： 树的顶部。</li>
-<li>父节点</li>
-<li>子节点</li>
-<li>叶节点：没有子节点的节点。</li>
-<li>Leve（高度）：代表有几代。</li>
-</ul>
-<h3 id="平衡树和非平衡树">平衡树和非平衡树</h3>
-<p>平衡树：
-左右子树及其的高度相差&lt;=1，并且左右子树也是平衡树。
-<img src="http://i.imgur.com/8XBVd4y.png" alt=""></p>
-<h3 id="full-tree-和-complete-tree">Full Tree 和 Complete Tree：</h3>
-<ul>
-<li>Full Tree:每个节点都有0/2个子节点。</li>
-<li>Complete Tree:除了最右边的节点，其他节点都是满节点，并且都靠左。
-<img src="http://i.imgur.com/Tp3azOo.png" alt=""></li>
-</ul>
-<h3 id="binary-tree代码实现">Binary Tree代码实现</h3>
-<h4 id="binary-tree-interface">Binary Tree Interface</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public interface BSTInterface &#123;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Searches for the specified key in the tree.</div><div class="line">     * @param key key of the element to search</div><div class="line">     * @return boolean value indication of success or failure</div><div class="line">     */</div><div class="line">    boolean find(int key);</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Inserts a new element into the tree.</div><div class="line">     * @param key key of the element</div><div class="line">     * @param value value of the element</div><div class="line">     */</div><div class="line">    void insert(int key, double value);</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Deletes an element from the tree using the specified key.</div><div class="line">     * @param key key of the element to delete</div><div class="line">     */</div><div class="line">    void delete(int key);</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Traverses and prints values of the tree in ascending order based on key.</div><div class="line">     */</div><div class="line">    void traverse();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="binary-tree功能实现">Binary Tree功能实现</h4>
-<ol>
-<li>
-<p>Find:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public boolean find(int key) &#123;</div><div class="line">    // tree is empty</div><div class="line">    if (root == null) &#123;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Node curr = root;</div><div class="line">    // while not found</div><div class="line">    while (curr.key != key) &#123;</div><div class="line">        if (curr.key &lt; key) &#123;</div><div class="line">            // go right</div><div class="line">            curr = curr.right;</div><div class="line">        &#125; else &#123;</div><div class="line">            // go left</div><div class="line">            curr = curr.left;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // not found</div><div class="line">        if (curr == null) &#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return true; // found</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>Insert
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public void insert(int key, double value) &#123;</div><div class="line">    Node newNode = new Node(key, value);</div><div class="line">    // empty tree</div><div class="line">    if (root == null) &#123;</div><div class="line">        root = newNode;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Node parent = root; // keep track of parent</div><div class="line">    Node curr = root;</div><div class="line">    while (true) &#123;</div><div class="line">        // no duplicate keys allowed</div><div class="line">        // simply keep the existing one here</div><div class="line">        if (curr.key == key) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        parent = curr; // update parent</div><div class="line">        if (curr.key &lt; key) &#123;</div><div class="line">            // go right</div><div class="line">            curr = curr.right;</div><div class="line">            if (curr == null) &#123;</div><div class="line">                // found a spot</div><div class="line">                parent.right = newNode;</div><div class="line">                return;</div><div class="line">            &#125;</div><div class="line">        &#125; else &#123;</div><div class="line">            // go left</div><div class="line">            curr = curr.left;</div><div class="line">            if (curr == null) &#123;</div><div class="line">                // found a spot</div><div class="line">                parent.left = newNode;</div><div class="line">                return;</div><div class="line">            &#125;</div><div class="line">        &#125; // end of if-else to go right or left</div><div class="line">    &#125; // end of while</div><div class="line">&#125; // end of insert method</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>Delete
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line">public void delete(int key) &#123;</div><div class="line">    // empty tree</div><div class="line">    if (root == null) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Node parent = root;</div><div class="line">    Node curr = root;</div><div class="line">    /*</div><div class="line">     * flag to check left child</div><div class="line">     *</div><div class="line">     * need this flag because actual deletion process happens after the</div><div class="line">     * while loop that is to find the key to delete</div><div class="line">     */</div><div class="line">    boolean isLeftChild = true;</div><div class="line"></div><div class="line">    while (curr.key != key) &#123;</div><div class="line">        parent = curr; // update parent first</div><div class="line">        if (curr.key &lt; key) &#123; // go right</div><div class="line">            isLeftChild = false;</div><div class="line">            curr = curr.right;</div><div class="line">        &#125; else &#123; // go left</div><div class="line">            isLeftChild = true;</div><div class="line">            curr = curr.left;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // case 1: not found</div><div class="line">        if (curr == null) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if (curr.left == null &amp;&amp; curr.right == null) &#123;</div><div class="line">        // case 2: leaf</div><div class="line">        if (curr == root) &#123;</div><div class="line">            root = null;</div><div class="line">        &#125; else if (isLeftChild) &#123;</div><div class="line">            parent.left = null;</div><div class="line">        &#125; else &#123;</div><div class="line">            parent.right = null;</div><div class="line">        &#125;</div><div class="line">    &#125; else if (curr.right == null) &#123;</div><div class="line">        // case 3: no right child</div><div class="line">        if (curr == root) &#123;</div><div class="line">            root = curr.left;</div><div class="line">        &#125; else if (isLeftChild) &#123;</div><div class="line">            parent.left = curr.left;</div><div class="line">        &#125; else &#123;</div><div class="line">            parent.right = curr.left;</div><div class="line">        &#125;</div><div class="line">    &#125; else if (curr.left == null) &#123;</div><div class="line">        // case 3: no left child</div><div class="line">        if (curr == root) &#123;</div><div class="line">            root = curr.right;</div><div class="line">        &#125; else if (isLeftChild) &#123;</div><div class="line">            parent.left = curr.right;</div><div class="line">        &#125; else &#123;</div><div class="line">            parent.right = curr.right;</div><div class="line">        &#125;</div><div class="line">    &#125; else &#123;</div><div class="line">        // case 4: with two children</div><div class="line">        // here we use successor but using predecessor is also an option</div><div class="line">        Node successor = getSuccessor(curr);</div><div class="line"></div><div class="line">        if(curr == root) &#123;</div><div class="line">            root = successor;</div><div class="line">        &#125; else if(isLeftChild) &#123;</div><div class="line">            parent.left = successor;</div><div class="line">        &#125; else &#123;</div><div class="line">            parent.right = successor;</div><div class="line">        &#125;</div><div class="line">        successor.left = curr.left;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>找到下一个节点
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Helper method to find the successor of the toDelete node.</div><div class="line"> * This tries to find the smallest value of the right subtree</div><div class="line"> * of the toDelete node by going down to the left most node in the subtree</div><div class="line"> * @param toDelete node to delete</div><div class="line"> * @return the successor of the toDelete node</div><div class="line"> */</div><div class="line">private Node getSuccessor(Node toDelete) &#123;</div><div class="line">    Node successorParent = toDelete;</div><div class="line">    Node successor = toDelete;</div><div class="line">    // start the search from the root of the right subtree</div><div class="line">    Node curr = toDelete.right;</div><div class="line"></div><div class="line">    // move down to left as far as possible in the right subtree</div><div class="line">    // successor&apos;s left child must be null</div><div class="line">    while (curr != null) &#123;</div><div class="line">        successorParent = successor;</div><div class="line">        successor = curr;</div><div class="line">        curr = curr.left;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /*</div><div class="line">     * If successor is NOT the right child of the node to delete, then</div><div class="line">     * need to take care of two connections in the right subtree</div><div class="line">     */</div><div class="line">    if (successor != toDelete.right) &#123;</div><div class="line">        successorParent.left = successor.right;</div><div class="line">        successor.right = toDelete.right;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return successor;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>Traverse Binary Tree:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public void traverse() &#123;</div><div class="line">    inOrderHelper(root);</div><div class="line">    System.out.println();</div><div class="line">&#125;</div><div class="line"></div><div class="line">private void inOrderHelper(Node toVisit) &#123;</div><div class="line">    if(toVisit != null) &#123;</div><div class="line">        inOrderHelper(toVisit.left);</div><div class="line">        System.out.print(toVisit);</div><div class="line">        inOrderHelper(toVisit.right);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</li>
-</ol>
-<hr>
-<p>Reference: @Terry Lee</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;本文是总结Tree这种结构的常用知识点，暂时总结Binary Tree。&lt;/p&gt;
-&lt;h2 id=&quot;binary-tree二叉树&quot;&gt;Binary Tree二叉树&lt;/h2&gt;
-&lt;h
-    
-    </summary>
-    
-      <category term="Data Structure" scheme="http://yoursite.com/categories/Data-Structure/"/>
-    
-    
-      <category term="Tree" scheme="http://yoursite.com/tags/Tree/"/>
-    
-      <category term="Data Structure" scheme="http://yoursite.com/tags/Data-Structure/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 388. Longest Absolute File Path</title>
-    <link href="http://yoursite.com/2017/02/28/Leetcode-388-Longest-Absolute-File-Path/"/>
-    <id>http://yoursite.com/2017/02/28/Leetcode-388-Longest-Absolute-File-Path/</id>
-    <published>2017-02-28T18:52:41.000Z</published>
-    <updated>2017-02-28T19:09:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
-<p>Suppose we abstract our file system by a string in the following manner:</p>
-<p>The string &quot;dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext&quot; represents:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dir</div><div class="line">    subdir1</div><div class="line">    subdir2</div><div class="line">        file.ext</div></pre></td></tr></table></figure></p>
-<p>The directory dir contains an empty sub-directory subdir1 and a sub-directory subdir2 containing a file file.ext.</p>
-<p>The string &quot;dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext&quot; represents:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">dir</div><div class="line">    subdir1</div><div class="line">        file1.ext</div><div class="line">        subsubdir1</div><div class="line">    subdir2</div><div class="line">        subsubdir2</div><div class="line">            file2.ext</div></pre></td></tr></table></figure></p>
-<p>The directory dir contains two sub-directories subdir1 and subdir2. subdir1 contains a file file1.ext and an empty second-level sub-directory subsubdir1. subdir2 contains a second-level sub-directory subsubdir2 containing a file file2.ext.</p>
-<p>We are interested in finding the longest (number of characters) absolute path to a file within our file system. For example, in the second example above, the longest absolute path is &quot;dir/subdir2/subsubdir2/file2.ext&quot;, and its length is 32 (not including the double quotes).</p>
-<p>Given a string representing the file system in the above format, return the length of the longest absolute path to file in the abstracted file system. If there is no file in the system, return 0.</p>
-<p>Note:
-The name of a file contains at least a . and an extension.
-The name of a directory or sub-directory will not contain a ..
-Time complexity required: O(n) where n is the size of the input string.</p>
-<p>Notice that a/aa/aaa/file1.txt is not the longest file path, if there is another path aaaaaaaaaaaaaaaaaaaaa/sth.png.</p>
-<h3 id="explaination">Explaination:</h3>
-<p>计算每个文件是第几level，记下到现在为止的文件path长度，和当前最长的比较。</p>
-<h3 id="code">Code:</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int lengthLongestPath(String input) &#123;</div><div class="line">        String[] paths = input.split(&quot;\n&quot;);</div><div class="line">        int[] stack = new int[paths.length + 1];</div><div class="line">        int maxLen = 0;</div><div class="line">        int curLen = 0;</div><div class="line">        for(String s: paths) &#123;</div><div class="line">            // get level of the s</div><div class="line">            int lev = s.lastIndexOf(&apos;\t&apos;)+1;</div><div class="line">            // get curLen</div><div class="line">            curLen= stack[lev+1] = stack[lev]+s.length()-lev+1;</div><div class="line">            // if find file, get the file path length</div><div class="line">            if (s.contains(&quot;.&quot;)) &#123;</div><div class="line">                maxLen = Math.max(maxLen, curLen-1);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return maxLen;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question:&lt;/h3&gt;
-&lt;p&gt;Suppose we abstract our file system by a string in the
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>云计算Project：Twitter大数据分析</title>
-    <link href="http://yoursite.com/2017/02/27/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9ATwitter%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    <id>http://yoursite.com/2017/02/27/云计算Project：Twitter大数据分析/</id>
-    <published>2017-02-28T01:37:26.000Z</published>
-    <updated>2017-03-30T01:48:05.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是Twitter Analytics on the Cloud项目的介绍及分析总结。小组作业当时做的匆忙，现在再思考下可以优化的地方很多。感谢队友@shuangshuang 和 @烟酱。</p>
-<h2 id="项目介绍">项目介绍</h2>
-<p>目标：</p>
-<ul>
-<li>在云上建立一个高性能又可靠的web服务。</li>
-<li>设计，开发和部署并优化服务器以能够处理每秒上万次请求的高负载。</li>
-<li>在一个1TB的数据集上完成ETL并载入到Mysql和HBase中。</li>
-<li>设计MySQL和HBase并优化配置，提高性能。</li>
-<li>探索基于云的web服务存在瓶颈的方法，并提高性能。</li>
-</ul>
-<h2 id="基本结构">基本结构：</h2>
-<p>￼￼￼￼￼
-<img src="http://i.imgur.com/qMn31B4.png" alt=""></p>
-<h3 id="前端">前端：</h3>
-<ul>
-<li>通过HTTP GET请求访问web服务，不同的请求有不同的地址，后面有不同参数。</li>
-<li>返回相应的响应时，必须要在持续若干个小时的测试中正常运行。</li>
-<li>web服务不能拒绝请求，要能承受高负载。</li>
-</ul>
-<h3 id="后端">后端：</h3>
-<ul>
-<li>保存用来查询的数据文件</li>
-<li>比较SQL(MySQL)和NoSQL(HBase)</li>
-<li>比较不同数据集不同查询类型的表现，来决定如何实现后端。</li>
-</ul>
-<h3 id="数据集">数据集：</h3>
-<p>Twitter数据集，大于1T，JSON格式存储。</p>
-<h2 id="项目实战">项目实战</h2>
-<h3 id="搭建前端">搭建前端：</h3>
-<p>在搭建前端之前，需要慎重选择框架。对比主流web框架，参考<a href="https://www.techempower.com/benchmarks/" target="_blank" rel="external">Techempower</a>,我们最终选择用vertx和undertow进行开发。
-具体可以参考一些比较好的配置指南：</p>
-<p>Vertx:</p>
-<p><a href="http://vertx.io/docs/" target="_blank" rel="external">vertx Document</a>
-<a href="http://vertx.io/blog/my-first-vert-x-3-application/index.html" target="_blank" rel="external">My first Vert.x 3 Application</a></p>
-<h4 id="前端优化">前端优化：</h4>
-<ul>
-<li>运用Cache，每次得到请求先check是否有缓存。当缓存满了的时候，就把最不常用的缓存踢出去。</li>
-</ul>
-<h3 id="etl">ETL:</h3>
-<p>根据request设计好数据库的schema以后，要好好设计ETL。因为我们这里用EMR把twitter数据集载入到数据仓库中，每次需要10-20个小时，而EMR特别贵，所以最好不要重复劳动。最初，用小数据及来测试。</p>
-<p>这一阶段我们要处理两类请求，从存储系统中获取数据，搭建好的web service 需要能够连接到两个不同的后端存储系统(MySQL 和 HBase)，前端需要通过端口 80 接收 HTTP GET 请求。</p>
-<h4 id="操作过程">操作过程：</h4>
-<p>这里主要要写一个Map和一个Reduce文件来处理数据。原始数据的格式是JSON，我们需要处理成需要的数据格式：</p>
-<p>请求格式
-userid+hashtag
-<code>GET /q2?userid=uid&amp;hashtag=hashtag</code></p>
-<p>响应格式 (如果Tweet存在)</p>
-<ul>
-<li>tweet 的 sentiment density</li>
-<li>tweet 的发布时间</li>
-<li>tweet id</li>
-<li>审查修改过的的 tweet 内容，这里有很多可能出问题的地方，比如 emoji 表情、反斜杠、其他语言的字符等等</li>
-</ul>
-<p><code>TEAMID,TEAM_AWS_ACCOUNT_ID\n Sentiment_density1:Tweet_time1:Tweet_id1:Cencored_text1\n Sentiment_density2:Tweet_time2:Tweet_id2:Cencored_text2\n Sentiment_density3:Tweet_time3:Tweet_id3:Cencored_text3\n</code></p>
-<p>响应格式 (如果Tweet不存在)
-<code>TEAMID,TEAM_AWS_ACCOUNT_ID\n \n</code></p>
-<p>map和reduce程序写完后，到EMR上面跑，要注意：</p>
-<ul>
-<li>现用小数据集测试。</li>
-<li>注意各种小细节</li>
-<li>关于EMR的操作，步骤之后有空总结下之前云计算的EMR project。</li>
-</ul>
-<h3 id="query-文本清理和分析">Query 文本清理和分析</h3>
-<p>目标吞吐量： 10000 rps
-不允许用现用的缓存设备，可以自己写缓存。
-会查询某个用户用指定的 hashtag 发的 tweet，主要考察如何设计一个高效的后端来处理大量的请求。</p>
-<h3 id="后端数据库">后端数据库</h3>
-<p>ETL结束以后，我们需要导入数据库。在这个过程中，我们纠结于replication和sharding的选择。
-Replication是指将完整的数据库存在每一台机器上，而Sharding是指分成几个部分分别存在每一台机器上。最终，选择了Sharding模式。</p>
-<h4 id="数据库设计">数据库设计：</h4>
-<p>按照我们刚刚说过的请求格式和响应格式，我们对MySQL和HBase进行设计：</p>
-<h5 id="mysql">MySQL：</h5>
-<h6 id="设计模式">设计模式：</h6>
-<p>（这里参照了Yuki组的赢家设计模式，非常简单粗暴）
-原来的schema是每一列都很清晰，但是这样row相比后面的设计模式多了很多，导致数据库的读取速度慢了很多。
-所以新的schema就选择只存取id，读取所有的tweets以后，让前端进行相应的解析。</p>
-<p><img src="http://i.imgur.com/Zmk6QUp.png" alt=""></p>
-<h6 id="优化方法">优化方法：</h6>
-<ul>
-<li>建立索引Index</li>
-<li>mysql有两个存储引擎，MyISAM和InnoDB，MyISAM适用于大量查寻，对写并不是非常友好，updata时会整表锁住。而InnoDB使用的是“行锁&quot;。
-设置Key_buffer_size以及Query_cache_size到更高的值，可以增加缓冲容量。</li>
-<li>设置所有column为not null，这样mysql不用预留空间检查null值。会提高读取速度。</li>
-</ul>
-<h5 id="hbase">HBase:</h5>
-<p>鉴于HBase是key-value存储模式，我们在这里只要考虑key里怎么放，剩下的数据全都放到column family里面就可以了。
-我们采用tweet_id + user_id + hashtag作为rowkey。</p>
-<h6 id="优化方法摘自小土刀博客">优化方法（摘自小土刀博客）：</h6>
-<p>1.分配合适的内存给 RegionServer 服务:
-例如在 HBase 的 conf 目录下的 hbase-env.sh 的最后添加 export HBASE_REGIONSERVER_OPTS=”-Xmx16000m $HBASE_REGIONSERVER_OPTS”
-其中 16000m 为分配给 RegionServer 的内存大小。</p>
-<p>2.RegionServer 的请求处理 IO 线程数:
-较少的 IO 线程适用于处理单次请求内存消耗较高的 Big Put 场景 (大容量单次 Put 或设置了较大 cache 的 Scan，均属于 Big Put) 或 ReigonServer 的内存比较紧张的场景。
-较多的 IO 线程，适用于单次请求内存消耗低，TPS 要求 (每秒事务处理量 (TransactionPerSecond)) 非常高的场景。设置该值的时候，以监控内存为主要参考。
-在 hbase-site.xml 配置文件中配置项为 hbase.regionserver.handler.count 200</p>
-<p>3.调整 Block Cache:
-hfile.block.cache.size：RS的block cache的内存大小限制，默认值0.25，在偏向读的业务中，可以适当调大该值，具体配置时需试hbase集群服务的业务特征，结合memstore的内存占比进行综合考虑。</p>
-<h2 id="总结">总结：</h2>
-<p>Team Project过去挺久了，很多细节记不得了，清洗数据的部分有很多细节需要注意，并不像这里写的一两句话就讲清楚了。还有数据库优化是一条不归路，盲目优化会导致反向优化，其实根据后来赢家的报告来看，优化并起不到多少作用，好的schema设计才是提高performance的最根本。
-云计算这门课的精华，都在这个Project，覆盖了大部分这门课的所实验的知识。从load balance到sharding和replication，再到SQL和NoSQL数据库，再到EMR的应用，就差并行并发那部分的内容了。
-学习是不难的，有指导来做project也不难，真正到了实际应用中，没有人知道正确答案，靠的都是思考和经验了。</p>
-<p><strong>References：</strong></p>
-<ol>
-<li><a href="http://wdxtub.com/" target="_blank" rel="external">小土刀云计算语料分析&amp;反思课</a></li>
-<li>小Yuki的Report</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;本文是Twitter Analytics on the Cloud项目的介绍及分析总结。小组作业当时做的匆忙，现在再思考下可以优化的地方很多。感谢队友@shuangshuan
-    
-    </summary>
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/categories/Cloud-Computing/"/>
-    
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
-    
-      <category term="Big Data" scheme="http://yoursite.com/tags/Big-Data/"/>
-    
-      <category term="Twitter" scheme="http://yoursite.com/tags/Twitter/"/>
-    
-      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
-    
-      <category term="HBase" scheme="http://yoursite.com/tags/HBase/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 325. Maximum Size Subarray Sum Equals k</title>
-    <link href="http://yoursite.com/2017/02/25/Leetcode-325-Maximum-Size-Subarray-Sum-Equals-k/"/>
-    <id>http://yoursite.com/2017/02/25/Leetcode-325-Maximum-Size-Subarray-Sum-Equals-k/</id>
-    <published>2017-02-25T20:27:57.000Z</published>
-    <updated>2017-02-25T20:35:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
-<p>Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn't one, return 0 instead.</p>
-<p>Note:
-The sum of the entire nums array is guaranteed to fit within the 32-bit signed integer range.</p>
-<p>Example 1:
-Given nums = [1, -1, 5, -2, 3], k = 3,
-return 4. (because the subarray [1, -1, 5, -2] sums to 3 and is the longest)</p>
-<p>Example 2:
-Given nums = [-2, -1, 2, 1], k = 1,
-return 2. (because the subarray [-1, 2] sums to 1 and is the longest)</p>
-<p>Follow Up:
-Can you do it in O(n) time?</p>
-<h3 id="explanation">Explanation:</h3>
-<p>思路就是，算从第一个数到每一个数的sum，存在map里，如果之后有key和sum-k相等，就表示那段数字的和为k。</p>
-<h3 id="code">Code:</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int maxSubArrayLen(int[] nums, int k) &#123;</div><div class="line">        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">        int sum = 0;</div><div class="line">        int result = 0;</div><div class="line"></div><div class="line">        for (int i=0; i&lt;nums.length; i++) &#123;</div><div class="line">            sum += nums[i];</div><div class="line">            if (sum == k) &#123;</div><div class="line">                result = i+1;</div><div class="line"></div><div class="line">            &#125; else if (map.containsKey(sum - k)) &#123;</div><div class="line">                result =Math.max(max, i - map.get(sum));</div><div class="line">            &#125;</div><div class="line">            if (!map.containsKey(sum)) &#123;</div><div class="line">                map.put(sum, i);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            System.out.println(map.toString());</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question:&lt;/h3&gt;
-&lt;p&gt;Given an array nums and a target value k, find the max
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 277. Find the Celebrity</title>
-    <link href="http://yoursite.com/2017/02/24/Leetcode-277-Find-the-Celebrity/"/>
-    <id>http://yoursite.com/2017/02/24/Leetcode-277-Find-the-Celebrity/</id>
-    <published>2017-02-25T03:07:05.000Z</published>
-    <updated>2017-02-25T03:11:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
-<p>Suppose you are at a party with n people (labeled from 0 to n - 1) and among them, there may exist one celebrity. The definition of a celebrity is that all the other n - 1 people know him/her but he/she does not know any of them.</p>
-<p>Now you want to find out who the celebrity is or verify that there is not one. The only thing you are allowed to do is to ask questions like: &quot;Hi, A. Do you know B?&quot; to get information of whether A knows B. You need to find out the celebrity (or verify there is not one) by asking as few questions as possible (in the asymptotic sense).</p>
-<p>You are given a helper function bool knows(a, b) which tells you whether A knows B. Implement a function int findCelebrity(n), your function should minimize the number of calls to knows.</p>
-<p>Note: There will be exactly one celebrity if he/she is in the party. Return the celebrity's label if there is a celebrity in the party. If there is no celebrity, return -1.</p>
-<h3 id="explanation">Explanation:</h3>
-<p>两次遍历。第一轮假设候选人，如果候选人认识i，就换到i。第二轮是验证候选人是否存在。</p>
-<h3 id="code">Code:</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* The knows API is defined in the parent class Relation.</div><div class="line">      boolean knows(int a, int b); */</div><div class="line"></div><div class="line">public class Solution extends Relation &#123;</div><div class="line">    public int findCelebrity(int n) &#123;</div><div class="line">        int candidate = 0;</div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            if (knows(candidate,i)) candidate =i;</div><div class="line">        &#125;</div><div class="line">        for (int i=0; i&lt;n; i++) &#123;</div><div class="line">            if (i != candidate &amp;&amp; (knows(candidate,i) || (!knows(i,candidate)))) return -1;</div><div class="line">        &#125;</div><div class="line">        return candidate;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question:&lt;/h3&gt;
-&lt;p&gt;Suppose you are at a party with n people (labeled from
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Facebook" scheme="http://yoursite.com/tags/Facebook/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
     
   </entry>
   

@@ -86,7 +86,7 @@
 
 
 
-<meta name="description" content="Quesiton
+<meta name="description" content="Question
 Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
 Note:
 
@@ -96,16 +96,16 @@ Both num1 and num2 contains only d">
 <meta property="og:title" content="LeetCode 415. Add Strings">
 <meta property="og:url" content="http://yoursite.com/2017/04/06/LeetCode-415-Add-Strings/index.html">
 <meta property="og:site_name" content="Star">
-<meta property="og:description" content="Quesiton
+<meta property="og:description" content="Question
 Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
 Note:
 
 The length of both num1 and num2 is &amp;lt; 5100.
 Both num1 and num2 contains only d">
-<meta property="og:updated_time" content="2017-04-06T18:38:36.000Z">
+<meta property="og:updated_time" content="2017-05-28T18:24:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 415. Add Strings">
-<meta name="twitter:description" content="Quesiton
+<meta name="twitter:description" content="Question
 Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
 Note:
 
@@ -415,7 +415,7 @@ Both num1 and num2 contains only d">
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><h4 id="quesiton">Quesiton</h4>
+        <script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question</h4>
 <p>Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.</p>
 <p>Note:</p>
 <ul>
@@ -424,7 +424,7 @@ Both num1 and num2 contains only d">
 <li>Both num1 and num2 does not contain any leading zero.</li>
 <li>You must not use any built-in BigInteger library or convert the inputs to integer directly.</li>
 </ul>
-<h4 id="explain">Explain</h4>
+<h4 id="explanation">Explanation</h4>
 <p>得到两个用String表示的数的和。不能直接转成int再加，会有overflow的问题。所以一位一位地加，计算进位，用stringbuilder得到最后的结果。</p>
 <h4 id="code">Code</h4>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public String addStrings(String num1, String num2) &#123;</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        int carry = 0;</div><div class="line">        int i=num1.length()-1; int j=num2.length()-1;</div><div class="line">        int a = 0; int b=0;</div><div class="line">        while (i &gt;=0 || j&gt;=0 || carry &gt;= 1) &#123;</div><div class="line">            if (i &gt;= 0) &#123;</div><div class="line">                a = num1.toCharArray()[i--] - &apos;0&apos;;</div><div class="line">            &#125; else &#123;</div><div class="line">                a = 0;</div><div class="line">            &#125;</div><div class="line">            if (j &gt;= 0) &#123;</div><div class="line">                b = num2.toCharArray()[j--] - &apos;0&apos;;</div><div class="line">            &#125; else &#123;</div><div class="line">                b = 0;</div><div class="line">            &#125;</div><div class="line">            int sum = a+b+carry;</div><div class="line">            carry = sum/10;</div><div class="line">            sb.insert(0,sum%10);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return sb.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -551,7 +551,7 @@ Both num1 and num2 contains only d">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">80</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -559,7 +559,7 @@ Both num1 and num2 contains only d">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -568,7 +568,7 @@ Both num1 and num2 contains only d">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">81</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -683,7 +683,7 @@ Both num1 and num2 contains only d">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#quesiton"><span class="nav-number">1.</span> <span class="nav-text">Quesiton</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explain"><span class="nav-number">2.</span> <span class="nav-text">Explain</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#question"><span class="nav-number">1.</span> <span class="nav-text">Question</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#explanation"><span class="nav-number">2.</span> <span class="nav-text">Explanation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
 
           </div>
