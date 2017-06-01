@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-31T23:59:29.000Z</updated>
+  <updated>2017-06-01T16:48:15.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 501. Find Mode in Binary Search Tree</title>
+    <link href="http://yoursite.com/2017/06/01/LeetCode-501-Find-Mode-in-Binary-Search-Tree/"/>
+    <id>http://yoursite.com/2017/06/01/LeetCode-501-Find-Mode-in-Binary-Search-Tree/</id>
+    <published>2017-06-01T15:55:11.000Z</published>
+    <updated>2017-06-01T16:48:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary search tree (BST) with duplicates, find all the mode(s) (the most frequently occurred element) in the given BST.</p>
+<p>Assume a BST is defined as follows:</p>
+<p>The left subtree of a node contains only nodes with keys less than or equal to the node's key.
+The right subtree of a node contains only nodes with keys greater than or equal to the node's key.
+Both the left and right subtrees must also be binary search trees.
+For example:
+Given BST [1,null,2,2],
+1
+<br>
+2
+/
+2
+return [2].</p>
+<h3 id="explanation">Explanation</h3>
+<p>递归，注意要用全局变量保存之前的最大值，还有当前值。中序遍历整棵树，保存当前的值和count，如果和前面的值不同了，就重新计数。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line">    List&lt;Integer&gt; list;</div><div class="line">    int max;</div><div class="line">    int currval;</div><div class="line">    int currcount;</div><div class="line"></div><div class="line">    public int[] findMode(TreeNode root) &#123;</div><div class="line">        if(root == null) return new int[0];</div><div class="line">        currval =0;</div><div class="line">        currcount = 0;</div><div class="line">        helper(root);</div><div class="line">        int[] res = new int[list.size()];</div><div class="line">        for(int i = 0; i&lt;res.length; i++) res[i] = list.get(i);</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void helper(TreeNode root) &#123;</div><div class="line">        if (root == null) return;</div><div class="line">        helper(root.left);</div><div class="line">        if(root.val == currval) &#123;</div><div class="line">            currcount ++;</div><div class="line">        &#125; else &#123;</div><div class="line">            currcount = 1;</div><div class="line">            currval = root.val;</div><div class="line">        &#125;</div><div class="line">        if (currcount &gt; max) &#123;</div><div class="line">            max = currcount;</div><div class="line">            list = new ArrayList&lt;&gt;();</div><div class="line">            list.add(root.val);</div><div class="line">        &#125; else if(currcount == max) &#123;</div><div class="line">            list.add(root.val);</div><div class="line">        &#125;</div><div class="line">        helper(root.right);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary search tree (BST) with duplicates, find 
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>LeetCode 109. Convert Sorted List to Binary Search Tree</title>
@@ -773,48 +810,6 @@ If nums = [1,2,2], a solution is:
       <category term="Debian" scheme="http://yoursite.com/tags/Debian/"/>
     
       <category term="sudo" scheme="http://yoursite.com/tags/sudo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 438. Find All Anagrams in a String</title>
-    <link href="http://yoursite.com/2017/04/24/LeetCode-438-Find-All-Anagrams-in-a-String/"/>
-    <id>http://yoursite.com/2017/04/24/LeetCode-438-Find-All-Anagrams-in-a-String/</id>
-    <published>2017-04-24T18:19:26.000Z</published>
-    <updated>2017-04-24T19:51:33.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
-<p>Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.</p>
-<p>Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than 20,100.</p>
-<p>The order of output does not matter.</p>
-<p>Example 1:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">s: &quot;cbaebabacd&quot; p: &quot;abc&quot;</div><div class="line"></div><div class="line">Output:</div><div class="line">[0, 6]</div><div class="line"></div><div class="line">Explanation:</div><div class="line">The substring with start index = 0 is &quot;cba&quot;, which is an anagram of &quot;abc&quot;.</div><div class="line">The substring with start index = 6 is &quot;bac&quot;, which is an anagram of &quot;abc&quot;.</div></pre></td></tr></table></figure></p>
-<p>Example 2:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">s: &quot;abab&quot; p: &quot;ab&quot;</div><div class="line"></div><div class="line">Output:</div><div class="line">[0, 1, 2]</div><div class="line"></div><div class="line">Explanation:</div><div class="line">The substring with start index = 0 is &quot;ab&quot;, which is an anagram of &quot;ab&quot;.</div><div class="line">The substring with start index = 1 is &quot;ba&quot;, which is an anagram of &quot;ab&quot;.</div><div class="line">The substring with start index = 2 is &quot;ab&quot;, which is an anagram of &quot;ab&quot;.</div></pre></td></tr></table></figure></p>
-<h4 id="explanation">Explanation</h4>
-<p>暴力解会超时。需要采用sliding window的方法。
-参照 https://discuss.leetcode.com/topic/64434/shortest-concise-java-o-n-sliding-window-solution
-另外还有一些总结的模板：
-https://discuss.leetcode.com/topic/30941/here-is-a-10-line-template-that-can-solve-most-substring-problems</p>
-<h4 id="code">Code</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public List&lt;Integer&gt; findAnagrams(String s, String p) &#123;</div><div class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    if(s == null || p == null || s.length() &lt; p.length()) return list;</div><div class="line">    int[] chars = new int[256];</div><div class="line">    for(Character c:p.toCharArray()) &#123;</div><div class="line">        chars[c] ++;</div><div class="line">    &#125;</div><div class="line">    int start = 0; int end = 0; int count = p.length();</div><div class="line">    while(end &lt; s.length()) &#123;</div><div class="line">        //move right everytime, if the character exists in p&apos;s hash, decrease the count</div><div class="line">        //current hash value &gt;= 1 means the character is existing in p</div><div class="line">        if (chars[s.charAt(end)] &gt;= 1) &#123;</div><div class="line">            count--;</div><div class="line">        &#125;</div><div class="line">        chars[s.charAt(end)]--;</div><div class="line">        end++;</div><div class="line"></div><div class="line">        //when the count is down to 0, means we found the right anagram</div><div class="line">        //then add window&apos;s left to result list</div><div class="line">        if (count == 0) &#123;</div><div class="line">            list.add(start);</div><div class="line">        &#125;</div><div class="line">        //if we find the window&apos;s size equals to p, then we have to move left (narrow the window) to find the new match window</div><div class="line">        //++ to reset the hash because we kicked out the left</div><div class="line">        //only increase the count if the character is in p</div><div class="line">        //the count &gt;= 0 indicate it was original in the hash, cuz it won&apos;t go below 0</div><div class="line">        if (end - start== p.length() ) &#123;</div><div class="line">            if (chars[s.charAt(start)] &gt;= 0) &#123;</div><div class="line">                count++;</div><div class="line">            &#125;</div><div class="line">            chars[s.charAt(start)]++;</div><div class="line">            start++;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return list;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question&quot;&gt;Question:&lt;/h4&gt;
-&lt;p&gt;Given a string s and a non-empty string p, find all th
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
     
   </entry>
   
