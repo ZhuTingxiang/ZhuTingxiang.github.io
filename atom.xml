@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-31T15:04:37.000Z</updated>
+  <updated>2017-05-31T23:59:29.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,146 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 109. Convert Sorted List to Binary Search Tree</title>
+    <link href="http://yoursite.com/2017/05/31/LeetCode-109-Convert-Sorted-List-to-Binary-Search-Tree/"/>
+    <id>http://yoursite.com/2017/05/31/LeetCode-109-Convert-Sorted-List-to-Binary-Search-Tree/</id>
+    <published>2017-05-31T23:57:47.000Z</published>
+    <updated>2017-05-31T23:59:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.</p>
+<h3 id="explanation">Explanation</h3>
+<p>和108题类似，唯一不同的是linkedinlist。用两个pointer找到中心点就好。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">public TreeNode sortedListToBST(ListNode head) &#123;</div><div class="line">    if(head==null) return null;</div><div class="line">    return toBST(head,null);</div><div class="line">&#125;</div><div class="line">public TreeNode toBST(ListNode head, ListNode tail)&#123;</div><div class="line">    ListNode slow = head;</div><div class="line">    ListNode fast = head;</div><div class="line">    if(head==tail) return null;</div><div class="line"></div><div class="line">    while(fast!=tail&amp;&amp;fast.next!=tail)&#123;</div><div class="line">        fast = fast.next.next;</div><div class="line">        slow = slow.next;</div><div class="line">    &#125;</div><div class="line">    TreeNode thead = new TreeNode(slow.val);</div><div class="line">    thead.left = toBST(head,slow);</div><div class="line">    thead.right = toBST(slow.next,tail);</div><div class="line">    return thead;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a singly linked list where elements are sorted in
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 108. Convert Sorted Array to Binary Search Tree</title>
+    <link href="http://yoursite.com/2017/05/31/LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree/"/>
+    <id>http://yoursite.com/2017/05/31/LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree/</id>
+    <published>2017-05-31T23:42:53.000Z</published>
+    <updated>2017-05-31T23:59:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
+<h3 id="explanation">Explanation</h3>
+<p>递归，每次找到根节点就行。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line"></div><div class="line">    public TreeNode sortedArrayToBST(int[] nums) &#123;</div><div class="line">        if (nums == null || nums.length == 0) return null;</div><div class="line">        return helper(nums, 0, nums.length-1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public TreeNode helper(int[] nums, int start, int end) &#123;</div><div class="line">        if (nums == null) return null;</div><div class="line">        //base case</div><div class="line">        if (start &gt; end) return null;</div><div class="line">        int mid = start + (end - start)/2;</div><div class="line">        TreeNode root = new TreeNode(nums[mid]);</div><div class="line">        root.left = helper(nums, start, mid-1);</div><div class="line">        root.right = helper(nums, mid+1, end);</div><div class="line">        return root;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given an array where elements are sorted in ascending o
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 173. Binary Search Tree Iterator</title>
+    <link href="http://yoursite.com/2017/05/31/LeetCode-173-Binary-Search-Tree-Iterator/"/>
+    <id>http://yoursite.com/2017/05/31/LeetCode-173-Binary-Search-Tree-Iterator/</id>
+    <published>2017-05-31T23:16:22.000Z</published>
+    <updated>2017-05-31T23:17:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.</p>
+<p>Calling next() will return the next smallest number in the BST.</p>
+<p>Note: next() and hasNext() should run in average O(1) time and uses O(h) memory, where h is the height of the tree</p>
+<h3 id="explanation">Explanation</h3>
+<p>完成中序遍历，用stack这个数据结构存储。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * Definition for binary tree</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"></div><div class="line">public class BSTIterator &#123;</div><div class="line">    Stack&lt;TreeNode&gt; stack;</div><div class="line"></div><div class="line">    public BSTIterator(TreeNode root) &#123;</div><div class="line">         stack = new Stack&lt;&gt;();</div><div class="line">         pushAllLeft(root);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void pushAllLeft(TreeNode node) &#123;</div><div class="line">        while(node != null) &#123;</div><div class="line">            stack.push(node);</div><div class="line">            node = node.left;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** @return whether we have a next smallest number */</div><div class="line">    public boolean hasNext() &#123;</div><div class="line">        if(stack.isEmpty()) return false;</div><div class="line">        return true;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** @return the next smallest number */</div><div class="line">    public int next() &#123;</div><div class="line">        TreeNode smallest = stack.pop();</div><div class="line">        pushAllLeft(smallest.right);</div><div class="line">        return smallest.val;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Your BSTIterator will be called like this:</div><div class="line"> * BSTIterator i = new BSTIterator(root);</div><div class="line"> * while (i.hasNext()) v[f()] = i.next();</div><div class="line"> */</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Implement an iterator over a binary search tree (BST). 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 98. Validate Binary Search Tree</title>
+    <link href="http://yoursite.com/2017/05/31/LeetCode-98-Validate-Binary-Search-Tree/"/>
+    <id>http://yoursite.com/2017/05/31/LeetCode-98-Validate-Binary-Search-Tree/</id>
+    <published>2017-05-31T22:33:49.000Z</published>
+    <updated>2017-05-31T22:37:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
+<p>Assume a BST is defined as follows:</p>
+<p>The left subtree of a node contains only nodes with keys less than the node's key.
+The right subtree of a node contains only nodes with keys greater than the node's key.
+Both the left and right subtrees must also be binary search trees.
+Example 1:
+2
+/ <br>
+1   3
+Binary tree [2,1,3], return true.
+Example 2:
+1
+/ <br>
+2   3
+Binary tree [1,2,3], return false.</p>
+<h3 id="explanation">Explanation</h3>
+<p>在递归中，除了和根节点比较大小之外，还要考虑到之前的根节点的大小，所以这里设置一个上下限。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line">    public boolean isValidBST(TreeNode root) &#123;</div><div class="line">        if (root == null) &#123;</div><div class="line">            return true;</div><div class="line">            &#125;</div><div class="line">            return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">     public boolean dfs(TreeNode root, long low, long up) &#123;</div><div class="line">         if (root == null) &#123;</div><div class="line">             return true;</div><div class="line">         &#125;</div><div class="line"></div><div class="line">         if (root.val &gt;= up || root.val &lt;= low) &#123;</div><div class="line">           return false;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">      return dfs(root.left, low, root.val)</div><div class="line">            &amp;&amp; dfs(root.right, root.val, up);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a binary tree, determine if it is a valid binary 
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode 113.Path Sum II</title>
@@ -675,178 +815,6 @@ https://discuss.leetcode.com/topic/30941/here-is-a-10-line-template-that-can-sol
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>论文笔记：《Stronger consistency and semantics for low-latency geo-replicated storage》</title>
-    <link href="http://yoursite.com/2017/04/11/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9A%E3%80%8AStronger-consistency-and-semantics-for-low-latency-geo-replicated-storage%E3%80%8B/"/>
-    <id>http://yoursite.com/2017/04/11/论文笔记：《Stronger-consistency-and-semantics-for-low-latency-geo-replicated-storage》/</id>
-    <published>2017-04-12T03:11:01.000Z</published>
-    <updated>2017-04-24T19:53:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是《Stronger consistency and semantics for low-latency geo-replicated
-storage》的阅读笔记。</p>
-<p>(未完成更新...)</p>
-<h3 id="背景">背景</h3>
-<h4 id="地理复制geo-replication">地理复制（Geo-replication）</h4>
-<p>如今大型的网络服务常常需要大规模数据存储，需要支持上百万的并行用户对数据进行操作。在这些系统中，数据中心往往会对数据进行完全备份，也就是在每一个数据中心中都存储全部的数据。比如Facebook会把所有用户信息存在每个数据中心中。像这样讲数据备份在不同地理位置的方式称为：地理复制（Geo-replication）。<br>
-地理复制有两个好处：容错和低延迟。一个地理位置的数据库挂掉了，其他的可以继续提供服务。用户可以选择离自己最近的那个服务。</p>
-<h4 id="数据分区">数据分区</h4>
-<p>在大规模数据库中，每一个数据中心的数据会非常大，常常需要分布在上万的机器中，常用的一个技术叫做分区（sharding），就是把不同部分的数据房子啊不同的服务器中。当有新的机器增加时，就需要重新进行分区。所以总而言之，在不同地理区域的数据是重复的，每个地区的数据则是分区存放的。</p>
-<p>为了达到更少的round trop time也就是RTT，也就会从用户发出请求到返回的网络延迟，最重要的就是要减少到达数据存储之间延迟。一种方式就是尽量从本地获取。如图所示：</p>
-<p><img src="http://i.imgur.com/oyQ8t2X.png" alt=""></p>
-<h4 id="local-replica-only">Local-replica-only</h4>
-<p>从最近的地方读写是最快的。读从最近的数据中心读取，就不会去远程获取。写的是后也是在这个数据中心中更新，在更新远程数据中心之前就返回结果。这种设计称为“local-replica-only”数据库设计，就是为了减少远程获取，来得到数据中心之间RTT最短时间。然而这种“Local-replica-only”的设计往往会达不到强一致性。</p>
-<h4 id="linearizability线性一致化">Linearizability线性一致化</h4>
-<p>Linearizability是一种强一致性模型。也就是说如果写完之后，在另一个数据中心读取时，就需要有刚刚写的更新。所以理论上来说，低延迟和强一致性往往是trade-off的关系。</p>
-<h4 id="alps系统">ALPS系统</h4>
-<p>通过CAP理论，我们已经知道，一个系统无法同时达到Consistency，Availability和Partition-tolerance。因此，现代的网络服务通常牺牲了强一致性来满足可用性和分区容忍性。这类系统可以命名为“ALPS系统”，满足可用性，低延迟，分区容忍和高可拓。</p>
-<p>鉴于ALPS系统必须牺牲强一致性，我们就来探索一下在ALSP束缚下最强的一致性可以达到什么程度。这里，我们提出casual consistency with convergent conflict handling,也就是casual+一致性。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;本文是《Stronger consistency and semantics for low-latency geo-replicated
-storage》的阅读笔记。&lt;/p
-    
-    </summary>
-    
-      <category term="Distributed System" scheme="http://yoursite.com/categories/Distributed-System/"/>
-    
-    
-      <category term="Cloud Computing" scheme="http://yoursite.com/tags/Cloud-Computing/"/>
-    
-      <category term="Distributed System" scheme="http://yoursite.com/tags/Distributed-System/"/>
-    
-      <category term="Geo-replication" scheme="http://yoursite.com/tags/Geo-replication/"/>
-    
-      <category term="Data Storage" scheme="http://yoursite.com/tags/Data-Storage/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 206. Reverse Linked List</title>
-    <link href="http://yoursite.com/2017/04/09/LeetCode-206-Reverse-Linked-List/"/>
-    <id>http://yoursite.com/2017/04/09/LeetCode-206-Reverse-Linked-List/</id>
-    <published>2017-04-09T22:02:42.000Z</published>
-    <updated>2017-05-28T18:25:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="quesstion">Quesstion</h3>
-<p>Reverse a singly linked list.</p>
-<p>click to show more hints.</p>
-<p>Hint:
-A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
-<h3 id="explanation">Explanation</h3>
-<h4 id="iterative-solution">Iterative Solution</h4>
-<p>定义一个previous node，一个current node，倒过来。并记下之前的后面一个节点，循环。</p>
-<h4 id="recursive-solution">Recursive Solution</h4>
-<h3 id="code">Code</h3>
-<h4 id="iterative-solution">Iterative Solution</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public ListNode reverseList(ListNode head) &#123;</div><div class="line">        ListNode pre = null;</div><div class="line">        ListNode curr = head;</div><div class="line">        while (curr != null) &#123;</div><div class="line">            ListNode nextTmp = curr.next;</div><div class="line">            curr.next = pre;</div><div class="line">            pre = curr;</div><div class="line">            curr = nextTmp;</div><div class="line">        &#125;</div><div class="line">        return pre;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="recursive-solution">Recursive Solution</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public ListNode reverseList(ListNode head) &#123;</div><div class="line">    //Recursive</div><div class="line">    if (head == null) return null;</div><div class="line">    if (head.next == null) return head;</div><div class="line">    ListNode newNext = reverseList(head.next);</div><div class="line">    ListNode tmp = newNext;</div><div class="line">    while (tmp.next!= null) &#123;</div><div class="line">        tmp = tmp.next;</div><div class="line">    &#125;</div><div class="line">    tmp.next = head;</div><div class="line">    head.next = null;</div><div class="line">    return newNext;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;quesstion&quot;&gt;Quesstion&lt;/h3&gt;
-&lt;p&gt;Reverse a singly linked list.&lt;/p&gt;
-&lt;p&gt;click to show mo
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode Weekly Contest 27: 556. Next Greater Element III</title>
-    <link href="http://yoursite.com/2017/04/08/LeetCode-Weekly-Contest-27-556-Next-Greater-Element-III/"/>
-    <id>http://yoursite.com/2017/04/08/LeetCode-Weekly-Contest-27-556-Next-Greater-Element-III/</id>
-    <published>2017-04-09T03:17:52.000Z</published>
-    <updated>2017-05-28T18:23:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a positive 32-bit integer n, you need to find the smallest 32-bit integer which has exactly the same digits existing in the integer n and is greater in value than n. If no such positive 32-bit integer exists, you need to return -1.</p>
-<p>Example 1:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 12</div><div class="line">Output: 21</div></pre></td></tr></table></figure></p>
-<p>Example 2:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 21</div><div class="line">Output: -1</div></pre></td></tr></table></figure></p>
-<h3 id="explanation">Explanation</h3>
-<p>思路是：从最后开始，每两个数对比，如果前一个数比后一个数小，停下，这点就是要变的地方。然后，把这个位置用后面比它大的数中最小的那个数字替代，互换位置。之后再把这个位置后面的所有数倒置一下。同LeetCode No.31</p>
-<p>比如 <code>12487653</code><br>
-先替换 <code>12587643</code><br>
-再倒置后面的数字 <code>12534678</code></p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">public int nextGreaterElement(int num) &#123;</div><div class="line">        String n = Integer.toString(num);</div><div class="line">        char[] nums = n.toCharArray();</div><div class="line">        if (nums.length&lt;=1) return -1;</div><div class="line">        int result = -1;</div><div class="line">        for (int i=nums.length-2;i&gt;=0;i--) &#123;</div><div class="line">            if (nums[i] &gt;= nums[i+1]) continue;</div><div class="line">            swap(nums,i);</div><div class="line">            reverse(nums, i+1);</div><div class="line">            //avoid overflow</div><div class="line">            try &#123;</div><div class="line">                return Integer.parseInt(new String(nums));</div><div class="line">            &#125; catch(Exception e) &#123;</div><div class="line">                return -1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">       return result;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line">public void swap(char[] nums, int i) &#123;</div><div class="line">    for (int j =nums.length-1; j&gt;i; j--) &#123;</div><div class="line">        if (nums[j] &gt; nums[i])&#123;</div><div class="line">            char c = nums[j];</div><div class="line">            nums[j] = nums[i];</div><div class="line">            nums[i] = c;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">public void reverse(char[] nums,int i) &#123;</div><div class="line">    int first = i;</div><div class="line">    int last = nums.length-1;</div><div class="line">    while(first &lt; last) &#123;</div><div class="line">        char c = nums[first];</div><div class="line">        nums[first] = nums[last];</div><div class="line">        nums[last] = c;</div><div class="line">        first ++;</div><div class="line">        last --;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a positive 32-bit integer n, you need to find the
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Weekly Contest" scheme="http://yoursite.com/tags/Weekly-Contest/"/>
-    
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode: 205. Isomorphic Strings</title>
-    <link href="http://yoursite.com/2017/04/07/Leetcode-205-Isomorphic-Strings/"/>
-    <id>http://yoursite.com/2017/04/07/Leetcode-205-Isomorphic-Strings/</id>
-    <published>2017-04-07T20:49:13.000Z</published>
-    <updated>2017-04-07T20:54:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question</h4>
-<p>Given two strings s and t, determine if they are isomorphic.</p>
-<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
-<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.</p>
-<p>For example,
-Given &quot;egg&quot;, &quot;add&quot;, return true.</p>
-<p>Given &quot;foo&quot;, &quot;bar&quot;, return false.</p>
-<p>Given &quot;paper&quot;, &quot;title&quot;, return true.</p>
-<h4 id="explaination">Explaination</h4>
-<p>方法一：用Hashmap存对应的字符，并用一个HashSet存用过的替代字符。
-方法二：用hashtable，两个数组，变化里面的frequency，如果不再一样，就不成立。</p>
-<h4 id="code">Code</h4>
-<h5 id="solution-1">Solution 1</h5>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public boolean isIsomorphic(String s, String t) &#123;</div><div class="line">    HashMap&lt;Character, Character&gt; map = new HashMap&lt;&gt;();</div><div class="line">    HashSet&lt;Character&gt; set = new HashSet&lt;&gt;();</div><div class="line">    if (s.length() != t.length()) return false;</div><div class="line">    for (int i=0; i&lt;s.length(); i++) &#123;</div><div class="line">        if (map.containsKey(s.charAt(i))) &#123;</div><div class="line">            if (map.get(s.charAt(i)) != t.charAt(i)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">        &#125; else &#123;</div><div class="line">            if (set.contains(t.charAt(i))) return false;</div><div class="line">            set.add(t.charAt(i));</div><div class="line">            map.put(s.charAt(i), t.charAt(i));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h5 id="solution-2">Solution 2</h5>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean isIsomorphic(String s, String t) &#123;</div><div class="line">        int[] m1 = new int[256];</div><div class="line">        int[] m2 = new int[256];</div><div class="line">        int n = s.length();</div><div class="line">        for (int i = 0; i &lt; n; ++i) &#123;</div><div class="line">            if (m1[s.charAt(i)] != m2[t.charAt(i)]) return false;</div><div class="line">            m1[s.charAt(i)] = i + 1;</div><div class="line">            m2[t.charAt(i)] = i + 1;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;question&quot;&gt;Question&lt;/h4&gt;
-&lt;p&gt;Given two strings s and t, determine if they are isomor
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="HashTable" scheme="http://yoursite.com/tags/HashTable/"/>
     
   </entry>
   

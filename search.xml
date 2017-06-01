@@ -4,6 +4,70 @@
   
     
     <entry>
+      <title><![CDATA[LeetCode 109. Convert Sorted List to Binary Search Tree]]></title>
+      <url>http://yoursite.com/2017/05/31/LeetCode-109-Convert-Sorted-List-to-Binary-Search-Tree/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.</p>
+<h3 id="explanation">Explanation</h3>
+<p>和108题类似，唯一不同的是linkedinlist。用两个pointer找到中心点就好。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">public TreeNode sortedListToBST(ListNode head) &#123;</div><div class="line">    if(head==null) return null;</div><div class="line">    return toBST(head,null);</div><div class="line">&#125;</div><div class="line">public TreeNode toBST(ListNode head, ListNode tail)&#123;</div><div class="line">    ListNode slow = head;</div><div class="line">    ListNode fast = head;</div><div class="line">    if(head==tail) return null;</div><div class="line"></div><div class="line">    while(fast!=tail&amp;&amp;fast.next!=tail)&#123;</div><div class="line">        fast = fast.next.next;</div><div class="line">        slow = slow.next;</div><div class="line">    &#125;</div><div class="line">    TreeNode thead = new TreeNode(slow.val);</div><div class="line">    thead.left = toBST(head,slow);</div><div class="line">    thead.right = toBST(slow.next,tail);</div><div class="line">    return thead;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 108. Convert Sorted Array to Binary Search Tree]]></title>
+      <url>http://yoursite.com/2017/05/31/LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
+<h3 id="explanation">Explanation</h3>
+<p>递归，每次找到根节点就行。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line"></div><div class="line">    public TreeNode sortedArrayToBST(int[] nums) &#123;</div><div class="line">        if (nums == null || nums.length == 0) return null;</div><div class="line">        return helper(nums, 0, nums.length-1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public TreeNode helper(int[] nums, int start, int end) &#123;</div><div class="line">        if (nums == null) return null;</div><div class="line">        //base case</div><div class="line">        if (start &gt; end) return null;</div><div class="line">        int mid = start + (end - start)/2;</div><div class="line">        TreeNode root = new TreeNode(nums[mid]);</div><div class="line">        root.left = helper(nums, start, mid-1);</div><div class="line">        root.right = helper(nums, mid+1, end);</div><div class="line">        return root;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 173. Binary Search Tree Iterator]]></title>
+      <url>http://yoursite.com/2017/05/31/LeetCode-173-Binary-Search-Tree-Iterator/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.</p>
+<p>Calling next() will return the next smallest number in the BST.</p>
+<p>Note: next() and hasNext() should run in average O(1) time and uses O(h) memory, where h is the height of the tree</p>
+<h3 id="explanation">Explanation</h3>
+<p>完成中序遍历，用stack这个数据结构存储。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * Definition for binary tree</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"></div><div class="line">public class BSTIterator &#123;</div><div class="line">    Stack&lt;TreeNode&gt; stack;</div><div class="line"></div><div class="line">    public BSTIterator(TreeNode root) &#123;</div><div class="line">         stack = new Stack&lt;&gt;();</div><div class="line">         pushAllLeft(root);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void pushAllLeft(TreeNode node) &#123;</div><div class="line">        while(node != null) &#123;</div><div class="line">            stack.push(node);</div><div class="line">            node = node.left;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** @return whether we have a next smallest number */</div><div class="line">    public boolean hasNext() &#123;</div><div class="line">        if(stack.isEmpty()) return false;</div><div class="line">        return true;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** @return the next smallest number */</div><div class="line">    public int next() &#123;</div><div class="line">        TreeNode smallest = stack.pop();</div><div class="line">        pushAllLeft(smallest.right);</div><div class="line">        return smallest.val;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Your BSTIterator will be called like this:</div><div class="line"> * BSTIterator i = new BSTIterator(root);</div><div class="line"> * while (i.hasNext()) v[f()] = i.next();</div><div class="line"> */</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 98. Validate Binary Search Tree]]></title>
+      <url>http://yoursite.com/2017/05/31/LeetCode-98-Validate-Binary-Search-Tree/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
+<p>Assume a BST is defined as follows:</p>
+<p>The left subtree of a node contains only nodes with keys less than the node's key.
+The right subtree of a node contains only nodes with keys greater than the node's key.
+Both the left and right subtrees must also be binary search trees.
+Example 1:
+2
+/ <br>
+1   3
+Binary tree [2,1,3], return true.
+Example 2:
+1
+/ <br>
+2   3
+Binary tree [1,2,3], return false.</p>
+<h3 id="explanation">Explanation</h3>
+<p>在递归中，除了和根节点比较大小之外，还要考虑到之前的根节点的大小，所以这里设置一个上下限。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line">    public boolean isValidBST(TreeNode root) &#123;</div><div class="line">        if (root == null) &#123;</div><div class="line">            return true;</div><div class="line">            &#125;</div><div class="line">            return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">     public boolean dfs(TreeNode root, long low, long up) &#123;</div><div class="line">         if (root == null) &#123;</div><div class="line">             return true;</div><div class="line">         &#125;</div><div class="line"></div><div class="line">         if (root.val &gt;= up || root.val &lt;= low) &#123;</div><div class="line">           return false;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">      return dfs(root.left, low, root.val)</div><div class="line">            &amp;&amp; dfs(root.right, root.val, up);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[LeetCode 113.Path Sum II]]></title>
       <url>http://yoursite.com/2017/05/31/LeetCode-113-Path-Sum-II/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
