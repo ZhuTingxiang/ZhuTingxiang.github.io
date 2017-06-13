@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java,Interview," />
+  <meta name="keywords" content="Interview,Java," />
 
 
 
@@ -98,7 +98,7 @@ Is the JVM (Java Virtual Machine) platform dependent or platform independent? Wh
 JVM is plantform dependent?
 
 Is the JVM (Java Virtual Machine) platform dependent or platform independent? What is the advantage of using the JVM, and having Java be a translated lan">
-<meta property="og:updated_time" content="2017-02-16T04:48:13.000Z">
+<meta property="og:updated_time" content="2017-06-03T20:01:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Interview Questions">
 <meta name="twitter:description" content="Always update...
@@ -451,13 +451,51 @@ Method overriding is a run-time phenomenon that is the driving force behind poly
 </blockquote>
 <p>Shortly: An object is an instance of a class.
 Objects have a lifespan but classes do not.</p>
-<h3 id="an-object-and-a-class">An object and a class</h3>
+<h3 id="java-platform">Java platform</h3>
 <blockquote>
-<p>In Java, what’s the difference between an object and a class?</p>
+<p>What is the main difference between Java platform and other platforms?</p>
 </blockquote>
+<p>The Java platform differs from most other platforms in the sense that it's a software-based platform that runs on top of other hardware-based platforms.It has two components:</p>
+<ul>
+<li>Runtime Environment</li>
+<li>API(Application Programming Interface)</li>
+</ul>
+<h3 id="write-once-and-run-anywhere">write once and run anywhere</h3>
+<blockquote>
+<p>What gives Java its 'write once and run anywhere' nature?</p>
+</blockquote>
+<p>The bytecode. Java is compiled to be a byte code which is the intermediate language between source code and machine code. This byte code is not platform specific and hence can be fed to any platform.</p>
+<h3 id="is-empty-java-file-name-a-valid-source-file-name">Is Empty .java file name a valid source file name?</h3>
+<p>Yes, save your java file by .java only, compile it by javac .java and run by java yourclassname Let's take a simple example:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//save by .java only  </div><div class="line">class A&#123;  </div><div class="line">public static void main(String args[])&#123;  </div><div class="line">System.out.println(&quot;Hello java&quot;);  </div><div class="line">&#125;  </div><div class="line">&#125;  </div><div class="line">//compile by javac .java  </div><div class="line">//run by     java A</div></pre></td></tr></table></figure></p>
+<p>compile it by javac .java</p>
+<p>run it by java A</p>
+<h3 id="if-i-dont-provide-any-arguments-on-the-command-line-then-the-string-array-of-main-method-will-be-empty-or-null">If I don't provide any arguments on the command line, then the String array of Main method will be empty or null?</h3>
+<p>It is empty. But not null.</p>
+<h3 id="what-if-i-write-static-public-void-instead-of-public-static-void">What if I write static public void instead of public static void?</h3>
+<p>Program compiles and runs properly.</p>
+<h3 id="what-is-the-default-value-of-the-local-variables">What is the default value of the local variables?</h3>
+<p>The local variables are not initialized to any default value, neither primitives nor object references.</p>
+<h3 id="what-is-difference-between-object-oriented-programming-language-and-object-based-programming-language">What is difference between object oriented programming language and object based programming language?</h3>
+<p>Object based programming languages follow all the features of OOPs except Inheritance. Examples of object based programming languages are JavaScript, VBScript etc.</p>
+<h3 id="what-will-be-the-initial-value-of-an-object-reference-which-is-defined-as-an-instance-variable">What will be the initial value of an object reference which is defined as an instance variable?</h3>
+<p>The object references are all initialized to null in Java.</p>
+<h3 id="constructor-in-java">Constructor in Java</h3>
+<p>Constructor in java is a special type of method that is used to initialize the object.</p>
+<p>Java constructor is invoked at the time of object creation. It constructs the values i.e. provides data for the object that is why it is known as constructor.</p>
+<p>Rules for creating java constructor</p>
+<p>There are basically two rules defined for the constructor.</p>
+<p>Constructor name must be same as its class name
+Constructor must have no explicit return type</p>
+<p>Types of java constructors</p>
+<p>There are two types of constructors:</p>
+<p>Default constructor (no-arg constructor)
+Parameterized constructor</p>
+<h3 id=""></h3>
 <hr>
 <p><strong>References:</strong>
-http://www.programmerinterview.com/</p>
+http://www.programmerinterview.com/
+https://www.javatpoint.com/constructor</p>
 
       
     </div>
@@ -481,9 +519,9 @@ http://www.programmerinterview.com/</p>
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
             <a href="/tags/Interview/" rel="tag"># Interview</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
         </div>
       
@@ -579,7 +617,7 @@ http://www.programmerinterview.com/</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-count">97</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -587,7 +625,7 @@ http://www.programmerinterview.com/</p>
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -596,7 +634,7 @@ http://www.programmerinterview.com/</p>
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">89</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -711,7 +749,7 @@ http://www.programmerinterview.com/</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jvm-is-plantform-dependent"><span class="nav-number">1.</span> <span class="nav-text">JVM is plantform dependent?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overloading-amp-overriding"><span class="nav-number">2.</span> <span class="nav-text">Overloading & Overriding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#private-constructor"><span class="nav-number">3.</span> <span class="nav-text">Private Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#an-object-and-a-class"><span class="nav-number">4.</span> <span class="nav-text">An object and a class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#an-object-and-a-class"><span class="nav-number">5.</span> <span class="nav-text">An object and a class</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jvm-is-plantform-dependent"><span class="nav-number">1.</span> <span class="nav-text">JVM is plantform dependent?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overloading-amp-overriding"><span class="nav-number">2.</span> <span class="nav-text">Overloading & Overriding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#private-constructor"><span class="nav-number">3.</span> <span class="nav-text">Private Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#an-object-and-a-class"><span class="nav-number">4.</span> <span class="nav-text">An object and a class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java-platform"><span class="nav-number">5.</span> <span class="nav-text">Java platform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#write-once-and-run-anywhere"><span class="nav-number">6.</span> <span class="nav-text">write once and run anywhere</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is-empty-java-file-name-a-valid-source-file-name"><span class="nav-number">7.</span> <span class="nav-text">Is Empty .java file name a valid source file name?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-i-dont-provide-any-arguments-on-the-command-line-then-the-string-array-of-main-method-will-be-empty-or-null"><span class="nav-number">8.</span> <span class="nav-text">If I don't provide any arguments on the command line, then the String array of Main method will be empty or null?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#what-if-i-write-static-public-void-instead-of-public-static-void"><span class="nav-number">9.</span> <span class="nav-text">What if I write static public void instead of public static void?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-the-default-value-of-the-local-variables"><span class="nav-number">10.</span> <span class="nav-text">What is the default value of the local variables?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-difference-between-object-oriented-programming-language-and-object-based-programming-language"><span class="nav-number">11.</span> <span class="nav-text">What is difference between object oriented programming language and object based programming language?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#what-will-be-the-initial-value-of-an-object-reference-which-is-defined-as-an-instance-variable"><span class="nav-number">12.</span> <span class="nav-text">What will be the initial value of an object reference which is defined as an instance variable?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#constructor-in-java"><span class="nav-number">13.</span> <span class="nav-text">Constructor in Java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">14.</span> <span class="nav-text"></span></a></li></ol></div>
             
 
           </div>
