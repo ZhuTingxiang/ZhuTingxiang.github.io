@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-16T23:07:19.000Z</updated>
+  <updated>2017-06-17T00:47:51.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,80 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 21. Merge Two Sorted Lists</title>
+    <link href="http://yoursite.com/2017/06/16/LeetCode-21-Merge-Two-Sorted-Lists/"/>
+    <id>http://yoursite.com/2017/06/16/LeetCode-21-Merge-Two-Sorted-Lists/</id>
+    <published>2017-06-17T00:36:46.000Z</published>
+    <updated>2017-06-17T00:47:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<h3 id="explanation">Explanation</h3>
+<p>两个指针。非常简单。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;</div><div class="line">        ListNode a = l1;</div><div class="line">        ListNode b = l2;</div><div class="line">        if (l1 == null &amp;&amp; l2 == null) return null;</div><div class="line">        ListNode curr = new ListNode(0);</div><div class="line">        ListNode dummy= curr;</div><div class="line">        while(a != null &amp;&amp; b != null) &#123;</div><div class="line">            if (a.val &lt; b.val) &#123;</div><div class="line">                dummy.next = new ListNode(a.val);</div><div class="line">                a = a.next;</div><div class="line">            &#125; else &#123;</div><div class="line">                dummy.next = new ListNode(b.val);</div><div class="line">                b = b.next;</div><div class="line">            &#125;</div><div class="line">            dummy = dummy.next;</div><div class="line">        &#125;</div><div class="line">        if(a!= null) dummy.next = a;</div><div class="line">        else dummy.next = b;</div><div class="line">        return curr.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Merge two sorted linked lists and return it as a new li
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 148. Sort List以及排序</title>
+    <link href="http://yoursite.com/2017/06/16/LeetCode-148-Sort-List/"/>
+    <id>http://yoursite.com/2017/06/16/LeetCode-148-Sort-List/</id>
+    <published>2017-06-16T23:33:47.000Z</published>
+    <updated>2017-06-17T20:10:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>排序算法：
+时间复杂度为 O(nlgn）:<br>
+quick sort (空间复杂度O(1)), merge sort(空间复杂度O(n)), heap sort (空间复杂度O(1))
+时间复杂度为 O(n):
+bucket sort, radix sort,
+基于比较的排序，时间复杂度一般为O(nlgn）</p>
+<h3 id="question">Question</h3>
+<p>Sort a linked list in O(n log n) time using constant space complexity.</p>
+<h3 id="explanation">Explanation</h3>
+<p>这道题主要要掌握几种sort的方法怎么写，还有相关的复杂度分析。</p>
+<h3 id="code">Code</h3>
+<ol>
+<li>
+<p>Merge Sort: 时间复杂度为O(nlogn），空间复杂度O(n)
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode sortList(ListNode head) &#123;</div><div class="line">        if (head == null || head.next == null) return head;</div><div class="line">        // Merge Sort</div><div class="line">        ListNode mid = findMiddle(head);</div><div class="line">        ListNode right = sortList(mid.next);</div><div class="line">        mid.next = null;</div><div class="line">        ListNode left = sortList(head);</div><div class="line">        return mergeTwoLists(left, right);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;</div><div class="line">        ListNode a = l1;</div><div class="line">        ListNode b = l2;</div><div class="line">        if (l1 == null &amp;&amp; l2 == null) return null;</div><div class="line">        ListNode curr = new ListNode(0);</div><div class="line">        ListNode dummy= curr;</div><div class="line">        while(a != null &amp;&amp; b != null) &#123;</div><div class="line">            if (a.val &lt; b.val) &#123;</div><div class="line">                dummy.next = new ListNode(a.val);</div><div class="line">                a = a.next;</div><div class="line">            &#125; else &#123;</div><div class="line">                dummy.next = new ListNode(b.val);</div><div class="line">                b = b.next;</div><div class="line">            &#125;</div><div class="line">            dummy = dummy.next;</div><div class="line">        &#125;</div><div class="line">        if(a!= null) dummy.next = a;</div><div class="line">        else dummy.next = b;</div><div class="line">        return curr.next;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    private ListNode findMiddle(ListNode head) &#123;</div><div class="line">        ListNode walker = head;</div><div class="line">        ListNode runner = head.next;</div><div class="line">        while(runner!= null &amp;&amp; runner.next!=null) &#123;</div><div class="line">            runner = runner.next.next;</div><div class="line">            walker = walker.next;</div><div class="line">        &#125;</div><div class="line">        return walker;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>Quick Sort</p>
+</li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode sortList(ListNode head) &#123;</div><div class="line">        //Quick Sort</div><div class="line">        if(head == null || head.next == null) return head;</div><div class="line">        ListNode mid = findMedian(head);//O(n)</div><div class="line">        ListNode leftDummy = new ListNode(0), leftTail = leftDummy;</div><div class="line">        ListNode rightDummy = new ListNode(0), rightTail = rightDummy;</div><div class="line">        ListNode middleDummy = new ListNode(0), middleTail = middleDummy;</div><div class="line">        while (head != null) &#123;</div><div class="line">            if (head.val &lt; mid.val) &#123;</div><div class="line">                leftTail.next = head;</div><div class="line">                leftTail = head;</div><div class="line">            &#125; else if (head.val &gt; mid.val) &#123;</div><div class="line">                rightTail.next = head;</div><div class="line">                rightTail = head;</div><div class="line">            &#125; else &#123;</div><div class="line">                middleTail.next = head;</div><div class="line">                middleTail = head;</div><div class="line">            &#125;</div><div class="line">            head = head.next;</div><div class="line">        &#125;</div><div class="line">        leftTail.next = null;</div><div class="line">        middleTail.next = null;</div><div class="line">        rightTail.next = null;</div><div class="line">        ListNode left = sortList(leftDummy.next);</div><div class="line">        ListNode right = sortList(rightDummy.next);</div><div class="line">        return concat(left, middleDummy.next, right);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    private ListNode findMedian(ListNode head) &#123;</div><div class="line">        ListNode slow = head, fast = head.next;</div><div class="line">        while (fast != null &amp;&amp; fast.next != null) &#123;</div><div class="line">            slow = slow.next;</div><div class="line">            fast = fast.next.next;</div><div class="line">        &#125;</div><div class="line">        return slow;</div><div class="line">    &#125;</div><div class="line">    private ListNode concat(ListNode left, ListNode middle, ListNode right) &#123;</div><div class="line">        ListNode dummy = new ListNode(0), tail = dummy;</div><div class="line"></div><div class="line">        tail.next = left; tail = getTail(tail);</div><div class="line">        tail.next = middle; tail = getTail(tail);</div><div class="line">        tail.next = right; tail = getTail(tail);</div><div class="line">        return dummy.next;</div><div class="line">    &#125;</div><div class="line">    private ListNode getTail(ListNode head) &#123;</div><div class="line">        if (head == null) &#123;</div><div class="line">           return null;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        while (head.next != null) &#123;</div><div class="line">            head = head.next;</div><div class="line">        &#125;</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;排序算法：
+时间复杂度为 O(nlgn）:&lt;br&gt;
+quick sort (空间复杂度O(1)), merge sort(空间复杂度O(n)), heap sort (空间复
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>LeetCode 142. Linked List CycleII</title>
@@ -849,72 +923,6 @@ return [2].</p>
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 109. Convert Sorted List to Binary Search Tree</title>
-    <link href="http://yoursite.com/2017/05/31/LeetCode-109-Convert-Sorted-List-to-Binary-Search-Tree/"/>
-    <id>http://yoursite.com/2017/05/31/LeetCode-109-Convert-Sorted-List-to-Binary-Search-Tree/</id>
-    <published>2017-05-31T23:57:47.000Z</published>
-    <updated>2017-05-31T23:59:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.</p>
-<h3 id="explanation">Explanation</h3>
-<p>和108题类似，唯一不同的是linkedinlist。用两个pointer找到中心点就好。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">public TreeNode sortedListToBST(ListNode head) &#123;</div><div class="line">    if(head==null) return null;</div><div class="line">    return toBST(head,null);</div><div class="line">&#125;</div><div class="line">public TreeNode toBST(ListNode head, ListNode tail)&#123;</div><div class="line">    ListNode slow = head;</div><div class="line">    ListNode fast = head;</div><div class="line">    if(head==tail) return null;</div><div class="line"></div><div class="line">    while(fast!=tail&amp;&amp;fast.next!=tail)&#123;</div><div class="line">        fast = fast.next.next;</div><div class="line">        slow = slow.next;</div><div class="line">    &#125;</div><div class="line">    TreeNode thead = new TreeNode(slow.val);</div><div class="line">    thead.left = toBST(head,slow);</div><div class="line">    thead.right = toBST(slow.next,tail);</div><div class="line">    return thead;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a singly linked list where elements are sorted in
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 108. Convert Sorted Array to Binary Search Tree</title>
-    <link href="http://yoursite.com/2017/05/31/LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree/"/>
-    <id>http://yoursite.com/2017/05/31/LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree/</id>
-    <published>2017-05-31T23:42:53.000Z</published>
-    <updated>2017-05-31T23:59:59.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
-<h3 id="explanation">Explanation</h3>
-<p>递归，每次找到根节点就行。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line"></div><div class="line">    public TreeNode sortedArrayToBST(int[] nums) &#123;</div><div class="line">        if (nums == null || nums.length == 0) return null;</div><div class="line">        return helper(nums, 0, nums.length-1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public TreeNode helper(int[] nums, int start, int end) &#123;</div><div class="line">        if (nums == null) return null;</div><div class="line">        //base case</div><div class="line">        if (start &gt; end) return null;</div><div class="line">        int mid = start + (end - start)/2;</div><div class="line">        TreeNode root = new TreeNode(nums[mid]);</div><div class="line">        root.left = helper(nums, start, mid-1);</div><div class="line">        root.right = helper(nums, mid+1, end);</div><div class="line">        return root;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given an array where elements are sorted in ascending o
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
     
   </entry>
   
