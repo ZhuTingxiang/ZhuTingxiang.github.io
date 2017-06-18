@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-17T00:47:51.000Z</updated>
+  <updated>2017-06-18T19:41:20.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,331 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 4. Median of Two Sorted Arrays</title>
+    <link href="http://yoursite.com/2017/06/18/LeetCode-4-Median-of-Two-Sorted-Arrays/"/>
+    <id>http://yoursite.com/2017/06/18/LeetCode-4-Median-of-Two-Sorted-Arrays/</id>
+    <published>2017-06-18T19:17:57.000Z</published>
+    <updated>2017-06-18T19:41:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
+<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line">nums1 = [1, 3]</div><div class="line">nums2 = [2]</div></pre></td></tr></table></figure></p>
+<p>The median is 2.0
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Example 2:</div><div class="line">nums1 = [1, 2]</div><div class="line">nums2 = [3, 4]</div></pre></td></tr></table></figure></p>
+<p>The median is (2 + 3)/2 = 2.5</p>
+<h3 id="explanation">Explanation</h3>
+<p>既然题目要求用时间复杂度为O(log (m+n))的方法，很自然想到了二分法和分治法。中位数的表示可以用
+(m + n +1)/2和(m + n + 2)/2这两个数除以2来表示。所以我们就要想办法找出两个未合并的数列中的第kth就好了。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public double findMedianSortedArrays(int[] nums1, int[] nums2) &#123;</div><div class="line">        int m = nums1.length; int n = nums2.length;</div><div class="line">        int left = (m + n +1)/2; int right = (m + n + 2)/2;</div><div class="line">        return (findKth(nums1, nums2, left) + findKth(nums1, nums2, right))/2.0;</div><div class="line"></div><div class="line"></div><div class="line">    public int findKth(int[] nums1, int[] nums2, int k) &#123;</div><div class="line">        int m = nums1.length, n = nums2.length;</div><div class="line">        // if m &gt;n, change two arrays</div><div class="line">        if (m &gt; n) return findKth(nums2, nums1, k);</div><div class="line">        // if any array is empty, just get the kth in second</div><div class="line">        if (m == 0) return nums2[k-1];</div><div class="line">        if (k == 1) return Math.min(nums1[0], nums2[0]);</div><div class="line"></div><div class="line">        int i = Math.min(m, k/2);</div><div class="line">        int j = Math.min(n, k/2);</div><div class="line">        if (nums1[i-1] &gt; nums2[j-1]) &#123;</div><div class="line">            return findKth(nums1, Arrays.copyOfRange(nums2, j, n), k-j);</div><div class="line">        &#125; else &#123;</div><div class="line">            return findKth(Arrays.copyOfRange(nums1, i, m), nums2, k-i);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;There are two sorted arrays nums1 and nums2 of size m a
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
+    
+      <category term="Hard" scheme="http://yoursite.com/tags/Hard/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="Divide and conquer" scheme="http://yoursite.com/tags/Divide-and-conquer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode Weekly Contest 621. Task Scheduler</title>
+    <link href="http://yoursite.com/2017/06/18/LeetCode-Weekly-Contest-621-Task-Scheduler-1/"/>
+    <id>http://yoursite.com/2017/06/18/LeetCode-Weekly-Contest-621-Task-Scheduler-1/</id>
+    <published>2017-06-18T18:06:34.000Z</published>
+    <updated>2017-06-18T18:06:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode Weekly Contest 625. Minimum Factorization</title>
+    <link href="http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-625-Minimum-Factorization/"/>
+    <id>http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-625-Minimum-Factorization/</id>
+    <published>2017-06-18T03:44:54.000Z</published>
+    <updated>2017-06-18T15:46:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a positive integer a, find the smallest positive integer b whose multiplication of each digit equals to a.</p>
+<p>If there is no answer or the answer is not fit in 32-bit signed integer, then return 0.</p>
+<p>Example 1
+Input:</p>
+<p>48
+Output:
+68
+Example 2
+Input:</p>
+<p>15
+Output:
+35</p>
+<h3 id="explanation">Explanation</h3>
+<p>很直接的解法，从9开始找因子，存起来，最后组成最小的数。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int smallestFactorization(int a) &#123;</div><div class="line">        if(a == 0) return 0;</div><div class="line">        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line">        helper(a, list);</div><div class="line">        if (list.get(0) == 0) return 0;</div><div class="line">        int result = 0;</div><div class="line">        for (int i=list.size()-1; i&gt;=0; i--) &#123;</div><div class="line">            int digit = i;</div><div class="line">            result += list.get(i) * Math.pow(10,digit);</div><div class="line">            if (result &gt;= Integer.MAX_VALUE) &#123;</div><div class="line">                return 0;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void helper(int a, ArrayList&lt;Integer&gt; list) &#123;</div><div class="line">        if (a &lt;= 9) &#123;</div><div class="line">            list.add(a);</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        boolean could = false;</div><div class="line">        for (int i = 9; i&gt;=2; i--) &#123;</div><div class="line">            if (a%i == 0) &#123;</div><div class="line">                could = true;</div><div class="line">                list.add(i);</div><div class="line">                helper(a/i, list);</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if(!could) &#123;</div><div class="line">            if (list.size() &lt;1) list.add(0);</div><div class="line">            else list.set(0,0);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a positive integer a, find the smallest positive 
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Arrays" scheme="http://yoursite.com/tags/Arrays/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode Weekly Contest 623.Add One Row to Tree</title>
+    <link href="http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-623-Add-One-Row-to-Tree/"/>
+    <id>http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-623-Add-One-Row-to-Tree/</id>
+    <published>2017-06-18T03:43:20.000Z</published>
+    <updated>2017-06-18T15:43:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given the root of a binary tree, then value v and depth d, you need to add a row of nodes with value v at the given depth d. The root node is at depth 1.</p>
+<p>The adding rule is: given a positive integer depth d, for each NOT null tree nodes N in depth d-1, create two tree nodes with value v as N's left subtree root and right subtree root. And N's original left subtree should be the left subtree of the new left subtree root, its original right subtree should be the right subtree of the new right subtree root. If depth d is 1 that means there is no depth d-1 at all, then create a tree node with value v as the new root of the whole original tree, and the original tree is the new root's left subtree.</p>
+<p>Example 1:
+Input:
+A binary tree as following:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">       4</div><div class="line">     /   \</div><div class="line">    2     6</div><div class="line">   / \   /</div><div class="line">  3   1 5   </div><div class="line"></div><div class="line">v = 1</div><div class="line"></div><div class="line">d = 2</div><div class="line"></div><div class="line">Output:</div><div class="line">       4</div><div class="line">      / \</div><div class="line">     1   1</div><div class="line">    /     \</div><div class="line">   2       6</div><div class="line">  / \     /</div><div class="line"> 3   1   5</div></pre></td></tr></table></figure></p>
+<p>Example 2:
+Input:
+A binary tree as following:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">      4</div><div class="line">     /   </div><div class="line">    2    </div><div class="line">   / \   </div><div class="line">  3   1    </div><div class="line"></div><div class="line">v = 1</div><div class="line"></div><div class="line">d = 3</div><div class="line"></div><div class="line">Output:</div><div class="line">      4</div><div class="line">     /   </div><div class="line">    2</div><div class="line">   / \    </div><div class="line">  1   1</div><div class="line"> /     \  </div><div class="line">3       1</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>用BFS层级遍历，找到上一层以后，指定一下左右即可。还是要熟练掌握BFS。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public TreeNode addOneRow(TreeNode root, int v, int d) &#123;</div><div class="line">        if(d == 1) &#123;</div><div class="line">            TreeNode new_root = new TreeNode(v);</div><div class="line">            new_root.left = root;</div><div class="line">            return new_root;</div><div class="line">        &#125;</div><div class="line">        // 存之前的每一层，BFS</div><div class="line">        Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();</div><div class="line">        queue.offer(root);</div><div class="line">        int level = 1;</div><div class="line">        while(++level &lt; d) &#123;</div><div class="line">            int size = queue.size();</div><div class="line">            while(size-- &gt; 0) &#123;</div><div class="line">                TreeNode cur = queue.poll();</div><div class="line">                if(cur.left != null) queue.add(cur.left);</div><div class="line">                if(cur.right != null) queue.add(cur.right);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        // 变换这一层以及下一层</div><div class="line">        while(!queue.isEmpty()) &#123;</div><div class="line">            TreeNode cur = queue.poll();</div><div class="line">            TreeNode temp_left = cur.left;</div><div class="line">            TreeNode temp_right = cur.right;</div><div class="line">            cur.left = new TreeNode(v);</div><div class="line">            cur.left.left = temp_left;</div><div class="line">            cur.right = new TreeNode(v);</div><div class="line">            cur.right.right = temp_right;</div><div class="line">        &#125;</div><div class="line">        return root;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given the root of a binary tree, then value v and depth
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
+    
+      <category term="Binary tree" scheme="http://yoursite.com/tags/Binary-tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode Weekly Contest 624.Maximum Distance in Arrays</title>
+    <link href="http://yoursite.com/2017/06/17/LeetCode-624-Maximum-Distance-in-Arrays/"/>
+    <id>http://yoursite.com/2017/06/17/LeetCode-624-Maximum-Distance-in-Arrays/</id>
+    <published>2017-06-18T03:37:36.000Z</published>
+    <updated>2017-06-18T03:42:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given m arrays, and each array is sorted in ascending order. Now you can pick up two integers from two different arrays (each array picks one) and calculate the distance. We define the distance between two integers a and b to be their absolute difference |a-b|. Your task is to find the maximum distance.
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line">Input:</div><div class="line">[[1,2,3],</div><div class="line"> [4,5],</div><div class="line"> [1,2,3]]</div><div class="line">Output: 4</div></pre></td></tr></table></figure></p>
+<p>Explanation:
+One way to reach the maximum distance 4 is to pick 1 in the first or third array and pick 5 in the second array.
+Note:
+Each given array will have at least 1 number. There will be at least two non-empty arrays.
+The total number of the integers in all the m arrays will be in the range of [2, 10000].
+The integers in the m arrays will be in the range of [-10000, 10000].</p>
+<h3 id="explanation">Explanation</h3>
+<p>这道题我是暴力解吧，先找到每个array里面的max和min，然后再得到相减最大的值。
+在Discuss里面看到很棒的解法，我忽略了是sorted这个条件，在后面附上Discuss里面的解法，就是遍历的时候就同时计算了，非常巧妙。</p>
+<h3 id="code">Code</h3>
+<p>More Clever Solution： https://discuss.leetcode.com/topic/92859/java-solution-min-and-max
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int maxDistance(int[][] arrays) &#123;</div><div class="line">        int result = Integer.MIN_VALUE;</div><div class="line">        int max = arrays[0][arrays[0].length - 1];</div><div class="line">        int min = arrays[0][0];</div><div class="line"></div><div class="line">        for (int i = 1; i &lt; arrays.length; i++) &#123;</div><div class="line">            result = Math.max(result, Math.abs(arrays[i][0] - max));</div><div class="line">            result = Math.max(result, Math.abs(arrays[i][arrays[i].length - 1] - min));</div><div class="line">            max = Math.max(max, arrays[i][arrays[i].length - 1]);</div><div class="line">            min = Math.min(min, arrays[i][0]);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Stupid Solution：</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int maxDistance(int[][] arrays) &#123;</div><div class="line">        int[][] maxMin = new int[arrays.length][2];</div><div class="line">        int max = 0;</div><div class="line">        if (arrays == null || arrays[0] == null) return 0;</div><div class="line">        // Store every max and min in each array</div><div class="line">        for (int i=0; i&lt;arrays.length; i++) &#123;</div><div class="line">            int partMax = Integer.MIN_VALUE;</div><div class="line">            int partMin = Integer.MAX_VALUE;</div><div class="line">            for (int j = 0; j&lt; arrays[i].length; j++) &#123;</div><div class="line">                if (arrays[i][j] &gt; partMax) &#123;</div><div class="line">                    partMax = arrays[i][j];</div><div class="line">                &#125;</div><div class="line">                if (arrays[i][j] &lt; partMin) &#123;</div><div class="line">                    partMin = arrays[i][j];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            maxMin[i][0] = partMax;</div><div class="line">            maxMin[i][1] = partMin;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        // use all max and min to calculate result</div><div class="line">        for (int i=0; i &lt; maxMin.length; i++) &#123;</div><div class="line">            for (int j = 0; j&lt;maxMin.length; j++) &#123;</div><div class="line">                if (i != j) &#123;</div><div class="line">                    max = Math.max(max, (maxMin[i][0] - maxMin[j][1]));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given m arrays, and each array is sorted in ascending o
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 349.Intersection of Two Arrays</title>
+    <link href="http://yoursite.com/2017/06/17/LeetCode-349-Intersection-of-Two-Arrays/"/>
+    <id>http://yoursite.com/2017/06/17/LeetCode-349-Intersection-of-Two-Arrays/</id>
+    <published>2017-06-17T20:43:22.000Z</published>
+    <updated>2017-06-17T20:56:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given two arrays, write a function to compute their intersection.</p>
+<p>Example:
+Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</p>
+<p>Note:
+Each element in the result must be unique.
+The result can be in any order.</p>
+<h3 id="explanation">Explanation</h3>
+<p>有三种方法可以实现：</p>
+<ol>
+<li>用一个HashMap存起来。Time: O(nlogn) Space: O(n)</li>
+<li>两个数组都排序，然后用两个指针遍历。Time: O(nlogn) Space:O(1)</li>
+<li>排序其中的一个数组，然后用binary search进行搜索。Time: O(nlogn) Space:O(1)</li>
+</ol>
+<h3 id="code">Code</h3>
+<p>最后一种方法的代码：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int[] intersection(int[] nums1, int[] nums2) &#123;</div><div class="line">        int m = nums1.length;</div><div class="line">        int n = nums2.length;</div><div class="line">        if (m &gt; n) return intersection(nums2, nums1);</div><div class="line">        Arrays.sort(nums2);</div><div class="line">        Set&lt;Integer&gt; set = new HashSet&lt;&gt;();</div><div class="line">        for(int i=0; i&lt;m; i++) &#123;</div><div class="line">            if (binarySearch(nums2, nums1[i])) &#123;</div><div class="line">                set.add(nums1[i]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        int[] result = new int[set.size()];</div><div class="line">        int i = 0;</div><div class="line">        for (Integer num:set) &#123;</div><div class="line">            result[i++] = num;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public boolean binarySearch(int[] nums, int number) &#123;</div><div class="line">        int start = 0;</div><div class="line">        int end = nums.length-1;</div><div class="line">        while (start &lt;= end) &#123;</div><div class="line">            int mid = start + (end - start)/2;</div><div class="line">            if (nums[mid] == number) return true;</div><div class="line">            if (nums[mid] &lt; number) &#123;</div><div class="line">                start = mid + 1;</div><div class="line">            &#125; else &#123;</div><div class="line">                end = mid - 1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given two arrays, write a function to compute their int
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
+    
+      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
+    
+      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
+    
+      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+    
+      <category term="Intersection" scheme="http://yoursite.com/tags/Intersection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 88.Merged Sorted Array</title>
+    <link href="http://yoursite.com/2017/06/17/LeetCode-88-Merged-Sorted-Array/"/>
+    <id>http://yoursite.com/2017/06/17/LeetCode-88-Merged-Sorted-Array/</id>
+    <published>2017-06-17T20:20:30.000Z</published>
+    <updated>2017-06-17T20:22:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
+<p>Note:
+You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.</p>
+<h3 id="explanation">Explanation</h3>
+<p>重点在于已经是sort好的了，并且不能从头开始比较，那会打乱顺序。从后开始更容易。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public void merge(int[] nums1, int m, int[] nums2, int n) &#123;</div><div class="line">        int index = n+m -1;</div><div class="line">        int i = m-1;</div><div class="line">        int j = n-1;</div><div class="line">        // 从最后开始比较，往nums1中放</div><div class="line">        while(i &gt;= 0 &amp;&amp; j &gt;= 0) &#123;</div><div class="line">            if (nums1[i] &gt; nums2[j]) &#123;</div><div class="line">                nums1[index--] = nums1[i--];</div><div class="line">            &#125; else &#123;</div><div class="line">                nums1[index--] = nums2[j--];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        while(j&gt;=0) nums1[index--] = nums2[j--];</div><div class="line">        return;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given two sorted integer arrays nums1 and nums2, merge 
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Merge Sort" scheme="http://yoursite.com/tags/Merge-Sort/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode Weekly Contest 621. Task Scheduler</title>
+    <link href="http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-621-Task-Scheduler/"/>
+    <id>http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-621-Task-Scheduler/</id>
+    <published>2017-06-17T18:02:21.000Z</published>
+    <updated>2017-06-18T18:06:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks.Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.</p>
+<p>However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.</p>
+<p>You need to return the least number of intervals the CPU will take to finish all the given tasks.</p>
+<p>Example 1:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: tasks = [&apos;A&apos;,&apos;A&apos;,&apos;A&apos;,&apos;B&apos;,&apos;B&apos;,&apos;B&apos;], n = 2</div><div class="line">Output: 8</div><div class="line">Explanation: A -&gt; B -&gt; idle -&gt; A -&gt; B -&gt; idle -&gt; A -&gt; B.</div></pre></td></tr></table></figure></p>
+<p>Note:
+The number of tasks is in the range [1, 10000].
+The integer n is in the range [0, 100].</p>
+<h3 id="explanation">Explanation</h3>
+<p>这道题就是依次找到最max的frequency,之后顺次递减，如果还有剩余，就放回去。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int leastInterval(char[] tasks, int n) &#123;</div><div class="line">        HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">        // store all tasks with its frequency</div><div class="line">        for (char c : tasks) &#123;</div><div class="line">            map.put(c, map.getOrDefault(c, 0) + 1);</div><div class="line">        &#125;</div><div class="line">        // store sorted frequency</div><div class="line">        PriorityQueue&lt;Map.Entry&lt;Character, Integer&gt;&gt; queue = new PriorityQueue&lt;&gt;(</div><div class="line">            (a,b) -&gt; a.getValue() != b.getValue() ? b.getValue() - a.getValue() : a.getKey() - b.getKey());</div><div class="line">        queue.addAll(map.entrySet());</div><div class="line">        int count = 0;</div><div class="line"></div><div class="line">        while(!queue.isEmpty()) &#123;</div><div class="line">            int k = n+1;</div><div class="line">            List&lt;Map.Entry&gt; tmpList = new ArrayList&lt;&gt;();</div><div class="line">            while (k &gt; 0 &amp;&amp; !queue.isEmpty()) &#123;</div><div class="line">                Map.Entry&lt;Character, Integer&gt; top = queue.poll();</div><div class="line">                top.setValue(top.getValue()-1);</div><div class="line">                tmpList.add(top);</div><div class="line">                k --;</div><div class="line">                count ++;</div><div class="line">            &#125;</div><div class="line">            for (Map.Entry&lt;Character, Integer&gt; e:tmpList) &#123;</div><div class="line">                if (e.getValue() &gt; 0)</div><div class="line">                queue.add(e);</div><div class="line">            &#125;</div><div class="line">            if (queue.isEmpty()) break;</div><div class="line">            count = count + k;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return count;  </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<pre><code></code></pre>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a char array representing tasks CPU need to do. I
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="PriorityQueue" scheme="http://yoursite.com/tags/PriorityQueue/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode 21. Merge Two Sorted Lists</title>
@@ -551,390 +876,6 @@ A solution set is:
       <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
     
       <category term="biaBFS" scheme="http://yoursite.com/tags/biaBFS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 73. Set Matrix Zeroes</title>
-    <link href="http://yoursite.com/2017/06/11/LeetCode-73-Set-Matrix-Zeroes/"/>
-    <id>http://yoursite.com/2017/06/11/LeetCode-73-Set-Matrix-Zeroes/</id>
-    <published>2017-06-11T21:42:55.000Z</published>
-    <updated>2017-06-11T21:46:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="quesiton">Quesiton</h3>
-<p>Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.</p>
-<p>click to show follow up.</p>
-<p>Follow up:
-Did you use extra space?
-A straight forward solution using O(mn) space is probably a bad idea.
-A simple improvement uses O(m + n) space, but still not the best solution.
-Could you devise a constant space solution?</p>
-<h3 id="explanation">Explanation</h3>
-<p>主题思想就是利用第一行和第一列来记录哪些行和列需要标记为0。同时，用两个boolean变量标记第一行和第一列本身是否需要标记为0。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">public void setZeroes(int[][] matrix) &#123;</div><div class="line">    if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return;</div><div class="line">    int m = matrix.length, n = matrix[0].length;</div><div class="line">    boolean row = false, col = false;</div><div class="line">    for (int i = 0; i &lt; m; i++)</div><div class="line">        for (int j = 0; j &lt; n; j++)&#123;</div><div class="line">            if (matrix[i][j] == 0) &#123;</div><div class="line">                matrix[0][j] = 0;</div><div class="line">                matrix[i][0] = 0;</div><div class="line">                if (i == 0) row = true;</div><div class="line">                if (j == 0) col = true;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    for (int i = 1; i &lt; m; i++)&#123;</div><div class="line">        if (matrix[i][0] == 0)&#123;</div><div class="line">            for (int j = 1; j &lt; n;j++)</div><div class="line">                matrix[i][j] = 0;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    for (int j = 1; j &lt; n; j++)&#123;</div><div class="line">        if (matrix[0][j] == 0)&#123;</div><div class="line">            for (int i = 1; i &lt; m; i++)</div><div class="line">                matrix[i][j] = 0;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if (row)&#123;</div><div class="line">        for (int j = 0; j &lt; n; j++)</div><div class="line">            matrix[0][j] = 0;</div><div class="line">    &#125;</div><div class="line">    if (col)&#123;</div><div class="line">        for(int i = 0; i &lt; m; i++)</div><div class="line">            matrix[i][0] = 0;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;quesiton&quot;&gt;Quesiton&lt;/h3&gt;
-&lt;p&gt;Given a m x n matrix, if an element is 0, set its entir
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 200. Number of Islands</title>
-    <link href="http://yoursite.com/2017/06/11/LeetCode-200-Number-of-Islands/"/>
-    <id>http://yoursite.com/2017/06/11/LeetCode-200-Number-of-Islands/</id>
-    <published>2017-06-11T21:14:11.000Z</published>
-    <updated>2017-06-11T21:43:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
-<p>Example 1:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">11110</div><div class="line">11010</div><div class="line">11000</div><div class="line">00000</div></pre></td></tr></table></figure></p>
-<p>Answer: 1</p>
-<p>Example 2:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">11000</div><div class="line">11000</div><div class="line">00100</div><div class="line">00011</div></pre></td></tr></table></figure></p>
-<p>Answer: 3</p>
-<h3 id="explanation">Explanation</h3>
-<p>运用BFS，找到一个1以后把周围的1标为‘0’。 从而确定island的个数。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    //create a class as one point</div><div class="line">    class Coordinate&#123;</div><div class="line">        int x, y;</div><div class="line">        public Coordinate(int x, int y) &#123;</div><div class="line">            this.x = x;</div><div class="line">            this.y = y;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    public int numIslands(char[][] grid) &#123;</div><div class="line">        if (grid == null || grid.length == 0 || grid[0].length == 0) &#123;</div><div class="line">            return 0;</div><div class="line">        &#125;</div><div class="line">        int n = grid.length;</div><div class="line">        int m = grid[0].length;</div><div class="line">        int islands = 0;</div><div class="line">        //find island from every &apos;1&apos;</div><div class="line">        for (int i=0; i&lt;n; i++) &#123;</div><div class="line">            for (int j =0; j &lt; m; j++) &#123;</div><div class="line">                if (grid[i][j] == &apos;1&apos;) &#123;</div><div class="line">                    markByBFS(grid, i, j);</div><div class="line">                    islands++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return islands;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    //mark the island around &apos;1&apos; as &apos;0&apos; to avoid duplications</div><div class="line">    private void markByBFS(char[][] grid,int x, int y) &#123;</div><div class="line">        //four directions, up, left, right, down</div><div class="line">        int[] directorX = &#123;0, 1, -1, 0&#125;;</div><div class="line">        int[] directorY = &#123;1, 0, 0, -1&#125;;</div><div class="line">        //using queue, BFS</div><div class="line">        Queue&lt;Coordinate&gt; queue = new LinkedList&lt;&gt;();</div><div class="line">        queue.offer(new Coordinate(x,y));</div><div class="line">        grid[x][y] = &apos;0&apos;;</div><div class="line">        while(!queue.isEmpty()) &#123;</div><div class="line">            Coordinate coor = queue.poll();</div><div class="line">            for(int i=0; i&lt;4; i++) &#123;</div><div class="line">                Coordinate adj = new Coordinate(</div><div class="line">                    coor.x + directorX[i],</div><div class="line">                    coor.y + directorY[i]</div><div class="line">                    );</div><div class="line">                //avoid for invalid point</div><div class="line">                if ( !inBound(adj, grid)) &#123;</div><div class="line">                    continue;</div><div class="line">                &#125;</div><div class="line">                if (grid[adj.x][adj.y] == &apos;1&apos;) &#123;</div><div class="line">                    grid[adj.x][adj.y] = &apos;0&apos;;</div><div class="line">                    queue.offer(adj);</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private boolean inBound(Coordinate adj,char[][] grid) &#123;</div><div class="line">        int n = grid.length;</div><div class="line">        int m = grid[0].length;</div><div class="line">        return adj.x &gt;=0 &amp;&amp; adj.x &lt;n &amp;&amp;adj.y &gt;=0 &amp;&amp; adj.y&lt;m;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a 2d grid map of &#39;1&#39;s (land) and &#39;0&#39;s (water), co
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
-    
-      <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
-    
-      <category term="Union Field" scheme="http://yoursite.com/tags/Union-Field/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 210. Course Schedule II</title>
-    <link href="http://yoursite.com/2017/06/10/LeetCode-210-Course-Schedule-II/"/>
-    <id>http://yoursite.com/2017/06/10/LeetCode-210-Course-Schedule-II/</id>
-    <published>2017-06-11T02:21:12.000Z</published>
-    <updated>2017-06-11T02:24:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>There are a total of n courses you have to take, labeled from 0 to n - 1.</p>
-<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]</p>
-<p>Given the total number of courses and a list of prerequisite pairs, return the ordering of courses you should take to finish all courses.</p>
-<p>There may be multiple correct orders, you just need to return one of them. If it is impossible to finish all courses, return an empty array.</p>
-<p>For example:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2, [[1,0]]</div></pre></td></tr></table></figure></p>
-<p>There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1]
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">4, [[1,0],[2,0],[3,1],[3,2]]</div></pre></td></tr></table></figure></p>
-<p>There are a total of 4 courses to take. To take course 3 you should have finished both courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0. So one correct course order is [0,1,2,3]. Another correct ordering is[0,2,1,3].</p>
-<p>Note:
-The input prerequisites is a graph represented by a list of edges, not adjacency matrices. Read more about how a graph is represented.
-You may assume that there are no duplicate edges in the input prerequisites.
-click to show more hints.</p>
-<p>Hints:
-This problem is equivalent to finding the topological order in a directed graph. If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses.
-Topological Sort via DFS - A great video tutorial (21 minutes) on Coursera explaining the basic concepts of Topological Sort.
-Topological sort could also be done via BFS.</p>
-<h3 id="explanation">Explanation</h3>
-<p>这道题是典型的可以用BFS的题，可以将这些关系考虑为一个graph。我们需要一个数据结构来存度数，用一个Queue来先存下没有先修课的课，然后按照度数来一次调出。得到最终的结构。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int[] findOrder(int numCourses, int[][] prerequisites) &#123;</div><div class="line">        HashMap&lt;Integer, Set&lt;Integer&gt;&gt; graph = new HashMap&lt;&gt;();</div><div class="line">        int[] indegree = new int[numCourses];</div><div class="line">        for (int i=0; i&lt;prerequisites.length; i++) indegree[prerequisites[i][0]]++;</div><div class="line">        int[] order = new int[numCourses];</div><div class="line">        int index = 0;</div><div class="line"></div><div class="line"></div><div class="line">        Queue&lt;Integer&gt; queue = new LinkedList&lt;Integer&gt;();</div><div class="line">        for (int i=0; i&lt; numCourses; i++) &#123;</div><div class="line">            if (indegree[i] == 0) &#123;</div><div class="line">                order[index++] = i;</div><div class="line">                queue.offer(i);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        while ( !queue.isEmpty()) &#123;</div><div class="line">            int prerequisite = queue.poll();</div><div class="line">            for (int i=0; i&lt;prerequisites.length; i++) &#123;</div><div class="line">                if (prerequisites[i][1] == prerequisite) &#123;</div><div class="line">                    indegree[prerequisites[i][0]] --;</div><div class="line">                    if(indegree[prerequisites[i][0]] == 0) &#123;</div><div class="line">                        order[index++] = prerequisites[i][0];</div><div class="line">                        queue.offer(prerequisites[i][0]);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return (index == numCourses) ? order : new int[0];</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;There are a total of n courses you have to take, labele
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
-    
-      <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 207. Course Schedule</title>
-    <link href="http://yoursite.com/2017/06/10/LeetCode-207-Course-Schedule/"/>
-    <id>http://yoursite.com/2017/06/10/LeetCode-207-Course-Schedule/</id>
-    <published>2017-06-11T02:18:47.000Z</published>
-    <updated>2017-06-11T02:26:56.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>There are a total of n courses you have to take, labeled from 0 to n - 1.</p>
-<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]</p>
-<p>Given the total number of courses and a list of prerequisite pairs, is it possible for you to finish all courses?</p>
-<p>For example:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2, [[1,0]]</div></pre></td></tr></table></figure></p>
-<p>There are a total of 2 courses to take. To take course 1 you should have finished course 0. So it is possible.
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2, [[1,0],[0,1]]</div></pre></td></tr></table></figure></p>
-<p>There are a total of 2 courses to take. To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.</p>
-<p>Note:
-The input prerequisites is a graph represented by a list of edges, not adjacency matrices. Read more about how a graph is represented.
-You may assume that there are no duplicate edges in the input prerequisites.
-click to show more hints.</p>
-<p>Hints:
-This problem is equivalent to finding if a cycle exists in a directed graph. If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses.
-Topological Sort via DFS - A great video tutorial (21 minutes) on Coursera explaining the basic concepts of Topological Sort.
-Topological sort could also be done via BFS.</p>
-<h3 id="explanation">Explanation</h3>
-<p>这道题只要看可不可能，那么我们只要将graph理清楚，找到每个先修课的个数，依次放入队列就好了。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line">    public boolean canFinish(int numCourses, int[][] prerequisites) &#123;</div><div class="line">        int[][] matrix = new int[numCourses][numCourses];</div><div class="line">        int[] degree = new int[numCourses];</div><div class="line">        for (int i=0; i&lt; prerequisites.length; i++) &#123;</div><div class="line">            int ready = prerequisites[i][0];</div><div class="line">            int pre = prerequisites[i][1];</div><div class="line">            if (matrix[pre][ready] == 0) &#123;</div><div class="line">                degree[ready] ++;</div><div class="line">            &#125;</div><div class="line">            matrix[pre][ready] = 1;</div><div class="line">        &#125;</div><div class="line">        int count = 0;</div><div class="line">        Queue&lt;Integer&gt; queue = new LinkedList();</div><div class="line">        for (int i=0; i&lt; degree.length; i++) &#123;</div><div class="line">            if(degree[i] == 0) queue.offer(i);</div><div class="line">        &#125;</div><div class="line">        while (!queue.isEmpty()) &#123;</div><div class="line">            int course = queue.poll();</div><div class="line">            count ++;</div><div class="line">            for (int i=0; i&lt;numCourses;i++) &#123;</div><div class="line">                if (matrix[course][i] != 0) &#123;</div><div class="line">                    if (--degree[i] == 0) &#123;</div><div class="line">                        queue.offer(i);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return count ==numCourses;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;There are a total of n courses you have to take, labele
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算机网络原理知识点初整理</title>
-    <link href="http://yoursite.com/2017/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E5%88%9D%E6%95%B4%E7%90%86/"/>
-    <id>http://yoursite.com/2017/06/07/计算机网络原理知识点初整理/</id>
-    <published>2017-06-07T14:57:55.000Z</published>
-    <updated>2017-06-11T02:18:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>更新中...</p>
-<h2 id="http">HTTP</h2>
-<h3 id="http报文">HTTP报文</h3>
-<p>分为request line, header line, message body
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;method&gt; &lt;request-URL&gt; &lt;version&gt;</div><div class="line">&lt;headers&gt;</div><div class="line"></div><div class="line">&lt;entity-body&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="http基本方法">HTTP基本方法：</h3>
-<p>GET，POST，PUT，DELETE。
-URL全称是资源描述符，我们可以这样认为：一个URL地址，它用于描述一个网络上的资源。</p>
-<h4 id="get">GET：</h4>
-<p>用于信息获取，而且应该是安全的 和 幂等的。</p>
-<p>所谓安全的意味着该操作用于获取信息而非修改信息。换句话说，GET 请求一般不应产生副作用。就是说，它仅仅是获取资源信息，就像数据库查询一样，不会修改，增加数据，不会影响资源的状态。</p>
-<p>幂等的意味着对同一URL的多个请求应该返回同样的结果。</p>
-<p>GET请求报文示例：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">GET /books/?sex=man&amp;name=Professional HTTP/1.1</div><div class="line"> Host: www.example.com</div><div class="line"> User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.6)</div><div class="line"> Gecko/20050225 Firefox/1.0.1</div><div class="line"> Connection: Keep-Alive</div></pre></td></tr></table></figure></p>
-<h4 id="post">Post:</h4>
-<p>报文示例：</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">POST / HTTP/1.1</div><div class="line">Host: www.example.com</div><div class="line">User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.6)</div><div class="line">Gecko/20050225 Firefox/1.0.1</div><div class="line">Content-Type: application/x-www-form-urlencoded</div><div class="line">Content-Length: 40</div><div class="line">Connection: Keep-Alive</div><div class="line"></div><div class="line">sex=man&amp;name=Professional</div></pre></td></tr></table></figure></p>
-<p>HTTP 协议中规定 POST 提交的数据必须在 body 部分中，但是协议中没有规定数据使用哪种编码方式或者数据格式。实际上，开发者完全可以自己决定消息主体的格式，只要最后发送的 HTTP 请求满足上面的格式就可以。</p>
-<h5 id="post提交数据的方式">Post提交数据的方式：</h5>
-<h6 id="applicationx-www-form-urlencoded">application/x-www-form-urlencoded</h6>
-<p>浏览器的原生 &lt;form&gt; 表单，如果不设置 enctype 属性，那么最终就会以 application/x-www-form-urlencoded 方式提交数据。</p>
-<h6 id="multipartform-data">multipart/form-data</h6>
-<h3 id="响应报文">响应报文</h3>
-<p>HTTP 响应与 HTTP 请求相似，HTTP响应也由3个部分构成，分别是：</p>
-<p>状态行
-响应头(Response Header)
-响应正文</p>
-<h3 id="常见状态码">常见状态码：</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">200 OK 客户端请求成功</div><div class="line">301 Moved Permanently 请求永久重定向</div><div class="line">302 Moved Temporarily 请求临时重定向</div><div class="line">304 Not Modified 文件未修改，可以直接使用缓存的文件。</div><div class="line">400 Bad Request 由于客户端请求有语法错误，不能被服务器所理解。</div><div class="line">401 Unauthorized 请求未经授权。这个状态代码必须和WWW-Authenticate报头域一起使用</div><div class="line">403 Forbidden 服务器收到请求，但是拒绝提供服务。服务器通常会在响应正文中给出不提供服务的原因</div><div class="line">404 Not Found 请求的资源不存在，例如，输入了错误的URL</div><div class="line">500 Internal Server Error 服务器发生不可预期的错误，导致无法完成客户端的请求。</div><div class="line">503 Service Unavailable 服务器当前不能够处理客户端的请求，在一段时间之后，服务器可能会恢复正常。</div></pre></td></tr></table></figure></p>
-<h3 id="keep-alive">Keep-alive:</h3>
-<p>在 HTTP 1.1 版本中，默认情况下所有连接都被保持，如果加入 &quot;Connection: close&quot; 才关闭。目前大部分浏览器都使用 HTTP 1.1 协议，也就是说默认都会发起 Keep-Alive 的连接请求了，所以是否能完成一个完整的 Keep-Alive 连接就看服务器设置情况。</p>
-<p>使用长连接之后，客户端、服务端怎么知道本次传输结束呢？两部分：1. 判断传输数据是否达到了Content-Length 指示的大小；2. 动态生成的文件没有 Content-Length ，它是分块传输（chunked），这时候就要根据 chunked 编码来判断，chunked 编码的数据在最后有一个空 chunked 块，表明本次传输数据结束。</p>
-<h3 id="cookie">Cookie</h3>
-<p>Cookie是Web服务器发送给客户端的一小段信息，客户端请求时可以读取该信息发送到服务器端，进而进行用户的识别。对于客户端的每次请求，服务器都会将Cookie发送到客户端,在客户端可以进行保存,以便下次使用。</p>
-<p>客户端可以采用两种方式来保存这个Cookie对象，一种方式是保存在客户端内存中，称为临时Cookie，浏览器关闭后这个Cookie对象将消失。另外一种方式是保存在客户机的磁盘上，称为永久Cookie。以后客户端只要访问该网站，就会将这个Cookie再次发送到服务器上，前提是这个Cookie在有效期内，这样就实现了对客户的跟踪。</p>
-<p>Cookie是可以被禁止的。</p>
-<h3 id="session">Session</h3>
-<p>每一个用户都有一个不同的session，各个用户之间是不能共享的，是每个用户所独享的，在session中可以存放信息。</p>
-<p>在服务器端会创建一个session对象，产生一个sessionID来标识这个session对象，然后将这个sessionID放入到Cookie中发送到客户端，下一次访问时，sessionID会发送到服务器，在服务器端进行识别不同的用户。</p>
-<p>Session的实现依赖于Cookie，如果Cookie被禁用，那么session也将失效。</p>
-<h3 id="token">Token</h3>
-<p>目前主流的做法是使用 Token 抵御 CSRF 攻击。</p>
-<p>Token 使用原则</p>
-<ul>
-<li>要足够随机————只有这样才算不可预测</li>
-<li>是一次性的，即每次请求成功后要更新Token————这样可以增加攻击难度，增加预测难度</li>
-<li>要注意保密性————敏感操作使用 post，防止 Token 出现在 URL 中</li>
-</ul>
-<p>注意：过滤用户输入的内容不能阻挡 csrf，我们需要做的是过滤请求的来源</p>
-<h2 id="tcp">TCP</h2>
-<ul>
-<li>TCP提供一种面向连接的、可靠的字节流服务</li>
-<li>在一个TCP连接中，仅有两方进行彼此通信。广播和多播不能用于TCP</li>
-<li>TCP使用校验和，确认和重传机制来保证可靠传输</li>
-<li>TCP给数据分节进行排序，并使用累积确认保证数据的顺序不变和非重复</li>
-<li>TCP使用滑动窗口机制来实现流量控制，通过动态改变窗口的大小进行拥塞控制</li>
-</ul>
-<h3 id="三次握手-three-way-handshake">三次握手 Three-way Handshake</h3>
-<p>是指建立一个 TCP 连接时，需要客户端和服务器总共发送3个包。
-三次握手的目的是连接服务器指定端口，建立 TCP 连接，并同步连接双方的序列号和确认号，交换 TCP 窗口大小信息。在 socket 编程中，客户端执行 connect() 时。将触发三次握手。
-<img src="http://i.imgur.com/DROOpLM.png" alt="">
-在TCP/IP协议中，TCP协议提供可靠的连接服务，采用三次握手建立一个连接。
-第一次握手：建立连接时，客户端发送syn包(syn=j)到服务器，并进入SYN_SEND状态，等待服务器确认；</p>
-<p>第二次握手：服务器收到syn包，必须确认客户的SYN（ack=j+1），同时自己也发送一个SYN包（syn=k），即SYN+ACK包，此时服务器进入SYN_RECV状态； 第三次握手：客户端收到服务器的SYN＋ACK包，向服务器发送确认包ACK(ack=k+1)，此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手。 完成三次握手，客户端与服务器开始传送数据.</p>
-<h2 id="socket">Socket</h2>
-<p>Socket 是对 TCP/IP 协议族的一种封装，是应用层与TCP/IP协议族通信的中间软件抽象层。从设计模式的角度看来，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。
-Socket 还可以认为是一种网络间不同计算机上的进程通信的一种方法，利用三元组（ip地址，协议，端口）就可以唯一标识网络中的进程，网络中的进程通信可以利用这个标志与其它进程进行交互。</p>
-<p><img src="http://i.imgur.com/w4tZUCs.png" alt=""></p>
-<p>References:
-https://hit-alibaba.github.io/interview/basic/network/HTTP.html</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;更新中...&lt;/p&gt;
-&lt;h2 id=&quot;http&quot;&gt;HTTP&lt;/h2&gt;
-&lt;h3 id=&quot;http报文&quot;&gt;HTTP报文&lt;/h3&gt;
-&lt;p&gt;分为request line, heade
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 261. Graph Valid Tree</title>
-    <link href="http://yoursite.com/2017/06/05/LeetCode-261-Graph-Valid-Tree/"/>
-    <id>http://yoursite.com/2017/06/05/LeetCode-261-Graph-Valid-Tree/</id>
-    <published>2017-06-05T21:35:28.000Z</published>
-    <updated>2017-06-05T22:02:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given n nodes labeled from 0 to n - 1 and a list of undirected edges (each edge is a pair of nodes), write a function to check whether these edges make up a valid tree.</p>
-<p>For example:</p>
-<p>Given n = 5 and edges = [[0, 1], [0, 2], [0, 3], [1, 4]], return true.</p>
-<p>Given n = 5 and edges = [[0, 1], [1, 2], [2, 3], [1, 3], [1, 4]], return false.</p>
-<p>Note: you can assume that no duplicate edges will appear in edges. Since all edges are undirected, [0, 1] is the same as [1, 0] and thus will not appear together in edges.</p>
-<h3 id="explanation">Explanation</h3>
-<p>构造图的时候，用Hashmap这个数据结构存邻居。之后再去遍历邻居。图是树的条件有两个：1. 有n-1条边。2. 每个点都能联通。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean validTree(int n, int[][] edges) &#123;</div><div class="line">        // Condition 1: n-1 edges</div><div class="line">        // Condition 2: n个点联通</div><div class="line"></div><div class="line">        if (edges == null) return false;</div><div class="line">        if (edges.length != n-1 ) return false;</div><div class="line">        HashMap&lt;Integer, Set&lt;Integer&gt;&gt; graph = initialGraph (n,edges);</div><div class="line">        Set&lt;Integer&gt; set = new HashSet&lt;&gt;();</div><div class="line">        Queue&lt;Integer&gt; queue = new LinkedList&lt;&gt;();</div><div class="line">        // bfs</div><div class="line">        queue.offer(0);</div><div class="line">        set.add(0);</div><div class="line">        while (!queue.isEmpty()) &#123;</div><div class="line">            int node = queue.poll();</div><div class="line">            for(Integer neighbour:graph.get(node)) &#123;</div><div class="line">                if (set.contains(neighbour)) &#123;</div><div class="line">                    continue;</div><div class="line">                &#125; else &#123;</div><div class="line">                    set.add(neighbour);</div><div class="line">                    queue.offer(neighbour);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return set.size() == n;</div><div class="line"></div><div class="line">  </div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public HashMap&lt;Integer, Set&lt;Integer&gt;&gt; initialGraph (int n, int[][] edges) &#123;</div><div class="line">        HashMap&lt;Integer, Set&lt;Integer&gt;&gt; graph = new HashMap&lt;&gt;();</div><div class="line">        for (int i=0; i&lt;n; i++) &#123;</div><div class="line">            Set&lt;Integer&gt; set = new HashSet&lt;&gt;();</div><div class="line">            graph.put(i, set);</div><div class="line">        &#125;</div><div class="line">        for (int i=0; i&lt;edges.length; i++) &#123;</div><div class="line">            int u = edges[i][0];</div><div class="line">            int v = edges[i][1];</div><div class="line">            graph.get(u).add(v);</div><div class="line">            graph.get(v).add(u);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return graph;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given n nodes labeled from 0 to n - 1 and a list of und
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 102. Binary Tree Level Order Traversal</title>
-    <link href="http://yoursite.com/2017/06/01/LeetCode-102-Binary-Tree-Level-Order-Traversal/"/>
-    <id>http://yoursite.com/2017/06/01/LeetCode-102-Binary-Tree-Level-Order-Traversal/</id>
-    <published>2017-06-01T18:29:46.000Z</published>
-    <updated>2017-06-01T20:50:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).</p>
-<p>For example:
-Given binary tree [3,9,20,null,null,15,7],
-3
-/ <br>
-9  20
-/  <br>
-15   7
-return its level order traversal as:
-[
-[3],
-[9,20],
-[15,7]
-]</p>
-<h3 id="explanation">Explanation</h3>
-<p>这是层级的遍历，就采用BFS即可。用Queue这个数据结构，注意每次递归时，用size来确定上层的节点个数。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</div><div class="line">        Queue&lt;TreeNode&gt; queue = new LinkedList&lt;TreeNode&gt;();</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</div><div class="line">        if (root == null) return list;</div><div class="line">        queue.offer(root);</div><div class="line">        while(!queue.isEmpty()) &#123;</div><div class="line">            int size = queue.size();</div><div class="line">            List&lt;Integer&gt; level = new ArrayList&lt;&gt;();</div><div class="line">            for(int i=0; i&lt;size; i++) &#123;</div><div class="line">                TreeNode node = queue.poll();</div><div class="line">                level.add(node.val);</div><div class="line">                if (node.left != null) queue.offer(node.left);</div><div class="line">                if (node.right != null) queue.offer(node.right);</div><div class="line">            &#125;</div><div class="line">            list.add(level);</div><div class="line">        &#125;</div><div class="line">        return list;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a binary tree, return the level order traversal o
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Binary Tree" scheme="http://yoursite.com/tags/Binary-Tree/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 501. Find Mode in Binary Search Tree</title>
-    <link href="http://yoursite.com/2017/06/01/LeetCode-501-Find-Mode-in-Binary-Search-Tree/"/>
-    <id>http://yoursite.com/2017/06/01/LeetCode-501-Find-Mode-in-Binary-Search-Tree/</id>
-    <published>2017-06-01T15:55:11.000Z</published>
-    <updated>2017-06-01T17:12:17.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a binary search tree (BST) with duplicates, find all the mode(s) (the most frequently occurred element) in the given BST.</p>
-<p>Assume a BST is defined as follows:</p>
-<p>The left subtree of a node contains only nodes with keys less than or equal to the node's key.
-The right subtree of a node contains only nodes with keys greater than or equal to the node's key.
-Both the left and right subtrees must also be binary search trees.
-For example:
-Given BST [1,null,2,2],
-1
-<br>
-2
-/
-2
-return [2].</p>
-<h3 id="explanation">Explanation</h3>
-<p>递归，注意要用全局变量保存之前的最大值，还有当前值。中序遍历整棵树，保存当前的值和count，如果和前面的值不同了，就重新计数。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line">    List&lt;Integer&gt; list;</div><div class="line">    int max;</div><div class="line">    int currval;</div><div class="line">    int currcount;</div><div class="line"></div><div class="line">    public int[] findMode(TreeNode root) &#123;</div><div class="line">        if(root == null) return new int[0];</div><div class="line">        currval =0;</div><div class="line">        currcount = 0;</div><div class="line">        helper(root);</div><div class="line">        int[] res = new int[list.size()];</div><div class="line">        for(int i = 0; i&lt;res.length; i++) res[i] = list.get(i);</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void helper(TreeNode root) &#123;</div><div class="line">        if (root == null) return;</div><div class="line">        helper(root.left);</div><div class="line">        if(root.val == currval) &#123;</div><div class="line">            currcount ++;</div><div class="line">        &#125; else &#123;</div><div class="line">            currcount = 1;</div><div class="line">            currval = root.val;</div><div class="line">        &#125;</div><div class="line">        if (currcount &gt; max) &#123;</div><div class="line">            max = currcount;</div><div class="line">            list = new ArrayList&lt;&gt;();</div><div class="line">            list.add(root.val);</div><div class="line">        &#125; else if(currcount == max) &#123;</div><div class="line">            list.add(root.val);</div><div class="line">        &#125;</div><div class="line">        helper(root.right);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a binary search tree (BST) with duplicates, find 
-    
-    </summary>
-    
     
   </entry>
   
