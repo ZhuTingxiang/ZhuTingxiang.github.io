@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-22T15:48:55.000Z</updated>
+  <updated>2017-06-22T21:21:30.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[LintCode] Closest number in sorted array </title>
+    <link href="http://yoursite.com/2017/06/22/LintCode-Closest-number-in-sorted-array/"/>
+    <id>http://yoursite.com/2017/06/22/LintCode-Closest-number-in-sorted-array/</id>
+    <published>2017-06-22T21:05:21.000Z</published>
+    <updated>2017-06-22T21:21:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a target number and an integer array A sorted in ascending order, find the index i in A such that A[i] is closest to the given target.
+Return -1 if there is no element in the array.</p>
+<h3 id="explanation">Explanation</h3>
+<p>被面到了这道题！先排个序，接着二分查找。注意最后选择start还是选择end。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public void search(int[] array, int k) &#123;</div><div class="line">  Arrays.sort(array);</div><div class="line">  int start = 0;</div><div class="line">  int end = arrays.length;</div><div class="line">  while(start+1 &lt; end) &#123;</div><div class="line">    int mid = start + (end - start)/2;</div><div class="line">    if (array[mid] == k) return mid;</div><div class="line">    if (array[mid] &gt; k) &#123;</div><div class="line">      start = mid;</div><div class="line">    &#125; else &#123;</div><div class="line">      end = mid;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  if (k &lt;= array[start]) return start;</div><div class="line">  if (k &gt;= array[end]) return end;</div><div class="line">  if (k - array[start] &gt; array[end] - k) &#123;</div><div class="line">    return end;</div><div class="line">  &#125; else &#123;</div><div class="line">    return start;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a target number and an integer array A sorted in 
+    
+    </summary>
+    
+      <category term="LintCode" scheme="http://yoursite.com/categories/LintCode/"/>
+    
+    
+      <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="LintCode" scheme="http://yoursite.com/tags/LintCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 56.Merge Intervals</title>
+    <link href="http://yoursite.com/2017/06/22/LeetCode-56-Merge-Intervals/"/>
+    <id>http://yoursite.com/2017/06/22/LeetCode-56-Merge-Intervals/</id>
+    <published>2017-06-22T16:18:31.000Z</published>
+    <updated>2017-06-22T16:21:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a collection of intervals, merge all overlapping intervals.</p>
+<p>For example,
+Given [1,3],[2,6],[8,10],[15,18],
+return [1,6],[8,10],[15,18].</p>
+<h3 id="explanation">Explanation</h3>
+<p>主要思想是按照start来排序，然后比较end。这里可以用collections来sort，也可以用priorityqueue来存，如果用heap的话就多了一些空间。</p>
+<h3 id="code">Code</h3>
+<p>Solution 1: Heap
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for an interval.</div><div class="line"> * public class Interval &#123;</div><div class="line"> *     int start;</div><div class="line"> *     int end;</div><div class="line"> *     Interval() &#123; start = 0; end = 0; &#125;</div><div class="line"> *     Interval(int s, int e) &#123; start = s; end = e; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;Interval&gt; merge(List&lt;Interval&gt; intervals) &#123;</div><div class="line">        List&lt;Interval&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if (intervals == null || intervals.size() == 0) return result;</div><div class="line">        PriorityQueue&lt;Interval&gt; heap = new PriorityQueue&lt;&gt;((a,b)-&gt;(a.start - b.start));</div><div class="line">        for(Interval interval : intervals) &#123;</div><div class="line">            heap.add(interval);</div><div class="line">        &#125;</div><div class="line">        Interval first = heap.peek();</div><div class="line">        int start = first.start;</div><div class="line">        int end = first.end;</div><div class="line">        while(!heap.isEmpty()) &#123;</div><div class="line">            Interval curr = heap.poll();</div><div class="line">            int currStart = curr.start;</div><div class="line">            int currEnd = curr.end;</div><div class="line">            if (end &gt;= currStart)&#123;</div><div class="line">                if(end &lt;= currEnd) &#123;</div><div class="line">                    end = currEnd;</div><div class="line">                &#125;</div><div class="line">            &#125; else &#123;</div><div class="line">                result.add(new Interval(start, end));</div><div class="line">                start = currStart;</div><div class="line">                end = currEnd;</div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        result.add(new Interval(start, end));</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Solution 2: Collections Sort
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;Interval&gt; merge(List&lt;Interval&gt; intervals) &#123;</div><div class="line">        List&lt;Interval&gt;  list = new ArrayList&lt;&gt;();</div><div class="line">        if (intervals==null || intervals.size()== 0) return list;</div><div class="line">        Collections.sort(intervals,new Comparator&lt;Interval&gt;()&#123;</div><div class="line">                     public int compare(Interval s1,Interval s2)&#123;</div><div class="line">                           return s1.start - s2.start;</div><div class="line">                     &#125;&#125;);</div><div class="line">        // System.out.println(intervals.toString());</div><div class="line">        int start = intervals.get(0).start;</div><div class="line">        int end = intervals.get(0).end;</div><div class="line">        for (Interval interval : intervals) &#123;</div><div class="line">            if ((interval.start) &lt;= end) &#123;</div><div class="line">                if (interval.end &gt;= end) &#123;</div><div class="line">                    end = interval.end;</div><div class="line">                &#125;</div><div class="line">            &#125; else &#123;</div><div class="line">                list.add(new Interval(start, end));</div><div class="line">                start = interval.start;</div><div class="line">                end = interval.end;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        list.add(new Interval(start, end));</div><div class="line">        return list;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a collection of intervals, merge all overlapping 
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
+    
+      <category term="Heap" scheme="http://yoursite.com/tags/Heap/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode 347. Top K Frequent Elements</title>
@@ -600,11 +677,11 @@ The result can be in any order.</p>
     
       <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
     
-      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
-    
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
+    
+      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
     
       <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
     
@@ -775,115 +852,6 @@ quick sort (空间复杂度O(1)), merge sort(空间复杂度O(n)), heap sort (�
       <category term="Merge Sort" scheme="http://yoursite.com/tags/Merge-Sort/"/>
     
       <category term="Quick Sort" scheme="http://yoursite.com/tags/Quick-Sort/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 142. Linked List CycleII</title>
-    <link href="http://yoursite.com/2017/06/16/LeetCode-142-Linked-List-CycleII/"/>
-    <id>http://yoursite.com/2017/06/16/LeetCode-142-Linked-List-CycleII/</id>
-    <published>2017-06-16T23:04:56.000Z</published>
-    <updated>2017-06-16T23:07:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a linked list, return the node where the cycle begins. If there is no cycle, return null.</p>
-<p>Note: Do not modify the linked list.</p>
-<p>Follow up:
-Can you solve it without using extra space?</p>
-<h3 id="explanation">Explanation</h3>
-<p>和上面一道题不一样的地方就是要输出从哪里开始。真的是不看答案想不出来..贴一个我觉得比较清楚的讲解吧：
-Reference：https://discuss.leetcode.com/topic/27868/concise-java-solution-based-on-slow-fast-pointers
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Definitions:</div><div class="line">Cycle = length of the cycle, if exists.</div><div class="line">C is the beginning of Cycle, S is the distance of slow pointer from C when slow pointer meets fast pointer.</div><div class="line"></div><div class="line">Distance(slow) = C + S, Distance(fast) = 2 * Distance(slow) = 2 * (C + S). To let slow poiner meets fast pointer, only if fast pointer run 1 cycle more than slow pointer. Distance(fast) - Distance(slow) = Cycle</div><div class="line">=&gt; 2 * (C + S) - (C + S)	= Cycle</div><div class="line">=&gt;	C + S = Cycle</div><div class="line">=&gt;	C = Cycle - S</div><div class="line">=&gt; This means if slow pointer runs (Cycle - S) more, it will reaches C. So at this time, if there&apos;s another point2 running from head</div><div class="line">=&gt; After C distance, point2 will meet slow pointer at C, where is the beginning of the cycle.</div></pre></td></tr></table></figure></p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">public ListNode detectCycle(ListNode head) &#123;</div><div class="line">	ListNode slow = head, fast = head;</div><div class="line">	while(fast != null &amp;&amp; fast.next != null) &#123;</div><div class="line">		fast = fast.next.next;</div><div class="line">		slow = slow.next;</div><div class="line">		if (slow == fast) &#123;</div><div class="line">			while (head != slow) &#123;</div><div class="line">				head = head.next;</div><div class="line">				slow = slow.next;</div><div class="line">			&#125;</div><div class="line">			return slow;				</div><div class="line">		&#125;</div><div class="line">	&#125;			</div><div class="line">	return null;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a linked list, return the node where the cycle be
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
-    
-      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 141. Linked List Cycle</title>
-    <link href="http://yoursite.com/2017/06/16/LeetCode-141-Linked-List-Cycle/"/>
-    <id>http://yoursite.com/2017/06/16/LeetCode-141-Linked-List-Cycle/</id>
-    <published>2017-06-16T21:24:02.000Z</published>
-    <updated>2017-06-16T21:36:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a linked list, determine if it has a cycle in it.</p>
-<p>Follow up:
-Can you solve it without using extra space?</p>
-<h3 id="explanation">Explanation</h3>
-<p>双指针，如果有重合，就说明有环。</p>
-<h3 id="code">Code</h3>
-<p>public class Solution {
-// Solution 1: user extra space, O(N). Time complexity:O(N). HashSet;
-// public boolean hasCycle(ListNode head) {
-//     if (head == null) return false;
-//     ListNode n = head;
-//     HashSet&lt;ListNode&gt; set = new HashSet&lt;&gt;();
-//     while(n!=null) {
-//         if (!set.contains(n)) set.add(n);
-//         else return true;
-//         n = n.next;
-//     }
-//     return false;
-// }
-// Solution 2: two pointers
-public boolean hasCycle(ListNode head) {
-if (head == null) return false;
-ListNode walker, runner;
-walker = head;
-runner = head;
-while (runner != null &amp;&amp; runner.next != null) {
-runner = runner.next.next;
-walker = walker.next;
-if (runner == walker) return true;
-}
-return false;</p>
-<pre><code>      }
-  }
-
-
-
-}
-</code></pre>
-<p>}</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a linked list, determine if it has a cycle in it.
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
-    
-      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
     
   </entry>
   
