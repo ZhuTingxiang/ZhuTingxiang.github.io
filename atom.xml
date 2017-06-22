@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-18T19:41:20.000Z</updated>
+  <updated>2017-06-22T15:48:55.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,315 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>LeetCode 347. Top K Frequent Elements</title>
+    <link href="http://yoursite.com/2017/06/22/LeetCode-347-Top-K-Frequent-Elements/"/>
+    <id>http://yoursite.com/2017/06/22/LeetCode-347-Top-K-Frequent-Elements/</id>
+    <published>2017-06-22T15:46:27.000Z</published>
+    <updated>2017-06-22T15:48:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
+<p>Given a non-empty array of integers, return the k most frequent elements.</p>
+<p>For example,
+Given [1,1,1,2,2,3] and k = 2, return [1,2].</p>
+<p>Note:
+You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
+Your algorithm's time complexity must be better than O(n log n), where n is the array's size.</p>
+<h3 id="explanation">Explanation</h3>
+<p>用了三种方法，桶排序，maxHeap以及TreeMap。主要是计算frequency，然后对frequency进行排序。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    // use hashmap &amp;&amp; array</div><div class="line">    // public List&lt;Integer&gt; topKFrequent(int[] nums, int k) &#123;</div><div class="line">    //     List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">    //     Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">    //     for(int n: nums)&#123;</div><div class="line">    //         map.put(n, map.getOrDefault(n,0)+1);</div><div class="line">    //     &#125;</div><div class="line">    //     // corner case: if there is only one number in nums, we need the bucket has index 1.</div><div class="line">    //     List&lt;Integer&gt;[] bucket = new List[nums.length + 1];</div><div class="line">    //     for(int key : map.keySet()) &#123;</div><div class="line">    //         int freq = map.get(key);</div><div class="line">    //         if (bucket[freq] == null) &#123;</div><div class="line">    //             bucket[freq] = new LinkedList&lt;&gt;();</div><div class="line">    //         &#125;</div><div class="line">    //         bucket[freq].add(key);</div><div class="line">    //     &#125;</div><div class="line">    //     List&lt;Integer&gt; res = new LinkedList&lt;&gt;();</div><div class="line">    //     for(int i=bucket.length-1; i&gt;0 &amp;&amp; k &gt; 0; i--) &#123;</div><div class="line">    //         if(bucket[i]!=null) &#123;</div><div class="line">    //             result.addAll(bucket[i]);</div><div class="line">    //             k -= bucket[i].size();</div><div class="line">    //         &#125;</div><div class="line">    //     &#125;</div><div class="line">    //     return result;</div><div class="line">    // &#125;</div><div class="line"></div><div class="line">    // use maxHeap</div><div class="line">    // public List&lt;Integer&gt; topKFrequent(int[] nums, int k) &#123;</div><div class="line">    //     Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">    //     for(int n: nums)&#123;</div><div class="line">    //         map.put(n, map.getOrDefault(n,0)+1);</div><div class="line">    //     &#125;</div><div class="line">    //     PriorityQueue&lt;Map.Entry&lt;Integer, Integer&gt;&gt; maxHeap = new PriorityQueue&lt;&gt;((a,b) -&gt; (b.getValue() - a.getValue()));</div><div class="line">    //     for (Map.Entry&lt;Integer, Integer&gt; entry: map.entrySet())&#123;</div><div class="line">    //         maxHeap.add(entry);</div><div class="line">    //     &#125;</div><div class="line">    //     List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">    //     while(result.size()&lt;k) &#123;</div><div class="line">    //         result.add(maxHeap.poll().getKey());</div><div class="line">    //     &#125;</div><div class="line">    //     return result.subList(0, k);</div><div class="line">    //  &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // Use treeMap, use the frequency as the key so we can get all frequencies in order</div><div class="line">    public List&lt;Integer&gt; topKFrequent(int[] nums, int k) &#123;</div><div class="line">        Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">        for(int n: nums)&#123;</div><div class="line">            map.put(n, map.getOrDefault(n,0)+1);</div><div class="line">        &#125;</div><div class="line">        TreeMap&lt;Integer, List&lt;Integer&gt;&gt; treeMap = new TreeMap&lt;&gt;();</div><div class="line">        for(int num: map.keySet()) &#123;</div><div class="line">            int freq = map.get(num);</div><div class="line">            if(!treeMap.containsKey(freq))&#123;</div><div class="line">                treeMap.put(freq, new ArrayList&lt;&gt;());</div><div class="line">            &#125;</div><div class="line">            treeMap.get(freq).add(num);</div><div class="line">        &#125;</div><div class="line">        List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        while(result.size()&lt;k) &#123;</div><div class="line">            Map.Entry&lt;Integer, List&lt;Integer&gt;&gt; entry = treeMap.pollLastEntry();</div><div class="line">            result.addAll(entry.getValue());</div><div class="line">        &#125;</div><div class="line">        return result.subList(0, k);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question:&lt;/h3&gt;
+&lt;p&gt;Given a non-empty array of integers, return the k most
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="HashTable" scheme="http://yoursite.com/tags/HashTable/"/>
+    
+      <category term="Heap" scheme="http://yoursite.com/tags/Heap/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 170. Two Sum III - Data Structure design</title>
+    <link href="http://yoursite.com/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/"/>
+    <id>http://yoursite.com/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/</id>
+    <published>2017-06-21T03:23:56.000Z</published>
+    <updated>2017-06-21T03:26:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Design and implement a TwoSum class. It should support the following operations: add and find.</p>
+<p>add - Add the number to an internal data structure.
+find - Find if there exists any pair of numbers which sum is equal to the value.
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">For example,</div><div class="line">add(1); add(3); add(5);</div><div class="line">find(4) -&gt; true</div><div class="line">find(7) -&gt; false</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>和leetcode No.1一样，只是需要考虑的这里只能用一个不太需要维护的数据结构来存储，之前排序数组的那种方法就不可行了。同时要考虑计算frequency，会出现pair中两个数字是同一个的情况。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class TwoSum &#123;</div><div class="line"></div><div class="line">    /** Initialize your data structure here. */</div><div class="line">    HashMap&lt;Integer, Integer&gt; map;</div><div class="line">    public TwoSum() &#123;</div><div class="line">        map = new HashMap&lt;Integer, Integer&gt;();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** Add the number to an internal data structure.. */</div><div class="line">    public void add(int number) &#123;</div><div class="line">        if (map.containsKey(number)) &#123;</div><div class="line">            map.put(number, map.get(number)+1);</div><div class="line">        &#125; else &#123;</div><div class="line">            map.put(number, 1);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** Find if there exists any pair of numbers which sum is equal to the value. */</div><div class="line">    public boolean find(int value) &#123;</div><div class="line">        for(int key:map.keySet())&#123;</div><div class="line">            int left = value - key;</div><div class="line">            if (left == key &amp;&amp; map.get(key) &gt; 1) &#123;</div><div class="line">                return true;</div><div class="line">            &#125; else if (left != key &amp;&amp; map.containsKey(left)) &#123;</div><div class="line">                return true;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Design and implement a TwoSum class. It should support 
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 1. Two Sum</title>
+    <link href="http://yoursite.com/2017/06/20/LeetCode-1-Two-Sum/"/>
+    <id>http://yoursite.com/2017/06/20/LeetCode-1-Two-Sum/</id>
+    <published>2017-06-21T03:19:43.000Z</published>
+    <updated>2017-06-21T03:23:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Given an array of integers, return indices of the two numbers such that they add up to a specific target.</div><div class="line"></div><div class="line">You may assume that each input would have exactly one solution, and you may not use the same element twice.</div><div class="line"></div><div class="line">Example:</div><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line"></div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>基础中的基础题。如果用Hashmap存，就要用额外的空间，如果用排序和双指针来做，则需要O（nlogn）时间复杂度。</p>
+<h3 id="code">Code</h3>
+<p>public class Solution {
+public int[] twoSum(int[] nums, int target) {
+int[] result = new int[2];
+HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
+for (int i= 0; i&lt; nums.length; i++) {
+if (map.containsKey(nums[i])) {
+result[0] = map.get(nums[i]);
+result[1] = i;
+break;
+} else {
+map.put(target - nums[i] , i);
+}
+}
+return result;</p>
+<pre><code>}
+</code></pre>
+<p>}</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;g
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 131.Palindrome Partitioning</title>
+    <link href="http://yoursite.com/2017/06/20/LeetCode-131-Palindrome-Partitioning/"/>
+    <id>http://yoursite.com/2017/06/20/LeetCode-131-Palindrome-Partitioning/</id>
+    <published>2017-06-21T01:47:25.000Z</published>
+    <updated>2017-06-21T01:53:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
+<p>Return all possible palindrome partitioning of s.</p>
+<p>For example, given s = &quot;aab&quot;,
+Return
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  [&quot;aa&quot;,&quot;b&quot;],</div><div class="line">  [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>用回溯法找到每种可能的组合的模式，然后对于每个部分字符串去判断是否是回文字符串。算是常规题，略组合了一下，有趣。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;List&lt;String&gt;&gt; partition(String s) &#123;</div><div class="line">        List&lt;List&lt;String&gt;&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if (s == null || s.length() == 0) return result;</div><div class="line">        List&lt;String&gt; patition = new ArrayList&lt;&gt;();</div><div class="line">        helper(s, 0, patition, result);</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void helper(String s, int index, List&lt;String&gt; partition, List&lt;List&lt;String&gt;&gt; result) &#123;</div><div class="line">        if (index == s.length()) &#123;</div><div class="line">            result.add(new ArrayList&lt;String&gt;(partition));</div><div class="line">        &#125;</div><div class="line">        for (int i=index; i&lt;s.length(); i++) &#123;</div><div class="line">            String subString = s.substring(index, i+1);</div><div class="line">            if (!isPalindrome(subString)) continue;</div><div class="line">            partition.add(subString);</div><div class="line">            helper(s, i+1, partition, result);</div><div class="line">            partition.remove(partition.size()-1);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //check for palindrome</div><div class="line">    public boolean isPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() == 0) return true;</div><div class="line">        int i=0; int j = s.length() -1 ;</div><div class="line">        s = s.toLowerCase();</div><div class="line">        while (i &lt; j) &#123;</div><div class="line">            if (!Character.isLetterOrDigit(s.charAt(i))) &#123;</div><div class="line">                i ++;</div><div class="line">            &#125; else if (!Character.isLetterOrDigit(s.charAt(j))) &#123;</div><div class="line">                j--;</div><div class="line">            &#125; else if (s.charAt(i)!=s.charAt(j)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125; else &#123;</div><div class="line">                i++; j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a string s, partition s such that every substring
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+    
+      <category term="Backtracking" scheme="http://yoursite.com/tags/Backtracking/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 125. Valid Palindrome</title>
+    <link href="http://yoursite.com/2017/06/20/LeetCode-125-Valid-Palindrome-1/"/>
+    <id>http://yoursite.com/2017/06/20/LeetCode-125-Valid-Palindrome-1/</id>
+    <published>2017-06-21T01:46:52.000Z</published>
+    <updated>2017-06-21T01:46:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 125. Valid Palindrome</title>
+    <link href="http://yoursite.com/2017/06/20/LeetCode-125-Valid-Palindrome/"/>
+    <id>http://yoursite.com/2017/06/20/LeetCode-125-Valid-Palindrome/</id>
+    <published>2017-06-20T20:11:54.000Z</published>
+    <updated>2017-06-20T20:36:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
+<p>For example,
+&quot;A man, a plan, a canal: Panama&quot; is a palindrome.
+&quot;race a car&quot; is not a palindrome.</p>
+<p>Note:
+Have you consider that the string might be empty? This is a good question to ask during an interview.</p>
+<p>For the purpose of this problem, we define empty string as valid palindrome.</p>
+<h3 id="explanation">Explanation</h3>
+<p>双指针问题。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean isPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() == 0) return true;</div><div class="line">        int i=0; int j = s.length() -1 ;</div><div class="line">        s = s.toLowerCase();</div><div class="line">        while (i &lt; j) &#123;</div><div class="line">            if (!Character.isLetterOrDigit(s.charAt(i))) &#123;</div><div class="line">                i ++;</div><div class="line">            &#125; else if (!Character.isLetterOrDigit(s.charAt(j))) &#123;</div><div class="line">                j--;</div><div class="line">            &#125; else if (s.charAt(i)!=s.charAt(j)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125; else &#123;</div><div class="line">                i++; j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a string, determine if it is a palindrome, consid
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 26.Remove Duplicates from Sorted Array</title>
+    <link href="http://yoursite.com/2017/06/18/LeetCode-26-Remove-Duplicates-from-Sorted-Array/"/>
+    <id>http://yoursite.com/2017/06/18/LeetCode-26-Remove-Duplicates-from-Sorted-Array/</id>
+    <published>2017-06-18T20:25:52.000Z</published>
+    <updated>2017-06-18T20:29:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
+<p>For example,
+Given input array nums = [1,1,2],</p>
+<p>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn't matter what you leave beyond the new length.</p>
+<p>Subscribe to see which companies asked this question.</p>
+<h3 id="explanation">Explanation</h3>
+<p>双指针问题，在原数组中去遍历。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</div><div class="line"></div><div class="line">Do not allocate extra space for another array, you must do this in place with constant memory.</div><div class="line"></div><div class="line">For example,</div><div class="line">Given input array nums = [1,1,2],</div><div class="line"></div><div class="line">Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn&apos;t matter what you leave beyond the new length.</div><div class="line"></div><div class="line">Subscribe to see which companies asked this question.</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a sorted array, remove the duplicates in place su
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 283.Move Zeroes</title>
+    <link href="http://yoursite.com/2017/06/18/LeetCode-283-Move-Zeroes/"/>
+    <id>http://yoursite.com/2017/06/18/LeetCode-283-Move-Zeroes/</id>
+    <published>2017-06-18T20:13:56.000Z</published>
+    <updated>2017-06-18T20:18:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="quesiton">Quesiton</h3>
+<p>Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].</p>
+<p>Note:
+You must do this in-place without making a copy of the array.
+Minimize the total number of operations.</p>
+<h3 id="explanation">Explanation</h3>
+<p>双指针，遇到不是0的就去找在此之前是0的数。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public void moveZeroes(int[] nums) &#123;</div><div class="line">        int head = 0;</div><div class="line">        if (nums == null || nums.length == 0) return;</div><div class="line">        while(head &lt; nums.length) &#123;</div><div class="line">            if (nums[head] != 0) &#123;</div><div class="line">                for (int i=0; i&lt;head; i++) &#123;</div><div class="line">                    if (nums[i] == 0) &#123;</div><div class="line">                        int tmp = nums[head];</div><div class="line">                        nums[head] = 0;</div><div class="line">                        nums[i] = tmp;</div><div class="line">                        break;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            head ++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;quesiton&quot;&gt;Quesiton&lt;/h3&gt;
+&lt;p&gt;Given an array nums, write a function to move all 0&#39;s t
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LeetCode 4. Median of Two Sorted Arrays</title>
     <link href="http://yoursite.com/2017/06/18/LeetCode-4-Median-of-Two-Sorted-Arrays/"/>
     <id>http://yoursite.com/2017/06/18/LeetCode-4-Median-of-Two-Sorted-Arrays/</id>
     <published>2017-06-18T19:17:57.000Z</published>
-    <updated>2017-06-18T19:41:20.000Z</updated>
+    <updated>2017-06-18T19:43:23.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
@@ -50,9 +354,9 @@
     
       <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
     
-      <category term="Hard" scheme="http://yoursite.com/tags/Hard/"/>
-    
       <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="Hard" scheme="http://yoursite.com/tags/Hard/"/>
     
       <category term="Divide and conquer" scheme="http://yoursite.com/tags/Divide-and-conquer/"/>
     
@@ -250,11 +554,11 @@ The result can be in any order.</p>
     
       <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
     
-      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
-    
       <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
     
       <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+    
+      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
     
       <category term="Intersection" scheme="http://yoursite.com/tags/Intersection/"/>
     
@@ -291,9 +595,9 @@ You may assume that nums1 has enough space (size that is greater or equal to m +
     
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
-      <category term="Merge Sort" scheme="http://yoursite.com/tags/Merge-Sort/"/>
-    
       <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+    
+      <category term="Merge Sort" scheme="http://yoursite.com/tags/Merge-Sort/"/>
     
   </entry>
   
@@ -460,9 +764,9 @@ Reference：https://discuss.leetcode.com/topic/27868/concise-java-solution-based
     
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
-      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
-    
       <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+    
+      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
     
   </entry>
   
@@ -529,353 +833,9 @@ return false;</p>
     
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
-      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
-    
       <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
     
-  </entry>
-  
-  <entry>
-    <title>LeetCode 138. Copy List with Random Pointer</title>
-    <link href="http://yoursite.com/2017/06/16/LeetCode-138-Copy-List-with-Random-Pointer/"/>
-    <id>http://yoursite.com/2017/06/16/LeetCode-138-Copy-List-with-Random-Pointer/</id>
-    <published>2017-06-16T21:14:28.000Z</published>
-    <updated>2017-06-16T21:17:04.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p>
-<p>Return a deep copy of the list.</p>
-<h3 id="explanation">Explanation</h3>
-<p>这道题有两种解法。一种用Hashmap存每个节点，然后复制。这种需要占用Extra space。另外一种就是把每个新的节点存到原来的节点的下一个，不用额外空间。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    // Solution 1: using hashmap and iterate twice. one for nodes, the other for next and random.</div><div class="line">    public RandomListNode copyRandomList(RandomListNode head) &#123;</div><div class="line">        HashMap&lt;RandomListNode, RandomListNode&gt; map = new HashMap&lt;&gt;();</div><div class="line">        RandomListNode curr = head;</div><div class="line">        // copy the all the nodes and their labels first</div><div class="line">        while (curr != null) &#123;</div><div class="line">            map.put(curr, new RandomListNode(curr.label));</div><div class="line">            curr = curr.next;</div><div class="line">        &#125;</div><div class="line">        RandomListNode node = head;</div><div class="line">        // copy all the next and randoms</div><div class="line">        while (node != null) &#123;</div><div class="line">            map.get(node).next = map.get(node.next);</div><div class="line">            map.get(node).random = map.get(node.random);</div><div class="line">            node = node.next;</div><div class="line">        &#125;</div><div class="line">        return map.get(head);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Solution 2: no hashmap, only linked list</div><div class="line">    public RandomListNode copyRandomList(RandomListNode head) &#123;</div><div class="line">        if (head == null) return null;</div><div class="line">        RandomListNode curr = head;</div><div class="line">        // copy next</div><div class="line">        while (curr != null) &#123;</div><div class="line">            RandomListNode newNode = new RandomListNode(curr.label);</div><div class="line">            newNode.random = curr.random;</div><div class="line">            newNode.next = curr.next;</div><div class="line">            curr.next = newNode;</div><div class="line">            curr = curr.next.next;</div><div class="line">        &#125;</div><div class="line">        // copy random</div><div class="line">        RandomListNode cur = head;</div><div class="line"></div><div class="line">        while (cur != null) &#123;</div><div class="line">            if (cur.next.random != null) &#123;</div><div class="line">                cur.next.random = cur.random.next;</div><div class="line">            &#125;</div><div class="line">            cur = cur.next.next;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // split list</div><div class="line">        RandomListNode newHead = head.next;</div><div class="line">        RandomListNode curt = head;</div><div class="line">        while (curt != null) &#123;</div><div class="line">            RandomListNode tmp= curt.next;</div><div class="line">            curt.next = tmp.next;</div><div class="line">            curt = curt.next;</div><div class="line">            if (tmp.next != null) &#123;</div><div class="line">                tmp.next = tmp.next.next;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return newHead;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;A linked list is given such that each node contains an 
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
-    
       <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 25. Reverse Nodes in k-Group</title>
-    <link href="http://yoursite.com/2017/06/16/LeetCode-25-Reverse-Nodes-in-k-Group/"/>
-    <id>http://yoursite.com/2017/06/16/LeetCode-25-Reverse-Nodes-in-k-Group/</id>
-    <published>2017-06-16T18:00:54.000Z</published>
-    <updated>2017-06-16T18:03:07.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.</p>
-<p>k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.</p>
-<p>You may not alter the values in the nodes, only nodes itself may be changed.</p>
-<p>Only constant memory is allowed.</p>
-<p>For example,
-Given this linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5</p>
-<p>For k = 2, you should return: 2-&gt;1-&gt;4-&gt;3-&gt;5</p>
-<p>For k = 3, you should return: 3-&gt;2-&gt;1-&gt;4-&gt;5</p>
-<h3 id="explanation">Explanation</h3>
-<p>这道题和之前的reverse nodes II很像，有一个范围，你要写一个reverse函数去在这个范围内reverse一下linked list。 其他不难，主要还是想清楚翻转的过程。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">     private static ListNode reverse(ListNode pre, ListNode next)&#123;</div><div class="line">         ListNode last = pre.next;</div><div class="line">         ListNode cur = last.next;</div><div class="line">         while (cur != next) &#123;</div><div class="line">             last.next = cur.next;</div><div class="line">             cur.next = pre.next;</div><div class="line">             pre.next = cur;</div><div class="line">             cur = last.next;</div><div class="line">         &#125;</div><div class="line">         return last;</div><div class="line">     &#125;</div><div class="line"></div><div class="line"></div><div class="line">     public static ListNode reverseKGroup(ListNode head, int k) &#123;</div><div class="line">         if (head == null || k== 1) return head;</div><div class="line">         ListNode dummy = new ListNode(0);</div><div class="line">         dummy.next = head;</div><div class="line">         int count = 0;</div><div class="line">         ListNode pre = dummy;</div><div class="line">         ListNode cur = head;</div><div class="line">         while (cur != null) &#123;</div><div class="line">             count ++;</div><div class="line">             ListNode next = cur.next;</div><div class="line">             if (count == k) &#123;</div><div class="line">                 pre = reverse(pre, next);</div><div class="line">                 count = 0;</div><div class="line">             &#125;</div><div class="line">             cur = next;</div><div class="line">         &#125;</div><div class="line">         return dummy.next;</div><div class="line"></div><div class="line">     &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a linked list, reverse the nodes of a linked list
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 92. Reverse LinkedList II</title>
-    <link href="http://yoursite.com/2017/06/15/LeetCode-92-Reverse-LinkedList-II/"/>
-    <id>http://yoursite.com/2017/06/15/LeetCode-92-Reverse-LinkedList-II/</id>
-    <published>2017-06-15T23:47:25.000Z</published>
-    <updated>2017-06-15T23:53:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Reverse a linked list from position m to n. Do it in-place and in one-pass.</p>
-<p>For example:
-Given 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2 and n = 4,</p>
-<p>return 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL.</p>
-<p>Note:
-Given m, n satisfy the following condition:
-1 ≤ m ≤ n ≤ length of list.</p>
-<h3 id="explanation">Explanation</h3>
-<p>这道题就是将m到n范围内的链表翻转。注意三个点，一个pre，一个curr，一个next。好搞啊..</p>
-<h3 id="code">Code</h3>
-<pre><code>public class Solution {
-    public ListNode reverseBetween(ListNode head, int m, int n) {
-        if (head == null) return null;
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode pre = dummy;
-        //Find m node
-        for (int i=1; i&lt; m; i++) {
-            pre = pre.next;
-        }
-        // 1 - 2 -3 - 4 - 5 ; m=2; n =4 ---&gt; pre = 1, start = 2, then = 3
-        // dummy-&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5
-
-        ListNode start = pre.next;
-        ListNode curr = start.next;
-        for (int i=m; i&lt;n; i++) {
-            ListNode next = curr.next;
-            curr.next = pre.next;
-            pre.next = curr;
-            start.next = next;
-            curr = next;
-        }
-
-        // first reversing : dummy-&gt;1 - 3 - 2 - 4 - 5; pre = 1, start = 2, then = 4
-        // second reversing: dummy-&gt;1 - 4 - 3 - 2 - 5; pre = 1, start = 2, then = 5 (finish)
-        return dummy.next;
-
-    }
-}
-
-``
-</code></pre>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Reverse a linked list from position m to n. Do it in-pl
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 47.Permutations II</title>
-    <link href="http://yoursite.com/2017/06/12/LeetCode-47-Permutations-II/"/>
-    <id>http://yoursite.com/2017/06/12/LeetCode-47-Permutations-II/</id>
-    <published>2017-06-13T03:30:01.000Z</published>
-    <updated>2017-06-13T03:33:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a collection of numbers that might contain duplicates, return all possible unique permutations.</p>
-<p>For example,
-[1,1,2] have the following unique permutations:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [1,1,2],</div><div class="line">  [1,2,1],</div><div class="line">  [2,1,1]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<h3 id="explanation">Explanation</h3>
-<p>和之前一道题相似，只是注意一下这里是可以重复的。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;List&lt;Integer&gt;&gt; permuteUnique(int[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        int[] visited = new int[nums.length];</div><div class="line">        if (nums == null || nums.length == 0) return result;</div><div class="line">        for (int i=0; i&lt;nums.length; i++) &#123;</div><div class="line">            visited[i] = 0;</div><div class="line">        &#125;</div><div class="line">        Arrays.sort(nums);</div><div class="line">        helper(nums, new ArrayList&lt;Integer&gt;(), result, visited);</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public void helper(int[] nums,  List&lt;Integer&gt; list, List&lt;List&lt;Integer&gt;&gt; result, int[] visited) &#123;</div><div class="line">        if (list.size() == nums.length) &#123;</div><div class="line">            result.add(new ArrayList&lt;Integer&gt;(list));</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        for (int i=0; i&lt;nums.length; i++) &#123;</div><div class="line">            // 判断是否访问过，或者是否排在前面的相同的没有使用。</div><div class="line">            if (visited[i] == 1 || (i!=0 &amp;&amp; nums[i] == nums[i-1]&amp;&amp; visited[i-1] == 0)) continue;</div><div class="line">            visited[i] = 1;</div><div class="line"></div><div class="line">            list.add(nums[i]);</div><div class="line">            helper(nums, list, result, visited);</div><div class="line">            list.remove(list.size()-1);</div><div class="line">            visited[i] = 0;</div><div class="line">        &#125;  </div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a collection of numbers that might contain duplic
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
-    
-      <category term="Backtracking" scheme="http://yoursite.com/tags/Backtracking/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 46.Permutations</title>
-    <link href="http://yoursite.com/2017/06/12/LeetCode-46-Permutations/"/>
-    <id>http://yoursite.com/2017/06/12/LeetCode-46-Permutations/</id>
-    <published>2017-06-13T02:49:23.000Z</published>
-    <updated>2017-06-13T02:51:34.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="quesiton">Quesiton</h3>
-<p>Given a collection of distinct numbers, return all possible permutations.</p>
-<p>For example,
-[1,2,3] have the following permutations:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [1,2,3],</div><div class="line">  [1,3,2],</div><div class="line">  [2,1,3],</div><div class="line">  [2,3,1],</div><div class="line">  [3,1,2],</div><div class="line">  [3,2,1]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<h4 id="explanation">Explanation</h4>
-<p>这道题是排列组合问题，所以用DFS和回溯法递归。注意长度要和原来的数组长度相等。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        helper(nums, new ArrayList&lt;Integer&gt;(), result);</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public void helper(int[] nums,  List&lt;Integer&gt; list, List&lt;List&lt;Integer&gt;&gt; result) &#123;</div><div class="line">        if (list.size() == nums.length) &#123;</div><div class="line">            result.add(new ArrayList&lt;Integer&gt;(list));</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        for (int i=0; i&lt;nums.length; i++) &#123;</div><div class="line">            if (list.contains(nums[i])) continue;</div><div class="line">            list.add(nums[i]);</div><div class="line">            helper(nums, list, result);</div><div class="line">            list.remove(list.size()-1);</div><div class="line">        &#125;  </div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;quesiton&quot;&gt;Quesiton&lt;/h3&gt;
-&lt;p&gt;Given a collection of distinct numbers, return all poss
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
-    
-      <category term="Backtracking" scheme="http://yoursite.com/tags/Backtracking/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 40. Combination Sum II</title>
-    <link href="http://yoursite.com/2017/06/12/LeetCode-40-Combination-Sum-II/"/>
-    <id>http://yoursite.com/2017/06/12/LeetCode-40-Combination-Sum-II/</id>
-    <published>2017-06-12T21:19:22.000Z</published>
-    <updated>2017-06-12T21:20:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.</p>
-<p>Each number in C may only be used once in the combination.</p>
-<p>Note:
-All numbers (including target) will be positive integers.
-The solution set must not contain duplicate combinations.
-For example, given candidate set [10, 1, 2, 7, 6, 1, 5] and target 8,
-A solution set is:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [1, 7],</div><div class="line">  [1, 2, 5],</div><div class="line">  [2, 6],</div><div class="line">  [1, 1, 6]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<h3 id="explanation">Explanation</h3>
-<p>其实相比1还要简单一些。用DFS找到所有的组合，注意去重。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line"></div><div class="line">    public List&lt;List&lt;Integer&gt;&gt; combinationSum2(int[] candidates, int target) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</div><div class="line">        if (candidates == null || candidates.length == 0) return list;</div><div class="line">        Arrays.sort(candidates);</div><div class="line">        helper(candidates, 0, target, new ArrayList&lt;Integer&gt;(), list);</div><div class="line"></div><div class="line">        return list;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    // 在list[index:]中选取和为target的所有组合，添加到combination之后，整个放到combinations当中</div><div class="line">    public void helper(int[] candidates, int startIndex, int target, List&lt;Integer&gt; combination, List&lt;List&lt;Integer&gt;&gt; list) &#123;</div><div class="line">        if (target == 0) list.add(new ArrayList&lt;Integer&gt;(combination));</div><div class="line">        for(int i=startIndex; i&lt; candidates.length; i++) &#123;</div><div class="line">            if (i &gt;startIndex &amp;&amp; candidates[i] == candidates[i-1]) continue; //去重的重要步骤，因为数列是升序。</div><div class="line">            if (target &lt; candidates[i]) &#123;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">            combination.add(candidates[i]);</div><div class="line">            helper(candidates, i+1, target - candidates[i], combination,list);</div><div class="line">            combination.remove(combination.size()-1);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a collection of candidate numbers (C) and a targe
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
-    
-      <category term="Recursive" scheme="http://yoursite.com/tags/Recursive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 39. Combination Sum</title>
-    <link href="http://yoursite.com/2017/06/12/LeetCode-39-Combination-Sum/"/>
-    <id>http://yoursite.com/2017/06/12/LeetCode-39-Combination-Sum/</id>
-    <published>2017-06-12T21:02:47.000Z</published>
-    <updated>2017-06-12T21:19:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a set of candidate numbers (C) (without duplicates) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.</p>
-<p>The same repeated number may be chosen from C unlimited number of times.</p>
-<p>Note:
-All numbers (including target) will be positive integers.
-The solution set must not contain duplicate combinations.
-For example, given candidate set [2, 3, 6, 7] and target 7,
-A solution set is:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [7],</div><div class="line">  [2, 2, 3]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<h3 id="explanation">Explanation</h3>
-<p>对于这类求所有组合的题目，必然用DFS来做。注意这里数字是可以重复用的，所以在helper递归的时候还用原来的index。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line"></div><div class="line">    public List&lt;List&lt;Integer&gt;&gt; combinationSum(int[] candidates, int target) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</div><div class="line">        if (candidates == null || candidates.length == 0) return list;</div><div class="line">        Arrays.sort(candidates);</div><div class="line">        helper(candidates, 0, target, new ArrayList&lt;Integer&gt;(), list);</div><div class="line"></div><div class="line">        return list;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    // 在list[index:]中选取和为target的所有组合，添加到combination之后，整个放到combinations当中</div><div class="line">    public void helper(int[] candidates, int startIndex, int target, List&lt;Integer&gt; combination, List&lt;List&lt;Integer&gt;&gt; list) &#123;</div><div class="line">        if (target == 0) list.add(new ArrayList&lt;Integer&gt;(combination));</div><div class="line">        for(int i=startIndex; i&lt; candidates.length; i++) &#123;</div><div class="line">            if (target &lt; candidates[i]) &#123;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">            combination.add(candidates[i]);</div><div class="line">            helper(candidates, i, target - candidates[i], combination,list);</div><div class="line">            combination.remove(combination.size()-1);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a set of candidate numbers (C) (without duplicate
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
-    
-      <category term="Recursive" scheme="http://yoursite.com/tags/Recursive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 127. Word Ladder</title>
-    <link href="http://yoursite.com/2017/06/12/LeetCode-127-Word-Ladder/"/>
-    <id>http://yoursite.com/2017/06/12/LeetCode-127-Word-Ladder/</id>
-    <published>2017-06-12T19:13:14.000Z</published>
-    <updated>2017-06-12T20:11:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<h3 id="explanation">Explanation</h3>
-<p>本题用DFS做会严重超时，用BFS也要注意一下替换的方式。其实用双边BFS会更快。</p>
-<h3 id="code">Code</h3>
-<p>Solution 1: BFS
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int ladderLength(String beginWord, String endWord, List&lt;String&gt; wordList) &#123;</div><div class="line">        Set&lt;String&gt; dict = new HashSet&lt;&gt;();</div><div class="line">        for (String word : wordList) &#123;</div><div class="line">            dict.add(word);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (wordList == null) return 0;</div><div class="line">        if (beginWord.equals(endWord)) return 1;</div><div class="line">        // wordList.add(beginWord);</div><div class="line">        // wordList.add(endWord);</div><div class="line"></div><div class="line">        HashSet&lt;String&gt; hash = new HashSet&lt;&gt;();</div><div class="line">        Queue&lt;String&gt; queue = new LinkedList&lt;&gt;();</div><div class="line">        queue.offer(beginWord);</div><div class="line">        hash.add(beginWord);</div><div class="line"></div><div class="line">        int length = 1;</div><div class="line">        while(!queue.isEmpty()) &#123;</div><div class="line">            length ++;</div><div class="line">            int size = queue.size();</div><div class="line">            for(int i=0; i&lt;size; i++) &#123;</div><div class="line">                String word = queue.poll();</div><div class="line">                for (String nextWord: getNextWords(word, dict)) &#123;</div><div class="line">                    if (hash.contains(nextWord)) &#123;</div><div class="line">                        continue;</div><div class="line">                    &#125;</div><div class="line">                    if (nextWord.equals(endWord)) &#123;</div><div class="line">                        return length;</div><div class="line">                    &#125;</div><div class="line">                    hash.add(nextWord);</div><div class="line">                    queue.offer(nextWord);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private List&lt;String&gt; getNextWords(String word, Set&lt;String&gt; wordList) &#123;</div><div class="line">        List&lt;String&gt; nextWords = new ArrayList&lt;&gt;();</div><div class="line">        for (char c = &apos;a&apos; ; c &lt;&apos;z&apos;; c++) &#123;</div><div class="line">            for (int i=0; i&lt; word.length(); i++)&#123;</div><div class="line">                if (c == word.charAt(i)) &#123;</div><div class="line">                    continue;</div><div class="line">                &#125;</div><div class="line">                String nextWord = replace(word, i, c);</div><div class="line">                if (wordList.contains(nextWord)) &#123;</div><div class="line">                    nextWords.add(nextWord);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return nextWords;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private String replace(String word, int i, char c) &#123;</div><div class="line">        char[] chars = word.toCharArray();</div><div class="line">        chars[i] = c;</div><div class="line">        return new String(chars);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
-&lt;p&gt;本题用DFS做会严重超时，用BFS
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
-    
-      <category term="biaBFS" scheme="http://yoursite.com/tags/biaBFS/"/>
     
   </entry>
   
