@@ -56,6 +56,70 @@ Your algorithm's time complexity must be better than O(n log n), where n is the 
   </entry>
   
   <entry>
+    <title>当你在浏览器中输入www.google.com会发生什么？</title>
+    <link href="http://yoursite.com/2017/06/21/%E5%BD%93%E4%BD%A0%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5www-google-com%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F/"/>
+    <id>http://yoursite.com/2017/06/21/当你在浏览器中输入www-google-com会发生什么？/</id>
+    <published>2017-06-21T16:16:24.000Z</published>
+    <updated>2017-06-22T15:50:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>经典面试题。</p>
+<p>中文参考：http://www.jianshu.com/p/71cf7f69eca8
+英文参考：http://edusagar.com/articles/view/70/What-happens-when-you-type-a-URL-in-browser</p>
+<h3 id="step1-url-is-typed-in-the-browser">Step1. URL is typed in the browser.</h3>
+<h3 id="step2-if-requested-object-is-in-browser-cache-and-is-fresh-move-on-to-step-8">Step2. If requested object is in browser cache and is fresh, move on to Step 8.</h3>
+<h3 id="step3-dns-look-up-to-find-the-ip-address-of-the-server">Step3. DNS look up to find the ip address of the server.</h3>
+<p>when we want to connect to google.com, we actually want to reach out to a server where google web services are hosted. One such server is having an ip address of 74.125.236.65. Now, if you type &quot;http://74.125.236.65&quot; in your browser, this will take you to google home page itself. Which means, &quot;http://google.com&quot; and &quot;http://74.125.236.65&quot; are nothing but same stuff. But, it is not so. Google has multiple servers in multiple locations to cater to the huge volume of requests they receive per second. Thus we should let Google decide which server is best suited to our needs. Using &quot;google.com&quot; does the job for us. When we type &quot;google.com&quot;, DNS(Domain Name System) services comes into play and resolves the URL to a proper ip address.</p>
+<p>Following is a summary of steps happening while DNS service is at work:</p>
+<ul>
+<li>Check browser cache: browsers maintain cache of DNS records for some fixed duration. So, this is the first place to resolve DNS queries.</li>
+<li>Check OS cache: if browser doesn't contain the record in its cache, it makes a system call to underlying Operating System to fetch the record as OS also maintains a cache of recent DNS queries.</li>
+<li>Router Cache: if above steps fail to get a DNS record, the search continues to your router which has its own cache.</li>
+<li>ISP cache: if everything fails, the search moves on to your ISP. First, it tries in its cache, if not found - ISP's DNS recursive search comes into picture. DNS lookup is again a complex process which finds the appropriate ip address from a list of many options available for websites like Google. You can read more about this here.</li>
+</ul>
+<h3 id="step-4browser-initiates-a-tcp-connection-with-the-server">Step 4.Browser initiates a TCP connection with the server.</h3>
+<h3 id="step-5-browser-sends-a-http-request-to-the-server">Step 5. Browser sends a HTTP request to the server.</h3>
+<p>Browser sends a GET request to the server according to the specification of HTTP(Hyper Text Transfer Protocol) protocol.</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">GET http://google.com/ HTTP/1.1</div><div class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div><div class="line">User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:29.0) Gecko/20100101 Firefox/29.0</div><div class="line">Accept-Encoding: gzip, deflate</div><div class="line">Connection: Keep-Alive</div><div class="line">Host: google.com</div><div class="line">Cookie: datr=1265876274-[...]; locale=en_US; lsd=WW[...]; c_user=2101[...]</div></pre></td></tr></table></figure></p>
+<p>Here, browser passes some meta information in the form of headers to the server along with the URL - &quot;http://google.com&quot;. User-Agent header specifies the browser properties, Accept-Encoding headers specify the type of responses it will accept.<br>
+Connection header tells the server to keep open the TCP connection established here. The request also contains Cookies, which are meta information stored at the client end and contain previous browsing session information for the same website in the form of key-value pairs e.g. the login name of the user for Google.</p>
+<h3 id="step-6-server-handles-the-incoming-request">Step 6. Server handles the incoming request</h3>
+<p>HTTP request made from browsers are handled by a special software running on server - commonly known as web servers e.g. Apache, IIS etc. Web server passes on the request to the proper request handler - a program written to handle web services e.g. PHP, ASP.NET, Ruby, Servlets etc.</p>
+<p>For example URL- http://edusagar.com/index.php is handled by a program written in PHP file - index.php. As soon as GET request for index.php is received, Apache(our webserver at edusagar.com) prepares the environment to execute index.php file. Now, this php program will generate a response - in our case a HTML response. This response is then sent back to the browser according to HTTP guidelines.</p>
+<h3 id="step-7-browser-receives-the-http-response">Step 7. Browser receives the HTTP response</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Cache-Control: private, no-store, no-cache, must-revalidate, post-check=0, pre-check=0</div><div class="line">Expires: Thu, 19 Nov 1981 08:52:00 GMT</div><div class="line">Pragma: no-cache</div><div class="line">Content-Encoding: gzip</div><div class="line">Content-Type: text/html; charset=utf-8</div><div class="line">Connection: Keep-Alive</div><div class="line">Content-length: 1215</div><div class="line">Date: Fri, 30 May 2014 08:10:15 GMT</div></pre></td></tr></table></figure></p>
+<p>HTTP response starts with the returned status code from the server. Following is a very brief summary of what a status code denotes:<br>
+1xx indicates an informational message only
+2xx indicates success of some kind
+3xx redirects the client to another URL
+4xx indicates an error on the client's part
+5xx indicates an error on the server's part</p>
+<h3 id="step-8-browsers-displays-the-html-content">Step 8. Browsers displays the html content</h3>
+<p>Rendering of html content is also done in phases. The browser first renders the bare bone html structure, and then it sends multiple GET requests to fetch other hyper linked stuff e.g. If the html response contains an image in the form of img tags such as &lt;img src=&quot;/assets/img/logo.png&quot; /&gt;, browser will send a HTTP GET request to the server to fetch the image following the complete set of steps which we have seen till now. But this isn't that bad as it looks. Static files like images, javascript, css files are all cached by the browser so that in future it doesn't have to fetch them again.</p>
+<h3 id="step-9-client-interaction-with-server">Step 9. Client interaction with server</h3>
+<p>Once a html page is loaded, there are several ways a user can interact with the server. For example, he call fill out a login form to sign in to the website. This also follows all the steps listed above, the only difference is that the HTTP request this time would be a POST instead of GET and along with that request, browser will send the form data to the server for processing (username and password in this case).</p>
+<p>Once server authenticates the user, it will send the proper HTML content(may be user's profile) back to the browser and thus user will see that new webpage after his login request is processed.</p>
+<h3 id="step-10-ajax-queries">Step 10. AJAX queries</h3>
+<p>Another form of client interaction with server is through AJAX(Asynchronous JavaScript And XML) requests. This is an asynchronous GET/POST request to which server can send a response back in a variety of ways - json, xml, html etc. AJAX requests doesn't hinder the current view of the webpage and work in the background. Because of this, one can dynamically modify the content of a webpage by calling an AJAX request and updating the web elements using Javascript.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;经典面试题。&lt;/p&gt;
+&lt;p&gt;中文参考：http://www.jianshu.com/p/71cf7f69eca8
+英文参考：http://edusagar.com/artic
+    
+    </summary>
+    
+      <category term="技术冷板凳" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E5%86%B7%E6%9D%BF%E5%87%B3/"/>
+    
+    
+      <category term="HTTP" scheme="http://yoursite.com/tags/HTTP/"/>
+    
+      <category term="Network" scheme="http://yoursite.com/tags/Network/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LeetCode 170. Two Sum III - Data Structure design</title>
     <link href="http://yoursite.com/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/"/>
     <id>http://yoursite.com/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/</id>
@@ -550,15 +614,15 @@ The result can be in any order.</p>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
       <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
+    
+      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
     
       <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
-    
-      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
     
       <category term="Intersection" scheme="http://yoursite.com/tags/Intersection/"/>
     
@@ -763,75 +827,6 @@ Reference：https://discuss.leetcode.com/topic/27868/concise-java-solution-based
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
-    
-      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 141. Linked List Cycle</title>
-    <link href="http://yoursite.com/2017/06/16/LeetCode-141-Linked-List-Cycle/"/>
-    <id>http://yoursite.com/2017/06/16/LeetCode-141-Linked-List-Cycle/</id>
-    <published>2017-06-16T21:24:02.000Z</published>
-    <updated>2017-06-16T21:36:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a linked list, determine if it has a cycle in it.</p>
-<p>Follow up:
-Can you solve it without using extra space?</p>
-<h3 id="explanation">Explanation</h3>
-<p>双指针，如果有重合，就说明有环。</p>
-<h3 id="code">Code</h3>
-<p>public class Solution {
-// Solution 1: user extra space, O(N). Time complexity:O(N). HashSet;
-// public boolean hasCycle(ListNode head) {
-//     if (head == null) return false;
-//     ListNode n = head;
-//     HashSet&lt;ListNode&gt; set = new HashSet&lt;&gt;();
-//     while(n!=null) {
-//         if (!set.contains(n)) set.add(n);
-//         else return true;
-//         n = n.next;
-//     }
-//     return false;
-// }
-// Solution 2: two pointers
-public boolean hasCycle(ListNode head) {
-if (head == null) return false;
-ListNode walker, runner;
-walker = head;
-runner = head;
-while (runner != null &amp;&amp; runner.next != null) {
-runner = runner.next.next;
-walker = walker.next;
-if (runner == walker) return true;
-}
-return false;</p>
-<pre><code>      }
-  }
-
-
-
-}
-</code></pre>
-<p>}</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a linked list, determine if it has a cycle in it.
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
     
