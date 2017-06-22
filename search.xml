@@ -125,12 +125,6 @@ Return
     
     <entry>
       <title><![CDATA[LeetCode 125. Valid Palindrome]]></title>
-      <url>http://yoursite.com/2017/06/20/LeetCode-125-Valid-Palindrome-1/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[LeetCode 125. Valid Palindrome]]></title>
       <url>http://yoursite.com/2017/06/20/LeetCode-125-Valid-Palindrome/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>

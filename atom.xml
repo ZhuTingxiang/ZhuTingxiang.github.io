@@ -213,7 +213,7 @@ return result;</p>
     <link href="http://yoursite.com/2017/06/20/LeetCode-131-Palindrome-Partitioning/"/>
     <id>http://yoursite.com/2017/06/20/LeetCode-131-Palindrome-Partitioning/</id>
     <published>2017-06-21T01:47:25.000Z</published>
-    <updated>2017-06-21T01:53:05.000Z</updated>
+    <updated>2017-06-22T15:51:43.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
@@ -234,6 +234,8 @@ Return
     
     </summary>
     
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
@@ -242,24 +244,6 @@ Return
       <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
     
       <category term="Backtracking" scheme="http://yoursite.com/tags/Backtracking/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 125. Valid Palindrome</title>
-    <link href="http://yoursite.com/2017/06/20/LeetCode-125-Valid-Palindrome-1/"/>
-    <id>http://yoursite.com/2017/06/20/LeetCode-125-Valid-Palindrome-1/</id>
-    <published>2017-06-21T01:46:52.000Z</published>
-    <updated>2017-06-21T01:46:52.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;
-    
-    </summary>
-    
     
   </entry>
   
@@ -827,6 +811,75 @@ Reference：https://discuss.leetcode.com/topic/27868/concise-java-solution-based
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+    
+      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 141. Linked List Cycle</title>
+    <link href="http://yoursite.com/2017/06/16/LeetCode-141-Linked-List-Cycle/"/>
+    <id>http://yoursite.com/2017/06/16/LeetCode-141-Linked-List-Cycle/</id>
+    <published>2017-06-16T21:24:02.000Z</published>
+    <updated>2017-06-16T21:36:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a linked list, determine if it has a cycle in it.</p>
+<p>Follow up:
+Can you solve it without using extra space?</p>
+<h3 id="explanation">Explanation</h3>
+<p>双指针，如果有重合，就说明有环。</p>
+<h3 id="code">Code</h3>
+<p>public class Solution {
+// Solution 1: user extra space, O(N). Time complexity:O(N). HashSet;
+// public boolean hasCycle(ListNode head) {
+//     if (head == null) return false;
+//     ListNode n = head;
+//     HashSet&lt;ListNode&gt; set = new HashSet&lt;&gt;();
+//     while(n!=null) {
+//         if (!set.contains(n)) set.add(n);
+//         else return true;
+//         n = n.next;
+//     }
+//     return false;
+// }
+// Solution 2: two pointers
+public boolean hasCycle(ListNode head) {
+if (head == null) return false;
+ListNode walker, runner;
+walker = head;
+runner = head;
+while (runner != null &amp;&amp; runner.next != null) {
+runner = runner.next.next;
+walker = walker.next;
+if (runner == walker) return true;
+}
+return false;</p>
+<pre><code>      }
+  }
+
+
+
+}
+</code></pre>
+<p>}</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a linked list, determine if it has a cycle in it.
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
     
