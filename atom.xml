@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2017-06-22T21:21:30.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http:starllap.space/"/>
+  <updated>2017-06-24T00:24:04.000Z</updated>
+  <id>http:starllap.space/</id>
   
   <author>
     <name>Star</name>
@@ -16,9 +16,133 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>LeetCode 75.Sort Colors</title>
+    <link href="http:starllap.space/2017/06/23/LeetCode-75-Sort-Colors/"/>
+    <id>http:starllap.space/2017/06/23/LeetCode-75-Sort-Colors/</id>
+    <published>2017-06-24T00:21:33.000Z</published>
+    <updated>2017-06-24T00:24:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
+<p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.</p>
+<p>Note:
+You are not suppose to use the library's sort function for this problem.</p>
+<h3 id="explanation">Explanation</h3>
+<p>这道题，需要一个指针一直在遍历数组。同时，还有left，和right两个指针分别计算0和2。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public void sortColors(int[] nums) &#123;</div><div class="line">        int j = 0, k = nums.length-1;</div><div class="line">        for (int i=0; i &lt;= k; i++) &#123;</div><div class="line">            if (nums[i] == 0)</div><div class="line">                swap(nums, i, j++);</div><div class="line">            else if (nums[i] == 2)</div><div class="line">                swap(nums, i--, k--);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void swap(int[] a, int i, int j) &#123;</div><div class="line">        int tmp = a[i];</div><div class="line">        a[i] = a[j];</div><div class="line">        a[j] = tmp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given an array with n objects colored red, white or blu
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
+    
+      <category term="Sort" scheme="http:starllap.space/tags/Sort/"/>
+    
+      <category term="Array" scheme="http:starllap.space/tags/Array/"/>
+    
+      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 18. 4Sum</title>
+    <link href="http:starllap.space/2017/06/23/LeetCode-18-4Sum/"/>
+    <id>http:starllap.space/2017/06/23/LeetCode-18-4Sum/</id>
+    <published>2017-06-23T20:46:45.000Z</published>
+    <updated>2017-06-23T20:48:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.</p>
+<p>Note: The solution set must not contain duplicate quadruplets.</p>
+<p>For example, given array S = [1, 0, -1, 0, -2, 2], and target = 0.</p>
+<p>A solution set is:
+[
+[-1,  0, 0, 1],
+[-2, -1, 1, 2],
+[-2,  0, 0, 2]
+]</p>
+<h3 id="explanation">Explanation</h3>
+<p>分解成3sum和2sum来做，注意排序以后要跳过重复的值。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] nums, int target) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if (nums == null || nums.length &lt; 4) return result;</div><div class="line">        Arrays.sort(nums);</div><div class="line">        for(int i=0; i&lt;nums.length-3; i++) &#123;</div><div class="line">            if (i != 0 &amp;&amp; nums[i] == nums[i-1])&#123;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            for (int j = i+1; j &lt; nums.length-2; j++) &#123;</div><div class="line">                if (j&gt;i+1 &amp;&amp; nums[j] == nums[j-1]) continue;</div><div class="line">                int low = j+1;</div><div class="line">                int high = nums.length-1;</div><div class="line">                while(low &lt; high) &#123;</div><div class="line">                    int sum = nums[i] + nums[j] + nums[low] + nums[high];</div><div class="line">                    if(sum == target) &#123;</div><div class="line">                        result.add(Arrays.asList(nums[i], nums[j], nums[low], nums[high]));</div><div class="line">                    while(low &lt; high &amp;&amp; nums[low] == nums[low+1]) low++;</div><div class="line">                    while(low &lt; high &amp;&amp; nums[high] == nums[high - 1]) high--;</div><div class="line">                    low ++;</div><div class="line">                    high --;</div><div class="line">                    &#125; else if(sum &lt; target) low++;</div><div class="line">                    else high --;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given an array S of n integers, are there elements a, b
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
+    
+      <category term="Array" scheme="http:starllap.space/tags/Array/"/>
+    
+      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
+    
+      <category term="HashTable" scheme="http:starllap.space/tags/HashTable/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 16. 3Sum Closest</title>
+    <link href="http:starllap.space/2017/06/23/LeetCode-16-3Sum-Closest/"/>
+    <id>http:starllap.space/2017/06/23/LeetCode-16-3Sum-Closest/</id>
+    <published>2017-06-23T20:19:57.000Z</published>
+    <updated>2017-06-23T20:21:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.</p>
+<pre><code>For example, given array S = {-1 2 1 -4}, and target = 1.
+
+The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+</code></pre>
+<h3 id="explanation">Explanation</h3>
+<p>固定一个值，然后用双指针遍历其他的值。找到绝对值之差最小的即可。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int threeSumClosest(int[] nums, int target) &#123;</div><div class="line">        int diff = Integer.MAX_VALUE;</div><div class="line">        int result = 0;</div><div class="line">        if (nums == null || nums.length &lt; 3) return -1;</div><div class="line">        Arrays.sort(nums);</div><div class="line">        for (int i=0; i&lt;nums.length; i++) &#123;</div><div class="line">            int start = i+1;</div><div class="line">            int end = nums.length - 1;</div><div class="line">            while (start &lt; end) &#123;</div><div class="line">                int sum = nums[i] + nums[start] + nums[end];</div><div class="line">                if (Math.abs(target - sum) &lt; diff) &#123;</div><div class="line">                    diff = Math.abs(target - sum);</div><div class="line">                    result = sum;</div><div class="line">                &#125;</div><div class="line">                if (sum &lt; target) &#123;</div><div class="line">                    start ++;</div><div class="line">                &#125; else&#123;</div><div class="line">                    end --;</div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given an array S of n integers, find three integers in 
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
+    
+      <category term="Array" scheme="http:starllap.space/tags/Array/"/>
+    
+      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
+    
+  </entry>
+  
+  <entry>
     <title>[LintCode] Closest number in sorted array </title>
-    <link href="http://yoursite.com/2017/06/22/LintCode-Closest-number-in-sorted-array/"/>
-    <id>http://yoursite.com/2017/06/22/LintCode-Closest-number-in-sorted-array/</id>
+    <link href="http:starllap.space/2017/06/22/LintCode-Closest-number-in-sorted-array/"/>
+    <id>http:starllap.space/2017/06/22/LintCode-Closest-number-in-sorted-array/</id>
     <published>2017-06-22T21:05:21.000Z</published>
     <updated>2017-06-22T21:21:30.000Z</updated>
     
@@ -38,21 +162,21 @@ Return -1 if there is no element in the array.</p>
     
     </summary>
     
-      <category term="LintCode" scheme="http://yoursite.com/categories/LintCode/"/>
+      <category term="LintCode" scheme="http:starllap.space/categories/LintCode/"/>
     
     
-      <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
+      <category term="Binary Search" scheme="http:starllap.space/tags/Binary-Search/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+      <category term="Array" scheme="http:starllap.space/tags/Array/"/>
     
-      <category term="LintCode" scheme="http://yoursite.com/tags/LintCode/"/>
+      <category term="LintCode" scheme="http:starllap.space/tags/LintCode/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode 56.Merge Intervals</title>
-    <link href="http://yoursite.com/2017/06/22/LeetCode-56-Merge-Intervals/"/>
-    <id>http://yoursite.com/2017/06/22/LeetCode-56-Merge-Intervals/</id>
+    <link href="http:starllap.space/2017/06/22/LeetCode-56-Merge-Intervals/"/>
+    <id>http:starllap.space/2017/06/22/LeetCode-56-Merge-Intervals/</id>
     <published>2017-06-22T16:18:31.000Z</published>
     <updated>2017-06-22T16:21:41.000Z</updated>
     
@@ -77,25 +201,25 @@ return [1,6],[8,10],[15,18].</p>
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+      <category term="Sort" scheme="http:starllap.space/tags/Sort/"/>
     
-      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
+      <category term="Array" scheme="http:starllap.space/tags/Array/"/>
     
-      <category term="Heap" scheme="http://yoursite.com/tags/Heap/"/>
+      <category term="Heap" scheme="http:starllap.space/tags/Heap/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode 347. Top K Frequent Elements</title>
-    <link href="http://yoursite.com/2017/06/22/LeetCode-347-Top-K-Frequent-Elements/"/>
-    <id>http://yoursite.com/2017/06/22/LeetCode-347-Top-K-Frequent-Elements/</id>
+    <link href="http:starllap.space/2017/06/22/LeetCode-347-Top-K-Frequent-Elements/"/>
+    <id>http:starllap.space/2017/06/22/LeetCode-347-Top-K-Frequent-Elements/</id>
     <published>2017-06-22T15:46:27.000Z</published>
     <updated>2017-06-22T15:48:55.000Z</updated>
     
@@ -119,23 +243,23 @@ Your algorithm's time complexity must be better than O(n log n), where n is the 
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
     
-      <category term="HashTable" scheme="http://yoursite.com/tags/HashTable/"/>
+      <category term="HashTable" scheme="http:starllap.space/tags/HashTable/"/>
     
-      <category term="Heap" scheme="http://yoursite.com/tags/Heap/"/>
+      <category term="Heap" scheme="http:starllap.space/tags/Heap/"/>
     
   </entry>
   
   <entry>
     <title>当你在浏览器中输入www.google.com会发生什么？</title>
-    <link href="http://yoursite.com/2017/06/21/%E5%BD%93%E4%BD%A0%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5www-google-com%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F/"/>
-    <id>http://yoursite.com/2017/06/21/当你在浏览器中输入www-google-com会发生什么？/</id>
+    <link href="http:starllap.space/2017/06/21/%E5%BD%93%E4%BD%A0%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5www-google-com%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F/"/>
+    <id>http:starllap.space/2017/06/21/当你在浏览器中输入www-google-com会发生什么？/</id>
     <published>2017-06-21T16:16:24.000Z</published>
     <updated>2017-06-22T15:50:08.000Z</updated>
     
@@ -187,19 +311,19 @@ Connection header tells the server to keep open the TCP connection established h
     
     </summary>
     
-      <category term="技术冷板凳" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E5%86%B7%E6%9D%BF%E5%87%B3/"/>
+      <category term="技术冷板凳" scheme="http:starllap.space/categories/%E6%8A%80%E6%9C%AF%E5%86%B7%E6%9D%BF%E5%87%B3/"/>
     
     
-      <category term="HTTP" scheme="http://yoursite.com/tags/HTTP/"/>
+      <category term="HTTP" scheme="http:starllap.space/tags/HTTP/"/>
     
-      <category term="Network" scheme="http://yoursite.com/tags/Network/"/>
+      <category term="Network" scheme="http:starllap.space/tags/Network/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode 170. Two Sum III - Data Structure design</title>
-    <link href="http://yoursite.com/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/"/>
-    <id>http://yoursite.com/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/</id>
+    <link href="http:starllap.space/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/"/>
+    <id>http:starllap.space/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/</id>
     <published>2017-06-21T03:23:56.000Z</published>
     <updated>2017-06-21T03:26:47.000Z</updated>
     
@@ -221,23 +345,23 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Design" scheme="http://yoursite.com/tags/Design/"/>
+      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+      <category term="Design" scheme="http:starllap.space/tags/Design/"/>
     
-      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
+      <category term="Hash Table" scheme="http:starllap.space/tags/Hash-Table/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode 1. Two Sum</title>
-    <link href="http://yoursite.com/2017/06/20/LeetCode-1-Two-Sum/"/>
-    <id>http://yoursite.com/2017/06/20/LeetCode-1-Two-Sum/</id>
+    <link href="http:starllap.space/2017/06/20/LeetCode-1-Two-Sum/"/>
+    <id>http:starllap.space/2017/06/20/LeetCode-1-Two-Sum/</id>
     <published>2017-06-21T03:19:43.000Z</published>
     <updated>2017-06-21T03:23:23.000Z</updated>
     
@@ -272,23 +396,23 @@ return result;</p>
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+      <category term="Array" scheme="http:starllap.space/tags/Array/"/>
     
-      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
+      <category term="Hash Table" scheme="http:starllap.space/tags/Hash-Table/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode 131.Palindrome Partitioning</title>
-    <link href="http://yoursite.com/2017/06/20/LeetCode-131-Palindrome-Partitioning/"/>
-    <id>http://yoursite.com/2017/06/20/LeetCode-131-Palindrome-Partitioning/</id>
+    <link href="http:starllap.space/2017/06/20/LeetCode-131-Palindrome-Partitioning/"/>
+    <id>http:starllap.space/2017/06/20/LeetCode-131-Palindrome-Partitioning/</id>
     <published>2017-06-21T01:47:25.000Z</published>
     <updated>2017-06-22T15:51:43.000Z</updated>
     
@@ -311,23 +435,23 @@ Return
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
     
-      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
     
-      <category term="Backtracking" scheme="http://yoursite.com/tags/Backtracking/"/>
+      <category term="Backtracking" scheme="http:starllap.space/tags/Backtracking/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode 125. Valid Palindrome</title>
-    <link href="http://yoursite.com/2017/06/20/LeetCode-125-Valid-Palindrome/"/>
-    <id>http://yoursite.com/2017/06/20/LeetCode-125-Valid-Palindrome/</id>
+    <link href="http:starllap.space/2017/06/20/LeetCode-125-Valid-Palindrome/"/>
+    <id>http:starllap.space/2017/06/20/LeetCode-125-Valid-Palindrome/</id>
     <published>2017-06-20T20:11:54.000Z</published>
     <updated>2017-06-20T20:36:46.000Z</updated>
     
@@ -352,23 +476,23 @@ Have you consider that the string might be empty? This is a good question to ask
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="String" scheme="http://yoursite.com/tags/String/"/>
+      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+      <category term="String" scheme="http:starllap.space/tags/String/"/>
     
-      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode 26.Remove Duplicates from Sorted Array</title>
-    <link href="http://yoursite.com/2017/06/18/LeetCode-26-Remove-Duplicates-from-Sorted-Array/"/>
-    <id>http://yoursite.com/2017/06/18/LeetCode-26-Remove-Duplicates-from-Sorted-Array/</id>
+    <link href="http:starllap.space/2017/06/18/LeetCode-26-Remove-Duplicates-from-Sorted-Array/"/>
+    <id>http:starllap.space/2017/06/18/LeetCode-26-Remove-Duplicates-from-Sorted-Array/</id>
     <published>2017-06-18T20:25:52.000Z</published>
     <updated>2017-06-18T20:29:43.000Z</updated>
     
@@ -392,23 +516,23 @@ Given input array nums = [1,1,2],</p>
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+      <category term="Array" scheme="http:starllap.space/tags/Array/"/>
     
-      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode 283.Move Zeroes</title>
-    <link href="http://yoursite.com/2017/06/18/LeetCode-283-Move-Zeroes/"/>
-    <id>http://yoursite.com/2017/06/18/LeetCode-283-Move-Zeroes/</id>
+    <link href="http:starllap.space/2017/06/18/LeetCode-283-Move-Zeroes/"/>
+    <id>http:starllap.space/2017/06/18/LeetCode-283-Move-Zeroes/</id>
     <published>2017-06-18T20:13:56.000Z</published>
     <updated>2017-06-18T20:18:19.000Z</updated>
     
@@ -431,23 +555,23 @@ Minimize the total number of operations.</p>
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+      <category term="Array" scheme="http:starllap.space/tags/Array/"/>
     
-      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode 4. Median of Two Sorted Arrays</title>
-    <link href="http://yoursite.com/2017/06/18/LeetCode-4-Median-of-Two-Sorted-Arrays/"/>
-    <id>http://yoursite.com/2017/06/18/LeetCode-4-Median-of-Two-Sorted-Arrays/</id>
+    <link href="http:starllap.space/2017/06/18/LeetCode-4-Median-of-Two-Sorted-Arrays/"/>
+    <id>http:starllap.space/2017/06/18/LeetCode-4-Median-of-Two-Sorted-Arrays/</id>
     <published>2017-06-18T19:17:57.000Z</published>
     <updated>2017-06-18T19:43:23.000Z</updated>
     
@@ -472,25 +596,25 @@ Minimize the total number of operations.</p>
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
+      <category term="Binary Search" scheme="http:starllap.space/tags/Binary-Search/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+      <category term="Array" scheme="http:starllap.space/tags/Array/"/>
     
-      <category term="Hard" scheme="http://yoursite.com/tags/Hard/"/>
+      <category term="Hard" scheme="http:starllap.space/tags/Hard/"/>
     
-      <category term="Divide and conquer" scheme="http://yoursite.com/tags/Divide-and-conquer/"/>
+      <category term="Divide and conquer" scheme="http:starllap.space/tags/Divide-and-conquer/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode Weekly Contest 621. Task Scheduler</title>
-    <link href="http://yoursite.com/2017/06/18/LeetCode-Weekly-Contest-621-Task-Scheduler-1/"/>
-    <id>http://yoursite.com/2017/06/18/LeetCode-Weekly-Contest-621-Task-Scheduler-1/</id>
+    <link href="http:starllap.space/2017/06/18/LeetCode-Weekly-Contest-621-Task-Scheduler-1/"/>
+    <id>http:starllap.space/2017/06/18/LeetCode-Weekly-Contest-621-Task-Scheduler-1/</id>
     <published>2017-06-18T18:06:34.000Z</published>
     <updated>2017-06-18T18:06:34.000Z</updated>
     
@@ -507,8 +631,8 @@ Minimize the total number of operations.</p>
   
   <entry>
     <title>LeetCode Weekly Contest 625. Minimum Factorization</title>
-    <link href="http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-625-Minimum-Factorization/"/>
-    <id>http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-625-Minimum-Factorization/</id>
+    <link href="http:starllap.space/2017/06/17/LeetCode-Weekly-Contest-625-Minimum-Factorization/"/>
+    <id>http:starllap.space/2017/06/17/LeetCode-Weekly-Contest-625-Minimum-Factorization/</id>
     <published>2017-06-18T03:44:54.000Z</published>
     <updated>2017-06-18T15:46:47.000Z</updated>
     
@@ -538,21 +662,21 @@ Output:
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
     
-      <category term="Arrays" scheme="http://yoursite.com/tags/Arrays/"/>
+      <category term="Arrays" scheme="http:starllap.space/tags/Arrays/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode Weekly Contest 623.Add One Row to Tree</title>
-    <link href="http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-623-Add-One-Row-to-Tree/"/>
-    <id>http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-623-Add-One-Row-to-Tree/</id>
+    <link href="http:starllap.space/2017/06/17/LeetCode-Weekly-Contest-623-Add-One-Row-to-Tree/"/>
+    <id>http:starllap.space/2017/06/17/LeetCode-Weekly-Contest-623-Add-One-Row-to-Tree/</id>
     <published>2017-06-18T03:43:20.000Z</published>
     <updated>2017-06-18T15:43:01.000Z</updated>
     
@@ -580,23 +704,23 @@ A binary tree as following:
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
     
-      <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
+      <category term="BFS" scheme="http:starllap.space/tags/BFS/"/>
     
-      <category term="Binary tree" scheme="http://yoursite.com/tags/Binary-tree/"/>
+      <category term="Binary tree" scheme="http:starllap.space/tags/Binary-tree/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode Weekly Contest 624.Maximum Distance in Arrays</title>
-    <link href="http://yoursite.com/2017/06/17/LeetCode-624-Maximum-Distance-in-Arrays/"/>
-    <id>http://yoursite.com/2017/06/17/LeetCode-624-Maximum-Distance-in-Arrays/</id>
+    <link href="http:starllap.space/2017/06/17/LeetCode-624-Maximum-Distance-in-Arrays/"/>
+    <id>http:starllap.space/2017/06/17/LeetCode-624-Maximum-Distance-in-Arrays/</id>
     <published>2017-06-18T03:37:36.000Z</published>
     <updated>2017-06-18T03:42:40.000Z</updated>
     
@@ -626,21 +750,21 @@ The integers in the m arrays will be in the range of [-10000, 10000].</p>
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+      <category term="Array" scheme="http:starllap.space/tags/Array/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode 349.Intersection of Two Arrays</title>
-    <link href="http://yoursite.com/2017/06/17/LeetCode-349-Intersection-of-Two-Arrays/"/>
-    <id>http://yoursite.com/2017/06/17/LeetCode-349-Intersection-of-Two-Arrays/</id>
+    <link href="http:starllap.space/2017/06/17/LeetCode-349-Intersection-of-Two-Arrays/"/>
+    <id>http:starllap.space/2017/06/17/LeetCode-349-Intersection-of-Two-Arrays/</id>
     <published>2017-06-17T20:43:22.000Z</published>
     <updated>2017-06-17T20:56:08.000Z</updated>
     
@@ -670,29 +794,29 @@ The result can be in any order.</p>
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Binary Search" scheme="http://yoursite.com/tags/Binary-Search/"/>
+      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+      <category term="Binary Search" scheme="http:starllap.space/tags/Binary-Search/"/>
     
-      <category term="Hash Table" scheme="http://yoursite.com/tags/Hash-Table/"/>
+      <category term="Sort" scheme="http:starllap.space/tags/Sort/"/>
     
-      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
+      <category term="Hash Table" scheme="http:starllap.space/tags/Hash-Table/"/>
     
-      <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
     
-      <category term="Intersection" scheme="http://yoursite.com/tags/Intersection/"/>
+      <category term="Intersection" scheme="http:starllap.space/tags/Intersection/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode 88.Merged Sorted Array</title>
-    <link href="http://yoursite.com/2017/06/17/LeetCode-88-Merged-Sorted-Array/"/>
-    <id>http://yoursite.com/2017/06/17/LeetCode-88-Merged-Sorted-Array/</id>
+    <link href="http:starllap.space/2017/06/17/LeetCode-88-Merged-Sorted-Array/"/>
+    <id>http:starllap.space/2017/06/17/LeetCode-88-Merged-Sorted-Array/</id>
     <published>2017-06-17T20:20:30.000Z</published>
     <updated>2017-06-17T20:22:24.000Z</updated>
     
@@ -713,145 +837,16 @@ You may assume that nums1 has enough space (size that is greater or equal to m +
     
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
     
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
+      <category term="Array" scheme="http:starllap.space/tags/Array/"/>
     
-      <category term="Merge Sort" scheme="http://yoursite.com/tags/Merge-Sort/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode Weekly Contest 621. Task Scheduler</title>
-    <link href="http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-621-Task-Scheduler/"/>
-    <id>http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-621-Task-Scheduler/</id>
-    <published>2017-06-17T18:02:21.000Z</published>
-    <updated>2017-06-18T18:06:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks.Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.</p>
-<p>However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.</p>
-<p>You need to return the least number of intervals the CPU will take to finish all the given tasks.</p>
-<p>Example 1:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: tasks = [&apos;A&apos;,&apos;A&apos;,&apos;A&apos;,&apos;B&apos;,&apos;B&apos;,&apos;B&apos;], n = 2</div><div class="line">Output: 8</div><div class="line">Explanation: A -&gt; B -&gt; idle -&gt; A -&gt; B -&gt; idle -&gt; A -&gt; B.</div></pre></td></tr></table></figure></p>
-<p>Note:
-The number of tasks is in the range [1, 10000].
-The integer n is in the range [0, 100].</p>
-<h3 id="explanation">Explanation</h3>
-<p>这道题就是依次找到最max的frequency,之后顺次递减，如果还有剩余，就放回去。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int leastInterval(char[] tasks, int n) &#123;</div><div class="line">        HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">        // store all tasks with its frequency</div><div class="line">        for (char c : tasks) &#123;</div><div class="line">            map.put(c, map.getOrDefault(c, 0) + 1);</div><div class="line">        &#125;</div><div class="line">        // store sorted frequency</div><div class="line">        PriorityQueue&lt;Map.Entry&lt;Character, Integer&gt;&gt; queue = new PriorityQueue&lt;&gt;(</div><div class="line">            (a,b) -&gt; a.getValue() != b.getValue() ? b.getValue() - a.getValue() : a.getKey() - b.getKey());</div><div class="line">        queue.addAll(map.entrySet());</div><div class="line">        int count = 0;</div><div class="line"></div><div class="line">        while(!queue.isEmpty()) &#123;</div><div class="line">            int k = n+1;</div><div class="line">            List&lt;Map.Entry&gt; tmpList = new ArrayList&lt;&gt;();</div><div class="line">            while (k &gt; 0 &amp;&amp; !queue.isEmpty()) &#123;</div><div class="line">                Map.Entry&lt;Character, Integer&gt; top = queue.poll();</div><div class="line">                top.setValue(top.getValue()-1);</div><div class="line">                tmpList.add(top);</div><div class="line">                k --;</div><div class="line">                count ++;</div><div class="line">            &#125;</div><div class="line">            for (Map.Entry&lt;Character, Integer&gt; e:tmpList) &#123;</div><div class="line">                if (e.getValue() &gt; 0)</div><div class="line">                queue.add(e);</div><div class="line">            &#125;</div><div class="line">            if (queue.isEmpty()) break;</div><div class="line">            count = count + k;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return count;  </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<pre><code></code></pre>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a char array representing tasks CPU need to do. I
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Array" scheme="http://yoursite.com/tags/Array/"/>
-    
-      <category term="PriorityQueue" scheme="http://yoursite.com/tags/PriorityQueue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 21. Merge Two Sorted Lists</title>
-    <link href="http://yoursite.com/2017/06/16/LeetCode-21-Merge-Two-Sorted-Lists/"/>
-    <id>http://yoursite.com/2017/06/16/LeetCode-21-Merge-Two-Sorted-Lists/</id>
-    <published>2017-06-17T00:36:46.000Z</published>
-    <updated>2017-06-17T00:47:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
-<h3 id="explanation">Explanation</h3>
-<p>两个指针。非常简单。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;</div><div class="line">        ListNode a = l1;</div><div class="line">        ListNode b = l2;</div><div class="line">        if (l1 == null &amp;&amp; l2 == null) return null;</div><div class="line">        ListNode curr = new ListNode(0);</div><div class="line">        ListNode dummy= curr;</div><div class="line">        while(a != null &amp;&amp; b != null) &#123;</div><div class="line">            if (a.val &lt; b.val) &#123;</div><div class="line">                dummy.next = new ListNode(a.val);</div><div class="line">                a = a.next;</div><div class="line">            &#125; else &#123;</div><div class="line">                dummy.next = new ListNode(b.val);</div><div class="line">                b = b.next;</div><div class="line">            &#125;</div><div class="line">            dummy = dummy.next;</div><div class="line">        &#125;</div><div class="line">        if(a!= null) dummy.next = a;</div><div class="line">        else dummy.next = b;</div><div class="line">        return curr.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Merge two sorted linked lists and return it as a new li
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="LinkedList" scheme="http://yoursite.com/tags/LinkedList/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 148. Sort List以及排序</title>
-    <link href="http://yoursite.com/2017/06/16/LeetCode-148-Sort-List/"/>
-    <id>http://yoursite.com/2017/06/16/LeetCode-148-Sort-List/</id>
-    <published>2017-06-16T23:33:47.000Z</published>
-    <updated>2017-06-17T20:11:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>排序算法：
-时间复杂度为 O(nlgn）:<br>
-quick sort (空间复杂度O(1)), merge sort(空间复杂度O(n)), heap sort (空间复杂度O(1))
-时间复杂度为 O(n):
-bucket sort, radix sort,
-基于比较的排序，时间复杂度一般为O(nlgn）</p>
-<h3 id="question">Question</h3>
-<p>Sort a linked list in O(n log n) time using constant space complexity.</p>
-<h3 id="explanation">Explanation</h3>
-<p>这道题主要要掌握几种sort的方法怎么写，还有相关的复杂度分析。</p>
-<h3 id="code">Code</h3>
-<ol>
-<li>
-<p>Merge Sort: 时间复杂度为O(nlogn），空间复杂度O(n)
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode sortList(ListNode head) &#123;</div><div class="line">        if (head == null || head.next == null) return head;</div><div class="line">        // Merge Sort</div><div class="line">        ListNode mid = findMiddle(head);</div><div class="line">        ListNode right = sortList(mid.next);</div><div class="line">        mid.next = null;</div><div class="line">        ListNode left = sortList(head);</div><div class="line">        return mergeTwoLists(left, right);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;</div><div class="line">        ListNode a = l1;</div><div class="line">        ListNode b = l2;</div><div class="line">        if (l1 == null &amp;&amp; l2 == null) return null;</div><div class="line">        ListNode curr = new ListNode(0);</div><div class="line">        ListNode dummy= curr;</div><div class="line">        while(a != null &amp;&amp; b != null) &#123;</div><div class="line">            if (a.val &lt; b.val) &#123;</div><div class="line">                dummy.next = new ListNode(a.val);</div><div class="line">                a = a.next;</div><div class="line">            &#125; else &#123;</div><div class="line">                dummy.next = new ListNode(b.val);</div><div class="line">                b = b.next;</div><div class="line">            &#125;</div><div class="line">            dummy = dummy.next;</div><div class="line">        &#125;</div><div class="line">        if(a!= null) dummy.next = a;</div><div class="line">        else dummy.next = b;</div><div class="line">        return curr.next;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    private ListNode findMiddle(ListNode head) &#123;</div><div class="line">        ListNode walker = head;</div><div class="line">        ListNode runner = head.next;</div><div class="line">        while(runner!= null &amp;&amp; runner.next!=null) &#123;</div><div class="line">            runner = runner.next.next;</div><div class="line">            walker = walker.next;</div><div class="line">        &#125;</div><div class="line">        return walker;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>Quick Sort</p>
-</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode sortList(ListNode head) &#123;</div><div class="line">        //Quick Sort</div><div class="line">        if(head == null || head.next == null) return head;</div><div class="line">        ListNode mid = findMedian(head);//O(n)</div><div class="line">        ListNode leftDummy = new ListNode(0), leftTail = leftDummy;</div><div class="line">        ListNode rightDummy = new ListNode(0), rightTail = rightDummy;</div><div class="line">        ListNode middleDummy = new ListNode(0), middleTail = middleDummy;</div><div class="line">        while (head != null) &#123;</div><div class="line">            if (head.val &lt; mid.val) &#123;</div><div class="line">                leftTail.next = head;</div><div class="line">                leftTail = head;</div><div class="line">            &#125; else if (head.val &gt; mid.val) &#123;</div><div class="line">                rightTail.next = head;</div><div class="line">                rightTail = head;</div><div class="line">            &#125; else &#123;</div><div class="line">                middleTail.next = head;</div><div class="line">                middleTail = head;</div><div class="line">            &#125;</div><div class="line">            head = head.next;</div><div class="line">        &#125;</div><div class="line">        leftTail.next = null;</div><div class="line">        middleTail.next = null;</div><div class="line">        rightTail.next = null;</div><div class="line">        ListNode left = sortList(leftDummy.next);</div><div class="line">        ListNode right = sortList(rightDummy.next);</div><div class="line">        return concat(left, middleDummy.next, right);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    private ListNode findMedian(ListNode head) &#123;</div><div class="line">        ListNode slow = head, fast = head.next;</div><div class="line">        while (fast != null &amp;&amp; fast.next != null) &#123;</div><div class="line">            slow = slow.next;</div><div class="line">            fast = fast.next.next;</div><div class="line">        &#125;</div><div class="line">        return slow;</div><div class="line">    &#125;</div><div class="line">    private ListNode concat(ListNode left, ListNode middle, ListNode right) &#123;</div><div class="line">        ListNode dummy = new ListNode(0), tail = dummy;</div><div class="line"></div><div class="line">        tail.next = left; tail = getTail(tail);</div><div class="line">        tail.next = middle; tail = getTail(tail);</div><div class="line">        tail.next = right; tail = getTail(tail);</div><div class="line">        return dummy.next;</div><div class="line">    &#125;</div><div class="line">    private ListNode getTail(ListNode head) &#123;</div><div class="line">        if (head == null) &#123;</div><div class="line">           return null;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        while (head.next != null) &#123;</div><div class="line">            head = head.next;</div><div class="line">        &#125;</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;排序算法：
-时间复杂度为 O(nlgn）:&lt;br&gt;
-quick sort (空间复杂度O(1)), merge sort(空间复杂度O(n)), heap sort (空间复
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="Sort" scheme="http://yoursite.com/tags/Sort/"/>
-    
-      <category term="Merge Sort" scheme="http://yoursite.com/tags/Merge-Sort/"/>
-    
-      <category term="Quick Sort" scheme="http://yoursite.com/tags/Quick-Sort/"/>
+      <category term="Merge Sort" scheme="http:starllap.space/tags/Merge-Sort/"/>
     
   </entry>
   

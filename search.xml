@@ -4,8 +4,59 @@
   
     
     <entry>
+      <title><![CDATA[LeetCode 75.Sort Colors]]></title>
+      <url>http:starllap.space/2017/06/23/LeetCode-75-Sort-Colors/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
+<p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.</p>
+<p>Note:
+You are not suppose to use the library's sort function for this problem.</p>
+<h3 id="explanation">Explanation</h3>
+<p>这道题，需要一个指针一直在遍历数组。同时，还有left，和right两个指针分别计算0和2。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public void sortColors(int[] nums) &#123;</div><div class="line">        int j = 0, k = nums.length-1;</div><div class="line">        for (int i=0; i &lt;= k; i++) &#123;</div><div class="line">            if (nums[i] == 0)</div><div class="line">                swap(nums, i, j++);</div><div class="line">            else if (nums[i] == 2)</div><div class="line">                swap(nums, i--, k--);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void swap(int[] a, int i, int j) &#123;</div><div class="line">        int tmp = a[i];</div><div class="line">        a[i] = a[j];</div><div class="line">        a[j] = tmp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 18. 4Sum]]></title>
+      <url>http:starllap.space/2017/06/23/LeetCode-18-4Sum/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.</p>
+<p>Note: The solution set must not contain duplicate quadruplets.</p>
+<p>For example, given array S = [1, 0, -1, 0, -2, 2], and target = 0.</p>
+<p>A solution set is:
+[
+[-1,  0, 0, 1],
+[-2, -1, 1, 2],
+[-2,  0, 0, 2]
+]</p>
+<h3 id="explanation">Explanation</h3>
+<p>分解成3sum和2sum来做，注意排序以后要跳过重复的值。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] nums, int target) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if (nums == null || nums.length &lt; 4) return result;</div><div class="line">        Arrays.sort(nums);</div><div class="line">        for(int i=0; i&lt;nums.length-3; i++) &#123;</div><div class="line">            if (i != 0 &amp;&amp; nums[i] == nums[i-1])&#123;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            for (int j = i+1; j &lt; nums.length-2; j++) &#123;</div><div class="line">                if (j&gt;i+1 &amp;&amp; nums[j] == nums[j-1]) continue;</div><div class="line">                int low = j+1;</div><div class="line">                int high = nums.length-1;</div><div class="line">                while(low &lt; high) &#123;</div><div class="line">                    int sum = nums[i] + nums[j] + nums[low] + nums[high];</div><div class="line">                    if(sum == target) &#123;</div><div class="line">                        result.add(Arrays.asList(nums[i], nums[j], nums[low], nums[high]));</div><div class="line">                    while(low &lt; high &amp;&amp; nums[low] == nums[low+1]) low++;</div><div class="line">                    while(low &lt; high &amp;&amp; nums[high] == nums[high - 1]) high--;</div><div class="line">                    low ++;</div><div class="line">                    high --;</div><div class="line">                    &#125; else if(sum &lt; target) low++;</div><div class="line">                    else high --;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 16. 3Sum Closest]]></title>
+      <url>http:starllap.space/2017/06/23/LeetCode-16-3Sum-Closest/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.</p>
+<pre><code>For example, given array S = {-1 2 1 -4}, and target = 1.
+
+The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+</code></pre>
+<h3 id="explanation">Explanation</h3>
+<p>固定一个值，然后用双指针遍历其他的值。找到绝对值之差最小的即可。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int threeSumClosest(int[] nums, int target) &#123;</div><div class="line">        int diff = Integer.MAX_VALUE;</div><div class="line">        int result = 0;</div><div class="line">        if (nums == null || nums.length &lt; 3) return -1;</div><div class="line">        Arrays.sort(nums);</div><div class="line">        for (int i=0; i&lt;nums.length; i++) &#123;</div><div class="line">            int start = i+1;</div><div class="line">            int end = nums.length - 1;</div><div class="line">            while (start &lt; end) &#123;</div><div class="line">                int sum = nums[i] + nums[start] + nums[end];</div><div class="line">                if (Math.abs(target - sum) &lt; diff) &#123;</div><div class="line">                    diff = Math.abs(target - sum);</div><div class="line">                    result = sum;</div><div class="line">                &#125;</div><div class="line">                if (sum &lt; target) &#123;</div><div class="line">                    start ++;</div><div class="line">                &#125; else&#123;</div><div class="line">                    end --;</div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[[LintCode] Closest number in sorted array ]]></title>
-      <url>http://yoursite.com/2017/06/22/LintCode-Closest-number-in-sorted-array/</url>
+      <url>http:starllap.space/2017/06/22/LintCode-Closest-number-in-sorted-array/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a target number and an integer array A sorted in ascending order, find the index i in A such that A[i] is closest to the given target.
 Return -1 if there is no element in the array.</p>
@@ -18,7 +69,7 @@ Return -1 if there is no element in the array.</p>
     
     <entry>
       <title><![CDATA[LeetCode 56.Merge Intervals]]></title>
-      <url>http://yoursite.com/2017/06/22/LeetCode-56-Merge-Intervals/</url>
+      <url>http:starllap.space/2017/06/22/LeetCode-56-Merge-Intervals/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a collection of intervals, merge all overlapping intervals.</p>
 <p>For example,
@@ -36,7 +87,7 @@ return [1,6],[8,10],[15,18].</p>
     
     <entry>
       <title><![CDATA[LeetCode 347. Top K Frequent Elements]]></title>
-      <url>http://yoursite.com/2017/06/22/LeetCode-347-Top-K-Frequent-Elements/</url>
+      <url>http:starllap.space/2017/06/22/LeetCode-347-Top-K-Frequent-Elements/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
 <p>Given a non-empty array of integers, return the k most frequent elements.</p>
 <p>For example,
@@ -53,7 +104,7 @@ Your algorithm's time complexity must be better than O(n log n), where n is the 
     
     <entry>
       <title><![CDATA[当你在浏览器中输入www.google.com会发生什么？]]></title>
-      <url>http://yoursite.com/2017/06/21/%E5%BD%93%E4%BD%A0%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5www-google-com%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
+      <url>http:starllap.space/2017/06/21/%E5%BD%93%E4%BD%A0%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5www-google-com%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>经典面试题。</p>
 <p>中文参考：http://www.jianshu.com/p/71cf7f69eca8
 英文参考：http://edusagar.com/articles/view/70/What-happens-when-you-type-a-URL-in-browser</p>
@@ -97,7 +148,7 @@ Connection header tells the server to keep open the TCP connection established h
     
     <entry>
       <title><![CDATA[LeetCode 170. Two Sum III - Data Structure design]]></title>
-      <url>http://yoursite.com/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/</url>
+      <url>http:starllap.space/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Design and implement a TwoSum class. It should support the following operations: add and find.</p>
 <p>add - Add the number to an internal data structure.
@@ -112,7 +163,7 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
     <entry>
       <title><![CDATA[LeetCode 1. Two Sum]]></title>
-      <url>http://yoursite.com/2017/06/20/LeetCode-1-Two-Sum/</url>
+      <url>http:starllap.space/2017/06/20/LeetCode-1-Two-Sum/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Given an array of integers, return indices of the two numbers such that they add up to a specific target.</div><div class="line"></div><div class="line">You may assume that each input would have exactly one solution, and you may not use the same element twice.</div><div class="line"></div><div class="line">Example:</div><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line"></div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
 <h3 id="explanation">Explanation</h3>
@@ -140,7 +191,7 @@ return result;</p>
     
     <entry>
       <title><![CDATA[LeetCode 131.Palindrome Partitioning]]></title>
-      <url>http://yoursite.com/2017/06/20/LeetCode-131-Palindrome-Partitioning/</url>
+      <url>http:starllap.space/2017/06/20/LeetCode-131-Palindrome-Partitioning/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
 <p>Return all possible palindrome partitioning of s.</p>
@@ -156,7 +207,7 @@ Return
     
     <entry>
       <title><![CDATA[LeetCode 125. Valid Palindrome]]></title>
-      <url>http://yoursite.com/2017/06/20/LeetCode-125-Valid-Palindrome/</url>
+      <url>http:starllap.space/2017/06/20/LeetCode-125-Valid-Palindrome/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
 <p>For example,
@@ -174,7 +225,7 @@ Have you consider that the string might be empty? This is a good question to ask
     
     <entry>
       <title><![CDATA[LeetCode 26.Remove Duplicates from Sorted Array]]></title>
-      <url>http://yoursite.com/2017/06/18/LeetCode-26-Remove-Duplicates-from-Sorted-Array/</url>
+      <url>http:starllap.space/2017/06/18/LeetCode-26-Remove-Duplicates-from-Sorted-Array/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</p>
 <p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
@@ -191,7 +242,7 @@ Given input array nums = [1,1,2],</p>
     
     <entry>
       <title><![CDATA[LeetCode 283.Move Zeroes]]></title>
-      <url>http://yoursite.com/2017/06/18/LeetCode-283-Move-Zeroes/</url>
+      <url>http:starllap.space/2017/06/18/LeetCode-283-Move-Zeroes/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="quesiton">Quesiton</h3>
 <p>Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.</p>
 <p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].</p>
@@ -207,7 +258,7 @@ Minimize the total number of operations.</p>
     
     <entry>
       <title><![CDATA[LeetCode 4. Median of Two Sorted Arrays]]></title>
-      <url>http://yoursite.com/2017/06/18/LeetCode-4-Median-of-Two-Sorted-Arrays/</url>
+      <url>http:starllap.space/2017/06/18/LeetCode-4-Median-of-Two-Sorted-Arrays/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
 <p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
@@ -225,13 +276,13 @@ Minimize the total number of operations.</p>
     
     <entry>
       <title><![CDATA[LeetCode Weekly Contest 621. Task Scheduler]]></title>
-      <url>http://yoursite.com/2017/06/18/LeetCode-Weekly-Contest-621-Task-Scheduler-1/</url>
+      <url>http:starllap.space/2017/06/18/LeetCode-Weekly-Contest-621-Task-Scheduler-1/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script>]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[LeetCode Weekly Contest 625. Minimum Factorization]]></title>
-      <url>http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-625-Minimum-Factorization/</url>
+      <url>http:starllap.space/2017/06/17/LeetCode-Weekly-Contest-625-Minimum-Factorization/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a positive integer a, find the smallest positive integer b whose multiplication of each digit equals to a.</p>
 <p>If there is no answer or the answer is not fit in 32-bit signed integer, then return 0.</p>
@@ -254,7 +305,7 @@ Output:
     
     <entry>
       <title><![CDATA[LeetCode Weekly Contest 623.Add One Row to Tree]]></title>
-      <url>http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-623-Add-One-Row-to-Tree/</url>
+      <url>http:starllap.space/2017/06/17/LeetCode-Weekly-Contest-623-Add-One-Row-to-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given the root of a binary tree, then value v and depth d, you need to add a row of nodes with value v at the given depth d. The root node is at depth 1.</p>
 <p>The adding rule is: given a positive integer depth d, for each NOT null tree nodes N in depth d-1, create two tree nodes with value v as N's left subtree root and right subtree root. And N's original left subtree should be the left subtree of the new left subtree root, its original right subtree should be the right subtree of the new right subtree root. If depth d is 1 that means there is no depth d-1 at all, then create a tree node with value v as the new root of the whole original tree, and the original tree is the new root's left subtree.</p>
@@ -275,7 +326,7 @@ A binary tree as following:
     
     <entry>
       <title><![CDATA[LeetCode Weekly Contest 624.Maximum Distance in Arrays]]></title>
-      <url>http://yoursite.com/2017/06/17/LeetCode-624-Maximum-Distance-in-Arrays/</url>
+      <url>http:starllap.space/2017/06/17/LeetCode-624-Maximum-Distance-in-Arrays/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given m arrays, and each array is sorted in ascending order. Now you can pick up two integers from two different arrays (each array picks one) and calculate the distance. We define the distance between two integers a and b to be their absolute difference |a-b|. Your task is to find the maximum distance.
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line">Input:</div><div class="line">[[1,2,3],</div><div class="line"> [4,5],</div><div class="line"> [1,2,3]]</div><div class="line">Output: 4</div></pre></td></tr></table></figure></p>
@@ -298,7 +349,7 @@ The integers in the m arrays will be in the range of [-10000, 10000].</p>
     
     <entry>
       <title><![CDATA[LeetCode 349.Intersection of Two Arrays]]></title>
-      <url>http://yoursite.com/2017/06/17/LeetCode-349-Intersection-of-Two-Arrays/</url>
+      <url>http:starllap.space/2017/06/17/LeetCode-349-Intersection-of-Two-Arrays/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given two arrays, write a function to compute their intersection.</p>
 <p>Example:
@@ -321,7 +372,7 @@ The result can be in any order.</p>
     
     <entry>
       <title><![CDATA[LeetCode 88.Merged Sorted Array]]></title>
-      <url>http://yoursite.com/2017/06/17/LeetCode-88-Merged-Sorted-Array/</url>
+      <url>http:starllap.space/2017/06/17/LeetCode-88-Merged-Sorted-Array/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
 <p>Note:
@@ -335,7 +386,7 @@ You may assume that nums1 has enough space (size that is greater or equal to m +
     
     <entry>
       <title><![CDATA[LeetCode Weekly Contest 621. Task Scheduler]]></title>
-      <url>http://yoursite.com/2017/06/17/LeetCode-Weekly-Contest-621-Task-Scheduler/</url>
+      <url>http:starllap.space/2017/06/17/LeetCode-Weekly-Contest-621-Task-Scheduler/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks.Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.</p>
 <p>However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.</p>
@@ -355,7 +406,7 @@ The integer n is in the range [0, 100].</p>
     
     <entry>
       <title><![CDATA[LeetCode 21. Merge Two Sorted Lists]]></title>
-      <url>http://yoursite.com/2017/06/16/LeetCode-21-Merge-Two-Sorted-Lists/</url>
+      <url>http:starllap.space/2017/06/16/LeetCode-21-Merge-Two-Sorted-Lists/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
 <h3 id="explanation">Explanation</h3>
@@ -367,7 +418,7 @@ The integer n is in the range [0, 100].</p>
     
     <entry>
       <title><![CDATA[LeetCode 148. Sort List以及排序]]></title>
-      <url>http://yoursite.com/2017/06/16/LeetCode-148-Sort-List/</url>
+      <url>http:starllap.space/2017/06/16/LeetCode-148-Sort-List/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>排序算法：
 时间复杂度为 O(nlgn）:<br>
 quick sort (空间复杂度O(1)), merge sort(空间复杂度O(n)), heap sort (空间复杂度O(1))
@@ -394,7 +445,7 @@ bucket sort, radix sort,
     
     <entry>
       <title><![CDATA[LeetCode 142. Linked List CycleII]]></title>
-      <url>http://yoursite.com/2017/06/16/LeetCode-142-Linked-List-CycleII/</url>
+      <url>http:starllap.space/2017/06/16/LeetCode-142-Linked-List-CycleII/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a linked list, return the node where the cycle begins. If there is no cycle, return null.</p>
 <p>Note: Do not modify the linked list.</p>
@@ -411,7 +462,7 @@ Reference：https://discuss.leetcode.com/topic/27868/concise-java-solution-based
     
     <entry>
       <title><![CDATA[LeetCode 141. Linked List Cycle]]></title>
-      <url>http://yoursite.com/2017/06/16/LeetCode-141-Linked-List-Cycle/</url>
+      <url>http:starllap.space/2017/06/16/LeetCode-141-Linked-List-Cycle/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a linked list, determine if it has a cycle in it.</p>
 <p>Follow up:
@@ -457,7 +508,7 @@ return false;</p>
     
     <entry>
       <title><![CDATA[LeetCode 138. Copy List with Random Pointer]]></title>
-      <url>http://yoursite.com/2017/06/16/LeetCode-138-Copy-List-with-Random-Pointer/</url>
+      <url>http:starllap.space/2017/06/16/LeetCode-138-Copy-List-with-Random-Pointer/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p>
 <p>Return a deep copy of the list.</p>
@@ -470,7 +521,7 @@ return false;</p>
     
     <entry>
       <title><![CDATA[LeetCode 25. Reverse Nodes in k-Group]]></title>
-      <url>http://yoursite.com/2017/06/16/LeetCode-25-Reverse-Nodes-in-k-Group/</url>
+      <url>http:starllap.space/2017/06/16/LeetCode-25-Reverse-Nodes-in-k-Group/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.</p>
 <p>k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.</p>
@@ -489,7 +540,7 @@ Given this linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5</p>
     
     <entry>
       <title><![CDATA[LeetCode 92. Reverse LinkedList II]]></title>
-      <url>http://yoursite.com/2017/06/15/LeetCode-92-Reverse-LinkedList-II/</url>
+      <url>http:starllap.space/2017/06/15/LeetCode-92-Reverse-LinkedList-II/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Reverse a linked list from position m to n. Do it in-place and in one-pass.</p>
 <p>For example:
@@ -538,7 +589,7 @@ Given m, n satisfy the following condition:
     
     <entry>
       <title><![CDATA[LeetCode 47.Permutations II]]></title>
-      <url>http://yoursite.com/2017/06/12/LeetCode-47-Permutations-II/</url>
+      <url>http:starllap.space/2017/06/12/LeetCode-47-Permutations-II/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a collection of numbers that might contain duplicates, return all possible unique permutations.</p>
 <p>For example,
@@ -553,7 +604,7 @@ Given m, n satisfy the following condition:
     
     <entry>
       <title><![CDATA[LeetCode 46.Permutations]]></title>
-      <url>http://yoursite.com/2017/06/12/LeetCode-46-Permutations/</url>
+      <url>http:starllap.space/2017/06/12/LeetCode-46-Permutations/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="quesiton">Quesiton</h3>
 <p>Given a collection of distinct numbers, return all possible permutations.</p>
 <p>For example,
@@ -568,7 +619,7 @@ Given m, n satisfy the following condition:
     
     <entry>
       <title><![CDATA[LeetCode 40. Combination Sum II]]></title>
-      <url>http://yoursite.com/2017/06/12/LeetCode-40-Combination-Sum-II/</url>
+      <url>http:starllap.space/2017/06/12/LeetCode-40-Combination-Sum-II/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.</p>
 <p>Each number in C may only be used once in the combination.</p>
@@ -587,7 +638,7 @@ A solution set is:
     
     <entry>
       <title><![CDATA[LeetCode 39. Combination Sum]]></title>
-      <url>http://yoursite.com/2017/06/12/LeetCode-39-Combination-Sum/</url>
+      <url>http:starllap.space/2017/06/12/LeetCode-39-Combination-Sum/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a set of candidate numbers (C) (without duplicates) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.</p>
 <p>The same repeated number may be chosen from C unlimited number of times.</p>
@@ -606,7 +657,7 @@ A solution set is:
     
     <entry>
       <title><![CDATA[LeetCode 127. Word Ladder]]></title>
-      <url>http://yoursite.com/2017/06/12/LeetCode-127-Word-Ladder/</url>
+      <url>http:starllap.space/2017/06/12/LeetCode-127-Word-Ladder/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <h3 id="explanation">Explanation</h3>
 <p>本题用DFS做会严重超时，用BFS也要注意一下替换的方式。其实用双边BFS会更快。</p>
@@ -618,7 +669,7 @@ A solution set is:
     
     <entry>
       <title><![CDATA[LeetCode 73. Set Matrix Zeroes]]></title>
-      <url>http://yoursite.com/2017/06/11/LeetCode-73-Set-Matrix-Zeroes/</url>
+      <url>http:starllap.space/2017/06/11/LeetCode-73-Set-Matrix-Zeroes/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="quesiton">Quesiton</h3>
 <p>Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.</p>
 <p>click to show follow up.</p>
@@ -636,7 +687,7 @@ Could you devise a constant space solution?</p>
     
     <entry>
       <title><![CDATA[LeetCode 200. Number of Islands]]></title>
-      <url>http://yoursite.com/2017/06/11/LeetCode-200-Number-of-Islands/</url>
+      <url>http:starllap.space/2017/06/11/LeetCode-200-Number-of-Islands/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
 <p>Example 1:
@@ -654,7 +705,7 @@ Could you devise a constant space solution?</p>
     
     <entry>
       <title><![CDATA[LeetCode 210. Course Schedule II]]></title>
-      <url>http://yoursite.com/2017/06/10/LeetCode-210-Course-Schedule-II/</url>
+      <url>http:starllap.space/2017/06/10/LeetCode-210-Course-Schedule-II/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>There are a total of n courses you have to take, labeled from 0 to n - 1.</p>
 <p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]</p>
@@ -682,7 +733,7 @@ Topological sort could also be done via BFS.</p>
     
     <entry>
       <title><![CDATA[LeetCode 207. Course Schedule]]></title>
-      <url>http://yoursite.com/2017/06/10/LeetCode-207-Course-Schedule/</url>
+      <url>http:starllap.space/2017/06/10/LeetCode-207-Course-Schedule/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>There are a total of n courses you have to take, labeled from 0 to n - 1.</p>
 <p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]</p>
@@ -709,7 +760,7 @@ Topological sort could also be done via BFS.</p>
     
     <entry>
       <title><![CDATA[计算机网络原理知识点初整理]]></title>
-      <url>http://yoursite.com/2017/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E5%88%9D%E6%95%B4%E7%90%86/</url>
+      <url>http:starllap.space/2017/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E5%88%9D%E6%95%B4%E7%90%86/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>更新中...</p>
 <h2 id="http">HTTP</h2>
 <h3 id="http报文">HTTP报文</h3>
@@ -785,7 +836,7 @@ https://hit-alibaba.github.io/interview/basic/network/HTTP.html</p>
     
     <entry>
       <title><![CDATA[LeetCode 261. Graph Valid Tree]]></title>
-      <url>http://yoursite.com/2017/06/05/LeetCode-261-Graph-Valid-Tree/</url>
+      <url>http:starllap.space/2017/06/05/LeetCode-261-Graph-Valid-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given n nodes labeled from 0 to n - 1 and a list of undirected edges (each edge is a pair of nodes), write a function to check whether these edges make up a valid tree.</p>
 <p>For example:</p>
@@ -801,7 +852,7 @@ https://hit-alibaba.github.io/interview/basic/network/HTTP.html</p>
     
     <entry>
       <title><![CDATA[LeetCode 102. Binary Tree Level Order Traversal]]></title>
-      <url>http://yoursite.com/2017/06/01/LeetCode-102-Binary-Tree-Level-Order-Traversal/</url>
+      <url>http:starllap.space/2017/06/01/LeetCode-102-Binary-Tree-Level-Order-Traversal/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).</p>
 <p>For example:
@@ -826,7 +877,7 @@ return its level order traversal as:
     
     <entry>
       <title><![CDATA[LeetCode 501. Find Mode in Binary Search Tree]]></title>
-      <url>http://yoursite.com/2017/06/01/LeetCode-501-Find-Mode-in-Binary-Search-Tree/</url>
+      <url>http:starllap.space/2017/06/01/LeetCode-501-Find-Mode-in-Binary-Search-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary search tree (BST) with duplicates, find all the mode(s) (the most frequently occurred element) in the given BST.</p>
 <p>Assume a BST is defined as follows:</p>
@@ -850,7 +901,7 @@ return [2].</p>
     
     <entry>
       <title><![CDATA[LeetCode 109. Convert Sorted List to Binary Search Tree]]></title>
-      <url>http://yoursite.com/2017/05/31/LeetCode-109-Convert-Sorted-List-to-Binary-Search-Tree/</url>
+      <url>http:starllap.space/2017/05/31/LeetCode-109-Convert-Sorted-List-to-Binary-Search-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.</p>
 <h3 id="explanation">Explanation</h3>
@@ -862,7 +913,7 @@ return [2].</p>
     
     <entry>
       <title><![CDATA[LeetCode 108. Convert Sorted Array to Binary Search Tree]]></title>
-      <url>http://yoursite.com/2017/05/31/LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree/</url>
+      <url>http:starllap.space/2017/05/31/LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
 <h3 id="explanation">Explanation</h3>
@@ -874,7 +925,7 @@ return [2].</p>
     
     <entry>
       <title><![CDATA[LeetCode 173. Binary Search Tree Iterator]]></title>
-      <url>http://yoursite.com/2017/05/31/LeetCode-173-Binary-Search-Tree-Iterator/</url>
+      <url>http:starllap.space/2017/05/31/LeetCode-173-Binary-Search-Tree-Iterator/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.</p>
 <p>Calling next() will return the next smallest number in the BST.</p>
@@ -888,7 +939,7 @@ return [2].</p>
     
     <entry>
       <title><![CDATA[LeetCode 98. Validate Binary Search Tree]]></title>
-      <url>http://yoursite.com/2017/05/31/LeetCode-98-Validate-Binary-Search-Tree/</url>
+      <url>http:starllap.space/2017/05/31/LeetCode-98-Validate-Binary-Search-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
 <p>Assume a BST is defined as follows:</p>
@@ -914,7 +965,7 @@ Binary tree [1,2,3], return false.</p>
     
     <entry>
       <title><![CDATA[LeetCode 113.Path Sum II]]></title>
-      <url>http://yoursite.com/2017/05/31/LeetCode-113-Path-Sum-II/</url>
+      <url>http:starllap.space/2017/05/31/LeetCode-113-Path-Sum-II/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.</p>
 <p>For example:
@@ -931,7 +982,7 @@ Given the below binary tree and sum = 22,
     
     <entry>
       <title><![CDATA[LeetCode 112.Path Sum]]></title>
-      <url>http://yoursite.com/2017/05/30/LeetCode-112-Path-Sum/</url>
+      <url>http:starllap.space/2017/05/30/LeetCode-112-Path-Sum/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
 <p>For example:
@@ -947,7 +998,7 @@ Given the below binary tree and sum = 22,
     
     <entry>
       <title><![CDATA[LeetCode 236.Lowest Common Ancestor of a Binary  Tree]]></title>
-      <url>http://yoursite.com/2017/05/30/LeetCode-236-Lowest-Common-Ancestor-of-a-Binary-Tree/</url>
+      <url>http:starllap.space/2017/05/30/LeetCode-236-Lowest-Common-Ancestor-of-a-Binary-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.</p>
 <p>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).”
@@ -962,7 +1013,7 @@ Given the below binary tree and sum = 22,
     
     <entry>
       <title><![CDATA[LeetCode 235.Lowest Common Ancestor of a Binary Search Tree]]></title>
-      <url>http://yoursite.com/2017/05/30/LeetCode-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/</url>
+      <url>http:starllap.space/2017/05/30/LeetCode-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.</p>
 <p>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).”
@@ -977,7 +1028,7 @@ Given the below binary tree and sum = 22,
     
     <entry>
       <title><![CDATA[LeetCode 114. Flatten Binary Tree to Linked List]]></title>
-      <url>http://yoursite.com/2017/05/30/LeetCode-114-Flatten-Binary-Tree-to-Linked-List/</url>
+      <url>http:starllap.space/2017/05/30/LeetCode-114-Flatten-Binary-Tree-to-Linked-List/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, flatten it to a linked list in-place.</p>
 <p>For example,
@@ -994,7 +1045,7 @@ Given
     
     <entry>
       <title><![CDATA[LeetCode 110. Balanced Binary Tree]]></title>
-      <url>http://yoursite.com/2017/05/30/LeetCode-110-Balanced-Binary-Tree/</url>
+      <url>http:starllap.space/2017/05/30/LeetCode-110-Balanced-Binary-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, determine if it is height-balanced.</p>
 <p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
@@ -1007,7 +1058,7 @@ Given
     
     <entry>
       <title><![CDATA[LintCode 596. Minimum Subtree]]></title>
-      <url>http://yoursite.com/2017/05/30/LintCode-596-Minimum-Subtree/</url>
+      <url>http:starllap.space/2017/05/30/LintCode-596-Minimum-Subtree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Description
 Given a binary tree, find the subtree with minimum sum. Return the root of the subtree.</p>
@@ -1027,7 +1078,7 @@ Given a binary tree:
     
     <entry>
       <title><![CDATA[Leetcode 257. Binary Tree Path]]></title>
-      <url>http://yoursite.com/2017/05/30/Leetcode-257-Binary-Tree-Path/</url>
+      <url>http:starllap.space/2017/05/30/Leetcode-257-Binary-Tree-Path/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, return all root-to-leaf paths.</p>
 <p>For example, given the following binary tree:
@@ -1043,7 +1094,7 @@ Given a binary tree:
     
     <entry>
       <title><![CDATA[Leetcode 104. Binary Tree Postorder Traversal]]></title>
-      <url>http://yoursite.com/2017/05/30/Leetcode-104-Maximum-Depth-of-Binary-Tree/</url>
+      <url>http:starllap.space/2017/05/30/Leetcode-104-Maximum-Depth-of-Binary-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, find its maximum depth.</p>
 <p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
@@ -1056,7 +1107,7 @@ Given a binary tree:
     
     <entry>
       <title><![CDATA[Leetcode 145. Binary Tree Postorder Traversal]]></title>
-      <url>http://yoursite.com/2017/05/30/Leetcode-145-Binary-Tree-Postorder-Traversal/</url>
+      <url>http:starllap.space/2017/05/30/Leetcode-145-Binary-Tree-Postorder-Traversal/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, return the postorder traversal of its nodes' values.</p>
 <p>For example:
@@ -1072,7 +1123,7 @@ Given binary tree {1,#,2,3},
     
     <entry>
       <title><![CDATA[LeetCode 144. Binary Tree Preorder Traversal]]></title>
-      <url>http://yoursite.com/2017/05/30/Leetcode-144-Binary-Tree-Preorder-Traversal/</url>
+      <url>http:starllap.space/2017/05/30/Leetcode-144-Binary-Tree-Preorder-Traversal/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, return the preorder traversal of its nodes' values.</p>
 <p>For example:
@@ -1088,7 +1139,7 @@ Given binary tree {1,#,2,3},
     
     <entry>
       <title><![CDATA[LeetCode 367. Valid Perfect Square]]></title>
-      <url>http://yoursite.com/2017/05/28/LeetCode-367-Valid-Perfect-Square/</url>
+      <url>http:starllap.space/2017/05/28/LeetCode-367-Valid-Perfect-Square/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a positive integer num, write a function which returns True if num is a perfect square else False.</p>
 <p>Note: Do not use any built-in library function such as sqrt.</p>
@@ -1105,7 +1156,7 @@ Given binary tree {1,#,2,3},
     
     <entry>
       <title><![CDATA[Binary Search 二分查找]]></title>
-      <url>http://yoursite.com/2017/05/28/Binary%20Search/</url>
+      <url>http:starllap.space/2017/05/28/Binary%20Search/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h2 id="二分查找模板总结">二分查找模板总结</h2>
 <p>四点要素：</p>
 <ul>
@@ -1162,7 +1213,7 @@ Return -1, if the number doesn't exist in the array.</p>
     
     <entry>
       <title><![CDATA[LeetCode Backtracking Problems]]></title>
-      <url>http://yoursite.com/2017/05/25/LeetCode-Backtracking-Problems/</url>
+      <url>http:starllap.space/2017/05/25/LeetCode-Backtracking-Problems/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h2 id="leetcode-78-subsets">LeetCode 78: Subsets</h2>
 <h3 id="question">Question</h3>
 <p>Given a set of distinct integers, nums, return all possible subsets.</p>
@@ -1199,7 +1250,7 @@ If nums = [1,2,2], a solution is:
     
     <entry>
       <title><![CDATA[Install Sudo in Debian]]></title>
-      <url>http://yoursite.com/2017/04/28/Install-Sudo-in-Debian/</url>
+      <url>http:starllap.space/2017/04/28/Install-Sudo-in-Debian/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Debian系统里默认是没有sudo的，安装操作如下。</p>
 <p>Step 1: 用root的身份进入<br>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">su -u</div></pre></td></tr></table></figure></p>
@@ -1217,7 +1268,7 @@ If nums = [1,2,2], a solution is:
     
     <entry>
       <title><![CDATA[LeetCode 438. Find All Anagrams in a String]]></title>
-      <url>http://yoursite.com/2017/04/24/LeetCode-438-Find-All-Anagrams-in-a-String/</url>
+      <url>http:starllap.space/2017/04/24/LeetCode-438-Find-All-Anagrams-in-a-String/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
 <p>Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.</p>
 <p>Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than 20,100.</p>
@@ -1238,7 +1289,7 @@ https://discuss.leetcode.com/topic/30941/here-is-a-10-line-template-that-can-sol
     
     <entry>
       <title><![CDATA[论文笔记：《Stronger consistency and semantics for low-latency geo-replicated storage》]]></title>
-      <url>http://yoursite.com/2017/04/11/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9A%E3%80%8AStronger-consistency-and-semantics-for-low-latency-geo-replicated-storage%E3%80%8B/</url>
+      <url>http:starllap.space/2017/04/11/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9A%E3%80%8AStronger-consistency-and-semantics-for-low-latency-geo-replicated-storage%E3%80%8B/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是《Stronger consistency and semantics for low-latency geo-replicated
 storage》的阅读笔记。</p>
 <p>(未完成更新...)</p>
@@ -1262,7 +1313,7 @@ storage》的阅读笔记。</p>
     
     <entry>
       <title><![CDATA[LeetCode 206. Reverse Linked List]]></title>
-      <url>http://yoursite.com/2017/04/09/LeetCode-206-Reverse-Linked-List/</url>
+      <url>http:starllap.space/2017/04/09/LeetCode-206-Reverse-Linked-List/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="quesstion">Quesstion</h3>
 <p>Reverse a singly linked list.</p>
 <p>click to show more hints.</p>
@@ -1282,7 +1333,7 @@ A linked list can be reversed either iteratively or recursively. Could you imple
     
     <entry>
       <title><![CDATA[LeetCode Weekly Contest 27: 556. Next Greater Element III]]></title>
-      <url>http://yoursite.com/2017/04/08/LeetCode-Weekly-Contest-27-556-Next-Greater-Element-III/</url>
+      <url>http:starllap.space/2017/04/08/LeetCode-Weekly-Contest-27-556-Next-Greater-Element-III/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a positive 32-bit integer n, you need to find the smallest 32-bit integer which has exactly the same digits existing in the integer n and is greater in value than n. If no such positive 32-bit integer exists, you need to return -1.</p>
 <p>Example 1:
@@ -1301,7 +1352,7 @@ A linked list can be reversed either iteratively or recursively. Could you imple
     
     <entry>
       <title><![CDATA[Leetcode: 205. Isomorphic Strings]]></title>
-      <url>http://yoursite.com/2017/04/07/Leetcode-205-Isomorphic-Strings/</url>
+      <url>http:starllap.space/2017/04/07/Leetcode-205-Isomorphic-Strings/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question</h4>
 <p>Given two strings s and t, determine if they are isomorphic.</p>
 <p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
@@ -1323,7 +1374,7 @@ Given &quot;egg&quot;, &quot;add&quot;, return true.</p>
     
     <entry>
       <title><![CDATA[LeetCode Pascal's Triangle]]></title>
-      <url>http://yoursite.com/2017/04/06/LeetCode-Pascal-s-Triangle/</url>
+      <url>http:starllap.space/2017/04/06/LeetCode-Pascal-s-Triangle/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question-2-119-pascals-triangle-ii">Question 2: 119. Pascal's Triangle II</h4>
 <p>Given an index k, return the kth row of the Pascal's triangle.</p>
 <p>For example, given k = 3,
@@ -1339,7 +1390,7 @@ Could you optimize your algorithm to use only O(k) extra space?</p>
     
     <entry>
       <title><![CDATA[LeetCode 415. Add Strings]]></title>
-      <url>http://yoursite.com/2017/04/06/LeetCode-415-Add-Strings/</url>
+      <url>http:starllap.space/2017/04/06/LeetCode-415-Add-Strings/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question</h4>
 <p>Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.</p>
 <p>Note:</p>
@@ -1358,7 +1409,7 @@ Could you optimize your algorithm to use only O(k) extra space?</p>
     
     <entry>
       <title><![CDATA[论文笔记：Facebook可扩展架构概览]]></title>
-      <url>http://yoursite.com/2017/03/29/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9AFacebook%E5%8F%AF%E6%8B%93%E5%B1%95%E6%9E%B6%E6%9E%84%E6%A6%82%E8%A7%88/</url>
+      <url>http:starllap.space/2017/03/29/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9AFacebook%E5%8F%AF%E6%8B%93%E5%B1%95%E6%9E%B6%E6%9E%84%E6%A6%82%E8%A7%88/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是论文《Overview of Facebook Scalable Architecture》的阅读笔记，作者Hugo Barrigas, Daniel Barrigas, Melyssa Barata, Pedro Furtado, Jorge Bernardina。技术细节很少，只是一个粗略的大框架。其实根本也没有讲什么细节，所以以后有更多补充再往里写。感觉最大的亮点就是<strong>MySQL+Memcached</strong>。</p>
 <hr>
 <p>这篇文章主要是介绍Facebook的网站架构，讲述在扩展方面遇到的困难和解决的方式，从而更好了解Facebook是如何运行的。
@@ -1431,7 +1482,7 @@ http://www.gtaan.gatech.edu/meetings/handouts/MazerFacebook.pdf (Accessed 25 Feb
     
     <entry>
       <title><![CDATA[分布式系统知识整理：二阶段提交协议、三阶段提交协议]]></title>
-      <url>http://yoursite.com/2017/03/29/%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7/</url>
+      <url>http:starllap.space/2017/03/29/%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文梳理分布式系统中的常见概念：二阶段提交协议和三阶段提交协议。</p>
 <h2 id="二阶段提交协议two-phase-commit-protocol">二阶段提交协议(Two-phase Commit Protocol)</h2>
 <p>TPC是基于分布式系统架构下所有节点进行事务提交时保持<strong>一致性</strong>而设计的一种算法。在分布式系统中，每个节点虽然可以知晓自己操作的成功或失败，但无法知道其他节点的情况。需要一个协调者来组织所有节点的操作结果并最终指示他们是否进行真正的提交。</p>
@@ -1481,7 +1532,7 @@ https://zh.wikipedia.org/zh-hans/%E4%BA%8C%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4</
     
     <entry>
       <title><![CDATA[云计算知识整理：使用Apache Kafka和Samza进行流处理]]></title>
-      <url>http://yoursite.com/2017/03/25/%E4%BA%91%E8%AE%A1%E7%AE%97%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%9A%E4%BD%BF%E7%94%A8Apache-Kafka%E5%92%8CSamza%E8%BF%9B%E8%A1%8C%E6%B5%81%E5%A4%84%E7%90%86/</url>
+      <url>http:starllap.space/2017/03/25/%E4%BA%91%E8%AE%A1%E7%AE%97%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%9A%E4%BD%BF%E7%94%A8Apache-Kafka%E5%92%8CSamza%E8%BF%9B%E8%A1%8C%E6%B5%81%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。</p>
 <h3 id="流处理">流处理</h3>
 <p>如今实时数据处理的需求越来越高，实时数据的来源包括传感器数据（比如物联网设备），社交网络交互，实时商业数据等。这些情况下需要极其的延迟率。比如LinkedIn就需要用实时的广告点击数据来不断扩充广告架构。类似Hadoop和Spark这种数据获取和数据处理分离的方式无法达到低延迟的实时处理需求。所以在这里就介绍一写管理和处理大量实时数据的流处理框架。</p>
@@ -1538,7 +1589,7 @@ Brokers用来负责数据持久化和复制。brokers会和producers交流来发
     
     <entry>
       <title><![CDATA[Leetcode 111. Minimum Depth of Binary Tree]]></title>
-      <url>http://yoursite.com/2017/03/09/Leetcode-111-Minimum-Depth-of-Binary-Tree/</url>
+      <url>http:starllap.space/2017/03/09/Leetcode-111-Minimum-Depth-of-Binary-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, find its minimum depth.</p>
 <p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
@@ -1559,7 +1610,7 @@ Brokers用来负责数据持久化和复制。brokers会和producers交流来发
     
     <entry>
       <title><![CDATA[云计算应用实例：OFA/Start-ups/Data Analytics/Cloud Migration Exercise]]></title>
-      <url>http://yoursite.com/2017/03/06/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9AObama-For-America/</url>
+      <url>http:starllap.space/2017/03/06/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9AObama-For-America/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文主要是总结一些云计算的应用实例，是否要用云计算这个问题是个很复杂的问题，大多数时候需要根据需求和预算才能得到确切的答案，云计算是趋势，但如何利用是个值得仔细考虑的问题。</p>
 <h1 id="云计算应用实例obama-for-america">云计算应用实例：Obama For America</h1>
 <blockquote>
@@ -1686,7 +1737,7 @@ Brokers用来负责数据持久化和复制。brokers会和producers交流来发
     
     <entry>
       <title><![CDATA[Leetcode 530. Minimum Absolute Difference in BST]]></title>
-      <url>http://yoursite.com/2017/03/03/Leetcode-530-Minimum-Absolute-Difference-in-BST/</url>
+      <url>http:starllap.space/2017/03/03/Leetcode-530-Minimum-Absolute-Difference-in-BST/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.</p>
 <p>Example:
@@ -1704,7 +1755,7 @@ Note: There are at least two nodes in this BST</p>
     
     <entry>
       <title><![CDATA[Leetcode 94.Binary Tree Inorder Traversal]]></title>
-      <url>http://yoursite.com/2017/02/28/Leetcode-94-Binary-Tree-Inorder-Traversal/</url>
+      <url>http:starllap.space/2017/02/28/Leetcode-94-Binary-Tree-Inorder-Traversal/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, return the inorder traversal of its nodes' values.</p>
 <p>For example:
@@ -1727,7 +1778,7 @@ base case： root为null返回一个空list。
     
     <entry>
       <title><![CDATA[Binary Tree 二叉树]]></title>
-      <url>http://yoursite.com/2017/02/28/Binary%20Tree/</url>
+      <url>http:starllap.space/2017/02/28/Binary%20Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是总结Tree这种结构的常用知识点，暂时总结Binary Tree。</p>
 <h2 id="binary-tree二叉树">Binary Tree二叉树</h2>
 <h3 id="why-tree">Why Tree?</h3>
@@ -1789,7 +1840,7 @@ base case： root为null返回一个空list。
     
     <entry>
       <title><![CDATA[Leetcode 388. Longest Absolute File Path]]></title>
-      <url>http://yoursite.com/2017/02/28/Leetcode-388-Longest-Absolute-File-Path/</url>
+      <url>http:starllap.space/2017/02/28/Leetcode-388-Longest-Absolute-File-Path/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
 <p>Suppose we abstract our file system by a string in the following manner:</p>
 <p>The string &quot;dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext&quot; represents:
@@ -1814,7 +1865,7 @@ Time complexity required: O(n) where n is the size of the input string.</p>
     
     <entry>
       <title><![CDATA[云计算Project：Twitter大数据分析]]></title>
-      <url>http://yoursite.com/2017/02/27/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9ATwitter%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</url>
+      <url>http:starllap.space/2017/02/27/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9ATwitter%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是Twitter Analytics on the Cloud项目的介绍及分析总结。小组作业当时做的匆忙，现在再思考下可以优化的地方很多。感谢队友@shuangshuang 和 @烟酱。</p>
 <h2 id="项目介绍">项目介绍</h2>
 <p>目标：</p>
@@ -1926,7 +1977,7 @@ hfile.block.cache.size：RS的block cache的内存大小限制，默认值0.25�
     
     <entry>
       <title><![CDATA[Leetcode 325. Maximum Size Subarray Sum Equals k]]></title>
-      <url>http://yoursite.com/2017/02/25/Leetcode-325-Maximum-Size-Subarray-Sum-Equals-k/</url>
+      <url>http:starllap.space/2017/02/25/Leetcode-325-Maximum-Size-Subarray-Sum-Equals-k/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
 <p>Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn't one, return 0 instead.</p>
 <p>Note:
@@ -1948,7 +1999,7 @@ Can you do it in O(n) time?</p>
     
     <entry>
       <title><![CDATA[Leetcode 277. Find the Celebrity]]></title>
-      <url>http://yoursite.com/2017/02/24/Leetcode-277-Find-the-Celebrity/</url>
+      <url>http:starllap.space/2017/02/24/Leetcode-277-Find-the-Celebrity/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
 <p>Suppose you are at a party with n people (labeled from 0 to n - 1) and among them, there may exist one celebrity. The definition of a celebrity is that all the other n - 1 people know him/her but he/she does not know any of them.</p>
 <p>Now you want to find out who the celebrity is or verify that there is not one. The only thing you are allowed to do is to ask questions like: &quot;Hi, A. Do you know B?&quot; to get information of whether A knows B. You need to find out the celebrity (or verify there is not one) by asking as few questions as possible (in the asymptotic sense).</p>
@@ -1963,7 +2014,7 @@ Can you do it in O(n) time?</p>
     
     <entry>
       <title><![CDATA[云计算Project：基于多个后端的社交网络时间线的实现]]></title>
-      <url>http://yoursite.com/2017/02/23/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%9A%E4%B8%AA%E5%90%8E%E7%AB%AF%E7%9A%84%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E6%97%B6%E9%97%B4%E7%BA%BF%E7%9A%84%E5%AE%9E%E7%8E%B0/</url>
+      <url>http:starllap.space/2017/02/23/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%9A%E4%B8%AA%E5%90%8E%E7%AB%AF%E7%9A%84%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E6%97%B6%E9%97%B4%E7%BA%BF%E7%9A%84%E5%AE%9E%E7%8E%B0/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于CMU15619Cloud Computing项目:<code>Social Networking Timeline with Heterogeneous Backends</code>的介绍以及总结反思。</p>
 <p>项目主要目标：</p>
 <ul>
@@ -2129,7 +2180,7 @@ CMU15619课件：<code>Social Networking Timeline with Heterogeneous Backends</c
     
     <entry>
       <title><![CDATA[Leetcode 252. Meeting Rooms I]]></title>
-      <url>http://yoursite.com/2017/02/20/Leetcode-252-Meeting-Rooms-I/</url>
+      <url>http:starllap.space/2017/02/20/Leetcode-252-Meeting-Rooms-I/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
 <p>Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si &lt; ei), determine if a person could attend all meetings.</p>
 <p>For example,
@@ -2144,7 +2195,7 @@ return false.</p>
     
     <entry>
       <title><![CDATA[Leetcode 253. Meeting Rooms II]]></title>
-      <url>http://yoursite.com/2017/02/20/Leetcode-253-Meeting-Rooms/</url>
+      <url>http:starllap.space/2017/02/20/Leetcode-253-Meeting-Rooms/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本题的简单版本是<a href="http://starllap.space/2017/02/20/Leetcode-252-Meeting-Rooms-I/" target="_blank" rel="external">Meeting Rooms I</a></p>
 <h3 id="question">Question:</h3>
 <p>Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si &lt; ei), find the minimum number of conference rooms required.</p>
@@ -2161,7 +2212,7 @@ return 2.</p>
     
     <entry>
       <title><![CDATA[Leetcode 294. Flip GameII]]></title>
-      <url>http://yoursite.com/2017/02/20/Leetcode-294-Flip-GameII/</url>
+      <url>http:starllap.space/2017/02/20/Leetcode-294-Flip-GameII/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
 <p>You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive &quot;++&quot; into &quot;--&quot;. The game ends when a person can no longer make a move and therefore the other person will be the winner.</p>
 <p>Write a function to determine if the starting player can guarantee a win.</p>
@@ -2178,7 +2229,7 @@ discuss中有一个牛逼的game theory博弈论算法，看不懂。有机会�
     
     <entry>
       <title><![CDATA[Leetcode 380. Insert Delete GetRandom O(1)]]></title>
-      <url>http://yoursite.com/2017/02/19/Leetcode-380-Insert-Delete-GetRandom-O-1/</url>
+      <url>http:starllap.space/2017/02/19/Leetcode-380-Insert-Delete-GetRandom-O-1/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
 <p>Design a data structure that supports all following operations in average O(1) time.</p>
 <p>insert(val): Inserts an item val to the set if not already present.
@@ -2196,7 +2247,7 @@ Example:
     
     <entry>
       <title><![CDATA[Leetcode 331. Verify Preorder Serialization of a Binary Tree]]></title>
-      <url>http://yoursite.com/2017/02/19/Leetcode-331-Verify-Preorder-Serialization-of-a-Binary-Tree/</url>
+      <url>http:starllap.space/2017/02/19/Leetcode-331-Verify-Preorder-Serialization-of-a-Binary-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
 <p>One way to serialize a binary tree is to use pre-order traversal. When we encounter a non-null node, we record the node's value. If it is a null node, we record using a sentinel value such as #.
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">     _9_</div><div class="line">    /   \</div><div class="line">   3     2</div><div class="line">  / \   / \</div><div class="line"> 4   1  #  6</div><div class="line">/ \ / \   / \</div><div class="line"># # # #   # #</div></pre></td></tr></table></figure></p>
@@ -2222,7 +2273,7 @@ Example:
     
     <entry>
       <title><![CDATA[Leetcode 289. Game of Life]]></title>
-      <url>http://yoursite.com/2017/02/19/Leetcode-289-Game-of-Life/</url>
+      <url>http:starllap.space/2017/02/19/Leetcode-289-Game-of-Life/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
 <p>According to the Wikipedia's article: &quot;The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.&quot;</p>
 <p>Given a board with m by n cells, each cell has an initial state live (1) or dead (0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):</p>
@@ -2244,7 +2295,7 @@ In this question, we represent the board using a 2D array. In principle, the boa
     
     <entry>
       <title><![CDATA[LeetCode 298. Binary Tree Longest Consecutive Sequence]]></title>
-      <url>http://yoursite.com/2017/02/18/LeetCode-298-Binary-Tree-Longest-Consecutive-Sequence/</url>
+      <url>http:starllap.space/2017/02/18/LeetCode-298-Binary-Tree-Longest-Consecutive-Sequence/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
 <p>Given a binary tree, find the length of the longest consecutive sequence path.</p>
 <p>The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The longest consecutive path need to be from parent to child (cannot be the reverse).
@@ -2258,7 +2309,7 @@ In this question, we represent the board using a 2D array. In principle, the boa
     
     <entry>
       <title><![CDATA[Leetcode 2Sum/3sum/4sum及其各种变体]]></title>
-      <url>http://yoursite.com/2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/</url>
+      <url>http:starllap.space/2017/02/16/Leetcode-Two-Sum-Three-Sum-and-their-variations/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>经典的2sum，3sum，4sum极其变体题目总结，需要熟记。</p>
 <h3 id="leetcode-1-two-sum">Leetcode 1. Two Sum</h3>
 <h4 id="question">Question:</h4>
@@ -2341,7 +2392,7 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
     <entry>
       <title><![CDATA[Leetcode 359. Logger Rate Limiter]]></title>
-      <url>http://yoursite.com/2017/02/15/Leetcode-359-Logger-Rate-Limiter/</url>
+      <url>http:starllap.space/2017/02/15/Leetcode-359-Logger-Rate-Limiter/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
 <p>Design a logger system that receive stream of messages along with its timestamps, each message should be printed if and only if it is not printed in the last 10 seconds.</p>
 <p>Given a message and a timestamp (in seconds granularity), return true if the message should be printed in the given timestamp, otherwise returns false.</p>
@@ -2357,7 +2408,7 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
     <entry>
       <title><![CDATA[Leetcode 459. Repeated Substring Pattern]]></title>
-      <url>http://yoursite.com/2017/02/12/Leetcode-459-Repeated-Substring-Pattern/</url>
+      <url>http:starllap.space/2017/02/12/Leetcode-459-Repeated-Substring-Pattern/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>一道很简单的题。但是一直在调corner case，好不容易写完了再感受下速度和别人写的代码，差距太大了。心疼三秒钟。</p>
 <h4 id="question">Question:</h4>
 <p>Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.</p>
@@ -2376,7 +2427,7 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
     <entry>
       <title><![CDATA[Leetcode 475. Heaters]]></title>
-      <url>http://yoursite.com/2017/02/12/Leetcode-475-Heaters/</url>
+      <url>http:starllap.space/2017/02/12/Leetcode-475-Heaters/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
 <p>Winter is coming! Your first job during the contest is to design a standard heater with fixed warm radius to warm all the houses.</p>
 <p>Now, you are given positions of houses and heaters on a horizontal line, find out minimum radius of heaters so that all houses could be covered by those heaters.</p>
@@ -2407,7 +2458,7 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
     <entry>
       <title><![CDATA[Leetcode 356. Line Reflection]]></title>
-      <url>http://yoursite.com/2017/02/12/Leetcode-356-Line-Reflection/</url>
+      <url>http:starllap.space/2017/02/12/Leetcode-356-Line-Reflection/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
 <p>Given n points on a 2D plane, find if there is such a line parallel to y-axis that reflect the given points.</p>
 <p><strong>Example 1:</strong>
@@ -2434,7 +2485,7 @@ For each point, make sure that it has a reflected point in the opposite side.</p
     
     <entry>
       <title><![CDATA[Leetcode 409. Longest Palindrome]]></title>
-      <url>http://yoursite.com/2017/02/12/Leetcode-409-Longest-Palindrome/</url>
+      <url>http:starllap.space/2017/02/12/Leetcode-409-Longest-Palindrome/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
 <p>Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters.</p>
 <p>This is case sensitive, for example &quot;Aa&quot; is not considered a palindrome here.</p>
@@ -2457,7 +2508,7 @@ Solution 3:<br>
     
     <entry>
       <title><![CDATA[Java Interview Questions]]></title>
-      <url>http://yoursite.com/2017/02/11/Java-Interview-Questions/</url>
+      <url>http:starllap.space/2017/02/11/Java-Interview-Questions/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Always update...</p>
 <h3 id="jvm-is-plantform-dependent">JVM is plantform dependent?</h3>
 <blockquote>
@@ -2550,7 +2601,7 @@ https://www.javatpoint.com/constructor</p>
     
     <entry>
       <title><![CDATA[Leetcode 271. Encode and Decode Strings]]></title>
-      <url>http://yoursite.com/2017/02/10/271-Encode-and-Decode-Strings/</url>
+      <url>http:starllap.space/2017/02/10/271-Encode-and-Decode-Strings/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
 <p>Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.</p>
 <p>Machine 1 (sender) has the function:</p>
@@ -2581,7 +2632,7 @@ https://www.javatpoint.com/constructor</p>
     
     <entry>
       <title><![CDATA[Leetcode 346. Moving Average from Data Stream]]></title>
-      <url>http://yoursite.com/2017/02/10/346-Moving-Average-from-Data-Stream/</url>
+      <url>http:starllap.space/2017/02/10/346-Moving-Average-from-Data-Stream/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.</p>
 <p>For example,
@@ -2595,7 +2646,7 @@ https://www.javatpoint.com/constructor</p>
     
     <entry>
       <title><![CDATA[Leetcode 300. Longest Increasing Subsequence]]></title>
-      <url>http://yoursite.com/2017/02/10/Leetcode-300-Longest-Increasing-Subsequence/</url>
+      <url>http:starllap.space/2017/02/10/Leetcode-300-Longest-Increasing-Subsequence/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given an unsorted array of integers, find the length of longest increasing subsequence.</p>
 <p>For example,
@@ -2620,7 +2671,7 @@ Could you improve it to O(n log n) time complexity?</p>
     
     <entry>
       <title><![CDATA[Leetcode 281. Zigzag Iterator]]></title>
-      <url>http://yoursite.com/2017/02/09/Leetcode-281/</url>
+      <url>http:starllap.space/2017/02/09/Leetcode-281/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question:</strong></p>
 <p>Given two 1d vectors, implement an iterator to return their elements alternately.</p>
 <p>For example, given two 1d vectors:</p>
@@ -2649,7 +2700,7 @@ It should return [1,4,8,2,5,9,3,6,7].</p>
     
     <entry>
       <title><![CDATA[Distributed System-Indirect Communication and Naming]]></title>
-      <url>http://yoursite.com/2017/02/06/ds69/</url>
+      <url>http:starllap.space/2017/02/06/ds69/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702分布式系统
 第6、9章总结笔记</p>
 <ul>
@@ -2776,7 +2827,7 @@ Connectionfactory, Queue, Topics</li>
     
     <entry>
       <title><![CDATA[Distributed System-Mobile and ubiquitous computing]]></title>
-      <url>http://yoursite.com/2017/02/06/Distributed-System/</url>
+      <url>http:starllap.space/2017/02/06/Distributed-System/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702分布式系统
 第19章总结笔记</p>
 <ul>
@@ -3000,7 +3051,7 @@ source	native	wrapper</li>
     
     <entry>
       <title><![CDATA[Distributed System-ACID]]></title>
-      <url>http://yoursite.com/2017/02/06/17/</url>
+      <url>http:starllap.space/2017/02/06/17/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702分布式系统
 ACID概念总结</p>
 <ul>
@@ -3031,7 +3082,7 @@ the logs will hold the necessary information on recovery.</li>
     
     <entry>
       <title><![CDATA[哪儿]]></title>
-      <url>http://yoursite.com/2017/01/24/%E5%93%AA%E5%84%BF/</url>
+      <url>http:starllap.space/2017/01/24/%E5%93%AA%E5%84%BF/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><embed src="http://www.xiami.com/widget/12753884_1769553081/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></p>
 <p>今天上Advanced Cloud Computing,三个教授就一个问题争论起来。</p>
 <p>那真的是很触动我的一刻，加起来都快150岁的三个顶尖学术大牛，在投影仪前面，对待知识还是和孩子一样专注和热情，可爱极了。</p>
@@ -3053,7 +3104,7 @@ the logs will hold the necessary information on recovery.</li>
     
     <entry>
       <title><![CDATA[Java中的排序问题]]></title>
-      <url>http://yoursite.com/2017/01/08/Java%E4%B8%AD%E7%9A%84Sort/</url>
+      <url>http:starllap.space/2017/01/08/Java%E4%B8%AD%E7%9A%84Sort/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>总结几种排序方法。
 冒泡排序，选择排序，插入排序，Quick Sort,Merge Sort（continue..）...</p>
 <p><strong>Simple sorting</strong></p>
@@ -3102,7 +3153,7 @@ the logs will hold the necessary information on recovery.</li>
     
     <entry>
       <title><![CDATA[Leetcode 189.Rotate Array]]></title>
-      <url>http://yoursite.com/2017/01/05/Leetcode-189-Rotate-Array/</url>
+      <url>http:starllap.space/2017/01/05/Leetcode-189-Rotate-Array/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h4 id="question">Question:</h4>
 <p>Rotate an array of n elements to the right by k steps.</p>
 <p>For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].</p>
@@ -3156,7 +3207,7 @@ http://www.programcreek.com</p>
     
     <entry>
       <title><![CDATA[Leetcode-[Combination]-Intersection of Arrays/Linked Lists]]></title>
-      <url>http://yoursite.com/2017/01/03/Leetcode-Intersection-of-Two-Arrays/</url>
+      <url>http:starllap.space/2017/01/03/Leetcode-Intersection-of-Two-Arrays/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>这篇是综合几道关于<code>Intersection of Arrays/Linked List</code> 的Leetcode题，分析一下问题及其变体，并给出几种解法。</p>
 <h4 id="leetcode-349-intersection-of-two-arrays">LeetCode 349. Intersection of Two Arrays</h4>
 <h5 id="question">Question:</h5>
@@ -3294,7 +3345,7 @@ Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</p>
     
     <entry>
       <title><![CDATA[Leetcode 396.Rotate Function]]></title>
-      <url>http://yoursite.com/2016/12/30/leetcode-396/</url>
+      <url>http:starllap.space/2016/12/30/leetcode-396/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question:</strong></p>
 <p>Given an array of integers A and let n to be its length.</p>
 <p>Assume Bk to be an array obtained by rotating the array A k positions clock-wise, we define a &quot;rotation function&quot; F on A as follow:</p>
@@ -3339,7 +3390,7 @@ k = 2; B[0] = A[len-2];
     
     <entry>
       <title><![CDATA[Leetcode 202. Happy Number]]></title>
-      <url>http://yoursite.com/2016/12/30/leetcode-202/</url>
+      <url>http:starllap.space/2016/12/30/leetcode-202/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question:</strong></p>
 <p>Write an algorithm to determine if a number is &quot;happy&quot;.</p>
 <p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
@@ -3361,7 +3412,7 @@ k = 2; B[0] = A[len-2];
     
     <entry>
       <title><![CDATA[LeetCode 437. Path Sum III]]></title>
-      <url>http://yoursite.com/2016/12/30/LeetCode-437-Path-Sum-III/</url>
+      <url>http:starllap.space/2016/12/30/LeetCode-437-Path-Sum-III/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question</strong></p>
 <p>You are given a binary tree in which each node contains an integer value.</p>
 <p>Find the number of paths that sum to a given value.</p>
@@ -3404,7 +3455,7 @@ Java
     
     <entry>
       <title><![CDATA[LeetCode 401. Binary Watch]]></title>
-      <url>http://yoursite.com/2016/12/29/LeetCode-401/</url>
+      <url>http:starllap.space/2016/12/29/LeetCode-401/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><a href="https://leetcode.com/problems/binary-watch/" target="_blank" rel="external"><strong>Question:</strong></a></p>
 <p>A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).</p>
 <p>Each LED represents a zero or one, with the least significant bit on the right.
@@ -3430,7 +3481,7 @@ Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:00&quot;, &quot;8:00&quot;,
     
     <entry>
       <title><![CDATA[天冷该吃火锅]]></title>
-      <url>http://yoursite.com/2016/11/22/e5-a4-a9-e5-86-b7-e8-af-a5-e5-90-83-e7-81-ab-e9-94-85/</url>
+      <url>http:starllap.space/2016/11/22/e5-a4-a9-e5-86-b7-e8-af-a5-e5-90-83-e7-81-ab-e9-94-85/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><embed src="http://www.xiami.com/widget/12753884_1773763930/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></p>
 <p>晚上，翻到一篇写北京卤煮的文章。15年夏天在北京，一个姑娘带我去了一个南城的胡同里吃卤煮。买单的不是我，领餐的也不是我。</p>
 <p>在吃完之前我都没太搞清楚到底卤煮里面的那些具体是什么。我在当时常聊的微信群里说我在吃卤煮的时候，我哥来了一句，Star，你居然敢吃卤煮啊？当然敢。</p>
@@ -3448,7 +3499,7 @@ Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:00&quot;, &quot;8:00&quot;,
     
     <entry>
       <title><![CDATA[Java中的比较]]></title>
-      <url>http://yoursite.com/2016/11/13/java-e4-b8-ad-e7-9a-84-e6-af-94-e8-be-83/</url>
+      <url>http:starllap.space/2016/11/13/java-e4-b8-ad-e7-9a-84-e6-af-94-e8-be-83/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="equals-和compareto">equals, == 和compareTo</h3>
 <ul>
 <li>== 操作符并不涉及对象内容的比较。</li>
@@ -3493,7 +3544,7 @@ x.compareTo(y) == 0</li>
     
     <entry>
       <title><![CDATA[Machine Learning 复习（四）：概念学习]]></title>
-      <url>http://yoursite.com/2016/10/19/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e5-9b-9b-ef-bc-89-ef-bc-9a-e6-a6-82-e5-bf-b5-e5-ad-a6-e4-b9-a0/</url>
+      <url>http:starllap.space/2016/10/19/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e5-9b-9b-ef-bc-89-ef-bc-9a-e6-a6-82-e5-bf-b5-e5-ad-a6-e4-b9-a0/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="概念学习concept-learning">概念学习（Concept Learning）</h3>
 <p>概念学习是指从某个布尔函数的输入输出训练中推断出该布尔函数。</p>
 <h5 id="例子">例子</h5>
@@ -3628,7 +3679,7 @@ x.compareTo(y) == 0</li>
     
     <entry>
       <title><![CDATA[Machine Learning 复习（零）：机器学习基本介绍]]></title>
-      <url>http://yoursite.com/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-880-ef-bc-89-ef-bc-9a-e6-9c-ba-e5-99-a8-e5-ad-a6-e4-b9-a0-e5-9f-ba-e6-9c-ac-e4-bb-8b-e7-bb-8d/</url>
+      <url>http:starllap.space/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-880-ef-bc-89-ef-bc-9a-e6-9c-ba-e5-99-a8-e5-ad-a6-e4-b9-a0-e5-9f-ba-e6-9c-ac-e4-bb-8b-e7-bb-8d/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>机器学习是基于数据的人工智能（1980s-现在），机器学习能够通过学习例子来完成任务。</p>
 <h3 id="机器学习框架">机器学习框架</h3>
 <ul>
@@ -3683,7 +3734,7 @@ x.compareTo(y) == 0</li>
     
     <entry>
       <title><![CDATA[Machine Learning 复习（二）：信息论]]></title>
-      <url>http://yoursite.com/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-ef-bc-9a-e4-bf-a1-e6-81-af-e8-ae-ba/</url>
+      <url>http:starllap.space/2016/10/18/machine-learning-e5-a4-8d-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-ef-bc-9a-e4-bf-a1-e6-81-af-e8-ae-ba/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="informaiton">Informaiton</h3>
 <ul>
 <li>信息 ！= 知识</li>
@@ -3785,7 +3836,7 @@ P(T=t|M=m):
     
     <entry>
       <title><![CDATA[Machine Learning 复习 (一)：概率统计和线性回归]]></title>
-      <url>http://yoursite.com/2016/10/17/machine-learning-e5-a4-8d-e4-b9-a0-e4-b8-80-ef-bc-9a-e6-a6-82-e7-8e-87-e7-bb-9f-e8-ae-a1-e5-92-8c-e7-ba-bf-e6-80-a7-e5-9b-9e-e5-bd-92/</url>
+      <url>http:starllap.space/2016/10/17/machine-learning-e5-a4-8d-e4-b9-a0-e4-b8-80-ef-bc-9a-e6-a6-82-e7-8e-87-e7-bb-9f-e8-ae-a1-e5-92-8c-e7-ba-bf-e6-80-a7-e5-9b-9e-e5-bd-92/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Machine Learning 总结</p>
 <h3 id="probability-and-statistics">Probability and Statistics</h3>
 <ul>
@@ -3938,7 +3989,7 @@ P(T=t|M=m):
     
     <entry>
       <title><![CDATA[LeetCode 172.Factorial Trailing Zeroes]]></title>
-      <url>http://yoursite.com/2016/10/15/leetcode-172-easyfactorial-trailing-zeroes/</url>
+      <url>http:starllap.space/2016/10/15/leetcode-172-easyfactorial-trailing-zeroes/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Question:</p>
 </blockquote>
@@ -3964,7 +4015,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[听李宗盛]]></title>
-      <url>http://yoursite.com/2016/09/23/e5-90-ac-e6-9d-8e-e5-ae-97-e7-9b-9b/</url>
+      <url>http:starllap.space/2016/09/23/e5-90-ac-e6-9d-8e-e5-ae-97-e7-9b-9b/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><embed src="http://www.xiami.com/widget/12753884_1772001102/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></p>
 <p>夜里从灯火通明的学校回到家，虾米随机放了一首歌。 居然是李宗盛版的《阴天》。</p>
 <p>我一下想到了我哥，一个长期只听李宗盛和民谣的男人。大多数的时候，我会忘记他只比我大一岁，他讲起道理，总是让我不得不服。</p>
@@ -3986,7 +4037,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[python remove误区]]></title>
-      <url>http://yoursite.com/2016/09/19/python-remove-e8-af-af-e5-8c-ba/</url>
+      <url>http:starllap.space/2016/09/19/python-remove-e8-af-af-e5-8c-ba/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>在list里面边查找边remove，会出错。 因为这个原因Debug了一个早上真是哭瞎。</p>
 <p>原来是：</p>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for h in total_h:</div><div class="line">    if attr_value_list not in h:</div><div class="line">       total_h.remove(h)</div></pre></td></tr></table></figure></p>
@@ -3999,7 +4050,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[明天一切好说]]></title>
-      <url>http://yoursite.com/2016/08/27/e6-98-8e-e5-a4-a9-e4-b8-80-e5-88-87-e5-a5-bd-e8-af-b4/</url>
+      <url>http:starllap.space/2016/08/27/e6-98-8e-e5-a4-a9-e4-b8-80-e5-88-87-e5-a5-bd-e8-af-b4/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p> </p>
 <p>      落地灯温和地亮着，收拾好卧室，摆好衣架，厨房餐具摆好，才终于有时间坐在自己拼的沙发上和室友讲几句话。</p>
 <p>      来了一周多一些，几乎都在疲于应付一个安身立命的地方。想来，被海关关过小黑屋，被房屋manager吼过，被不靠谱的管理人员放鸽子，被计划中的室友坑得措手不及。</p>
@@ -4024,7 +4075,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[2016-08-02]]></title>
-      <url>http://yoursite.com/2016/08/02/2016-08-02/</url>
+      <url>http:starllap.space/2016/08/02/2016-08-02/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>今天坐在窗台的位置，看着蓝天白云发了会儿呆。</p>
 <p>还有三天就要离开上海了。在每一个写过文字的地方都会说，上海啊，我真喜欢这座城。</p>
 <p>也许去过很多地方，也许将要去很多地方，也许看过很多风景，也许将要看很多风景，但我不会忘记在我还年轻的时候，上海所给予我的一切。</p>
@@ -4045,7 +4096,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[温度]]></title>
-      <url>http://yoursite.com/2016/07/30/e6-b8-a9-e5-ba-a6/</url>
+      <url>http:starllap.space/2016/07/30/e6-b8-a9-e5-ba-a6/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>在出门需要勇气的日子里，看了两部港片。</p>
 <p>很久没看港片了，一直很喜欢，虽然对王家卫无感，但很多港片自带弹幕效果，语速快，节奏快，情节紧凑，随便挑一部不至于像大陆很多言之无物的片子一样让人有浪费时间的感叹。</p>
 <p>聊聊《六楼后座》，林嘉欣卢巧音在里面实在太美太甜，背心牛仔裤的21世纪初的流行打扮干净利落。六个人最爱玩的“Truth or Dare”，其实也就是真心话大冒险吧。你选择诚实，或者大胆。年轻的状态非常明显，想哭的时候不忍着，想闹的时候就闹，不爽也不憋着，挣扎就是挣扎。</p>
@@ -4074,7 +4125,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[使用Emacs: 从无法入门到放弃]]></title>
-      <url>http://yoursite.com/2016/07/27/e4-bd-bf-e7-94-a8emacs-e4-bb-8e-e6-97-a0-e6-b3-95-e5-85-a5-e9-97-a8-e5-88-b0-e6-94-be-e5-bc-83/</url>
+      <url>http:starllap.space/2016/07/27/e4-bd-bf-e7-94-a8emacs-e4-bb-8e-e6-97-a0-e6-b3-95-e5-85-a5-e9-97-a8-e5-88-b0-e6-94-be-e5-bc-83/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p> </p>
 <p>被安利使用Emacs来进行文件编辑和管理，打开baidu首页显示的文章是<code>《如何一年成为Emacs大神》</code></p>
 <p>一年。</p>
@@ -4097,7 +4148,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[How to use Markdown as a starter]]></title>
-      <url>http://yoursite.com/2016/07/26/how-to-use-markdown-as-a-starter/</url>
+      <url>http:starllap.space/2016/07/26/how-to-use-markdown-as-a-starter/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Recently, I am desired to write wordpress for do some summarization. But the format and writing style keep confusing me.</p>
 <h3 id="lets-try-markdown-this-time">Let's try Markdown this time!</h3>
 <p>There are two ways to apply Markdown in wordpress:</p>
@@ -4119,7 +4170,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[2016-07-21]]></title>
-      <url>http://yoursite.com/2016/07/21/2016-07-21/</url>
+      <url>http:starllap.space/2016/07/21/2016-07-21/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>一、</p>
 <p>我活得越来越坦然的一个信号就是，我能勇敢地和别人安利自己的公众号了。</p>
 <p>关于这个公众号，里面的文章带着情绪的成分很多。而我的习惯是，在现实生活中面对面讲话好好相处，这样才是真实的，而不是虚无地毫无基础地通过表情和文字来传达彼此的心理。网络更应该是，让亲密关系更方便，不该是让陌生的人变成熟人，这是不可能。即使有可能，也是脆弱的，不堪一击的。</p>
@@ -4137,7 +4188,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[开篇：打碎浅薄和矫情]]></title>
-      <url>http://yoursite.com/2016/07/21/e5-bc-80-e7-af-87-ef-bc-9a-e6-89-93-e7-a2-8e-e6-b5-85-e8-96-84-e5-92-8c-e7-9f-ab-e6-83-85/</url>
+      <url>http:starllap.space/2016/07/21/e5-bc-80-e7-af-87-ef-bc-9a-e6-89-93-e7-a2-8e-e6-b5-85-e8-96-84-e5-92-8c-e7-9f-ab-e6-83-85/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>所谓开篇，是这个博客的开篇。</p>
 <p>我写字的历史很长，换了很多平台。先行总结，字数不算惊人，但也不算少了。</p>
 <p>大致如下：</p>
