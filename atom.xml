@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http:starllap.space/"/>
-  <updated>2017-06-24T03:38:07.000Z</updated>
+  <updated>2017-06-24T21:09:50.000Z</updated>
   <id>http:starllap.space/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 146. LRU Cache</title>
+    <link href="http:starllap.space/2017/06/24/LeetCode-146-LRU-Cache/"/>
+    <id>http:starllap.space/2017/06/24/LeetCode-146-LRU-Cache/</id>
+    <published>2017-06-24T21:07:08.000Z</published>
+    <updated>2017-06-24T21:09:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.</p>
+<p>get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
+put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.</p>
+<p>Follow up:
+Could you do both operations in O(1) time complexity?</p>
+<p>Example:</p>
+<p>LRUCache cache = new LRUCache( 2 /<em>capacity</em>/);</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">cache.put(1, 1);</div><div class="line">cache.put(2, 2);</div><div class="line">cache.get(1);       // returns 1</div><div class="line">cache.put(3, 3);    // evicts key 2</div><div class="line">cache.get(2);       // returns -1 (not found)</div><div class="line">cache.put(4, 4);    // evicts key 1</div><div class="line">cache.get(1);       // returns -1 (not found)</div><div class="line">cache.get(3);       // returns 3</div><div class="line">cache.get(4);       // returns 4</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>这道题用linked hashmap来解决，既存着值，同时每当get和put的操作产生，就算是调用了，所以要调整位置。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class LRUCache &#123;</div><div class="line">    private LinkedHashMap&lt;Integer, Integer&gt; map;</div><div class="line">    private int cap;</div><div class="line"></div><div class="line">    public LRUCache(int capacity) &#123;</div><div class="line">        this.cap = capacity;</div><div class="line">        this.map = new LinkedHashMap&lt;Integer, Integer&gt;(capacity);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int get(int key) &#123;</div><div class="line">        if (!map.containsKey(key)) &#123;</div><div class="line">            return -1;</div><div class="line">        &#125;</div><div class="line">        int val = map.get(key);</div><div class="line">        map.remove(key);</div><div class="line">        map.put(key,val);</div><div class="line">        return val;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void put(int key, int value) &#123;</div><div class="line">        if (map.containsKey(key)) &#123;</div><div class="line">            map.remove(key);</div><div class="line">        &#125; else if (map.size() &gt;= cap) &#123;</div><div class="line">            map.remove(map.entrySet().iterator().next().getKey());</div><div class="line">        &#125;</div><div class="line">        map.put(key,value);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Design and implement a data structure for Least Recentl
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
+    
+      <category term="Design" scheme="http:starllap.space/tags/Design/"/>
+    
+      <category term="LinkedList" scheme="http:starllap.space/tags/LinkedList/"/>
+    
+      <category term="Hard" scheme="http:starllap.space/tags/Hard/"/>
+    
+      <category term="HashMap" scheme="http:starllap.space/tags/HashMap/"/>
+    
+  </entry>
   
   <entry>
     <title>LintCode: Rainbow Sort</title>
@@ -389,9 +433,9 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
       <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
-    
       <category term="Design" scheme="http:starllap.space/tags/Design/"/>
+    
+      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
     
       <category term="Hash Table" scheme="http:starllap.space/tags/Hash-Table/"/>
     
@@ -520,9 +564,9 @@ Have you consider that the string might be empty? This is a good question to ask
     
       <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
-    
       <category term="String" scheme="http:starllap.space/tags/String/"/>
+    
+      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
     
       <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
     
@@ -797,58 +841,6 @@ The integers in the m arrays will be in the range of [-10000, 10000].</p>
       <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
     
       <category term="Array" scheme="http:starllap.space/tags/Array/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 349.Intersection of Two Arrays</title>
-    <link href="http:starllap.space/2017/06/17/LeetCode-349-Intersection-of-Two-Arrays/"/>
-    <id>http:starllap.space/2017/06/17/LeetCode-349-Intersection-of-Two-Arrays/</id>
-    <published>2017-06-17T20:43:22.000Z</published>
-    <updated>2017-06-17T20:56:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given two arrays, write a function to compute their intersection.</p>
-<p>Example:
-Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</p>
-<p>Note:
-Each element in the result must be unique.
-The result can be in any order.</p>
-<h3 id="explanation">Explanation</h3>
-<p>有三种方法可以实现：</p>
-<ol>
-<li>用一个HashMap存起来。Time: O(nlogn) Space: O(n)</li>
-<li>两个数组都排序，然后用两个指针遍历。Time: O(nlogn) Space:O(1)</li>
-<li>排序其中的一个数组，然后用binary search进行搜索。Time: O(nlogn) Space:O(1)</li>
-</ol>
-<h3 id="code">Code</h3>
-<p>最后一种方法的代码：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int[] intersection(int[] nums1, int[] nums2) &#123;</div><div class="line">        int m = nums1.length;</div><div class="line">        int n = nums2.length;</div><div class="line">        if (m &gt; n) return intersection(nums2, nums1);</div><div class="line">        Arrays.sort(nums2);</div><div class="line">        Set&lt;Integer&gt; set = new HashSet&lt;&gt;();</div><div class="line">        for(int i=0; i&lt;m; i++) &#123;</div><div class="line">            if (binarySearch(nums2, nums1[i])) &#123;</div><div class="line">                set.add(nums1[i]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        int[] result = new int[set.size()];</div><div class="line">        int i = 0;</div><div class="line">        for (Integer num:set) &#123;</div><div class="line">            result[i++] = num;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public boolean binarySearch(int[] nums, int number) &#123;</div><div class="line">        int start = 0;</div><div class="line">        int end = nums.length-1;</div><div class="line">        while (start &lt;= end) &#123;</div><div class="line">            int mid = start + (end - start)/2;</div><div class="line">            if (nums[mid] == number) return true;</div><div class="line">            if (nums[mid] &lt; number) &#123;</div><div class="line">                start = mid + 1;</div><div class="line">            &#125; else &#123;</div><div class="line">                end = mid - 1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given two arrays, write a function to compute their int
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
-    
-      <category term="Binary Search" scheme="http:starllap.space/tags/Binary-Search/"/>
-    
-      <category term="Sort" scheme="http:starllap.space/tags/Sort/"/>
-    
-      <category term="Hash Table" scheme="http:starllap.space/tags/Hash-Table/"/>
-    
-      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
-    
-      <category term="Intersection" scheme="http:starllap.space/tags/Intersection/"/>
     
   </entry>
   

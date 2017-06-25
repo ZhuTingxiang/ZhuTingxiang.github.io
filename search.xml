@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title><![CDATA[LeetCode 146. LRU Cache]]></title>
+      <url>http:starllap.space/2017/06/24/LeetCode-146-LRU-Cache/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.</p>
+<p>get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
+put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.</p>
+<p>Follow up:
+Could you do both operations in O(1) time complexity?</p>
+<p>Example:</p>
+<p>LRUCache cache = new LRUCache( 2 /<em>capacity</em>/);</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">cache.put(1, 1);</div><div class="line">cache.put(2, 2);</div><div class="line">cache.get(1);       // returns 1</div><div class="line">cache.put(3, 3);    // evicts key 2</div><div class="line">cache.get(2);       // returns -1 (not found)</div><div class="line">cache.put(4, 4);    // evicts key 1</div><div class="line">cache.get(1);       // returns -1 (not found)</div><div class="line">cache.get(3);       // returns 3</div><div class="line">cache.get(4);       // returns 4</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>这道题用linked hashmap来解决，既存着值，同时每当get和put的操作产生，就算是调用了，所以要调整位置。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class LRUCache &#123;</div><div class="line">    private LinkedHashMap&lt;Integer, Integer&gt; map;</div><div class="line">    private int cap;</div><div class="line"></div><div class="line">    public LRUCache(int capacity) &#123;</div><div class="line">        this.cap = capacity;</div><div class="line">        this.map = new LinkedHashMap&lt;Integer, Integer&gt;(capacity);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int get(int key) &#123;</div><div class="line">        if (!map.containsKey(key)) &#123;</div><div class="line">            return -1;</div><div class="line">        &#125;</div><div class="line">        int val = map.get(key);</div><div class="line">        map.remove(key);</div><div class="line">        map.put(key,val);</div><div class="line">        return val;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void put(int key, int value) &#123;</div><div class="line">        if (map.containsKey(key)) &#123;</div><div class="line">            map.remove(key);</div><div class="line">        &#125; else if (map.size() &gt;= cap) &#123;</div><div class="line">            map.remove(map.entrySet().iterator().next().getKey());</div><div class="line">        &#125;</div><div class="line">        map.put(key,value);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[LintCode: Rainbow Sort]]></title>
       <url>http:starllap.space/2017/06/23/LintCode-Rainbow-Sort/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
