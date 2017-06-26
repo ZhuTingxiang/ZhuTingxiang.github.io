@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http:starllap.space/"/>
-  <updated>2017-06-24T21:09:50.000Z</updated>
+  <updated>2017-06-26T15:00:04.000Z</updated>
   <id>http:starllap.space/</id>
   
   <author>
@@ -14,6 +14,151 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 279.Perfect Squares</title>
+    <link href="http:starllap.space/2017/06/26/LeetCode-279-Perfect-Squares/"/>
+    <id>http:starllap.space/2017/06/26/LeetCode-279-Perfect-Squares/</id>
+    <published>2017-06-26T14:56:08.000Z</published>
+    <updated>2017-06-26T15:00:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.</p>
+<p>For example, given n = 12, return 3 because 12 = 4 + 4 + 4; given n = 13, return 2 because 13 = 4 + 9.</p>
+<h3 id="explanation">Explanation</h3>
+<p>动态规划方法就是把一次得到最小值。然后把一个数i拆分成 i-j<em>j和j</em>j。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int numSquares(int n) &#123;</div><div class="line">        // DP solution:</div><div class="line">        int[] nums = new int[n+1];</div><div class="line">        if (n == 0) return 0;</div><div class="line">        Arrays.fill(nums, Integer.MAX_VALUE);</div><div class="line">        nums[0] = 0;</div><div class="line">        for (int i=1; i&lt;=n; i++) &#123;</div><div class="line">            int min = Integer.MAX_VALUE;</div><div class="line">            int j = 1;</div><div class="line">            while (i - j*j &gt; 0) &#123;</div><div class="line">                min = Math.min(min, nums[i-j*j]+1);</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            nums[i] = min;</div><div class="line">        &#125;</div><div class="line">        return nums[n];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a positive integer n, find the least number of pe
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
+    
+      <category term="BFS" scheme="http:starllap.space/tags/BFS/"/>
+    
+      <category term="Dynamic Programming" scheme="http:starllap.space/tags/Dynamic-Programming/"/>
+    
+      <category term="Math" scheme="http:starllap.space/tags/Math/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 120.Triangle</title>
+    <link href="http:starllap.space/2017/06/25/LeetCode-120-Triangle/"/>
+    <id>http:starllap.space/2017/06/25/LeetCode-120-Triangle/</id>
+    <published>2017-06-26T03:14:41.000Z</published>
+    <updated>2017-06-26T03:21:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.</p>
+<p>For example, given the following triangle
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">     [2],</div><div class="line">    [3,4],</div><div class="line">   [6,5,7],</div><div class="line">  [4,1,8,3]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).</p>
+<p>Note:
+Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.</p>
+<h3 id="explanation">Explanation</h3>
+<p>动态规划的基本题。主要就是要给每个pos都有一个找到最小值，逐层找到最后一个。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int minimumTotal(List&lt;List&lt;Integer&gt;&gt; triangle) &#123;</div><div class="line">        if (triangle == null || triangle.size() == 0) return -1;</div><div class="line">        if (triangle.get(0) == null || triangle.get(0).size() == 0) return -1;</div><div class="line">        int n = triangle.size();</div><div class="line">        int[][] f = new int[n][n];</div><div class="line">        f[0][0] = triangle.get(0).get(0);</div><div class="line"></div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            f[i][0] = f[i-1][0] + triangle.get(i).get(0);</div><div class="line">            f[i][i] = f[i-1][i-1] + triangle.get(i).get(i);</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            for(int j=1; j&lt;i; j++) &#123;</div><div class="line">                f[i][j] = Math.min(f[i-1][j-1], f[i-1][j]) + triangle.get(i).get(j);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        int best = f[n-1][0];</div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            best = Math.min(best, f[n-1][i]);</div><div class="line">        &#125;</div><div class="line">        return best;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a triangle, find the minimum path sum from top to
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 23. Merge k Sorted Lists</title>
+    <link href="http:starllap.space/2017/06/25/LeetCode-23-Merge-k-Sorted-Lists/"/>
+    <id>http:starllap.space/2017/06/25/LeetCode-23-Merge-k-Sorted-Lists/</id>
+    <published>2017-06-25T20:10:33.000Z</published>
+    <updated>2017-06-25T20:23:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
+<h3 id="explanation">Explanation</h3>
+<p>见code。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * public class ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode next;</div><div class="line"> *     ListNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    // Solution 1: heap</div><div class="line">    // private Comparator&lt;ListNode&gt; ListNodeComparator = new Comparator&lt;ListNode&gt;()&#123;</div><div class="line">    //     public int compare(ListNode left, ListNode right)&#123;</div><div class="line">    //         return left.val - right.val;</div><div class="line">    //     &#125;</div><div class="line">    // &#125;;</div><div class="line"></div><div class="line">    // public ListNode mergeKLists(ListNode[] lists) &#123;</div><div class="line">    //     if (lists == null || lists.length == 0 ) return null;</div><div class="line">    //     Queue&lt;ListNode&gt; heap = new PriorityQueue&lt;ListNode&gt;(lists.length, ListNodeComparator);</div><div class="line">    //     for (int i=0; i&lt;lists.length; i++) &#123;</div><div class="line">    //         if (lists[i] != null) &#123;</div><div class="line">    //             heap.add(lists.get(i));</div><div class="line">    //         &#125;</div><div class="line">    //     &#125;</div><div class="line">    //     ListNode dummy = new ListNode(0);</div><div class="line">    //     ListNode tail = dummy;</div><div class="line">    //     while(!heap.isEmpty()) &#123;</div><div class="line">    //         ListNode head = heap.poll();</div><div class="line">    //         tail.next = head;</div><div class="line">    //         tail = head;</div><div class="line">    //         if (head.next != null) &#123;</div><div class="line">    //             heap.add(head.next);</div><div class="line">    //         &#125;</div><div class="line">    //     &#125;</div><div class="line">    //     return dummy.next;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    // &#125;</div><div class="line">    // Solution 2: merge two by two</div><div class="line">    public ListNode mergeKLists(ListNode[] lists) &#123;</div><div class="line">        if (lists == null || lists.length == 0) return null;</div><div class="line">        return partition(lists, 0, lists.length - 1);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public ListNode partition(ListNode[] lists, int start, int end) &#123;</div><div class="line">        if (start == end) return lists[start];</div><div class="line">        if (start &lt; end) &#123;</div><div class="line">            int middle = (start + end) / 2;</div><div class="line">            ListNode n1 = partition(lists, start, middle);</div><div class="line">            ListNode n2 = partition(lists, middle+1, end);</div><div class="line">            return merge(n1, n2);</div><div class="line">        &#125;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static ListNode merge(ListNode n1, ListNode n2) &#123;</div><div class="line">        if (n1 == null) return n2;</div><div class="line">        if (n2 == null) return n1;</div><div class="line">        if (n1.val &lt; n2.val) &#123;</div><div class="line">            n1.next = merge(n1.next, n2);</div><div class="line">            return n1;</div><div class="line">        &#125; else &#123;</div><div class="line">            n2.next = merge(n1, n2.next);</div><div class="line">            return n2;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Merge k sorted linked lists and return it as one sorted
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
+    
+      <category term="Hard" scheme="http:starllap.space/tags/Hard/"/>
+    
+      <category term="Divide and conquer" scheme="http:starllap.space/tags/Divide-and-conquer/"/>
+    
+      <category term="Linked List" scheme="http:starllap.space/tags/Linked-List/"/>
+    
+      <category term="Heap" scheme="http:starllap.space/tags/Heap/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 215.Kth Largest Element in an Array</title>
+    <link href="http:starllap.space/2017/06/25/LeetCode-215-Kth-Largest-Element-in-an-Array/"/>
+    <id>http:starllap.space/2017/06/25/LeetCode-215-Kth-Largest-Element-in-an-Array/</id>
+    <published>2017-06-25T16:35:18.000Z</published>
+    <updated>2017-06-25T16:39:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
+<p>For example,
+Given [3,2,1,5,6,4] and k = 2, return 5.</p>
+<p>Note:
+You may assume k is always valid, 1 ≤ k ≤ array's length.</p>
+<h3 id="explanation">Explanation</h3>
+<p>常考题。可以有三种方法：a. 直接sort，然后找到第k个。b.用一个heap来存，这种方法遇到最大top kth 也可以做，或者遇到不停更新的数组，需要不停add的情况时，可以用这个来存。会很有效率。c.用quick sort来找partition aray来找。</p>
+<p>这三种方法都写在下面了，包括时间空间效率分析。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    // public int findKthLargest(int[] nums, int k) &#123;</div><div class="line">    //     // O(NlgN) time + O(1) memory, but it would be very costing if you keep adding new elements. It&apos;s not efficiency to sort it all the time.</div><div class="line">    //     int n = nums.length;</div><div class="line">    //     Arrays.sort(nums);</div><div class="line">    //     return nums[n-k];</div><div class="line">    // &#125;</div><div class="line"></div><div class="line">    // public int findKthLargest(int[] nums, int k) &#123;</div><div class="line">    //     // O(NlogK) time + O(k) memory</div><div class="line">    //     PriorityQueue&lt;Integer&gt; p = new PriorityQueue&lt;Integer&gt;();</div><div class="line">    //     for (int i=0; i&lt;nums.length; i++) &#123;</div><div class="line">    //         p.add(nums[i]);</div><div class="line">    //         if (p.size() &gt; k) p.poll();</div><div class="line">    //     &#125;</div><div class="line">    //     return p.poll();</div><div class="line"></div><div class="line">    // &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public int findKthLargest(int[] nums, int k) &#123;</div><div class="line">        // O(N) running time + O(1) memeory Quick sort</div><div class="line">        return quickSelect(nums, k-1, 0, nums.length-1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private int quickSelect(int[] nums, int k, int left, int right) &#123;</div><div class="line">        int pivot = nums[(left+right)/2];</div><div class="line">        int orgl = left, orgr = right;</div><div class="line">        while(left &lt;= right) &#123;</div><div class="line">            while(nums[left] &gt; pivot) &#123;</div><div class="line">                left ++;</div><div class="line">            &#125;</div><div class="line">            while(nums[right] &lt; pivot) &#123;</div><div class="line">                right --;</div><div class="line">            &#125;</div><div class="line">            if (left &lt;= right) &#123;</div><div class="line">                swap(nums, right, left);</div><div class="line">                left ++;</div><div class="line">                right --;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if(orgl &lt; right &amp;&amp; k &lt;= right) return quickSelect(nums,k, orgl, right);</div><div class="line">        if(left &lt; orgr &amp;&amp; k &gt;= left) return quickSelect(nums, k,left, orgr);</div><div class="line">        return nums[k];</div><div class="line">    &#125;</div><div class="line">    private void swap(int[] nums, int index1, int index2) &#123;</div><div class="line">        int tmp = nums[index1] ;</div><div class="line">        nums[index1] =  nums[index2];</div><div class="line">        nums[index2] =tmp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Find the kth largest element in an unsorted array. Note
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
+    
+      <category term="Divide and conquer" scheme="http:starllap.space/tags/Divide-and-conquer/"/>
+    
+      <category term="Heap" scheme="http:starllap.space/tags/Heap/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode 146. LRU Cache</title>
@@ -51,11 +196,11 @@ Could you do both operations in O(1) time complexity?</p>
     
       <category term="Design" scheme="http:starllap.space/tags/Design/"/>
     
-      <category term="LinkedList" scheme="http:starllap.space/tags/LinkedList/"/>
-    
       <category term="Hard" scheme="http:starllap.space/tags/Hard/"/>
     
       <category term="HashMap" scheme="http:starllap.space/tags/HashMap/"/>
+    
+      <category term="LinkedList" scheme="http:starllap.space/tags/LinkedList/"/>
     
   </entry>
   
@@ -333,9 +478,9 @@ Your algorithm's time complexity must be better than O(n log n), where n is the 
     
       <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
     
-      <category term="HashTable" scheme="http:starllap.space/tags/HashTable/"/>
-    
       <category term="Heap" scheme="http:starllap.space/tags/Heap/"/>
+    
+      <category term="HashTable" scheme="http:starllap.space/tags/HashTable/"/>
     
   </entry>
   
@@ -433,9 +578,9 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
     
       <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="Design" scheme="http:starllap.space/tags/Design/"/>
-    
       <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
+    
+      <category term="Design" scheme="http:starllap.space/tags/Design/"/>
     
       <category term="Hash Table" scheme="http:starllap.space/tags/Hash-Table/"/>
     
@@ -564,9 +709,9 @@ Have you consider that the string might be empty? This is a good question to ask
     
       <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
     
-      <category term="String" scheme="http:starllap.space/tags/String/"/>
-    
       <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
+    
+      <category term="String" scheme="http:starllap.space/tags/String/"/>
     
       <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
     
@@ -691,156 +836,6 @@ Minimize the total number of operations.</p>
       <category term="Hard" scheme="http:starllap.space/tags/Hard/"/>
     
       <category term="Divide and conquer" scheme="http:starllap.space/tags/Divide-and-conquer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode Weekly Contest 621. Task Scheduler</title>
-    <link href="http:starllap.space/2017/06/18/LeetCode-Weekly-Contest-621-Task-Scheduler-1/"/>
-    <id>http:starllap.space/2017/06/18/LeetCode-Weekly-Contest-621-Task-Scheduler-1/</id>
-    <published>2017-06-18T18:06:34.000Z</published>
-    <updated>2017-06-18T18:06:34.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode Weekly Contest 625. Minimum Factorization</title>
-    <link href="http:starllap.space/2017/06/17/LeetCode-Weekly-Contest-625-Minimum-Factorization/"/>
-    <id>http:starllap.space/2017/06/17/LeetCode-Weekly-Contest-625-Minimum-Factorization/</id>
-    <published>2017-06-18T03:44:54.000Z</published>
-    <updated>2017-06-18T15:46:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a positive integer a, find the smallest positive integer b whose multiplication of each digit equals to a.</p>
-<p>If there is no answer or the answer is not fit in 32-bit signed integer, then return 0.</p>
-<p>Example 1
-Input:</p>
-<p>48
-Output:
-68
-Example 2
-Input:</p>
-<p>15
-Output:
-35</p>
-<h3 id="explanation">Explanation</h3>
-<p>很直接的解法，从9开始找因子，存起来，最后组成最小的数。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int smallestFactorization(int a) &#123;</div><div class="line">        if(a == 0) return 0;</div><div class="line">        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();</div><div class="line">        helper(a, list);</div><div class="line">        if (list.get(0) == 0) return 0;</div><div class="line">        int result = 0;</div><div class="line">        for (int i=list.size()-1; i&gt;=0; i--) &#123;</div><div class="line">            int digit = i;</div><div class="line">            result += list.get(i) * Math.pow(10,digit);</div><div class="line">            if (result &gt;= Integer.MAX_VALUE) &#123;</div><div class="line">                return 0;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void helper(int a, ArrayList&lt;Integer&gt; list) &#123;</div><div class="line">        if (a &lt;= 9) &#123;</div><div class="line">            list.add(a);</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        boolean could = false;</div><div class="line">        for (int i = 9; i&gt;=2; i--) &#123;</div><div class="line">            if (a%i == 0) &#123;</div><div class="line">                could = true;</div><div class="line">                list.add(i);</div><div class="line">                helper(a/i, list);</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if(!could) &#123;</div><div class="line">            if (list.size() &lt;1) list.add(0);</div><div class="line">            else list.set(0,0);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a positive integer a, find the smallest positive 
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
-    
-      <category term="Arrays" scheme="http:starllap.space/tags/Arrays/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode Weekly Contest 623.Add One Row to Tree</title>
-    <link href="http:starllap.space/2017/06/17/LeetCode-Weekly-Contest-623-Add-One-Row-to-Tree/"/>
-    <id>http:starllap.space/2017/06/17/LeetCode-Weekly-Contest-623-Add-One-Row-to-Tree/</id>
-    <published>2017-06-18T03:43:20.000Z</published>
-    <updated>2017-06-18T15:43:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given the root of a binary tree, then value v and depth d, you need to add a row of nodes with value v at the given depth d. The root node is at depth 1.</p>
-<p>The adding rule is: given a positive integer depth d, for each NOT null tree nodes N in depth d-1, create two tree nodes with value v as N's left subtree root and right subtree root. And N's original left subtree should be the left subtree of the new left subtree root, its original right subtree should be the right subtree of the new right subtree root. If depth d is 1 that means there is no depth d-1 at all, then create a tree node with value v as the new root of the whole original tree, and the original tree is the new root's left subtree.</p>
-<p>Example 1:
-Input:
-A binary tree as following:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">       4</div><div class="line">     /   \</div><div class="line">    2     6</div><div class="line">   / \   /</div><div class="line">  3   1 5   </div><div class="line"></div><div class="line">v = 1</div><div class="line"></div><div class="line">d = 2</div><div class="line"></div><div class="line">Output:</div><div class="line">       4</div><div class="line">      / \</div><div class="line">     1   1</div><div class="line">    /     \</div><div class="line">   2       6</div><div class="line">  / \     /</div><div class="line"> 3   1   5</div></pre></td></tr></table></figure></p>
-<p>Example 2:
-Input:
-A binary tree as following:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">      4</div><div class="line">     /   </div><div class="line">    2    </div><div class="line">   / \   </div><div class="line">  3   1    </div><div class="line"></div><div class="line">v = 1</div><div class="line"></div><div class="line">d = 3</div><div class="line"></div><div class="line">Output:</div><div class="line">      4</div><div class="line">     /   </div><div class="line">    2</div><div class="line">   / \    </div><div class="line">  1   1</div><div class="line"> /     \  </div><div class="line">3       1</div></pre></td></tr></table></figure></p>
-<h3 id="explanation">Explanation</h3>
-<p>用BFS层级遍历，找到上一层以后，指定一下左右即可。还是要熟练掌握BFS。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public TreeNode addOneRow(TreeNode root, int v, int d) &#123;</div><div class="line">        if(d == 1) &#123;</div><div class="line">            TreeNode new_root = new TreeNode(v);</div><div class="line">            new_root.left = root;</div><div class="line">            return new_root;</div><div class="line">        &#125;</div><div class="line">        // 存之前的每一层，BFS</div><div class="line">        Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();</div><div class="line">        queue.offer(root);</div><div class="line">        int level = 1;</div><div class="line">        while(++level &lt; d) &#123;</div><div class="line">            int size = queue.size();</div><div class="line">            while(size-- &gt; 0) &#123;</div><div class="line">                TreeNode cur = queue.poll();</div><div class="line">                if(cur.left != null) queue.add(cur.left);</div><div class="line">                if(cur.right != null) queue.add(cur.right);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        // 变换这一层以及下一层</div><div class="line">        while(!queue.isEmpty()) &#123;</div><div class="line">            TreeNode cur = queue.poll();</div><div class="line">            TreeNode temp_left = cur.left;</div><div class="line">            TreeNode temp_right = cur.right;</div><div class="line">            cur.left = new TreeNode(v);</div><div class="line">            cur.left.left = temp_left;</div><div class="line">            cur.right = new TreeNode(v);</div><div class="line">            cur.right.right = temp_right;</div><div class="line">        &#125;</div><div class="line">        return root;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given the root of a binary tree, then value v and depth
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
-    
-      <category term="BFS" scheme="http:starllap.space/tags/BFS/"/>
-    
-      <category term="Binary tree" scheme="http:starllap.space/tags/Binary-tree/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode Weekly Contest 624.Maximum Distance in Arrays</title>
-    <link href="http:starllap.space/2017/06/17/LeetCode-624-Maximum-Distance-in-Arrays/"/>
-    <id>http:starllap.space/2017/06/17/LeetCode-624-Maximum-Distance-in-Arrays/</id>
-    <published>2017-06-18T03:37:36.000Z</published>
-    <updated>2017-06-18T03:42:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given m arrays, and each array is sorted in ascending order. Now you can pick up two integers from two different arrays (each array picks one) and calculate the distance. We define the distance between two integers a and b to be their absolute difference |a-b|. Your task is to find the maximum distance.
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line">Input:</div><div class="line">[[1,2,3],</div><div class="line"> [4,5],</div><div class="line"> [1,2,3]]</div><div class="line">Output: 4</div></pre></td></tr></table></figure></p>
-<p>Explanation:
-One way to reach the maximum distance 4 is to pick 1 in the first or third array and pick 5 in the second array.
-Note:
-Each given array will have at least 1 number. There will be at least two non-empty arrays.
-The total number of the integers in all the m arrays will be in the range of [2, 10000].
-The integers in the m arrays will be in the range of [-10000, 10000].</p>
-<h3 id="explanation">Explanation</h3>
-<p>这道题我是暴力解吧，先找到每个array里面的max和min，然后再得到相减最大的值。
-在Discuss里面看到很棒的解法，我忽略了是sorted这个条件，在后面附上Discuss里面的解法，就是遍历的时候就同时计算了，非常巧妙。</p>
-<h3 id="code">Code</h3>
-<p>More Clever Solution： https://discuss.leetcode.com/topic/92859/java-solution-min-and-max
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int maxDistance(int[][] arrays) &#123;</div><div class="line">        int result = Integer.MIN_VALUE;</div><div class="line">        int max = arrays[0][arrays[0].length - 1];</div><div class="line">        int min = arrays[0][0];</div><div class="line"></div><div class="line">        for (int i = 1; i &lt; arrays.length; i++) &#123;</div><div class="line">            result = Math.max(result, Math.abs(arrays[i][0] - max));</div><div class="line">            result = Math.max(result, Math.abs(arrays[i][arrays[i].length - 1] - min));</div><div class="line">            max = Math.max(max, arrays[i][arrays[i].length - 1]);</div><div class="line">            min = Math.min(min, arrays[i][0]);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Stupid Solution：</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int maxDistance(int[][] arrays) &#123;</div><div class="line">        int[][] maxMin = new int[arrays.length][2];</div><div class="line">        int max = 0;</div><div class="line">        if (arrays == null || arrays[0] == null) return 0;</div><div class="line">        // Store every max and min in each array</div><div class="line">        for (int i=0; i&lt;arrays.length; i++) &#123;</div><div class="line">            int partMax = Integer.MIN_VALUE;</div><div class="line">            int partMin = Integer.MAX_VALUE;</div><div class="line">            for (int j = 0; j&lt; arrays[i].length; j++) &#123;</div><div class="line">                if (arrays[i][j] &gt; partMax) &#123;</div><div class="line">                    partMax = arrays[i][j];</div><div class="line">                &#125;</div><div class="line">                if (arrays[i][j] &lt; partMin) &#123;</div><div class="line">                    partMin = arrays[i][j];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            maxMin[i][0] = partMax;</div><div class="line">            maxMin[i][1] = partMin;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        // use all max and min to calculate result</div><div class="line">        for (int i=0; i &lt; maxMin.length; i++) &#123;</div><div class="line">            for (int j = 0; j&lt;maxMin.length; j++) &#123;</div><div class="line">                if (i != j) &#123;</div><div class="line">                    max = Math.max(max, (maxMin[i][0] - maxMin[j][1]));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given m arrays, and each array is sorted in ascending o
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
-    
-      <category term="Array" scheme="http:starllap.space/tags/Array/"/>
     
   </entry>
   
