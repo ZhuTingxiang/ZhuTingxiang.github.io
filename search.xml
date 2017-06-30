@@ -511,6 +511,20 @@ The integer n is in the range [0, 100].</p>
     </entry>
     
     <entry>
+      <title><![CDATA[LeetCode 141. Linked List Cycle]]></title>
+      <url>http:starllap.space/2017/06/16/LeetCode-141-Linked-List-Cycle/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a linked list, determine if it has a cycle in it.</p>
+<p>Follow up:
+Can you solve it without using extra space?</p>
+<h3 id="explanation">Explanation</h3>
+<p>双指针，如果有重合，就说明有环。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    // Solution 1: user extra space, O(N). Time complexity:O(N). HashSet;</div><div class="line">    // public boolean hasCycle(ListNode head) &#123;</div><div class="line">    //     if (head == null) return false;</div><div class="line">    //     ListNode n = head;</div><div class="line">    //     HashSet&lt;ListNode&gt; set = new HashSet&lt;&gt;();</div><div class="line">    //     while(n!=null) &#123;</div><div class="line">    //         if (!set.contains(n)) set.add(n);</div><div class="line">    //         else return true;</div><div class="line">    //         n = n.next;</div><div class="line">    //     &#125;</div><div class="line">    //     return false;</div><div class="line">    // &#125;</div><div class="line">    // Solution 2: two pointers</div><div class="line">    public boolean hasCycle(ListNode head) &#123;</div><div class="line">              if (head == null) return false;</div><div class="line">              ListNode walker, runner;</div><div class="line">              walker = head;</div><div class="line">              runner = head;</div><div class="line">              while (runner != null &amp;&amp; runner.next != null) &#123;</div><div class="line">                  runner = runner.next.next;</div><div class="line">                  walker = walker.next;</div><div class="line">                  if (runner == walker) return true;</div><div class="line">              &#125;</div><div class="line">              return false;</div><div class="line"></div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[LeetCode 148. Sort List以及排序]]></title>
       <url>http:starllap.space/2017/06/16/LeetCode-148-Sort-List/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>排序算法：
@@ -551,52 +565,6 @@ Reference：https://discuss.leetcode.com/topic/27868/concise-java-solution-based
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Definitions:</div><div class="line">Cycle = length of the cycle, if exists.</div><div class="line">C is the beginning of Cycle, S is the distance of slow pointer from C when slow pointer meets fast pointer.</div><div class="line"></div><div class="line">Distance(slow) = C + S, Distance(fast) = 2 * Distance(slow) = 2 * (C + S). To let slow poiner meets fast pointer, only if fast pointer run 1 cycle more than slow pointer. Distance(fast) - Distance(slow) = Cycle</div><div class="line">=&gt; 2 * (C + S) - (C + S)	= Cycle</div><div class="line">=&gt;	C + S = Cycle</div><div class="line">=&gt;	C = Cycle - S</div><div class="line">=&gt; This means if slow pointer runs (Cycle - S) more, it will reaches C. So at this time, if there&apos;s another point2 running from head</div><div class="line">=&gt; After C distance, point2 will meet slow pointer at C, where is the beginning of the cycle.</div></pre></td></tr></table></figure></p>
 <h3 id="code">Code</h3>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">public ListNode detectCycle(ListNode head) &#123;</div><div class="line">	ListNode slow = head, fast = head;</div><div class="line">	while(fast != null &amp;&amp; fast.next != null) &#123;</div><div class="line">		fast = fast.next.next;</div><div class="line">		slow = slow.next;</div><div class="line">		if (slow == fast) &#123;</div><div class="line">			while (head != slow) &#123;</div><div class="line">				head = head.next;</div><div class="line">				slow = slow.next;</div><div class="line">			&#125;</div><div class="line">			return slow;				</div><div class="line">		&#125;</div><div class="line">	&#125;			</div><div class="line">	return null;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[LeetCode 141. Linked List Cycle]]></title>
-      <url>http:starllap.space/2017/06/16/LeetCode-141-Linked-List-Cycle/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a linked list, determine if it has a cycle in it.</p>
-<p>Follow up:
-Can you solve it without using extra space?</p>
-<h3 id="explanation">Explanation</h3>
-<p>双指针，如果有重合，就说明有环。</p>
-<h3 id="code">Code</h3>
-<p>public class Solution {
-// Solution 1: user extra space, O(N). Time complexity:O(N). HashSet;
-// public boolean hasCycle(ListNode head) {
-//     if (head == null) return false;
-//     ListNode n = head;
-//     HashSet&lt;ListNode&gt; set = new HashSet&lt;&gt;();
-//     while(n!=null) {
-//         if (!set.contains(n)) set.add(n);
-//         else return true;
-//         n = n.next;
-//     }
-//     return false;
-// }
-// Solution 2: two pointers
-public boolean hasCycle(ListNode head) {
-if (head == null) return false;
-ListNode walker, runner;
-walker = head;
-runner = head;
-while (runner != null &amp;&amp; runner.next != null) {
-runner = runner.next.next;
-walker = walker.next;
-if (runner == walker) return true;
-}
-return false;</p>
-<pre><code>      }
-  }
-
-
-
-}
-</code></pre>
-<p>}</p>
 ]]></content>
     </entry>
     
@@ -1831,7 +1799,7 @@ Brokers用来负责数据持久化和复制。brokers会和producers交流来发
     
     <entry>
       <title><![CDATA[Leetcode 530. Minimum Absolute Difference in BST]]></title>
-      <url>http:starllap.space/2017/03/03/Leetcode-530-Minimum-Absolute-Difference-in-BST/</url>
+      <url>http:starllap.space/2017/03/02/Leetcode-530-Minimum-Absolute-Difference-in-BST/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.</p>
 <p>Example:
@@ -3176,7 +3144,7 @@ the logs will hold the necessary information on recovery.</li>
     
     <entry>
       <title><![CDATA[哪儿]]></title>
-      <url>http:starllap.space/2017/01/24/%E5%93%AA%E5%84%BF/</url>
+      <url>http:starllap.space/2017/01/23/%E5%93%AA%E5%84%BF/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><embed src="http://www.xiami.com/widget/12753884_1769553081/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></p>
 <p>今天上Advanced Cloud Computing,三个教授就一个问题争论起来。</p>
 <p>那真的是很触动我的一刻，加起来都快150岁的三个顶尖学术大牛，在投影仪前面，对待知识还是和孩子一样专注和热情，可爱极了。</p>
@@ -4087,7 +4055,7 @@ P(T=t|M=m):
     
     <entry>
       <title><![CDATA[LeetCode 172.Factorial Trailing Zeroes]]></title>
-      <url>http:starllap.space/2016/10/15/leetcode-172-easyfactorial-trailing-zeroes/</url>
+      <url>http:starllap.space/2016/10/14/leetcode-172-easyfactorial-trailing-zeroes/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Question:</p>
 </blockquote>
@@ -4286,7 +4254,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[开篇：打碎浅薄和矫情]]></title>
-      <url>http:starllap.space/2016/07/21/e5-bc-80-e7-af-87-ef-bc-9a-e6-89-93-e7-a2-8e-e6-b5-85-e8-96-84-e5-92-8c-e7-9f-ab-e6-83-85/</url>
+      <url>http:starllap.space/2016/07/20/e5-bc-80-e7-af-87-ef-bc-9a-e6-89-93-e7-a2-8e-e6-b5-85-e8-96-84-e5-92-8c-e7-9f-ab-e6-83-85/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>所谓开篇，是这个博客的开篇。</p>
 <p>我写字的历史很长，换了很多平台。先行总结，字数不算惊人，但也不算少了。</p>
 <p>大致如下：</p>

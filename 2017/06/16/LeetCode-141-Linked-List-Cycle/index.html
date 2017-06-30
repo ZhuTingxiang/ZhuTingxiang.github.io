@@ -93,8 +93,7 @@ Can you solve it without using extra space?
 Explanation
 双指针，如果有重合，就说明有环。
 Code
-public class Solution {
-// Solution 1: user e">
+123456789101112131415161718192021222324252627">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 141. Linked List Cycle">
 <meta property="og:url" content="http:starllap.space/2017/06/16/LeetCode-141-Linked-List-Cycle/index.html">
@@ -106,9 +105,8 @@ Can you solve it without using extra space?
 Explanation
 双指针，如果有重合，就说明有环。
 Code
-public class Solution {
-// Solution 1: user e">
-<meta property="og:updated_time" content="2017-06-16T21:36:55.000Z">
+123456789101112131415161718192021222324252627">
+<meta property="og:updated_time" content="2017-06-30T05:59:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 141. Linked List Cycle">
 <meta name="twitter:description" content="Question
@@ -118,8 +116,7 @@ Can you solve it without using extra space?
 Explanation
 双指针，如果有重合，就说明有环。
 Code
-public class Solution {
-// Solution 1: user e">
+123456789101112131415161718192021222324252627">
 
 <script>
   (function(){
@@ -363,7 +360,7 @@ public class Solution {
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-16T17:24:02-04:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-16T17:24:02-07:00">
                 2017-06-16
               </time>
             
@@ -431,39 +428,7 @@ Can you solve it without using extra space?</p>
 <h3 id="explanation">Explanation</h3>
 <p>双指针，如果有重合，就说明有环。</p>
 <h3 id="code">Code</h3>
-<p>public class Solution {
-// Solution 1: user extra space, O(N). Time complexity:O(N). HashSet;
-// public boolean hasCycle(ListNode head) {
-//     if (head == null) return false;
-//     ListNode n = head;
-//     HashSet&lt;ListNode&gt; set = new HashSet&lt;&gt;();
-//     while(n!=null) {
-//         if (!set.contains(n)) set.add(n);
-//         else return true;
-//         n = n.next;
-//     }
-//     return false;
-// }
-// Solution 2: two pointers
-public boolean hasCycle(ListNode head) {
-if (head == null) return false;
-ListNode walker, runner;
-walker = head;
-runner = head;
-while (runner != null &amp;&amp; runner.next != null) {
-runner = runner.next.next;
-walker = walker.next;
-if (runner == walker) return true;
-}
-return false;</p>
-<pre><code>      }
-  }
-
-
-
-}
-</code></pre>
-<p>}</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    // Solution 1: user extra space, O(N). Time complexity:O(N). HashSet;</div><div class="line">    // public boolean hasCycle(ListNode head) &#123;</div><div class="line">    //     if (head == null) return false;</div><div class="line">    //     ListNode n = head;</div><div class="line">    //     HashSet&lt;ListNode&gt; set = new HashSet&lt;&gt;();</div><div class="line">    //     while(n!=null) &#123;</div><div class="line">    //         if (!set.contains(n)) set.add(n);</div><div class="line">    //         else return true;</div><div class="line">    //         n = n.next;</div><div class="line">    //     &#125;</div><div class="line">    //     return false;</div><div class="line">    // &#125;</div><div class="line">    // Solution 2: two pointers</div><div class="line">    public boolean hasCycle(ListNode head) &#123;</div><div class="line">              if (head == null) return false;</div><div class="line">              ListNode walker, runner;</div><div class="line">              walker = head;</div><div class="line">              runner = head;</div><div class="line">              while (runner != null &amp;&amp; runner.next != null) &#123;</div><div class="line">                  runner = runner.next.next;</div><div class="line">                  walker = walker.next;</div><div class="line">                  if (runner == walker) return true;</div><div class="line">              &#125;</div><div class="line">              return false;</div><div class="line"></div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -502,8 +467,8 @@ return false;</p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/16/LeetCode-138-Copy-List-with-Random-Pointer/" rel="next" title="LeetCode 138. Copy List with Random Pointer">
-                <i class="fa fa-chevron-left"></i> LeetCode 138. Copy List with Random Pointer
+              <a href="/2017/06/16/LeetCode-148-Sort-List/" rel="next" title="LeetCode 148. Sort List以及排序">
+                <i class="fa fa-chevron-left"></i> LeetCode 148. Sort List以及排序
               </a>
             
           </div>
@@ -512,8 +477,8 @@ return false;</p>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/16/LeetCode-142-Linked-List-CycleII/" rel="prev" title="LeetCode 142. Linked List CycleII">
-                LeetCode 142. Linked List CycleII <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/16/LeetCode-21-Merge-Two-Sorted-Lists/" rel="prev" title="LeetCode 21. Merge Two Sorted Lists">
+                LeetCode 21. Merge Two Sorted Lists <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
