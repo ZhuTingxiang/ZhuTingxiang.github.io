@@ -4,21 +4,8 @@
   
     
     <entry>
-      <title><![CDATA[LeetCode 279.Perfect Squares]]></title>
-      <url>http:starllap.space/2017/06/26/LeetCode-279-Perfect-Squares/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.</p>
-<p>For example, given n = 12, return 3 because 12 = 4 + 4 + 4; given n = 13, return 2 because 13 = 4 + 9.</p>
-<h3 id="explanation">Explanation</h3>
-<p>动态规划方法就是把一次得到最小值。然后把一个数i拆分成 i-j<em>j和j</em>j。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int numSquares(int n) &#123;</div><div class="line">        // DP solution:</div><div class="line">        int[] nums = new int[n+1];</div><div class="line">        if (n == 0) return 0;</div><div class="line">        Arrays.fill(nums, Integer.MAX_VALUE);</div><div class="line">        nums[0] = 0;</div><div class="line">        for (int i=1; i&lt;=n; i++) &#123;</div><div class="line">            int min = Integer.MAX_VALUE;</div><div class="line">            int j = 1;</div><div class="line">            while (i - j*j &gt; 0) &#123;</div><div class="line">                min = Math.min(min, nums[i-j*j]+1);</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            nums[i] = min;</div><div class="line">        &#125;</div><div class="line">        return nums[n];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[LeetCode 120.Triangle]]></title>
-      <url>http:starllap.space/2017/06/25/LeetCode-120-Triangle/</url>
+      <url>http:starllap.space/2017/06/26/LeetCode-120-Triangle/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.</p>
 <p>For example, given the following triangle
@@ -30,6 +17,19 @@ Bonus point if you are able to do this using only O(n) extra space, where n is t
 <p>动态规划的基本题。主要就是要给每个pos都有一个找到最小值，逐层找到最后一个。</p>
 <h3 id="code">Code</h3>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int minimumTotal(List&lt;List&lt;Integer&gt;&gt; triangle) &#123;</div><div class="line">        if (triangle == null || triangle.size() == 0) return -1;</div><div class="line">        if (triangle.get(0) == null || triangle.get(0).size() == 0) return -1;</div><div class="line">        int n = triangle.size();</div><div class="line">        int[][] f = new int[n][n];</div><div class="line">        f[0][0] = triangle.get(0).get(0);</div><div class="line"></div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            f[i][0] = f[i-1][0] + triangle.get(i).get(0);</div><div class="line">            f[i][i] = f[i-1][i-1] + triangle.get(i).get(i);</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            for(int j=1; j&lt;i; j++) &#123;</div><div class="line">                f[i][j] = Math.min(f[i-1][j-1], f[i-1][j]) + triangle.get(i).get(j);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        int best = f[n-1][0];</div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            best = Math.min(best, f[n-1][i]);</div><div class="line">        &#125;</div><div class="line">        return best;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 279.Perfect Squares]]></title>
+      <url>http:starllap.space/2017/06/26/LeetCode-279-Perfect-Squares/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.</p>
+<p>For example, given n = 12, return 3 because 12 = 4 + 4 + 4; given n = 13, return 2 because 13 = 4 + 9.</p>
+<h3 id="explanation">Explanation</h3>
+<p>动态规划方法就是把一次得到最小值。然后把一个数i拆分成 i-j<em>j和j</em>j。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int numSquares(int n) &#123;</div><div class="line">        // DP solution:</div><div class="line">        int[] nums = new int[n+1];</div><div class="line">        if (n == 0) return 0;</div><div class="line">        Arrays.fill(nums, Integer.MAX_VALUE);</div><div class="line">        nums[0] = 0;</div><div class="line">        for (int i=1; i&lt;=n; i++) &#123;</div><div class="line">            int min = Integer.MAX_VALUE;</div><div class="line">            int j = 1;</div><div class="line">            while (i - j*j &gt; 0) &#123;</div><div class="line">                min = Math.min(min, nums[i-j*j]+1);</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            nums[i] = min;</div><div class="line">        &#125;</div><div class="line">        return nums[n];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
@@ -64,7 +64,7 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.</p>
     
     <entry>
       <title><![CDATA[LeetCode 146. LRU Cache]]></title>
-      <url>http:starllap.space/2017/06/24/LeetCode-146-LRU-Cache/</url>
+      <url>http:starllap.space/2017/06/25/LeetCode-146-LRU-Cache/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.</p>
 <p>get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
@@ -198,7 +198,7 @@ Your algorithm's time complexity must be better than O(n log n), where n is the 
     
     <entry>
       <title><![CDATA[当你在浏览器中输入www.google.com会发生什么？]]></title>
-      <url>http:starllap.space/2017/06/21/%E5%BD%93%E4%BD%A0%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5www-google-com%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
+      <url>http:starllap.space/2017/06/22/%E5%BD%93%E4%BD%A0%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5www-google-com%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>经典面试题。</p>
 <p>中文参考：http://www.jianshu.com/p/71cf7f69eca8
 英文参考：http://edusagar.com/articles/view/70/What-happens-when-you-type-a-URL-in-browser</p>
@@ -242,7 +242,7 @@ Connection header tells the server to keep open the TCP connection established h
     
     <entry>
       <title><![CDATA[LeetCode 170. Two Sum III - Data Structure design]]></title>
-      <url>http:starllap.space/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/</url>
+      <url>http:starllap.space/2017/06/21/LeetCode-170-Two-Sum-III-Data-Structure-design/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Design and implement a TwoSum class. It should support the following operations: add and find.</p>
 <p>add - Add the number to an internal data structure.
@@ -252,6 +252,40 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
 <p>和leetcode No.1一样，只是需要考虑的这里只能用一个不太需要维护的数据结构来存储，之前排序数组的那种方法就不可行了。同时要考虑计算frequency，会出现pair中两个数字是同一个的情况。</p>
 <h3 id="code">Code</h3>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class TwoSum &#123;</div><div class="line"></div><div class="line">    /** Initialize your data structure here. */</div><div class="line">    HashMap&lt;Integer, Integer&gt; map;</div><div class="line">    public TwoSum() &#123;</div><div class="line">        map = new HashMap&lt;Integer, Integer&gt;();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** Add the number to an internal data structure.. */</div><div class="line">    public void add(int number) &#123;</div><div class="line">        if (map.containsKey(number)) &#123;</div><div class="line">            map.put(number, map.get(number)+1);</div><div class="line">        &#125; else &#123;</div><div class="line">            map.put(number, 1);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** Find if there exists any pair of numbers which sum is equal to the value. */</div><div class="line">    public boolean find(int value) &#123;</div><div class="line">        for(int key:map.keySet())&#123;</div><div class="line">            int left = value - key;</div><div class="line">            if (left == key &amp;&amp; map.get(key) &gt; 1) &#123;</div><div class="line">                return true;</div><div class="line">            &#125; else if (left != key &amp;&amp; map.containsKey(left)) &#123;</div><div class="line">                return true;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 131.Palindrome Partitioning]]></title>
+      <url>http:starllap.space/2017/06/21/LeetCode-131-Palindrome-Partitioning/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
+<p>Return all possible palindrome partitioning of s.</p>
+<p>For example, given s = &quot;aab&quot;,
+Return
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  [&quot;aa&quot;,&quot;b&quot;],</div><div class="line">  [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>用回溯法找到每种可能的组合的模式，然后对于每个部分字符串去判断是否是回文字符串。算是常规题，略组合了一下，有趣。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;List&lt;String&gt;&gt; partition(String s) &#123;</div><div class="line">        List&lt;List&lt;String&gt;&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if (s == null || s.length() == 0) return result;</div><div class="line">        List&lt;String&gt; patition = new ArrayList&lt;&gt;();</div><div class="line">        helper(s, 0, patition, result);</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void helper(String s, int index, List&lt;String&gt; partition, List&lt;List&lt;String&gt;&gt; result) &#123;</div><div class="line">        if (index == s.length()) &#123;</div><div class="line">            result.add(new ArrayList&lt;String&gt;(partition));</div><div class="line">        &#125;</div><div class="line">        for (int i=index; i&lt;s.length(); i++) &#123;</div><div class="line">            String subString = s.substring(index, i+1);</div><div class="line">            if (!isPalindrome(subString)) continue;</div><div class="line">            partition.add(subString);</div><div class="line">            helper(s, i+1, partition, result);</div><div class="line">            partition.remove(partition.size()-1);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //check for palindrome</div><div class="line">    public boolean isPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() == 0) return true;</div><div class="line">        int i=0; int j = s.length() -1 ;</div><div class="line">        s = s.toLowerCase();</div><div class="line">        while (i &lt; j) &#123;</div><div class="line">            if (!Character.isLetterOrDigit(s.charAt(i))) &#123;</div><div class="line">                i ++;</div><div class="line">            &#125; else if (!Character.isLetterOrDigit(s.charAt(j))) &#123;</div><div class="line">                j--;</div><div class="line">            &#125; else if (s.charAt(i)!=s.charAt(j)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125; else &#123;</div><div class="line">                i++; j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 125. Valid Palindrome]]></title>
+      <url>http:starllap.space/2017/06/21/LeetCode-125-Valid-Palindrome/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
+<p>For example,
+&quot;A man, a plan, a canal: Panama&quot; is a palindrome.
+&quot;race a car&quot; is not a palindrome.</p>
+<p>Note:
+Have you consider that the string might be empty? This is a good question to ask during an interview.</p>
+<p>For the purpose of this problem, we define empty string as valid palindrome.</p>
+<h3 id="explanation">Explanation</h3>
+<p>双指针问题。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean isPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() == 0) return true;</div><div class="line">        int i=0; int j = s.length() -1 ;</div><div class="line">        s = s.toLowerCase();</div><div class="line">        while (i &lt; j) &#123;</div><div class="line">            if (!Character.isLetterOrDigit(s.charAt(i))) &#123;</div><div class="line">                i ++;</div><div class="line">            &#125; else if (!Character.isLetterOrDigit(s.charAt(j))) &#123;</div><div class="line">                j--;</div><div class="line">            &#125; else if (s.charAt(i)!=s.charAt(j)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125; else &#123;</div><div class="line">                i++; j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
@@ -280,40 +314,6 @@ return result;</p>
 <pre><code>}
 </code></pre>
 <p>}</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[LeetCode 131.Palindrome Partitioning]]></title>
-      <url>http:starllap.space/2017/06/20/LeetCode-131-Palindrome-Partitioning/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
-<p>Return all possible palindrome partitioning of s.</p>
-<p>For example, given s = &quot;aab&quot;,
-Return
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  [&quot;aa&quot;,&quot;b&quot;],</div><div class="line">  [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<h3 id="explanation">Explanation</h3>
-<p>用回溯法找到每种可能的组合的模式，然后对于每个部分字符串去判断是否是回文字符串。算是常规题，略组合了一下，有趣。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;List&lt;String&gt;&gt; partition(String s) &#123;</div><div class="line">        List&lt;List&lt;String&gt;&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if (s == null || s.length() == 0) return result;</div><div class="line">        List&lt;String&gt; patition = new ArrayList&lt;&gt;();</div><div class="line">        helper(s, 0, patition, result);</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void helper(String s, int index, List&lt;String&gt; partition, List&lt;List&lt;String&gt;&gt; result) &#123;</div><div class="line">        if (index == s.length()) &#123;</div><div class="line">            result.add(new ArrayList&lt;String&gt;(partition));</div><div class="line">        &#125;</div><div class="line">        for (int i=index; i&lt;s.length(); i++) &#123;</div><div class="line">            String subString = s.substring(index, i+1);</div><div class="line">            if (!isPalindrome(subString)) continue;</div><div class="line">            partition.add(subString);</div><div class="line">            helper(s, i+1, partition, result);</div><div class="line">            partition.remove(partition.size()-1);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //check for palindrome</div><div class="line">    public boolean isPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() == 0) return true;</div><div class="line">        int i=0; int j = s.length() -1 ;</div><div class="line">        s = s.toLowerCase();</div><div class="line">        while (i &lt; j) &#123;</div><div class="line">            if (!Character.isLetterOrDigit(s.charAt(i))) &#123;</div><div class="line">                i ++;</div><div class="line">            &#125; else if (!Character.isLetterOrDigit(s.charAt(j))) &#123;</div><div class="line">                j--;</div><div class="line">            &#125; else if (s.charAt(i)!=s.charAt(j)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125; else &#123;</div><div class="line">                i++; j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[LeetCode 125. Valid Palindrome]]></title>
-      <url>http:starllap.space/2017/06/20/LeetCode-125-Valid-Palindrome/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
-<p>For example,
-&quot;A man, a plan, a canal: Panama&quot; is a palindrome.
-&quot;race a car&quot; is not a palindrome.</p>
-<p>Note:
-Have you consider that the string might be empty? This is a good question to ask during an interview.</p>
-<p>For the purpose of this problem, we define empty string as valid palindrome.</p>
-<h3 id="explanation">Explanation</h3>
-<p>双指针问题。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean isPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() == 0) return true;</div><div class="line">        int i=0; int j = s.length() -1 ;</div><div class="line">        s = s.toLowerCase();</div><div class="line">        while (i &lt; j) &#123;</div><div class="line">            if (!Character.isLetterOrDigit(s.charAt(i))) &#123;</div><div class="line">                i ++;</div><div class="line">            &#125; else if (!Character.isLetterOrDigit(s.charAt(j))) &#123;</div><div class="line">                j--;</div><div class="line">            &#125; else if (s.charAt(i)!=s.charAt(j)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125; else &#123;</div><div class="line">                i++; j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
@@ -499,20 +499,8 @@ The integer n is in the range [0, 100].</p>
     </entry>
     
     <entry>
-      <title><![CDATA[LeetCode 21. Merge Two Sorted Lists]]></title>
-      <url>http:starllap.space/2017/06/16/LeetCode-21-Merge-Two-Sorted-Lists/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
-<h3 id="explanation">Explanation</h3>
-<p>两个指针。非常简单。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;</div><div class="line">        ListNode a = l1;</div><div class="line">        ListNode b = l2;</div><div class="line">        if (l1 == null &amp;&amp; l2 == null) return null;</div><div class="line">        ListNode curr = new ListNode(0);</div><div class="line">        ListNode dummy= curr;</div><div class="line">        while(a != null &amp;&amp; b != null) &#123;</div><div class="line">            if (a.val &lt; b.val) &#123;</div><div class="line">                dummy.next = new ListNode(a.val);</div><div class="line">                a = a.next;</div><div class="line">            &#125; else &#123;</div><div class="line">                dummy.next = new ListNode(b.val);</div><div class="line">                b = b.next;</div><div class="line">            &#125;</div><div class="line">            dummy = dummy.next;</div><div class="line">        &#125;</div><div class="line">        if(a!= null) dummy.next = a;</div><div class="line">        else dummy.next = b;</div><div class="line">        return curr.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[LeetCode 141. Linked List Cycle]]></title>
-      <url>http:starllap.space/2017/06/16/LeetCode-141-Linked-List-Cycle/</url>
+      <url>http:starllap.space/2017/06/17/LeetCode-141-Linked-List-Cycle/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a linked list, determine if it has a cycle in it.</p>
 <p>Follow up:
@@ -526,7 +514,7 @@ Can you solve it without using extra space?</p>
     
     <entry>
       <title><![CDATA[LeetCode 148. Sort List以及排序]]></title>
-      <url>http:starllap.space/2017/06/16/LeetCode-148-Sort-List/</url>
+      <url>http:starllap.space/2017/06/17/LeetCode-148-Sort-List/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>排序算法：
 时间复杂度为 O(nlgn）:<br>
 quick sort (空间复杂度O(1)), merge sort(空间复杂度O(n)), heap sort (空间复杂度O(1))
@@ -553,7 +541,7 @@ bucket sort, radix sort,
     
     <entry>
       <title><![CDATA[LeetCode 142. Linked List CycleII]]></title>
-      <url>http:starllap.space/2017/06/16/LeetCode-142-Linked-List-CycleII/</url>
+      <url>http:starllap.space/2017/06/17/LeetCode-142-Linked-List-CycleII/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a linked list, return the node where the cycle begins. If there is no cycle, return null.</p>
 <p>Note: Do not modify the linked list.</p>
@@ -570,7 +558,7 @@ Reference：https://discuss.leetcode.com/topic/27868/concise-java-solution-based
     
     <entry>
       <title><![CDATA[LeetCode 138. Copy List with Random Pointer]]></title>
-      <url>http:starllap.space/2017/06/16/LeetCode-138-Copy-List-with-Random-Pointer/</url>
+      <url>http:starllap.space/2017/06/17/LeetCode-138-Copy-List-with-Random-Pointer/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p>
 <p>Return a deep copy of the list.</p>
@@ -578,6 +566,18 @@ Reference：https://discuss.leetcode.com/topic/27868/concise-java-solution-based
 <p>这道题有两种解法。一种用Hashmap存每个节点，然后复制。这种需要占用Extra space。另外一种就是把每个新的节点存到原来的节点的下一个，不用额外空间。</p>
 <h3 id="code">Code</h3>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    // Solution 1: using hashmap and iterate twice. one for nodes, the other for next and random.</div><div class="line">    public RandomListNode copyRandomList(RandomListNode head) &#123;</div><div class="line">        HashMap&lt;RandomListNode, RandomListNode&gt; map = new HashMap&lt;&gt;();</div><div class="line">        RandomListNode curr = head;</div><div class="line">        // copy the all the nodes and their labels first</div><div class="line">        while (curr != null) &#123;</div><div class="line">            map.put(curr, new RandomListNode(curr.label));</div><div class="line">            curr = curr.next;</div><div class="line">        &#125;</div><div class="line">        RandomListNode node = head;</div><div class="line">        // copy all the next and randoms</div><div class="line">        while (node != null) &#123;</div><div class="line">            map.get(node).next = map.get(node.next);</div><div class="line">            map.get(node).random = map.get(node.random);</div><div class="line">            node = node.next;</div><div class="line">        &#125;</div><div class="line">        return map.get(head);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Solution 2: no hashmap, only linked list</div><div class="line">    public RandomListNode copyRandomList(RandomListNode head) &#123;</div><div class="line">        if (head == null) return null;</div><div class="line">        RandomListNode curr = head;</div><div class="line">        // copy next</div><div class="line">        while (curr != null) &#123;</div><div class="line">            RandomListNode newNode = new RandomListNode(curr.label);</div><div class="line">            newNode.random = curr.random;</div><div class="line">            newNode.next = curr.next;</div><div class="line">            curr.next = newNode;</div><div class="line">            curr = curr.next.next;</div><div class="line">        &#125;</div><div class="line">        // copy random</div><div class="line">        RandomListNode cur = head;</div><div class="line"></div><div class="line">        while (cur != null) &#123;</div><div class="line">            if (cur.next.random != null) &#123;</div><div class="line">                cur.next.random = cur.random.next;</div><div class="line">            &#125;</div><div class="line">            cur = cur.next.next;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // split list</div><div class="line">        RandomListNode newHead = head.next;</div><div class="line">        RandomListNode curt = head;</div><div class="line">        while (curt != null) &#123;</div><div class="line">            RandomListNode tmp= curt.next;</div><div class="line">            curt.next = tmp.next;</div><div class="line">            curt = curt.next;</div><div class="line">            if (tmp.next != null) &#123;</div><div class="line">                tmp.next = tmp.next.next;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return newHead;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 21. Merge Two Sorted Lists]]></title>
+      <url>http:starllap.space/2017/06/16/LeetCode-21-Merge-Two-Sorted-Lists/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<h3 id="explanation">Explanation</h3>
+<p>两个指针。非常简单。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;</div><div class="line">        ListNode a = l1;</div><div class="line">        ListNode b = l2;</div><div class="line">        if (l1 == null &amp;&amp; l2 == null) return null;</div><div class="line">        ListNode curr = new ListNode(0);</div><div class="line">        ListNode dummy= curr;</div><div class="line">        while(a != null &amp;&amp; b != null) &#123;</div><div class="line">            if (a.val &lt; b.val) &#123;</div><div class="line">                dummy.next = new ListNode(a.val);</div><div class="line">                a = a.next;</div><div class="line">            &#125; else &#123;</div><div class="line">                dummy.next = new ListNode(b.val);</div><div class="line">                b = b.next;</div><div class="line">            &#125;</div><div class="line">            dummy = dummy.next;</div><div class="line">        &#125;</div><div class="line">        if(a!= null) dummy.next = a;</div><div class="line">        else dummy.next = b;</div><div class="line">        return curr.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
@@ -602,7 +602,7 @@ Given this linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5</p>
     
     <entry>
       <title><![CDATA[LeetCode 92. Reverse LinkedList II]]></title>
-      <url>http:starllap.space/2017/06/15/LeetCode-92-Reverse-LinkedList-II/</url>
+      <url>http:starllap.space/2017/06/16/LeetCode-92-Reverse-LinkedList-II/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Reverse a linked list from position m to n. Do it in-place and in one-pass.</p>
 <p>For example:
@@ -646,6 +646,18 @@ Given m, n satisfy the following condition:
 
 ``
 </code></pre>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 127. Word Ladder]]></title>
+      <url>http:starllap.space/2017/06/13/LeetCode-127-Word-Ladder/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<h3 id="explanation">Explanation</h3>
+<p>本题用DFS做会严重超时，用BFS也要注意一下替换的方式。其实用双边BFS会更快。</p>
+<h3 id="code">Code</h3>
+<p>Solution 1: BFS
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int ladderLength(String beginWord, String endWord, List&lt;String&gt; wordList) &#123;</div><div class="line">        Set&lt;String&gt; dict = new HashSet&lt;&gt;();</div><div class="line">        for (String word : wordList) &#123;</div><div class="line">            dict.add(word);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (wordList == null) return 0;</div><div class="line">        if (beginWord.equals(endWord)) return 1;</div><div class="line">        // wordList.add(beginWord);</div><div class="line">        // wordList.add(endWord);</div><div class="line"></div><div class="line">        HashSet&lt;String&gt; hash = new HashSet&lt;&gt;();</div><div class="line">        Queue&lt;String&gt; queue = new LinkedList&lt;&gt;();</div><div class="line">        queue.offer(beginWord);</div><div class="line">        hash.add(beginWord);</div><div class="line"></div><div class="line">        int length = 1;</div><div class="line">        while(!queue.isEmpty()) &#123;</div><div class="line">            length ++;</div><div class="line">            int size = queue.size();</div><div class="line">            for(int i=0; i&lt;size; i++) &#123;</div><div class="line">                String word = queue.poll();</div><div class="line">                for (String nextWord: getNextWords(word, dict)) &#123;</div><div class="line">                    if (hash.contains(nextWord)) &#123;</div><div class="line">                        continue;</div><div class="line">                    &#125;</div><div class="line">                    if (nextWord.equals(endWord)) &#123;</div><div class="line">                        return length;</div><div class="line">                    &#125;</div><div class="line">                    hash.add(nextWord);</div><div class="line">                    queue.offer(nextWord);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private List&lt;String&gt; getNextWords(String word, Set&lt;String&gt; wordList) &#123;</div><div class="line">        List&lt;String&gt; nextWords = new ArrayList&lt;&gt;();</div><div class="line">        for (char c = &apos;a&apos; ; c &lt;&apos;z&apos;; c++) &#123;</div><div class="line">            for (int i=0; i&lt; word.length(); i++)&#123;</div><div class="line">                if (c == word.charAt(i)) &#123;</div><div class="line">                    continue;</div><div class="line">                &#125;</div><div class="line">                String nextWord = replace(word, i, c);</div><div class="line">                if (wordList.contains(nextWord)) &#123;</div><div class="line">                    nextWords.add(nextWord);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return nextWords;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private String replace(String word, int i, char c) &#123;</div><div class="line">        char[] chars = word.toCharArray();</div><div class="line">        chars[i] = c;</div><div class="line">        return new String(chars);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
@@ -714,18 +726,6 @@ A solution set is:
 <p>对于这类求所有组合的题目，必然用DFS来做。注意这里数字是可以重复用的，所以在helper递归的时候还用原来的index。</p>
 <h3 id="code">Code</h3>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line"></div><div class="line">    public List&lt;List&lt;Integer&gt;&gt; combinationSum(int[] candidates, int target) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</div><div class="line">        if (candidates == null || candidates.length == 0) return list;</div><div class="line">        Arrays.sort(candidates);</div><div class="line">        helper(candidates, 0, target, new ArrayList&lt;Integer&gt;(), list);</div><div class="line"></div><div class="line">        return list;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    // 在list[index:]中选取和为target的所有组合，添加到combination之后，整个放到combinations当中</div><div class="line">    public void helper(int[] candidates, int startIndex, int target, List&lt;Integer&gt; combination, List&lt;List&lt;Integer&gt;&gt; list) &#123;</div><div class="line">        if (target == 0) list.add(new ArrayList&lt;Integer&gt;(combination));</div><div class="line">        for(int i=startIndex; i&lt; candidates.length; i++) &#123;</div><div class="line">            if (target &lt; candidates[i]) &#123;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">            combination.add(candidates[i]);</div><div class="line">            helper(candidates, i, target - candidates[i], combination,list);</div><div class="line">            combination.remove(combination.size()-1);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[LeetCode 127. Word Ladder]]></title>
-      <url>http:starllap.space/2017/06/12/LeetCode-127-Word-Ladder/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<h3 id="explanation">Explanation</h3>
-<p>本题用DFS做会严重超时，用BFS也要注意一下替换的方式。其实用双边BFS会更快。</p>
-<h3 id="code">Code</h3>
-<p>Solution 1: BFS
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int ladderLength(String beginWord, String endWord, List&lt;String&gt; wordList) &#123;</div><div class="line">        Set&lt;String&gt; dict = new HashSet&lt;&gt;();</div><div class="line">        for (String word : wordList) &#123;</div><div class="line">            dict.add(word);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (wordList == null) return 0;</div><div class="line">        if (beginWord.equals(endWord)) return 1;</div><div class="line">        // wordList.add(beginWord);</div><div class="line">        // wordList.add(endWord);</div><div class="line"></div><div class="line">        HashSet&lt;String&gt; hash = new HashSet&lt;&gt;();</div><div class="line">        Queue&lt;String&gt; queue = new LinkedList&lt;&gt;();</div><div class="line">        queue.offer(beginWord);</div><div class="line">        hash.add(beginWord);</div><div class="line"></div><div class="line">        int length = 1;</div><div class="line">        while(!queue.isEmpty()) &#123;</div><div class="line">            length ++;</div><div class="line">            int size = queue.size();</div><div class="line">            for(int i=0; i&lt;size; i++) &#123;</div><div class="line">                String word = queue.poll();</div><div class="line">                for (String nextWord: getNextWords(word, dict)) &#123;</div><div class="line">                    if (hash.contains(nextWord)) &#123;</div><div class="line">                        continue;</div><div class="line">                    &#125;</div><div class="line">                    if (nextWord.equals(endWord)) &#123;</div><div class="line">                        return length;</div><div class="line">                    &#125;</div><div class="line">                    hash.add(nextWord);</div><div class="line">                    queue.offer(nextWord);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private List&lt;String&gt; getNextWords(String word, Set&lt;String&gt; wordList) &#123;</div><div class="line">        List&lt;String&gt; nextWords = new ArrayList&lt;&gt;();</div><div class="line">        for (char c = &apos;a&apos; ; c &lt;&apos;z&apos;; c++) &#123;</div><div class="line">            for (int i=0; i&lt; word.length(); i++)&#123;</div><div class="line">                if (c == word.charAt(i)) &#123;</div><div class="line">                    continue;</div><div class="line">                &#125;</div><div class="line">                String nextWord = replace(word, i, c);</div><div class="line">                if (wordList.contains(nextWord)) &#123;</div><div class="line">                    nextWords.add(nextWord);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return nextWords;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private String replace(String word, int i, char c) &#123;</div><div class="line">        char[] chars = word.toCharArray();</div><div class="line">        chars[i] = c;</div><div class="line">        return new String(chars);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
@@ -914,7 +914,7 @@ https://hit-alibaba.github.io/interview/basic/network/HTTP.html</p>
     
     <entry>
       <title><![CDATA[LeetCode 102. Binary Tree Level Order Traversal]]></title>
-      <url>http:starllap.space/2017/06/01/LeetCode-102-Binary-Tree-Level-Order-Traversal/</url>
+      <url>http:starllap.space/2017/06/02/LeetCode-102-Binary-Tree-Level-Order-Traversal/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).</p>
 <p>For example:
@@ -963,7 +963,7 @@ return [2].</p>
     
     <entry>
       <title><![CDATA[LeetCode 109. Convert Sorted List to Binary Search Tree]]></title>
-      <url>http:starllap.space/2017/05/31/LeetCode-109-Convert-Sorted-List-to-Binary-Search-Tree/</url>
+      <url>http:starllap.space/2017/06/01/LeetCode-109-Convert-Sorted-List-to-Binary-Search-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.</p>
 <h3 id="explanation">Explanation</h3>
@@ -975,7 +975,7 @@ return [2].</p>
     
     <entry>
       <title><![CDATA[LeetCode 108. Convert Sorted Array to Binary Search Tree]]></title>
-      <url>http:starllap.space/2017/05/31/LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree/</url>
+      <url>http:starllap.space/2017/06/01/LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
 <h3 id="explanation">Explanation</h3>
@@ -986,22 +986,8 @@ return [2].</p>
     </entry>
     
     <entry>
-      <title><![CDATA[LeetCode 173. Binary Search Tree Iterator]]></title>
-      <url>http:starllap.space/2017/05/31/LeetCode-173-Binary-Search-Tree-Iterator/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.</p>
-<p>Calling next() will return the next smallest number in the BST.</p>
-<p>Note: next() and hasNext() should run in average O(1) time and uses O(h) memory, where h is the height of the tree</p>
-<h3 id="explanation">Explanation</h3>
-<p>完成中序遍历，用stack这个数据结构存储。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * Definition for binary tree</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"></div><div class="line">public class BSTIterator &#123;</div><div class="line">    Stack&lt;TreeNode&gt; stack;</div><div class="line"></div><div class="line">    public BSTIterator(TreeNode root) &#123;</div><div class="line">         stack = new Stack&lt;&gt;();</div><div class="line">         pushAllLeft(root);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void pushAllLeft(TreeNode node) &#123;</div><div class="line">        while(node != null) &#123;</div><div class="line">            stack.push(node);</div><div class="line">            node = node.left;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** @return whether we have a next smallest number */</div><div class="line">    public boolean hasNext() &#123;</div><div class="line">        if(stack.isEmpty()) return false;</div><div class="line">        return true;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** @return the next smallest number */</div><div class="line">    public int next() &#123;</div><div class="line">        TreeNode smallest = stack.pop();</div><div class="line">        pushAllLeft(smallest.right);</div><div class="line">        return smallest.val;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Your BSTIterator will be called like this:</div><div class="line"> * BSTIterator i = new BSTIterator(root);</div><div class="line"> * while (i.hasNext()) v[f()] = i.next();</div><div class="line"> */</div></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[LeetCode 98. Validate Binary Search Tree]]></title>
-      <url>http:starllap.space/2017/05/31/LeetCode-98-Validate-Binary-Search-Tree/</url>
+      <url>http:starllap.space/2017/06/01/LeetCode-98-Validate-Binary-Search-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
 <p>Assume a BST is defined as follows:</p>
@@ -1043,8 +1029,22 @@ Given the below binary tree and sum = 22,
     </entry>
     
     <entry>
+      <title><![CDATA[LeetCode 173. Binary Search Tree Iterator]]></title>
+      <url>http:starllap.space/2017/05/31/LeetCode-173-Binary-Search-Tree-Iterator/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.</p>
+<p>Calling next() will return the next smallest number in the BST.</p>
+<p>Note: next() and hasNext() should run in average O(1) time and uses O(h) memory, where h is the height of the tree</p>
+<h3 id="explanation">Explanation</h3>
+<p>完成中序遍历，用stack这个数据结构存储。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * Definition for binary tree</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"></div><div class="line">public class BSTIterator &#123;</div><div class="line">    Stack&lt;TreeNode&gt; stack;</div><div class="line"></div><div class="line">    public BSTIterator(TreeNode root) &#123;</div><div class="line">         stack = new Stack&lt;&gt;();</div><div class="line">         pushAllLeft(root);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void pushAllLeft(TreeNode node) &#123;</div><div class="line">        while(node != null) &#123;</div><div class="line">            stack.push(node);</div><div class="line">            node = node.left;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** @return whether we have a next smallest number */</div><div class="line">    public boolean hasNext() &#123;</div><div class="line">        if(stack.isEmpty()) return false;</div><div class="line">        return true;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** @return the next smallest number */</div><div class="line">    public int next() &#123;</div><div class="line">        TreeNode smallest = stack.pop();</div><div class="line">        pushAllLeft(smallest.right);</div><div class="line">        return smallest.val;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Your BSTIterator will be called like this:</div><div class="line"> * BSTIterator i = new BSTIterator(root);</div><div class="line"> * while (i.hasNext()) v[f()] = i.next();</div><div class="line"> */</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[LeetCode 112.Path Sum]]></title>
-      <url>http:starllap.space/2017/05/30/LeetCode-112-Path-Sum/</url>
+      <url>http:starllap.space/2017/05/31/LeetCode-112-Path-Sum/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
 <p>For example:
@@ -1055,6 +1055,81 @@ Given the below binary tree and sum = 22,
 <p>简单的递归分治法。</p>
 <h3 id="code">Code</h3>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public boolean hasPathSum(TreeNode root, int sum) &#123;</div><div class="line">        if (root == null) return false;</div><div class="line">        if (root.right == null &amp;&amp; root.left == null)&#123;</div><div class="line">            if(root.val == sum) return true;</div><div class="line">        &#125;</div><div class="line">        return hasPathSum(root.left, sum-root.val) || hasPathSum(root.right, sum-root.val);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 114. Flatten Binary Tree to Linked List]]></title>
+      <url>http:starllap.space/2017/05/31/LeetCode-114-Flatten-Binary-Tree-to-Linked-List/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, flatten it to a linked list in-place.</p>
+<p>For example,
+Given
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    1</div><div class="line">   / \</div><div class="line">  2   5</div><div class="line"> / \   \</div><div class="line">3   4   6</div></pre></td></tr></table></figure></p>
+<p>The flattened tree should look like:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line"> \</div><div class="line">  2</div><div class="line">   \</div><div class="line">    3</div><div class="line">     \</div><div class="line">      4</div><div class="line">       \</div><div class="line">        5</div><div class="line">         \</div><div class="line">          6</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>分治法，左右子树递归以后，把左右根节点依次排到右边，左边为空即可。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line"></div><div class="line">    public void flatten(TreeNode root) &#123;</div><div class="line">        if (root == null) return;</div><div class="line">        TreeNode right = root.right;</div><div class="line">        TreeNode left = root.left;</div><div class="line">        flatten(right);</div><div class="line">        flatten(left);</div><div class="line">        root.left = null;</div><div class="line">        root.right = left;</div><div class="line">        TreeNode cur = root;</div><div class="line">        while(cur.right != null) cur = cur.right;</div><div class="line">        cur.right = right;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 110. Balanced Binary Tree]]></title>
+      <url>http:starllap.space/2017/05/31/LeetCode-110-Balanced-Binary-Tree/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, determine if it is height-balanced.</p>
+<p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
+<h3 id="explanation">Explanation</h3>
+<p>在这里还是用递归，判断条件为1. 左右子树均balance 2.左右子树高度只差不超过1. 所以在这道题中，为了能返回两个值，就创建了一个新的类：ResultType。如果用python写就不用了。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"></div><div class="line">class ResultType &#123;</div><div class="line">    public boolean isBalanced;</div><div class="line">    public int maxDepth;</div><div class="line">    public ResultType(boolean isBalanced, int maxDepth) &#123;</div><div class="line">        this.isBalanced = isBalanced;</div><div class="line">        this.maxDepth = maxDepth;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line">    public boolean isBalanced(TreeNode root) &#123;</div><div class="line">        if (root == null) return true;</div><div class="line">        return helper(root).isBalanced;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public ResultType helper(TreeNode root) &#123;</div><div class="line">        if (root == null ) return new ResultType(true, 0);</div><div class="line">        ResultType left = helper(root.left);</div><div class="line">        ResultType right = helper(root.right);</div><div class="line">        if (left.isBalanced &amp;&amp; right.isBalanced &amp;&amp; Math.abs(left.maxDepth-right.maxDepth)&lt;=1)  &#123;</div><div class="line">            return new ResultType(true, Math.max(left.maxDepth,right.maxDepth)+1);</div><div class="line">        &#125;</div><div class="line">        return new ResultType(false, -1);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Leetcode 104. Binary Tree Postorder Traversal]]></title>
+      <url>http:starllap.space/2017/05/31/Leetcode-104-Maximum-Depth-of-Binary-Tree/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, find its maximum depth.</p>
+<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
+<h3 id="explanation">Explanation</h3>
+<p>分治法递归，非常简单。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int maxDepth(TreeNode root) &#123;</div><div class="line">        if (root == null) return 0;</div><div class="line">        int maxLeft = maxDepth(root.left);</div><div class="line">        int maxRight = maxDepth(root.right);</div><div class="line">        return Math.max(maxLeft, maxRight)+1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Leetcode 145. Binary Tree Postorder Traversal]]></title>
+      <url>http:starllap.space/2017/05/31/Leetcode-145-Binary-Tree-Postorder-Traversal/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, return the postorder traversal of its nodes' values.</p>
+<p>For example:
+Given binary tree {1,#,2,3},
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line"> \</div><div class="line">  2</div><div class="line"> /</div><div class="line">3</div></pre></td></tr></table></figure></p>
+<p>return [3,2,1].</p>
+<h3 id="explanation">Explanation</h3>
+<p>比之前做的preorder和inorder要难些，这里用了一个巧妙的办法，每次加在前面addfirst。如果不这样的话，就需要记录是否visit过了。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    // Recursive Solution:</div><div class="line">    public List&lt;Integer&gt; postorderTraversal(TreeNode root) &#123;</div><div class="line">         List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">         if (root == null) return result;</div><div class="line">         List&lt;Integer&gt; left = postorderTraversal(root.left);</div><div class="line">         List&lt;Integer&gt; right = postorderTraversal(root.right);</div><div class="line"></div><div class="line"></div><div class="line">         result.addAll(left);</div><div class="line">         result.addAll(right);</div><div class="line">         result.add(root.val);</div><div class="line">         return result;</div><div class="line">    &#125;</div><div class="line">    // Iterative Solution:</div><div class="line">    public List&lt;Integer&gt; postorderTraversal(TreeNode root) &#123;</div><div class="line">        Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();</div><div class="line">        List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if (root == null) return result;</div><div class="line">        TreeNode tmp = root;</div><div class="line">        stack.push(root);</div><div class="line">        while (!stack.isEmpty()) &#123;</div><div class="line">            TreeNode cur = stack.pop();</div><div class="line">            result.addFirst(cur.val);</div><div class="line">            if (cur.left != null) &#123;</div><div class="line">                stack.push(cur.left);</div><div class="line">            &#125;</div><div class="line">            if (cur.right != null) &#123;</div><div class="line">                stack.push(cur.right);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 144. Binary Tree Preorder Traversal]]></title>
+      <url>http:starllap.space/2017/05/30/Leetcode-144-Binary-Tree-Preorder-Traversal/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a binary tree, return the preorder traversal of its nodes' values.</p>
+<p>For example:
+Given binary tree {1,#,2,3},
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line"> \</div><div class="line">  2</div><div class="line"> /</div><div class="line">3</div></pre></td></tr></table></figure></p>
+<p>return [1,2,3].</p>
+<h3 id="explanation">Explanation</h3>
+<p>依旧是两种方法，递归和遍历。递归非常容易，分治即可。遍历需要用到Stack这个数据结构，想清楚顺序就好。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">     public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123;</div><div class="line">         List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">         if (root == null) return result;</div><div class="line">         List&lt;Integer&gt; left = preorderTraversal(root.left);</div><div class="line">         List&lt;Integer&gt; right = preorderTraversal(root.right);</div><div class="line"></div><div class="line">         result.add(root.val);</div><div class="line">         result.addAll(left);</div><div class="line">         result.addAll(right);</div><div class="line">         return result;</div><div class="line">     &#125;</div><div class="line">    // Iterative solution</div><div class="line">    // public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123;</div><div class="line">    //     Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();</div><div class="line">    //     List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">    //     if (root == null) return result;</div><div class="line">    //     TreeNode tmp = root;</div><div class="line">    //     stack.add(root);</div><div class="line">    //     while (!stack.isEmpty()) &#123;</div><div class="line">    //         tmp = stack.pop();</div><div class="line">    //         result.add(tmp.val);</div><div class="line">    //         if (tmp.right != null) stack.push(tmp.right);</div><div class="line">    //         if (tmp.left != null) stack.push(tmp.left);</div><div class="line">    //     &#125;</div><div class="line">    //     return result;</div><div class="line">    //     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
@@ -1085,36 +1160,6 @@ Given the below binary tree and sum = 22,
 <p>既然是二叉搜索树，那就可以根据值来进行判断。分治递归。</p>
 <h3 id="code">Code</h3>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"></div><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line">    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123;</div><div class="line">       if (root.val &gt; p.val &amp;&amp; root.val &gt; q.val) return lowestCommonAncestor(root.left, p,q);</div><div class="line">       if (root.val &lt; p.val &amp;&amp; root.val &lt; q.val) return lowestCommonAncestor(root.right, p,q);</div><div class="line">       return root;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[LeetCode 114. Flatten Binary Tree to Linked List]]></title>
-      <url>http:starllap.space/2017/05/30/LeetCode-114-Flatten-Binary-Tree-to-Linked-List/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a binary tree, flatten it to a linked list in-place.</p>
-<p>For example,
-Given
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    1</div><div class="line">   / \</div><div class="line">  2   5</div><div class="line"> / \   \</div><div class="line">3   4   6</div></pre></td></tr></table></figure></p>
-<p>The flattened tree should look like:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line"> \</div><div class="line">  2</div><div class="line">   \</div><div class="line">    3</div><div class="line">     \</div><div class="line">      4</div><div class="line">       \</div><div class="line">        5</div><div class="line">         \</div><div class="line">          6</div></pre></td></tr></table></figure></p>
-<h3 id="explanation">Explanation</h3>
-<p>分治法，左右子树递归以后，把左右根节点依次排到右边，左边为空即可。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line"></div><div class="line">    public void flatten(TreeNode root) &#123;</div><div class="line">        if (root == null) return;</div><div class="line">        TreeNode right = root.right;</div><div class="line">        TreeNode left = root.left;</div><div class="line">        flatten(right);</div><div class="line">        flatten(left);</div><div class="line">        root.left = null;</div><div class="line">        root.right = left;</div><div class="line">        TreeNode cur = root;</div><div class="line">        while(cur.right != null) cur = cur.right;</div><div class="line">        cur.right = right;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[LeetCode 110. Balanced Binary Tree]]></title>
-      <url>http:starllap.space/2017/05/30/LeetCode-110-Balanced-Binary-Tree/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a binary tree, determine if it is height-balanced.</p>
-<p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
-<h3 id="explanation">Explanation</h3>
-<p>在这里还是用递归，判断条件为1. 左右子树均balance 2.左右子树高度只差不超过1. 所以在这道题中，为了能返回两个值，就创建了一个新的类：ResultType。如果用python写就不用了。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"></div><div class="line">class ResultType &#123;</div><div class="line">    public boolean isBalanced;</div><div class="line">    public int maxDepth;</div><div class="line">    public ResultType(boolean isBalanced, int maxDepth) &#123;</div><div class="line">        this.isBalanced = isBalanced;</div><div class="line">        this.maxDepth = maxDepth;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line">    public boolean isBalanced(TreeNode root) &#123;</div><div class="line">        if (root == null) return true;</div><div class="line">        return helper(root).isBalanced;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public ResultType helper(TreeNode root) &#123;</div><div class="line">        if (root == null ) return new ResultType(true, 0);</div><div class="line">        ResultType left = helper(root.left);</div><div class="line">        ResultType right = helper(root.right);</div><div class="line">        if (left.isBalanced &amp;&amp; right.isBalanced &amp;&amp; Math.abs(left.maxDepth-right.maxDepth)&lt;=1)  &#123;</div><div class="line">            return new ResultType(true, Math.max(left.maxDepth,right.maxDepth)+1);</div><div class="line">        &#125;</div><div class="line">        return new ResultType(false, -1);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
@@ -1155,70 +1200,8 @@ Given a binary tree:
     </entry>
     
     <entry>
-      <title><![CDATA[Leetcode 104. Binary Tree Postorder Traversal]]></title>
-      <url>http:starllap.space/2017/05/30/Leetcode-104-Maximum-Depth-of-Binary-Tree/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a binary tree, find its maximum depth.</p>
-<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
-<h3 id="explanation">Explanation</h3>
-<p>分治法递归，非常简单。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int maxDepth(TreeNode root) &#123;</div><div class="line">        if (root == null) return 0;</div><div class="line">        int maxLeft = maxDepth(root.left);</div><div class="line">        int maxRight = maxDepth(root.right);</div><div class="line">        return Math.max(maxLeft, maxRight)+1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Leetcode 145. Binary Tree Postorder Traversal]]></title>
-      <url>http:starllap.space/2017/05/30/Leetcode-145-Binary-Tree-Postorder-Traversal/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a binary tree, return the postorder traversal of its nodes' values.</p>
-<p>For example:
-Given binary tree {1,#,2,3},
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line"> \</div><div class="line">  2</div><div class="line"> /</div><div class="line">3</div></pre></td></tr></table></figure></p>
-<p>return [3,2,1].</p>
-<h3 id="explanation">Explanation</h3>
-<p>比之前做的preorder和inorder要难些，这里用了一个巧妙的办法，每次加在前面addfirst。如果不这样的话，就需要记录是否visit过了。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    // Recursive Solution:</div><div class="line">    public List&lt;Integer&gt; postorderTraversal(TreeNode root) &#123;</div><div class="line">         List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">         if (root == null) return result;</div><div class="line">         List&lt;Integer&gt; left = postorderTraversal(root.left);</div><div class="line">         List&lt;Integer&gt; right = postorderTraversal(root.right);</div><div class="line"></div><div class="line"></div><div class="line">         result.addAll(left);</div><div class="line">         result.addAll(right);</div><div class="line">         result.add(root.val);</div><div class="line">         return result;</div><div class="line">    &#125;</div><div class="line">    // Iterative Solution:</div><div class="line">    public List&lt;Integer&gt; postorderTraversal(TreeNode root) &#123;</div><div class="line">        Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();</div><div class="line">        List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if (root == null) return result;</div><div class="line">        TreeNode tmp = root;</div><div class="line">        stack.push(root);</div><div class="line">        while (!stack.isEmpty()) &#123;</div><div class="line">            TreeNode cur = stack.pop();</div><div class="line">            result.addFirst(cur.val);</div><div class="line">            if (cur.left != null) &#123;</div><div class="line">                stack.push(cur.left);</div><div class="line">            &#125;</div><div class="line">            if (cur.right != null) &#123;</div><div class="line">                stack.push(cur.right);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[LeetCode 144. Binary Tree Preorder Traversal]]></title>
-      <url>http:starllap.space/2017/05/30/Leetcode-144-Binary-Tree-Preorder-Traversal/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a binary tree, return the preorder traversal of its nodes' values.</p>
-<p>For example:
-Given binary tree {1,#,2,3},
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line"> \</div><div class="line">  2</div><div class="line"> /</div><div class="line">3</div></pre></td></tr></table></figure></p>
-<p>return [1,2,3].</p>
-<h3 id="explanation">Explanation</h3>
-<p>依旧是两种方法，递归和遍历。递归非常容易，分治即可。遍历需要用到Stack这个数据结构，想清楚顺序就好。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">     public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123;</div><div class="line">         List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">         if (root == null) return result;</div><div class="line">         List&lt;Integer&gt; left = preorderTraversal(root.left);</div><div class="line">         List&lt;Integer&gt; right = preorderTraversal(root.right);</div><div class="line"></div><div class="line">         result.add(root.val);</div><div class="line">         result.addAll(left);</div><div class="line">         result.addAll(right);</div><div class="line">         return result;</div><div class="line">     &#125;</div><div class="line">    // Iterative solution</div><div class="line">    // public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123;</div><div class="line">    //     Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();</div><div class="line">    //     List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</div><div class="line">    //     if (root == null) return result;</div><div class="line">    //     TreeNode tmp = root;</div><div class="line">    //     stack.add(root);</div><div class="line">    //     while (!stack.isEmpty()) &#123;</div><div class="line">    //         tmp = stack.pop();</div><div class="line">    //         result.add(tmp.val);</div><div class="line">    //         if (tmp.right != null) stack.push(tmp.right);</div><div class="line">    //         if (tmp.left != null) stack.push(tmp.left);</div><div class="line">    //     &#125;</div><div class="line">    //     return result;</div><div class="line">    //     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[LeetCode 367. Valid Perfect Square]]></title>
-      <url>http:starllap.space/2017/05/28/LeetCode-367-Valid-Perfect-Square/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a positive integer num, write a function which returns True if num is a perfect square else False.</p>
-<p>Note: Do not use any built-in library function such as sqrt.</p>
-<p>Example 1:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 16</div><div class="line">Returns: True</div></pre></td></tr></table></figure></p>
-<p>Example 2:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 14</div><div class="line">Returns: False</div></pre></td></tr></table></figure></p>
-<h3 id="explanation">Explanation</h3>
-<p>本题是查找平方根。Corner Case排除负数。用二分法找到值，注意overflow的问题，不能用乘法，用除法。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean isPerfectSquare(int num) &#123;</div><div class="line">        if(num &lt;= 0) return false;</div><div class="line">        if (num == 1) return true;</div><div class="line">        int start = 0;</div><div class="line">        int end = num;</div><div class="line">        while (start + 1 &lt; end) &#123;</div><div class="line">            int mid = start + (end - start) / 2;</div><div class="line">            if (num / mid == mid) &#123;</div><div class="line">                start = mid;</div><div class="line">            &#125; else if (num / mid &lt; mid) &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125; else &#123;</div><div class="line">                start = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if ( num*1.0 / start == start) return true;</div><div class="line">        if ( num*1.0 / end == end) return true;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Binary Search 二分查找]]></title>
-      <url>http:starllap.space/2017/05/28/Binary%20Search/</url>
+      <url>http:starllap.space/2017/05/29/Binary%20Search/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h2 id="二分查找模板总结">二分查找模板总结</h2>
 <p>四点要素：</p>
 <ul>
@@ -1274,6 +1257,23 @@ Return -1, if the number doesn't exist in the array.</p>
     </entry>
     
     <entry>
+      <title><![CDATA[LeetCode 367. Valid Perfect Square]]></title>
+      <url>http:starllap.space/2017/05/28/LeetCode-367-Valid-Perfect-Square/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a positive integer num, write a function which returns True if num is a perfect square else False.</p>
+<p>Note: Do not use any built-in library function such as sqrt.</p>
+<p>Example 1:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 16</div><div class="line">Returns: True</div></pre></td></tr></table></figure></p>
+<p>Example 2:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 14</div><div class="line">Returns: False</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>本题是查找平方根。Corner Case排除负数。用二分法找到值，注意overflow的问题，不能用乘法，用除法。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean isPerfectSquare(int num) &#123;</div><div class="line">        if(num &lt;= 0) return false;</div><div class="line">        if (num == 1) return true;</div><div class="line">        int start = 0;</div><div class="line">        int end = num;</div><div class="line">        while (start + 1 &lt; end) &#123;</div><div class="line">            int mid = start + (end - start) / 2;</div><div class="line">            if (num / mid == mid) &#123;</div><div class="line">                start = mid;</div><div class="line">            &#125; else if (num / mid &lt; mid) &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125; else &#123;</div><div class="line">                start = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if ( num*1.0 / start == start) return true;</div><div class="line">        if ( num*1.0 / end == end) return true;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[LeetCode Backtracking Problems]]></title>
       <url>http:starllap.space/2017/05/25/LeetCode-Backtracking-Problems/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h2 id="leetcode-78-subsets">LeetCode 78: Subsets</h2>
@@ -1312,7 +1312,7 @@ If nums = [1,2,2], a solution is:
     
     <entry>
       <title><![CDATA[Install Sudo in Debian]]></title>
-      <url>http:starllap.space/2017/04/28/Install-Sudo-in-Debian/</url>
+      <url>http:starllap.space/2017/04/29/Install-Sudo-in-Debian/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Debian系统里默认是没有sudo的，安装操作如下。</p>
 <p>Step 1: 用root的身份进入<br>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">su -u</div></pre></td></tr></table></figure></p>
@@ -1351,7 +1351,7 @@ https://discuss.leetcode.com/topic/30941/here-is-a-10-line-template-that-can-sol
     
     <entry>
       <title><![CDATA[论文笔记：《Stronger consistency and semantics for low-latency geo-replicated storage》]]></title>
-      <url>http:starllap.space/2017/04/11/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9A%E3%80%8AStronger-consistency-and-semantics-for-low-latency-geo-replicated-storage%E3%80%8B/</url>
+      <url>http:starllap.space/2017/04/12/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9A%E3%80%8AStronger-consistency-and-semantics-for-low-latency-geo-replicated-storage%E3%80%8B/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是《Stronger consistency and semantics for low-latency geo-replicated
 storage》的阅读笔记。</p>
 <p>(未完成更新...)</p>
@@ -1471,7 +1471,7 @@ Could you optimize your algorithm to use only O(k) extra space?</p>
     
     <entry>
       <title><![CDATA[论文笔记：Facebook可扩展架构概览]]></title>
-      <url>http:starllap.space/2017/03/29/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9AFacebook%E5%8F%AF%E6%8B%93%E5%B1%95%E6%9E%B6%E6%9E%84%E6%A6%82%E8%A7%88/</url>
+      <url>http:starllap.space/2017/03/30/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%9AFacebook%E5%8F%AF%E6%8B%93%E5%B1%95%E6%9E%B6%E6%9E%84%E6%A6%82%E8%A7%88/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是论文《Overview of Facebook Scalable Architecture》的阅读笔记，作者Hugo Barrigas, Daniel Barrigas, Melyssa Barata, Pedro Furtado, Jorge Bernardina。技术细节很少，只是一个粗略的大框架。其实根本也没有讲什么细节，所以以后有更多补充再往里写。感觉最大的亮点就是<strong>MySQL+Memcached</strong>。</p>
 <hr>
 <p>这篇文章主要是介绍Facebook的网站架构，讲述在扩展方面遇到的困难和解决的方式，从而更好了解Facebook是如何运行的。
@@ -1544,7 +1544,7 @@ http://www.gtaan.gatech.edu/meetings/handouts/MazerFacebook.pdf (Accessed 25 Feb
     
     <entry>
       <title><![CDATA[分布式系统知识整理：二阶段提交协议、三阶段提交协议]]></title>
-      <url>http:starllap.space/2017/03/29/%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7/</url>
+      <url>http:starllap.space/2017/03/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文梳理分布式系统中的常见概念：二阶段提交协议和三阶段提交协议。</p>
 <h2 id="二阶段提交协议two-phase-commit-protocol">二阶段提交协议(Two-phase Commit Protocol)</h2>
 <p>TPC是基于分布式系统架构下所有节点进行事务提交时保持<strong>一致性</strong>而设计的一种算法。在分布式系统中，每个节点虽然可以知晓自己操作的成功或失败，但无法知道其他节点的情况。需要一个协调者来组织所有节点的操作结果并最终指示他们是否进行真正的提交。</p>
@@ -1594,7 +1594,7 @@ https://zh.wikipedia.org/zh-hans/%E4%BA%8C%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4</
     
     <entry>
       <title><![CDATA[云计算知识整理：使用Apache Kafka和Samza进行流处理]]></title>
-      <url>http:starllap.space/2017/03/25/%E4%BA%91%E8%AE%A1%E7%AE%97%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%9A%E4%BD%BF%E7%94%A8Apache-Kafka%E5%92%8CSamza%E8%BF%9B%E8%A1%8C%E6%B5%81%E5%A4%84%E7%90%86/</url>
+      <url>http:starllap.space/2017/03/26/%E4%BA%91%E8%AE%A1%E7%AE%97%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%9A%E4%BD%BF%E7%94%A8Apache-Kafka%E5%92%8CSamza%E8%BF%9B%E8%A1%8C%E6%B5%81%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于Stream Processing with Kafka and Samza的介绍以及总结反思。</p>
 <h3 id="流处理">流处理</h3>
 <p>如今实时数据处理的需求越来越高，实时数据的来源包括传感器数据（比如物联网设备），社交网络交互，实时商业数据等。这些情况下需要极其的延迟率。比如LinkedIn就需要用实时的广告点击数据来不断扩充广告架构。类似Hadoop和Spark这种数据获取和数据处理分离的方式无法达到低延迟的实时处理需求。所以在这里就介绍一写管理和处理大量实时数据的流处理框架。</p>
@@ -1651,7 +1651,7 @@ Brokers用来负责数据持久化和复制。brokers会和producers交流来发
     
     <entry>
       <title><![CDATA[Leetcode 111. Minimum Depth of Binary Tree]]></title>
-      <url>http:starllap.space/2017/03/09/Leetcode-111-Minimum-Depth-of-Binary-Tree/</url>
+      <url>http:starllap.space/2017/03/10/Leetcode-111-Minimum-Depth-of-Binary-Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, find its minimum depth.</p>
 <p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
@@ -1672,7 +1672,7 @@ Brokers用来负责数据持久化和复制。brokers会和producers交流来发
     
     <entry>
       <title><![CDATA[云计算应用实例：OFA/Start-ups/Data Analytics/Cloud Migration Exercise]]></title>
-      <url>http:starllap.space/2017/03/06/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9AObama-For-America/</url>
+      <url>http:starllap.space/2017/03/07/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9AObama-For-America/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文主要是总结一些云计算的应用实例，是否要用云计算这个问题是个很复杂的问题，大多数时候需要根据需求和预算才能得到确切的答案，云计算是趋势，但如何利用是个值得仔细考虑的问题。</p>
 <h1 id="云计算应用实例obama-for-america">云计算应用实例：Obama For America</h1>
 <blockquote>
@@ -1799,7 +1799,7 @@ Brokers用来负责数据持久化和复制。brokers会和producers交流来发
     
     <entry>
       <title><![CDATA[Leetcode 530. Minimum Absolute Difference in BST]]></title>
-      <url>http:starllap.space/2017/03/02/Leetcode-530-Minimum-Absolute-Difference-in-BST/</url>
+      <url>http:starllap.space/2017/03/03/Leetcode-530-Minimum-Absolute-Difference-in-BST/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.</p>
 <p>Example:
@@ -1817,7 +1817,7 @@ Note: There are at least two nodes in this BST</p>
     
     <entry>
       <title><![CDATA[Leetcode 94.Binary Tree Inorder Traversal]]></title>
-      <url>http:starllap.space/2017/02/28/Leetcode-94-Binary-Tree-Inorder-Traversal/</url>
+      <url>http:starllap.space/2017/03/01/Leetcode-94-Binary-Tree-Inorder-Traversal/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a binary tree, return the inorder traversal of its nodes' values.</p>
 <p>For example:
@@ -1840,7 +1840,7 @@ base case： root为null返回一个空list。
     
     <entry>
       <title><![CDATA[Binary Tree 二叉树]]></title>
-      <url>http:starllap.space/2017/02/28/Binary%20Tree/</url>
+      <url>http:starllap.space/2017/03/01/Binary%20Tree/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是总结Tree这种结构的常用知识点，暂时总结Binary Tree。</p>
 <h2 id="binary-tree二叉树">Binary Tree二叉树</h2>
 <h3 id="why-tree">Why Tree?</h3>
@@ -1927,7 +1927,7 @@ Time complexity required: O(n) where n is the size of the input string.</p>
     
     <entry>
       <title><![CDATA[云计算Project：Twitter大数据分析]]></title>
-      <url>http:starllap.space/2017/02/27/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9ATwitter%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</url>
+      <url>http:starllap.space/2017/02/28/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9ATwitter%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是Twitter Analytics on the Cloud项目的介绍及分析总结。小组作业当时做的匆忙，现在再思考下可以优化的地方很多。感谢队友@shuangshuang 和 @烟酱。</p>
 <h2 id="项目介绍">项目介绍</h2>
 <p>目标：</p>
@@ -2076,7 +2076,7 @@ Can you do it in O(n) time?</p>
     
     <entry>
       <title><![CDATA[云计算Project：基于多个后端的社交网络时间线的实现]]></title>
-      <url>http:starllap.space/2017/02/23/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%9A%E4%B8%AA%E5%90%8E%E7%AB%AF%E7%9A%84%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E6%97%B6%E9%97%B4%E7%BA%BF%E7%9A%84%E5%AE%9E%E7%8E%B0/</url>
+      <url>http:starllap.space/2017/02/24/%E4%BA%91%E8%AE%A1%E7%AE%97Project%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%9A%E4%B8%AA%E5%90%8E%E7%AB%AF%E7%9A%84%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E6%97%B6%E9%97%B4%E7%BA%BF%E7%9A%84%E5%AE%9E%E7%8E%B0/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于CMU15619Cloud Computing项目:<code>Social Networking Timeline with Heterogeneous Backends</code>的介绍以及总结反思。</p>
 <p>项目主要目标：</p>
 <ul>
@@ -2663,7 +2663,7 @@ https://www.javatpoint.com/constructor</p>
     
     <entry>
       <title><![CDATA[Leetcode 271. Encode and Decode Strings]]></title>
-      <url>http:starllap.space/2017/02/10/271-Encode-and-Decode-Strings/</url>
+      <url>http:starllap.space/2017/02/11/271-Encode-and-Decode-Strings/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
 <p>Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.</p>
 <p>Machine 1 (sender) has the function:</p>
@@ -2694,7 +2694,7 @@ https://www.javatpoint.com/constructor</p>
     
     <entry>
       <title><![CDATA[Leetcode 346. Moving Average from Data Stream]]></title>
-      <url>http:starllap.space/2017/02/10/346-Moving-Average-from-Data-Stream/</url>
+      <url>http:starllap.space/2017/02/11/346-Moving-Average-from-Data-Stream/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
 <p>Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.</p>
 <p>For example,
@@ -2762,7 +2762,7 @@ It should return [1,4,8,2,5,9,3,6,7].</p>
     
     <entry>
       <title><![CDATA[Distributed System-Indirect Communication and Naming]]></title>
-      <url>http:starllap.space/2017/02/06/ds69/</url>
+      <url>http:starllap.space/2017/02/07/ds69/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702分布式系统
 第6、9章总结笔记</p>
 <ul>
@@ -2889,7 +2889,7 @@ Connectionfactory, Queue, Topics</li>
     
     <entry>
       <title><![CDATA[Distributed System-Mobile and ubiquitous computing]]></title>
-      <url>http:starllap.space/2017/02/06/Distributed-System/</url>
+      <url>http:starllap.space/2017/02/07/Distributed-System/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702分布式系统
 第19章总结笔记</p>
 <ul>
@@ -3113,7 +3113,7 @@ source	native	wrapper</li>
     
     <entry>
       <title><![CDATA[Distributed System-ACID]]></title>
-      <url>http:starllap.space/2017/02/06/17/</url>
+      <url>http:starllap.space/2017/02/07/17/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>CMU-95702分布式系统
 ACID概念总结</p>
 <ul>
@@ -3144,7 +3144,7 @@ the logs will hold the necessary information on recovery.</li>
     
     <entry>
       <title><![CDATA[哪儿]]></title>
-      <url>http:starllap.space/2017/01/23/%E5%93%AA%E5%84%BF/</url>
+      <url>http:starllap.space/2017/01/24/%E5%93%AA%E5%84%BF/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><embed src="http://www.xiami.com/widget/12753884_1769553081/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></p>
 <p>今天上Advanced Cloud Computing,三个教授就一个问题争论起来。</p>
 <p>那真的是很触动我的一刻，加起来都快150岁的三个顶尖学术大牛，在投影仪前面，对待知识还是和孩子一样专注和热情，可爱极了。</p>
@@ -3166,7 +3166,7 @@ the logs will hold the necessary information on recovery.</li>
     
     <entry>
       <title><![CDATA[Java中的排序问题]]></title>
-      <url>http:starllap.space/2017/01/08/Java%E4%B8%AD%E7%9A%84Sort/</url>
+      <url>http:starllap.space/2017/01/09/Java%E4%B8%AD%E7%9A%84Sort/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>总结几种排序方法。
 冒泡排序，选择排序，插入排序，Quick Sort,Merge Sort（continue..）...</p>
 <p><strong>Simple sorting</strong></p>
@@ -3411,7 +3411,7 @@ Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</p>
     
     <entry>
       <title><![CDATA[Leetcode 396.Rotate Function]]></title>
-      <url>http:starllap.space/2016/12/30/leetcode-396/</url>
+      <url>http:starllap.space/2016/12/31/leetcode-396/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question:</strong></p>
 <p>Given an array of integers A and let n to be its length.</p>
 <p>Assume Bk to be an array obtained by rotating the array A k positions clock-wise, we define a &quot;rotation function&quot; F on A as follow:</p>
@@ -3456,7 +3456,7 @@ k = 2; B[0] = A[len-2];
     
     <entry>
       <title><![CDATA[Leetcode 202. Happy Number]]></title>
-      <url>http:starllap.space/2016/12/30/leetcode-202/</url>
+      <url>http:starllap.space/2016/12/31/leetcode-202/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question:</strong></p>
 <p>Write an algorithm to determine if a number is &quot;happy&quot;.</p>
 <p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
@@ -3478,7 +3478,7 @@ k = 2; B[0] = A[len-2];
     
     <entry>
       <title><![CDATA[LeetCode 437. Path Sum III]]></title>
-      <url>http:starllap.space/2016/12/30/LeetCode-437-Path-Sum-III/</url>
+      <url>http:starllap.space/2016/12/31/LeetCode-437-Path-Sum-III/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><strong>Question</strong></p>
 <p>You are given a binary tree in which each node contains an integer value.</p>
 <p>Find the number of paths that sum to a given value.</p>
@@ -3521,7 +3521,7 @@ Java
     
     <entry>
       <title><![CDATA[LeetCode 401. Binary Watch]]></title>
-      <url>http:starllap.space/2016/12/29/LeetCode-401/</url>
+      <url>http:starllap.space/2016/12/30/LeetCode-401/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><a href="https://leetcode.com/problems/binary-watch/" target="_blank" rel="external"><strong>Question:</strong></a></p>
 <p>A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).</p>
 <p>Each LED represents a zero or one, with the least significant bit on the right.
@@ -3547,7 +3547,7 @@ Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:00&quot;, &quot;8:00&quot;,
     
     <entry>
       <title><![CDATA[天冷该吃火锅]]></title>
-      <url>http:starllap.space/2016/11/22/e5-a4-a9-e5-86-b7-e8-af-a5-e5-90-83-e7-81-ab-e9-94-85/</url>
+      <url>http:starllap.space/2016/11/23/e5-a4-a9-e5-86-b7-e8-af-a5-e5-90-83-e7-81-ab-e9-94-85/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><embed src="http://www.xiami.com/widget/12753884_1773763930/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></p>
 <p>晚上，翻到一篇写北京卤煮的文章。15年夏天在北京，一个姑娘带我去了一个南城的胡同里吃卤煮。买单的不是我，领餐的也不是我。</p>
 <p>在吃完之前我都没太搞清楚到底卤煮里面的那些具体是什么。我在当时常聊的微信群里说我在吃卤煮的时候，我哥来了一句，Star，你居然敢吃卤煮啊？当然敢。</p>
@@ -4055,7 +4055,7 @@ P(T=t|M=m):
     
     <entry>
       <title><![CDATA[LeetCode 172.Factorial Trailing Zeroes]]></title>
-      <url>http:starllap.space/2016/10/14/leetcode-172-easyfactorial-trailing-zeroes/</url>
+      <url>http:starllap.space/2016/10/15/leetcode-172-easyfactorial-trailing-zeroes/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Question:</p>
 </blockquote>
@@ -4081,7 +4081,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[听李宗盛]]></title>
-      <url>http:starllap.space/2016/09/23/e5-90-ac-e6-9d-8e-e5-ae-97-e7-9b-9b/</url>
+      <url>http:starllap.space/2016/09/24/e5-90-ac-e6-9d-8e-e5-ae-97-e7-9b-9b/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p><embed src="http://www.xiami.com/widget/12753884_1772001102/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></p>
 <p>夜里从灯火通明的学校回到家，虾米随机放了一首歌。 居然是李宗盛版的《阴天》。</p>
 <p>我一下想到了我哥，一个长期只听李宗盛和民谣的男人。大多数的时候，我会忘记他只比我大一岁，他讲起道理，总是让我不得不服。</p>
@@ -4116,7 +4116,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[明天一切好说]]></title>
-      <url>http:starllap.space/2016/08/27/e6-98-8e-e5-a4-a9-e4-b8-80-e5-88-87-e5-a5-bd-e8-af-b4/</url>
+      <url>http:starllap.space/2016/08/28/e6-98-8e-e5-a4-a9-e4-b8-80-e5-88-87-e5-a5-bd-e8-af-b4/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p> </p>
 <p>      落地灯温和地亮着，收拾好卧室，摆好衣架，厨房餐具摆好，才终于有时间坐在自己拼的沙发上和室友讲几句话。</p>
 <p>      来了一周多一些，几乎都在疲于应付一个安身立命的地方。想来，被海关关过小黑屋，被房屋manager吼过，被不靠谱的管理人员放鸽子，被计划中的室友坑得措手不及。</p>
@@ -4141,7 +4141,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[2016-08-02]]></title>
-      <url>http:starllap.space/2016/08/02/2016-08-02/</url>
+      <url>http:starllap.space/2016/08/03/2016-08-02/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>今天坐在窗台的位置，看着蓝天白云发了会儿呆。</p>
 <p>还有三天就要离开上海了。在每一个写过文字的地方都会说，上海啊，我真喜欢这座城。</p>
 <p>也许去过很多地方，也许将要去很多地方，也许看过很多风景，也许将要看很多风景，但我不会忘记在我还年轻的时候，上海所给予我的一切。</p>
@@ -4162,7 +4162,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[温度]]></title>
-      <url>http:starllap.space/2016/07/30/e6-b8-a9-e5-ba-a6/</url>
+      <url>http:starllap.space/2016/07/31/e6-b8-a9-e5-ba-a6/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>在出门需要勇气的日子里，看了两部港片。</p>
 <p>很久没看港片了，一直很喜欢，虽然对王家卫无感，但很多港片自带弹幕效果，语速快，节奏快，情节紧凑，随便挑一部不至于像大陆很多言之无物的片子一样让人有浪费时间的感叹。</p>
 <p>聊聊《六楼后座》，林嘉欣卢巧音在里面实在太美太甜，背心牛仔裤的21世纪初的流行打扮干净利落。六个人最爱玩的“Truth or Dare”，其实也就是真心话大冒险吧。你选择诚实，或者大胆。年轻的状态非常明显，想哭的时候不忍着，想闹的时候就闹，不爽也不憋着，挣扎就是挣扎。</p>
@@ -4191,7 +4191,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[使用Emacs: 从无法入门到放弃]]></title>
-      <url>http:starllap.space/2016/07/27/e4-bd-bf-e7-94-a8emacs-e4-bb-8e-e6-97-a0-e6-b3-95-e5-85-a5-e9-97-a8-e5-88-b0-e6-94-be-e5-bc-83/</url>
+      <url>http:starllap.space/2016/07/28/e4-bd-bf-e7-94-a8emacs-e4-bb-8e-e6-97-a0-e6-b3-95-e5-85-a5-e9-97-a8-e5-88-b0-e6-94-be-e5-bc-83/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p> </p>
 <p>被安利使用Emacs来进行文件编辑和管理，打开baidu首页显示的文章是<code>《如何一年成为Emacs大神》</code></p>
 <p>一年。</p>
@@ -4214,7 +4214,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[How to use Markdown as a starter]]></title>
-      <url>http:starllap.space/2016/07/26/how-to-use-markdown-as-a-starter/</url>
+      <url>http:starllap.space/2016/07/27/how-to-use-markdown-as-a-starter/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>Recently, I am desired to write wordpress for do some summarization. But the format and writing style keep confusing me.</p>
 <h3 id="lets-try-markdown-this-time">Let's try Markdown this time!</h3>
 <p>There are two ways to apply Markdown in wordpress:</p>
@@ -4236,7 +4236,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[2016-07-21]]></title>
-      <url>http:starllap.space/2016/07/21/2016-07-21/</url>
+      <url>http:starllap.space/2016/07/22/2016-07-21/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>一、</p>
 <p>我活得越来越坦然的一个信号就是，我能勇敢地和别人安利自己的公众号了。</p>
 <p>关于这个公众号，里面的文章带着情绪的成分很多。而我的习惯是，在现实生活中面对面讲话好好相处，这样才是真实的，而不是虚无地毫无基础地通过表情和文字来传达彼此的心理。网络更应该是，让亲密关系更方便，不该是让陌生的人变成熟人，这是不可能。即使有可能，也是脆弱的，不堪一击的。</p>
@@ -4254,7 +4254,7 @@ n = 7! = 1 * 2 * 3 * 2 * 2 * 5 * 2 * 3 * 7 有4个2，1个5</p>
     
     <entry>
       <title><![CDATA[开篇：打碎浅薄和矫情]]></title>
-      <url>http:starllap.space/2016/07/20/e5-bc-80-e7-af-87-ef-bc-9a-e6-89-93-e7-a2-8e-e6-b5-85-e8-96-84-e5-92-8c-e7-9f-ab-e6-83-85/</url>
+      <url>http:starllap.space/2016/07/21/e5-bc-80-e7-af-87-ef-bc-9a-e6-89-93-e7-a2-8e-e6-b5-85-e8-96-84-e5-92-8c-e7-9f-ab-e6-83-85/</url>
       <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>所谓开篇，是这个博客的开篇。</p>
 <p>我写字的历史很长，换了很多平台。先行总结，字数不算惊人，但也不算少了。</p>
 <p>大致如下：</p>

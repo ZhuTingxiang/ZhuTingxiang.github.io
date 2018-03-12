@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http:starllap.space/"/>
-  <updated>2017-06-26T15:00:04.000Z</updated>
+  <updated>2017-06-26T03:21:30.000Z</updated>
   <id>http:starllap.space/</id>
   
   <author>
@@ -16,10 +16,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>LeetCode 120.Triangle</title>
+    <link href="http:starllap.space/2017/06/26/LeetCode-120-Triangle/"/>
+    <id>http:starllap.space/2017/06/26/LeetCode-120-Triangle/</id>
+    <published>2017-06-26T03:14:41.000Z</published>
+    <updated>2017-06-26T03:21:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.</p>
+<p>For example, given the following triangle
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">     [2],</div><div class="line">    [3,4],</div><div class="line">   [6,5,7],</div><div class="line">  [4,1,8,3]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).</p>
+<p>Note:
+Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.</p>
+<h3 id="explanation">Explanation</h3>
+<p>动态规划的基本题。主要就是要给每个pos都有一个找到最小值，逐层找到最后一个。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int minimumTotal(List&lt;List&lt;Integer&gt;&gt; triangle) &#123;</div><div class="line">        if (triangle == null || triangle.size() == 0) return -1;</div><div class="line">        if (triangle.get(0) == null || triangle.get(0).size() == 0) return -1;</div><div class="line">        int n = triangle.size();</div><div class="line">        int[][] f = new int[n][n];</div><div class="line">        f[0][0] = triangle.get(0).get(0);</div><div class="line"></div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            f[i][0] = f[i-1][0] + triangle.get(i).get(0);</div><div class="line">            f[i][i] = f[i-1][i-1] + triangle.get(i).get(i);</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            for(int j=1; j&lt;i; j++) &#123;</div><div class="line">                f[i][j] = Math.min(f[i-1][j-1], f[i-1][j]) + triangle.get(i).get(j);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        int best = f[n-1][0];</div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            best = Math.min(best, f[n-1][i]);</div><div class="line">        &#125;</div><div class="line">        return best;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a triangle, find the minimum path sum from top to
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>LeetCode 279.Perfect Squares</title>
     <link href="http:starllap.space/2017/06/26/LeetCode-279-Perfect-Squares/"/>
     <id>http:starllap.space/2017/06/26/LeetCode-279-Perfect-Squares/</id>
-    <published>2017-06-26T14:56:08.000Z</published>
+    <published>2017-06-26T02:56:08.000Z</published>
     <updated>2017-06-26T15:00:04.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
@@ -54,40 +84,10 @@
   </entry>
   
   <entry>
-    <title>LeetCode 120.Triangle</title>
-    <link href="http:starllap.space/2017/06/25/LeetCode-120-Triangle/"/>
-    <id>http:starllap.space/2017/06/25/LeetCode-120-Triangle/</id>
-    <published>2017-06-26T03:14:41.000Z</published>
-    <updated>2017-06-26T03:21:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.</p>
-<p>For example, given the following triangle
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">     [2],</div><div class="line">    [3,4],</div><div class="line">   [6,5,7],</div><div class="line">  [4,1,8,3]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<p>The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).</p>
-<p>Note:
-Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.</p>
-<h3 id="explanation">Explanation</h3>
-<p>动态规划的基本题。主要就是要给每个pos都有一个找到最小值，逐层找到最后一个。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int minimumTotal(List&lt;List&lt;Integer&gt;&gt; triangle) &#123;</div><div class="line">        if (triangle == null || triangle.size() == 0) return -1;</div><div class="line">        if (triangle.get(0) == null || triangle.get(0).size() == 0) return -1;</div><div class="line">        int n = triangle.size();</div><div class="line">        int[][] f = new int[n][n];</div><div class="line">        f[0][0] = triangle.get(0).get(0);</div><div class="line"></div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            f[i][0] = f[i-1][0] + triangle.get(i).get(0);</div><div class="line">            f[i][i] = f[i-1][i-1] + triangle.get(i).get(i);</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            for(int j=1; j&lt;i; j++) &#123;</div><div class="line">                f[i][j] = Math.min(f[i-1][j-1], f[i-1][j]) + triangle.get(i).get(j);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        int best = f[n-1][0];</div><div class="line">        for (int i=1; i&lt;n; i++) &#123;</div><div class="line">            best = Math.min(best, f[n-1][i]);</div><div class="line">        &#125;</div><div class="line">        return best;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a triangle, find the minimum path sum from top to
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>LeetCode 23. Merge k Sorted Lists</title>
     <link href="http:starllap.space/2017/06/25/LeetCode-23-Merge-k-Sorted-Lists/"/>
     <id>http:starllap.space/2017/06/25/LeetCode-23-Merge-k-Sorted-Lists/</id>
-    <published>2017-06-25T20:10:33.000Z</published>
+    <published>2017-06-25T08:10:33.000Z</published>
     <updated>2017-06-25T20:23:24.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
@@ -124,7 +124,7 @@ Bonus point if you are able to do this using only O(n) extra space, where n is t
     <title>LeetCode 215.Kth Largest Element in an Array</title>
     <link href="http:starllap.space/2017/06/25/LeetCode-215-Kth-Largest-Element-in-an-Array/"/>
     <id>http:starllap.space/2017/06/25/LeetCode-215-Kth-Largest-Element-in-an-Array/</id>
-    <published>2017-06-25T16:35:18.000Z</published>
+    <published>2017-06-25T04:35:18.000Z</published>
     <updated>2017-06-25T16:39:25.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
@@ -162,8 +162,8 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.</p>
   
   <entry>
     <title>LeetCode 146. LRU Cache</title>
-    <link href="http:starllap.space/2017/06/24/LeetCode-146-LRU-Cache/"/>
-    <id>http:starllap.space/2017/06/24/LeetCode-146-LRU-Cache/</id>
+    <link href="http:starllap.space/2017/06/25/LeetCode-146-LRU-Cache/"/>
+    <id>http:starllap.space/2017/06/25/LeetCode-146-LRU-Cache/</id>
     <published>2017-06-24T21:07:08.000Z</published>
     <updated>2017-06-24T21:09:50.000Z</updated>
     
@@ -208,7 +208,7 @@ Could you do both operations in O(1) time complexity?</p>
     <title>LintCode: Rainbow Sort</title>
     <link href="http:starllap.space/2017/06/23/LintCode-Rainbow-Sort/"/>
     <id>http:starllap.space/2017/06/23/LintCode-Rainbow-Sort/</id>
-    <published>2017-06-24T02:01:49.000Z</published>
+    <published>2017-06-23T14:01:49.000Z</published>
     <updated>2017-06-24T03:38:07.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
@@ -247,7 +247,7 @@ Given colors=[3, 2, 2, 1, 4], k=4, your code should sort colors in-place to [1, 
     <title>LeetCode 75.Sort Colors</title>
     <link href="http:starllap.space/2017/06/23/LeetCode-75-Sort-Colors/"/>
     <id>http:starllap.space/2017/06/23/LeetCode-75-Sort-Colors/</id>
-    <published>2017-06-24T00:21:33.000Z</published>
+    <published>2017-06-23T12:21:33.000Z</published>
     <updated>2017-06-24T00:24:04.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
@@ -287,7 +287,7 @@ You are not suppose to use the library's sort function for this problem.</p>
     <title>LeetCode 18. 4Sum</title>
     <link href="http:starllap.space/2017/06/23/LeetCode-18-4Sum/"/>
     <id>http:starllap.space/2017/06/23/LeetCode-18-4Sum/</id>
-    <published>2017-06-23T20:46:45.000Z</published>
+    <published>2017-06-23T08:46:45.000Z</published>
     <updated>2017-06-23T20:48:36.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
@@ -332,7 +332,7 @@ You are not suppose to use the library's sort function for this problem.</p>
     <title>LeetCode 16. 3Sum Closest</title>
     <link href="http:starllap.space/2017/06/23/LeetCode-16-3Sum-Closest/"/>
     <id>http:starllap.space/2017/06/23/LeetCode-16-3Sum-Closest/</id>
-    <published>2017-06-23T20:19:57.000Z</published>
+    <published>2017-06-23T08:19:57.000Z</published>
     <updated>2017-06-23T20:21:50.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
@@ -371,7 +371,7 @@ The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
     <title>[LintCode] Closest number in sorted array </title>
     <link href="http:starllap.space/2017/06/22/LintCode-Closest-number-in-sorted-array/"/>
     <id>http:starllap.space/2017/06/22/LintCode-Closest-number-in-sorted-array/</id>
-    <published>2017-06-22T21:05:21.000Z</published>
+    <published>2017-06-22T09:05:21.000Z</published>
     <updated>2017-06-22T21:21:30.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
@@ -405,7 +405,7 @@ Return -1 if there is no element in the array.</p>
     <title>LeetCode 56.Merge Intervals</title>
     <link href="http:starllap.space/2017/06/22/LeetCode-56-Merge-Intervals/"/>
     <id>http:starllap.space/2017/06/22/LeetCode-56-Merge-Intervals/</id>
-    <published>2017-06-22T16:18:31.000Z</published>
+    <published>2017-06-22T04:18:31.000Z</published>
     <updated>2017-06-22T16:21:41.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
@@ -448,7 +448,7 @@ return [1,6],[8,10],[15,18].</p>
     <title>LeetCode 347. Top K Frequent Elements</title>
     <link href="http:starllap.space/2017/06/22/LeetCode-347-Top-K-Frequent-Elements/"/>
     <id>http:starllap.space/2017/06/22/LeetCode-347-Top-K-Frequent-Elements/</id>
-    <published>2017-06-22T15:46:27.000Z</published>
+    <published>2017-06-22T03:46:27.000Z</published>
     <updated>2017-06-22T15:48:55.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question:</h3>
@@ -486,8 +486,8 @@ Your algorithm's time complexity must be better than O(n log n), where n is the 
   
   <entry>
     <title>当你在浏览器中输入www.google.com会发生什么？</title>
-    <link href="http:starllap.space/2017/06/21/%E5%BD%93%E4%BD%A0%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5www-google-com%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F/"/>
-    <id>http:starllap.space/2017/06/21/当你在浏览器中输入www-google-com会发生什么？/</id>
+    <link href="http:starllap.space/2017/06/22/%E5%BD%93%E4%BD%A0%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5www-google-com%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F/"/>
+    <id>http:starllap.space/2017/06/22/当你在浏览器中输入www-google-com会发生什么？/</id>
     <published>2017-06-21T16:16:24.000Z</published>
     <updated>2017-06-22T15:50:08.000Z</updated>
     
@@ -550,8 +550,8 @@ Connection header tells the server to keep open the TCP connection established h
   
   <entry>
     <title>LeetCode 170. Two Sum III - Data Structure design</title>
-    <link href="http:starllap.space/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/"/>
-    <id>http:starllap.space/2017/06/20/LeetCode-170-Two-Sum-III-Data-Structure-design/</id>
+    <link href="http:starllap.space/2017/06/21/LeetCode-170-Two-Sum-III-Data-Structure-design/"/>
+    <id>http:starllap.space/2017/06/21/LeetCode-170-Two-Sum-III-Data-Structure-design/</id>
     <published>2017-06-21T03:23:56.000Z</published>
     <updated>2017-06-21T03:26:47.000Z</updated>
     
@@ -587,10 +587,90 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
   </entry>
   
   <entry>
+    <title>LeetCode 131.Palindrome Partitioning</title>
+    <link href="http:starllap.space/2017/06/21/LeetCode-131-Palindrome-Partitioning/"/>
+    <id>http:starllap.space/2017/06/21/LeetCode-131-Palindrome-Partitioning/</id>
+    <published>2017-06-21T01:47:25.000Z</published>
+    <updated>2017-06-22T15:51:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
+<p>Return all possible palindrome partitioning of s.</p>
+<p>For example, given s = &quot;aab&quot;,
+Return
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  [&quot;aa&quot;,&quot;b&quot;],</div><div class="line">  [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h3 id="explanation">Explanation</h3>
+<p>用回溯法找到每种可能的组合的模式，然后对于每个部分字符串去判断是否是回文字符串。算是常规题，略组合了一下，有趣。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;List&lt;String&gt;&gt; partition(String s) &#123;</div><div class="line">        List&lt;List&lt;String&gt;&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if (s == null || s.length() == 0) return result;</div><div class="line">        List&lt;String&gt; patition = new ArrayList&lt;&gt;();</div><div class="line">        helper(s, 0, patition, result);</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void helper(String s, int index, List&lt;String&gt; partition, List&lt;List&lt;String&gt;&gt; result) &#123;</div><div class="line">        if (index == s.length()) &#123;</div><div class="line">            result.add(new ArrayList&lt;String&gt;(partition));</div><div class="line">        &#125;</div><div class="line">        for (int i=index; i&lt;s.length(); i++) &#123;</div><div class="line">            String subString = s.substring(index, i+1);</div><div class="line">            if (!isPalindrome(subString)) continue;</div><div class="line">            partition.add(subString);</div><div class="line">            helper(s, i+1, partition, result);</div><div class="line">            partition.remove(partition.size()-1);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //check for palindrome</div><div class="line">    public boolean isPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() == 0) return true;</div><div class="line">        int i=0; int j = s.length() -1 ;</div><div class="line">        s = s.toLowerCase();</div><div class="line">        while (i &lt; j) &#123;</div><div class="line">            if (!Character.isLetterOrDigit(s.charAt(i))) &#123;</div><div class="line">                i ++;</div><div class="line">            &#125; else if (!Character.isLetterOrDigit(s.charAt(j))) &#123;</div><div class="line">                j--;</div><div class="line">            &#125; else if (s.charAt(i)!=s.charAt(j)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125; else &#123;</div><div class="line">                i++; j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a string s, partition s such that every substring
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
+    
+      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
+    
+      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
+    
+      <category term="Backtracking" scheme="http:starllap.space/tags/Backtracking/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 125. Valid Palindrome</title>
+    <link href="http:starllap.space/2017/06/21/LeetCode-125-Valid-Palindrome/"/>
+    <id>http:starllap.space/2017/06/21/LeetCode-125-Valid-Palindrome/</id>
+    <published>2017-06-20T20:11:54.000Z</published>
+    <updated>2017-06-20T20:36:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
+<p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
+<p>For example,
+&quot;A man, a plan, a canal: Panama&quot; is a palindrome.
+&quot;race a car&quot; is not a palindrome.</p>
+<p>Note:
+Have you consider that the string might be empty? This is a good question to ask during an interview.</p>
+<p>For the purpose of this problem, we define empty string as valid palindrome.</p>
+<h3 id="explanation">Explanation</h3>
+<p>双指针问题。</p>
+<h3 id="code">Code</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean isPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() == 0) return true;</div><div class="line">        int i=0; int j = s.length() -1 ;</div><div class="line">        s = s.toLowerCase();</div><div class="line">        while (i &lt; j) &#123;</div><div class="line">            if (!Character.isLetterOrDigit(s.charAt(i))) &#123;</div><div class="line">                i ++;</div><div class="line">            &#125; else if (!Character.isLetterOrDigit(s.charAt(j))) &#123;</div><div class="line">                j--;</div><div class="line">            &#125; else if (s.charAt(i)!=s.charAt(j)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125; else &#123;</div><div class="line">                i++; j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
+&lt;p&gt;Given a string, determine if it is a palindrome, consid
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
+    
+      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
+    
+      <category term="String" scheme="http:starllap.space/tags/String/"/>
+    
+      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LeetCode 1. Two Sum</title>
     <link href="http:starllap.space/2017/06/20/LeetCode-1-Two-Sum/"/>
     <id>http:starllap.space/2017/06/20/LeetCode-1-Two-Sum/</id>
-    <published>2017-06-21T03:19:43.000Z</published>
+    <published>2017-06-20T15:19:43.000Z</published>
     <updated>2017-06-21T03:23:23.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
@@ -638,90 +718,10 @@ return result;</p>
   </entry>
   
   <entry>
-    <title>LeetCode 131.Palindrome Partitioning</title>
-    <link href="http:starllap.space/2017/06/20/LeetCode-131-Palindrome-Partitioning/"/>
-    <id>http:starllap.space/2017/06/20/LeetCode-131-Palindrome-Partitioning/</id>
-    <published>2017-06-21T01:47:25.000Z</published>
-    <updated>2017-06-22T15:51:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
-<p>Return all possible palindrome partitioning of s.</p>
-<p>For example, given s = &quot;aab&quot;,
-Return
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  [&quot;aa&quot;,&quot;b&quot;],</div><div class="line">  [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<h3 id="explanation">Explanation</h3>
-<p>用回溯法找到每种可能的组合的模式，然后对于每个部分字符串去判断是否是回文字符串。算是常规题，略组合了一下，有趣。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;List&lt;String&gt;&gt; partition(String s) &#123;</div><div class="line">        List&lt;List&lt;String&gt;&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if (s == null || s.length() == 0) return result;</div><div class="line">        List&lt;String&gt; patition = new ArrayList&lt;&gt;();</div><div class="line">        helper(s, 0, patition, result);</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void helper(String s, int index, List&lt;String&gt; partition, List&lt;List&lt;String&gt;&gt; result) &#123;</div><div class="line">        if (index == s.length()) &#123;</div><div class="line">            result.add(new ArrayList&lt;String&gt;(partition));</div><div class="line">        &#125;</div><div class="line">        for (int i=index; i&lt;s.length(); i++) &#123;</div><div class="line">            String subString = s.substring(index, i+1);</div><div class="line">            if (!isPalindrome(subString)) continue;</div><div class="line">            partition.add(subString);</div><div class="line">            helper(s, i+1, partition, result);</div><div class="line">            partition.remove(partition.size()-1);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //check for palindrome</div><div class="line">    public boolean isPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() == 0) return true;</div><div class="line">        int i=0; int j = s.length() -1 ;</div><div class="line">        s = s.toLowerCase();</div><div class="line">        while (i &lt; j) &#123;</div><div class="line">            if (!Character.isLetterOrDigit(s.charAt(i))) &#123;</div><div class="line">                i ++;</div><div class="line">            &#125; else if (!Character.isLetterOrDigit(s.charAt(j))) &#123;</div><div class="line">                j--;</div><div class="line">            &#125; else if (s.charAt(i)!=s.charAt(j)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125; else &#123;</div><div class="line">                i++; j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a string s, partition s such that every substring
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
-    
-      <category term="Medium" scheme="http:starllap.space/tags/Medium/"/>
-    
-      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
-    
-      <category term="Backtracking" scheme="http:starllap.space/tags/Backtracking/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 125. Valid Palindrome</title>
-    <link href="http:starllap.space/2017/06/20/LeetCode-125-Valid-Palindrome/"/>
-    <id>http:starllap.space/2017/06/20/LeetCode-125-Valid-Palindrome/</id>
-    <published>2017-06-20T20:11:54.000Z</published>
-    <updated>2017-06-20T20:36:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
-<p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
-<p>For example,
-&quot;A man, a plan, a canal: Panama&quot; is a palindrome.
-&quot;race a car&quot; is not a palindrome.</p>
-<p>Note:
-Have you consider that the string might be empty? This is a good question to ask during an interview.</p>
-<p>For the purpose of this problem, we define empty string as valid palindrome.</p>
-<h3 id="explanation">Explanation</h3>
-<p>双指针问题。</p>
-<h3 id="code">Code</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public boolean isPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() == 0) return true;</div><div class="line">        int i=0; int j = s.length() -1 ;</div><div class="line">        s = s.toLowerCase();</div><div class="line">        while (i &lt; j) &#123;</div><div class="line">            if (!Character.isLetterOrDigit(s.charAt(i))) &#123;</div><div class="line">                i ++;</div><div class="line">            &#125; else if (!Character.isLetterOrDigit(s.charAt(j))) &#123;</div><div class="line">                j--;</div><div class="line">            &#125; else if (s.charAt(i)!=s.charAt(j)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125; else &#123;</div><div class="line">                i++; j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;question&quot;&gt;Question&lt;/h3&gt;
-&lt;p&gt;Given a string, determine if it is a palindrome, consid
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http:starllap.space/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http:starllap.space/tags/LeetCode/"/>
-    
-      <category term="Easy" scheme="http:starllap.space/tags/Easy/"/>
-    
-      <category term="String" scheme="http:starllap.space/tags/String/"/>
-    
-      <category term="Two Pointers" scheme="http:starllap.space/tags/Two-Pointers/"/>
-    
-  </entry>
-  
-  <entry>
     <title>LeetCode 26.Remove Duplicates from Sorted Array</title>
     <link href="http:starllap.space/2017/06/18/LeetCode-26-Remove-Duplicates-from-Sorted-Array/"/>
     <id>http:starllap.space/2017/06/18/LeetCode-26-Remove-Duplicates-from-Sorted-Array/</id>
-    <published>2017-06-18T20:25:52.000Z</published>
+    <published>2017-06-18T08:25:52.000Z</published>
     <updated>2017-06-18T20:29:43.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
@@ -761,7 +761,7 @@ Given input array nums = [1,1,2],</p>
     <title>LeetCode 283.Move Zeroes</title>
     <link href="http:starllap.space/2017/06/18/LeetCode-283-Move-Zeroes/"/>
     <id>http:starllap.space/2017/06/18/LeetCode-283-Move-Zeroes/</id>
-    <published>2017-06-18T20:13:56.000Z</published>
+    <published>2017-06-18T08:13:56.000Z</published>
     <updated>2017-06-18T20:18:19.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="quesiton">Quesiton</h3>
@@ -800,7 +800,7 @@ Minimize the total number of operations.</p>
     <title>LeetCode 4. Median of Two Sorted Arrays</title>
     <link href="http:starllap.space/2017/06/18/LeetCode-4-Median-of-Two-Sorted-Arrays/"/>
     <id>http:starllap.space/2017/06/18/LeetCode-4-Median-of-Two-Sorted-Arrays/</id>
-    <published>2017-06-18T19:17:57.000Z</published>
+    <published>2017-06-18T07:17:57.000Z</published>
     <updated>2017-06-18T19:43:23.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><h3 id="question">Question</h3>
