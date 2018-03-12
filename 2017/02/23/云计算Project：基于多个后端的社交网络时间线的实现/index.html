@@ -1,0 +1,1159 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Cloud Computing,MySQL,HBase,Social Network,MongoDB," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Star" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本文是关于CMU15619Cloud Computing项目:Social Networking Timeline with Heterogeneous Backends的介绍以及总结反思。
+项目主要目标：
+
+探索AWS的DBaas服务的申请、配置和管理
+比较MySQL, HBase和MongoDB在使用Java API载入数据时的异同。
+利用多个后端为同一个复杂的web应用提供数据。
+比较不同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云计算Project：基于多个后端的社交网络时间线的实现">
+<meta property="og:url" content="http:starllap.space/2017/02/23/云计算Project：基于多个后端的社交网络时间线的实现/index.html">
+<meta property="og:site_name" content="Star">
+<meta property="og:description" content="本文是关于CMU15619Cloud Computing项目:Social Networking Timeline with Heterogeneous Backends的介绍以及总结反思。
+项目主要目标：
+
+探索AWS的DBaas服务的申请、配置和管理
+比较MySQL, HBase和MongoDB在使用Java API载入数据时的异同。
+利用多个后端为同一个复杂的web应用提供数据。
+比较不同">
+<meta property="og:image" content="http://i.imgur.com/Qyrp0rL.png">
+<meta property="og:image" content="http://i.imgur.com/x2yyDEI.png">
+<meta property="og:image" content="http://i.imgur.com/ofeLFxn.png">
+<meta property="og:image" content="http://i.imgur.com/r3gf00x.png">
+<meta property="og:image" content="http://i.imgur.com/Qwd8z0q.png">
+<meta property="og:image" content="http://i.imgur.com/rv5LnYr.png">
+<meta property="og:image" content="http://i.imgur.com/8p2pep3.png">
+<meta property="og:image" content="http://i.imgur.com/EpRB33c.png">
+<meta property="og:image" content="http://i.imgur.com/83cuJ8G.png">
+<meta property="og:updated_time" content="2017-03-30T01:47:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="云计算Project：基于多个后端的社交网络时间线的实现">
+<meta name="twitter:description" content="本文是关于CMU15619Cloud Computing项目:Social Networking Timeline with Heterogeneous Backends的介绍以及总结反思。
+项目主要目标：
+
+探索AWS的DBaas服务的申请、配置和管理
+比较MySQL, HBase和MongoDB在使用Java API载入数据时的异同。
+利用多个后端为同一个复杂的web应用提供数据。
+比较不同">
+<meta name="twitter:image" content="http://i.imgur.com/Qyrp0rL.png">
+
+<script>
+  (function(){
+    if(''){
+      if (prompt('请输入文章密码','') !== ''){
+        alert('密码错误！');
+        history.back();
+      }
+    }
+  })();
+</script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http:starllap.space/2017/02/23/云计算Project：基于多个后端的社交网络时间线的实现/"/>
+
+
+
+
+
+  <title> 云计算Project：基于多个后端的社交网络时间线的实现 | Star </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-89263636-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Star</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http:starllap.space/2017/02/23/云计算Project：基于多个后端的社交网络时间线的实现/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Star">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/winnie-pooh-full-hd-wallpaper-image-tablet.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Star">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Star" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                云计算Project：基于多个后端的社交网络时间线的实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-23T15:12:14+08:00">
+                2017-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/" itemprop="url" rel="index">
+                    <span itemprop="name">Cloud Computing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/02/23/云计算Project：基于多个后端的社交网络时间线的实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/23/云计算Project：基于多个后端的社交网络时间线的实现/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/DPlayer.min.js"> </script><p>本文是关于CMU15619Cloud Computing项目:<code>Social Networking Timeline with Heterogeneous Backends</code>的介绍以及总结反思。</p>
+<p>项目主要目标：</p>
+<ul>
+<li>探索AWS的DBaas服务的申请、配置和管理</li>
+<li>比较MySQL, HBase和MongoDB在使用Java API载入数据时的异同。</li>
+<li>利用多个后端为同一个复杂的web应用提供数据。</li>
+<li>比较不同数据库在实际应用中的特点。</li>
+</ul>
+<h2 id="背景介绍">背景介绍</h2>
+<h3 id="dbaasdatabase-as-a-services">DBaas(Database-as-a-Services)：</h3>
+<p>在AWS中，我们可以用其中的RDS的MySQL服务。</p>
+<h3 id="mongodb">MongoDB：</h3>
+<p>MongoDB是NoSQL数据库的典型，基于文档存储（Document-oriented），不支持事务和表连接，所以查询的编写、理解和优化比较容易。之后会写一篇关于NoSQL的总结（一个坑）。
+和HBase的key-value存储模式不同，MongoDB基于文档存储模式的优势在于可以支持复杂的数据类型，并且也支持Index。
+MongoDB使用BSON类型存储数据，据说就是把文本直接转成二进制表示，BSON用于以下三种目的：</p>
+<ul>
+<li>节省空间：BSON即使在最坏的情况下，也比普通的JSON占用空间少。</li>
+<li>移动性</li>
+<li>Performance：BSON对内容的编码和解码的速度快于很多编程语言。</li>
+</ul>
+<h3 id="数据结构-图">数据结构： 图</h3>
+<h4 id="1邻接矩阵adjacent-matrix空间复杂度为on2">1.邻接矩阵Adjacent Matrix：空间复杂度为O（n^2)</h4>
+<p>比如这个：
+<img src="http://i.imgur.com/Qyrp0rL.png" alt="">
+<img src="http://i.imgur.com/x2yyDEI.png" alt=""></p>
+<h4 id="2邻接表adjacent-list-空间较少">2.邻接表Adjacent List 空间较少：</h4>
+<p><img src="http://i.imgur.com/ofeLFxn.png" alt=""></p>
+<h3 id="社交网络应用基础">社交网络应用基础：</h3>
+<p>如今像Facebook, Twitter和Instagram都需要复杂和涉及良好的后端来处理多种类型的用户数据，提供持续的高性能低延迟的服务。同时还要通过实时数据分析为公司和广告商提供有价值的信息。</p>
+<ul>
+<li>不同的数据类型（Video，Text，Link，etc.)需要存在不同的数据库中）</li>
+<li>一个简单的展示社交网络页面的HTTP请求会触发后端一系列的请求和数据库动作。可以参见下图：
+<img src="http://i.imgur.com/r3gf00x.png" alt=""></li>
+</ul>
+<p>社交网络中的数据通常包括以下三种：</p>
+<ul>
+<li>用户信息：
+<ul>
+<li>身份验证系统</li>
+<li>用户信息/简介</li>
+<li>活动日志</li>
+<li>社交关系图（在下面会进步介绍）</li>
+</ul>
+</li>
+<li>用户活动：
+<ul>
+<li>用户产生的多媒体数据</li>
+</ul>
+</li>
+<li>大数据分析系统：
+<ul>
+<li>搜索系统</li>
+<li>推荐系统</li>
+<li>用户行为分析（基于云数据仓库的OLAP，有机会单独更新这个部分）</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://i.imgur.com/Qwd8z0q.png" alt=""></p>
+<p>社交网络的前端已经做好，我们需要把四中不同的数据集存入三种数据库（MySQL, HBase, MongoDB),你完成的后端要能同时响应四中不同的request。</p>
+<h2 id="项目操作">项目操作</h2>
+<h3 id="通过rds的mysql实现基本登录">通过RDS的MySQL实现基本登录：</h3>
+<p>在AWS RDS中配置MySQL并导入users.csv, userinfo.csv数据集。
+连接AWS RDS中MySQL时注意：
+远程登录需要导入数据时要加入 --local-infile得到授权。
+<code>mysql -u username -p password -h hostname --port=portname --local-infile database</code></p>
+<p>数据集格式:</p>
+<ul>
+<li>users.csv [UserID, Password]</li>
+<li>userinfo.csv [UserID, Name, Profile Image URL]</li>
+</ul>
+<p>导入MySQL语句:
+<code>LOAD DATA LOCAL INFILE 'filename' INTO TABLE tablename CHARACTER SET utf8mb4 FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';</code></p>
+<p>请求格式:
+<code>GET /task1?id=[UserID]&amp;pwd=[Password]</code></p>
+<p>响应格式:
+<code>returnRes({&quot;name&quot;:&quot;my_name&quot;, &quot;profile&quot;:&quot;profile_image_url&quot;})</code></p>
+<p>所以，之后在Java文件中连接数据库，再创建JSON相应的代码即可。
+测试：</p>
+<ol>
+<li>启动前后端服务器，访问<code>http://&lt;your_front_end_dns&gt;:3000</code></li>
+<li>输入正确或错误的账号密码登录测试</li>
+</ol>
+<p><img src="http://i.imgur.com/rv5LnYr.png" alt=""></p>
+<h3 id="利用hbase存储社交图谱">利用HBase存储社交图谱：</h3>
+<p>用HBase来保存用户间的follow关系，可以选择用之前在图中介绍的邻接矩阵和邻接表中选择一种，来保存数据。
+原始数据格式：
+<code>&lt;followee, follower&gt;</code></p>
+<p>请求格式：
+<code>GET /task2?id=[UserID]</code></p>
+<p>响应格式:
+<code>{&quot;followers&quot;:[{&quot;name&quot;:&quot;follower_name_1&quot;, &quot;profile&quot;:&quot;profile_image_url_1&quot;}, {&quot;name&quot;:&quot;follower_name_2&quot;, &quot;profile&quot;:&quot;profile_image_url_2&quot;}, ...]}</code></p>
+<h4 id="思路">思路：</h4>
+<ul>
+<li>在HBase中存成followee： follower1， follower2， ...的格式</li>
+<li>设计好HBase之后导入数据</li>
+<li>启动前后端服务器后访问http://&lt;your_front_end_dns&gt;:3000</li>
+<li>输入userid进行测试</li>
+</ul>
+<h3 id="用mongdb搭建主页">用MongDB搭建主页：</h3>
+<p>如之前介绍的那样，对于各种形式的帖子，用MongoDB存储会是一个很好的选择。这里会查询一些特定的field，所以可以建立索引来加速查询。</p>
+<p>帖子数据的形式：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;pid&quot;:xxx,                                      // PostID</div><div class="line">    &quot;uid&quot;:xxx,                                      // UserID of poster</div><div class="line">    &quot;name&quot;:&quot;xxx&quot;,                                   // User name of poster</div><div class="line">    &quot;profile&quot;:&quot;xxx&quot;,                                // Poster profile image URL</div><div class="line">    &quot;timestamp&quot;:&quot;YYYY-MM-DD HH:MM:SS&quot;,              // When post is posted</div><div class="line">    &quot;image&quot;:&quot;xxx&quot;,                                  // Post image</div><div class="line">    &quot;content&quot;:&quot;xxx&quot;,                                // Post text content</div><div class="line">    &quot;comments&quot;:[                                    // comments json array</div><div class="line">        &#123;</div><div class="line">            &quot;uid&quot;:xxx,                              // UserID of commenter</div><div class="line">            &quot;name&quot;:&quot;xxx&quot;,                           // User name of commenter</div><div class="line">            &quot;profile&quot;:&quot;xxx&quot;,                        // Commenter profile image URL</div><div class="line">            &quot;timestamp&quot;:&quot;YYYY-MM-DD HH:MM:SS&quot;,      // When comment is made</div><div class="line">            &quot;content&quot;:&quot;xxx&quot;                         // Comment text content</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            &quot;uid&quot;:xxx,</div><div class="line">            .......</div><div class="line">        &#125;,</div><div class="line">        ......</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>关于MongoDB建立索引，可以参考<a href="https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/" target="_blank" rel="external">这里</a></p>
+<p>请求格式：
+<code>GET /task3?id=[UserID]</code></p>
+<p>响应格式：
+<code>{&quot;posts&quot;:[{post1_json}, {post2_json}, ...]}</code></p>
+<p>测试方法：</p>
+<ul>
+<li>启动前后端服务器，输入userid</li>
+</ul>
+<p><img src="http://i.imgur.com/8p2pep3.png" alt=""></p>
+<h3 id="最终整合">最终整合</h3>
+<p>之前三个部分分别实现了三个数据库的存储，现在我们希望实现输入一个userid就可以返回用户信息（MySQL),用户粉丝列表（HBase）以及用户关注的人最新三十条帖子（MongoDB）。</p>
+<p>排序规则：</p>
+<ul>
+<li>对followers进行排序:
+<ul>
+<li>姓名升序排列</li>
+<li>Profile image URL升序排列</li>
+</ul>
+</li>
+<li>对最新30篇post排序：
+<ul>
+<li>按照timestamp升序排序</li>
+<li>按照PostID升序排序</li>
+</ul>
+</li>
+</ul>
+<p>请求格式：
+<code>GET /task4?id=[UserID]</code></p>
+<p>响应格式:
+<code>{&quot;name&quot;:&quot;my_name&quot;, &quot;profile&quot;:&quot;my_profile_image_url&quot;, &quot;followers&quot;:[{&quot;name&quot;:&quot;follower_name_1&quot;, &quot;profile&quot;:&quot;profile_image_url_1&quot;}, {&quot;name&quot;:&quot;follower_name_2&quot;, &quot;profile&quot;:&quot;profile_image_url_2&quot;}, ...], &quot;posts&quot;:[{post1_json, post2_json, ...}]}</code></p>
+<p><img src="http://i.imgur.com/EpRB33c.png" alt=""></p>
+<h3 id="简单推荐的实现">简单推荐的实现</h3>
+<p>推荐系统的内容太多了，可以看看<a href="http://www.shuang0420.com/categories/Recommender-System/" target="_blank" rel="external">shaung的博客</a>（一个广告）
+这次我们用协同过滤算法实现一个简单的推荐系统，利用“朋友的朋友”来推荐好友。</p>
+<h4 id="graph-distance">Graph Distance：</h4>
+<p>比如：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A follows &#123;B, C, D&#125;</div><div class="line">Followee B follows &#123;C, E, A&#125;</div><div class="line">followee C follows &#123;F, G&#125;</div><div class="line">followee D follows &#123;G, H&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://i.imgur.com/83cuJ8G.png" alt="">
+我们可以得到与A的距离关系为：
+<code>{A:1, C:1, E:1, F:1, G:2, H:1}</code>
+其中去掉A本身，去掉A已经关注的C，剩下的就是
+<code>{G: 2, E: 1, F: 1, H: 1}</code></p>
+<h4 id="思路">思路：</h4>
+<ul>
+<li>找到userid的关注的人的集合</li>
+<li>将关注的人的集合中的每个人关注的人添加到信集合中，第一次出现则为1，之后的为原来的加1</li>
+<li>用优先队列存储，注意第一个关注的人集合中的元素都不应该在此队列中</li>
+<li>返回前十个的name和url，并返回</li>
+</ul>
+<p>请求格式：
+<code>http://backend-public-dns:8080/MiniSite/task5?id=&lt;user_id&gt;</code></p>
+<p>响应格式：
+<code>returnRes({&quot;recommendation&quot;:[{name:&lt;name1&gt;, profile:&lt;profile1&gt;},{name:&lt;name2&gt;, profile:&lt;profile2&gt;},...,{name:&lt;name10&gt;, profile:&lt;profile10&gt;]})</code></p>
+<p>Done!</p>
+<p><strong>Reference：</strong><br>
+CMU15619课件：<code>Social Networking Timeline with Heterogeneous Backends</code>
+小土刀博客：<code>http://wdxtub.com/vault/cc-17.html</code></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Cloud-Computing/" rel="tag"># Cloud Computing</a>
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/HBase/" rel="tag"># HBase</a>
+          
+            <a href="/tags/Social-Network/" rel="tag"># Social Network</a>
+          
+            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/11/Java-Interview-Questions/" rel="next" title="Java Interview Questions">
+                <i class="fa fa-chevron-left"></i> Java Interview Questions
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/27/云计算Project：Twitter大数据分析/" rel="prev" title="云计算Project：Twitter大数据分析">
+                云计算Project：Twitter大数据分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/winnie-pooh-full-hd-wallpaper-image-tablet.jpg"
+               alt="Star" />
+          <p class="site-author-name" itemprop="name">Star</p>
+          <p class="site-description motion-element" itemprop="description">不要温和地走进那个良夜。@CMU</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">102</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ZhuTingxiang" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/45283318/" target="_blank" title="Douban">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Douban
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/starshashou?is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/starstarpinkrrr/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-instagram"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/tingxiangzhu" target="_blank" title="Linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedin
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              小伙伴
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://farer.org/" title="Eric" target="_blank">Eric</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.ihypo.net/" title="Hypo" target="_blank">Hypo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.shuang0420.com/" title="徐阿衡" target="_blank">徐阿衡</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://codefalling.com/" title="codefalling" target="_blank">codefalling</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dbaasdatabase-as-a-services"><span class="nav-number">1.1.</span> <span class="nav-text">DBaas(Database-as-a-Services)：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mongodb"><span class="nav-number">1.2.</span> <span class="nav-text">MongoDB：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构-图"><span class="nav-number">1.3.</span> <span class="nav-text">数据结构： 图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1邻接矩阵adjacent-matrix空间复杂度为on2"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.邻接矩阵Adjacent Matrix：空间复杂度为O（n^2)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2邻接表adjacent-list-空间较少"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.邻接表Adjacent List 空间较少：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#社交网络应用基础"><span class="nav-number">1.4.</span> <span class="nav-text">社交网络应用基础：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目操作"><span class="nav-number">2.</span> <span class="nav-text">项目操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过rds的mysql实现基本登录"><span class="nav-number">2.1.</span> <span class="nav-text">通过RDS的MySQL实现基本登录：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用hbase存储社交图谱"><span class="nav-number">2.2.</span> <span class="nav-text">利用HBase存储社交图谱：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.2.1.</span> <span class="nav-text">思路：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用mongdb搭建主页"><span class="nav-number">2.3.</span> <span class="nav-text">用MongDB搭建主页：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最终整合"><span class="nav-number">2.4.</span> <span class="nav-text">最终整合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单推荐的实现"><span class="nav-number">2.5.</span> <span class="nav-text">简单推荐的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#graph-distance"><span class="nav-number">2.5.1.</span> <span class="nav-text">Graph Distance：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.5.2.</span> <span class="nav-text">思路：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Star</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'starllap';
+      var disqus_identifier = '2017/02/23/云计算Project：基于多个后端的社交网络时间线的实现/';
+
+      var disqus_title = "云计算Project：基于多个后端的社交网络时间线的实现";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
